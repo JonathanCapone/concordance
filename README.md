@@ -130,13 +130,42 @@ python scripts/run_gold.py --model gemma4:12b
 
 ## Accuracy
 
-The gold set is hand-read from the scans by a human; nothing in it came from a model. The harness
-reports value precision/recall **and, separately, kind accuracy and stream accuracy** — because a
-perfectly-read number filed as the wrong kind, or an effluent value recorded as influent, is not a
-small error. The second turns a working treatment plant into a polluting one.
+The gold set is hand-read from the scans by a human; nothing in it was copied from a model. The
+harness reports value precision/recall **and, separately, kind accuracy and stream accuracy** —
+because a perfectly-read number filed as the wrong kind, or an effluent value recorded as influent,
+is not a small error. The second turns a working treatment plant into a polluting one.
 
-Results are published in `data/results/` including failures. An archive that has been misread at
-scale is worse than one that has not been read at all, because the errors look like findings.
+Current run — `gemma4:12b`, run locally, no API key:
+
+| Page | Precision | Recall | Kind | Stream | Blind? |
+|---|---|---|---|---|---|
+| 9 — design specification sheet | 88% | 85% | 100% | 60% | **no** |
+| 10 — mixed narrative and spec | 91% | 71% | 100% | 100% | yes |
+| **11 — narrative prose** | **88%** | **88%** | **100%** | **100%** | **yes** |
+| overall | 88.7% | 82.5% | 100% | 86.7% | — |
+
+**Page 11 is the honest headline**: 88/88, annotated blind before any extraction run, on the clean
+narrative prose that the core finding is about.
+
+**Page 9 is not blind.** Its gold set was expanded after an audit showed the original annotation
+covered 6 of the page's ~26 design values, and by then the annotator had seen model output. Its
+figures are optimistically biased and are reported anyway, labelled, rather than quietly dropped.
+
+Two weaknesses that are real rather than measurement artefacts: **stream accuracy is 60% on the
+design sheet** (raw vs influent vs effluent is genuinely ambiguous there), and **10 gold entries are
+still missed entirely**.
+
+### The first number was wrong, and it was the ruler
+
+The first scored run reported **49% precision**. Auditing the records it called spurious showed
+nearly all of them were correct — the harness lacked unit-scale conversion (`3.0 million gallons`
+scored as a miss against `3000000 gallons`), lacked rate reconciliation, and was checking against an
+incomplete gold set. Fixing the *measurement*, with no change at all to the extractor, moved
+precision from 49.1% to 88.7%.
+
+Publishing 49% would have caused the scope to be narrowed for no reason. This is why runs are
+published in `data/results/` including the failures: an archive that has been misread at scale is
+worse than one that was never read, because the errors look like findings.
 
 ## Credentials
 
@@ -168,9 +197,18 @@ scripts/
 
 ## Status
 
-Early. The archive adapter, router, prose extractor and accuracy harness work end to end on real
-documents. Vision extraction (tables, figures, maps), entity resolution across 150 years, the
-silence detector and the map portal are not built yet.
+Early, but measured. The archive adapter, page router, prose extractor, accuracy harness and
+science layer work end to end on real documents, with a published accuracy number.
+
+The silence detector produces its first controlled finding: of 112 Ontario municipalities filing
+water pollution control plant reports, **72 go silent in the same year, 1975**. That pattern is
+equally consistent with "digitisation stopped there", so it was checked -- Ontario Ministry of the
+Environment publications in the collection run 1,449 before 1975 and 3,800 after, at a steady
+83-141 items per year straight through the cliff. The archive did not stop. This one report series
+ended.
+
+Not built: vision extraction (tables, figures, maps), entity resolution across 150 years, the
+provider framework, the watershed network, and the map portal.
 
 ## Licence
 
