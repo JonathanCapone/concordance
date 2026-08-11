@@ -1,0 +1,20 @@
+{
+  "dataset": "Canadian Geographical Names - CGN",
+  "publisher": "Natural Resources Canada",
+  "dataset_url": "https://open.canada.ca/data/en/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c",
+  "download_url": "https://ftp.maps.canada.ca/pub/nrcan_rncan/vector/geobase_cgn_toponyme/prov_csv_eng/cgn_on_csv_eng.zip",
+  "licence": "Open Government Licence - Canada",
+  "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
+  "retrieved_at": "2026-08-11T22:58:37+00:00",
+  "archive_bytes": 2403318,
+  "archive_sha256": "fded103f1d3828b5e785906eaacdf47e306d72915abd232546c7bc9ad868cc13",
+  "source_rows": 58311,
+  "index_rows": 10925,
+  "included_categories": [
+    "Administrative Area",
+    "Populated Place"
+  ],
+  "http_status": 200,
+  "last_modified": "Wed, 05 Aug 2026 03:54:42 GMT",
+  "content_type": "application/zip"
+}

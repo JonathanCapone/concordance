@@ -1,9 +1,246 @@
 {
   "place": "Owen Sound",
   "model": "ollama:gemma4:12b",
-  "n_records": 0,
+  "n_records": 9,
   "pages_attempted": [
-    "owensoundsewaget24479#10"
+    "owensoundsewaget24479#10",
+    "owensoundsewaget24479#12",
+    "owensoundsewaget24479#15"
   ],
-  "records": []
+  "records": [
+    {
+      "kind": "design",
+      "parameter": "Design Population",
+      "value": 25000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.44,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 12,
+        "source_text": "Design Population - 25, 000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7601
+      },
+      "key": "693e84c4c213b75d9f0c"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Plant Flow",
+      "value": 3.0,
+      "unit": "million Imperial gallons per day (MGD)",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.44,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 12,
+        "source_text": "Design Plant Flow - 3. 0 million Imperial gallons per day (MGD),",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7601
+      },
+      "key": "8f1af1a22bca62978576"
+    },
+    {
+      "kind": "design",
+      "parameter": "Per Capita Flow",
+      "value": 120.0,
+      "unit": "gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.44,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 12,
+        "source_text": "Per Capita Flow - 120 gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7601
+      },
+      "key": "d9e15469a1d0e89484c1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Five Day BOD",
+      "value": 180.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.44,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 12,
+        "source_text": "Raw Sewage 180 PPM, or 5400 lbs. of",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7601
+      },
+      "key": "4a374ab7acf74664246a"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD Removal",
+      "value": 40.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.44,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 12,
+        "source_text": "Removal 40%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7601
+      },
+      "key": "8e4fde37feebd1030a8d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids",
+      "value": 200.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.44,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 12,
+        "source_text": "Raw Sewage 200 PPM, or 5000 lbs. of",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7601
+      },
+      "key": "403feaf6335233a1495f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Removal",
+      "value": 65.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.44,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 12,
+        "source_text": "Removal 65%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7601
+      },
+      "key": "21036f63d5dfb0ac5574"
+    },
+    {
+      "kind": "design",
+      "parameter": "Total pump capacity",
+      "value": 9.0,
+      "unit": "MGD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.44,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 12,
+        "source_text": "Total pump capacity is 9. 0 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7601
+      },
+      "key": "d6ee98ac02c090479ef1"
+    },
+    {
+      "kind": "design",
+      "parameter": "flow",
+      "value": 3.0,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1963",
+      "confidence": 0.3977,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 15,
+        "source_text": "It will be noted that 50 percent of the time the flow is 3. 0 million gallons per day and that this is the design flow of the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5906
+      },
+      "key": "c0814f7d5b301070a466"
+    }
+  ]
 }

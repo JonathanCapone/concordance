@@ -1,0 +1,1819 @@
+{
+  "n_municipalities": 107,
+  "horizon": 1996,
+  "largest_simultaneous_stop": {
+    "year": 1975,
+    "municipalities": 72
+  },
+  "digitisation_control": [
+    {
+      "series": "Ontario Ministry of the Environment (all publications)",
+      "before": 1449,
+      "from_cliff_onward": 3800
+    },
+    {
+      "series": "any title mentioning Ontario",
+      "before": 2770,
+      "from_cliff_onward": 4619
+    },
+    {
+      "series": "water pollution control plant reports (the series under test)",
+      "before": 535,
+      "from_cliff_onward": 11
+    }
+  ],
+  "control_verdict": "real",
+  "caveat": "A gap means not-digitised OR not-reported. The control above distinguishes the two at collection level, but an individual municipality's gap has not been checked against that town's own holdings and should not be cited as institutional silence on its own.",
+  "municipalities": [
+    {
+      "place": "Burlington Drury Lane",
+      "first_year": 1961,
+      "last_year": 1974,
+      "reported_years": [
+        1961,
+        1962,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1963,
+        1964
+      ],
+      "silent_since": 1975,
+      "continuity": 0.857,
+      "longest_gap": 2
+    },
+    {
+      "place": "Burlington Elizabeth Gardens",
+      "first_year": 1962,
+      "last_year": 1974,
+      "reported_years": [
+        1962,
+        1963,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1971
+      ],
+      "silent_since": 1975,
+      "continuity": 0.923,
+      "longest_gap": 1
+    },
+    {
+      "place": "Richmond Hill",
+      "first_year": 1962,
+      "last_year": 1974,
+      "reported_years": [
+        1962,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1963
+      ],
+      "silent_since": 1975,
+      "continuity": 0.923,
+      "longest_gap": 1
+    },
+    {
+      "place": "Georgetown",
+      "first_year": 1963,
+      "last_year": 1973,
+      "reported_years": [
+        1963,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973
+      ],
+      "missing_years": [],
+      "silent_since": 1974,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Huntsville",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Sault Ste. Marie",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Stratford",
+      "first_year": 1963,
+      "last_year": 1974,
+      "reported_years": [
+        1963,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1972
+      ],
+      "silent_since": 1975,
+      "continuity": 0.917,
+      "longest_gap": 1
+    },
+    {
+      "place": "Trenton",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Belleville",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.909,
+      "longest_gap": 1
+    },
+    {
+      "place": "Brantford",
+      "first_year": 1963,
+      "last_year": 1974,
+      "reported_years": [
+        1963,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1971,
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.833,
+      "longest_gap": 1
+    },
+    {
+      "place": "Burlington Skyway",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1971
+      ],
+      "silent_since": 1975,
+      "continuity": 0.909,
+      "longest_gap": 1
+    },
+    {
+      "place": "Coniston",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1971
+      ],
+      "silent_since": 1975,
+      "continuity": 0.909,
+      "longest_gap": 1
+    },
+    {
+      "place": "Fort Frances",
+      "first_year": 1965,
+      "last_year": 1974,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Kitchener",
+      "first_year": 1962,
+      "last_year": 1974,
+      "reported_years": [
+        1962,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1963,
+        1971,
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.769,
+      "longest_gap": 1
+    },
+    {
+      "place": "Owen Sound",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1971
+      ],
+      "silent_since": 1975,
+      "continuity": 0.909,
+      "longest_gap": 1
+    },
+    {
+      "place": "Timmins",
+      "first_year": 1965,
+      "last_year": 1974,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Waterloo",
+      "first_year": 1962,
+      "last_year": 1974,
+      "reported_years": [
+        1962,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1963,
+        1971,
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.769,
+      "longest_gap": 1
+    },
+    {
+      "place": "Chatham",
+      "first_year": 1966,
+      "last_year": 1974,
+      "reported_years": [
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Elora",
+      "first_year": 1965,
+      "last_year": 1974,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.9,
+      "longest_gap": 1
+    },
+    {
+      "place": "Fergus",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1971,
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.818,
+      "longest_gap": 1
+    },
+    {
+      "place": "Galt",
+      "first_year": 1964,
+      "last_year": 1972,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972
+      ],
+      "missing_years": [],
+      "silent_since": 1973,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Midland",
+      "first_year": 1966,
+      "last_year": 1974,
+      "reported_years": [
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Orangeville",
+      "first_year": 1962,
+      "last_year": 1972,
+      "reported_years": [
+        1962,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972
+      ],
+      "missing_years": [
+        1963,
+        1971
+      ],
+      "silent_since": 1973,
+      "continuity": 0.818,
+      "longest_gap": 1
+    },
+    {
+      "place": "Parry Sound",
+      "first_year": 1966,
+      "last_year": 1974,
+      "reported_years": [
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Point Edward",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1971,
+        1972
+      ],
+      "silent_since": 1975,
+      "continuity": 0.818,
+      "longest_gap": 2
+    },
+    {
+      "place": "Port Dover",
+      "first_year": 1965,
+      "last_year": 1974,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.9,
+      "longest_gap": 1
+    },
+    {
+      "place": "Preston",
+      "first_year": 1964,
+      "last_year": 1972,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1971,
+        1972
+      ],
+      "missing_years": [],
+      "silent_since": 1973,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Simcoe",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1971,
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.818,
+      "longest_gap": 1
+    },
+    {
+      "place": "Frankford",
+      "first_year": 1965,
+      "last_year": 1974,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1971,
+        1972
+      ],
+      "silent_since": 1975,
+      "continuity": 0.8,
+      "longest_gap": 2
+    },
+    {
+      "place": "Lakeview",
+      "first_year": 1963,
+      "last_year": 1974,
+      "reported_years": [
+        1963,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1969,
+        1970,
+        1971,
+        1972
+      ],
+      "silent_since": 1975,
+      "continuity": 0.667,
+      "longest_gap": 4
+    },
+    {
+      "place": "Paris",
+      "first_year": 1965,
+      "last_year": 1974,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1971,
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.8,
+      "longest_gap": 1
+    },
+    {
+      "place": "Tillsonburg",
+      "first_year": 1964,
+      "last_year": 1974,
+      "reported_years": [
+        1964,
+        1965,
+        1967,
+        1968,
+        1969,
+        1970,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1966,
+        1971,
+        1972
+      ],
+      "silent_since": 1975,
+      "continuity": 0.727,
+      "longest_gap": 2
+    },
+    {
+      "place": "Elmira",
+      "first_year": 1965,
+      "last_year": 1972,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1972
+      ],
+      "missing_years": [
+        1971
+      ],
+      "silent_since": 1973,
+      "continuity": 0.875,
+      "longest_gap": 1
+    },
+    {
+      "place": "Moore Township (Corunna)",
+      "first_year": 1964,
+      "last_year": 1970,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970
+      ],
+      "missing_years": [],
+      "silent_since": 1971,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Nepean",
+      "first_year": 1964,
+      "last_year": 1970,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970
+      ],
+      "missing_years": [],
+      "silent_since": 1971,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Port Arthur",
+      "first_year": 1962,
+      "last_year": 1969,
+      "reported_years": [
+        1962,
+        1963,
+        1964,
+        1965,
+        1967,
+        1968,
+        1969
+      ],
+      "missing_years": [
+        1966
+      ],
+      "silent_since": 1970,
+      "continuity": 0.875,
+      "longest_gap": 1
+    },
+    {
+      "place": "Port Colborne",
+      "first_year": 1964,
+      "last_year": 1970,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970
+      ],
+      "missing_years": [],
+      "silent_since": 1971,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Waterdown",
+      "first_year": 1967,
+      "last_year": 1974,
+      "reported_years": [
+        1967,
+        1968,
+        1969,
+        1970,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1971
+      ],
+      "silent_since": 1975,
+      "continuity": 0.875,
+      "longest_gap": 1
+    },
+    {
+      "place": "Westminster",
+      "first_year": 1964,
+      "last_year": 1970,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970
+      ],
+      "missing_years": [],
+      "silent_since": 1971,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Fort Erie",
+      "first_year": 1965,
+      "last_year": 1970,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970
+      ],
+      "missing_years": [],
+      "silent_since": 1971,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Fort William",
+      "first_year": 1964,
+      "last_year": 1969,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968,
+        1969
+      ],
+      "missing_years": [],
+      "silent_since": 1970,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Kingston",
+      "first_year": 1965,
+      "last_year": 1970,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970
+      ],
+      "missing_years": [],
+      "silent_since": 1971,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Markham",
+      "first_year": 1969,
+      "last_year": 1974,
+      "reported_years": [
+        1969,
+        1970,
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "North Bay Area",
+      "first_year": 1965,
+      "last_year": 1970,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970
+      ],
+      "missing_years": [],
+      "silent_since": 1971,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Streetsville",
+      "first_year": 1962,
+      "last_year": 1968,
+      "reported_years": [
+        1962,
+        1964,
+        1965,
+        1966,
+        1967,
+        1968
+      ],
+      "missing_years": [
+        1963
+      ],
+      "silent_since": 1969,
+      "continuity": 0.857,
+      "longest_gap": 1
+    },
+    {
+      "place": "Brampton - Chinguacousy",
+      "first_year": 1964,
+      "last_year": 1968,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968
+      ],
+      "missing_years": [],
+      "silent_since": 1969,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Markham Village",
+      "first_year": 1964,
+      "last_year": 1968,
+      "reported_years": [
+        1964,
+        1965,
+        1966,
+        1967,
+        1968
+      ],
+      "missing_years": [],
+      "silent_since": 1969,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "North Bay",
+      "first_year": 1963,
+      "last_year": 1974,
+      "reported_years": [
+        1963,
+        1964,
+        1971,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1965,
+        1966,
+        1967,
+        1968,
+        1969,
+        1970,
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.417,
+      "longest_gap": 6
+    },
+    {
+      "place": "Eganville",
+      "first_year": 1971,
+      "last_year": 1974,
+      "reported_years": [
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Kingston Twp",
+      "first_year": 1971,
+      "last_year": 1974,
+      "reported_years": [
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Newmarket-East Gwillimbury",
+      "first_year": 1968,
+      "last_year": 1971,
+      "reported_years": [
+        1968,
+        1969,
+        1970,
+        1971
+      ],
+      "missing_years": [],
+      "silent_since": 1972,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Sidney Township (Batawa)",
+      "first_year": 1965,
+      "last_year": 1968,
+      "reported_years": [
+        1965,
+        1966,
+        1967,
+        1968
+      ],
+      "missing_years": [],
+      "silent_since": 1969,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Thunder Bay",
+      "first_year": 1970,
+      "last_year": 1974,
+      "reported_years": [
+        1970,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1971
+      ],
+      "silent_since": 1975,
+      "continuity": 0.8,
+      "longest_gap": 1
+    },
+    {
+      "place": "Westminster Twp",
+      "first_year": 1971,
+      "last_year": 1974,
+      "reported_years": [
+        1971,
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Bradford",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Campbellford",
+      "first_year": 1971,
+      "last_year": 1973,
+      "reported_years": [
+        1971,
+        1972,
+        1973
+      ],
+      "missing_years": [],
+      "silent_since": 1974,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Cayuga",
+      "first_year": 1971,
+      "last_year": 1974,
+      "reported_years": [
+        1971,
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.75,
+      "longest_gap": 1
+    },
+    {
+      "place": "Chesterville",
+      "first_year": 1971,
+      "last_year": 1973,
+      "reported_years": [
+        1971,
+        1972,
+        1973
+      ],
+      "missing_years": [],
+      "silent_since": 1974,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Meaford",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Moore Twp. - Corunna",
+      "first_year": 1971,
+      "last_year": 1974,
+      "reported_years": [
+        1971,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1972
+      ],
+      "silent_since": 1975,
+      "continuity": 0.75,
+      "longest_gap": 1
+    },
+    {
+      "place": "Moosonee Water Supply System And",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Newmarket",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Pickering Village",
+      "first_year": 1971,
+      "last_year": 1973,
+      "reported_years": [
+        1971,
+        1972,
+        1973
+      ],
+      "missing_years": [],
+      "silent_since": 1974,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Rockland Water Treatment Plant And",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Sidney Twp.- (Batawa)",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Wallaceburg",
+      "first_year": 1971,
+      "last_year": 1974,
+      "reported_years": [
+        1971,
+        1973,
+        1974
+      ],
+      "missing_years": [
+        1972
+      ],
+      "silent_since": 1975,
+      "continuity": 0.75,
+      "longest_gap": 1
+    },
+    {
+      "place": "Winchester Water Supply System And",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Carleton Place",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.667,
+      "longest_gap": 1
+    },
+    {
+      "place": "Deseronto",
+      "first_year": 1972,
+      "last_year": 1974,
+      "reported_years": [
+        1972,
+        1974
+      ],
+      "missing_years": [
+        1973
+      ],
+      "silent_since": 1975,
+      "continuity": 0.667,
+      "longest_gap": 1
+    },
+    {
+      "place": "Emo Twp",
+      "first_year": 1973,
+      "last_year": 1974,
+      "reported_years": [
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Espanola",
+      "first_year": 1973,
+      "last_year": 1974,
+      "reported_years": [
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Haileybury",
+      "first_year": 1971,
+      "last_year": 1973,
+      "reported_years": [
+        1971,
+        1973
+      ],
+      "missing_years": [
+        1972
+      ],
+      "silent_since": 1974,
+      "continuity": 0.667,
+      "longest_gap": 1
+    },
+    {
+      "place": "Ingersoll",
+      "first_year": 1973,
+      "last_year": 1974,
+      "reported_years": [
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Newmarket-E. Gwillimbury",
+      "first_year": 1966,
+      "last_year": 1967,
+      "reported_years": [
+        1966,
+        1967
+      ],
+      "missing_years": [],
+      "silent_since": 1968,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Sidney (Batawa)",
+      "first_year": 1969,
+      "last_year": 1970,
+      "reported_years": [
+        1969,
+        1970
+      ],
+      "missing_years": [],
+      "silent_since": 1971,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "St. Marys",
+      "first_year": 1973,
+      "last_year": 1974,
+      "reported_years": [
+        1973,
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Alfred",
+      "first_year": 1963,
+      "last_year": 1963,
+      "reported_years": [
+        1963
+      ],
+      "missing_years": [],
+      "silent_since": 1964,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Alliston",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Brooklin",
+      "first_year": 1963,
+      "last_year": 1963,
+      "reported_years": [
+        1963
+      ],
+      "missing_years": [],
+      "silent_since": 1964,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Cambridge (Galt)",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Cambridge (Hespeler)",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Cambridge (Preston)",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Chelmsford",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Clarkson",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Ear Falls",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Hagersville",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Haileybury : Water Treatment Plant And",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Haileybury Water Treatment Plant And",
+      "first_year": 1973,
+      "last_year": 1973,
+      "reported_years": [
+        1973
+      ],
+      "missing_years": [],
+      "silent_since": 1974,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Halton Hills, Georgetown",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Ignace Twp",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Kirkland Lake",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Malton",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Newmarket Area",
+      "first_year": 1965,
+      "last_year": 1965,
+      "reported_years": [
+        1965
+      ],
+      "missing_years": [],
+      "silent_since": 1966,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Palmerston",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Port Mcnicoll",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Port Perry",
+      "first_year": 1963,
+      "last_year": 1963,
+      "reported_years": [
+        1963
+      ],
+      "missing_years": [],
+      "silent_since": 1964,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Red Lake Twp, Water Treatment Plant And",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Red Lake Twp. Water Treatment Plant And",
+      "first_year": 1973,
+      "last_year": 1973,
+      "reported_years": [
+        1973
+      ],
+      "missing_years": [],
+      "silent_since": 1974,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Sault Ste Marie",
+      "first_year": 1963,
+      "last_year": 1963,
+      "reported_years": [
+        1963
+      ],
+      "missing_years": [],
+      "silent_since": 1964,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Simcoe, County Of Norfolk : Municipal",
+      "first_year": 1968,
+      "last_year": 1968,
+      "reported_years": [
+        1968
+      ],
+      "missing_years": [],
+      "silent_since": 1969,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Southampton Water Treatment Plant And",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Sturgeon Falls",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Sudbury",
+      "first_year": 1973,
+      "last_year": 1973,
+      "reported_years": [
+        1973
+      ],
+      "missing_years": [],
+      "silent_since": 1974,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Twp Of Longlac",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Woolwich Twp",
+      "first_year": 1973,
+      "last_year": 1973,
+      "reported_years": [
+        1973
+      ],
+      "missing_years": [],
+      "silent_since": 1974,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Woolwich Twp., Elmira",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    },
+    {
+      "place": "Woolwich Twp., St. Jacobs",
+      "first_year": 1974,
+      "last_year": 1974,
+      "reported_years": [
+        1974
+      ],
+      "missing_years": [],
+      "silent_since": 1975,
+      "continuity": 1.0,
+      "longest_gap": 0
+    }
+  ]
+}
