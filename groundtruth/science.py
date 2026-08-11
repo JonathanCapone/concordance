@@ -469,14 +469,27 @@ def series_from_records(
     unit. Readings that cannot honestly be compared are rejected and reported,
     never coerced into the series.
     """
-    from .units import normalize_series  # local import keeps the module acyclic
+    from .parameters import resolve as resolve_param  # local imports keep this
+    from .units import normalize_series                # module acyclic
 
+    # Match on the resolved parameter, never on a substring of its name.
+    # Substring matching put removal percentages into the effluent-concentration
+    # chart, because "suspended solids" is inside "suspended solids removal" and
+    # both are small numbers that fall when a plant improves.
+    want_param = resolve_param(parameter)
     want = parameter.lower()
+
     raw: list[tuple[float, float, str | None, float]] = []
     for r in records:
         if r.kind != kind or r.value is None:
             continue
-        if want not in r.parameter.lower():
+        got = resolve_param(r.parameter, r.unit)
+        if want_param is not None:
+            if got is None or got.key != want_param.key:
+                continue
+        elif want not in r.parameter.lower():
+            # The requested parameter isn't in the table; fall back to substring
+            # matching rather than returning nothing, but only in that case.
             continue
         if stream is not None and r.stream != stream:
             continue

@@ -54,14 +54,16 @@ def load_records(path: Path) -> tuple[list[Record], str]:
 #: Parameters worth charting for a sewage treatment plant, with the stream that
 #: makes them meaningful. Effluent BOD is what the town discharged; influent BOD
 #: is what arrived. Removal percentage is how well the plant worked.
+# Named by canonical parameter, not by substring. "BOD" and "BOD removal" are
+# different measurements and must never share a chart.
 TARGETS = [
-    ("BOD", "effluent", "what the town discharged"),
-    ("BOD", "influent", "what arrived at the plant"),
-    ("suspended solids", "effluent", "solids discharged"),
-    ("suspended solids", "influent", "solids arriving"),
-    ("BOD removal", None, "how well the plant worked"),
-    ("suspended solids removal", None, "solids removal efficiency"),
-    ("flow", None, "hydraulic load"),
+    ("BOD removal", None, "how much oxygen-demanding waste the plant removed"),
+    ("suspended solids removal", None, "how much solid matter the plant removed"),
+    ("BOD", "effluent", "concentration the town discharged"),
+    ("BOD", "influent", "concentration arriving at the plant"),
+    ("suspended solids", "effluent", "solids concentration discharged"),
+    ("daily flow", None, "sewage passing through, per day"),
+    ("total flow", None, "sewage passing through, per year"),
 ]
 
 

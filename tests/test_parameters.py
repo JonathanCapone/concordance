@@ -1,0 +1,90 @@
+"""Tests for parameter resolution.
+
+Every case here comes from the Owen Sound series, where substring matching put
+removal percentages into the effluent-concentration chart. That failure is the
+dangerous kind: a removal percentage and a concentration are both small positive
+numbers that fall when a plant improves, so the chart looked entirely reasonable.
+"""
+
+from __future__ import annotations
+
+import pytest
+
+from groundtruth.parameters import resolve, same_measurement
+
+
+@pytest.mark.parametrize(
+    ("name", "unit", "key"),
+    [
+        ("BOD", "mg/L", "bod|concentration"),
+        ("Five Day BOD", "PPM", "bod|concentration"),
+        ("BOD removal", "%", "bod|removal"),
+        ("biochemical oxygen demand removal", "%", "bod|removal"),
+        ("suspended solids", "mg/L", "suspended solids|concentration"),
+        ("suspended solids removal", "%", "suspended solids|removal"),
+        ("daily flow", "million gallons per day", "flow|rate"),
+        ("total flow", "million gallons", "flow|total"),
+        ("Design Plant Flow", "MGD", "flow|capacity"),
+        ("Design Population", "persons", "population|capacity"),
+    ],
+)
+def test_resolves_to_canonical_key(name, unit, key):
+    p = resolve(name, unit)
+    assert p is not None and p.key == key
+
+
+# -- synonyms must merge -----------------------------------------------------
+
+@pytest.mark.parametrize(
+    ("a", "au", "b", "bu"),
+    [
+        ("BOD removal", "%", "biochemical oxygen demand removal", "%"),
+        ("Five Day BOD", "PPM", "BOD", "mg/1"),
+        ("S.S.", "mg/L", "suspended solids", "mg/L"),
+    ],
+)
+def test_synonyms_merge(a, au, b, bu):
+    assert same_measurement(a, au, b, bu)
+
+
+# -- distinct measurements must NOT merge ------------------------------------
+
+@pytest.mark.parametrize(
+    ("a", "au", "b", "bu", "why"),
+    [
+        ("BOD", "mg/L", "BOD removal", "%",
+         "a concentration and a percentage are not one series"),
+        ("suspended solids", "mg/L", "suspended solids removal", "%",
+         "the exact conflation that corrupted the effluent chart"),
+        ("daily flow", "MGD", "total flow", "million gallons",
+         "a rate and a yearly volume are different quantities"),
+        ("Design Plant Flow", "MGD", "daily flow", "MGD",
+         "engineered capacity is not a measurement"),
+    ],
+)
+def test_distinct_measurements_do_not_merge(a, au, b, bu, why):
+    assert not same_measurement(a, au, b, bu), why
+
+
+# -- the unit overrules the wording ------------------------------------------
+
+def test_unit_of_percent_forces_removal_even_when_name_says_otherwise():
+    """A value in % is not a concentration whatever the label claims."""
+    assert resolve("BOD", "%").measure == "removal"
+
+
+def test_unrecognised_substance_returns_none():
+    assert resolve("widget throughput", "each") is None
+
+
+def test_unrecognised_names_fall_back_to_exact_equality_not_overlap():
+    """Two unknown names must not merge just because they share a word.
+
+    Guessing here is what produced the original bug, so the fallback is strict.
+    """
+    assert not same_measurement("widget alpha", None, "widget beta", None)
+    assert same_measurement("widget alpha", None, "Widget Alpha", None)
+
+
+def test_empty_name_is_not_a_parameter():
+    assert resolve("", "mg/L") is None
