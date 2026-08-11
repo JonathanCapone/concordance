@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from groundtruth.archive import Archive                        # noqa: E402
 from groundtruth.extract import OllamaClient, extract_prose    # noqa: E402
+from groundtruth.parameters import facility_of                 # noqa: E402
 from groundtruth.router import Path as RPath, route            # noqa: E402
 
 
@@ -103,7 +104,9 @@ def main() -> int:
             continue
 
         worth = [p for p in pages if RPath.PROSE in route(p).paths]
-        print(f"  {ident} {year}: {len(pages)} pages, {len(worth)} prose", flush=True)
+        facility = facility_of(title)
+        print(f"  {ident} {year}: {len(pages)} pages, {len(worth)} prose"
+              f"  [{facility or 'unclassified facility'}]", flush=True)
 
         for page in worth:
             key = f"{ident}#{page.page}"
@@ -143,6 +146,10 @@ def main() -> int:
                     d["period"] = year
                 if not d.get("place"):
                     d["place"] = args.place
+                # One town commonly has several facilities measuring opposite
+                # things. Without this, a 1992 drinking-water reading and a 1969
+                # effluent reading share a place name and end up on one chart.
+                d["facility"] = facility
                 records.append(d)
 
             done.add(key)

@@ -520,6 +520,7 @@ def series_from_records(
     parameter: str,
     stream: str | None = None,
     kind: str = "observation",
+    facility: str | None = None,
 ) -> Series:
     """Build one comparable series for a parameter, reconciling units.
 
@@ -557,6 +558,8 @@ def series_from_records(
             # matching rather than returning nothing, but only in that case.
             continue
         if stream is not None and r.stream != stream:
+            continue
+        if facility is not None and r.facility != facility:
             continue
         if not r.period:
             continue

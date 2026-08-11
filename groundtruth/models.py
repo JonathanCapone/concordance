@@ -102,6 +102,14 @@ class Record:
     place: str | None = None                # "Owen Sound"
     period: str | None = None               # "1969", "1980-06", "1978-04-23"
 
+    #: Which facility in that place. One town commonly has several, and they
+    #: measure opposite things: a water pollution control plant reports what the
+    #: town DISCHARGED, a water supply system reports what residents DRANK.
+    #: Owen Sound has both in this collection -- sewage annual reports through
+    #: 1974 and Drinking Water Surveillance reports from 1990 -- and merging them
+    #: under one place name would put effluent and tap water on the same chart.
+    facility: str | None = None
+
     confidence: float = 0.0                 # 0..1, reading confidence
     provenance: Provenance | None = None
 
@@ -129,6 +137,7 @@ class Record:
             self.qualifier or "",
             self.stream,
             _slug(self.place or ""),
+            _slug(self.facility or ""),
             self.period or "",
             self.provenance.identifier if self.provenance else "",
             str(self.provenance.page) if self.provenance and self.provenance.page else "",

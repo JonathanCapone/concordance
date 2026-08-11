@@ -161,3 +161,33 @@ def same_measurement(a: str, a_unit: str | None, b: str, b_unit: str | None) -> 
         # ended up plotting removal percentages.
         return a.strip().lower() == b.strip().lower()
     return pa.key == pb.key
+
+
+#: Facility classes found in this collection. A place commonly has more than one,
+#: and they measure opposite things -- a pollution control plant reports what the
+#: town discharged, a water supply system reports what residents drank.
+_FACILITY_PATTERNS: list[tuple[str, str]] = [
+    (r"water pollution control|sewage treatment|sewage works|pollution control plant",
+     "water pollution control plant"),
+    (r"drinking water surveillance|water supply system|water treatment plant|waterworks",
+     "water supply system"),
+    (r"landfill|waste disposal", "waste site"),
+    (r"air quality|ambient air", "air monitoring"),
+]
+
+
+def facility_of(title: str) -> str | None:
+    """Which kind of facility a document reports on.
+
+    Owen Sound has sewage annual reports through 1974 and Drinking Water
+    Surveillance reports from 1990 in the same collection, both titled "annual
+    report" and both about Owen Sound. Without this they merge, and effluent
+    ends up charted against tap water.
+    """
+    if not title:
+        return None
+    t = str(title).lower()
+    for pattern, name in _FACILITY_PATTERNS:
+        if re.search(pattern, t):
+            return name
+    return None
