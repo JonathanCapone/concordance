@@ -1,0 +1,38 @@
+{
+  "sampled_items": 120,
+  "unreadable": 0,
+  "pages_seen": 23729,
+  "items_with_measurements": 109,
+  "item_rate": 0.9083333333333333,
+  "item_rate_ci95": [
+    0.843290092093749,
+    0.9480433532105753
+  ],
+  "page_worth_rate": 0.5313751106241308,
+  "page_worth_rate_ci95": [
+    0.5250211885125993,
+    0.5377188754500744
+  ],
+  "mean_pages_per_item": 197.74166666666667,
+  "paths_per_page": {
+    "skip": 11120,
+    "table": 3919,
+    "prose": 6660,
+    "figure": 2264,
+    "standard": 407,
+    "map": 219
+  },
+  "extrapolation": {
+    "corpus_items": 104241,
+    "corpus_pages": 22100000,
+    "items_with_measurements_range": [
+      87905,
+      98824
+    ],
+    "pages_worth_reading_range": [
+      11602968,
+      11883587
+    ]
+  },
+  "caveat": "Extrapolated from a random sample. The interval is Wilson score at 95%, and reflects sampling error only -- it does not capture the collection's unevenness across agencies and decades, which is real and larger."
+}

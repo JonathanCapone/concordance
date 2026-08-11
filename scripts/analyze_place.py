@@ -38,6 +38,7 @@ def load_records(path: Path) -> tuple[list[Record], str]:
                 unit=d.get("unit"),
                 qualifier=d.get("qualifier"),
                 stream=d.get("stream", "unknown"),
+                facility=d.get("facility"),
                 place=d.get("place"),
                 period=d.get("period"),
                 confidence=d.get("confidence", 0.0),
@@ -78,6 +79,15 @@ def main() -> int:
         return 1
 
     records, place = load_records(path)
+    # One town commonly has several facilities measuring opposite things. Report
+    # the biggest one and say what was set aside, rather than merging a sewage
+    # plant's effluent with a water supply system's tap water.
+    facilities = collections.Counter(r.facility or "unclassified" for r in records)
+    main = facilities.most_common(1)[0][0] if facilities else None
+    if len(facilities) > 1:
+        print(f"facilities present: {dict(facilities)}")
+        print(f"reporting on: {main}\n")
+        records = [r for r in records if (r.facility or "unclassified") == main]
     obs = [r for r in records if r.kind == "observation"]
     print(f"=== {place} ===")
     print(f"{len(records)} records  ({len(obs)} observations, "

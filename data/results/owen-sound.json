@@ -1,11 +1,37 @@
 {
   "place": "Owen Sound",
   "model": "ollama:gemma4:12b",
-  "n_records": 9,
+  "n_records": 120,
   "pages_attempted": [
     "owensoundsewaget24479#10",
     "owensoundsewaget24479#12",
-    "owensoundsewaget24479#15"
+    "owensoundsewaget24479#15",
+    "owensoundsewaget24479#24",
+    "owensoundwaterpo24477#10",
+    "owensoundwaterpo24477#11",
+    "owensoundwaterpo24480#10",
+    "owensoundwaterpo24480#3",
+    "owensoundwaterpo24481#10",
+    "owensoundwaterpo24481#3",
+    "owensoundwaterpo24482#23",
+    "owensoundwaterpo24482#3",
+    "owensoundwaterpo24482#9",
+    "owensoundwaterpo24497#11",
+    "owensoundwaterpo24498#11",
+    "owensoundwaterpo24500#10",
+    "owensoundwaterpo24500#11",
+    "owensoundwaterpo24499#3",
+    "owensoundwaterpo24499#10",
+    "owensoundwatersu1990ontauoft#5",
+    "owensoundwatersu1990ontauoft#9",
+    "owensoundwatersu1990ontauoft#10",
+    "owensoundwatersu1990ontauoft#11",
+    "owensoundwatersu1990ontauoft#12",
+    "owensoundwatersu1990ontauoft#13",
+    "owensoundwatersu1990ontauoft#14",
+    "owensoundwatersu1990ontauoft#79",
+    "owensoundwatersu1990ontauoft#81",
+    "owensoundwatersu1990ontauoft#82"
   ],
   "records": [
     {
@@ -32,7 +58,8 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7601
       },
-      "key": "693e84c4c213b75d9f0c"
+      "key": "693e84c4c213b75d9f0c",
+      "facility": "water pollution control plant"
     },
     {
       "kind": "design",
@@ -58,7 +85,8 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7601
       },
-      "key": "8f1af1a22bca62978576"
+      "key": "8f1af1a22bca62978576",
+      "facility": "water pollution control plant"
     },
     {
       "kind": "design",
@@ -84,7 +112,8 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7601
       },
-      "key": "d9e15469a1d0e89484c1"
+      "key": "d9e15469a1d0e89484c1",
+      "facility": "water pollution control plant"
     },
     {
       "kind": "design",
@@ -110,7 +139,8 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7601
       },
-      "key": "4a374ab7acf74664246a"
+      "key": "4a374ab7acf74664246a",
+      "facility": "water pollution control plant"
     },
     {
       "kind": "design",
@@ -136,7 +166,8 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7601
       },
-      "key": "8e4fde37feebd1030a8d"
+      "key": "8e4fde37feebd1030a8d",
+      "facility": "water pollution control plant"
     },
     {
       "kind": "design",
@@ -162,7 +193,8 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7601
       },
-      "key": "403feaf6335233a1495f"
+      "key": "403feaf6335233a1495f",
+      "facility": "water pollution control plant"
     },
     {
       "kind": "design",
@@ -188,7 +220,8 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7601
       },
-      "key": "21036f63d5dfb0ac5574"
+      "key": "21036f63d5dfb0ac5574",
+      "facility": "water pollution control plant"
     },
     {
       "kind": "design",
@@ -214,7 +247,8 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7601
       },
-      "key": "d6ee98ac02c090479ef1"
+      "key": "d6ee98ac02c090479ef1",
+      "facility": "water pollution control plant"
     },
     {
       "kind": "design",
@@ -240,7 +274,3005 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.5906
       },
-      "key": "c0814f7d5b301070a466"
+      "key": "c0814f7d5b301070a466",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 3.18,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound Sewage Treatment Plant",
+      "period": "1963",
+      "confidence": 0.8625,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 24,
+        "source_text": "The average daily flow to the plant in 1963 was 3. 18 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n23/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8157
+      },
+      "key": "90a99cd117fc6a462557",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "flow",
+      "value": 3.0,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound Sewage Treatment Plant",
+      "period": "1963",
+      "confidence": 0.8625,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 24,
+        "source_text": "This flow is slightly higher than the average design flow of 3.0 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n23/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8157
+      },
+      "key": "4c436cc5b8940e1a74da",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal",
+      "value": 46.4,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Owen Sound Sewage Treatment Plant",
+      "period": "1963",
+      "confidence": 0.8625,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 24,
+        "source_text": "The average BOD removal was 46. 4 percent and the average suspended solids removal was 55. 4 percent.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n23/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8157
+      },
+      "key": "70f0dbed16f514ef3aeb",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal",
+      "value": 55.4,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Owen Sound Sewage Treatment Plant",
+      "period": "1963",
+      "confidence": 0.8625,
+      "provenance": {
+        "identifier": "owensoundsewaget24479",
+        "page": 24,
+        "source_text": "The average BOD removal was 46. 4 percent and the average suspended solids removal was 55. 4 percent.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundsewaget24479/page/n23/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8157
+      },
+      "key": "b90eebc2daf1c4d1c261",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 3.15,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Owen Sound Water Pollution Control Plant",
+      "period": "1964",
+      "confidence": 0.8301,
+      "provenance": {
+        "identifier": "owensoundwaterpo24480",
+        "page": 10,
+        "source_text": "The average daily flow to the plant was 3. 15 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24480/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7476
+      },
+      "key": "f7e5ee6dee7ef9401ec3",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "flow capacity",
+      "value": 3.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound Water Pollution Control Plant",
+      "period": "1964",
+      "confidence": 0.8301,
+      "provenance": {
+        "identifier": "owensoundwaterpo24480",
+        "page": 10,
+        "source_text": "This flow is slightly higher than the design capacity of 3. 0 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24480/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7476
+      },
+      "key": "ae456da56d80a611db53",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "biochemical oxygen demand removal",
+      "value": 46.4,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "effluent",
+      "place": "Owen Sound Water Pollution Control Plant",
+      "period": "1964",
+      "confidence": 0.8301,
+      "provenance": {
+        "identifier": "owensoundwaterpo24480",
+        "page": 10,
+        "source_text": "The average biochemical oxygen demand re- moval was 46. 4%,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24480/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7476
+      },
+      "key": "acbfe10b109da13c0554",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal",
+      "value": 55.4,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "effluent",
+      "place": "Owen Sound Water Pollution Control Plant",
+      "period": "1964",
+      "confidence": 0.8301,
+      "provenance": {
+        "identifier": "owensoundwaterpo24480",
+        "page": 10,
+        "source_text": "and the average suspended solids removal was 55. 4%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24480/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7476
+      },
+      "key": "ec0a13a895279136d7a8",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 1236.31,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1965",
+      "confidence": 0.8443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24481",
+        "page": 10,
+        "source_text": "The total flow to the plant in 1965 was 1236. 31 million gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24481/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7774
+      },
+      "key": "31c79930c33b72091de1",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow",
+      "value": 3.4,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1965",
+      "confidence": 0.8443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24481",
+        "page": 10,
+        "source_text": "an average of 3. 4 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24481/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7774
+      },
+      "key": "2c4819f293b32c9cfff1",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 3.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1965",
+      "confidence": 0.8443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24481",
+        "page": 10,
+        "source_text": "This is in excess of the plant capacity of 3. 0 mgd",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24481/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7774
+      },
+      "key": "0bd55fc1c667f3848d8a",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage strength",
+      "value": 50.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1965",
+      "confidence": 0.7998,
+      "provenance": {
+        "identifier": "owensoundwaterpo24481",
+        "page": 10,
+        "source_text": "the strength of the raw sewage is only 50% of what would be considered normal.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24481/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7774
+      },
+      "key": "730b11d5e5dee87a6d8e",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 1166.2,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1966",
+      "confidence": 0.8382,
+      "provenance": {
+        "identifier": "owensoundwaterpo24482",
+        "page": 9,
+        "source_text": "The total flow to the plant in 1966 was 1166. 20 million gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24482/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7647
+      },
+      "key": "edef66cbb438dbeb4605",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average flow",
+      "value": 3.2,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1966",
+      "confidence": 0.8382,
+      "provenance": {
+        "identifier": "owensoundwaterpo24482",
+        "page": 9,
+        "source_text": "an aver- age of 3. 2 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24482/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7647
+      },
+      "key": "89b85a66c360bb5c70bb",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average flow",
+      "value": 3.4,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1965",
+      "confidence": 0.8382,
+      "provenance": {
+        "identifier": "owensoundwaterpo24482",
+        "page": 9,
+        "source_text": "This is a reduction of 0. 2 mgd from the average flow in 1965",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24482/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7647
+      },
+      "key": "fb18cf68f8d339439cf7",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 3.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1966",
+      "confidence": 0.4412,
+      "provenance": {
+        "identifier": "owensoundwaterpo24482",
+        "page": 9,
+        "source_text": "is slightly in excess of the plant capacity of 3. 0 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24482/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7647
+      },
+      "key": "91e0d55979fc442bbefc",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD",
+      "value": 100.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1966",
+      "confidence": 0.4412,
+      "provenance": {
+        "identifier": "owensoundwaterpo24482",
+        "page": 9,
+        "source_text": "The strength of the raw sewage, 100 ppm BOD and 181 ppm SS, is below nor- mal.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24482/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7647
+      },
+      "key": "382794e7b4633dfa95d4",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "SS",
+      "value": 181.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1966",
+      "confidence": 0.4412,
+      "provenance": {
+        "identifier": "owensoundwaterpo24482",
+        "page": 9,
+        "source_text": "The strength of the raw sewage, 100 ppm BOD and 181 ppm SS, is below nor- mal.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24482/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7647
+      },
+      "key": "d4847832be729b736df3",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 1415.5,
+      "unit": "mg",
+      "qualifier": "total",
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1967",
+      "confidence": 0.8064,
+      "provenance": {
+        "identifier": "owensoundwaterpo24497",
+        "page": 11,
+        "source_text": "The total flow to the plant in 1967 was 1415. 50 mg",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24497/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.792
+      },
+      "key": "66eaefec7926fe4fc413",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 3.88,
+      "unit": "mg",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1967",
+      "confidence": 0.8064,
+      "provenance": {
+        "identifier": "owensoundwaterpo24497",
+        "page": 11,
+        "source_text": "or an average daily flow of 3. 88 mg.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24497/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.792
+      },
+      "key": "a99495661291e977ee03",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "capacity",
+      "value": 3.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1967",
+      "confidence": 0.8064,
+      "provenance": {
+        "identifier": "owensoundwaterpo24497",
+        "page": 11,
+        "source_text": "is in excess of the design capacity of 3. 0 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24497/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.792
+      },
+      "key": "9883fde7936bd790d804",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD strength",
+      "value": 148.0,
+      "unit": "ppm",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1967",
+      "confidence": 0.8064,
+      "provenance": {
+        "identifier": "owensoundwaterpo24497",
+        "page": 11,
+        "source_text": "The average BOD strength of the raw sewage rose to 148 ppm",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24497/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.792
+      },
+      "key": "b5666f790461eef3dd6f",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids concentration",
+      "value": 388.0,
+      "unit": "ppm",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1967",
+      "confidence": 0.8064,
+      "provenance": {
+        "identifier": "owensoundwaterpo24497",
+        "page": 11,
+        "source_text": "while the average sus- pended solids concentration rose to an extremely high level of 388 ppm .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24497/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.792
+      },
+      "key": "30522f2006a329278790",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 144.2,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1968",
+      "confidence": 0.7236,
+      "provenance": {
+        "identifier": "owensoundwaterpo24498",
+        "page": 11,
+        "source_text": "The total flow to the plant in 1968 was 144:2. 50 million gallons wiiich gave",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24498/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6081
+      },
+      "key": "123f0b16a07a55c88484",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "increase in flow",
+      "value": 0.12,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1968",
+      "confidence": 0.6432,
+      "provenance": {
+        "identifier": "owensoundwaterpo24498",
+        "page": 11,
+        "source_text": "This is an increase of 0. 12 mgd over 19(i7",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24498/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.6081
+      },
+      "key": "d355295b000282573d2e",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "capacity",
+      "value": 3.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1968",
+      "confidence": 0.6432,
+      "provenance": {
+        "identifier": "owensoundwaterpo24498",
+        "page": 11,
+        "source_text": "and is 1 mgd above the design capacity of the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24498/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.6081
+      },
+      "key": "2f64c69ae3c10535537e",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 125.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1968",
+      "confidence": 0.7236,
+      "provenance": {
+        "identifier": "owensoundwaterpo24498",
+        "page": 11,
+        "source_text": "The average BOD and suspended solids concentrations in the raw sewage were 125 mg/1 and 314 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24498/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6081
+      },
+      "key": "7f43a41678c72ad384fe",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 314.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1968",
+      "confidence": 0.7236,
+      "provenance": {
+        "identifier": "owensoundwaterpo24498",
+        "page": 11,
+        "source_text": "The average BOD and suspended solids concentrations in the raw sewage were 125 mg/1 and 314 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24498/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6081
+      },
+      "key": "e01ecae693472d069d96",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "pump capacity",
+      "value": 3800.0,
+      "unit": "gallons per minute",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "modifications to the West Side pumping station included an additional pump with a capacity of more than 3800 gallons per minute",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "f78773845ef0981048bb",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "operating above design capacity",
+      "value": 80.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "From the graphs, it can be seen that 80% of the time the plant is most likely operating above the design capacity.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "44db7c59ccf8f3c2aa4b",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total volume treated",
+      "value": 1475.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The total operating cost for treating 1475 million gallons of sewage in 1969 was $53, 549. 66.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "efdb49b20c8352bcb649",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 1475.2,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The total flow for the year was 1475.2 million gallons, with an average daily flow of four million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "64336e87214b220b6167",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 4.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The total flow for the year was 1475.2 million gallons, with an average daily flow of four million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "4f189a34614fb9209d20",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum daily flow",
+      "value": 8.8,
+      "unit": "million gallons",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The maximum and minimum daily flows were 8. 8 million gallons in November and 2.1 million gallons in July.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "29f1896723e83126da53",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "minimum daily flow",
+      "value": 2.1,
+      "unit": "million gallons",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The maximum and minimum daily flows were 8. 8 million gallons in November and 2.1 million gallons in July.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "633645e49380fb3ae02c",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine used per month",
+      "value": 2696.0,
+      "unit": "pounds",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "An average of 2696 pounds of chlorine was used per month.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "153be9607bd81a6fa78e",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine per million gallons",
+      "value": 21.9,
+      "unit": "pounds per million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The operation used 21.9 pounds of chlorine per million gallons of flow at an average dosage of 2.2 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "2640cf8f2c66199de3c7",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine dosage",
+      "value": 2.2,
+      "unit": "mg/L",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The operation used 21.9 pounds of chlorine per million gallons of flow at an average dosage of 2.2 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "7ecc8429f8e751ba5d67",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "residual chlorine",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": "average",
+      "stream": "effluent",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "This maintained an average residual of 0.5 mg/1 in the final effluent.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "e15f02c57747dee83d9f",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 104.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "c7f4b83dbe80a9954083",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 224.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "825dade08eee83683175",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 37.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "18bc7fbaea87fb60d01c",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 36.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "7aee7ceccfd6aed8fb9f",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal",
+      "value": 64.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "giving an average removal of 64% BOD and 84% suspended solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "a01c97833c839aba73df",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal",
+      "value": 84.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "giving an average removal of 64% BOD and 84% suspended solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "09b6a5737b7c5b3e5fa8",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit removed",
+      "value": 1243.0,
+      "unit": "cu. ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "A total of 1243 cu. ft. of grit was removed during the year",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "7359b6c7bdecd76ebfad",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit removed per million gallons",
+      "value": 104.0,
+      "unit": "cu. ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "for an average of 104 cu. ft. of grit removed for each one million gallons of sewage treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "8803f1c2070427b2a012",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sludge pumped",
+      "value": 3000000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.7542,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "Just over three million gallons of raw sludge were pumped to the digesters during 1969.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.85,
+        "ocr_confidence": 0.7746
+      },
+      "key": "1b4201ab74adfb1f6352",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total solids",
+      "value": 7.3,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "b6dd5272c9bbdf3aa713",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "volatile solids",
+      "value": 47.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "77c4b10cfd302550d9b2",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sludge removed",
+      "value": 1495000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "Sludge totalling 1,495,000 gallons was removed from the digesters and hauled away.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "afd2a4565605e02f71f2",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total solids",
+      "value": 8.5,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 125,000 gallons contained 8. 5% total solids and 28% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "a5124285d761304fc406",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "volatile solids",
+      "value": 28.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 125,000 gallons contained 8. 5% total solids and 28% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "7c8ace572840afeb1ba5",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "hydraulic capacity exceedance",
+      "value": 85.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The plant operated above the hydraulic design capacity 85% of the time",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "bbbe241fd3a73520fa3b",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Average Daily Flow",
+      "value": 3.8,
+      "unit": "mil gal",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "Average 3. 80",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "741297c2edd5b3d6e13f",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "High Daily Flow",
+      "value": 9.2,
+      "unit": "mil gal",
+      "qualifier": "maximum",
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "High 9.20",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "52cc66b2c72a50242f5d",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Low Daily Flow",
+      "value": 1.1,
+      "unit": "mil gal",
+      "qualifier": "minimum",
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "Low 1. 10",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "4c6fffc7b0146cf619a7",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "overload percentage",
+      "value": 80.0,
+      "unit": "percent",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1969",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "the percentage of the time the plant was overloaded from 80% in 1969 to 85% in 1970.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "6b3923db85ecf6142a44",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "overload percentage",
+      "value": 85.0,
+      "unit": "percent",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "the percentage of the time the plant was overloaded from 80% in 1969 to 85% in 1970.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "c74105e4bd58a52791b2",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total recorded flow",
+      "value": 1400.0,
+      "unit": "million gallons",
+      "qualifier": "total",
+      "stream": "influent",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "The total recorded flow was approximately 1400 million gallons in 1970",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "0e264fd8c2d4544abd84",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine used",
+      "value": 43430.0,
+      "unit": "lbs.",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "During 1970 a total of 43, 430 lbs. of chlorine was used at an average dosage of 2.4 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "2da8c95edfebab4292d5",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine dosage",
+      "value": 2.4,
+      "unit": "mg/L",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "During 1970 a total of 43, 430 lbs. of chlorine was used at an average dosage of 2.4 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "3ce76bf3593ec9bc9bb0",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine residual",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": "minimum",
+      "stream": "effluent",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "A minimum chlorine residual of 0.5 mg/1 was maintained in the effluent.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "076c2901fc2a487f62af",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 115.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "Although the raw sewage has a relatively low BOD (115 mg/1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "82918de4058771d2a218",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 260.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.8352,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 10,
+        "source_text": "it has a high suspended solids (260 mg/1) content",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7584
+      },
+      "key": "61b27fd82d7500b28182",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "BOD reduction",
+      "value": 63.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.4517,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 11,
+        "source_text": "There is a 63% reduction in BOD and an 87% reduction in suspended solids through the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8069
+      },
+      "key": "d7b0577249c23ae45ffe",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "suspended solids reduction",
+      "value": 87.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.4517,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 11,
+        "source_text": "There is a 63% reduction in BOD and an 87% reduction in suspended solids through the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8069
+      },
+      "key": "af39a6158221c5cf0a59",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 43.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.4517,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 11,
+        "source_text": "The effluent has a BOD of 43 mg/1 and a suspended solids content of 35 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8069
+      },
+      "key": "39dab827148ee12de7a7",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 35.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.4517,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 11,
+        "source_text": "The effluent has a BOD of 43 mg/1 and a suspended solids content of 35 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8069
+      },
+      "key": "0c0139052862a8e01b3f",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit",
+      "value": 1245.0,
+      "unit": "cu ft",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.4517,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 11,
+        "source_text": "Thegrit removal facilities ran at capacity and 1245 cubic feet of grit were withdrawn from the system.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8069
+      },
+      "key": "3467d45a5b683152d0bd",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 3.5,
+      "unit": "million gallons",
+      "qualifier": "point",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1970",
+      "confidence": 0.4517,
+      "provenance": {
+        "identifier": "owensoundwaterpo24500",
+        "page": 11,
+        "source_text": "Among the recommendations made is that the plant capacity be increased from 3 to 4. 5 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8069
+      },
+      "key": "552d0cd3bef87624291f",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 3.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1972",
+      "confidence": 0.4505,
+      "provenance": {
+        "identifier": "owensoundwaterpo24499",
+        "page": 10,
+        "source_text": "The Owen Sound sewage project consists of a 3. 0 mgd primary water pollution con-",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24499/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.802
+      },
+      "key": "b57632a0348c5e760a6e",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "treatment cost",
+      "value": 45.0,
+      "unit": "per million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1972",
+      "confidence": 0.4505,
+      "provenance": {
+        "identifier": "owensoundwaterpo24499",
+        "page": 10,
+        "source_text": "The unit cost of treatment was $45 per million gallons as compared to $48 per",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24499/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.802
+      },
+      "key": "a3f5a5edf9fe582ab33a",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "treatment cost",
+      "value": 48.0,
+      "unit": "per million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1972",
+      "confidence": 0.4505,
+      "provenance": {
+        "identifier": "owensoundwaterpo24499",
+        "page": 10,
+        "source_text": "The unit cost of treatment was $45 per million gallons as compared to $48 per",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24499/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.802
+      },
+      "key": "05df6c6865e3a2d19769",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sewage treated",
+      "value": 1420.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1972",
+      "confidence": 0.4505,
+      "provenance": {
+        "identifier": "owensoundwaterpo24499",
+        "page": 10,
+        "source_text": "Approximately 1420 million gallons of sewage was treated in 1972.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24499/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.802
+      },
+      "key": "32e2d9ef664ca645a72d",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "peak flow rates",
+      "value": 10.0,
+      "unit": "mgd",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1972",
+      "confidence": 0.4505,
+      "provenance": {
+        "identifier": "owensoundwaterpo24499",
+        "page": 10,
+        "source_text": "Peak flow rates often exceeded 10 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24499/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.802
+      },
+      "key": "3fb6eb0ff769c5efea1c",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "average daily flows exceeding design capacity",
+      "value": 85.0,
+      "unit": "percent",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1972",
+      "confidence": 0.4505,
+      "provenance": {
+        "identifier": "owensoundwaterpo24499",
+        "page": 10,
+        "source_text": "Average daily flows exceeded the plant design capacity 85 percent of the time, relatively unchanged from 1967 to date.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24499/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.802
+      },
+      "key": "ae51ddcf166e7aaeb0c8",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average flow",
+      "value": 130.0,
+      "unit": "percent",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1972",
+      "confidence": 0.4505,
+      "provenance": {
+        "identifier": "owensoundwaterpo24499",
+        "page": 10,
+        "source_text": "The average flow during the year was 130 percent of plant design",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24499/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.802
+      },
+      "key": "4119cb54a2c776f5a66d",
+      "facility": "water pollution control plant"
+    },
+    {
+      "kind": "design",
+      "parameter": "rated capacity",
+      "value": 22.727,
+      "unit": "1000 m^/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4009,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 5,
+        "source_text": "This plant has a rated capacity of 22.727 x 1000 m^/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6037
+      },
+      "key": "e9789e7dbe430a00d5ac",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "design",
+      "parameter": "percentage of water supplied",
+      "value": 25.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4009,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 5,
+        "source_text": "The Owen Sound spring supply is used as an additional source and, once chlorinated, makes up 25% of the water supplied to Owen Sound.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6037
+      },
+      "key": "77a877cbba4c0a6f3740",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "water quality",
+      "value": null,
+      "unit": null,
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4009,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 5,
+        "source_text": "The Owen Sound water treatment plant, and the Owen Sound spring supply, for the sample year 1990, produced good quality water and this was maintained in the distribution system.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6037
+      },
+      "key": "376ce5a8c219f62ec9fc",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Standard plate count",
+      "value": 500.0,
+      "unit": "counts/mL",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "the guideline of 500 counts/mL is exceeded.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "a564244822d7d2eb0f69",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "temperature",
+      "value": 15.0,
+      "unit": "°C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "It is desirable that the temperature of drinking water be less than 15°C.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "dec6c898c1bd4b4441bd",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "temperature",
+      "value": 15.0,
+      "unit": "°C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Field temperature exceeded the ODWO Maximum Desirable Concentration of 15°C in 3 of 26 treated and distributed water samples from both sources with a maximum reported value of 19.5°C.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "dec6c898c1bd4b4441bd",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "temperature",
+      "value": 19.5,
+      "unit": "°C",
+      "qualifier": "maximum",
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Field temperature exceeded the ODWO Maximum Desirable Concentration of 15°C in 3 of 26 treated and distributed water samples from both sources with a maximum reported value of 19.5°C.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "fc03d9ba5cd4c35e0768",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness",
+      "value": 80.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "The ODWOs indicate that a hardness level of between 80 and 100 mg/L as calcium carbonate for domestic waters provides an acceptable balance between corrosion and encrustation.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "f5a6f424155dcd6cdfc8",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness",
+      "value": 100.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "The ODWOs indicate that a hardness level of between 80 and 100 mg/L as calcium carbonate for domestic waters provides an acceptable balance between corrosion and encrustation.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "20d57e69e4a65396c99d",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness",
+      "value": 200.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Water supplies with a hardness greater than 200 mg/L are considered poor and would possess a tendency to form scale deposits and result in excessive soap consumption.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "641b92441f9d321c1b5b",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness",
+      "value": 80.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Hardness exceeded the ODWO Aesthetic or Recommended Operational Guideline of 80-100 mg/L in 9 of 18 plant treated and its associated distributed water samples with a maximum reported value of 133.6 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "f5a6f424155dcd6cdfc8",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness",
+      "value": 100.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Hardness exceeded the ODWO Aesthetic or Recommended Operational Guideline of 80-100 mg/L in 9 of 18 plant treated and its associated distributed water samples with a maximum reported value of 133.6 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "20d57e69e4a65396c99d",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "hardness",
+      "value": 133.6,
+      "unit": "mg/L",
+      "qualifier": "maximum",
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Hardness exceeded the ODWO Aesthetic or Recommended Operational Guideline of 80-100 mg/L in 9 of 18 plant treated and its associated distributed water samples with a maximum reported value of 133.6 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "2525bb4083348e37ba34",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "hardness",
+      "value": 311.0,
+      "unit": "mg/L",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Hardness levels in the distribution site supplied by the spring supply ranged from 311.0 mg/L to 353.3 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "be773a5b31ab7dd764ce",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "hardness",
+      "value": 353.3,
+      "unit": "mg/L",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Hardness levels in the distribution site supplied by the spring supply ranged from 311.0 mg/L to 353.3 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "cf370c3ecb92602e0373",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness",
+      "value": 200.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4002,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 11,
+        "source_text": "Supplies with a hardness greater than 2 00 mg/L are considered of poor quality.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.601
+      },
+      "key": "641b92441f9d321c1b5b",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Conductivity",
+      "value": 400.0,
+      "unit": "umho/cm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "Conductivity exceeded the European Economic Community Aesthetic\nGuideline Level of 400 umho/cm in all 9 water samples from the",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "1854b1bb363f0bbfbbff",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Conductivity",
+      "value": 642.0,
+      "unit": "umho/cm",
+      "qualifier": "maximum",
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "distribution site supplied by the spring with a maximum reported\nlevel of 642.0 umho/cm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "8142e26b943c596a93e1",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "pH",
+      "value": 6.5,
+      "unit": "pH units",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "PH exceeded the ODWO Aesthetic or Recommended Operational Guideline\nof 6.5-8.5 pH units in 1 of 9 water samples from the distribution",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "ed61eb8cd2795e24fa57",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "pH",
+      "value": 8.5,
+      "unit": "pH units",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "PH exceeded the ODWO Aesthetic or Recommended Operational Guideline\nof 6.5-8.5 pH units in 1 of 9 water samples from the distribution",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "015380bf7dc367783aca",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "pH",
+      "value": 8.51,
+      "unit": "pH units",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "site supplied by the spring with a reported value of 8.51 pH units.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "24157c1d405efa1a4b42",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "fluoride concentration",
+      "value": 1.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "the recommended fluoride\nconcentration range of 1.0 to 1.4 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "80310aee0a10d0e540f8",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "fluoride concentration",
+      "value": 1.4,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "the recommended fluoride\nconcentration range of 1.0 to 1.4 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "da9a2678cb418a54f9d4",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "aluminum",
+      "value": 100.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "The ODWOs indicate that a\nuseful guideline is to maintain a residual below 100 ug/L as\naluminum in the water leaving the plant, to avoid problems in the",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "ba4255caa4a7048470c6",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Aluminxim",
+      "value": 100.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "Aluminxim exceeded the ODWO Aesthetic or Recommended Operational\nGuideline of 100 ug/L in 2 of 9 plant treated water samples with a",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "571027c76a1cae0934c8",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Aluminxim",
+      "value": 140.0,
+      "unit": "ug/L",
+      "qualifier": "maximum",
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "maximum reported value of 14 0.0 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "a61c69365ffc919b6fe0",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Hexachlorocyclopentadiene",
+      "value": 60.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "Hexachlorocyclopentadiene was found at positive levels in 1 of 6\ntreated and distributed water samples associated with the water\nplant with a reported value of 60.0 ng/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "e30b2e5c1b5129202e9b",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hexachlorocyclopentadiene",
+      "value": 206000.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.3989,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 12,
+        "source_text": "The United States\nEnvironmental Protection Agency Ambient Water Quality Criteria for\nhexachlorocyclopentadiene is 206,000 ng/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5954
+      },
+      "key": "8094b5706da0507f6005",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "phenolic substances",
+      "value": 2.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4057,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 13,
+        "source_text": "The ODWOs recommend, as an operational guideline, that phenolic substances in drinking water not exceed 2.0 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6228
+      },
+      "key": "2b30b2afb41318eb7e8a",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Toluene",
+      "value": 0.55,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4057,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 13,
+        "source_text": "Toluene was found at positive levels in 1 of the 18 treated and distributed water samples associated with the water plant with a reported value of 0.55 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6228
+      },
+      "key": "acb6971962da1ce765ee",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "toluene",
+      "value": 24.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Owen Sound",
+      "period": "1992",
+      "confidence": 0.4057,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 13,
+        "source_text": "The ODWO Aesthetic Objective for toluene is 24 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6228
+      },
+      "key": "b853b5414ce6024a904f",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "observation",
+      "parameter": "THMs",
+      "value": 68.7,
+      "unit": "ug/L",
+      "qualifier": "maximum",
+      "stream": "treated",
+      "place": "Owen Sound water supply system",
+      "period": "1990",
+      "confidence": 0.7751,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 14,
+        "source_text": "The maximum observed level was 68.7 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.5501
+      },
+      "key": "970631e546d76576fe9c",
+      "facility": "water supply system"
+    },
+    {
+      "kind": "standard",
+      "parameter": "THMs",
+      "value": 350.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Owen Sound water supply system",
+      "period": "1992",
+      "confidence": 0.7751,
+      "provenance": {
+        "identifier": "owensoundwatersu1990ontauoft",
+        "page": 14,
+        "source_text": "This was below the ODWO Maximum Acceptable Concentration of 350 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.5501
+      },
+      "key": "c1b8ffbd9797161cd1bf",
+      "facility": "water supply system"
     }
   ]
 }

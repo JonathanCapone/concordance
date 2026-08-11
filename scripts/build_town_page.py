@@ -39,6 +39,7 @@ def load(path: Path) -> tuple[list[Record], str]:
                 kind=d["kind"], parameter=d.get("parameter", ""), value=d.get("value"),
                 unit=d.get("unit"), qualifier=d.get("qualifier"),
                 stream=d.get("stream", "unknown"), place=d.get("place"),
+                facility=d.get("facility"),
                 period=d.get("period"), confidence=d.get("confidence", 0.0),
                 provenance=Provenance(
                     identifier=p.get("identifier", ""), page=p.get("page"),
@@ -112,6 +113,13 @@ def main() -> int:
 
     path = Path(args.file)
     records, place = load(path)
+    # One page per facility. A sewage plant's effluent and a water supply
+    # system's tap water are opposite measurements and must not share a chart.
+    import collections
+    facilities = collections.Counter(r.facility or "unclassified" for r in records)
+    main = facilities.most_common(1)[0][0] if facilities else None
+    if len(facilities) > 1:
+        records = [r for r in records if (r.facility or "unclassified") == main]
     obs = [r for r in records if r.kind == "observation"]
     out_path = Path(args.out or f"portal/{path.stem}.html")
 
@@ -201,6 +209,7 @@ a{{color:inherit}}
 </style></head><body><main>
 <h1>{html.escape(place)}</h1>
 <p class="sub">
+  {html.escape(str(main or "")).replace("_", " ")}.
   Recovered from {len(years)} scanned annual reports
   {f'({min(years)}&ndash;{max(years)})' if years else ''} filed with the Ontario government.
   {len(records)} readings; {len(obs)} of them measurements rather than design specifications.

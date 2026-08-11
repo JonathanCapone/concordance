@@ -244,7 +244,7 @@ def standard_for(
     result says so.
     """
     want = resolve_parameter(parameter)
-    best: tuple[int, Record] | None = None
+    candidates: list[tuple[tuple[int, int], Record]] = []
 
     for r in corpus.records:
         if r.kind != "standard" or r.value is None or not r.period:
@@ -263,26 +263,53 @@ def standard_for(
         if abs(gap) > max_years_away:
             continue
         # Rank: earlier-or-equal beats later, then nearest in time.
-        rank = (0 if gap >= 0 else 1, abs(gap))
-        if best is None or rank < best[0]:  # type: ignore[operator]
-            best = (rank, r)  # type: ignore[assignment]
+        candidates.append(((0 if gap >= 0 else 1, abs(gap)), r))
 
-    if best is None:
+    if not candidates:
         return None
-    _rank, rec = best
+
+    candidates.sort(key=lambda c: c[0])
+    best_rank = candidates[0][0]
+
+    # Many standards are RANGES, not single limits, and the archive states them
+    # as such: "the ODWO Aesthetic or Recommended Operational Guideline of
+    # 6.5-8.5 pH units". Both bounds come back as separate records for the same
+    # parameter and year, and picking whichever sorted first would turn "pH must
+    # be between 6.5 and 8.5" into "the limit is 6.5" -- which then reports every
+    # normal reading as an exceedance.
+    same = [r for rank, r in candidates if rank == best_rank]
+    values = sorted({r.value for r in same if r.value is not None})
+    rec = same[0]
     std_year = int(str(rec.period)[:4])
-    return {
-        "value": rec.value,
+
+    out: dict[str, Any] = {
+        "value": values[0] if len(values) == 1 else None,
+        "range": [values[0], values[-1]] if len(values) > 1 else None,
         "unit": rec.unit,
         "year": std_year,
         "applies_before_observation": std_year <= year,
         "source": rec.provenance.page_url if rec.provenance else None,
-        "read_from": rec.provenance.source_text if rec.provenance else None,
+        "read_from": [r.provenance.source_text for r in same if r.provenance][:3],
         "caveat": None if std_year <= year else (
             f"This limit dates from {std_year}, AFTER the {year} reading. It cannot "
             "say whether the discharge was acceptable at the time."
         ),
     }
+    if len(values) > 2:
+        # Three or more distinct values for one parameter-year is not a range --
+        # the archive is stating several different guidelines (desirable,
+        # acceptable, "considered poor"), and collapsing them to min and max
+        # would invent a limit nobody wrote.
+        out["range"] = None
+        out["value"] = None
+        out["ambiguous_values"] = values
+        out["caveat"] = (
+            f"The archive states {len(values)} different guideline values for this "
+            f"parameter in {std_year} ({', '.join(str(v) for v in values)}). They are "
+            "probably different classes of guideline -- desirable, acceptable, poor -- "
+            "and no single limit can be inferred from them."
+        )
+    return out
 
 
 def judge_reading(
@@ -290,12 +317,25 @@ def judge_reading(
 ) -> dict[str, Any]:
     """Explain a measurement, using the era's own standard where the archive has one."""
     std = standard_for(corpus, parameter, year)
-    out = explain_this_number(
-        parameter, value, unit, year,
-        era_standard=std["value"] if std and std["applies_before_observation"] else None,
+    # Only a single, unambiguous, contemporary limit can produce a verdict. A
+    # range or a set of competing guidelines is reported to the reader rather
+    # than collapsed into one number to judge against.
+    usable = (
+        std["value"]
+        if std and std["applies_before_observation"] and std.get("value") is not None
+        else None
     )
+    out = explain_this_number(parameter, value, unit, year, era_standard=usable)
     if std:
         out["standard"] = std
+        if std.get("range") and value is not None:
+            lo, hi = std["range"]
+            inside = lo <= value <= hi
+            out["verdict"] = (
+                f"{value:g} {unit or ''} is {'within' if inside else 'outside'} the "
+                f"{lo:g}-{hi:g} range that applied in {std['year']}.".replace("  ", " ")
+            )
+            out.pop("caveat", None)
     return out
 
 
