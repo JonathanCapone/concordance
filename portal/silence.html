@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What Ontario stopped measuring</title>
+<style>
+  :root {
+    --bg: #fbfaf8; --panel: #fff; --ink: #17150f; --muted: #6b6559;
+    --line: #e2ded5; --mark: #17150f; --gap: #d9534f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14130f; --panel: #1c1a16; --ink: #f2efe8; --muted: #9b948a;
+      --line: #2e2b25; --mark: #f2efe8; --gap: #e0736e;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 24px 80px; background: var(--bg); color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  main { max-width: 1080px; margin: 0 auto; }
+  h1 { font-size: 30px; font-weight: 500; margin: 0 0 6px; letter-spacing: -.02em; }
+  .sub { color: var(--muted); max-width: 68ch; margin: 0 0 34px; }
+  h2 { font-size: 17px; font-weight: 500; margin: 40px 0 12px; }
+  .panel {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 18px 20px;
+  }
+  .scroll { overflow-x: auto; }
+  .fab { display: grid; gap: 0; min-width: 720px; }
+  .row { display: grid; grid-template-columns: 190px 1fr; align-items: center; height: 9px; }
+  .row.head { height: auto; align-items: end; margin-bottom: 8px; }
+  .nm {
+    font: 8px/9px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted);
+    text-align: right; padding-right: 10px; white-space: nowrap; overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cells { display: grid; gap: 1px; }
+  .c { height: 8px; border-radius: 1px; background: transparent; }
+  .c.on { background: var(--mark); opacity: .85; }
+  .c.off { background: var(--line); }
+  .c.dead { background: var(--gap); opacity: .16; }
+  .yr {
+    font: 9px/1 ui-monospace, monospace; color: var(--muted); text-align: center;
+    writing-mode: vertical-rl; transform: rotate(180deg); height: 30px;
+  }
+  .yr.big { color: var(--ink); }
+  .legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 14px;
+            font-size: 13px; color: var(--muted); }
+  .key { display: flex; align-items: center; gap: 7px; }
+  .sw { width: 12px; height: 9px; border-radius: 2px; display: inline-block; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  th { font-weight: 500; color: var(--muted); }
+  td.num { text-align: right; font-family: ui-monospace, monospace; }
+  .verdict { font-size: 15px; margin-top: 14px; }
+  .big { font-size: 40px; font-weight: 500; letter-spacing: -.02em; }
+  .caveat {
+    border-left: 3px solid var(--line); padding: 2px 0 2px 16px;
+    color: var(--muted); font-size: 14px; margin-top: 28px; max-width: 74ch;
+  }
+  a { color: inherit; }
+</style>
+</head>
+<body>
+<main>
+  <h1>What Ontario stopped measuring</h1>
+  <p class="sub">
+    Every Ontario municipality that filed a water pollution control plant annual report to the
+    provincial government, and the year each one stopped. Built from the Internet Archive Canada
+    government publications collection &mdash; 107 municipalities, read out of scanned paper.
+  </p>
+
+  <div class="panel scroll">
+    <div class="fab" id="fab"></div>
+  </div>
+  <div class="legend">
+    <span class="key"><i class="sw" style="background:var(--mark);opacity:.85"></i> filed a report</span>
+    <span class="key"><i class="sw" style="background:var(--line)"></i> no report that year</span>
+    <span class="key"><i class="sw" style="background:var(--gap);opacity:.16"></i> after this town's last report</span>
+  </div>
+
+  <h2>The cliff</h2>
+  <div class="panel">
+    <div class="big">72 of 107</div>
+    <div>municipalities stop reporting in <strong>1975</strong>.</div>
+  </div>
+
+  <h2>Is that real, or did the scanning just stop?</h2>
+  <div class="panel">
+    <p style="margin-top:0;color:var(--muted);font-size:14px;max-width:72ch">
+      A whole series vanishing at once usually means a digitisation boundary, not history.
+      So: does the rest of the collection also stop in 1975?
+    </p>
+    <table>
+      <tr><th>Series in the same collection</th><th style="text-align:right">before</th>
+          <th style="text-align:right">after</th><th></th></tr>
+      <tr><td>Ontario Ministry of the Environment (all publications)</td><td class="num">1,449</td><td class="num">3,800</td><td>keeps going</td></tr>
+      <tr><td>any title mentioning Ontario</td><td class="num">2,770</td><td class="num">4,619</td><td>keeps going</td></tr>
+      <tr><td>water pollution control plant reports (the series under test)</td><td class="num">535</td><td class="num">11</td><td>also stops</td></tr>
+    </table>
+    <p class="verdict">The archive kept growing while this one series died. <strong>The silence is real.</strong></p>
+  </div>
+
+  <p class="caveat">
+    A gap means <em>not digitised</em> or <em>not reported</em> &mdash; those are different claims and
+    the data looks the same. The control above separates them for the collection as a whole. It does
+    not do so for any individual town, and no single municipality's gap here should be cited as
+    evidence that town stopped being monitored.
+  </p>
+</main>
+
+<script>
+const DATA = {"n_municipalities": 107, "horizon": 1996, "largest_simultaneous_stop": {"year": 1975, "municipalities": 72}, "digitisation_control": [{"series": "Ontario Ministry of the Environment (all publications)", "before": 1449, "from_cliff_onward": 3800}, {"series": "any title mentioning Ontario", "before": 2770, "from_cliff_onward": 4619}, {"series": "water pollution control plant reports (the series under test)", "before": 535, "from_cliff_onward": 11}], "control_verdict": "real", "caveat": "A gap means not-digitised OR not-reported. The control above distinguishes the two at collection level, but an individual municipality's gap has not been checked against that town's own holdings and should not be cited as institutional silence on its own.", "municipalities": [{"place": "Burlington Drury Lane", "first_year": 1961, "last_year": 1974, "reported_years": [1961, 1962, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [1963, 1964], "silent_since": 1975, "continuity": 0.857, "longest_gap": 2}, {"place": "Burlington Elizabeth Gardens", "first_year": 1962, "last_year": 1974, "reported_years": [1962, 1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1973, 1974], "missing_years": [1971], "silent_since": 1975, "continuity": 0.923, "longest_gap": 1}, {"place": "Richmond Hill", "first_year": 1962, "last_year": 1974, "reported_years": [1962, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [1963], "silent_since": 1975, "continuity": 0.923, "longest_gap": 1}, {"place": "Georgetown", "first_year": 1963, "last_year": 1973, "reported_years": [1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973], "missing_years": [], "silent_since": 1974, "continuity": 1.0, "longest_gap": 0}, {"place": "Huntsville", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Sault Ste. Marie", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Stratford", "first_year": 1963, "last_year": 1974, "reported_years": [1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1973, 1974], "missing_years": [1972], "silent_since": 1975, "continuity": 0.917, "longest_gap": 1}, {"place": "Trenton", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Belleville", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1974], "missing_years": [1973], "silent_since": 1975, "continuity": 0.909, "longest_gap": 1}, {"place": "Brantford", "first_year": 1963, "last_year": 1974, "reported_years": [1963, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1974], "missing_years": [1971, 1973], "silent_since": 1975, "continuity": 0.833, "longest_gap": 1}, {"place": "Burlington Skyway", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1973, 1974], "missing_years": [1971], "silent_since": 1975, "continuity": 0.909, "longest_gap": 1}, {"place": "Coniston", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1973, 1974], "missing_years": [1971], "silent_since": 1975, "continuity": 0.909, "longest_gap": 1}, {"place": "Fort Frances", "first_year": 1965, "last_year": 1974, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Kitchener", "first_year": 1962, "last_year": 1974, "reported_years": [1962, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1974], "missing_years": [1963, 1971, 1973], "silent_since": 1975, "continuity": 0.769, "longest_gap": 1}, {"place": "Owen Sound", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1973, 1974], "missing_years": [1971], "silent_since": 1975, "continuity": 0.909, "longest_gap": 1}, {"place": "Timmins", "first_year": 1965, "last_year": 1974, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Waterloo", "first_year": 1962, "last_year": 1974, "reported_years": [1962, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1974], "missing_years": [1963, 1971, 1973], "silent_since": 1975, "continuity": 0.769, "longest_gap": 1}, {"place": "Chatham", "first_year": 1966, "last_year": 1974, "reported_years": [1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Elora", "first_year": 1965, "last_year": 1974, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1974], "missing_years": [1973], "silent_since": 1975, "continuity": 0.9, "longest_gap": 1}, {"place": "Fergus", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1974], "missing_years": [1971, 1973], "silent_since": 1975, "continuity": 0.818, "longest_gap": 1}, {"place": "Galt", "first_year": 1964, "last_year": 1972, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972], "missing_years": [], "silent_since": 1973, "continuity": 1.0, "longest_gap": 0}, {"place": "Midland", "first_year": 1966, "last_year": 1974, "reported_years": [1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Orangeville", "first_year": 1962, "last_year": 1972, "reported_years": [1962, 1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972], "missing_years": [1963, 1971], "silent_since": 1973, "continuity": 0.818, "longest_gap": 1}, {"place": "Parry Sound", "first_year": 1966, "last_year": 1974, "reported_years": [1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Point Edward", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1973, 1974], "missing_years": [1971, 1972], "silent_since": 1975, "continuity": 0.818, "longest_gap": 2}, {"place": "Port Dover", "first_year": 1965, "last_year": 1974, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1974], "missing_years": [1973], "silent_since": 1975, "continuity": 0.9, "longest_gap": 1}, {"place": "Preston", "first_year": 1964, "last_year": 1972, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972], "missing_years": [], "silent_since": 1973, "continuity": 1.0, "longest_gap": 0}, {"place": "Simcoe", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1972, 1974], "missing_years": [1971, 1973], "silent_since": 1975, "continuity": 0.818, "longest_gap": 1}, {"place": "Frankford", "first_year": 1965, "last_year": 1974, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970, 1973, 1974], "missing_years": [1971, 1972], "silent_since": 1975, "continuity": 0.8, "longest_gap": 2}, {"place": "Lakeview", "first_year": 1963, "last_year": 1974, "reported_years": [1963, 1964, 1965, 1966, 1967, 1968, 1973, 1974], "missing_years": [1969, 1970, 1971, 1972], "silent_since": 1975, "continuity": 0.667, "longest_gap": 4}, {"place": "Paris", "first_year": 1965, "last_year": 1974, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970, 1972, 1974], "missing_years": [1971, 1973], "silent_since": 1975, "continuity": 0.8, "longest_gap": 1}, {"place": "Tillsonburg", "first_year": 1964, "last_year": 1974, "reported_years": [1964, 1965, 1967, 1968, 1969, 1970, 1973, 1974], "missing_years": [1966, 1971, 1972], "silent_since": 1975, "continuity": 0.727, "longest_gap": 2}, {"place": "Elmira", "first_year": 1965, "last_year": 1972, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970, 1972], "missing_years": [1971], "silent_since": 1973, "continuity": 0.875, "longest_gap": 1}, {"place": "Moore Township (Corunna)", "first_year": 1964, "last_year": 1970, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970], "missing_years": [], "silent_since": 1971, "continuity": 1.0, "longest_gap": 0}, {"place": "Nepean", "first_year": 1964, "last_year": 1970, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970], "missing_years": [], "silent_since": 1971, "continuity": 1.0, "longest_gap": 0}, {"place": "Port Arthur", "first_year": 1962, "last_year": 1969, "reported_years": [1962, 1963, 1964, 1965, 1967, 1968, 1969], "missing_years": [1966], "silent_since": 1970, "continuity": 0.875, "longest_gap": 1}, {"place": "Port Colborne", "first_year": 1964, "last_year": 1970, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970], "missing_years": [], "silent_since": 1971, "continuity": 1.0, "longest_gap": 0}, {"place": "Waterdown", "first_year": 1967, "last_year": 1974, "reported_years": [1967, 1968, 1969, 1970, 1972, 1973, 1974], "missing_years": [1971], "silent_since": 1975, "continuity": 0.875, "longest_gap": 1}, {"place": "Westminster", "first_year": 1964, "last_year": 1970, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969, 1970], "missing_years": [], "silent_since": 1971, "continuity": 1.0, "longest_gap": 0}, {"place": "Fort Erie", "first_year": 1965, "last_year": 1970, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970], "missing_years": [], "silent_since": 1971, "continuity": 1.0, "longest_gap": 0}, {"place": "Fort William", "first_year": 1964, "last_year": 1969, "reported_years": [1964, 1965, 1966, 1967, 1968, 1969], "missing_years": [], "silent_since": 1970, "continuity": 1.0, "longest_gap": 0}, {"place": "Kingston", "first_year": 1965, "last_year": 1970, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970], "missing_years": [], "silent_since": 1971, "continuity": 1.0, "longest_gap": 0}, {"place": "Markham", "first_year": 1969, "last_year": 1974, "reported_years": [1969, 1970, 1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "North Bay Area", "first_year": 1965, "last_year": 1970, "reported_years": [1965, 1966, 1967, 1968, 1969, 1970], "missing_years": [], "silent_since": 1971, "continuity": 1.0, "longest_gap": 0}, {"place": "Streetsville", "first_year": 1962, "last_year": 1968, "reported_years": [1962, 1964, 1965, 1966, 1967, 1968], "missing_years": [1963], "silent_since": 1969, "continuity": 0.857, "longest_gap": 1}, {"place": "Brampton - Chinguacousy", "first_year": 1964, "last_year": 1968, "reported_years": [1964, 1965, 1966, 1967, 1968], "missing_years": [], "silent_since": 1969, "continuity": 1.0, "longest_gap": 0}, {"place": "Markham Village", "first_year": 1964, "last_year": 1968, "reported_years": [1964, 1965, 1966, 1967, 1968], "missing_years": [], "silent_since": 1969, "continuity": 1.0, "longest_gap": 0}, {"place": "North Bay", "first_year": 1963, "last_year": 1974, "reported_years": [1963, 1964, 1971, 1972, 1974], "missing_years": [1965, 1966, 1967, 1968, 1969, 1970, 1973], "silent_since": 1975, "continuity": 0.417, "longest_gap": 6}, {"place": "Eganville", "first_year": 1971, "last_year": 1974, "reported_years": [1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Kingston Twp", "first_year": 1971, "last_year": 1974, "reported_years": [1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Newmarket-East Gwillimbury", "first_year": 1968, "last_year": 1971, "reported_years": [1968, 1969, 1970, 1971], "missing_years": [], "silent_since": 1972, "continuity": 1.0, "longest_gap": 0}, {"place": "Sidney Township (Batawa)", "first_year": 1965, "last_year": 1968, "reported_years": [1965, 1966, 1967, 1968], "missing_years": [], "silent_since": 1969, "continuity": 1.0, "longest_gap": 0}, {"place": "Thunder Bay", "first_year": 1970, "last_year": 1974, "reported_years": [1970, 1972, 1973, 1974], "missing_years": [1971], "silent_since": 1975, "continuity": 0.8, "longest_gap": 1}, {"place": "Westminster Twp", "first_year": 1971, "last_year": 1974, "reported_years": [1971, 1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Bradford", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Campbellford", "first_year": 1971, "last_year": 1973, "reported_years": [1971, 1972, 1973], "missing_years": [], "silent_since": 1974, "continuity": 1.0, "longest_gap": 0}, {"place": "Cayuga", "first_year": 1971, "last_year": 1974, "reported_years": [1971, 1972, 1974], "missing_years": [1973], "silent_since": 1975, "continuity": 0.75, "longest_gap": 1}, {"place": "Chesterville", "first_year": 1971, "last_year": 1973, "reported_years": [1971, 1972, 1973], "missing_years": [], "silent_since": 1974, "continuity": 1.0, "longest_gap": 0}, {"place": "Meaford", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Moore Twp. - Corunna", "first_year": 1971, "last_year": 1974, "reported_years": [1971, 1973, 1974], "missing_years": [1972], "silent_since": 1975, "continuity": 0.75, "longest_gap": 1}, {"place": "Moosonee Water Supply System And", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Newmarket", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Pickering Village", "first_year": 1971, "last_year": 1973, "reported_years": [1971, 1972, 1973], "missing_years": [], "silent_since": 1974, "continuity": 1.0, "longest_gap": 0}, {"place": "Rockland Water Treatment Plant And", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Sidney Twp.- (Batawa)", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Wallaceburg", "first_year": 1971, "last_year": 1974, "reported_years": [1971, 1973, 1974], "missing_years": [1972], "silent_since": 1975, "continuity": 0.75, "longest_gap": 1}, {"place": "Winchester Water Supply System And", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Carleton Place", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1974], "missing_years": [1973], "silent_since": 1975, "continuity": 0.667, "longest_gap": 1}, {"place": "Deseronto", "first_year": 1972, "last_year": 1974, "reported_years": [1972, 1974], "missing_years": [1973], "silent_since": 1975, "continuity": 0.667, "longest_gap": 1}, {"place": "Emo Twp", "first_year": 1973, "last_year": 1974, "reported_years": [1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Espanola", "first_year": 1973, "last_year": 1974, "reported_years": [1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Haileybury", "first_year": 1971, "last_year": 1973, "reported_years": [1971, 1973], "missing_years": [1972], "silent_since": 1974, "continuity": 0.667, "longest_gap": 1}, {"place": "Ingersoll", "first_year": 1973, "last_year": 1974, "reported_years": [1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Newmarket-E. Gwillimbury", "first_year": 1966, "last_year": 1967, "reported_years": [1966, 1967], "missing_years": [], "silent_since": 1968, "continuity": 1.0, "longest_gap": 0}, {"place": "Sidney (Batawa)", "first_year": 1969, "last_year": 1970, "reported_years": [1969, 1970], "missing_years": [], "silent_since": 1971, "continuity": 1.0, "longest_gap": 0}, {"place": "St. Marys", "first_year": 1973, "last_year": 1974, "reported_years": [1973, 1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Alfred", "first_year": 1963, "last_year": 1963, "reported_years": [1963], "missing_years": [], "silent_since": 1964, "continuity": 1.0, "longest_gap": 0}, {"place": "Alliston", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Brooklin", "first_year": 1963, "last_year": 1963, "reported_years": [1963], "missing_years": [], "silent_since": 1964, "continuity": 1.0, "longest_gap": 0}, {"place": "Cambridge (Galt)", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Cambridge (Hespeler)", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Cambridge (Preston)", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Chelmsford", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Clarkson", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Ear Falls", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Hagersville", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Haileybury : Water Treatment Plant And", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Haileybury Water Treatment Plant And", "first_year": 1973, "last_year": 1973, "reported_years": [1973], "missing_years": [], "silent_since": 1974, "continuity": 1.0, "longest_gap": 0}, {"place": "Halton Hills, Georgetown", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Ignace Twp", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Kirkland Lake", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Malton", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Newmarket Area", "first_year": 1965, "last_year": 1965, "reported_years": [1965], "missing_years": [], "silent_since": 1966, "continuity": 1.0, "longest_gap": 0}, {"place": "Palmerston", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Port Mcnicoll", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Port Perry", "first_year": 1963, "last_year": 1963, "reported_years": [1963], "missing_years": [], "silent_since": 1964, "continuity": 1.0, "longest_gap": 0}, {"place": "Red Lake Twp, Water Treatment Plant And", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Red Lake Twp. Water Treatment Plant And", "first_year": 1973, "last_year": 1973, "reported_years": [1973], "missing_years": [], "silent_since": 1974, "continuity": 1.0, "longest_gap": 0}, {"place": "Sault Ste Marie", "first_year": 1963, "last_year": 1963, "reported_years": [1963], "missing_years": [], "silent_since": 1964, "continuity": 1.0, "longest_gap": 0}, {"place": "Simcoe, County Of Norfolk : Municipal", "first_year": 1968, "last_year": 1968, "reported_years": [1968], "missing_years": [], "silent_since": 1969, "continuity": 1.0, "longest_gap": 0}, {"place": "Southampton Water Treatment Plant And", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Sturgeon Falls", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Sudbury", "first_year": 1973, "last_year": 1973, "reported_years": [1973], "missing_years": [], "silent_since": 1974, "continuity": 1.0, "longest_gap": 0}, {"place": "Twp Of Longlac", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Woolwich Twp", "first_year": 1973, "last_year": 1973, "reported_years": [1973], "missing_years": [], "silent_since": 1974, "continuity": 1.0, "longest_gap": 0}, {"place": "Woolwich Twp., Elmira", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}, {"place": "Woolwich Twp., St. Jacobs", "first_year": 1974, "last_year": 1974, "reported_years": [1974], "missing_years": [], "silent_since": 1975, "continuity": 1.0, "longest_gap": 0}]};
+
+const munis = DATA.municipalities;
+const first = Math.min(...munis.map(m => m.first_year));
+const last  = DATA.horizon;
+const years = []; for (let y = first; y <= last; y++) years.push(y);
+const cols = `repeat(${years.length}, 1fr)`;
+const fab = document.getElementById('fab');
+
+let head = '<div class="row head"><div></div><div class="cells" style="grid-template-columns:' + cols + '">';
+years.forEach(y => {
+  const show = (y % 5 === 0) || y === first || y === DATA.largest_simultaneous_stop.year;
+  const big = y === DATA.largest_simultaneous_stop.year ? ' big' : '';
+  head += `<div class="yr${big}">${show ? y : ''}</div>`;
+});
+fab.insertAdjacentHTML('beforeend', head + '</div></div>');
+
+// Ordered by when each town started, then by how long it lasted: the shape reads
+// as a staircase that stops dead at one wall.
+munis.slice().sort((a, b) =>
+  a.first_year - b.first_year || b.reported_years.length - a.reported_years.length
+).forEach(m => {
+  const has = new Set(m.reported_years);
+  let cells = '';
+  years.forEach(y => {
+    const cls = has.has(y) ? 'on' : (y > m.last_year ? 'dead' : 'off');
+    cells += `<div class="c ${cls}" title="${m.place} — ${y}${has.has(y) ? ': report filed' : ''}"></div>`;
+  });
+  fab.insertAdjacentHTML('beforeend',
+    `<div class="row"><div class="nm" title="${m.place}">${m.place}</div>` +
+    `<div class="cells" style="grid-template-columns:${cols}">${cells}</div></div>`);
+});
+</script>
+</body>
+</html>
