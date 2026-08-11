@@ -6,13 +6,28 @@
   "annotator": "hand-read from the OCR text of the scanned pages",
   "notes": [
     "Ground truth for the accuracy harness. Every entry was read by a human from",
-    "the page text; nothing here came from a model.",
+    "the page text; nothing here was copied from a model's output.",
     "Page 9 is a DESIGN DATA sheet. Its BOD/SS figures are design specifications,",
     "not measurements, and an extractor that reports them as observations is",
     "wrong in a way that would silently corrupt every downstream trend.",
     "Where the report states a value in words ('just over three million gallons')",
     "the numeric value is recorded with approximate: true, because an extractor",
     "that returns 3000000 is right and one that returns null is not."
+  ],
+  "annotation_caveat": [
+    "BLINDNESS IS NOT UNIFORM ACROSS PAGES, and results should be read with that",
+    "in mind.",
+    "Pages 10 and 11 were annotated blind, before any extraction run.",
+    "Page 9 was originally annotated with only 6 entries, which scored the",
+    "extractor at 20% precision. Auditing the 'spurious' records showed they were",
+    "real design specifications the annotator had simply not bothered to write",
+    "down -- the ground truth was incomplete, not the extractor wrong.",
+    "Page 9 was then expanded by re-reading the page text directly. The annotator",
+    "had by that point seen model output for this page, so page 9 is NOT blind and",
+    "its precision figure is optimistically biased. Page 11 -- fully blind, clean",
+    "narrative prose -- is the honest headline number.",
+    "Dimensions given as 'One 40' dia x 25' swd' are recorded only via the derived",
+    "volume the report itself states, since that is the quantity with meaning."
   ],
   "pages": {
     "9": [
@@ -21,7 +36,28 @@
       {"kind": "design", "parameter": "BOD", "value": 180, "unit": "mg/L", "stream": "raw"},
       {"kind": "design", "parameter": "BOD removal", "value": 40, "unit": "%", "stream": "unknown"},
       {"kind": "design", "parameter": "suspended solids", "value": 200, "unit": "mg/L", "stream": "raw"},
-      {"kind": "design", "parameter": "suspended solids removal", "value": 65, "unit": "%", "stream": "unknown"}
+      {"kind": "design", "parameter": "suspended solids removal", "value": 65, "unit": "%", "stream": "unknown"},
+
+      {"kind": "design", "parameter": "pump capacity", "value": 3150, "unit": "gpm"},
+      {"kind": "design", "parameter": "grit removal volume", "value": 18000, "unit": "gallons"},
+      {"kind": "design", "parameter": "grit removal retention", "value": 8.6, "unit": "min"},
+      {"kind": "design", "parameter": "pre-aeration tank volume", "value": 23400, "unit": "gallons"},
+      {"kind": "design", "parameter": "pre-aeration tank retention", "value": 11.2, "unit": "min"},
+      {"kind": "design", "parameter": "air supply", "value": 408, "unit": "scfm"},
+      {"kind": "design", "parameter": "primary sedimentation volume", "value": 388000, "unit": "gallons"},
+      {"kind": "design", "parameter": "primary sedimentation retention", "value": 3.11, "unit": "hr"},
+      {"kind": "design", "parameter": "primary sedimentation surface loading", "value": 600, "unit": "gal/ft2/day"},
+      {"kind": "design", "parameter": "weir loading", "value": 8260, "unit": "gal/ft/day"},
+      {"kind": "design", "parameter": "chlorination capacity", "value": 2000, "unit": "lb/day"},
+      {"kind": "design", "parameter": "chlorine contact chamber volume", "value": 21700, "unit": "gallons"},
+      {"kind": "design", "parameter": "chlorine contact chamber retention", "value": 11.2, "unit": "min"},
+      {"kind": "design", "parameter": "outfall length", "value": 828, "unit": "ft"},
+      {"kind": "design", "parameter": "primary digester volume", "value": 31400, "unit": "cu ft"},
+      {"kind": "design", "parameter": "primary digester loading", "value": 2.75, "unit": "lb/cu ft/mo"},
+      {"kind": "design", "parameter": "secondary digester volume", "value": 30800, "unit": "cu ft"},
+      {"kind": "design", "parameter": "secondary digester total loading", "value": 1.88, "unit": "lb/cu ft/mo"},
+      {"kind": "design", "parameter": "west side pump capacity", "value": 3916, "unit": "gpm"},
+      {"kind": "design", "parameter": "west side pump capacity", "value": 1000, "unit": "gpm"}
     ],
     "10": [
       {"kind": "observation", "parameter": "operating cost", "value": 53549.66, "unit": "$", "qualifier": "total", "period": "1969"},

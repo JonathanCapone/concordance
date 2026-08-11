@@ -58,6 +58,19 @@ class OllamaClient:
     def name(self) -> str:
         return f"ollama:{self.model}"
 
+    #: Disable the model's hidden reasoning pass.
+    #:
+    #: Measured on gemma4:12b: producing the string `[{"a":1}]` cost 121 tokens
+    #: and 32.7s with thinking on, and 7 tokens and 2.4s with it off -- a 17x
+    #: difference for identical output. Ollama strips the reasoning from the
+    #: `response` field, so on a full page the model would reason past the token
+    #: budget and return an empty string, which looks like "the extractor found
+    #: nothing" rather than "the extractor never answered".
+    #:
+    #: Extraction here is transcription, not deduction: the answer is in the
+    #: sentence being read. There is nothing to reason about.
+    think: bool = False
+
     def complete(self, system: str, user: str) -> str:
         payload = json.dumps(
             {
@@ -65,11 +78,25 @@ class OllamaClient:
                 "system": system,
                 "prompt": user,
                 "stream": False,
+                "think": self.think,
                 # Deterministic: the same page must extract the same way across
                 # runs, or the accuracy harness measures noise.
-                # num_predict must be generous: a dense page yields 20+ records and a
-                # truncated array is the single most common failure mode.
-                "options": {"temperature": 0.0, "num_ctx": 8192, "num_predict": 8192},
+                #
+                # num_predict is a wall-clock budget, not a quality knob.
+                # Measured throughput for gemma4:12b on this machine is ~7.9
+                # tokens/sec, so 8192 tokens is ~17 minutes for ONE page -- a
+                # model that rambles instead of stopping will burn the entire
+                # budget. A dense page yields ~20 records at ~70 tokens each,
+                # so 3000 covers real output with headroom, and the salvage
+                # parser recovers whatever completed if it does truncate.
+                "options": {
+                    "temperature": 0.0,
+                    "num_ctx": 8192,
+                    "num_predict": 3000,
+                    # Halt as soon as the array closes rather than letting the
+                    # model continue into commentary it was told not to write.
+                    "stop": ["\n]", "]\n\n", "```\n\n"],
+                },
             }
         ).encode()
         req = urllib.request.Request(
@@ -176,6 +203,11 @@ Rules:
 - Emit one element per measured value. "104 mg/1 and 224 mg/1 respectively"
   is TWO observations, not one.
 - Do not invent. An empty array is a correct answer for a page with no measurements.
+- OMIT any field that would be null. Only "kind", "parameter" and "source_text"
+  are always required. Shorter output is better.
+- When several values share one sentence, repeat that same sentence as the
+  source_text for each. Do not shorten it.
+- Output the array and nothing else. Stop immediately after the closing bracket.
 """
 
 USER_TEMPLATE = """\

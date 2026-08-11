@@ -1,0 +1,1393 @@
+{
+  "model": "ollama:gemma4:12b",
+  "totals": {
+    "matched": 26,
+    "missed": 11,
+    "spurious": 27,
+    "recall": 0.7027,
+    "precision": 0.4906,
+    "f1": 0.5778,
+    "kind_accuracy": 1.0,
+    "stream_accuracy": 0.8667
+  },
+  "records": [
+    {
+      "kind": "design",
+      "parameter": "FLOW",
+      "value": 3.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "DESIGN FLOW\n\n3.0 mgd",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "01d50cb002da8f3b764a"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD - Raw Sewage",
+      "value": 180.0,
+      "unit": "mg/l",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "BOD - Raw Sewage\n- Removal\n\n180 mg/1",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "62b920cb287c888ab194"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD removal",
+      "value": 40.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "180 mg/1\n40%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "efa4ab994be67e4d2b89"
+    },
+    {
+      "kind": "design",
+      "parameter": "SS - Raw Sewage",
+      "value": 200.0,
+      "unit": "mg/l",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "SS - Raw Sewage\n- Removal\n\n200 mg/1",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "7ea6b7140380aaec1fa9"
+    },
+    {
+      "kind": "design",
+      "parameter": "SS removal",
+      "value": 65.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "200 mg/1\n65%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "85bb9bb2c280d09e507e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Pumps flow",
+      "value": 3150.0,
+      "unit": "gpm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Size: Three 3150 gpm @ 33' tdh",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "7ee1887d910e92c85285"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal volume",
+      "value": 18000.0,
+      "unit": "gal",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Size: One 18^ X 13 X 12' (18,000 gal)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "dcdb1124b000bb8e009a"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal Retention",
+      "value": 8.6,
+      "unit": "min",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Retention: 8.6 min",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "6a35f0984c2cd33e10be"
+    },
+    {
+      "kind": "design",
+      "parameter": "Pre-aeration Tank Retention",
+      "value": 11.2,
+      "unit": "min",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Retention : 11.2 min",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "89692e4eca344013e70b"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation volume",
+      "value": 388000.0,
+      "unit": "gal",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Size: Two 78 X 32 X 12^' (388,000 gal)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "bcd83ce4b42ab1252b16"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Retention",
+      "value": 3.11,
+      "unit": "hr",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Retention: 3. 11 hr",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "94da913560483d54911b"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Loading",
+      "value": 600.0,
+      "unit": "gal/ft2 /day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Loading: Surface, 600 gal/ft2 /day",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "dcb5c76d16038c2fc8f1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Weir capacity",
+      "value": 8260.0,
+      "unit": "gal/ft/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Weir, 8,260 gal/ft/day",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "d6c4ac04bf5d2266adff"
+    },
+    {
+      "kind": "design",
+      "parameter": "Chlorination capacity",
+      "value": 2000.0,
+      "unit": "lb/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Size: One 2000 lb /day",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "36d1e8d8759d75255b02"
+    },
+    {
+      "kind": "design",
+      "parameter": "Chlorine Contact Chamber volume",
+      "value": 21700.0,
+      "unit": "gal",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Size: One 31 X 14 X 8' (21,700 gal)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "7532d33d2b04d98157bc"
+    },
+    {
+      "kind": "design",
+      "parameter": "Chlorine Contact Chamber Retention",
+      "value": 11.2,
+      "unit": "min",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Retention: 11.2 min",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "6a4debbbc3415e4210d4"
+    },
+    {
+      "kind": "design",
+      "parameter": "Ouffall distance",
+      "value": 828.0,
+      "unit": "ft",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "828' to Owen Sound",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "c421b0b3dc5cb3f91603"
+    },
+    {
+      "kind": "design",
+      "parameter": "Digestion Primary volume",
+      "value": 31400.0,
+      "unit": "cu ft",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Size: One 40' dia x 25' swd (31,400\n\ncu ft or 0. 196 mil gal)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "9847e7b04e82a16b573d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Digestion Primary volume",
+      "value": 0.196,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "cu ft or 0. 196 mil gal",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "2c18a3ed424a449f5cdd"
+    },
+    {
+      "kind": "design",
+      "parameter": "Digestion Primary Loading",
+      "value": 2.75,
+      "unit": "lb/cu ft/mo",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Loading: 2.75 lb/cu ft/mo",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "c4d56a91d077489db814"
+    },
+    {
+      "kind": "design",
+      "parameter": "Digestion Secondary volume",
+      "value": 30800.0,
+      "unit": "cu ft",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Size: One 40' dia x 24^' swd (30, 800\n\ncu ft or 0. 192 mil gal)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "6a0e2ec2a8f65b7c3fcd"
+    },
+    {
+      "kind": "design",
+      "parameter": "Digestion Secondary volume",
+      "value": 0.192,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "cu ft or 0. 192 mil gal",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "389d929bf08c940ab614"
+    },
+    {
+      "kind": "design",
+      "parameter": "Digestion Secondary Loading",
+      "value": 1.88,
+      "unit": "lb/cu ft/mo",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Total Loading: 1.88 lb/cu ft/mo",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "1a2c09967ce37969cf4a"
+    },
+    {
+      "kind": "design",
+      "parameter": "West Side Pump flow",
+      "value": 3916.0,
+      "unit": "gpm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "One - 3916 gpm Chicago Pump",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "d28a0305e02d79cdac16"
+    },
+    {
+      "kind": "design",
+      "parameter": "West Side Pump flow",
+      "value": 1000.0,
+      "unit": "gpm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "Two - 1000 gpm Smart- Turner",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "5a5bdfa8b4e6f7b3e724"
+    },
+    {
+      "kind": "design",
+      "parameter": "pump capacity",
+      "value": 3800.0,
+      "unit": "gallons per minute",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "modifications to the West Side pumping station included an additional pump with a capacity of more than 3800 gallons per minute",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "f78773845ef0981048bb"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "operating above design capacity",
+      "value": 80.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "From the graphs, it can be seen that 80% of the time the plant is most likely operating above the design capacity.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "44db7c59ccf8f3c2aa4b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total volume treated",
+      "value": 1475.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The total operating cost for treating 1475 million gallons of sewage in 1969 was $53, 549. 66.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "efdb49b20c8352bcb649"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 1475.2,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The total flow for the year was 1475.2 million gallons, with an average daily flow of four million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "64336e87214b220b6167"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 4.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The total flow for the year was 1475.2 million gallons, with an average daily flow of four million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "4f189a34614fb9209d20"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum daily flow",
+      "value": 8.8,
+      "unit": "million gallons",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The maximum and minimum daily flows were 8. 8 million gallons in November and 2.1 million gallons in July.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "29f1896723e83126da53"
+    },
+    {
+      "kind": "observation",
+      "parameter": "minimum daily flow",
+      "value": 2.1,
+      "unit": "million gallons",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The maximum and minimum daily flows were 8. 8 million gallons in November and 2.1 million gallons in July.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "633645e49380fb3ae02c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine used per month",
+      "value": 2696.0,
+      "unit": "pounds",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "An average of 2696 pounds of chlorine was used per month.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "153be9607bd81a6fa78e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine per million gallons",
+      "value": 21.9,
+      "unit": "pounds per million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The operation used 21.9 pounds of chlorine per million gallons of flow at an average dosage of 2.2 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "2640cf8f2c66199de3c7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine dosage",
+      "value": 2.2,
+      "unit": "mg/L",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The operation used 21.9 pounds of chlorine per million gallons of flow at an average dosage of 2.2 mg/1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "7ecc8429f8e751ba5d67"
+    },
+    {
+      "kind": "observation",
+      "parameter": "residual chlorine",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": "average",
+      "stream": "effluent",
+      "place": null,
+      "period": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "This maintained an average residual of 0.5 mg/1 in the final effluent.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "e15f02c57747dee83d9f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 104.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "influent",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "c43f66f028b0609be83b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 224.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "influent",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "7b8751fbfdc82b3f974f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 37.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "232eb0151f802261ae02"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 36.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "7fc1999b93992fc6114d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal",
+      "value": 64.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "giving an average removal of 64% BOD and 84% suspended solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "56eba8eeb968d32061aa"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal",
+      "value": 84.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "giving an average removal of 64% BOD and 84% suspended solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "5217496d59a738fff24b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit removed",
+      "value": 1243.0,
+      "unit": "cu ft",
+      "qualifier": null,
+      "stream": "raw",
+      "place": null,
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "A total of 1243 cu. ft. of grit was removed during the year",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "77072fe3daf70bec327a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit removed per million gallons",
+      "value": 104.0,
+      "unit": "cu ft",
+      "qualifier": null,
+      "stream": "raw",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "for an average of 104 cu. ft. of grit removed for each one million gallons of sewage treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "cb041860bd209c8e09b9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sludge pumped",
+      "value": 3.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "raw",
+      "place": null,
+      "period": "1969",
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "Just over three million gallons of raw sludge were pumped to the digesters during 1969.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "d2a4bde927d4de185cae"
+    },
+    {
+      "kind": "observation",
+      "parameter": "monthly volume",
+      "value": 258000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "raw",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "ed0c536e3012f5242664"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total solids",
+      "value": 7.3,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "raw",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "b4804fd77a1a0cdfb495"
+    },
+    {
+      "kind": "observation",
+      "parameter": "volatile solids",
+      "value": 47.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "raw",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "b0a4bb97ecae10729c2a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sludge removed",
+      "value": 1495000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "treated",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "Sludge totalling 1,495,000 gallons was removed from the digesters and hauled away.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "e92d4249dcfcf8f690f5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "monthly volume",
+      "value": 125000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "treated",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 125,000 gallons contained 8. 5% total solids and 28% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "f7c4b6dd28b2506986a5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total solids",
+      "value": 8.5,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "treated",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 125,000 gallons contained 8. 5% total solids and 28% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "f759a6b9a8c83fd9ec0d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "volatile solids",
+      "value": 28.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "treated",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The average monthly volume of 125,000 gallons contained 8. 5% total solids and 28% volatile solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "10f408b9cf2fd62c73a1"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "hydraulic capacity exceedance",
+      "value": 85.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "confidence": 0.8429,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 11,
+        "source_text": "The plant operated above the hydraulic design capacity 85% of the time , and increasing the pumping capacity of the West Side pumping station ag- gravated this problem.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7746
+      },
+      "key": "86d0106d059295db94ea"
+    }
+  ]
+}

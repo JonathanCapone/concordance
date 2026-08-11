@@ -1,0 +1,1129 @@
+{
+"years": [
+1961,
+1962,
+1963,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974,
+1978,
+1988
+],
+"municipalities": [
+{
+"name": "Burlington Drury Lane",
+"years": [
+1961,
+1962,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Burlington Elizabeth Gardens",
+"years": [
+1962,
+1963,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Richmond Hill",
+"years": [
+1962,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Kitchener",
+"years": [
+1962,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1974
+]
+},
+{
+"name": "Waterloo",
+"years": [
+1962,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1974
+]
+},
+{
+"name": "Orangeville",
+"years": [
+1962,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972
+]
+},
+{
+"name": "Port Arthur",
+"years": [
+1962,
+1963,
+1964,
+1965,
+1967,
+1968,
+1969
+]
+},
+{
+"name": "Streetsville",
+"years": [
+1962,
+1964,
+1965,
+1966,
+1967,
+1968
+]
+},
+{
+"name": "Georgetown",
+"years": [
+1963,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973
+]
+},
+{
+"name": "Stratford",
+"years": [
+1963,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1973,
+1974
+]
+},
+{
+"name": "Brantford",
+"years": [
+1963,
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1974
+]
+},
+{
+"name": "Lakeview",
+"years": [
+1963,
+1964,
+1965,
+1966,
+1967,
+1968,
+1973,
+1974
+]
+},
+{
+"name": "North Bay",
+"years": [
+1963,
+1964,
+1971,
+1972,
+1974
+]
+},
+{
+"name": "Alfred",
+"years": [
+1963
+]
+},
+{
+"name": "Brooklin",
+"years": [
+1963
+]
+},
+{
+"name": "Port Perry",
+"years": [
+1963
+]
+},
+{
+"name": "Sault Ste Marie",
+"years": [
+1963
+]
+},
+{
+"name": "Huntsville",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Sault Ste. Marie",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Trenton",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Belleville",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1974
+]
+},
+{
+"name": "Burlington Skyway",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Coniston",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Owen Sound",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Fergus",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1974
+]
+},
+{
+"name": "Galt",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972
+]
+},
+{
+"name": "Point Edward",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1973,
+1974
+]
+},
+{
+"name": "Preston",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972
+]
+},
+{
+"name": "Simcoe",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1974
+]
+},
+{
+"name": "Tillsonburg",
+"years": [
+1964,
+1965,
+1967,
+1968,
+1969,
+1970,
+1973,
+1974
+]
+},
+{
+"name": "Moore Township (Corunna)",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970
+]
+},
+{
+"name": "Nepean",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970
+]
+},
+{
+"name": "Port Colborne",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970
+]
+},
+{
+"name": "Westminster",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969,
+1970
+]
+},
+{
+"name": "Fort William",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968,
+1969
+]
+},
+{
+"name": "Brampton - Chinguacousy",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968
+]
+},
+{
+"name": "Markham Village",
+"years": [
+1964,
+1965,
+1966,
+1967,
+1968
+]
+},
+{
+"name": "Fort Frances",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Timmins",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Elora",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1974
+]
+},
+{
+"name": "Port Dover",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1974
+]
+},
+{
+"name": "Frankford",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1973,
+1974
+]
+},
+{
+"name": "Paris",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972,
+1974
+]
+},
+{
+"name": "Elmira",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970,
+1972
+]
+},
+{
+"name": "Fort Erie",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970
+]
+},
+{
+"name": "Kingston",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970
+]
+},
+{
+"name": "North Bay Area",
+"years": [
+1965,
+1966,
+1967,
+1968,
+1969,
+1970
+]
+},
+{
+"name": "Sidney Township (Batawa)",
+"years": [
+1965,
+1966,
+1967,
+1968
+]
+},
+{
+"name": "Newmarket Area",
+"years": [
+1965
+]
+},
+{
+"name": "Operating Cost Summary",
+"years": [
+1965
+]
+},
+{
+"name": "Chatham",
+"years": [
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Midland",
+"years": [
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Parry Sound",
+"years": [
+1966,
+1967,
+1968,
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Newmarket-E. Gwillimbury",
+"years": [
+1966,
+1967
+]
+},
+{
+"name": "Waterdown",
+"years": [
+1967,
+1968,
+1969,
+1970,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Newmarket-East Gwillimbury",
+"years": [
+1968,
+1969,
+1970,
+1971
+]
+},
+{
+"name": "Simcoe, County Of Norfolk : Municipal",
+"years": [
+1968
+]
+},
+{
+"name": "Markham",
+"years": [
+1969,
+1970,
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Sidney (Batawa)",
+"years": [
+1969,
+1970
+]
+},
+{
+"name": "Ontario Water Resources Commission",
+"years": [
+1969
+]
+},
+{
+"name": "Thunder Bay",
+"years": [
+1970,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Eganville",
+"years": [
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Kingston Twp",
+"years": [
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Westminster Twp",
+"years": [
+1971,
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Campbellford",
+"years": [
+1971,
+1972,
+1973
+]
+},
+{
+"name": "Cayuga",
+"years": [
+1971,
+1972,
+1974
+]
+},
+{
+"name": "Chesterville",
+"years": [
+1971,
+1972,
+1973
+]
+},
+{
+"name": "Moore Twp. - Corunna",
+"years": [
+1971,
+1973,
+1974
+]
+},
+{
+"name": "Pickering Village",
+"years": [
+1971,
+1972,
+1973
+]
+},
+{
+"name": "Wallaceburg",
+"years": [
+1971,
+1973,
+1974
+]
+},
+{
+"name": "Haileybury",
+"years": [
+1971,
+1973
+]
+},
+{
+"name": "Bradford",
+"years": [
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Meaford",
+"years": [
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Moosonee Water Supply System And",
+"years": [
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Newmarket",
+"years": [
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Rockland Water Treatment Plant And",
+"years": [
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Sidney Twp.- (Batawa)",
+"years": [
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Winchester Water Supply System And",
+"years": [
+1972,
+1973,
+1974
+]
+},
+{
+"name": "Carleton Place",
+"years": [
+1972,
+1974
+]
+},
+{
+"name": "Deseronto",
+"years": [
+1972,
+1974
+]
+},
+{
+"name": "Emo Twp",
+"years": [
+1973,
+1974
+]
+},
+{
+"name": "Espanola",
+"years": [
+1973,
+1974
+]
+},
+{
+"name": "Ingersoll",
+"years": [
+1973,
+1974
+]
+},
+{
+"name": "St. Marys",
+"years": [
+1973,
+1974
+]
+},
+{
+"name": "Haileybury Water Treatment Plant And",
+"years": [
+1973
+]
+},
+{
+"name": "Red Lake Twp. Water Treatment Plant And",
+"years": [
+1973
+]
+},
+{
+"name": "Sudbury",
+"years": [
+1973
+]
+},
+{
+"name": "Woolwich Twp",
+"years": [
+1973
+]
+},
+{
+"name": "Alliston",
+"years": [
+1974
+]
+},
+{
+"name": "Cambridge (Galt)",
+"years": [
+1974
+]
+},
+{
+"name": "Cambridge (Hespeler)",
+"years": [
+1974
+]
+},
+{
+"name": "Cambridge (Preston)",
+"years": [
+1974
+]
+},
+{
+"name": "Chelmsford",
+"years": [
+1974
+]
+},
+{
+"name": "Clarkson",
+"years": [
+1974
+]
+},
+{
+"name": "Ear Falls",
+"years": [
+1974
+]
+},
+{
+"name": "Hagersville",
+"years": [
+1974
+]
+},
+{
+"name": "Haileybury : Water Treatment Plant And",
+"years": [
+1974
+]
+},
+{
+"name": "Halton Hills, Georgetown",
+"years": [
+1974
+]
+},
+{
+"name": "Ignace Twp",
+"years": [
+1974
+]
+},
+{
+"name": "Kirkland Lake",
+"years": [
+1974
+]
+},
+{
+"name": "Malton",
+"years": [
+1974
+]
+},
+{
+"name": "Palmerston",
+"years": [
+1974
+]
+},
+{
+"name": "Port Mcnicoll",
+"years": [
+1974
+]
+},
+{
+"name": "Red Lake Twp, Water Treatment Plant And",
+"years": [
+1974
+]
+},
+{
+"name": "Southampton Water Treatment Plant And",
+"years": [
+1974
+]
+},
+{
+"name": "Sturgeon Falls",
+"years": [
+1974
+]
+},
+{
+"name": "Twp Of Longlac",
+"years": [
+1974
+]
+},
+{
+"name": "Woolwich Twp., Elmira",
+"years": [
+1974
+]
+},
+{
+"name": "Woolwich Twp., St. Jacobs",
+"years": [
+1974
+]
+},
+{
+"name": "Evaluation Of The Village Of Grand Valley",
+"years": [
+1978
+]
+},
+{
+"name": "Expansion Of Stamford-Niagara Falls",
+"years": [
+1988
+]
+},
+{
+"name": "Thirty Seven Municipal",
+"years": [
+1988
+]
+}
+],
+"totals": {
+"1961": 1,
+"1962": 8,
+"1963": 11,
+"1964": 32,
+"1965": 45,
+"1966": 45,
+"1967": 48,
+"1968": 49,
+"1969": 46,
+"1970": 44,
+"1971": 30,
+"1972": 48,
+"1973": 47,
+"1974": 72,
+"1978": 1,
+"1988": 2
+}
+}

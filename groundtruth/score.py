@@ -79,6 +79,67 @@ def values_match(a: float | None, b: float | None, *, rel: float = 0.01) -> bool
     return scale > 0 and abs(a - b) / scale <= rel
 
 
+#: Multiplier to a base unit, so a quantity written at different scales compares
+#: equal. "3.0 million gallons" and "3000000 gallons" are the same measurement,
+#: and scoring them as a miss AND a false positive double-punishes a correct read.
+_SCALE: dict[str, tuple[str, float]] = {
+    "million gallons": ("gallons", 1e6),
+    "mil gal": ("gallons", 1e6),
+    "thousand gallons": ("gallons", 1e3),
+    "gallons": ("gallons", 1.0),
+    "mgd": ("gallons/day", 1e6),
+    "gallons/day": ("gallons/day", 1.0),
+    "million gallons/day": ("gallons/day", 1e6),
+}
+
+#: Rate suffixes a reader may legitimately place in the PARAMETER NAME rather
+#: than the unit -- "average daily flow" in million gallons is the same claim as
+#: "flow" in million gallons per day. Reconciled rather than counted wrong.
+_RATE_WORDS: dict[str, str] = {
+    "daily": "day", "per day": "day", "/day": "day",
+    "monthly": "month", "per month": "month", "/month": "month",
+    "annual": "year", "yearly": "year", "per year": "year", "/year": "year",
+    "hourly": "hour", "per hour": "hour",
+}
+
+
+def canonical_quantity(
+    value: float | None, unit: str | None, parameter: str = ""
+) -> tuple[float | None, str]:
+    """Reduce (value, unit, parameter) to a comparable (magnitude, base unit).
+
+    Folds scale prefixes into the number, and moves any rate implied by the
+    parameter name into the unit, so that two correct readings written
+    differently compare equal.
+    """
+    u = norm_unit(unit)
+    if value is None:
+        return None, u
+
+    base, mult = _SCALE.get(u, (u, 1.0))
+    val = value * mult
+
+    # If the unit carries no rate but the parameter name implies one, adopt it.
+    if "/" not in base:
+        p = parameter.lower()
+        for word, period in _RATE_WORDS.items():
+            if word in p:
+                base = f"{base}/{period}"
+                break
+    return val, base
+
+
+def quantities_match(
+    gold: dict[str, Any], got: Any, *, rel: float = 0.01
+) -> bool:
+    """True when two readings describe the same physical quantity."""
+    gv, gu = canonical_quantity(
+        gold.get("value"), gold.get("unit"), str(gold.get("parameter", ""))
+    )
+    rv, ru = canonical_quantity(got.value, got.unit, got.parameter or "")
+    return gu == ru and values_match(gv, rv, rel=rel)
+
+
 @dataclass
 class Match:
     gold: dict[str, Any]
@@ -135,7 +196,6 @@ def score_page(gold_entries: list[dict[str, Any]], got: list[Record], page: int)
     remaining = list(got)
 
     for g in gold_entries:
-        gv, gu = g.get("value"), norm_unit(g.get("unit"))
         hit = None
         # Prefer a candidate that also agrees on kind, so that when a page
         # states the same number as both design and observation we pair them up
@@ -144,7 +204,7 @@ def score_page(gold_entries: list[dict[str, Any]], got: list[Record], page: int)
             for r in remaining:
                 if want_kind and r.kind != g.get("kind"):
                     continue
-                if values_match(gv, r.value) and norm_unit(r.unit) == gu:
+                if quantities_match(g, r):
                     hit = r
                     break
             if hit:
