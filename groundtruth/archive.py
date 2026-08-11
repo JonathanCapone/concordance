@@ -304,15 +304,32 @@ class Archive:
 
     # -- page images (the vision / map / figure paths) --------------------
 
-    def page_image_url(self, identifier: str, page: int, *, scale: int = 2) -> str:
-        """Direct page-image URL, for paths B/D/E.
+    #: Widest useful render. Measured on a 2621x3751 scan: w1000 returns 309 KB,
+    #: w1500 returns 952 KB, and w2000/w3000 return exactly the same bytes as
+    #: w1500 -- the service caps there. Asking for more just wastes the
+    #: archive's bandwidth for an identical image.
+    MAX_PAGE_WIDTH = 1500
+
+    def page_image_url(self, identifier: str, page: int, *, width: int = 1500) -> str:
+        """Direct page-image URL, for the vision, figure and map paths.
 
         `page` is 1-indexed to match `PageText`; the service is 0-indexed.
+        Width matters: a 1969 table is unreadable at w500, which is the
+        difference between the vision path working and not.
         """
-        return (
-            f"https://archive.org/download/{identifier}/page/n{page - 1}"
-            f"_w{1000 // max(1, scale)}.jpg"
-        )
+        w = min(int(width), self.MAX_PAGE_WIDTH)
+        return f"https://archive.org/download/{identifier}/page/n{page - 1}_w{w}.jpg"
+
+    def page_image(self, identifier: str, page: int, *, width: int = 1500) -> bytes:
+        """Page image bytes, cached on disk."""
+        w = min(int(width), self.MAX_PAGE_WIDTH)
+        path = self.cache / "images" / f"{identifier}_n{page - 1}_w{w}.jpg"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if path.exists():
+            return path.read_bytes()
+        data = _get(self.page_image_url(identifier, page, width=w))
+        path.write_bytes(data)
+        return data
 
     def has_page_images(self, identifier: str) -> bool:
         names = [f.get("name", "") for f in self.metadata(identifier).get("files", [])]
