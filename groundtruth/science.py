@@ -432,10 +432,10 @@ def exceedance(
 class Series:
     """A comparable run of readings, plus everything that had to be assumed.
 
-    `assumptions` and `rejected` are part of the result, not diagnostics to be
-    logged away. A series that quietly dropped a third of its points, or that
-    silently converted Imperial gallons, is not the same object as one that
-    didn't, and a reader has to be able to tell them apart.
+    `assumptions`, `rejected` and `suspect` are part of the result, not
+    diagnostics to be logged away. A series that quietly dropped a third of its
+    points, silently converted Imperial gallons, or contains a scan corruption is
+    not the same object as one that doesn't, and a reader has to be able to tell.
     """
 
     parameter: str
@@ -444,9 +444,74 @@ class Series:
     unit: str = ""
     assumptions: list[str] = field(default_factory=list)
     rejected: list[str] = field(default_factory=list)
+    #: Readings that are still in `points` but look wrong. Flagged rather than
+    #: removed: a plant really can have a bad year, and deleting inconvenient
+    #: data is a worse failure than reporting it with a warning attached.
+    suspect: list[str] = field(default_factory=list)
 
     def __len__(self) -> int:
         return len(self.points)
+
+
+def _median(values: list[float]) -> float:
+    s = sorted(values)
+    n = len(s)
+    return s[n // 2] if n % 2 else (s[n // 2 - 1] + s[n // 2]) / 2.0
+
+
+def find_suspect_readings(points: list[tuple[float, float, float]]) -> list[str]:
+    """Flag readings that look like scan corruption rather than measurement.
+
+    The 1968 Owen Sound report is the motivating case. Its OCR reads
+
+        "The total flow to the plant in 1968 was 144:2. 50 million gallons"
+
+    where the document says 1442.50. The model faithfully returned 144.2, which
+    sits an order of magnitude below every neighbouring year and is entirely
+    plausible in isolation.
+
+    A dropped or misplaced digit is the characteristic OCR failure on these
+    scans, so a point that would land near the series median if multiplied by a
+    power of ten is called out specifically. That is a much stronger signal than
+    "this is an outlier", and it tells a reader exactly what to look for on the
+    page.
+    """
+    if len(points) < 3:
+        return []
+    values = [v for _, v, _ in points]
+    med = _median(values)
+    if med == 0:
+        return []
+    deviations = [abs(v - med) for v in values]
+    mad = _median(deviations)
+
+    out: list[str] = []
+    for year, value, _conf in points:
+        if value == 0:
+            continue
+        # Robust outlier test. 4.45 MAD is roughly 3 sigma for normal data;
+        # the constant matters less than using MAD rather than a mean and
+        # standard deviation, which a single bad point would drag with it.
+        far = mad > 0 and abs(value - med) > 4.45 * mad
+        if not far and abs(value - med) <= abs(med):
+            continue
+
+        for power in (-3, -2, -1, 1, 2, 3):
+            shifted = value * (10 ** power)
+            if abs(shifted - med) <= 0.5 * abs(med):
+                out.append(
+                    f"{int(year)}: {value:g} is ~10^{power} from the series median "
+                    f"({med:g}); a dropped or misplaced digit in the scan would "
+                    f"explain it. Check the page before using this point."
+                )
+                break
+        else:
+            if far:
+                out.append(
+                    f"{int(year)}: {value:g} is far from the series median ({med:g}). "
+                    "Could be a genuinely unusual year or a misreading; check the page."
+                )
+    return out
 
 
 def series_from_records(
@@ -501,7 +566,7 @@ def series_from_records(
             continue
         raw.append((year, float(r.value), r.unit, float(r.confidence)))
 
-    points, assumptions, rejected = normalize_series(raw)
+    points, assumptions, rejected = normalize_series(raw, parameter=parameter)
 
     unit = ""
     if points:
@@ -522,11 +587,13 @@ def series_from_records(
         if y not in best or c > best[y][2]:
             best[y] = (y, v, c)
 
+    final = sorted(best.values())
     return Series(
         parameter=parameter,
         stream=stream,
-        points=sorted(best.values()),
+        points=final,
         unit=unit,
         assumptions=assumptions,
         rejected=rejected,
+        suspect=find_suspect_readings(final),
     )

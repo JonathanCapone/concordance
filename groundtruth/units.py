@@ -85,7 +85,39 @@ def _clean(text: str) -> str:
     return re.sub(r"\s+", " ", t).strip(" .")
 
 
-def parse_unit(raw: str | None, *, era: int | None = None) -> Quantity | None:
+#: Units whose meaning depends on what is being measured.
+#:
+#: "mg" is the worst of them. In Ontario waterworks writing of this era it means
+#: MILLION GALLONS -- the 1967 Owen Sound report says "the total flow to the
+#: plant in 1967 was 1415.50 mg" and "an average daily flow of 3.88 mg". In every
+#: other context it means milligrams. Resolving it needs the parameter, so a
+#: bare "mg" with no context is refused rather than guessed.
+_AMBIGUOUS: dict[str, dict[str, str]] = {
+    # A *rate* ("an average daily flow of 3.88 mg") is million gallons per day.
+    # A *total* ("the total flow in 1967 was 1415.50 mg") is a plain volume.
+    # Reading the rate as a volume silently drops it out of the flow series.
+    "mg": {"rate": "million gallons per day", "total": "million gallons"},
+}
+
+
+def _disambiguate(t: str, parameter: str | None) -> str | None:
+    """Resolve a context-dependent unit using the parameter, or give up."""
+    options = _AMBIGUOUS.get(t)
+    if options is None or not parameter:
+        return None
+    from .parameters import resolve as resolve_parameter
+
+    p = resolve_parameter(parameter)
+    if p is None:
+        return None
+    if p.substance == "flow":
+        return options["total"] if p.measure == "total" else options["rate"]
+    return None
+
+
+def parse_unit(
+    raw: str | None, *, era: int | None = None, parameter: str | None = None
+) -> Quantity | None:
     """Reduce a unit string to a base unit and a scale multiplier.
 
     Returns a Quantity with value=multiplier, so callers can apply it. None when
@@ -110,6 +142,18 @@ def parse_unit(raw: str | None, *, era: int | None = None) -> Quantity | None:
         t = t.replace("imperial", " ").strip()
 
     t = re.sub(r"\s+", " ", t).strip()
+
+    # Context-dependent units first: "mg" means million gallons in a flow
+    # context and milligrams everywhere else, and only the parameter can say.
+    resolved = _disambiguate(t, parameter)
+    if resolved is not None:
+        inner = parse_unit(resolved, era=era)
+        if inner is not None:
+            return Quantity(
+                inner.value * mult, inner.unit, inner.dimension,
+                inner.assumptions
+                + ('"mg" read as million gallons (Ontario waterworks usage of the era)',),
+            )
 
     # concentration
     if re.fullmatch(r"mg\s*/\s*[l1i]", t) or t in {"mgl", "mg per litre", "mg per liter"}:
@@ -176,9 +220,14 @@ def parse_unit(raw: str | None, *, era: int | None = None) -> Quantity | None:
     return None
 
 
-def to_base(value: float, unit: str | None, *, era: int | None = None) -> Quantity | None:
-    """Convert a measured value into its base unit."""
-    q = parse_unit(unit, era=era)
+def to_base(
+    value: float, unit: str | None, *, era: int | None = None, parameter: str | None = None
+) -> Quantity | None:
+    """Convert a measured value into its base unit.
+
+    `parameter` disambiguates units whose meaning depends on what is measured.
+    """
+    q = parse_unit(unit, era=era, parameter=parameter)
     if q is None:
         return None
     return Quantity(value * q.value, q.unit, q.dimension, q.assumptions)
@@ -208,6 +257,8 @@ def comparable(a: Quantity | None, b: Quantity | None) -> tuple[bool, str]:
 
 def normalize_series(
     points: list[tuple[float, float, str | None, float]],
+    *,
+    parameter: str | None = None,
 ) -> tuple[list[tuple[float, float, float]], list[str], list[str]]:
     """Reduce (year, value, unit, confidence) points to one base unit.
 
@@ -218,7 +269,7 @@ def normalize_series(
     parsed: list[tuple[float, Quantity, float]] = []
     rejected: list[str] = []
     for year, value, unit, conf in points:
-        q = to_base(value, unit, era=int(year))
+        q = to_base(value, unit, era=int(year), parameter=parameter)
         if q is None:
             rejected.append(f"{int(year)}: unrecognised unit {unit!r}")
             continue

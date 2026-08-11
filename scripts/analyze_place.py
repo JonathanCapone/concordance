@@ -114,6 +114,8 @@ def main() -> int:
             print(f"   assumed: {a}")
         for r in series.rejected:
             print(f"   rejected: {r}")
+        for sus in series.suspect:
+            print(f"   SUSPECT:  {sus}")
         t = trend(pts)
         print(f"   trend: {t.describe()}")
         if t.ok:
