@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ground-truth"
+version = "0.1.0"
+description = "Reading Canada's public record as a hundred-year instrument"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Jonathan Capone" }]
+
+# Deliberately zero required dependencies. The whole pipeline -- fetching,
+# page parsing, routing, extraction against a local model, and scoring -- runs
+# on the standard library alone. Anyone can clone this and get a real result
+# without installing anything or holding an API key.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+ground-truth-gold = "scripts.run_gold:main"
+
+[tool.setuptools.packages.find]
+include = ["groundtruth*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

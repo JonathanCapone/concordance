@@ -1,0 +1,38 @@
+# Fetched and derived archive data. Regenerable from archive.org by anyone --
+# the code is the artifact, the cache is not. Currently ~41 MB for the index
+# alone, and grows without bound as pages are pulled.
+data/cache/
+data/*.log
+
+# Hand-checked ground truth (data/gold/) and published accuracy runs
+# (data/results/) ARE committed on purpose: the claim "here is how accurate it
+# is" means nothing without them.
+
+# Secrets. No API key is required by this project, and none should ever be
+# committed even where one is optionally used.
+.env
+*.env
+!*.env.example
+secrets.env
+*.pem
+*.p12
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

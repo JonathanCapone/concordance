@@ -1,0 +1,62 @@
+{
+  "identifier": "owensoundwaterpo24477",
+  "title": "Owen Sound : water pollution control plant, annual report 1969",
+  "publisher": "Ontario Water Resources Commission",
+  "year": "1969",
+  "annotator": "hand-read from the OCR text of the scanned pages",
+  "notes": [
+    "Ground truth for the accuracy harness. Every entry was read by a human from",
+    "the page text; nothing here came from a model.",
+    "Page 9 is a DESIGN DATA sheet. Its BOD/SS figures are design specifications,",
+    "not measurements, and an extractor that reports them as observations is",
+    "wrong in a way that would silently corrupt every downstream trend.",
+    "Where the report states a value in words ('just over three million gallons')",
+    "the numeric value is recorded with approximate: true, because an extractor",
+    "that returns 3000000 is right and one that returns null is not."
+  ],
+  "pages": {
+    "9": [
+      {"kind": "design", "parameter": "design flow", "value": 3.0, "unit": "mgd", "stream": "unknown"},
+      {"kind": "design", "parameter": "design population", "value": 25000, "unit": "people", "stream": "unknown"},
+      {"kind": "design", "parameter": "BOD", "value": 180, "unit": "mg/L", "stream": "raw"},
+      {"kind": "design", "parameter": "BOD removal", "value": 40, "unit": "%", "stream": "unknown"},
+      {"kind": "design", "parameter": "suspended solids", "value": 200, "unit": "mg/L", "stream": "raw"},
+      {"kind": "design", "parameter": "suspended solids removal", "value": 65, "unit": "%", "stream": "unknown"}
+    ],
+    "10": [
+      {"kind": "observation", "parameter": "operating cost", "value": 53549.66, "unit": "$", "qualifier": "total", "period": "1969"},
+      {"kind": "observation", "parameter": "sewage treated", "value": 1475, "unit": "million gallons", "qualifier": "total", "period": "1969"},
+      {"kind": "observation", "parameter": "unit cost", "value": 36.30, "unit": "$ per million gallons"},
+      {"kind": "observation", "parameter": "cost per pound BOD removed", "value": 0.05, "unit": "$"},
+      {"kind": "observation", "parameter": "flow", "value": 1475.2, "unit": "million gallons", "qualifier": "total", "period": "1969"},
+      {"kind": "observation", "parameter": "flow", "value": 4, "unit": "million gallons per day", "qualifier": "average"},
+      {"kind": "observation", "parameter": "flow", "value": 8.8, "unit": "million gallons per day", "qualifier": "maximum", "period": "1969-11"},
+      {"kind": "observation", "parameter": "flow", "value": 2.1, "unit": "million gallons per day", "qualifier": "minimum", "period": "1969-07"},
+      {"kind": "observation", "parameter": "chlorine used", "value": 2696, "unit": "pounds per month", "qualifier": "average"},
+      {"kind": "observation", "parameter": "chlorine used", "value": 21.9, "unit": "pounds per million gallons"},
+      {"kind": "observation", "parameter": "chlorine dosage", "value": 2.2, "unit": "mg/L", "qualifier": "average"},
+      {"kind": "observation", "parameter": "chlorine residual", "value": 0.5, "unit": "mg/L", "qualifier": "average", "stream": "effluent"},
+      {"kind": "design", "parameter": "pump capacity", "value": 3800, "unit": "gallons per minute", "approximate": true},
+      {"kind": "conclusion", "parameter": "operating above design capacity", "value": 80, "unit": "%"}
+    ],
+    "11": [
+      {"kind": "observation", "parameter": "BOD", "value": 104, "unit": "mg/L", "qualifier": "average", "stream": "influent"},
+      {"kind": "observation", "parameter": "suspended solids", "value": 224, "unit": "mg/L", "qualifier": "average", "stream": "influent"},
+      {"kind": "observation", "parameter": "BOD", "value": 37, "unit": "mg/L", "qualifier": "average", "stream": "effluent"},
+      {"kind": "observation", "parameter": "suspended solids", "value": 36, "unit": "mg/L", "qualifier": "average", "stream": "effluent"},
+      {"kind": "observation", "parameter": "BOD removal", "value": 64, "unit": "%", "qualifier": "average"},
+      {"kind": "observation", "parameter": "suspended solids removal", "value": 84, "unit": "%", "qualifier": "average"},
+      {"kind": "observation", "parameter": "grit removed", "value": 1243, "unit": "cu ft", "qualifier": "total", "period": "1969"},
+      {"kind": "observation", "parameter": "grit removed per million gallons", "value": 104, "unit": "cu ft", "qualifier": "average"},
+      {"kind": "observation", "parameter": "raw sludge pumped to digesters", "value": 3000000, "unit": "gallons", "approximate": true, "period": "1969"},
+      {"kind": "observation", "parameter": "raw sludge volume", "value": 258000, "unit": "gallons per month", "qualifier": "average"},
+      {"kind": "observation", "parameter": "raw sludge total solids", "value": 7.3, "unit": "%"},
+      {"kind": "observation", "parameter": "raw sludge volatile solids", "value": 47, "unit": "%"},
+      {"kind": "observation", "parameter": "sludge removed from digesters", "value": 1495000, "unit": "gallons", "qualifier": "total"},
+      {"kind": "observation", "parameter": "removed sludge volume", "value": 125000, "unit": "gallons per month", "qualifier": "average"},
+      {"kind": "observation", "parameter": "removed sludge total solids", "value": 8.5, "unit": "%"},
+      {"kind": "observation", "parameter": "removed sludge volatile solids", "value": 28, "unit": "%"},
+      {"kind": "conclusion", "parameter": "operated above hydraulic design capacity", "value": 85, "unit": "%"}
+    ]
+  }
+}
