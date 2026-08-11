@@ -183,17 +183,37 @@ No key is ever committed to this repo or used by the public instance.
 
 ```
 groundtruth/
-  models.py    record types, provenance, page text with word boxes
-  archive.py   Internet Archive adapter: index, OCR, real page boundaries
-  router.py    per-page classification into extraction paths
-  extract.py   path A — reading measurements out of prose
-  score.py     the accuracy harness
+  models.py      record types, provenance, page text with word boxes
+  archive.py     Internet Archive adapter: index, OCR, real page boundaries
+  router.py      per-page classification into extraction paths
+  extract.py     path A — reading measurements out of prose
+  parameters.py  what was measured, resolved to a canonical quantity
+  units.py       the methods-drift layer: convert what is comparable, refuse the rest
+  science.py     trend with reading-uncertainty, changepoint, silence
+  repair.py      Tier 0 — proposed metadata corrections for the whole collection
+  score.py       the accuracy harness
 data/
-  gold/        hand-checked ground truth
-  results/     published accuracy runs
+  gold/          hand-checked ground truth
+  results/       published runs: accuracy, metadata proposals, silence report
 scripts/
-  run_gold.py  extract the gold pages and score them
+  run_gold.py         extract the gold pages and score them
+  rescore.py          re-score a saved run without calling a model
+  extract_place.py    read every surviving report for one town
+  analyze_place.py    turn those records into trends and findings
+  silence_report.py   map what stopped being measured, with a control
+  propose_metadata.py generate the catalogue repair diff
+  build_portal.py     render the reporting cliff as a self-contained page
+  build_town_page.py  render one town's record, every number linked to its scan
+portal/
+  silence.html   the 1975 cliff
 ```
+
+Two layers exist because the corpus forced them, not because they were planned.
+`units.py` was written after finding the same specification recorded as
+"180 PPM" in 1963 and "180 mg/1" in 1969. `parameters.py` was written after
+discovering that matching parameter names by substring had been plotting
+*removal percentages* on a chart labelled as effluent *concentrations* — both
+small numbers that fall when a plant improves, so it looked entirely reasonable.
 
 ## Status
 
