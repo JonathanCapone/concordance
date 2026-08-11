@@ -136,3 +136,53 @@ def test_corpus_load_skips_non_place_reports(tmp_path):
     )
     c = Corpus.load_dir(tmp_path)
     assert c.places == ["Somewhere"]
+
+
+# -- era standards -----------------------------------------------------------
+
+def _std(year, value, parameter="BOD", unit="mg/L"):
+    return Record(
+        kind="standard", parameter=parameter, value=value, unit=unit,
+        period=str(year), confidence=0.9,
+        provenance=Provenance(identifier="id", page=3, source_text=f"limit is {value} mg/L"),
+    )
+
+
+@pytest.fixture
+def standards():
+    return Corpus(records=[_std(1965, 45), _std(1978, 25), _std(1990, 20)], places=[])
+
+
+def test_standard_in_force_is_the_one_before_the_reading(standards):
+    from groundtruth.tools import standard_for
+    assert standard_for(standards, "BOD", 1969)["year"] == 1965
+    assert standard_for(standards, "BOD", 1980)["year"] == 1978
+
+
+def test_a_later_standard_is_flagged_not_applied(standards):
+    """A limit introduced in 1978 says nothing about a 1969 discharge. Using it
+    would manufacture retrospective violations."""
+    from groundtruth.tools import standard_for
+    only_later = Corpus(records=[_std(1978, 25)], places=[])
+    s = standard_for(only_later, "BOD", 1969)
+    assert s["applies_before_observation"] is False
+    assert "AFTER the 1969 reading" in s["caveat"]
+
+
+def test_judge_uses_the_era_standard_when_it_exists(standards):
+    from groundtruth.tools import judge_reading
+    out = judge_reading(standards, "BOD", 37, "mg/L", 1969)
+    assert "45 mg/L limit that applied then" in out["verdict"]
+    assert "caveat" not in out
+
+
+def test_judge_falls_back_to_modern_and_says_so():
+    from groundtruth.tools import judge_reading
+    out = judge_reading(Corpus(records=[], places=[]), "BOD", 37, "mg/L", 1969)
+    assert "modern" in out["compared_against"]
+    assert "MODERN" in out["caveat"]
+
+
+def test_a_standard_from_a_different_century_is_ignored(standards):
+    from groundtruth.tools import standard_for
+    assert standard_for(standards, "BOD", 1890) is None

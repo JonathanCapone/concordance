@@ -223,6 +223,82 @@ class Corpus:
 # the tools
 # --------------------------------------------------------------------------
 
+def standard_for(
+    corpus: Corpus,
+    parameter: str,
+    year: int,
+    *,
+    max_years_away: int = 15,
+) -> dict[str, Any] | None:
+    """The regulatory limit in force nearest a given year, from the archive itself.
+
+    Closes the loop that `explain_this_number` leaves open. Without this it
+    always falls back to a modern benchmark and has to say so; with it, a 1969
+    reading can be judged against a 1969 rule.
+
+    Prefers a standard published at or BEFORE the observation. A limit introduced
+    in 1978 tells you nothing about whether a 1969 discharge was acceptable, and
+    using it would manufacture retrospective violations -- which is exactly the
+    kind of confident, damning, meaningless output this project is trying not to
+    produce. A later standard is used only when no earlier one exists, and the
+    result says so.
+    """
+    want = resolve_parameter(parameter)
+    best: tuple[int, Record] | None = None
+
+    for r in corpus.records:
+        if r.kind != "standard" or r.value is None or not r.period:
+            continue
+        got = resolve_parameter(r.parameter, r.unit)
+        if want is not None:
+            if got is None or got.key != want.key:
+                continue
+        elif parameter.lower() not in r.parameter.lower():
+            continue
+        try:
+            std_year = int(str(r.period)[:4])
+        except ValueError:
+            continue
+        gap = year - std_year
+        if abs(gap) > max_years_away:
+            continue
+        # Rank: earlier-or-equal beats later, then nearest in time.
+        rank = (0 if gap >= 0 else 1, abs(gap))
+        if best is None or rank < best[0]:  # type: ignore[operator]
+            best = (rank, r)  # type: ignore[assignment]
+
+    if best is None:
+        return None
+    _rank, rec = best
+    std_year = int(str(rec.period)[:4])
+    return {
+        "value": rec.value,
+        "unit": rec.unit,
+        "year": std_year,
+        "applies_before_observation": std_year <= year,
+        "source": rec.provenance.page_url if rec.provenance else None,
+        "read_from": rec.provenance.source_text if rec.provenance else None,
+        "caveat": None if std_year <= year else (
+            f"This limit dates from {std_year}, AFTER the {year} reading. It cannot "
+            "say whether the discharge was acceptable at the time."
+        ),
+    }
+
+
+def judge_reading(
+    corpus: Corpus, parameter: str, value: float, unit: str | None, year: int
+) -> dict[str, Any]:
+    """Explain a measurement, using the era's own standard where the archive has one."""
+    std = standard_for(corpus, parameter, year)
+    out = explain_this_number(
+        parameter, value, unit, year,
+        era_standard=std["value"] if std and std["applies_before_observation"] else None,
+    )
+    if std:
+        out["standard"] = std
+    return out
+
+
 def find_my_town(corpus: Corpus, place: str) -> dict[str, Any]:
     """Everything ever measured about a place, summarised."""
     want = place.strip().lower()
