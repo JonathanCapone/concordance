@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "non_places": [
+    "Operating Cost Summary",
+    "Ontario Water Resources Commission",
+    "Thirty Seven Municipal",
+    "Evaluation Of The Village Of Grand Valley"
+  ],
+  "entries": [
+    {
+      "names": [
+        "Sidney Township (Batawa)",
+        "Sidney (Batawa)",
+        "Sidney Twp.- (Batawa)"
+      ],
+      "canonical": "Sidney Township (Batawa)",
+      "candidate_id": "FEGTQ",
+      "kind": "township",
+      "confidence": 0.96,
+      "note": "Batawa locality within historic Sidney Township; coordinates are the CGNDB Batawa reference point."
+    },
+    {
+      "names": ["Moore Township (Corunna)", "Moore Twp. - Corunna"],
+      "canonical": "Moore Township (Corunna)",
+      "candidate_id": "FATIF",
+      "kind": "township",
+      "confidence": 0.96,
+      "note": "Corunna locality within Moore Township; coordinates are the CGNDB Corunna reference point."
+    },
+    {
+      "names": [
+        "Newmarket Area",
+        "Newmarket-E. Gwillimbury",
+        "Newmarket-East Gwillimbury"
+      ],
+      "canonical": "Newmarket-East Gwillimbury",
+      "candidate_id": null,
+      "kind": "unknown",
+      "confidence": 0.55,
+      "note": "Joint municipal service-area label for the Town of Newmarket and Township of East Gwillimbury; no single coordinate is assigned.",
+      "source": "https://archive.org/details/NEWMARKETAREAWAT00SNSN19359.ome"
+    },
+    {
+      "names": ["Brampton - Chinguacousy"],
+      "canonical": "Brampton-Chinguacousy",
+      "candidate_id": null,
+      "kind": "unknown",
+      "confidence": 0.55,
+      "note": "Joint municipal label; no single coordinate is assigned."
+    },
+    {
+      "names": ["Burlington Drury Lane"],
+      "canonical": "Burlington (Drury Lane)",
+      "candidate_id": "FAMXK",
+      "history_name": "Burlington",
+      "kind": "city",
+      "confidence": 0.82,
+      "note": "Drury Lane site retained; coordinates are the CGNDB Burlington municipal reference, not a plant coordinate."
+    },
+    {
+      "names": ["Burlington Elizabeth Gardens"],
+      "canonical": "Burlington (Elizabeth Gardens)",
+      "candidate_id": "FBCEO",
+      "history_name": "Burlington",
+      "kind": "city",
+      "confidence": 0.94,
+      "note": "Elizabeth Gardens site retained; coordinates are the CGNDB locality reference."
+    },
+    {
+      "names": ["Burlington Skyway"],
+      "canonical": "Burlington (Skyway)",
+      "candidate_id": "FAMXK",
+      "history_name": "Burlington",
+      "kind": "city",
+      "confidence": 0.82,
+      "note": "Skyway site retained; coordinates are the CGNDB Burlington municipal reference, not a plant coordinate."
+    },
+    {
+      "names": ["North Bay Area"],
+      "canonical": "North Bay Area",
+      "candidate_id": null,
+      "kind": "unknown",
+      "confidence": 0.55,
+      "note": "Joint City of North Bay, Township of Widdifield and Township of West Ferris service-area label; no single coordinate is assigned.",
+      "source": "https://archive.org/details/NORTHBAYAREAWATE00SNSN19348.ome"
+    },
+    {
+      "names": ["Markham Village"],
+      "canonical": "Markham Village",
+      "candidate_id": "FDNFZ",
+      "kind": "village",
+      "confidence": 0.82,
+      "note": "Historic village scope retained; coordinates are the CGNDB Markham municipal reference."
+    },
+    {
+      "names": ["Ear Falls"],
+      "canonical": "Ear Falls",
+      "candidate_id": "FARQF",
+      "kind": "township",
+      "confidence": 0.99,
+      "note": "Resolved to the Township of Ear Falls administrative record rather than the same-name community point.",
+      "source": "https://archive.org/details/EARFALLSWATERPOL00SNSN18554.ome"
+    },
+    {
+      "names": ["Halton Hills, Georgetown"],
+      "canonical": "Georgetown",
+      "candidate_id": "FBHBE",
+      "kind": "town",
+      "confidence": 0.97,
+      "note": "The title preserves the Georgetown locality under the Halton Hills municipal label."
+    },
+    {
+      "names": ["Woolwich Twp"],
+      "canonical": "Woolwich Township",
+      "candidate_id": "FEALY",
+      "kind": "township",
+      "confidence": 0.99,
+      "note": null
+    },
+    {
+      "names": ["Woolwich Twp., Elmira"],
+      "canonical": "Woolwich Township (Elmira)",
+      "candidate_id": "FEHOW",
+      "kind": "township",
+      "confidence": 0.96,
+      "note": "Elmira site retained; coordinates are the CGNDB Elmira locality reference."
+    },
+    {
+      "names": ["Woolwich Twp., St. Jacobs"],
+      "canonical": "Woolwich Township (St. Jacobs)",
+      "candidate_id": "FECGS",
+      "kind": "township",
+      "confidence": 0.96,
+      "note": "St. Jacobs site retained; coordinates are the CGNDB St. Jacobs locality reference."
+    },
+    {
+      "names": [
+        "Red Lake Twp. Water Treatment Plant And",
+        "Red Lake Twp, Water Treatment Plant And"
+      ],
+      "canonical": "Red Lake Township",
+      "candidate_id": "FEBXK",
+      "kind": "township",
+      "confidence": 0.82,
+      "note": "Historic township label retained; coordinates are the CGNDB Red Lake municipal reference."
+    },
+    {
+      "names": ["Simcoe, County Of Norfolk : Municipal"],
+      "canonical": "Simcoe",
+      "candidate_id": "FCOKQ",
+      "kind": "town",
+      "confidence": 0.96,
+      "note": "The full source title identifies the Town of Simcoe; County of Norfolk is disambiguating regional context.",
+      "source": "https://archive.org/details/TOWNOFSIMCOECOUN00MCLE10786.ome"
+    },
+    {
+      "names": ["Twp Of Longlac"],
+      "canonical": "Longlac",
+      "candidate_id": "FCAKP",
+      "history_name": "Longlac",
+      "kind": "town",
+      "confidence": 0.85,
+      "note": "The extracted label says Twp, but official histories identify the 1974 corporation as the Town of Longlac; coordinates are the current CGNDB community reference point."
+    },
+    {
+      "names": ["Expansion Of Stamford-Niagara Falls"],
+      "canonical": "Stamford-Niagara Falls",
+      "candidate_id": null,
+      "kind": "unknown",
+      "confidence": 0.45,
+      "note": "Composite historical title; no single coordinate is assigned."
+    },
+    {
+      "names": ["Lakeview"],
+      "canonical": "Lakeview",
+      "candidate_id": "FBVYM",
+      "kind": "unknown",
+      "confidence": 0.95,
+      "note": "Resolved to Lakeview in Peel, the location of the corpus wastewater-plant series.",
+      "source": "https://peelregion.ca/press-releases/peel-region-invest-additional-130-million-expand-capacity-ge-booth-water-resource-recovery-facility"
+    },
+    {
+      "names": ["Westminster"],
+      "canonical": "Westminster",
+      "candidate_id": null,
+      "lat": 42.93027,
+      "lon": -81.18878,
+      "kind": "unknown",
+      "confidence": 0.96,
+      "note": "CGNDB formerly official populated place near London; kept distinct from Westminster Township.",
+      "source": "https://geogratis.gc.ca/services/geoname/en/geonames/FDGHB.json"
+    }
+  ]
+}

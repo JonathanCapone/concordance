@@ -1,0 +1,778 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "names": ["Fort William"],
+      "canonical": "Fort William",
+      "kind": "city",
+      "lat": 48.4,
+      "lon": -89.316667,
+      "valid_from": null,
+      "valid_to": 1969,
+      "superseded_by": "Thunder Bay",
+      "event_year": 1970,
+      "event_note": "amalgamated into Thunder Bay on January 1, 1970",
+      "sources": [
+        {
+          "title": "CGNDB formerly official city record FBEZL",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FBEZL"
+        },
+        {
+          "title": "History and Heritage - Thunder Bay Tourism",
+          "url": "https://www.visitthunderbay.com/en/see-and-do/history-and-heritage.aspx"
+        }
+      ]
+    },
+    {
+      "names": ["Port Arthur"],
+      "canonical": "Port Arthur",
+      "kind": "city",
+      "lat": 48.4,
+      "lon": -89.316667,
+      "valid_from": null,
+      "valid_to": 1969,
+      "superseded_by": "Thunder Bay",
+      "event_year": 1970,
+      "event_note": "amalgamated into Thunder Bay on January 1, 1970",
+      "sources": [
+        {
+          "title": "CGNDB formerly official city record FCHYC",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCHYC"
+        },
+        {
+          "title": "History and Heritage - Thunder Bay Tourism",
+          "url": "https://www.visitthunderbay.com/en/see-and-do/history-and-heritage.aspx"
+        }
+      ]
+    },
+    {
+      "names": ["Thunder Bay"],
+      "canonical": "Thunder Bay",
+      "kind": "city",
+      "lat": 48.4013889,
+      "lon": -89.2677778,
+      "valid_from": 1970,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 1970,
+      "event_note": "created by the 1970 amalgamation of Port Arthur and Fort William",
+      "sources": [
+        {
+          "title": "CGNDB current city record FCWFX",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCWFX"
+        },
+        {
+          "title": "History and Heritage - Thunder Bay Tourism",
+          "url": "https://www.visitthunderbay.com/en/see-and-do/history-and-heritage.aspx"
+        }
+      ]
+    },
+    {
+      "names": ["Galt"],
+      "canonical": "Galt",
+      "kind": "city",
+      "lat": 43.3558333,
+      "lon": -80.3105555,
+      "valid_from": null,
+      "valid_to": 1972,
+      "superseded_by": "Cambridge",
+      "event_year": 1973,
+      "event_note": "amalgamated into Cambridge on January 1, 1973",
+      "sources": [
+        {
+          "title": "CGNDB current urban-community record FDHGJ",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FDHGJ"
+        },
+        {
+          "title": "Local History - City of Cambridge",
+          "url": "https://www.cambridge.ca/business-building-development/building-planning/history-heritage/local-history/"
+        }
+      ]
+    },
+    {
+      "names": ["Preston"],
+      "canonical": "Preston",
+      "kind": "town",
+      "lat": 43.39148,
+      "lon": -80.34873,
+      "valid_from": null,
+      "valid_to": 1972,
+      "superseded_by": "Cambridge",
+      "event_year": 1973,
+      "event_note": "amalgamated into Cambridge on January 1, 1973",
+      "sources": [
+        {
+          "title": "CGNDB current urban-community record FCIKJ",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCIKJ"
+        },
+        {
+          "title": "Local History - City of Cambridge",
+          "url": "https://www.cambridge.ca/business-building-development/building-planning/history-heritage/local-history/"
+        }
+      ]
+    },
+    {
+      "names": ["Hespeler"],
+      "canonical": "Hespeler",
+      "kind": "town",
+      "lat": 43.4330555,
+      "lon": -80.3072222,
+      "valid_from": null,
+      "valid_to": 1972,
+      "superseded_by": "Cambridge",
+      "event_year": 1973,
+      "event_note": "amalgamated into Cambridge on January 1, 1973",
+      "sources": [
+        {
+          "title": "CGNDB current urban-community record FCKDQ",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCKDQ"
+        },
+        {
+          "title": "Local History - City of Cambridge",
+          "url": "https://www.cambridge.ca/business-building-development/building-planning/history-heritage/local-history/"
+        }
+      ]
+    },
+    {
+      "names": ["Cambridge"],
+      "canonical": "Cambridge",
+      "kind": "city",
+      "lat": 43.397222,
+      "lon": -80.311389,
+      "valid_from": 1973,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 1973,
+      "event_note": "created by the 1973 amalgamation of Galt, Preston and Hespeler",
+      "sources": [
+        {
+          "title": "CGNDB current city record FANXK",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FANXK"
+        },
+        {
+          "title": "Local History - City of Cambridge",
+          "url": "https://www.cambridge.ca/business-building-development/building-planning/history-heritage/local-history/"
+        }
+      ]
+    },
+    {
+      "names": ["Streetsville"],
+      "canonical": "Streetsville",
+      "kind": "town",
+      "lat": 43.58676,
+      "lon": -79.72128,
+      "valid_from": null,
+      "valid_to": 1973,
+      "superseded_by": "Mississauga",
+      "event_year": 1974,
+      "event_note": "amalgamated into Mississauga on January 1, 1974",
+      "sources": [
+        {
+          "title": "CGNDB current urban-community record FCTEI",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCTEI"
+        },
+        {
+          "title": "Indigenous heritage and early history - City of Mississauga",
+          "url": "https://www.mississauga.ca/our-organization/about-our-organization/indigenous-heritage-and-early-history/"
+        }
+      ]
+    },
+    {
+      "names": ["Nepean"],
+      "canonical": "Nepean",
+      "kind": "city",
+      "kind_periods": [
+        {
+          "kind": "township",
+          "valid_from": null,
+          "valid_to": 1977
+        },
+        {
+          "kind": "city",
+          "valid_from": 1978,
+          "valid_to": 2000
+        }
+      ],
+      "lat": 45.2775,
+      "lon": -75.7730556,
+      "valid_from": null,
+      "valid_to": 2000,
+      "superseded_by": "Ottawa",
+      "event_year": 2001,
+      "event_note": "amalgamated into the new City of Ottawa on January 1, 2001",
+      "sources": [
+        {
+          "title": "CGNDB current community record FDZDF",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FDZDF"
+        },
+        {
+          "title": "Ottawa Transition Board Final Report - City of Ottawa",
+          "url": "https://ottawa.ca/en/planning-development-and-construction/official-plan-and-master-plans/ottawa-transition-board-final-report"
+        },
+        {
+          "title": "City of Nepean Act debate - Legislative Assembly of Ontario",
+          "url": "https://www.ola.org/en/legislative-business/house-documents/parliament-31/session-2/1978-11-21/hansard"
+        }
+      ]
+    },
+    {
+      "names": ["Georgetown"],
+      "canonical": "Georgetown",
+      "kind": "town",
+      "lat": 43.64689,
+      "lon": -79.91013,
+      "valid_from": null,
+      "valid_to": 1973,
+      "superseded_by": "Halton Hills",
+      "event_year": 1974,
+      "event_note": "amalgamated into Halton Hills on January 1, 1974",
+      "sources": [
+        {
+          "title": "CGNDB current urban-community record FBHBE",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FBHBE"
+        },
+        {
+          "title": "Fire Operations and Suppression history - Town of Halton Hills",
+          "url": "https://www.haltonhills.ca/en/residents/fire-operations-and-suppression.aspx"
+        }
+      ]
+    },
+    {
+      "names": ["Simcoe"],
+      "canonical": "Simcoe",
+      "kind": "town",
+      "lat": 42.84186,
+      "lon": -80.31405,
+      "coordinate_note": "Coordinates are the current CGNDB Simcoe locality reference point, not former municipal legal geometry or a plant location.",
+      "valid_from": null,
+      "valid_to": 2000,
+      "superseded_by": "Norfolk County",
+      "event_year": 2001,
+      "event_note": "amalgamated into the single-tier Norfolk County on January 1, 2001",
+      "sources": [
+        {
+          "title": "CGNDB current community record FCOKQ",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCOKQ"
+        },
+        {
+          "title": "2017 Audited Financial Statements - Norfolk County",
+          "url": "https://www.norfolkcounty.ca/media/kcgbkjjs/2017-audited-financial-statement.pdf"
+        }
+      ]
+    },
+    {
+      "names": ["Markham"],
+      "canonical": "Markham",
+      "kind": "city",
+      "kind_periods": [
+        {
+          "kind": "village",
+          "valid_from": null,
+          "valid_to": 1968
+        },
+        {
+          "kind": "town",
+          "valid_from": 1969,
+          "valid_to": 2011
+        },
+        {
+          "kind": "city",
+          "valid_from": 2012,
+          "valid_to": null
+        }
+      ],
+      "lat": 43.87653,
+      "lon": -79.2634,
+      "coordinate_note": "Coordinates are the CGNDB Markham reference point, not municipal legal geometry or a plant location.",
+      "valid_from": null,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 1969,
+      "event_note": "incorporated as a town in 1969, incorporated into the regional Town of Markham in 1971, and changed to city status on July 1, 2012",
+      "sources": [
+        {
+          "title": "CGNDB Town of Markham record FDNFZ",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FDNFZ"
+        },
+        {
+          "title": "Markham History - City of Markham",
+          "url": "https://www.markham.ca/about-city-markham/markham-heritage/markham-history"
+        },
+        {
+          "title": "Markham city-status history presentation - City of Markham",
+          "url": "https://www2.markham.ca/markham/ccbs/indexfile/Agendas/2012/Council/cl120529/City%20Status%20for%20Markham%20-%20Presentation.pdf"
+        },
+        {
+          "title": "1969 Town of Markham water pollution control plant report",
+          "url": "https://archive.org/details/MARKHAMWATERPOLL00SNSN19294.ome"
+        },
+        {
+          "title": "2012 Ward Boundary Review - City of Markham",
+          "url": "https://www.markham.ca/sites/default/files/about-city-markham/ward%20boundary/2012_WardBoundaryReviewInterimRpt.pdf"
+        }
+      ]
+    },
+    {
+      "names": ["Timmins"],
+      "canonical": "Timmins",
+      "kind": "city",
+      "kind_periods": [
+        {
+          "kind": "town",
+          "valid_from": null,
+          "valid_to": 1972
+        },
+        {
+          "kind": "city",
+          "valid_from": 1973,
+          "valid_to": null
+        }
+      ],
+      "lat": 48.47153,
+      "lon": -81.33132,
+      "valid_from": null,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 1973,
+      "event_note": "amalgamated with surrounding townships and communities to form the City of Timmins in 1973",
+      "sources": [
+        {
+          "title": "CGNDB current city record FCWMG",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCWMG"
+        },
+        {
+          "title": "Downtown Community Improvement Plan - City of Timmins",
+          "url": "https://www.timmins.ca/UserFiles/Servers/Server_11976345/File/Our%20Services/Building%20and%20Planning/Planning/CIP%20Documents/Appendix%20%27A%27%20-%20August%2026%2C%202024%20-rev%203.pdf"
+        },
+        {
+          "title": "1965 Town of Timmins water pollution control report",
+          "url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome"
+        }
+      ]
+    },
+    {
+      "names": ["Sudbury"],
+      "canonical": "Sudbury",
+      "kind": "city",
+      "lat": 46.5011111,
+      "lon": -80.9775,
+      "coordinate_note": "Coordinates are the current CGNDB Sudbury community reference point, not former city legal geometry or a plant location.",
+      "valid_from": null,
+      "valid_to": 2000,
+      "superseded_by": "Greater Sudbury",
+      "event_year": 2001,
+      "event_note": "amalgamated into the City of Greater Sudbury on January 1, 2001",
+      "sources": [
+        {
+          "title": "CGNDB current Sudbury community record FCTOV",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCTOV"
+        },
+        {
+          "title": "2017 Budget - City of Greater Sudbury",
+          "url": "https://www.greatersudbury.ca/city-hall/budget-and-finance/previous-budgets/2017-budget/2017-budget-document/"
+        },
+        {
+          "title": "1973 City of Sudbury water pollution control report",
+          "url": "https://archive.org/details/SUDBURYWATERPOLL00SNSN19787.ome"
+        },
+        {
+          "title": "Fire and Paramedic Services Optimization Report - City of Greater Sudbury",
+          "url": "https://www.greatersudbury.ca/live/emergency-services/fire-services/pdfs/fire-and-paramedic-services-optimization-report/"
+        }
+      ]
+    },
+    {
+      "names": ["Meaford"],
+      "canonical": "Meaford",
+      "kind": "town",
+      "lat": 44.591111,
+      "lon": -80.743333,
+      "coordinate_note": "Coordinates are era-selected CGNDB reference points, not municipal legal geometry or plant locations.",
+      "valid_from": 2001,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 2001,
+      "event_note": "created as the Municipality of Meaford by the 2001 amalgamation",
+      "resolution_periods": [
+        {
+          "kind": "town",
+          "lat": 44.601389,
+          "lon": -80.599444,
+          "valid_from": 1874,
+          "valid_to": 2000,
+          "superseded_by": "Municipality of Meaford",
+          "event_year": 2001,
+          "event_note": "amalgamated with St. Vincent and Sydenham Townships to form the Municipality of Meaford in 2001"
+        }
+      ],
+      "sources": [
+        {
+          "title": "CGNDB Meaford community record FDQUL",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FDQUL"
+        },
+        {
+          "title": "CGNDB post-amalgamation Town record FEVTZ",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FEVTZ"
+        },
+        {
+          "title": "1972 Town of Meaford water pollution control report",
+          "url": "https://archive.org/details/MEAFORDWATERPOLL00SNSN19280.ome"
+        },
+        {
+          "title": "25th anniversary of amalgamation - Municipality of Meaford",
+          "url": "https://www.meaford.ca/en/our-government/25th-anniversary-of-the-municipality-s-amalgamation.aspx"
+        }
+      ]
+    },
+    {
+      "names": ["Alfred"],
+      "canonical": "Alfred",
+      "kind": "village",
+      "lat": 45.5561111,
+      "lon": -74.8877778,
+      "coordinate_note": "Coordinates are the current CGNDB Alfred community reference point, not former village legal geometry or a plant location.",
+      "valid_from": null,
+      "valid_to": 1996,
+      "superseded_by": "Alfred and Plantagenet",
+      "event_year": 1997,
+      "event_note": "amalgamated into the Township of Alfred and Plantagenet on January 1, 1997",
+      "sources": [
+        {
+          "title": "CGNDB current Alfred community record FACIQ",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FACIQ"
+        },
+        {
+          "title": "1963 Village of Alfred annual report",
+          "url": "https://archive.org/details/annualreport196321117"
+        },
+        {
+          "title": "Ontario municipal restructuring activity summary",
+          "url": "https://data.ontario.ca/en/dataset/municipal-restructuring-activity-summary-table/resource/389bb315-fe73-45a8-8e82-7ab880c1d737"
+        }
+      ]
+    },
+    {
+      "names": ["Trenton"],
+      "canonical": "Trenton",
+      "kind": "city",
+      "kind_periods": [
+        {
+          "kind": "village",
+          "valid_from": null,
+          "valid_to": 1879
+        },
+        {
+          "kind": "town",
+          "valid_from": 1880,
+          "valid_to": 1979
+        },
+        {
+          "kind": "city",
+          "valid_from": 1980,
+          "valid_to": 1997
+        }
+      ],
+      "lat": 44.11,
+      "lon": -77.5786111,
+      "coordinate_note": "Coordinates are the current CGNDB Trenton community reference point, not former municipal legal geometry or a plant location.",
+      "valid_from": null,
+      "valid_to": 1997,
+      "superseded_by": "Quinte West",
+      "event_year": 1998,
+      "event_note": "amalgamated into Quinte West on January 1, 1998",
+      "sources": [
+        {
+          "title": "CGNDB current Trenton community record FDZNE",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FDZNE"
+        },
+        {
+          "title": "1964 Town of Trenton water pollution control report",
+          "url": "https://archive.org/details/TRENTONWATERPOLL00SNSN19729.ome"
+        },
+        {
+          "title": "Trenton wastewater project file - City of Quinte West",
+          "url": "https://quintewest.ca/wp-content/uploads/2023/06/CE846800-ProjectFile-FINAL-R02-13Jun23-Combined_small.pdf"
+        },
+        {
+          "title": "Ontario municipal restructuring activity summary",
+          "url": "https://data.ontario.ca/en/dataset/municipal-restructuring-activity-summary-table/resource/389bb315-fe73-45a8-8e82-7ab880c1d737"
+        }
+      ]
+    },
+    {
+      "names": ["Fergus"],
+      "canonical": "Fergus",
+      "kind": "town",
+      "kind_periods": [
+        {
+          "kind": "village",
+          "valid_from": null,
+          "valid_to": 1951
+        },
+        {
+          "kind": "town",
+          "valid_from": 1952,
+          "valid_to": 1998
+        }
+      ],
+      "lat": 43.70298,
+      "lon": -80.37984,
+      "coordinate_note": "Coordinates are the current CGNDB Fergus community reference point, not former town legal geometry or a plant location.",
+      "valid_from": 1858,
+      "valid_to": 1998,
+      "superseded_by": "Centre Wellington",
+      "event_year": 1999,
+      "event_note": "amalgamated into Centre Wellington on January 1, 1999",
+      "sources": [
+        {
+          "title": "CGNDB current Fergus community record FBDWO",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FBDWO"
+        },
+        {
+          "title": "1964 Town of Fergus water pollution control report",
+          "url": "https://archive.org/details/FERGUSWATERPOLLU00SNSN19441.ome"
+        },
+        {
+          "title": "Cultural Heritage Landscape Study - Centre Wellington",
+          "url": "https://www.centrewellington.ca/media/huaczu42/centre-wellington-cultural-heritage-landscape-study-volume-1-august-31-2021.pdf"
+        }
+      ]
+    },
+    {
+      "names": ["Paris"],
+      "canonical": "Paris",
+      "kind": "town",
+      "lat": 43.1933334,
+      "lon": -80.3847222,
+      "coordinate_note": "Coordinates are the current CGNDB Paris community reference point, not former town legal geometry or a plant location.",
+      "valid_from": 1854,
+      "valid_to": 1998,
+      "superseded_by": "County of Brant",
+      "event_year": 1999,
+      "event_note": "amalgamated into the County of Brant on January 1, 1999",
+      "sources": [
+        {
+          "title": "CGNDB current Paris community record FDSRC",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FDSRC"
+        },
+        {
+          "title": "1965 Town of Paris water pollution control report",
+          "url": "https://archive.org/details/PARISWATERPOLLUT00SNSN19621.ome"
+        },
+        {
+          "title": "Bawcutt Centre history - County of Brant",
+          "url": "https://www.brant.ca/news/posts/county-of-brant-provides-update-on-the-bawcutt-centre/"
+        },
+        {
+          "title": "Ontario municipal restructuring activity summary",
+          "url": "https://data.ontario.ca/en/dataset/municipal-restructuring-activity-summary-table/resource/389bb315-fe73-45a8-8e82-7ab880c1d737"
+        }
+      ]
+    },
+    {
+      "names": ["Chatham"],
+      "canonical": "Chatham",
+      "kind": "city",
+      "lat": 42.39989,
+      "lon": -82.18984,
+      "coordinate_note": "Coordinates are the current CGNDB Chatham community reference point, not former city legal geometry or a plant location.",
+      "valid_from": null,
+      "valid_to": 1997,
+      "superseded_by": "Chatham-Kent",
+      "event_year": 1998,
+      "event_note": "amalgamated into Chatham-Kent on January 1, 1998",
+      "sources": [
+        {
+          "title": "CGNDB current Chatham community record FAQDA",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FAQDA"
+        },
+        {
+          "title": "1966 City of Chatham water pollution control report",
+          "url": "https://archive.org/details/chathamwaterpoll23221"
+        },
+        {
+          "title": "Ontario municipal restructuring activity summary",
+          "url": "https://data.ontario.ca/en/dataset/municipal-restructuring-activity-summary-table/resource/389bb315-fe73-45a8-8e82-7ab880c1d737"
+        }
+      ]
+    },
+    {
+      "names": ["Cayuga"],
+      "canonical": "Cayuga",
+      "kind": "unknown",
+      "lat": 42.95073,
+      "lon": -79.85623,
+      "coordinate_note": "Coordinates are the current CGNDB Cayuga urban-community reference point, not former village legal geometry or a plant location.",
+      "valid_from": 1974,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 1974,
+      "event_note": "retained as the Cayuga locality after regional government began in 1974",
+      "resolution_periods": [
+        {
+          "kind": "village",
+          "valid_from": null,
+          "valid_to": 1973,
+          "superseded_by": "Regional Municipality of Haldimand-Norfolk",
+          "event_year": 1974,
+          "event_note": "folded into the Regional Municipality of Haldimand-Norfolk when regional government began in April 1974"
+        }
+      ],
+      "sources": [
+        {
+          "title": "CGNDB current Cayuga urban-community record FDKBT",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FDKBT"
+        },
+        {
+          "title": "1971 Village of Cayuga water pollution control report",
+          "url": "https://archive.org/details/cayugawaterpollu23331"
+        },
+        {
+          "title": "1974 Haldimand-Norfolk Cayuga water pollution control report",
+          "url": "https://archive.org/details/cayugawaterpollu23330"
+        },
+        {
+          "title": "Heritage-designated properties - Haldimand County",
+          "url": "https://www.haldimandcounty.ca/recreation-culture-community/heritage-and-culture/heritage-designated-properties/"
+        }
+      ]
+    },
+    {
+      "names": ["Burlington"],
+      "canonical": "Burlington",
+      "kind": "city",
+      "kind_periods": [
+        {
+          "kind": "village",
+          "valid_from": 1873,
+          "valid_to": 1913
+        },
+        {
+          "kind": "town",
+          "valid_from": 1914,
+          "valid_to": 1973
+        },
+        {
+          "kind": "city",
+          "valid_from": 1974,
+          "valid_to": null
+        }
+      ],
+      "lat": 43.37006,
+      "lon": -79.81403,
+      "coordinate_note": "Coordinates are the CGNDB Burlington reference point, not municipal legal geometry or a plant location.",
+      "valid_from": 1873,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 1974,
+      "event_note": "incorporated as a town in 1914 and became a city in 1974",
+      "sources": [
+        {
+          "title": "CGNDB current Burlington city record FAMXK",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FAMXK"
+        },
+        {
+          "title": "History and Heritage - City of Burlington",
+          "url": "https://www.burlington.ca/en/arts-culture-and-events/history-and-heritage.aspx"
+        }
+      ]
+    },
+    {
+      "names": ["Port Colborne"],
+      "canonical": "Port Colborne",
+      "kind": "city",
+      "kind_periods": [
+        {
+          "kind": "town",
+          "valid_from": null,
+          "valid_to": 1965
+        },
+        {
+          "kind": "city",
+          "valid_from": 1966,
+          "valid_to": null
+        }
+      ],
+      "lat": 42.9155556,
+      "lon": -79.1930555,
+      "coordinate_note": "Coordinates are the CGNDB Port Colborne reference point, not municipal legal geometry or a plant location.",
+      "valid_from": null,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 1966,
+      "event_note": "incorporated as a city in 1966",
+      "sources": [
+        {
+          "title": "CGNDB current Port Colborne city record FCHYP",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCHYP"
+        },
+        {
+          "title": "Local Government Week history - City of Port Colborne",
+          "url": "https://www.portcolborne.ca/en/news/local-government-week-2023.aspx"
+        }
+      ]
+    },
+    {
+      "names": ["Moosonee"],
+      "canonical": "Moosonee",
+      "kind": "town",
+      "kind_periods": [
+        {
+          "kind": "unknown",
+          "valid_from": null,
+          "valid_to": 2000
+        },
+        {
+          "kind": "town",
+          "valid_from": 2001,
+          "valid_to": null
+        }
+      ],
+      "lat": 51.334167,
+      "lon": -80.721111,
+      "coordinate_note": "Coordinates are the current CGNDB Town of Moosonee reference point, not the historical Development Area Board boundary or a plant location.",
+      "valid_from": null,
+      "valid_to": null,
+      "superseded_by": null,
+      "event_year": 2001,
+      "event_note": "incorporated as the Town of Moosonee on January 1, 2001, replacing the Development Area Board",
+      "sources": [
+        {
+          "title": "CGNDB current Town of Moosonee record FEVNX",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FEVNX"
+        },
+        {
+          "title": "Town of Moosonee Act, 2000 - Ontario",
+          "url": "https://www.ontario.ca/laws/statute/00t05"
+        }
+      ]
+    },
+    {
+      "names": ["Longlac"],
+      "canonical": "Longlac",
+      "kind": "town",
+      "lat": 49.7797222,
+      "lon": -86.5372222,
+      "coordinate_note": "Coordinates are the current CGNDB Longlac community reference point, not former town legal geometry or a plant location.",
+      "valid_from": 1964,
+      "valid_to": 2000,
+      "superseded_by": "Greenstone",
+      "event_year": 2001,
+      "event_note": "amalgamated into the Municipality of Greenstone on January 1, 2001",
+      "sources": [
+        {
+          "title": "CGNDB current Longlac community record FCAKP",
+          "url": "https://geogratis.gc.ca/services/geoname/en/geonames/FCAKP"
+        },
+        {
+          "title": "Community history - Municipality of Greenstone",
+          "url": "https://www.greenstone.ca/media/5pxl3z4i/greenstone_communityattractionpkg_web_9x9_fin_eng.pdf"
+        },
+        {
+          "title": "Greenstone restructuring order - Ontario Gazette",
+          "url": "https://www.ontario.ca/document/ontario-gazette-volume-133-issue-21-may-20-2000/government-notices-respecting-corporations"
+        }
+      ]
+    }
+  ]
+}

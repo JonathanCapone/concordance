@@ -2,4 +2,7 @@
 cache/
 
 # Atomic build leftovers should never survive a failed refresh into a commit.
-.*.tmp
+/.cgn_on_places.csv.*
+/.source.json.*
+/.build.*/
+/.build.lock
