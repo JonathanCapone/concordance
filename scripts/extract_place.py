@@ -115,8 +115,25 @@ def main() -> int:
                     page, client=client, title=title, publisher=str(pub), year=year
                 )
             except Exception as exc:  # noqa: BLE001
-                print(f"    p{page.page}: ERROR {str(exc)[:70]}", flush=True)
-                continue
+                # A timeout here is a throughput problem, not a bad page -- and it
+                # selects against exactly the pages worth having. The 1972 Owen
+                # Sound report timed out on its page 11, which is 1,920 characters
+                # of clean OCR carrying 35 numbers and 14 units: the densest
+                # measurement page in the document. Retry once with a longer
+                # budget rather than losing the best page in the report.
+                if "timed out" not in str(exc).lower():
+                    print(f"    p{page.page}: ERROR {str(exc)[:70]}", flush=True)
+                    continue
+                print(f"    p{page.page}: timed out after {time.time()-t0:.0f}s, "
+                      "retrying with a longer budget", flush=True)
+                patient = OllamaClient(model=client.model, timeout=client.timeout * 3)
+                try:
+                    result = extract_prose(
+                        page, client=patient, title=title, publisher=str(pub), year=year
+                    )
+                except Exception as exc2:  # noqa: BLE001
+                    print(f"    p{page.page}: FAILED on retry: {str(exc2)[:60]}", flush=True)
+                    continue
 
             for r in result.records:
                 d = r.to_dict()
