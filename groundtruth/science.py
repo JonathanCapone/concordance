@@ -428,21 +428,51 @@ def exceedance(
 # convenience: pull a series straight out of extracted records
 # --------------------------------------------------------------------------
 
+@dataclass
+class Series:
+    """A comparable run of readings, plus everything that had to be assumed.
+
+    `assumptions` and `rejected` are part of the result, not diagnostics to be
+    logged away. A series that quietly dropped a third of its points, or that
+    silently converted Imperial gallons, is not the same object as one that
+    didn't, and a reader has to be able to tell them apart.
+    """
+
+    parameter: str
+    stream: str | None
+    points: list[tuple[float, float, float]] = field(default_factory=list)
+    unit: str = ""
+    assumptions: list[str] = field(default_factory=list)
+    rejected: list[str] = field(default_factory=list)
+
+    def __len__(self) -> int:
+        return len(self.points)
+
+
 def series_from_records(
     records: Sequence[Record],
     *,
     parameter: str,
     stream: str | None = None,
     kind: str = "observation",
-) -> list[tuple[float, float, float]]:
-    """(year, value, confidence) triples for one parameter.
+) -> Series:
+    """Build one comparable series for a parameter, reconciling units.
 
     Filters to a single `kind` by default. Mixing an `observation` series with
     `design` values would chart a plant's engineered capacity as though someone
     had measured it.
+
+    Units are reconciled through the methods-drift layer rather than assumed
+    equal, because the corpus writes the same quantity several ways across
+    decades -- "180 PPM" in 1963 and "180 mg/1" in 1969 are one specification,
+    while "million Imperial gallons per day" and a bare "gallons" are not one
+    unit. Readings that cannot honestly be compared are rejected and reported,
+    never coerced into the series.
     """
-    out: list[tuple[float, float, float]] = []
+    from .units import normalize_series  # local import keeps the module acyclic
+
     want = parameter.lower()
+    raw: list[tuple[float, float, str | None, float]] = []
     for r in records:
         if r.kind != kind or r.value is None:
             continue
@@ -456,5 +486,34 @@ def series_from_records(
             year = float(str(r.period)[:4])
         except ValueError:
             continue
-        out.append((year, float(r.value), float(r.confidence)))
-    return out
+        raw.append((year, float(r.value), r.unit, float(r.confidence)))
+
+    points, assumptions, rejected = normalize_series(raw)
+
+    unit = ""
+    if points:
+        from .units import to_base
+        for _y, _v, _c in points:
+            break
+        # Report the base unit the series settled on, for labelling a chart axis.
+        for _year, _value, _u, _conf in raw:
+            q = to_base(1.0, _u)
+            if q is not None:
+                unit = q.unit
+                break
+
+    # One report per year: keep the most confident reading rather than letting a
+    # page that states a value twice weight it double.
+    best: dict[float, tuple[float, float, float]] = {}
+    for y, v, c in points:
+        if y not in best or c > best[y][2]:
+            best[y] = (y, v, c)
+
+    return Series(
+        parameter=parameter,
+        stream=stream,
+        points=sorted(best.values()),
+        unit=unit,
+        assumptions=assumptions,
+        rejected=rejected,
+    )

@@ -93,20 +93,25 @@ def main() -> int:
     print("--- series ---")
     any_series = False
     for param, stream, gloss in TARGETS:
-        pts = series_from_records(obs, parameter=param, stream=stream)
-        # One report per year: collapse duplicates by taking the most confident
-        # reading, rather than letting a page that states a value twice weight it.
-        best: dict[float, tuple[float, float, float]] = {}
-        for y, v, c in pts:
-            if y not in best or c > best[y][2]:
-                best[y] = (y, v, c)
-        pts = sorted(best.values())
+        series = series_from_records(obs, parameter=param, stream=stream)
+        pts = series.points
         if len(pts) < 2:
+            # Still report what was thrown out: a parameter with no usable series
+            # because every reading used a different method is itself a finding.
+            if series.rejected:
+                label = f"{param}" + (f" ({stream})" if stream else "")
+                print(f"\n{label}  — no comparable series")
+                for r in series.rejected:
+                    print(f"   rejected: {r}")
             continue
         any_series = True
         label = f"{param}" + (f" ({stream})" if stream else "")
-        print(f"\n{label}  — {gloss}")
+        print(f"\n{label}  — {gloss}" + (f"  [{series.unit}]" if series.unit else ""))
         print("   " + "  ".join(f"{int(y)}:{v:g}" for y, v, _ in pts))
+        for a in series.assumptions:
+            print(f"   assumed: {a}")
+        for r in series.rejected:
+            print(f"   rejected: {r}")
         t = trend(pts)
         print(f"   trend: {t.describe()}")
         if t.ok:
