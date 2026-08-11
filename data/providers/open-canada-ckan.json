@@ -1,0 +1,14 @@
+{
+  "name": "open-canada-ckan",
+  "title": "Government of Canada open data catalogue",
+  "tier": 0,
+  "publisher": "Treasury Board of Canada Secretariat",
+  "licence": "Open Government Licence - Canada",
+  "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
+  "endpoint": "https://open.canada.ca/data/en/api/3/action/package_search",
+  "auth": { "mode": "none" },
+  "params": { "rows": "20" },
+  "rate_limit_seconds": 1.0,
+  "verified_at": "2026-08-11",
+  "notes": "Discovery across ~40k federal datasets. The route to NPRI, which is the modern continuation of exactly these pollution reports and makes a 1961-to-present series possible."
+}

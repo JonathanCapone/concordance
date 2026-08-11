@@ -1,0 +1,12 @@
+{
+  "name": "example-tier1-source",
+  "title": "Example source requiring a free key",
+  "tier": 1,
+  "publisher": "example",
+  "licence": "see provider terms",
+  "endpoint": "https://example.invalid/api/v1/data",
+  "auth": { "mode": "header", "name": "X-API-Key", "env_var": "EXAMPLE_API_KEY" },
+  "params": {},
+  "rate_limit_seconds": 2.0,
+  "notes": "Template showing how an optional keyed provider is declared. Nothing in this project requires it; it exists so the tier-1 path is exercised by tests and visible to contributors."
+}

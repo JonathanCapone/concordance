@@ -1,0 +1,14 @@
+{
+  "name": "eccc-climate-stations",
+  "title": "ECCC climate stations",
+  "tier": 0,
+  "publisher": "Environment and Climate Change Canada",
+  "licence": "Open Government Licence - Canada",
+  "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
+  "endpoint": "https://api.weather.gc.ca/collections/climate-stations/items",
+  "auth": { "mode": "none" },
+  "params": { "f": "json", "limit": "1000" },
+  "rate_limit_seconds": 1.0,
+  "verified_at": "2026-08-11",
+  "notes": "Weather context contemporary with the archival record. Rainfall matters directly: a treatment plant overloads when it rains, so a bad year may be weather rather than neglect."
+}

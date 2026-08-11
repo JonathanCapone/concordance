@@ -1,0 +1,14 @@
+{
+  "name": "eccc-hydrometric-stations",
+  "title": "Water Survey of Canada hydrometric stations",
+  "tier": 0,
+  "publisher": "Environment and Climate Change Canada",
+  "licence": "Open Government Licence - Canada",
+  "licence_url": "https://open.canada.ca/en/open-government-licence-canada",
+  "endpoint": "https://api.weather.gc.ca/collections/hydrometric-stations/items",
+  "auth": { "mode": "none" },
+  "params": { "f": "json", "limit": "1000" },
+  "rate_limit_seconds": 1.0,
+  "verified_at": "2026-08-11",
+  "notes": "River gauging stations with coordinates. Needed to place a treatment plant on a watercourse and work out who is downstream of whom. Some records run to the 1860s."
+}
