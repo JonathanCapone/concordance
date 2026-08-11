@@ -1,0 +1,30 @@
+# Normalise line endings so a clone on macOS or Linux doesn't show every file
+# as modified. Without this, committing from Windows stores CRLF and everyone
+# else sees a whole-file diff on checkout -- which makes real changes
+# impossible to review.
+* text=auto eol=lf
+
+# Shell scripts break outright with CRLF: the interpreter reads the trailing
+# \r as part of the shebang path.
+*.sh text eol=lf
+
+# Windows-only scripts genuinely need CRLF.
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Explicitly binary, so git never rewrites bytes inside them.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.jp2 binary
+*.zip binary
+*.gz binary
+*.tar binary
+*.sqlite binary
+
+# Published accuracy runs and hand-checked ground truth are text and should
+# diff line by line -- a change to a measured number must be visible in review.
+*.json text eol=lf
+*.md text eol=lf
