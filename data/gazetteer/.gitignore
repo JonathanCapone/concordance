@@ -1,0 +1,5 @@
+# Weekly CGNDB bulk archives are reproducible and currently expand to ~12 MB.
+cache/
+
+# Atomic build leftovers should never survive a failed refresh into a commit.
+.*.tmp

@@ -1,0 +1,9 @@
+{
+  "place": "Owen Sound",
+  "model": "ollama:gemma4:12b",
+  "n_records": 0,
+  "pages_attempted": [
+    "owensoundsewaget24479#10"
+  ],
+  "records": []
+}
