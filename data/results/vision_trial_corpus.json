@@ -4400,5 +4400,1261 @@
         "key": "72fe0a0e3087c5eca3e4"
       }
     ]
+  },
+  "albertaliquorcon1942albe#17": {
+    "stratum": "albertagovernmentpublications",
+    "error": "HTTP Error 500: Internal Server Error",
+    "seconds": 150.6
+  },
+  "1981959621982engfra#155": {
+    "stratum": "statisticscanada",
+    "identifier": "1981959621982engfra",
+    "page": 155,
+    "seconds": 693.0,
+    "n_records": 20,
+    "n_rejected": 5,
+    "values_checked": 20,
+    "values_found_in_ocr": 20,
+    "ocr_chars": 3248,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "Hommes - Tous les statuts professionnels",
+        "value": 1825.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Hommes - Tous les statuts professionnels (20) / CT - SR 135.02]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Hommes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 135.02",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "7f009e3e31b04d74e94b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Hommes - Tous les statuts professionnels",
+        "value": 790.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Hommes - Tous les statuts professionnels (20) / CT - SR 135.03]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Hommes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 135.03",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "66a298526b2c217cac4c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Hommes - Tous les statuts professionnels",
+        "value": 1780.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Hommes - Tous les statuts professionnels (20) / CT - SR 136.01]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Hommes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 136.01",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "b9c68aa47b98e73dcf18"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Hommes - Tous les statuts professionnels",
+        "value": 1070.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Hommes - Tous les statuts professionnels (20) / CT - SR 136.02]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Hommes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 136.02",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "6f3aeb396517fea9b3d0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Hommes - Tous les statuts professionnels",
+        "value": 910.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Hommes - Tous les statuts professionnels (20) / CT - SR 137.01]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Hommes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 137.01",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "e158779c145b169c039b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs rémunérés",
+        "value": 1725.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs rémunérés (27) / CT - SR 135.02]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs rémunérés (27)",
+          "column_label": "CT - SR 135.02",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "f6f8b9d070499d91e388"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs rémunérés",
+        "value": 760.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs rémunérés (27) / CT - SR 135.03]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs rémunérés (27)",
+          "column_label": "CT - SR 135.03",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "b06cec7caafb6fb6665e"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs rémunérés",
+        "value": 1705.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs rémunérés (27) / CT - SR 136.01]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs rémunérés (27)",
+          "column_label": "CT - SR 136.01",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "157cec1e253dbc372eec"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs rémunérés",
+        "value": 1045.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs rémunérés (27) / CT - SR 136.02]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs rémunérés (27)",
+          "column_label": "CT - SR 136.02",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "c8498fbb994369efe36d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs rémunérés",
+        "value": 900.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs rémunérés (27) / CT - SR 137.01]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs rémunérés (27)",
+          "column_label": "CT - SR 137.01",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "ae256e17ddd016c8474b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs autonomes",
+        "value": 85.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs autonomes (28) / CT - SR 135.02]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs autonomes (28)",
+          "column_label": "CT - SR 135.02",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "ee6ad364f74a814812aa"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs autonomes",
+        "value": 30.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs autonomes (28) / CT - SR 135.03]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs autonomes (28)",
+          "column_label": "CT - SR 135.03",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "30c8abf82c3e8566fa86"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs autonomes",
+        "value": 80.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs autonomes (28) / CT - SR 136.01]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs autonomes (28)",
+          "column_label": "CT - SR 136.01",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "05eda8e767b638f87f46"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs autonomes",
+        "value": 30.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs autonomes (28) / CT - SR 136.02]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs autonomes (28)",
+          "column_label": "CT - SR 136.02",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "30c8abf82c3e8566fa86"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleurs autonomes",
+        "value": 10.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleurs autonomes (28) / CT - SR 137.01]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Travailleurs autonomes (28)",
+          "column_label": "CT - SR 137.01",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "6901fb72ba974abe923e"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Femmes - Tous les statuts professionnels",
+        "value": 1315.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Femmes - Tous les statuts professionnels (20) / CT - SR 135.02]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Femmes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 135.02",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "a5c116cb156f75e98fbb"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Femmes - Tous les statuts professionnels",
+        "value": 580.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Femmes - Tous les statuts professionnels (20) / CT - SR 135.03]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Femmes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 135.03",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "e39e555878d27fcf1ab7"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Femmes - Tous les statuts professionnels",
+        "value": 1290.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Femmes - Tous les statuts professionnels (20) / CT - SR 136.01]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Femmes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 136.01",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "69ee2e82c24847e17ee2"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Femmes - Tous les statuts professionnels",
+        "value": 815.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Femmes - Tous les statuts professionnels (20) / CT - SR 136.02]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Femmes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 136.02",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "03288b1c9265b6778720"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Femmes - Tous les statuts professionnels",
+        "value": 745.0,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.76,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Femmes - Tous les statuts professionnels (20) / CT - SR 137.01]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981959621982engfra/page/n154/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Femmes - Tous les statuts professionnels (20)",
+          "column_label": "CT - SR 137.01",
+          "model_confidence": 0.95,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "9df8871c21d5367c37f7"
+      }
+    ],
+    "rejected": [
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Travailleuses rémunérées",
+          "value": 1265,
+          "unit": null,
+          "qualifier": "count",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 0.95,
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 135.02"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Travailleuses rémunérées",
+          "value": 580,
+          "unit": null,
+          "qualifier": "count",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 0.95,
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 135.03"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Travailleuses rémunérées",
+          "value": 1260,
+          "unit": null,
+          "qualifier": "count",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 0.95,
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 136.01"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Travailleuses rémunérées",
+          "value": 790,
+          "unit": null,
+          "qualifier": "count",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 0.95,
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 136.02"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Travailleuses rémunérées",
+          "value": 720,
+          "unit": null,
+          "qualifier": "count",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 0.95,
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 137.01"
+        }
+      }
+    ]
+  },
+  "1966956121968engfra#6": {
+    "stratum": "statisticscanada",
+    "error": "HTTP Error 500: Internal Server Error",
+    "seconds": 126.5
+  },
+  "1981929151984engfra#50": {
+    "stratum": "statisticscanada",
+    "identifier": "1981929151984engfra",
+    "page": 50,
+    "seconds": 664.8,
+    "n_records": 9,
+    "n_rejected": 20,
+    "values_checked": 9,
+    "values_found_in_ocr": 8,
+    "ocr_chars": 3644,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 56085.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / T]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "T",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "b7e7aa6b2ff33b905882"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 33515.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / M]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "M",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "ed1510e865138ae74761"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 22580.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / F]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "F",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "b581ed5f58afd8ada55c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 5815.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / T]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "T",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "4f86af6c77de4fd409e1"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 4685.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / M]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "M",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "5f38fff550e74838f650"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 1125.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / F]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "F",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "bd9a303727111913819d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 38245.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Married(1) / T]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Married(1)",
+          "column_label": "T",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "e018517a6af5a886af52"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 24780.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Married(1) / M]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Married(1)",
+          "column_label": "M",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "723e1ab2bcb9ae890987"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Population 15 years and over",
+        "value": 13465.0,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "1981",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Married(1) / F]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1981929151984engfra/page/n49/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Married(1)",
+          "column_label": "F",
+          "model_confidence": 1.0,
+          "label_check": "verified against the page's OCR"
+        },
+        "key": "118ddca6dcc46513c0e9"
+      }
+    ],
+    "rejected": [
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Labour force Total",
+          "value": 32125,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "T"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Labour force Total",
+          "value": 27950,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "M"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Labour force Total",
+          "value": 4175,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "F"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Participation rate",
+          "value": 57.3,
+          "unit": null,
+          "qualifier": "percent",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "T"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Participation rate",
+          "value": 83.4,
+          "unit": null,
+          "qualifier": "percent",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "M"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Participation rate",
+          "value": 18.5,
+          "unit": null,
+          "qualifier": "percent",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "F"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Employed",
+          "value": 32060,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "T"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Employed",
+          "value": 27925,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "M"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Employed",
+          "value": 4135,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "65 years and over",
+          "column_label": "F"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Labour force Total",
+          "value": 3800,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "T"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Labour force Total",
+          "value": 3520,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "M"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Labour force Total",
+          "value": 285,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "F"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Participation rate",
+          "value": 65.3,
+          "unit": null,
+          "qualifier": "percent",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "T"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Participation rate",
+          "value": 75.1,
+          "unit": null,
+          "qualifier": "percent",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "M"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Participation rate",
+          "value": 25.3,
+          "unit": null,
+          "qualifier": "percent",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "F"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Employed",
+          "value": 3795,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "T"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Employed",
+          "value": 3510,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "M"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Employed",
+          "value": 285,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Single (never married)",
+          "column_label": "F"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Labour force Total",
+          "value": 24220,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Married(1)",
+          "column_label": "T"
+        }
+      },
+      {
+        "why": "no unit",
+        "candidate": {
+          "kind": "observation",
+          "parameter": "Labour force Total",
+          "value": 22110,
+          "unit": null,
+          "qualifier": "total",
+          "stream": "unknown",
+          "period": 1981,
+          "confidence": 1.0,
+          "row_label": "Married(1)",
+          "column_label": "M"
+        }
+      }
+    ]
   }
 }

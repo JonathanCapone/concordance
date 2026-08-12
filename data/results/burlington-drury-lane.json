@@ -1,7 +1,7 @@
 {
   "place": "Burlington Drury Lane",
   "model": "ollama:gemma4:12b",
-  "n_records": 124,
+  "n_records": 191,
   "pages_attempted": [
     "burlingtondruryl23753#7",
     "burlingtondruryl23753#9",
@@ -15,7 +15,21 @@
     "burlingtondruryl23754#13",
     "burlingtondruryl23754#15",
     "burlingtondruryl23754#17",
-    "burlingtondruryl23754#19"
+    "burlingtondruryl23754#19",
+    "burlingtondruryl23754#21",
+    "burlingtondruryl23754#23",
+    "burlingtondruryl23754#27",
+    "burlingtondruryl23748#3",
+    "burlingtondruryl23748#10",
+    "burlingtondruryl23748#11",
+    "burlingtondruryl23748#12",
+    "burlingtondruryl23748#13",
+    "burlingtondruryl23748#14",
+    "burlingtondruryl23748#15",
+    "burlingtondruryl23748#22",
+    "burlingtondruryl23748#23",
+    "burlingtondruryl23748#35",
+    "burlingtondruryl23747#3"
   ],
   "records": [
     {
@@ -3365,6 +3379,1815 @@
         "ocr_confidence": 0.7572
       },
       "key": "4dfa0c2365508c2b131e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "solids concentration",
+      "value": 6.1,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "treated",
+      "place": "digester",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.8143,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 21,
+        "source_text": "The digested sludge on the average was concen-trated to 6,1 percent as compared with an average of 5 experi-enced at other similar plants,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7144
+      },
+      "key": "4a28267e71ad8ec90b40"
+    },
+    {
+      "kind": "observation",
+      "parameter": "solids concentration",
+      "value": 5.0,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "treated",
+      "place": "other similar plants",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.8143,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 21,
+        "source_text": "The digested sludge on the average was concen-trated to 6,1 percent as compared with an average of 5 experi-enced at other similar plants,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7144
+      },
+      "key": "af7b3ae7e180b0341c9b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD REMOVED",
+      "value": 891.9,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.774,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 23,
+        "source_text": "1962 891.9 41,983.20 4.7 3.5 2.4",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7201
+      },
+      "key": "1d74ef8d7c3e8916e7b2"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "hydraulic load",
+      "value": null,
+      "unit": null,
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Burlington Drury Lane",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.86,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 23,
+        "source_text": "The plant is overloaded hydraulically much of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7201
+      },
+      "key": "7b29d642b31bb74a3062"
+    },
+    {
+      "kind": "observation",
+      "parameter": "digester gas production",
+      "value": 2500.0,
+      "unit": "cubic feet per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1962-01",
+      "facility": "water pollution control plant",
+      "confidence": 0.7707,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 27,
+        "source_text": "At the beginning of 1962, the digester gas production was approximately 2,500 cubic feet per day",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n26/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7127
+      },
+      "key": "8b5c4fbf3348371c95f8"
+    },
+    {
+      "kind": "observation",
+      "parameter": "fuel oil consumption",
+      "value": 20.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1962-01",
+      "facility": "water pollution control plant",
+      "confidence": 0.7707,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 27,
+        "source_text": "it was necessary to use approximately 20 gallons of fuel oil per day for heating.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n26/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7127
+      },
+      "key": "c432c68d2fd22c6fec0a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "digester gas production",
+      "value": 10000.0,
+      "unit": "cubic feet per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1962-05",
+      "facility": "water pollution control plant",
+      "confidence": 0.7707,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 27,
+        "source_text": "However, gas production increased quite rapidly so that by the beginning of May approximately 10,000 cubic feet per day were produced and no fuel oil was required for heating.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n26/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7127
+      },
+      "key": "f0fd8d9c3c8abaf1a6fe"
+    },
+    {
+      "kind": "observation",
+      "parameter": "digester gas production",
+      "value": 20000.0,
+      "unit": "cubic feet per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1962-latter portion",
+      "facility": "water pollution control plant",
+      "confidence": 0.7707,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 27,
+        "source_text": "The gas production levelled off at approximately 20,000 cubic feet per day and fuel oil was not required during the latter portion of the year,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n26/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7127
+      },
+      "key": "2b8621a327a27d738a12"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 21.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Burlington Drury Lane",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.6851,
+      "provenance": {
+        "identifier": "burlingtondruryl23754",
+        "page": 27,
+        "source_text": "The increased power costs have resulted from increased pumping and aeration which has been necessitated due to the 21^ increase in average daily flow,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23754/page/n26/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.7127
+      },
+      "key": "18daf7156ed26c7e3372"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total sewage treated",
+      "value": 606.717,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "Burlington Drury Lane Water Pollution Control Plant treated a total of 606. 717 million gallons of sewage during the year at a total operating cost of $37,586.43.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "22d804da7f413221d9e6"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost per million gallons",
+      "value": 61.95,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The operating cost per million gallons and the cost per pound of BOD removed were $61. 95 and $0. 03 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "72fb1ae8b0df2e7e0bd3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "cost per pound of BOD removed",
+      "value": 0.03,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The operating cost per million gallons and the cost per pound of BOD removed were $61. 95 and $0. 03 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "b2465047ded00759d2ed"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 1.66,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The average daily flow during the year was 1. 66 million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "d61656bf0372610004ae"
+    },
+    {
+      "kind": "design",
+      "parameter": "design flow",
+      "value": 2.5,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The plant design flow of 2. 5 million gallons was exceeded 6 percent of the time .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "ac47f22f808c60795151"
+    },
+    {
+      "kind": "observation",
+      "parameter": "design flow exceedance frequency",
+      "value": 6.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The plant design flow of 2. 5 million gallons was exceeded 6 percent of the time .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "c44599e6dd03747d4d65"
+    },
+    {
+      "kind": "observation",
+      "parameter": "bypass threshold",
+      "value": 3.0,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "the plant intake works is used as an automatic by-pass to the Skyway plant when the flow exceeds approximately three million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "05848688c978ff108554"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 223.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The average raw sewage BOD and suspended solids concentrations were 223 ppm and 300 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "e919ee32c6c085714871"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 300.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The average raw sewage BOD and suspended solids concentrations were 223 ppm and 300 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "d6342219045b1a5521d8"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 9.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The average effluent BOD and sus- pended solids concentrations were 9 ppm and 12 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "bd9eec02aeeb3b1f0c68"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 12.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The average effluent BOD and sus- pended solids concentrations were 9 ppm and 12 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "8edbeb93c25f5e191e3d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal efficiency",
+      "value": 95.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The average BOD and suspended solids reduction efficiencies were 95 percent and 96 percent respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "7186dbc009e6a5cb9cb6"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal efficiency",
+      "value": 96.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Burlington Drury Lane Water Pollution Control Plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8198,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 10,
+        "source_text": "The average BOD and suspended solids reduction efficiencies were 95 percent and 96 percent respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.726
+      },
+      "key": "ccbe14e05a6565e240fc"
+    },
+    {
+      "kind": "design",
+      "parameter": "velocity of flow",
+      "value": 1.0,
+      "unit": "foot per second",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4414,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 14,
+        "source_text": "The velocity of flow through the channels is maintained at approximately one foot per second by means of proportional weirs at the outlet end.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7656
+      },
+      "key": "d200f79a064b09e3c982"
+    },
+    {
+      "kind": "design",
+      "parameter": "length",
+      "value": 49.3,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4414,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 14,
+        "source_text": "The primary tanks are both of the rectangular type, each 49. 3 feet in length",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7656
+      },
+      "key": "fa7120c25b94cb81f490"
+    },
+    {
+      "kind": "design",
+      "parameter": "width",
+      "value": 18.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4414,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 14,
+        "source_text": "18. 0 feet wide and have an average depth of 12. 25 feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7656
+      },
+      "key": "bce385a85dcdab146e88"
+    },
+    {
+      "kind": "design",
+      "parameter": "average depth",
+      "value": 12.25,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4414,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 14,
+        "source_text": "18. 0 feet wide and have an average depth of 12. 25 feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7656
+      },
+      "key": "f043ee6a675f6ee4077d"
+    },
+    {
+      "kind": "design",
+      "parameter": "total capacity",
+      "value": 21750.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4414,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 14,
+        "source_text": "The total capacity is 21, 750 cubic feet (135, 700 gallons)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7656
+      },
+      "key": "36bef1cb427d69cbfefa"
+    },
+    {
+      "kind": "design",
+      "parameter": "total capacity",
+      "value": 135700.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4414,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 14,
+        "source_text": "The total capacity is 21, 750 cubic feet (135, 700 gallons)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7656
+      },
+      "key": "ad7093b952eac2aeab20"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention period",
+      "value": 1.3,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4414,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 14,
+        "source_text": "giving a retention period of 1. 3 hours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7656
+      },
+      "key": "d5a699ce223ebeaebcf9"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration tank length",
+      "value": 320.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "Each aeration tank is 320 feet long, 18 feet wide and 11 feet deep.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "40645fa2ec47014eba18"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration tank width",
+      "value": 18.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "Each aeration tank is 320 feet long, 18 feet wide and 11 feet deep.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "be596a41428dabaf18c6"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration tank depth",
+      "value": 11.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "Each aeration tank is 320 feet long, 18 feet wide and 11 feet deep.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "28c5c3bfb6510035ff88"
+    },
+    {
+      "kind": "design",
+      "parameter": "combined aeration tanks capacity",
+      "value": 788000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "The capacity of the combined aeration tanks is 788, 000 gallons giving a retention period of 6.05 hours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "9c9a912b4379f402b16e"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention period",
+      "value": 6.05,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "The capacity of the combined aeration tanks is 788, 000 gallons giving a retention period of 6.05 hours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "5d2c3f830666f3c5f396"
+    },
+    {
+      "kind": "design",
+      "parameter": "final tank diameter",
+      "value": 50.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "Each is 50 feet in diameter with a 10. 6 foot water depth.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "b1bb9cb86ac4a7caded1"
+    },
+    {
+      "kind": "design",
+      "parameter": "final tank water depth",
+      "value": 10.6,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "Each is 50 feet in diameter with a 10. 6 foot water depth.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "a2205aa7e5476d3dafac"
+    },
+    {
+      "kind": "design",
+      "parameter": "final tanks capacity",
+      "value": 260000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "The total capacity of the final tanks is 260,000 gallons giving a retention period of 2. 5 hours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "f0ce78745638556da70c"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention period",
+      "value": 2.5,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "The total capacity of the final tanks is 260,000 gallons giving a retention period of 2. 5 hours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "9c67a7305ea7c8b543ee"
+    },
+    {
+      "kind": "design",
+      "parameter": "pumping capacity",
+      "value": 0.65,
+      "unit": "MGD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "Pumping of the return sludge is done by one of two units, each having a capacity of 0. 65 MGD against a total head of 28 feet at full speed.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "44625fe12b3fcb9a5dca"
+    },
+    {
+      "kind": "design",
+      "parameter": "total head",
+      "value": 28.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "Pumping of the return sludge is done by one of two units, each having a capacity of 0. 65 MGD against a total head of 28 feet at full speed.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "47b7fb9d1d2b45cc9dff"
+    },
+    {
+      "kind": "design",
+      "parameter": "primary digester capacity",
+      "value": 50000.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "There are two primary digesters with a total capacity of 50, 000 cubic feet and one secondary digester with a capacity of 25,000 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "3185d58e8830b46f71d0"
+    },
+    {
+      "kind": "design",
+      "parameter": "secondary digester capacity",
+      "value": 25000.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "There are two primary digesters with a total capacity of 50, 000 cubic feet and one secondary digester with a capacity of 25,000 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "513c69161570ace443f0"
+    },
+    {
+      "kind": "design",
+      "parameter": "heat exchanger capacity",
+      "value": 250000.0,
+      "unit": "b. t. u. per hour",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4471,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 15,
+        "source_text": "All three tanks are heated by two dual fuel P. F. T. Heat Exchangers, each with a capacity of 250,000 b. t. u. per hour.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7885
+      },
+      "key": "7af1931cff191b008fc8"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Population",
+      "value": 30000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Design Population - 30,000 persons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "09df00074d8757f8afba"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Plant Flow",
+      "value": 2.5,
+      "unit": "MGD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Design Plant Flow - 2. 5 MGD",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "cdbe525e550b2e64012d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Daily Per Capita Flow",
+      "value": 83.4,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Daily Per Capita Flow - 83. 4 gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "a4c7260d4276532ac2c4"
+    },
+    {
+      "kind": "design",
+      "parameter": "Five Day BOD",
+      "value": 200.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Raw Sewage - 200 ppm",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "38c5736f66e6afacc024"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD removal",
+      "value": 90.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Removal - 90%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "e051b6f450ff09e3f8ba"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids",
+      "value": 180.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Raw Sewage - 180 ppm",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "94acaa40e3c0151eb4ec"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids removal",
+      "value": 90.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Removal - 90%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "165c0c279f0e5b13f2ba"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal volume",
+      "value": 74.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Three grit removal channels -with vol- umes of 74 cubic feet each.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "0566dd83f20446b3bcb4"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention Time",
+      "value": 0.8,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Detention Time - 0. 8 minutes at design flow of 2. 5 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "f6b0e12f2304e915c368"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention Time",
+      "value": 1.3,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Detention Time - 1. 3 hours at design flow of 2. 5 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "3b85b392a1649714ad24"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention Time",
+      "value": 7.43,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Detention Time - 7.43 hours at design flow of 2. 5 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "d20dd83b6aee79109ceb"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention Time",
+      "value": 2.5,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Detention Time - 2. 5 hours at design flow of 2. 5 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "73a1f8bb553e4dcd040f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Blower capacity",
+      "value": 750.0,
+      "unit": "cu. ft. per minute",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Two blow- ers, each delivering 750 cu. ft. per min- ute.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "2607d020e752368a076c"
+    },
+    {
+      "kind": "design",
+      "parameter": "Blower capacity",
+      "value": 1500.0,
+      "unit": "cu. ft. per minute",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "One blower, delivering 1500 cu. ft. per minute.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "e0898d06914fba409717"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Digester capacity",
+      "value": 1.67,
+      "unit": "cu. ft. per capita",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Two heated 40 ft. diameter units with a capacity of 1. 67 cu. ft. per capita.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "5d208789b6ddfb660c54"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Digester total volume",
+      "value": 50200.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Total volume is 50,200 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "945adb8d3e543e5ddc39"
+    },
+    {
+      "kind": "design",
+      "parameter": "Secondary Digester total volume",
+      "value": 23000.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 22,
+        "source_text": "Total volume is 23, 000 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6461
+      },
+      "key": "22a65a733f13c73c74f7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 1.66,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8096,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 23,
+        "source_text": "The average daily flow during the year was 1. 66 million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7045
+      },
+      "key": "02750c09b8eb76829d58"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 2.1,
+      "unit": "million gallons",
+      "qualifier": "maximum",
+      "stream": "influent",
+      "place": "Burlington Drury Lane",
+      "period": "1965 April",
+      "facility": "water pollution control plant",
+      "confidence": 0.8096,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 23,
+        "source_text": "The maximum and minimum average daily flows averaged per month occurred in April and November and were 2. 10 million gallons and 1.24 million gallons respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7045
+      },
+      "key": "6f61459de271e5ae9b23"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 1.24,
+      "unit": "million gallons",
+      "qualifier": "minimum",
+      "stream": "influent",
+      "place": "Burlington Drury Lane",
+      "period": "1965 November",
+      "facility": "water pollution control plant",
+      "confidence": 0.8096,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 23,
+        "source_text": "The maximum and minimum average daily flows averaged per month occurred in April and November and were 2. 10 million gallons and 1.24 million gallons respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7045
+      },
+      "key": "4c380e832e8ef8ba4ca7"
+    },
+    {
+      "kind": "design",
+      "parameter": "flow",
+      "value": 2.5,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8096,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 23,
+        "source_text": "The plant design flow of 2. 5 million gallons was exceeded 6 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7045
+      },
+      "key": "0f3b24bac01ca5bee065"
+    },
+    {
+      "kind": "observation",
+      "parameter": "capacity exceedance frequency",
+      "value": 6.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "influent",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8096,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 23,
+        "source_text": "The plant design flow of 2. 5 million gallons was exceeded 6 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7045
+      },
+      "key": "b5f65c0b1d0029017788"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "treated",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6818,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 35,
+        "source_text": "The average BOD and suspended solids removals were 95. 0 percent and 96. 0 percent respectively",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.515
+      },
+      "key": "8883ab368ed75f440dee"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal",
+      "value": 96.0,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "treated",
+      "place": "Burlington Drury Lane",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6818,
+      "provenance": {
+        "identifier": "burlingtondruryl23748",
+        "page": 35,
+        "source_text": "The average BOD and suspended solids removals were 95. 0 percent and 96. 0 percent respectively",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/burlingtondruryl23748/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.515
+      },
+      "key": "86d80bcb8efa3881ac3c"
     }
   ]
 }
