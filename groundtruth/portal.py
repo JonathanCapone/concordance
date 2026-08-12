@@ -118,6 +118,11 @@ html,body{{height:100%;margin:0;background:#04080d;color:#e8edf2;
   font-style:normal;cursor:pointer;padding:0 0 0 8px;white-space:nowrap}}
 .paper-btn:hover{{text-decoration:underline}}
 .paper{{display:block}}
+details input,details textarea{{background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);border-radius:7px;padding:7px 10px;
+  color:inherit;font:inherit;font-size:12px}}
+details textarea{{resize:vertical}}
+#sb-out{{font-size:12px}}
 .paper img{{box-shadow:0 2px 10px rgba(0,0,0,.35)}}
 .spark{{width:100%;height:42px;display:block;margin:1px 0 9px}}
 .note{{font-size:11.5px;color:#6d7a86;line-height:1.55;margin-top:16px;
@@ -303,6 +308,32 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         does not change the record: an objection with no evidence cannot outrank a sentence on a
         page, because then somebody would have to judge the objection. To change what is shown,
         bring a page and a sentence.</p>
+        <details style="margin:0 0 14px">
+          <summary style="cursor:pointer;font-size:12px;color:var(--gt-hit)">Add a reading
+            yourself</summary>
+          <div class="card" style="margin-top:10px">
+            <p class="lede" style="margin:0 0 10px">Cite a page and quote a sentence from it.
+            Nobody reviews this — the archive is asked whether that sentence is on that page
+            and whether your number is in the sentence. If it is, your reading is in the record
+            on exactly the same footing as everything the machine read. If it isn't, nothing is
+            deleted and nobody has rejected you; the page did.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <input id="sb-id" placeholder="archive.org identifier">
+              <input id="sb-page" placeholder="page number" inputmode="numeric">
+              <input id="sb-param" placeholder="what was measured, e.g. BOD">
+              <input id="sb-value" placeholder="the number">
+              <input id="sb-unit" placeholder="unit, e.g. mg/L">
+              <input id="sb-place" placeholder="place">
+              <input id="sb-facility" placeholder="which plant / hospital / board (optional)">
+              <input id="sb-period" placeholder="year">
+            </div>
+            <textarea id="sb-quote" rows="2" placeholder="the exact sentence, copied from the page"
+              style="width:100%;margin-top:8px"></textarea>
+            <button id="sb-go" style="margin-top:8px;background:var(--gt-hit);border:0;
+              border-radius:8px;padding:8px 15px;font:inherit;cursor:pointer">Offer it</button>
+            <div id="sb-out" class="lede" style="margin-top:9px"></div>
+          </div>
+        </details>
         <div id="disputed-body"></div>
       </div>
     </section>
@@ -742,6 +773,27 @@ const LOADERS = {{
 
   disputed: async () => {{
     const el = document.getElementById("disputed-body");
+
+    document.getElementById("sb-go").onclick = async () => {{
+      const v = id => document.getElementById(id).value.trim();
+      const out = document.getElementById("sb-out");
+      if (!v("sb-id") || !v("sb-page") || !v("sb-quote")) {{
+        out.textContent = "An identifier, a page and a sentence are the whole requirement.";
+        return;
+      }}
+      out.textContent = "Asking the page…";
+      const qs = new URLSearchParams({{
+        identifier: v("sb-id"), page: v("sb-page"), parameter: v("sb-param"),
+        value: v("sb-value"), unit: v("sb-unit"), place: v("sb-place"),
+        facility: v("sb-facility"), period: v("sb-period"), quote: v("sb-quote"),
+      }});
+      const d = await (await fetch("/api/submit?" + qs)).json();
+      out.innerHTML = (d.accepted
+          ? `<strong style="color:#36e0c8">In the record.</strong> `
+          : `<strong style="color:#f0a24a">Not in the record.</strong> `)
+        + d.what_happens_now;
+      if (d.accepted) LOADERS.disputed();
+    }};
     el.innerHTML = `<div class="card note" style="border:0">Checking every claim against the
       scans it cites…</div>`;
     const d = await (await fetch("/api/ledger")).json();
