@@ -231,25 +231,39 @@ harness reports value precision/recall **and, separately, kind accuracy and stre
 because a perfectly-read number filed as the wrong kind, or an effluent value recorded as influent,
 is not a small error. The second turns a working treatment plant into a polluting one.
 
-Current run — `gemma4:12b`, run locally, no API key:
+Current run — `gemma4:12b`, run locally, no API key. Reproduce with
+`python scripts/rescore.py`, which re-scores the published records without calling a model:
 
 | Page | Precision | Recall | Kind | Stream | Blind? |
 |---|---|---|---|---|---|
-| 9 — design specification sheet | 88% | 85% | 100% | 60% | **no** |
-| 10 — mixed narrative and spec | 91% | 71% | 100% | 100% | yes |
-| **11 — narrative prose** | **88%** | **88%** | **100%** | **100%** | **yes** |
-| overall | 88.7% | 82.5% | 100% | 86.7% | — |
+| Owen Sound 9 — design specification sheet | 100% | 92% | 100% | 67% | **no** |
+| Owen Sound 10 — mixed narrative and spec | 93% | 93% | 92% | 100% | yes |
+| **Owen Sound 11 — narrative prose** | **94%** | **94%** | **100%** | **100%** | **yes** |
+| Hamilton 20 — a magazine, not a data report | 100% | 64% | 100% | 100% | yes |
+| overall | 96.8% | 88.2% | 98.3% | 88.9% | — |
 
-**Page 11 is the honest headline**: 88/88, annotated blind before any extraction run, on the clean
+Four pages across two documents, 68 hand-read values. The second document is deliberately not a
+water report: *Hamilton: An Adventure in Good Living* is a promotional magazine, included because a
+harness measured only on the documents a method was designed for measures nothing.
+
+**Page 11 is the honest headline**: 94/94, annotated blind before any extraction run, on the clean
 narrative prose that the core finding is about.
 
 **Page 9 is not blind.** Its gold set was expanded after an audit showed the original annotation
 covered 6 of the page's ~26 design values, and by then the annotator had seen model output. Its
 figures are optimistically biased and are reported anyway, labelled, rather than quietly dropped.
 
-Two weaknesses that are real rather than measurement artefacts: **stream accuracy is 60% on the
-design sheet** (raw vs influent vs effluent is genuinely ambiguous there), and **10 gold entries are
-still missed entirely**.
+Three weaknesses that are real rather than measurement artefacts. **Kind accuracy is 98.3%, not
+100%** — one conclusion was filed as an observation, which is the error class this README calls the
+dangerous one, so it is named here rather than rounded away. **Stream accuracy is 67% on the design
+sheet**, where raw vs influent vs effluent is genuinely ambiguous. And **8 gold entries are still
+missed entirely**, six of them on the magazine page.
+
+> These numbers were wrong in this file until an audit checked them against the artifact. The table
+> published 88.7%/82.5%/100%/86.7% — figures from a run that predated the prompt widening, left in
+> place while `data/results/gold_report.json` said something else. The real numbers were *better* on
+> every axis except the one this README had rounded up to 100%. A stale accuracy claim is not a
+> harmless one even when it understates: it means nobody was re-reading the ruler.
 
 ### The first number was wrong, and it was the ruler
 

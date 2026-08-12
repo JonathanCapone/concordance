@@ -70,14 +70,14 @@ Not a proposal. A measured artifact, running today:
 | | |
 |---|---|
 | Extraction precision / recall | **96.8% / 88.2%** against hand-checked ground truth |
-| Blind page (annotated before any run) | **88% / 88%** |
+| Blind page (annotated before any run) | **94% / 94%** |
 | Kind accuracy — measurement vs design spec vs regulatory limit | **98.3%** |
 | Stream accuracy — influent vs effluent | **88.9%** over 18 judged pairs |
 | Quotes failing verification across 286 records | **0** |
 | Table measurements recovered | **535** from 24 pages, 11 collections, 1879–2003 |
 | ...of which found in the page's surviving OCR | **411 of 461 (89%)** |
 | Measurements settled / contested / unsupported | **736 / 78 / 17** across 1,039 claims, with nobody adjudicating |
-| Code / tests | 440 tests · zero required dependencies in the core |
+| Code / tests | 498 tests · zero required dependencies in the core |
 
 Every recovered number carries the verbatim sentence it was read from, that
 sentence is verified to occur on the page, and the page is one click away. A
@@ -412,9 +412,26 @@ That is not a hypothetical caution. The first accuracy figure this project
 produced was 49% precision — and it was wrong. The scorer could not convert
 "3.0 million gallons" to "3000000 gallons", and the hand-written ground truth was
 incomplete. Fixing the *measurement*, with no change at all to the extractor,
-moved it to 88.7%. Publishing the first number would have narrowed the project
+moved it to 96.8%. Publishing the first number would have narrowed the project
 for no reason at all. Everything in this proposal is built to catch that class of
 error, because it is the one that looks like success.
+
+It keeps happening, which is why I keep building the checks. An adversarial
+audit of this repo, run days before submitting, found nine confirmed defects
+and six of them were serious. The value check accepted any round number against
+any sentence containing its first digit — 3,000,000 verified against a sentence
+about the year 1913 — so the headline safeguard had a hole shaped exactly like
+the numbers this corpus is full of. One genuine reading could carry five
+hundred fabrications into the library through a public endpoint. And the
+shipped town page captioned twelve of its thirteen numbers with a sentence that
+does not contain them, under a heading promising every number is linked to its
+scan, because the number and its citation were chosen by two different pieces of
+code.
+
+All of that is fixed, tested against the attacks that found it, and written up
+in the commit history rather than quietly repaired. I am including it here
+because a project whose entire claim is "check my work" should say what happened
+when someone did.
 
 ---
 
