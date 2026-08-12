@@ -135,6 +135,11 @@ checked: publications from the same ministry in the same collection run 1,449
 before 1975 and 3,800 after, steady at 83–141 items a year straight through. The
 archive kept growing. This series died.
 
+That rules out a digitisation artefact. It does **not** yet rule out a change in
+what the ministry required to be filed, which would look identical from here, so
+this is a finding about the *record* and not yet one about the *rivers*. Closing
+that gap is in the plan below.
+
 **539 of 1,119 Ontario river gauges are discontinued** — 48%, from live federal
 data. The same winding-down of measurement, still happening.
 
@@ -368,8 +373,9 @@ asking a question.
 | Ask for a place nobody has read; your machine reads it | **built** |
 | Correct a number, checked against the scan, no moderator | **built** |
 | Send readings to a shared instance, re-verified on arrival | **built** |
-| Read the tables on ordinary hardware | **not built — this is Arc C** |
-| The dataset, published, at scale | **not built — this is the fellowship** |
+| Ask a question in plain English and get an answer that cites its pages | **built** — over two towns, needs the data |
+| Read the tables on ordinary hardware | **not built** — weeks 3–5 |
+| The dataset, published, at scale | **not built** — this is the fellowship |
 
 An instance re-verifies every record it is sent and keeps what the archive
 supports, reporting what it refused. It holds nothing anyone else lacks: it will

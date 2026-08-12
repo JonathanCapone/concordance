@@ -1,7 +1,7 @@
 {
   "place": "Georgetown",
   "model": "ollama:gemma4:12b",
-  "n_records": 269,
+  "n_records": 273,
   "pages_attempted": [
     "GEORGETOWNWATERP00SNSN19135.ome#3",
     "GEORGETOWNWATERP00SNSN19135.ome#6",
@@ -33,7 +33,8 @@
     "georgetownwaterp23285#3",
     "georgetownwaterp23285#11",
     "georgetownwaterp23285#12",
-    "georgetownwaterp23285#16"
+    "georgetownwaterp23285#16",
+    "georgetownwaterp23285#29"
   ],
   "records": [
     {
@@ -7298,6 +7299,114 @@
         "ocr_confidence": 0.7588
       },
       "key": "76360a308f0673b82094"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 1.754,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4292,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 29,
+        "source_text": "The average daily flow was 1. 754 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n28/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7167
+      },
+      "key": "d3ebb21fd6977258d592"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent BOD concentration",
+      "value": 11.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.4292,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 29,
+        "source_text": "The average effluent and BOD concentrations were 11 ppm and 23 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n28/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7167
+      },
+      "key": "9c0f4e4b76d52085f2bd"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent BOD concentration",
+      "value": 23.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.4292,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 29,
+        "source_text": "The average effluent and BOD concentrations were 11 ppm and 23 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n28/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7167
+      },
+      "key": "ea071f2c98b4008c610b"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "hydraulic loading exceedance of design capacity",
+      "value": 17.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.4292,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 29,
+        "source_text": "Because the average hydraulic loading exceeded the design hydraulic load- ing by 17 percent, steps should be taken to expand the project.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n28/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7167
+      },
+      "key": "d73b812bb05553eb9145"
     }
   ]
 }
