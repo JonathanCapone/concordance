@@ -141,31 +141,61 @@ measurements and a third yield none, while a table page yields around eighteen �
 so the tables are likely the majority of the actual measurements while being a
 quarter of the pages.
 
-At the throughput measured on my own hardware a corpus-wide pass is roughly 62
-machine-years of prose plus 73 of tables. **So it is not a local job, and I will
-not pretend otherwise.** It is a funded batch run, performed once, after which
-the resulting dataset costs everyone else nothing. That is what the money is
-for: not tooling, which exists, but the read itself.
+### What the money is not for
 
-Costed properly, with the two paths separated, the number moved against me:
+Buying the whole read would cost **$4,251–8,502** of rented GPU time — a figure
+worth having, and not what I am asking for. It is the wrong thing to spend a
+fellowship on for a reason that has nothing to do with the price.
 
-| | rented GPU |
-|---|---|
-| Text pages only — leaves most measurements unread | **$1,510–3,019** |
-| Both paths, the whole thing | **$4,251–8,502** |
+**A corpus bought in one batch is finished the day the money runs out.** It
+covers whatever was current in October 2026, it is never extended, and the next
+person who wants a document nobody thought to read has no way to get it. Anyone
+with a credit card can rent an A100. That is not the interesting version of this
+project, and it is not the version I have been building.
 
-The earlier draft of this application said roughly $1,500, and that figure was
-the prose path alone against a corpus a third smaller than it turned out to be.
-The honest version is that **a complete read sits at the edge of a $5,000
-fellowship rather than comfortably inside it**, and the expected yield is about
-151 million measurements, **69% of them from the table pages that are only 27%
-of the work** — which is the number deciding whether a cheaper text-only run is
-worth doing at all, and it decides against.
+The version I have been building is that **reading happens because somebody
+wanted to know something.** You ask for a place; if it has been read you get it
+in milliseconds, and if you are the first to ask, your machine reads it and it
+is there for everyone after you. No volunteer mode, no queue, nothing asked of
+anyone — the cost falls on whoever cares first, who is also the person most
+willing to wait. `share.py` moves the result to other machines as a file, and
+every reading is re-checked against archive.org on arrival, so no server has to
+be trusted or paid for.
 
-I would rather show you that arithmetic than the flattering version. The first
-thing a funded run should do is measure rented throughput on a thousand pages
-and re-derive this, because the vision throughput penalty is currently a guess
-and it is now most of the cost.
+That model has one honest hole, and it is the reason the number above exists at
+all.
+
+| | who can do it | why |
+|---|---|---|
+| **Vocabulary** | must be central | Deciding what a measurement *means* is judgement, not compute. A stratified sample costs about **$30–70**. |
+| **Prose** — 73% of pages | anyone | 91 seconds a page on an ordinary machine. A town takes about ninety minutes. |
+| **Tables** — 27% of pages, ~69% of the measurements | **almost nobody** | Eight minutes a page on my RTX 2080, because only 18% of a 29.6 GB model fits in 8 GB of VRAM. |
+
+**Tables are the problem, and I would rather say so than budget around it.** The
+measurements are concentrated in exactly the pages a contributor's hardware
+handles worst. So the fellowship funds the parts that cannot distribute and
+proves the parts that can:
+
+- the **vocabulary pass**, central by necessity and cheap — tens of dollars;
+- a **measured throughput pilot** on a thousand pages, which is the first thing
+  any funded run should do anyway, since the vision figure in the table above is
+  a guess and is most of its own cost;
+- a **seed corpus** large enough to make the showcase real and the frontier
+  meaningful — the towns, the rivers, and the councils that go with them;
+- and six weeks of work on the thing that makes the rest self-sustaining.
+
+The remainder of the archive fills in as people ask for it, indefinitely, at no
+recurring cost to anybody. That is a slower answer than a batch run and a much
+better one: the corpus is read in the order people actually want to know things,
+which is a better ordering than any I would impose, and it does not stop when
+the grant does.
+
+Two things I will try before conceding that tables need rented hardware. A
+smaller vision model may be adequate — that is a measurable question and I have
+not measured it. And a page's tables can be read once by whoever has the
+hardware and shared as a bundle, which is what `share.py` is for. If both fail,
+the honest answer in the write-up is that 27% of this archive needs a graphics
+card most people do not own, and that is worth knowing too.
 
 That division is also the answer to the obvious objection about distributed
 contribution. The central run does what is expensive and uniform — the
@@ -181,10 +211,11 @@ Structured as arcs rather than weeks, because that is how I planned OMEGA and it
 survived contact with reality. Each arc ends in something demonstrable, and the
 order is chosen so that stopping early still leaves a complete artifact.
 
-**Arc A — Read at scale (weeks 1–2)**
+**Arc A — Read at scale, and make reading cheap (weeks 1–2)**
 Bulk text acquisition across the collection; the cheap local filter that decides
-which pages earn a model; the funded extraction run itself. Ends with: the
-dataset exists.
+which pages earn a model; the vocabulary pass; the throughput pilot that turns
+the estimated cost in the table above into a measured one. Ends with: a seed
+corpus, and a per-page cost somebody could plan against.
 
 **Arc B — Trustworthy at scale (weeks 2–3)**
 The gold set expanded across document types and eras, not just the three pages
@@ -202,6 +233,15 @@ their own page across four documents from 1942 to 2003. So this arc is no longer
 "can it be done". It is throughput, cost, and a control that survives being
 wrong, because the fabrication check I wrote for it was itself broken twice
 before it was right.
+
+**Arc C2 — Make the tables reachable (week 3–4)**
+27% of pages hold most of the measurements and need a model that will not fit on
+an ordinary graphics card. Three things to try, in order of how much they would
+change: a smaller vision model that a contributor can actually run; reading a
+document's tables once and sharing the result as a bundle, so nobody pays twice;
+and failing both, a plain statement of what fraction of this archive needs
+hardware most people do not own. Ends with: either tables distribute, or the
+limit is named with a number on it.
 
 **Arc D — Publish (week 4)**
 The dataset released openly with its methodology and its failures; the metadata
