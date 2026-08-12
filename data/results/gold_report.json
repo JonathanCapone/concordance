@@ -1,26 +1,216 @@
 {
   "model": "ollama:gemma4:12b",
   "totals": {
-    "matched": 48,
-    "missed": 9,
-    "spurious": 5,
-    "recall": 0.8421,
-    "precision": 0.9057,
-    "f1": 0.8727,
-    "kind_accuracy": 1.0,
-    "stream_accuracy": 0.8,
-    "stream_pairs_judged": 10
+    "matched": 60,
+    "missed": 8,
+    "spurious": 2,
+    "recall": 0.8824,
+    "precision": 0.9677,
+    "f1": 0.9231,
+    "kind_accuracy": 0.9833,
+    "stream_accuracy": 0.8889,
+    "stream_pairs_judged": 18
   },
   "records": [
     {
+      "kind": "observation",
+      "parameter": "elementary schools",
+      "value": 75.0,
+      "unit": "schools",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": "Hamilton Board of Education",
+      "confidence": 0.9692,
+      "provenance": {
+        "identifier": "hamiltonadventur00unse",
+        "page": 20,
+        "source_text": "With 75 elementary schools under the aegis of the Hamilton Board of Education, and 42 operated by the Hamilton-Wentworth Roman Catholic Separate School Board, the city is well served in every district.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/hamiltonadventur00unse/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.9385
+      },
+      "key": "30d9840ce8beb6f74710"
+    },
+    {
+      "kind": "observation",
+      "parameter": "separate schools",
+      "value": 42.0,
+      "unit": "schools",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": "Hamilton-Wentworth Roman Catholic Separate School Board",
+      "confidence": 0.9692,
+      "provenance": {
+        "identifier": "hamiltonadventur00unse",
+        "page": 20,
+        "source_text": "With 75 elementary schools under the aegis of the Hamilton Board of Education, and 42 operated by the Hamilton-Wentworth Roman Catholic Separate School Board, the city is well served in every district.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/hamiltonadventur00unse/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.9385
+      },
+      "key": "5db62638c9864efd4ac4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "composite secondary schools",
+      "value": 14.0,
+      "unit": "schools",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": "Hamilton Board of Education",
+      "confidence": 0.9692,
+      "provenance": {
+        "identifier": "hamiltonadventur00unse",
+        "page": 20,
+        "source_text": "In addition, the Hamilton board operates 14 composite secondary schools, seven vocational schools, and four schools for the trainable retarded.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/hamiltonadventur00unse/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.9385
+      },
+      "key": "367187a0c835d0c8c225"
+    },
+    {
+      "kind": "observation",
+      "parameter": "vocational schools",
+      "value": 7.0,
+      "unit": "schools",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": "Hamilton Board of Education",
+      "confidence": 0.9692,
+      "provenance": {
+        "identifier": "hamiltonadventur00unse",
+        "page": 20,
+        "source_text": "In addition, the Hamilton board operates 14 composite secondary schools, seven vocational schools, and four schools for the trainable retarded.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/hamiltonadventur00unse/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.9385
+      },
+      "key": "9856e5e85c9fa30c3856"
+    },
+    {
+      "kind": "observation",
+      "parameter": "schools for the trainable retarded",
+      "value": 4.0,
+      "unit": "schools",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": "Hamilton Board of Education",
+      "confidence": 0.9692,
+      "provenance": {
+        "identifier": "hamiltonadventur00unse",
+        "page": 20,
+        "source_text": "In addition, the Hamilton board operates 14 composite secondary schools, seven vocational schools, and four schools for the trainable retarded.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/hamiltonadventur00unse/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.9385
+      },
+      "key": "56b4738ded80c0c4aff6"
+    },
+    {
+      "kind": "observation",
+      "parameter": "secondary schools",
+      "value": 7.0,
+      "unit": "schools",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": "Hamilton-Wentworth Roman Catholic Separate School Board",
+      "confidence": 0.9692,
+      "provenance": {
+        "identifier": "hamiltonadventur00unse",
+        "page": 20,
+        "source_text": "The separate school board, which functions throughout the entire region, has seven secondary schools in the city.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/hamiltonadventur00unse/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.9385
+      },
+      "key": "45dced0d2a0b343f5db1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "pupils with exceptional needs",
+      "value": 4000.0,
+      "unit": "pupils",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": null,
+      "confidence": 0.9692,
+      "provenance": {
+        "identifier": "hamiltonadventur00unse",
+        "page": 20,
+        "source_text": "About 4,000 pupils with exceptional needs are in special schools or Classes, in some cases in institutions operated by social-service agencies.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/hamiltonadventur00unse/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.9385
+      },
+      "key": "192088f8b5929a82f0b9"
+    },
+    {
       "kind": "design",
-      "parameter": "FLOW",
+      "parameter": "design flow",
       "value": 3.0,
       "unit": "mgd",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Owen Sound water pollution control plant",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -36,7 +226,34 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "01d50cb002da8f3b764a"
+      "key": "03ab1eaf1b6b2ad05909"
+    },
+    {
+      "kind": "design",
+      "parameter": "design population",
+      "value": 25000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.4068,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 9,
+        "source_text": "DESIGN POPULATION\n\n25,000",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.627
+      },
+      "key": "599b4afeb0db47a3e407"
     },
     {
       "kind": "design",
@@ -44,9 +261,10 @@
       "value": 180.0,
       "unit": "mg/l",
       "qualifier": null,
-      "stream": "unknown",
+      "stream": "raw",
       "place": null,
       "period": null,
+      "facility": "Owen Sound water pollution control plant",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -62,7 +280,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "62b920cb287c888ab194"
+      "key": "ae911b048e51ba4c8ded"
     },
     {
       "kind": "design",
@@ -70,9 +288,10 @@
       "value": 40.0,
       "unit": "%",
       "qualifier": null,
-      "stream": "unknown",
+      "stream": "raw",
       "place": null,
       "period": null,
+      "facility": "Owen Sound water pollution control plant",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -88,7 +307,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "efa4ab994be67e4d2b89"
+      "key": "309546767de2b493b54a"
     },
     {
       "kind": "design",
@@ -96,9 +315,10 @@
       "value": 200.0,
       "unit": "mg/l",
       "qualifier": null,
-      "stream": "unknown",
+      "stream": "raw",
       "place": null,
       "period": null,
+      "facility": "Owen Sound water pollution control plant",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -114,7 +334,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "7ea6b7140380aaec1fa9"
+      "key": "08db37f11cf54803cecf"
     },
     {
       "kind": "design",
@@ -122,9 +342,10 @@
       "value": 65.0,
       "unit": "%",
       "qualifier": null,
-      "stream": "unknown",
+      "stream": "raw",
       "place": null,
       "period": null,
+      "facility": "Owen Sound water pollution control plant",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -140,17 +361,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "85bb9bb2c280d09e507e"
+      "key": "fb1e223dc1117c10dd68"
     },
     {
       "kind": "design",
-      "parameter": "Pumps flow",
+      "parameter": "Pump flow rate",
       "value": 3150.0,
       "unit": "gpm",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "SEWAGE PUMPING STATION",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -166,7 +388,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "7ee1887d910e92c85285"
+      "key": "107fa580b8e76ed2377e"
     },
     {
       "kind": "design",
@@ -177,6 +399,7 @@
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Grit Removal",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -192,17 +415,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "dcdb1124b000bb8e009a"
+      "key": "8860870fd32db5ad375f"
     },
     {
       "kind": "design",
-      "parameter": "Grit Removal Retention",
+      "parameter": "Grit Removal retention time",
       "value": 8.6,
       "unit": "min",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Grit Removal",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -218,17 +442,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "6a35f0984c2cd33e10be"
+      "key": "b0f888d1c88c45a7b85e"
     },
     {
       "kind": "design",
-      "parameter": "Pre-aeration Tank Retention",
+      "parameter": "Pre-aeration Tank retention time",
       "value": 11.2,
       "unit": "min",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Pre-aeration Tank",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -244,7 +469,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "89692e4eca344013e70b"
+      "key": "402a929a6d38981454d5"
     },
     {
       "kind": "design",
@@ -255,6 +480,7 @@
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Primary Sedimentation",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -270,17 +496,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "bcd83ce4b42ab1252b16"
+      "key": "6be66b7973820ef481d8"
     },
     {
       "kind": "design",
-      "parameter": "Primary Sedimentation Retention",
+      "parameter": "Primary Sedimentation retention time",
       "value": 3.11,
       "unit": "hr",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Primary Sedimentation",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -296,17 +523,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "94da913560483d54911b"
+      "key": "be20af329637d9fb34d0"
     },
     {
       "kind": "design",
-      "parameter": "Primary Sedimentation Loading",
+      "parameter": "Primary Sedimentation surface loading",
       "value": 600.0,
-      "unit": "gal/ft2 /day",
+      "unit": "gal/ft^2/day",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Primary Sedimentation",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -322,17 +550,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "dcb5c76d16038c2fc8f1"
+      "key": "90e0a5657ac7f642ff2f"
     },
     {
       "kind": "design",
-      "parameter": "Weir capacity",
+      "parameter": "Primary Sedimentation weir flow",
       "value": 8260.0,
       "unit": "gal/ft/day",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Primary Sedimentation",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -348,17 +577,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "d6c4ac04bf5d2266adff"
+      "key": "3284d728c60614a8fe35"
     },
     {
       "kind": "design",
-      "parameter": "Chlorination capacity",
+      "parameter": "Chlorine capacity",
       "value": 2000.0,
       "unit": "lb/day",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "CHLORINATION",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -374,7 +604,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "36d1e8d8759d75255b02"
+      "key": "51490024cd361da111ee"
     },
     {
       "kind": "design",
@@ -385,6 +615,7 @@
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Chlorine Contact Chamber",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -400,17 +631,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "7532d33d2b04d98157bc"
+      "key": "9945830ef5701273ee83"
     },
     {
       "kind": "design",
-      "parameter": "Chlorine Contact Chamber Retention",
+      "parameter": "Chlorine Contact Chamber retention time",
       "value": 11.2,
       "unit": "min",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Chlorine Contact Chamber",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -426,7 +658,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "6a4debbbc3415e4210d4"
+      "key": "aa93fafccb8dbe9d3075"
     },
     {
       "kind": "design",
@@ -437,6 +669,7 @@
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "OUTFALL",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -452,17 +685,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "c421b0b3dc5cb3f91603"
+      "key": "2912a23f5d8df9a52bc3"
     },
     {
       "kind": "design",
-      "parameter": "Digestion Primary volume",
+      "parameter": "Digestion System Primary volume",
       "value": 31400.0,
       "unit": "cu ft",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Primary Digestion",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -478,43 +712,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "9847e7b04e82a16b573d"
+      "key": "0d3d5a2430a0a048c214"
     },
     {
       "kind": "design",
-      "parameter": "Digestion Primary volume",
-      "value": 0.196,
-      "unit": "million gallons",
-      "qualifier": null,
-      "stream": "unknown",
-      "place": null,
-      "period": null,
-      "confidence": 0.4068,
-      "provenance": {
-        "identifier": "owensoundwaterpo24477",
-        "page": 9,
-        "source_text": "cu ft or 0. 196 mil gal",
-        "extractor": "ollama:gemma4:12b",
-        "path": "prose",
-        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
-      },
-      "comparability_note": null,
-      "notes": null,
-      "raw": {
-        "model_confidence": 0.5,
-        "ocr_confidence": 0.627
-      },
-      "key": "2c18a3ed424a449f5cdd"
-    },
-    {
-      "kind": "design",
-      "parameter": "Digestion Primary Loading",
+      "parameter": "Digestion System Primary loading",
       "value": 2.75,
       "unit": "lb/cu ft/mo",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Primary Digestion",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -530,17 +739,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "c4d56a91d077489db814"
+      "key": "054026bae71c125d224b"
     },
     {
       "kind": "design",
-      "parameter": "Digestion Secondary volume",
+      "parameter": "Digestion System Secondary volume",
       "value": 30800.0,
       "unit": "cu ft",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Secondary Digestion",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -556,43 +766,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "6a0e2ec2a8f65b7c3fcd"
+      "key": "7142f574f3e2ec7e6c09"
     },
     {
       "kind": "design",
-      "parameter": "Digestion Secondary volume",
-      "value": 0.192,
-      "unit": "million gallons",
-      "qualifier": null,
-      "stream": "unknown",
-      "place": null,
-      "period": null,
-      "confidence": 0.4068,
-      "provenance": {
-        "identifier": "owensoundwaterpo24477",
-        "page": 9,
-        "source_text": "cu ft or 0. 192 mil gal",
-        "extractor": "ollama:gemma4:12b",
-        "path": "prose",
-        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n8/mode/2up"
-      },
-      "comparability_note": null,
-      "notes": null,
-      "raw": {
-        "model_confidence": 0.5,
-        "ocr_confidence": 0.627
-      },
-      "key": "389d929bf08c940ab614"
-    },
-    {
-      "kind": "design",
-      "parameter": "Digestion Secondary Loading",
+      "parameter": "Digestion System Secondary loading",
       "value": 1.88,
       "unit": "lb/cu ft/mo",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "Secondary Digestion",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -608,17 +793,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "1a2c09967ce37969cf4a"
+      "key": "51fb29f52aae13a90294"
     },
     {
       "kind": "design",
-      "parameter": "West Side Pump flow",
+      "parameter": "West Side Pump flow rate",
       "value": 3916.0,
       "unit": "gpm",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "WEST SIDE PUMPING STATION",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -634,17 +820,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "d28a0305e02d79cdac16"
+      "key": "3aed0537b3f9b6fb5ff5"
     },
     {
       "kind": "design",
-      "parameter": "West Side Pump flow",
+      "parameter": "West Side Pump flow rate",
       "value": 1000.0,
       "unit": "gpm",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "WEST SIDE PUMPING STATION",
       "confidence": 0.4068,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -660,7 +847,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.627
       },
-      "key": "5a5bdfa8b4e6f7b3e724"
+      "key": "d4d866ab5dd1f8f06be2"
     },
     {
       "kind": "design",
@@ -671,11 +858,12 @@
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "West Side pumping station",
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 10,
-        "source_text": "modifications to the West Side pumping station included an additional pump with a capacity of more than 3800 gallons per minute",
+        "source_text": "During 1969, modifications to the West Side pumping station included an additional pump with a capacity of more than 3800 gallons per minute, and a generator which will operate the station in the event of power failures .",
         "extractor": "ollama:gemma4:12b",
         "path": "prose",
         "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
@@ -686,17 +874,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "f78773845ef0981048bb"
+      "key": "b28253f11332f502ce54"
     },
     {
-      "kind": "conclusion",
-      "parameter": "operating above design capacity",
+      "kind": "observation",
+      "parameter": "capacity exceedance frequency",
       "value": 80.0,
       "unit": "%",
-      "qualifier": "percent",
+      "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": "plant",
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -712,17 +901,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "44db7c59ccf8f3c2aa4b"
+      "key": "2e5bde7e4079d2867e1a"
     },
     {
       "kind": "observation",
-      "parameter": "total volume treated",
+      "parameter": "total sewage treated",
       "value": 1475.0,
       "unit": "million gallons",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
-      "period": null,
+      "period": "1969",
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -738,7 +928,88 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "efdb49b20c8352bcb649"
+      "key": "e0b953bfde567902f560"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost",
+      "value": 53549.66,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": "1969",
+      "facility": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "The total operating cost for treating 1475 million gallons of sewage in 1969 was $53, 549. 66.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "5787b81d0aa925bbfd9f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "unit cost per million gallons treated",
+      "value": 36.3,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "Unit costs were $36. 30 per million gallons treated and five cents per pound of BOD removed.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "f5fedecc2974853d0d88"
+    },
+    {
+      "kind": "observation",
+      "parameter": "unit cost per pound of BOD removed",
+      "value": 0.05,
+      "unit": "$/pound",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": null,
+      "period": null,
+      "facility": null,
+      "confidence": 0.443,
+      "provenance": {
+        "identifier": "owensoundwaterpo24477",
+        "page": 10,
+        "source_text": "Unit costs were $36. 30 per million gallons treated and five cents per pound of BOD removed.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7718
+      },
+      "key": "1837d89af7eb768bdfce"
     },
     {
       "kind": "observation",
@@ -749,6 +1020,7 @@
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -764,7 +1036,7 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "64336e87214b220b6167"
+      "key": "7ef6ee547a1dbfe32574"
     },
     {
       "kind": "observation",
@@ -775,6 +1047,7 @@
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -790,17 +1063,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "4f189a34614fb9209d20"
+      "key": "dda299482e3962a3b59e"
     },
     {
       "kind": "observation",
       "parameter": "maximum daily flow",
       "value": 8.8,
       "unit": "million gallons",
-      "qualifier": "maximum",
+      "qualifier": null,
       "stream": "unknown",
       "place": null,
-      "period": null,
+      "period": "November",
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -816,17 +1090,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "29f1896723e83126da53"
+      "key": "1e17de436e2b1db42cd2"
     },
     {
       "kind": "observation",
       "parameter": "minimum daily flow",
       "value": 2.1,
       "unit": "million gallons",
-      "qualifier": "minimum",
+      "qualifier": null,
       "stream": "unknown",
       "place": null,
-      "period": null,
+      "period": "July",
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -842,17 +1117,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "633645e49380fb3ae02c"
+      "key": "7edd423c91fcef16cc7f"
     },
     {
       "kind": "observation",
       "parameter": "chlorine used per month",
       "value": 2696.0,
       "unit": "pounds",
-      "qualifier": "average",
+      "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -868,17 +1144,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "153be9607bd81a6fa78e"
+      "key": "301e61b7d401ea4d5ed3"
     },
     {
       "kind": "observation",
-      "parameter": "chlorine per million gallons",
+      "parameter": "chlorine per million gallons of flow",
       "value": 21.9,
-      "unit": "pounds per million gallons",
+      "unit": "pounds/million gallons",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -894,17 +1171,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "2640cf8f2c66199de3c7"
+      "key": "fa72eb73b572e95c12d2"
     },
     {
       "kind": "observation",
-      "parameter": "chlorine dosage",
+      "parameter": "average chlorine dosage",
       "value": 2.2,
       "unit": "mg/L",
-      "qualifier": "average",
+      "qualifier": null,
       "stream": "unknown",
       "place": null,
       "period": null,
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -920,17 +1198,18 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "7ecc8429f8e751ba5d67"
+      "key": "854e686f32a2fa72dd86"
     },
     {
       "kind": "observation",
-      "parameter": "residual chlorine",
+      "parameter": "average residual chlorine",
       "value": 0.5,
       "unit": "mg/L",
-      "qualifier": "average",
+      "qualifier": null,
       "stream": "effluent",
       "place": null,
       "period": null,
+      "facility": null,
       "confidence": 0.443,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
@@ -946,18 +1225,19 @@
         "model_confidence": 0.5,
         "ocr_confidence": 0.7718
       },
-      "key": "e15f02c57747dee83d9f"
+      "key": "0ade1ecd0955448c5d1c"
     },
     {
       "kind": "observation",
-      "parameter": "BOD",
+      "parameter": "influent BOD",
       "value": 104.0,
       "unit": "mg/L",
       "qualifier": null,
       "stream": "influent",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -969,21 +1249,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "c43f66f028b0609be83b"
+      "key": "bb1105939feac6bbfb1f"
     },
     {
       "kind": "observation",
-      "parameter": "suspended solids",
+      "parameter": "influent suspended solids",
       "value": 224.0,
       "unit": "mg/L",
       "qualifier": null,
       "stream": "influent",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -995,21 +1276,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "7b8751fbfdc82b3f974f"
+      "key": "6afac07bac3a10c4149f"
     },
     {
       "kind": "observation",
-      "parameter": "BOD",
+      "parameter": "effluent BOD",
       "value": 37.0,
       "unit": "mg/L",
       "qualifier": null,
       "stream": "effluent",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1021,21 +1303,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "232eb0151f802261ae02"
+      "key": "9b9d550e1c42e2263f98"
     },
     {
       "kind": "observation",
-      "parameter": "suspended solids",
+      "parameter": "effluent suspended solids",
       "value": 36.0,
       "unit": "mg/L",
       "qualifier": null,
       "stream": "effluent",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1047,21 +1330,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "7fc1999b93992fc6114d"
+      "key": "8f347060f55c328fe28f"
     },
     {
       "kind": "observation",
       "parameter": "BOD removal",
       "value": 64.0,
-      "unit": "percent",
+      "unit": "%",
       "qualifier": null,
-      "stream": "effluent",
+      "stream": "treated",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1073,21 +1357,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "56eba8eeb968d32061aa"
+      "key": "1a272529f0e14a8f9009"
     },
     {
       "kind": "observation",
       "parameter": "suspended solids removal",
       "value": 84.0,
-      "unit": "percent",
+      "unit": "%",
       "qualifier": null,
-      "stream": "effluent",
+      "stream": "treated",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1099,25 +1384,26 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "5217496d59a738fff24b"
+      "key": "cec738ccccf313690eab"
     },
     {
       "kind": "observation",
       "parameter": "grit removed",
       "value": 1243.0,
-      "unit": "cu ft",
+      "unit": "cu. ft.",
       "qualifier": null,
-      "stream": "raw",
+      "stream": "unknown",
       "place": null,
       "period": "1969",
-      "confidence": 0.8429,
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
-        "source_text": "A total of 1243 cu. ft. of grit was removed during the year",
+        "source_text": "A total of 1243 cu. ft. of grit was removed during the year, for an average of 104 cu. ft. of grit removed for each one million gallons of sewage treated.",
         "extractor": "ollama:gemma4:12b",
         "path": "prose",
         "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
@@ -1125,25 +1411,26 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "77072fe3daf70bec327a"
+      "key": "88d2ef506fd701e4c176"
     },
     {
       "kind": "observation",
       "parameter": "grit removed per million gallons",
       "value": 104.0,
-      "unit": "cu ft",
+      "unit": "cu. ft./million gallons",
       "qualifier": null,
-      "stream": "raw",
+      "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
-        "source_text": "for an average of 104 cu. ft. of grit removed for each one million gallons of sewage treated.",
+        "source_text": "A total of 1243 cu. ft. of grit was removed during the year, for an average of 104 cu. ft. of grit removed for each one million gallons of sewage treated.",
         "extractor": "ollama:gemma4:12b",
         "path": "prose",
         "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n10/mode/2up"
@@ -1151,21 +1438,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "cb041860bd209c8e09b9"
+      "key": "147077f3b7758c12f4bf"
     },
     {
       "kind": "observation",
-      "parameter": "raw sludge pumped",
-      "value": 3.0,
-      "unit": "million gallons",
+      "parameter": "raw sludge pumped to digesters",
+      "value": 3000000.0,
+      "unit": "gallons",
       "qualifier": null,
       "stream": "raw",
       "place": null,
       "period": "1969",
-      "confidence": 0.8429,
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.7986,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1177,21 +1465,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 0.9,
         "ocr_confidence": 0.7746
       },
-      "key": "d2a4bde927d4de185cae"
+      "key": "6abf41abd37dad8b7274"
     },
     {
       "kind": "observation",
-      "parameter": "monthly volume",
+      "parameter": "average monthly volume of sludge",
       "value": 258000.0,
       "unit": "gallons",
       "qualifier": null,
-      "stream": "raw",
+      "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1203,21 +1492,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "ed0c536e3012f5242664"
+      "key": "5e6ae12ad83cba7369e1"
     },
     {
       "kind": "observation",
       "parameter": "total solids",
       "value": 7.3,
-      "unit": "percent",
+      "unit": "%",
       "qualifier": null,
-      "stream": "raw",
+      "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1229,21 +1519,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "b4804fd77a1a0cdfb495"
+      "key": "3762108781f2228ec170"
     },
     {
       "kind": "observation",
       "parameter": "volatile solids",
       "value": 47.0,
-      "unit": "percent",
+      "unit": "%",
       "qualifier": null,
-      "stream": "raw",
+      "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1255,21 +1546,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "b0a4bb97ecae10729c2a"
+      "key": "87b85b58c35e95b89767"
     },
     {
       "kind": "observation",
-      "parameter": "sludge removed",
+      "parameter": "sludge removed from digesters",
       "value": 1495000.0,
       "unit": "gallons",
       "qualifier": null,
-      "stream": "treated",
+      "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1281,21 +1573,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "e92d4249dcfcf8f690f5"
+      "key": "bd564232ee1ee79da391"
     },
     {
       "kind": "observation",
-      "parameter": "monthly volume",
+      "parameter": "average monthly volume of sludge removed",
       "value": 125000.0,
       "unit": "gallons",
       "qualifier": null,
-      "stream": "treated",
+      "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1307,21 +1600,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "f7c4b6dd28b2506986a5"
+      "key": "6edf06498b2865bd87c4"
     },
     {
       "kind": "observation",
       "parameter": "total solids",
       "value": 8.5,
-      "unit": "percent",
+      "unit": "%",
       "qualifier": null,
-      "stream": "treated",
+      "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1333,21 +1627,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "f759a6b9a8c83fd9ec0d"
+      "key": "7fe525fc43e0822848f1"
     },
     {
       "kind": "observation",
       "parameter": "volatile solids",
       "value": 28.0,
-      "unit": "percent",
+      "unit": "%",
       "qualifier": null,
-      "stream": "treated",
+      "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1359,21 +1654,22 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "10f408b9cf2fd62c73a1"
+      "key": "4ba8e98b03a5bdea50a6"
     },
     {
       "kind": "conclusion",
-      "parameter": "hydraulic capacity exceedance",
+      "parameter": "capacity exceedance frequency",
       "value": 85.0,
-      "unit": "percent",
+      "unit": "%",
       "qualifier": null,
       "stream": "unknown",
       "place": null,
-      "period": null,
-      "confidence": 0.8429,
+      "period": "1969",
+      "facility": "Owen Sound water pollution control plant",
+      "confidence": 0.8873,
       "provenance": {
         "identifier": "owensoundwaterpo24477",
         "page": 11,
@@ -1385,17 +1681,16 @@
       "comparability_note": null,
       "notes": null,
       "raw": {
-        "model_confidence": 0.95,
+        "model_confidence": 1.0,
         "ocr_confidence": 0.7746
       },
-      "key": "86d0106d059295db94ea"
+      "key": "cb87bf58743ce3cc5d82"
     }
   ],
   "rescored": true,
   "scored_documents": [
+    "hamiltonadventur00unse",
     "owensoundwaterpo24477"
   ],
-  "gold_documents_not_scored": [
-    "hamiltonadventur00unse"
-  ]
+  "gold_documents_not_scored": []
 }

@@ -516,7 +516,7 @@ def find_suspect_readings(points: list[tuple[float, float, float]]) -> list[str]
 
 def _one_dimension(
     raw: list[tuple[float, float, str | None, float]],
-) -> tuple[list[tuple[float, float, str | None, float]], list[dict[str, Any]], str]:
+) -> tuple[list[tuple[float, float, str | None, float]], list[str], str]:
     """Keep the readings that measure the same KIND of thing, reject the rest.
 
     `parameters.resolve` decides a substance and a measure, and that is not
@@ -554,18 +554,20 @@ def _one_dimension(
         return raw, [], only
 
     winner = max(groups, key=lambda u: len(groups[u]))
-    rejects: list[dict[str, Any]] = []
+    # Strings, matching what `units.normalize_series` returns -- the two reject
+    # lists are concatenated and every consumer renders them as text. Returning
+    # dicts here broke the town-page builder with an AttributeError deep inside
+    # html.escape, which is a poor way to learn that a list has a contract.
+    rejects: list[str] = []
     for unit_key, rows in groups.items():
         if unit_key == winner:
             continue
         for year, value, unit_raw, _conf in rows:
-            rejects.append({
-                "year": int(year), "value": value, "unit": unit_raw,
-                "why": (f"measured in {unit_raw!r}, which is not comparable with "
-                        f"the {winner!r} this series is in -- the parameter table "
-                        "puts them under one name and they are different "
-                        "quantities"),
-            })
+            rejects.append(
+                f"{int(year)}: {value:g} {unit_raw or '(no unit)'} is not the same "
+                f"quantity as the {winner} this series is in -- the parameter "
+                f"table puts them under one name"
+            )
     return groups[winner], rejects, winner
 
 

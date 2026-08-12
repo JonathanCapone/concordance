@@ -64,10 +64,26 @@ def norm_unit(unit: str | None) -> str:
     # and a fabrication, costing twice.
     u = re.sub(r"\s*/\s*", "/", u)
     u = re.sub(r"\s+", " ", u)
+    # "^" is how a model writes a superscript the page prints: the gold set has
+    # "gal/ft2/day" and the extractor returned "gal/ft^2/day" for the same
+    # reading.
+    u = u.replace("^", "")
     if u in UNIT_ALIASES:
         return UNIT_ALIASES[u]
+
+    # Fall back to the SOLIDUS form, not the original. "$ per million gallons"
+    # and "$/million gallons" are one unit written two ways, and returning the
+    # unnormalised string left them different -- so eight correct readings on
+    # the Owen Sound pages scored as both a miss and a fabrication, costing
+    # twice each and dropping precision about five points.
+    #
+    # This does not merge "pounds" with "pounds per month": those become
+    # "pounds" and "pounds/month", which is the distinction worth keeping. The
+    # rate implied by a PARAMETER name is reconciled separately, in
+    # canonical_quantity, and that reconciliation was silently useless while
+    # this function returned the spelled-out form.
     u2 = u.replace(" per ", "/")
-    return UNIT_ALIASES.get(u2, u)
+    return UNIT_ALIASES.get(u2, u2)
 
 
 def values_match(a: float | None, b: float | None, *, rel: float = 0.01) -> bool:

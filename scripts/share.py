@@ -112,13 +112,41 @@ def do_import(args: argparse.Namespace) -> int:
         print(f"\ntaking {len(keep)} verified readings; {len(verdict.failed)} left "
               "out and listed above")
 
+        # Re-verify what is actually about to be merged, rather than handing
+        # merge_bundle the verdict for the bundle this one was cut down from.
+        # Passing the old verdict tripped its own gate -- it still carried the
+        # failures -- so `import --verified-only` raised ValueError on any
+        # bundle with a single unverifiable record, which is every realistic
+        # one. The command is documented verbatim in the README.
+        #
+        # Re-checking rather than hand-building a clean Verdict is the point: it
+        # proves the trimmed set passes instead of asserting it, and the pages
+        # are cached by now so it costs nothing.
+        verdict = verify_bundle(bundle, archive=Archive())
+        if not verdict.accepted:
+            print("The trimmed bundle still does not verify, which should not "
+                  "happen.\nNothing merged.")
+            return 1
+
     if args.dry_run:
         print("\nWould merge. Re-run without --dry-run.")
         return 0
 
     out = merge_bundle(bundle, into=args.into, verdict=verdict)
-    print(f"\nmerged {out.get('added', verdict.verified)} readings into {args.into}")
-    print("They are now on the same footing as everything read locally.")
+    # merge_bundle returns `accepted` and `duplicates_dropped`. There is no
+    # `added`, so the old message fell through to verdict.verified and reported
+    # "merged 115 readings" for an import that merged none of them -- every one
+    # already present under the same record key. A number that counts what was
+    # checked and calls it what was stored is exactly the kind of plausible
+    # wrong answer this project exists to catch.
+    added = out.get("accepted", 0)
+    dupes = out.get("duplicates_dropped", 0)
+    print(f"\nmerged {added} new reading{'' if added == 1 else 's'} into {args.into}")
+    if dupes:
+        print(f"{dupes} were already here under the same record key and were not "
+              "duplicated.")
+    if added:
+        print("They are now on the same footing as everything read locally.")
     return 0
 
 

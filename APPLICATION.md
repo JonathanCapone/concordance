@@ -69,15 +69,15 @@ Not a proposal. A measured artifact, running today:
 
 | | |
 |---|---|
-| Extraction precision / recall | **90.6% / 84.2%** against hand-checked ground truth |
+| Extraction precision / recall | **96.8% / 88.2%** against hand-checked ground truth |
 | Blind page (annotated before any run) | **88% / 88%** |
-| Kind accuracy — measurement vs design spec vs regulatory limit | **100%** |
-| Stream accuracy — influent vs effluent | **80%** over 10 judged pairs |
+| Kind accuracy — measurement vs design spec vs regulatory limit | **98.3%** |
+| Stream accuracy — influent vs effluent | **88.9%** over 18 judged pairs |
 | Quotes failing verification across 286 records | **0** |
 | Table measurements recovered | **535** from 24 pages, 11 collections, 1879–2003 |
 | ...of which found in the page's surviving OCR | **411 of 461 (89%)** |
 | Measurements settled / contested / unsupported | **736 / 78 / 17** across 1,039 claims, with nobody adjudicating |
-| Code / tests | 426 tests · zero required dependencies in the core |
+| Code / tests | 440 tests · zero required dependencies in the core |
 
 Every recovered number carries the verbatim sentence it was read from, that
 sentence is verified to occur on the page, and the page is one click away. A
