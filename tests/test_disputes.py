@@ -274,3 +274,65 @@ def test_a_contribution_reads_back_indistinguishable_from_the_machine_s(tmp_path
     mine = Claim(record=record, source="extraction", contributor="gemma4:12b")
     assert theirs[0].slot == mine.slot
     assert _check(theirs[0]).verified == _check(mine).verified is True
+
+
+# -- a table reading has headings, not a sentence ---------------------------
+
+TABLE_OCR = (
+    "TABLE I FLOW - MILX.IQN GALLOLS MONTH MAX. DAILY r low MIN. DAILY "
+    "Jan. 6.976 4.609 5.700 176.547 Feb. 6.200 4.377 5.425 151.607"
+)
+TABLE_PAGES = {"brantford": {15: TABLE_OCR}}
+
+
+def _cell_claim(value, cell="table cell [Jan. / MAX. DAILY Flow]"):
+    return Claim(record={
+        "parameter": "MAX. DAILY Flow", "value": value, "unit": "million gallons",
+        "place": "Brantford", "period": "1962",
+        "provenance": {"identifier": "brantford", "page": 15, "source_text": cell},
+    })
+
+
+def _check_table(claim):
+    return check(claim, pages={k: dict(v) for k, v in TABLE_PAGES.items()})
+
+
+def test_a_table_reading_is_not_judged_as_if_it_were_a_sentence():
+    """Every vision record failed the ledger -- 154 of 154.
+
+    "table cell [Jan. / MAX. DAILY Flow]" is not text on the page and never will
+    be, so the quote-on-page rule marked the whole table dataset unsupported. A
+    table has no sentences; its evidence is a cell reference.
+    """
+    assert _check_table(_cell_claim(6.976)).verified
+
+
+def test_a_table_value_that_is_not_in_the_page_digits_is_refused():
+    s = _check_table(_cell_claim(9999.1))
+    assert not s.verified
+    assert "does not appear" in s.why
+
+
+def test_a_cited_heading_that_is_not_on_the_page_is_refused():
+    s = _check_table(_cell_claim(6.976, "table cell [Jan. / RAINFALL]"))
+    assert not s.verified
+    assert "headings cited are not on that page" in s.why
+
+
+def test_a_page_whose_ocr_can_find_nothing_abstains_rather_than_refusing():
+    """The case the vision path exists for. A destroyed text layer is a fact
+    about the scanner, not evidence against the model."""
+    pages = {"x": {1: "STATEMENT No. 4 Continued. SUMMIT WATER SUPPLY. 41.2"}}
+    c = Claim(record={
+        "parameter": "discharge", "value": 41.2, "unit": "cu ft",
+        "provenance": {"identifier": "x", "page": 1,
+                       "source_text": "table cell [Talon Lake / Evaporation]"}})
+    s = check(c, pages={k: dict(v) for k, v in pages.items()})
+    assert s.verified
+    assert "too damaged to confirm or refute" in s.why
+
+
+def test_prose_records_are_unaffected():
+    """The dispatch must not weaken the sentence check it sits beside."""
+    assert not _check(_claim(999, "The average influent BOD and suspended "
+                                  "solids were 104 mg/1")).verified

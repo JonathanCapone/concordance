@@ -52,6 +52,7 @@ from __future__ import annotations
 import collections
 import hashlib
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
@@ -152,6 +153,49 @@ class Standing:
         }
 
 
+#: How the vision path writes a cell reference: "table cell [row / column]".
+CELL_RE = re.compile(r"table\s+cell\s*\[\s*(.+?)\s*\]\s*$", re.I)
+
+
+def _check_cell(claim: Claim, cell: Any, text: str) -> Standing:
+    """Verify a table reading, which has headings instead of a sentence.
+
+    Two questions, chosen to mirror the prose check as closely as the medium
+    allows: are the cited headings on the page, and does the value appear in the
+    page's digits. Neither is as strong as quoting a sentence, and the standing
+    says so in words rather than pretending otherwise.
+
+    Headings are judged by the vision path's own rule, which lets a page whose
+    OCR can find nothing at all abstain rather than refuse. A table whose text
+    layer was destroyed is precisely the case that path exists for, and its
+    silence is a fact about the scanner.
+    """
+    from .vision import _label_on_page, _page_can_referee
+
+    labels = [part.strip() for part in cell.group(1).split("/") if part.strip()]
+    claimed = [{"row_label": labels[0] if labels else "",
+                "column_label": labels[1] if len(labels) > 1 else ""}]
+
+    if _page_can_referee(claimed, text):
+        missing = [lab for lab in labels if not _label_on_page(lab, text)]
+        if missing:
+            return Standing(claim, False,
+                            "the table headings cited are not on that page: "
+                            + ", ".join(repr(m) for m in missing))
+        heading_note = "the table headings are on the page"
+    else:
+        heading_note = ("the page's OCR is too damaged to confirm or refute the "
+                        "headings, which is the case this path exists for")
+
+    if claim.record.get("value") is None:
+        return Standing(claim, True, f"{heading_note}; no value to check")
+    if _value_in_damaged_quote(claim.record.get("value"), text):
+        return Standing(claim, True, f"{heading_note}, and the value is in its digits")
+    return Standing(claim, False,
+                    f"{heading_note}, but the value does not appear anywhere in "
+                    "the page's digits")
+
+
 def check(claim: Claim, *, archive: Archive | None = None,
           pages: dict[str, dict[int, str]] | None = None) -> Standing:
     """Ask the paper, not the person.
@@ -176,6 +220,16 @@ def check(claim: Claim, *, archive: Archive | None = None,
     text = cache[ident].get(page_no, "")
     if not text:
         return Standing(claim, False, "page not retrievable")
+
+    # A reading off a table image cannot be checked the same way, and treating
+    # it as though it could would mark the entire table dataset unsupported.
+    # Its evidence is not a sentence -- a table has none -- but a cell
+    # reference, "table cell [Jan. / MAX. DAILY Flow]", and the thing to verify
+    # is that those headings are on the page and the value is in its digits.
+    cell = CELL_RE.match(claim.quote.strip())
+    if cell:
+        return _check_cell(claim, cell, text)
+
     if _norm(claim.quote) not in _norm(text):
         return Standing(claim, False, "the quoted sentence is not on that page")
 
