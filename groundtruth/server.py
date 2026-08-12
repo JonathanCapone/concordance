@@ -525,8 +525,25 @@ class Handler(BaseHTTPRequestHandler):
 
         if url.path.startswith("/static/"):
             name = url.path.split("/static/", 1)[1]
-            f = Path(__file__).parent / "static" / name
-            if not f.is_file() or ".." in name:
+            # Resolve and then check containment, rather than screening the
+            # string for "..". Screening the string missed the actual hole:
+            # pathlib's `/` DISCARDS the left side when the right side is
+            # absolute, so `static_dir / "C:/Windows/win.ini"` is simply
+            # C:/Windows/win.ini, with no ".." anywhere in it. A plain
+            # `GET /static/C:/Windows/win.ini` returned the file, and asking
+            # for the server's own source returned that too.
+            #
+            # A blocklist of the shapes an attack is expected to take is the
+            # same mistake this project keeps making in the other direction:
+            # a control that models the world instead of measuring it. Ask the
+            # filesystem where the path actually landed.
+            static_dir = (Path(__file__).parent / "static").resolve()
+            try:
+                f = (static_dir / name).resolve()
+            except (OSError, ValueError):
+                self.send_error(404)
+                return
+            if not f.is_file() or not f.is_relative_to(static_dir):
                 self.send_error(404)
                 return
             ctype = ("text/css" if name.endswith(".css")

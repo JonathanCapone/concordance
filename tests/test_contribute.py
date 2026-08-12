@@ -100,11 +100,24 @@ def test_wrong_page_is_rejected():
 
 # -- what it deliberately does NOT fail on -----------------------------------
 
-def test_a_value_written_in_words_is_not_punished():
+def test_a_value_written_in_words_is_now_read_rather_than_excused():
     """"Just over three million gallons" really is where 3000000 comes from.
-    Failing that would penalise a correct reading."""
-    state, _ = _value_in_quote(3000000, "Just over three million gallons of raw sludge")
-    assert state == "unchecked"
+
+    This used to assert "unchecked" -- the honest answer available to a check
+    that could only see digits. It is now VERIFIED, because groundtruth.numerals
+    reads the words, and the reason says which allowance was made. The old
+    assertion was not wrong when it was written; it recorded a limit that has
+    since been removed.
+    """
+    state, why = _value_in_quote(3000000, "Just over three million gallons of raw sludge")
+    assert state == "ok"
+    assert "in words" in why
+
+
+def test_a_bare_article_still_proves_nothing():
+    """The risk that comes with reading words: "one" must not support 1."""
+    state, _ = _value_in_quote(1, "one of the plants was taken out of service")
+    assert state == "failed"
 
 
 def test_ocr_spacing_inside_a_number_still_matches():

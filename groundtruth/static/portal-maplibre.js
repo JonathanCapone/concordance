@@ -116,7 +116,9 @@
     } catch (_e) {}
     // Global-neutral fallback (worldwide project; never region-scope) -- matches
     // portal.js MAP_INITIAL_CENTER [lat 20, lng -30].
-    return { lng: -30, lat: 20, zoom: 2 };
+    // Canada, not the mid-Atlantic. This default came over from OMEGA, which
+    // is ocean-shaped; this archive is terrestrial and Canadian.
+    return { lng: -96.8, lat: 58.5, zoom: 2.9 };
   }
 
   function escapeHtml(value) {

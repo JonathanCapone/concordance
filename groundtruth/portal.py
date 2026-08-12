@@ -504,7 +504,7 @@ if (typeof maplibregl === "undefined") {{
     loaded from the network.<br>Every other view works from local data.</div>`;
 }} else try {{
 const map = new maplibregl.Map({{
-  container:"map", center:[-81.2,44.3], zoom:5.4,
+  container:"map", center:[-96.8,58.5], zoom:2.9,
   attributionControl:{{compact:true}},
   style:{{ version:8,
     sources:{{
@@ -540,7 +540,17 @@ map.on("load", async () => {{
   map.on("click","dots", e => e.features[0] && openTown(e.features[0].properties));
   map.on("mouseenter","dots",()=>map.getCanvas().style.cursor="pointer");
   map.on("mouseleave","dots",()=>map.getCanvas().style.cursor="");
-  const b=new maplibregl.LngLatBounds();
+  /* Frame the country, not the data. Every town read so far is in southern
+     Ontario, so fitting to the dots opened the map on one province and quietly
+     implied that is what the archive covers. It is not: the corpus is national
+     (Ontario 12,467 items, Alberta 8,671, BC 468), and the emptiness everywhere
+     else is a finding rather than a background. Starting at Canada shows the
+     gap, which is the honest first impression and also the project's argument.
+
+     Capped at 74N: Canada reaches 83.1N at Ellesmere, and including it spends
+     half the screen on ice and shrinks the populated south to nothing. The
+     dots are extended in afterwards so nothing read can fall outside the view. */
+  const b=new maplibregl.LngLatBounds([-141.0,41.7],[-52.6,74.0]);
   geo.features.forEach(f=>b.extend(f.geometry.coordinates));
   map.fitBounds(b,{{padding:{{top:60,bottom:120,left:60,right:450}},duration:0}});
 

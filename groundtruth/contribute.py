@@ -37,6 +37,7 @@ from pathlib import Path
 from typing import Any
 
 from .archive import Archive
+from . import numerals
 from .models import record_key
 
 BUNDLE_VERSION = 1
@@ -48,17 +49,46 @@ def _norm(text: str) -> str:
 
 def bundle_id(records: list[dict[str, Any]]) -> str:
     """Content hash, so the same reading submitted twice is the same bundle."""
-    keys = sorted(r.get("key", "") for r in records)
+    # record_key, not r["key"]: the stored field is a snapshot from before
+    # normalisation (see models.record_key). Reading it made every bundle of
+    # key-less records hash to the SAME id -- the sha256 of an empty string --
+    # so unrelated submissions collided on one filename and overwrote each other.
+    keys = sorted(record_key(r) for r in records)
     return hashlib.sha256("|".join(keys).encode()).hexdigest()[:16]
 
 
 @dataclass
 class Verdict:
+    """What the archive said about each record in a bundle.
+
+    The distinction between `unchecked` and `unsupported` is the whole point of
+    this class and it did not exist until an audit found what its absence cost.
+    Both used to be "unchecked", and everything that was not `failed` was merged
+    -- so a sender could keep ONE genuine record, append five hundred inventions
+    with no provenance at all, and have the lot written into the library. The
+    response even said "nothing was taken on trust".
+
+      verified     the sentence is on the page and the value is in it
+      unchecked    the sentence IS on the page; the value could not be judged
+                   (a conclusion with no number, a figure written in words)
+      unsupported  nothing was confirmed -- no quote, or the page could not be
+                   fetched. Never merged, because nothing here is evidence.
+      failed       the sentence is on the page and states a different number
+
+    Only `verified` and `unchecked` are safe to keep, and `supported` carries
+    exactly those records so the merge cannot re-derive the set and get it wrong.
+    """
+
     total: int = 0
     verified: int = 0
     failed: list[dict[str, Any]] = field(default_factory=list)
     unchecked: list[dict[str, Any]] = field(default_factory=list)
+    unsupported: list[dict[str, Any]] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
+    #: Records the archive actually stands behind. None means "not computed by
+    #: verify_bundle" -- only hand-built verdicts in tests -- and merge falls
+    #: back to the whole bundle for those.
+    supported: list[dict[str, Any]] | None = None
 
     @property
     def rate(self) -> float:
@@ -82,7 +112,9 @@ class Verdict:
         if self.failed:
             head += f" — {len(self.failed)} FAILED, bundle rejected"
         if self.unchecked:
-            head += f" — {len(self.unchecked)} could not be checked"
+            head += f" — {len(self.unchecked)} on the page but not judgeable"
+        if self.unsupported:
+            head += f" — {len(self.unsupported)} UNSUPPORTED, not merged"
         return head
 
 
@@ -127,6 +159,7 @@ def verify_bundle(
         records = records[:sample]
 
     verdict = Verdict(total=len(records))
+    supported: list[dict[str, Any]] = []
     pages: dict[str, dict[int, str]] = {}
 
     for record in records:
@@ -141,7 +174,8 @@ def verify_bundle(
         }
 
         if not (ident and page_no and quote):
-            verdict.unchecked.append({**tag, "why": "no page or no quoted sentence"})
+            verdict.unsupported.append(
+                {**tag, "why": "no page or no quoted sentence -- nothing to check"})
             continue
 
         if ident not in pages:
@@ -153,7 +187,7 @@ def verify_bundle(
 
         text = pages[ident].get(page_no, "")
         if not text:
-            verdict.unchecked.append({**tag, "why": "page not retrievable"})
+            verdict.unsupported.append({**tag, "why": "page not retrievable"})
             continue
 
         if _norm(quote) not in _norm(text):
@@ -168,11 +202,17 @@ def verify_bundle(
         state, why = _value_in_quote(record.get("value"), quote)
         if state == "ok":
             verdict.verified += 1
+            supported.append(record)
         elif state == "unchecked":
+            # The SENTENCE is confirmed on the page; only the value could not be
+            # judged. That is a real, if partial, piece of evidence, so it may be
+            # kept -- unlike a record that cited nothing checkable at all.
             verdict.unchecked.append({**tag, "why": why})
+            supported.append(record)
         else:
             verdict.failed.append({**tag, "why": why})
 
+    verdict.supported = supported
     return verdict
 
 
@@ -232,7 +272,24 @@ def _value_in_quote(value: Any, quote: str) -> tuple[str, str]:
     literal = re.sub(r"[^0-9]", "", quote)
     digits_in_quote = re.sub(r"[^0-9]", "", _ocr_digits(quote))
     if not digits_in_quote:
-        return "unchecked", "value is written in words, not digits"
+        # No digits anywhere -- but the number may be spelled out. "Just over
+        # three million gallons" is a measurement, and returning "unchecked"
+        # here was the honest answer available before words could be read.
+        if isinstance(value, (int, float)):
+            spelled = numerals.states_value(quote, float(value))
+            if spelled is not None:
+                return "ok", f"the sentence states it in words ({spelled.phrase!r})"
+        # A number was claimed and the sentence states no number at all -- not in
+        # digits, not in words. That is not an unjudgeable case, it is a reading
+        # with no source: the value was inferred from somewhere else and attached
+        # to a sentence that does not carry it.
+        #
+        # This used to return "unchecked", which under the new merge rule would
+        # have kept it. Records with NO value still return "unchecked" further up
+        # and are kept, which is right -- a conclusion has no number to support.
+        return "failed", (
+            "the sentence states no number, in digits or in words, so it cannot "
+            f"be where {value} came from")
 
     # repr(), not "%g". The g format rounds to six significant figures, so an
     # operating cost of 53549.66 became "53549.7" and stopped matching the very
@@ -250,11 +307,26 @@ def _value_in_quote(value: Any, quote: str) -> tuple[str, str]:
     if wanted in digits_in_quote:
         return "ok", "once OCR letter-for-digit damage is undone"
 
-    # A rounded reading: "approximately 3,000,000" from "just over three million".
-    # Leading digits still have to match something.
-    trimmed = wanted.rstrip("0")
-    if len(wanted) > 3 and trimmed and trimmed in digits_in_quote:
-        return "ok", "as a rounding of the figure the sentence states"
+    # There used to be a "rounding" allowance here: strip the value's trailing
+    # zeros and accept if the stub appears anywhere in the sentence's digits. It
+    # was a hole big enough to drive the whole threat model through. 3,000,000
+    # reduces to "3", so that value verified against ANY sentence containing a
+    # 3 -- 62% of the quotes already in this repo accept the value 1,000,000 on
+    # that rule. A contributor could invent a round flow, cite a real sentence
+    # about something else, and the ledger would print "the value is in it as a
+    # rounding of the figure the sentence states" underneath a scan that says no
+    # such thing. Round numbers are exactly what this corpus is full of: flows,
+    # populations, costs, capacities.
+    #
+    # It was worth almost nothing, which is the part worth recording. Across all
+    # 962 published records only FOUR depended on it, and two of those are the
+    # model guessing at destroyed OCR ("a total capacity of $0,000 cubic feet"
+    # read as 25,000). Those four now show as unsupported in the ledger, which
+    # is the honest place for them.
+    #
+    # The legitimate case it was reaching for -- "approximately 3,000,000" from
+    # "just over three million" -- is handled properly below, by reading the
+    # words.
 
     # Last, compare as numbers rather than as digit strings, which is the only
     # way ".05 mg/L" can be seen to state 0.05.
@@ -274,6 +346,15 @@ def _value_in_quote(value: Any, quote: str) -> tuple[str, str]:
     # false.
     if isinstance(value, (int, float)) and float(value) in _numbers_in(quote):
         return "ok", "reading the sentence's numbers as numbers, not as digits"
+
+    # The page may have written the number out in words. numerals.states_value
+    # is deliberately the narrow door: it requires a magnitude word, a trailing
+    # unit, or a value too large to be an article, so "one of the plants was
+    # closed" cannot be used to support the value 1.
+    if isinstance(value, (int, float)):
+        spelled = numerals.states_value(quote, float(value))
+        if spelled is not None:
+            return "ok", f"the sentence states it in words ({spelled.phrase!r})"
 
     return "failed", (
         f"the value {value} does not appear in the sentence it cites "
@@ -308,8 +389,21 @@ def merge_bundle(
     # This is the second family of bug this project keeps producing: an
     # identity treated as given rather than as something derivable from the
     # content it identifies.
-    bid = bundle.get("bundle_id") or bundle_id(bundle.get("records") or [])
+    # The id names a FILE, and it arrives from whoever sent the bundle. A
+    # sender who set it to "/../brantford" got `data/results/contributed-/../
+    # brantford.json` -- which Windows resolves to a write OUTSIDE data/results,
+    # over any .json the server process can reach, on a public unauthenticated
+    # endpoint.
+    #
+    # The id is derived from the records anyway, so the sender's copy is at best
+    # a cache of something recomputable. Recompute it and keep only characters
+    # that cannot mean anything to a filesystem.
+    claimed = str(bundle.get("bundle_id") or "")
+    bid = claimed if re.fullmatch(r"[0-9a-f]{4,64}", claimed) else bundle_id(
+        bundle.get("records") or [])
     path = out_dir / f"contributed-{bid}.json"
+    if path.resolve().parent != out_dir.resolve():
+        raise ValueError("bundle id does not name a file inside the results directory")
 
     # Recomputed on BOTH sides, never read from the stored field. See
     # models.record_key: the `key` written into a results file is a snapshot
@@ -332,8 +426,20 @@ def merge_bundle(
                 r = dict(r, place=header_place)
             existing_keys.add(record_key(r))
 
+    # Merge ONLY what the archive stood behind. This used to iterate the whole
+    # bundle, so every record that was not outright FAILED rode in -- including
+    # records that cited no page, and records whose page archive.org happened not
+    # to serve that minute. One genuine reading was enough to carry an unlimited
+    # number of inventions, and the next instance to pull this library would
+    # re-publish them.
+    #
+    # verify_bundle computes the set; it is not re-derived here, because a merge
+    # that reconstructs the verifier's judgement is a second implementation of
+    # the check and this project has already been bitten by having two.
+    source = verdict.supported if verdict.supported is not None else bundle["records"]
+
     fresh, seen = [], set()
-    for r in bundle["records"]:
+    for r in source:
         k = record_key(r)
         # Also dedup WITHIN the bundle. A sender who concatenated two exports
         # would otherwise land the same reading twice in one file, where the
@@ -360,5 +466,10 @@ def merge_bundle(
     return {
         "written": str(path),
         "accepted": len(fresh),
-        "duplicates_dropped": len(bundle["records"]) - len(fresh),
+        # Measured against `source`, not the whole bundle. Counting the
+        # difference from bundle["records"] reported 500 records the archive
+        # REFUSED as "duplicates" -- a number that named the wrong reason and
+        # made a rejected submission read like a redundant one.
+        "duplicates_dropped": len(source) - len(fresh),
+        "not_supported": len(bundle["records"]) - len(source),
     }
