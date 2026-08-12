@@ -1,64 +1,86 @@
 {
-  "pages_worth_reading": 11735100,
+  "pages_worth_reading": 15359499,
+  "text_pages": 11212434,
+  "table_pages": 4147065,
+  "expected_measurements": 121739392,
+  "share_of_measurements_from_tables": 0.613,
   "tokens": {
-    "input": 10852033725,
-    "output": 3051126000,
-    "total": 13903159725
+    "text_input": 12611185141,
+    "text_output": 2915232840,
+    "vision_input": 10367662500,
+    "vision_output": 3732358500,
+    "total": 29626438981
   },
-  "local_machine_years": 55.8,
+  "local_machine_years": {
+    "prose": 62.3,
+    "vision": 72.6
+  },
   "rented": [
     {
       "option": "A100 40GB, spot",
       "usd_per_hour": 1.2,
       "days": [
-        53.6,
-        107.3
+        168.7,
+        337.4
       ],
       "usd": [
-        1545,
-        3090
+        4858,
+        9717
+      ],
+      "usd_text_only": [
+        1725,
+        3450
       ]
     },
     {
       "option": "A100 80GB, on-dem",
       "usd_per_hour": 1.8,
       "days": [
-        40.2,
-        80.5
+        126.5,
+        253.0
       ],
       "usd": [
-        1738,
-        3476
+        5466,
+        10932
+      ],
+      "usd_text_only": [
+        1941,
+        3882
       ]
     },
     {
       "option": "H100, on-demand",
       "usd_per_hour": 2.8,
       "days": [
-        20.1,
-        40.2
+        63.3,
+        126.5
       ],
       "usd": [
-        1352,
-        2703
+        4251,
+        8502
+      ],
+      "usd_text_only": [
+        1510,
+        3019
       ]
     }
   ],
   "hosted": [
     {
       "option": "small hosted model",
-      "usd": 26108,
-      "usd_batch": 13054
+      "usd": 56217,
+      "usd_batch": 28108
     },
     {
       "option": "mid hosted model",
-      "usd": 78323,
-      "usd_batch": 39161
+      "usd": 168650,
+      "usd_batch": 84325
     }
   ],
   "caveats": [
     "rented throughput is estimated, not measured on this project",
-    "prose path only; tables and figures are 26% of pages and cost more",
+    "the vision throughput penalty is a guess and vision is most of the cost, so it is the first thing a funded run should measure",
+    "table pages are 27% of the pages and about four times as dense in measurements, so costing the prose path alone answers an easier question than the one being asked",
     "any prompt change means paying again, so settle the prompt first"
   ]
 }

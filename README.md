@@ -95,10 +95,12 @@ Three things follow, and all three change the plan rather than decorate it.
 **Nine out of ten documents in this archive contain measurements.** The premise holds.
 
 **Local inference cannot touch the whole thing.** At the throughput measured on a consumer GPU,
-reading every page is roughly **56 machine-years**. A corpus-wide pass is therefore not a local
-job and should never be described as one: it is a funded batch run, performed once, after which
-the resulting dataset costs everyone else nothing. That is a fact about the work, not a caveat
-hidden in a footnote.
+reading every page is roughly **62 machine-years of prose plus 73 of tables**. A corpus-wide pass
+is therefore not a local job and should never be described as one: it is a funded batch run,
+performed once, after which the resulting dataset costs everyone else nothing. On rented hardware
+that is **$1,510–3,019 for the text alone** or **$4,251–8,502 for both paths**, against an
+expected yield of about 122 million measurements. `scripts/cost_model.py` shows the arithmetic and
+names the estimate the answer is most sensitive to.
 
 **Which is why the split is what it is.** The central run does what is expensive and uniform —
 the vocabulary, and the tables. People do prose, on demand, on their own machines, which is where

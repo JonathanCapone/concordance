@@ -70,8 +70,8 @@ Not a proposal. A measured artifact, running today:
 | Kind accuracy — measurement vs design spec vs regulatory limit | **100%** |
 | Quotes failing verification across 286 records | **0** |
 | Table values found on their own scanned page | **58 of 58**, four documents, 1942–2003 |
-| Measurements settled / contested / unsupported | **624 / 57 / 14** |
-| Code / tests | 397 tests · zero required dependencies in the core |
+| Measurements settled / contested / unsupported | **624 / 57 / 14**, with nobody adjudicating |
+| Code / tests | 411 tests · zero required dependencies in the core |
 
 Every recovered number carries the verbatim sentence it was read from, that
 sentence is verified to occur on the page, and the page is one click away. A
@@ -135,11 +135,30 @@ measurements and a third yield none, while a table page yields around eighteen �
 so the tables are likely the majority of the actual measurements while being a
 quarter of the pages.
 
-At the throughput measured on my own hardware a corpus-wide pass is roughly 56
-machine-years on one consumer GPU. **So it is not a local job, and I will not
-pretend otherwise.** It is a funded batch run, performed once, after which the
-resulting dataset costs everyone else nothing. That is what the money is for:
-not tooling, which exists, but the read itself.
+At the throughput measured on my own hardware a corpus-wide pass is roughly 62
+machine-years of prose plus 73 of tables. **So it is not a local job, and I will
+not pretend otherwise.** It is a funded batch run, performed once, after which
+the resulting dataset costs everyone else nothing. That is what the money is
+for: not tooling, which exists, but the read itself.
+
+Costed properly, with the two paths separated, the number moved against me:
+
+| | rented GPU |
+|---|---|
+| Text pages only — leaves most measurements unread | **$1,510–3,019** |
+| Both paths, the whole thing | **$4,251–8,502** |
+
+The earlier draft of this application said roughly $1,500, and that figure was
+the prose path alone against a corpus a third smaller than it turned out to be.
+The honest version is that **a complete read sits at the edge of a $5,000
+fellowship rather than comfortably inside it**, and the expected yield is about
+122 million measurements, 61% of them from the table pages that are only 27% of
+the work.
+
+I would rather show you that arithmetic than the flattering version. The first
+thing a funded run should do is measure rented throughput on a thousand pages
+and re-derive this, because the vision throughput penalty is currently a guess
+and it is now most of the cost.
 
 That division is also the answer to the obvious objection about distributed
 contribution. The central run does what is expensive and uniform — the
