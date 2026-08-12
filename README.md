@@ -283,6 +283,15 @@ conservative at the sample sizes annual reports give, so a null result from it m
 watershed network is name-matching and drainage area, not routed hydrology, and should be checked
 against the National Hydro Network before any claim about a specific community's water.
 
+## The work log
+
+[WORKLOG.md](WORKLOG.md) records what was built, what was measured, and mostly
+what turned out to be wrong. Every serious mistake in this project has been
+plausible-wrong rather than crash-wrong -- a 49% accuracy figure that was really a
+broken ruler, a chart quietly plotting removal percentages as concentrations, two
+unconnected rivers linked by a guessed threshold -- and none of them would have
+thrown an error. That pattern is the most useful thing here.
+
 ## Licence
 
 MIT — see [LICENSE](LICENSE).
