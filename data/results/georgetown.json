@@ -1,7 +1,7 @@
 {
   "place": "Georgetown",
   "model": "ollama:gemma4:12b",
-  "n_records": 230,
+  "n_records": 253,
   "pages_attempted": [
     "GEORGETOWNWATERP00SNSN19135.ome#3",
     "GEORGETOWNWATERP00SNSN19135.ome#6",
@@ -31,7 +31,8 @@
     "GEORGETOWNWATERP00SNSN19136.ome#21",
     "GEORGETOWNWATERP00SNSN19136.ome#22",
     "georgetownwaterp23285#3",
-    "georgetownwaterp23285#11"
+    "georgetownwaterp23285#11",
+    "georgetownwaterp23285#12"
   ],
   "records": [
     {
@@ -6243,6 +6244,627 @@
         "ocr_confidence": 0.7507
       },
       "key": "bb62441688c7de997f28"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Debt Retirement Balance at Credit (Sinking Fund)",
+      "value": 871677.01,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "December 31, 1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "Debt Retirement Balance at Credit (Sinking Fund) December 31, 1967:",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "82c897bcf26915580431"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Debt Retirement Balance at Credit (Sinking Fund)",
+      "value": 48379.33,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "December 31, 1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "2-0077-61\n$871, 677. 01\n48, 379. 33",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "f0d5b673767947064704"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Debt Retirement Balance at Credit (Sinking Fund)",
+      "value": 19072.1,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "December 31, 1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "19,072. 10",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "6478dfad2c55ca151aed"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Total Long Term Debt to OWRC",
+      "value": 139661.16,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "$139, 661. 16",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "c0f2298058c69345f226"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Total Long Term Debt to OWRC",
+      "value": 5340.39,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "5,340. 39",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "584dc384ac5b9be06900"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Net Operating Debt Retirement Reserve",
+      "value": 823297.68,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "$823, 297. 68",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "31f47029c7bfe0a0ab37"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Net Operating Debt Retirement Reserve",
+      "value": 44158.21,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "44, 158. 21",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "88890dce199c930084df"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Net Operating Debt Retirement Reserve",
+      "value": 867455.89,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "$867,455. 89",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "4c2cc7e140f81acefe76"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Net Operating Debt Retirement Reserve",
+      "value": 145001.55,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "$145, 001. 55",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "2cad845a0b57327d7664"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 42383.25,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "2-0017-58\n$ 42,383. 25",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "e32fda6e59b19b3789f5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 16614.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "16, 614. 00",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "b2bf64064732234829e8"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 4969.79,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "4, 969. 79",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "2039ef2dac2f18215415"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 46428.61,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "46,428. 61",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "58d53d25e4a3b88133c4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 110395.65,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "$110, 395. 65",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "c6f91d9c64f86c333a8c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 891.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "2-0077-61\n$ 891.00",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "aad80c29aee411ae3c72"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 361.9,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "361. 90",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "be3f2bac8daa8b42eb52"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 2490.22,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "2,490. 22",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "f54d15b21e6819f6c259"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Interest Charged",
+      "value": 3743.12,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "$3, 743. 12",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "aaac45dbfee76cbd7763"
+    },
+    {
+      "kind": "observation",
+      "parameter": "TOTAL Interest Charged",
+      "value": 42383.25,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "TOTAL\n$ 42, 383. 25",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "2d73d6b573e95c51f8af"
+    },
+    {
+      "kind": "observation",
+      "parameter": "TOTAL Interest Charged",
+      "value": 17505.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "17, 505. 00",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "9f2bac065555806e9d02"
+    },
+    {
+      "kind": "observation",
+      "parameter": "TOTAL Interest Charged",
+      "value": 5331.69,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "5, 331. 69",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "49a9c3c6c85723f71572"
+    },
+    {
+      "kind": "observation",
+      "parameter": "TOTAL Interest Charged",
+      "value": 48918.83,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "48, 918. 83",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "a59d8a946fecbe5b4dd3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "TOTAL Interest Charged",
+      "value": 114138.77,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.4115,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 12,
+        "source_text": "$114, 138. 77",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.646
+      },
+      "key": "dd4a359fe90a8e554723"
     }
   ]
 }

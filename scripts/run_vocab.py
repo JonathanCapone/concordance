@@ -146,6 +146,14 @@ def main() -> int:
               f"min coverage {cov.coverage:.1%}  "
               f"weakest {str(w.get('stratum',''))[:24]}", flush=True)
 
+        # Checkpoint every round. This run is measured in hours, and a survey
+        # that only writes at the end is a survey that loses everything to a
+        # closed laptop. The report is valid at any round: it is a curve, and a
+        # shorter curve is a smaller result rather than a broken one.
+        Path(args.out).write_text(
+            json.dumps(survey.report(), indent=2, ensure_ascii=False),
+            encoding="utf-8")
+
         if survey.done():
             print("\nstopping rule met: every planned stratum is above target")
             break
