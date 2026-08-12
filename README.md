@@ -158,9 +158,15 @@ python -m groundtruth.server
 ```
 
 Opens a live map of every municipality in the collection. Orange dots have been
-read; click one for its measurements, each linked to the scanned page it came
-from. No install, no key, no network — the map is projected and drawn from
-coordinates rather than pulled from a tile service, so it works offline.
+read; click one for its measurements, each with a button that shows a picture of
+the sentence on the scan it was read from.
+
+**No API key is needed for any of it.** It is not fully offline, and saying so
+would be untrue: the serving layer pulls MapLibre and its basemap tiles from
+public CDNs, and the citation crops come from archive.org's IIIF endpoint. All
+of those are keyless and free, and none of them are in the core — the extraction
+and verification path has no network dependency beyond the archive itself, so a
+stranger can check a measurement without standing up a web stack.
 
 Run the accuracy harness against hand-checked ground truth:
 
