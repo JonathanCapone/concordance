@@ -154,7 +154,10 @@ class Standing:
 
 
 #: How the vision path writes a cell reference: "table cell [row / column]".
-CELL_RE = re.compile(r"table\s+cell\s*\[\s*(.+?)\s*\]\s*$", re.I)
+# Imported, not redefined. Two copies of "what a table citation looks like"
+# is two chances to disagree, and the bundle path and the ledger path
+# disagreeing about exactly that is what refused all 535 vision records.
+from .contribute import CELL_RE  # noqa: E402
 
 
 def _check_cell(claim: Claim, cell: Any, text: str) -> Standing:

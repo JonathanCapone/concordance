@@ -1,12 +1,14 @@
 {
   "place": "Georgetown",
   "model": "ollama:gemma4:12b",
-  "n_records": 6,
+  "n_records": 23,
   "pages_attempted": [
     "GEORGETOWNWATERP00SNSN19135.ome#3",
     "GEORGETOWNWATERP00SNSN19135.ome#6",
     "GEORGETOWNWATERP00SNSN19135.ome#8",
-    "GEORGETOWNWATERP00SNSN19135.ome#9"
+    "GEORGETOWNWATERP00SNSN19135.ome#9",
+    "GEORGETOWNWATERP00SNSN19135.ome#10",
+    "GEORGETOWNWATERP00SNSN19135.ome#11"
   ],
   "records": [
     {
@@ -170,6 +172,465 @@
         "ocr_confidence": 0.2764
       },
       "key": "b0e5e36d02b9b21f6096"
+    },
+    {
+      "kind": "design",
+      "parameter": "flume throat diameter",
+      "value": 12.0,
+      "unit": "Inch",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.3313,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 10,
+        "source_text": "Plow measurements are\ncontinuously recorded from signals ori-\nginating from the sewage passing through\na 12 Inch throat Parshall flume.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3251
+      },
+      "key": "f0ef327fb4e74e352343"
+    },
+    {
+      "kind": "design",
+      "parameter": "pump power",
+      "value": 50.0,
+      "unit": "HP",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "sewage pumps",
+      "confidence": 0.3313,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 10,
+        "source_text": "Two Flomatcher controlled, variable\nspeed, 50 HP sewage pumps lift the\nsewage to elevated grit removal facili-",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3251
+      },
+      "key": "ac2adeaddcecdd1c3968"
+    },
+    {
+      "kind": "design",
+      "parameter": "detritor tank size",
+      "value": 12.0,
+      "unit": "foot square",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "Dorr Type WA detritor",
+      "confidence": 0.3313,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 10,
+        "source_text": "The 12 foot square, flow-\nthrough tank is equipped with a raking\nmechanism to remove the settled grit.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3251
+      },
+      "key": "57adb7d52f6cd265d0df"
+    },
+    {
+      "kind": "design",
+      "parameter": "primary clarifier dimensions",
+      "value": 35.0,
+      "unit": "ft. square x 10 ft. SWD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "primary clarifier tanks",
+      "confidence": 0.3313,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 10,
+        "source_text": "Two 35 ft. square x 10 ft. SWD concrete\nprimary clarifier tanks receive gravity\nflow from the detritor.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3251
+      },
+      "key": "8aebdb060d3cc06eee55"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration tank dimensions",
+      "value": 28.0,
+      "unit": "ft. x 112 ft. x 13.25 ft. deep",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "mechanical aeration tanks",
+      "confidence": 0.3313,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 10,
+        "source_text": "Primary effluent is mixed with return\nactivated sludge and aerated In two 28 ft.\nx 112 ft. x 13.25 ft. deep, four cell\nmechanical aeration tanks.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3251
+      },
+      "key": "8a87359d7b91f97101cf"
+    },
+    {
+      "kind": "design",
+      "parameter": "aerator count",
+      "value": 8.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "Ames Crosta Simplex high intensity mechanical aerators",
+      "confidence": 0.3313,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 10,
+        "source_text": "Air is\nsupplied by eight Ames Crosta Simplex\nhigh intensity mechanical aerators.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3251
+      },
+      "key": "b19b4231471490e5d0cb"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration retention time",
+      "value": 7.5,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.3313,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 10,
+        "source_text": "Aeration\nretention time is approximately 7. 5\nhours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3251
+      },
+      "key": "18aaaafbc6ba3fffc5e4"
+    },
+    {
+      "kind": "design",
+      "parameter": "final clarifier dimensions",
+      "value": 40.0,
+      "unit": "ft. square by 10 ft. SWD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "clariflers",
+      "confidence": 0.3313,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 10,
+        "source_text": "Two 40 ft. square by 10 ft. SWD con-\ncrete clariflers receive gravity flow\nfrom the aeration section.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3251
+      },
+      "key": "960e3ec09cc5e0451758"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorine contact chamber dimensions",
+      "value": 24.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "It measures 24 ft. x 15 ft. x 6 ft. deep and provides a re-",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "48e8038508c3307833e5"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorine contact chamber dimensions",
+      "value": 15.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "It measures 24 ft. x 15 ft. x 6 ft. deep and provides a re-",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "c0bc3583c49aa206c5b4"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorine contact chamber dimensions",
+      "value": 6.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "It measures 24 ft. x 15 ft. x 6 ft. deep and provides a re-",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "070e24bdc7a59f900120"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention time",
+      "value": 26.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "chlorine contact chamber",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "It measures 24 ft. x 15 ft. x 6 ft. deep and provides a re-tention time of 26 minutes at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "587e783b56f5a5c258d2"
+    },
+    {
+      "kind": "design",
+      "parameter": "gas chlorinator capacity",
+      "value": 1000.0,
+      "unit": "pound per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "gas chlorinator",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "Chlorine is fed to this tank by a 1,000 pound per day capacity gas chlori-nator located In the control building.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "2fe6ad5a35d4ddf0f423"
+    },
+    {
+      "kind": "design",
+      "parameter": "primary digester diameter",
+      "value": 66.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "primary digester",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "A 66 ft. diameter primary digester equipped with three mechanical draft tube mixers receives all of the sludge from the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "633c8456565f81dcbb39"
+    },
+    {
+      "kind": "design",
+      "parameter": "primary digester capacity",
+      "value": 484800.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "primary digester",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "This unit has a capa-city of 484, 800 gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "65f671a1c711306dc5eb"
+    },
+    {
+      "kind": "design",
+      "parameter": "conditioning tank dimensions",
+      "value": 34.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "conditioning tank",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "A 34 ft. square conditioning tank, having 134,000 gallon capacity receives sludge by gravity from the primary digester.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "29d8fbfd7351a85f001d"
+    },
+    {
+      "kind": "design",
+      "parameter": "conditioning tank capacity",
+      "value": 134000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "conditioning tank",
+      "confidence": 0.3332,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 11,
+        "source_text": "A 34 ft. square conditioning tank, having 134,000 gallon capacity receives sludge by gravity from the primary digester.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.333
+      },
+      "key": "f7e4297c5d716ea3a550"
     }
   ]
 }

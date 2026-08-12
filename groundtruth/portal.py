@@ -366,6 +366,22 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
 <script>
 const PRECISION = "{s['precision']:.0%}";
 
+/* Everything drawn into innerHTML that came from a RECORD goes through this.
+   Records are not ours: /api/bundle and /api/submit take readings from anyone,
+   by design, because the archive decides and asking who is speaking would
+   contradict the whole claim. But "we do not check the sender" has to mean we
+   do not check their IDENTITY -- it cannot mean we paste their strings into the
+   page as markup.
+
+   A submitted reading whose place is `<img src=x onerror=...>` ran on the
+   Disputed view, which is exactly the page a reader visits to adjudicate a
+   contested number. The fields are all short labels -- place, facility,
+   parameter, unit, period, contributor, and the quoted sentence itself -- so
+   there is never a reason for any of them to carry markup. */
+const esc = v => String(v === null || v === undefined ? "" : v)
+  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+
 /* ---- view switching ------------------------------------------------ */
 const views = [...document.querySelectorAll(".view")];
 const loaded = {{}};
@@ -397,15 +413,15 @@ function spark(points){{
 function seriesHtml(d){{
   let h = "";
   (d.series||[]).forEach(s => {{
-    h += `<div class="sec"><h3>${{s.label}}${{s.unit?" · "+s.unit:""}}</h3>` + spark(s.points);
+    h += `<div class="sec"><h3>${{esc(s.label)}}${{esc(s.unit?" · "+s.unit:"")}}</h3>` + spark(s.points);
     s.rows.forEach(x => {{
       const cite = x.identifier && x.page
-        ? ` <button type="button" class="paper-btn" data-id="${{x.identifier}}"
-             data-page="${{x.page}}" data-quote="${{encodeURIComponent(x.quote||"")}}"
+        ? ` <button type="button" class="paper-btn" data-id="${{esc(x.identifier)}}"
+             data-page="${{x.page}}" data-quote="${{esc(encodeURIComponent(x.quote||""))}}"
              title="show the sentence on the scan">show the paper</button>` : "";
-      h += `<div class="row"><span class="y">${{x.period||""}}</span>`
-         + `<span>${{x.parameter}}</span><span class="v">${{x.value}} ${{x.unit||""}}</span>`
-         + `<span class="src">“${{x.read_from}}” <a href="${{x.page_url}}" target="_blank" rel="noopener">scan ↗</a>${{cite}}`
+      h += `<div class="row"><span class="y">${{esc(x.period||"")}}</span>`
+         + `<span>${{esc(x.parameter)}}</span><span class="v">${{esc(x.value)}} ${{esc(x.unit||"")}}</span>`
+         + `<span class="src">“${{esc(x.read_from)}}” <a href="${{x.page_url}}" target="_blank" rel="noopener">scan ↗</a>${{cite}}`
          + `<span class="paper"></span></span></div>`;
     }});
     h += `</div>`;
@@ -435,7 +451,7 @@ document.addEventListener("click", async ev => {{
     `<a href="${{d.page_url}}" target="_blank" rel="noopener" style="display:block;margin-top:7px">
        <img src="${{d.crop_url}}" alt="the sentence this number was read from" loading="lazy"
             style="max-width:100%;border-radius:6px;background:#f6f1e4"></a>`
-    + (d.exact ? "" : `<div style="font-size:10px;opacity:.6;margin-top:3px">${{d.note}}</div>`);
+    + (d.exact ? "" : `<div style="font-size:10px;opacity:.6;margin-top:3px">${{esc(d.note)}}</div>`);
 }});
 
 /* ---- observe --------------------------------------------------------- */
@@ -445,19 +461,19 @@ document.getElementById("dock-close").onclick = () => dock.classList.remove("ope
 
 async function openTown(p){{
   dock.classList.add("open");
-  dockBody.innerHTML = `<h2>${{p.place}}</h2><div class="meta">loading…</div>`;
+  dockBody.innerHTML = `<h2>${{esc(p.place)}}</h2><div class="meta">loading…</div>`;
   const d = await (await fetch("/api/town?place=" + encodeURIComponent(p.place)
                    + "&raw=" + encodeURIComponent(p.raw||""))).json();
-  let h = `<h2>${{p.place}}</h2><div class="meta">${{p.years}} surviving reports · ${{p.first}}–${{p.last}}`
+  let h = `<h2>${{esc(p.place)}}</h2><div class="meta">${{p.years}} surviving reports · ${{p.first}}–${{p.last}}`
         + (p.silent_since ? ` · <span style="color:var(--gt-hit)">silent since ${{p.silent_since}}</span>` : "")
-        + (d.facility ? ` · ${{d.facility}}` : "") + `</div>`;
+        + (d.facility ? ` · ${{esc(d.facility)}}` : "") + `</div>`;
   if(!d.found){{
     h += `<div class="empty">Nobody has read this one yet.<br><br>
       ${{p.years}} scanned reports are waiting. If you read them, they are in the
       library for everyone from then on &mdash; roughly an hour on this machine.</div>
       <button id="read-now" style="margin-top:14px;background:var(--gt-hit);border:0;
         border-radius:8px;color:#04080d;font-weight:600;padding:10px 16px;cursor:pointer;
-        font:inherit;width:100%">Read ${{p.place}} now</button>
+        font:inherit;width:100%">Read ${{esc(p.place)}} now</button>
       <div id="read-log" style="margin-top:10px;font-size:12px;color:#8b97a4"></div>`;
   }} else {{
     h += seriesHtml(d);
@@ -627,9 +643,9 @@ const LOADERS = {{
       const p = f.properties;
       const d = await (await fetch("/api/town?place="+encodeURIComponent(p.place)
                        +"&raw="+encodeURIComponent(p.raw||""))).json();
-      h += `<div class="card"><h2 style="font-size:18px">${{p.place}}</h2>`
+      h += `<div class="card"><h2 style="font-size:18px">${{esc(p.place)}}</h2>`
          + `<p class="lede" style="margin-bottom:10px">${{p.years}} reports · ${{p.first}}–${{p.last}}`
-         + (d.facility?` · ${{d.facility}}`:"") + `</p>` + seriesHtml(d) + `</div>`;
+         + (d.facility?` · ${{esc(d.facility)}}`:"") + `</p>` + seriesHtml(d) + `</div>`;
     }}
     el.innerHTML = h || `<div class="card empty">Nothing read yet.</div>`;
   }},
@@ -670,7 +686,7 @@ const LOADERS = {{
       try {{
         const d = await (await fetch("/api/ask?q=" + encodeURIComponent(question))).json();
         let h = `<div class="card"><p class="lede" style="color:#e8edf2;margin:0 0 10px">`
-              + `<strong style="color:var(--gt-hit)">Q</strong> ${{question}}</p>`;
+              + `<strong style="color:var(--gt-hit)">Q</strong> ${{esc(question)}}</p>`;
         if(d.error){{
           h += `<p class="empty">No answer: ${{d.error}}<br><br>Jay needs a local model
                 running (<code>ollama serve</code>), or an ANTHROPIC_API_KEY.</p>`;
@@ -715,7 +731,7 @@ const LOADERS = {{
         h += `<div style="margin-bottom:3px">
                 <div style="height:8px;border-radius:2px;background:var(--gt-hit);opacity:.42;
                      width:${{w.toFixed(0)}}%"></div>
-                <div style="font-size:14px;margin-top:2px">${{t.name}}</div>
+                <div style="font-size:14px;margin-top:2px">${{esc(t.name)}}</div>
                 <div style="font-size:11px;color:#6d7a86;font-family:ui-monospace,monospace">
                      ${{Math.round(t.area).toLocaleString()}} km² catchment</div></div>`;
         if(i < towns.length-1) h += `<div style="color:#6d7a86;margin:1px 0 5px">↓</div>`;
@@ -741,8 +757,8 @@ const LOADERS = {{
       <tr><th>measure</th><th class="n">value</th><th>what it means</th></tr>
       <tr><td>precision</td><td class="n">${{(t.precision*100||0).toFixed(1)}}%</td><td>of what it extracted, how much was right</td></tr>
       <tr><td>recall</td><td class="n">${{(t.recall*100||0).toFixed(1)}}%</td><td>of what a human found, how much it found</td></tr>
-      <tr><td>kind accuracy</td><td class="n">${{(t.kind_accuracy*100||0).toFixed(1)}}%</td><td>measurement vs design spec vs regulatory limit</td></tr>
-      <tr><td>stream accuracy</td><td class="n">${{(t.stream_accuracy*100||0).toFixed(1)}}%</td><td>influent vs effluent — getting this backwards turns a working plant into a polluting one</td></tr>
+      <tr><td>kind accuracy</td><td class="n">${{esc((t.kind_accuracy*100||0).toFixed(1))}}%</td><td>measurement vs design spec vs regulatory limit</td></tr>
+      <tr><td>stream accuracy</td><td class="n">${{esc((t.stream_accuracy*100||0).toFixed(1))}}%</td><td>influent vs effluent — getting this backwards turns a working plant into a polluting one</td></tr>
       </table></div>`;
     h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
           text-transform:uppercase;letter-spacing:.06em">The first number was wrong, and it was the ruler</h3>
@@ -767,10 +783,10 @@ const LOADERS = {{
       <tr><th>state</th><th class="n">questions</th></tr>
       <tr><td>answerable now</td><td class="n">${{c.answerable||0}}</td></tr>
       <tr><td>waiting on a document</td><td class="n">${{c.waiting||0}}</td></tr>
-      <tr><td>places read so far</td><td class="n">${{c.places_read||0}}</td></tr>
-      </table>${{c.rivers_available ? "" :
+      <tr><td>places read so far</td><td class="n">${{esc(c.places_read||0)}}</td></tr>
+      </table>${{esc(c.rivers_available ? "" :
         `<p class="lede" style="margin:8px 0 0">River questions need the live gauge list,
-         which is unavailable — trends, silences and council decisions are unaffected.</p>`}}</div>`;
+         which is unavailable — trends, silences and council decisions are unaffected.</p>`)}}</div>`;
 
     if ((d.places||[]).length) {{
       h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
@@ -780,11 +796,11 @@ const LOADERS = {{
             sitting on a single distant one.</p>`;
       d.places.forEach(p => {{
         h += `<div style="margin:0 0 10px;padding-left:11px;border-left:2px solid var(--gt-hit)">
-          <div style="font-size:13px"><strong>${{p.place}}</strong>
+          <div style="font-size:13px"><strong>${{esc(p.place)}}</strong>
             <span style="opacity:.6;font-size:11px">score ${{p.score}} ·
             unlocks ${{p.unlocks_now}} question${{p.unlocks_now===1?"":"s"}} immediately</span></div>`;
         (p.questions||[]).forEach(q => {{
-          h += `<div class="lede" style="margin:2px 0 0;font-size:11.5px">${{q.replace(/</g,"&lt;")}}</div>`;
+          h += `<div class="lede" style="margin:2px 0 0;font-size:11.5px">${{esc(q.replace(/</g,"&lt;"))}}</div>`;
         }});
         h += `</div>`;
       }});
@@ -795,7 +811,7 @@ const LOADERS = {{
       h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
             text-transform:uppercase;letter-spacing:.06em">Already answerable</h3>`;
       d.answerable.forEach(q => {{
-        h += `<div style="font-size:12px;margin:0 0 4px">${{q.question.replace(/</g,"&lt;")}}
+        h += `<div style="font-size:12px;margin:0 0 4px">${{esc(q.question.replace(/</g,"&lt;"))}}
               <span style="opacity:.55;font-size:11px">— ${{q.detail}}</span></div>`;
       }});
       h += `</div>`;
@@ -804,7 +820,7 @@ const LOADERS = {{
     h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
           text-transform:uppercase;letter-spacing:.06em">Waiting</h3>`;
     (d.waiting||[]).slice(0,25).forEach(q => {{
-      h += `<div style="font-size:12px;margin:0 0 4px">${{q.question.replace(/</g,"&lt;")}}
+      h += `<div style="font-size:12px;margin:0 0 4px">${{esc(q.question.replace(/</g,"&lt;"))}}
             <span style="opacity:.55;font-size:11px">— ${{q.distance}} document${{
               q.distance===1?"":"s"}} away</span></div>`;
     }});
@@ -838,7 +854,7 @@ const LOADERS = {{
               text-transform:uppercase;letter-spacing:.06em">Where they disagreed</h3>`;
         d.divided.forEach(x => {{
           h += `<div style="margin:0 0 10px;padding-left:11px;border-left:2px solid rgba(255,255,255,.14)">
-            <div style="font-size:12px">${{(x.text||"").replace(/</g,"&lt;")}}</div>
+            <div style="font-size:12px">${{esc((x.text||"").replace(/</g,"&lt;"))}}</div>
             <div class="lede" style="margin:3px 0 0;font-size:11px">
               ${{x.outcome}} · against: ${{(x.against||[]).join(", ") || "—"}}
               ${{x.page_url ? ` · <a href="${{x.page_url}}" target="_blank" rel="noopener">the page</a>` : ""}}
@@ -854,7 +870,7 @@ const LOADERS = {{
               <th class="n">seconded</th><th class="n">yea</th><th class="n">nay</th></tr>`;
         d.most_active.forEach(p => {{
           const v = p.votes || {{}};
-          h += `<tr><td>${{p.name}}</td><td>${{(p.roles||[])[0]||""}}</td>
+          h += `<tr><td>${{esc(p.name)}}</td><td>${{(p.roles||[])[0]||""}}</td>
                 <td class="n">${{p.moved||0}}</td><td class="n">${{p.seconded||0}}</td>
                 <td class="n">${{v.yea||0}}</td><td class="n">${{v.nay||0}}</td></tr>`;
         }});
@@ -919,26 +935,26 @@ const LOADERS = {{
     (d.contested_detail || []).forEach(slot => {{
       const parts = slot.slot.split("|");
       const title = parts.filter(Boolean).join(" · ") || "(unnamed)";
-      h += `<div class="card"><h3 style="margin:0 0 4px;font-size:12px">${{title}}</h3>`;
-      h += `<p class="lede" style="margin:0 0 10px">${{
+      h += `<div class="card"><h3 style="margin:0 0 4px;font-size:12px">${{esc(title)}}</h3>`;
+      h += `<p class="lede" style="margin:0 0 10px">${{esc(
         slot.same_sentence
           ? "One sentence, read two ways. The document itself is ambiguous here."
           : "Two different sentences are being cited. They may not be about the same thing."
-      }}${{slot.n_flags ? ` · ${{slot.n_flags}} reader flag(s)` : ""}}</p>`;
+      )}}${{slot.n_flags ? ` · ${{esc(slot.n_flags)}} reader flag(s)` : ""}}</p>`;
       h += `<div style="display:flex;gap:14px;flex-wrap:wrap">`;
       (slot.readings || []).forEach(r => {{
         h += `<div style="flex:1 1 280px;min-width:260px;border:1px solid rgba(255,255,255,.09);
               border-radius:10px;padding:10px">
-          <div style="font-size:20px;font-weight:600">${{r.value}} <span
-              style="font-size:12px;opacity:.6">${{r.unit||""}}</span></div>
-          <div style="font-size:11px;opacity:.6;margin:2px 0 8px">${{r.contributor||"extraction"}}</div>`;
+          <div style="font-size:20px;font-weight:600">${{esc(r.value)}} <span
+              style="font-size:12px;opacity:.6">${{esc(r.unit||"")}}</span></div>
+          <div style="font-size:11px;opacity:.6;margin:2px 0 8px">${{esc(r.contributor||"extraction")}}</div>`;
         if (r.crop_url) {{
           h += `<a href="${{r.page_url}}" target="_blank" rel="noopener">
                 <img src="${{r.crop_url}}" alt="the sentence this number was read from"
                      loading="lazy" style="width:100%;border-radius:6px;background:#f6f1e4"></a>`;
         }}
-        h += `<div class="lede" style="margin:8px 0 0;font-size:11px">“${{
-              (r.quote||"").replace(/</g,"&lt;")}}”</div>
+        h += `<div class="lede" style="margin:8px 0 0;font-size:11px">“${{esc(
+              (r.quote||"").replace(/</g,"&lt;"))}}”</div>
           <button type="button" data-claim="${{r.claim_id}}" class="flag-btn"
             style="margin-top:8px;background:transparent;border:1px solid rgba(255,255,255,.16);
                    color:inherit;border-radius:7px;padding:4px 9px;font:inherit;font-size:11px;

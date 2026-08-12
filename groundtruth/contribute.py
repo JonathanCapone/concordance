@@ -42,6 +42,11 @@ from .models import record_key
 
 BUNDLE_VERSION = 1
 
+#: How a table reading cites its source: the row and column headings that
+#: locate the cell, rather than a sentence. Defined here and imported by
+#: disputes, so the two paths cannot drift on what a cell citation looks like.
+CELL_RE = re.compile(r"table\s+cell\s*\[\s*(.+?)\s*\]\s*$", re.I)
+
 
 def _norm(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "", str(text).lower())
@@ -188,6 +193,33 @@ def verify_bundle(
         text = pages[ident].get(page_no, "")
         if not text:
             verdict.unsupported.append({**tag, "why": "page not retrievable"})
+            continue
+
+        # A table reading has headings where a sentence would be, so it is
+        # judged by the table rule -- the SAME one the dispute ledger uses,
+        # imported rather than reimplemented.
+        #
+        # Without this, every record from the vision path failed here: 535 of
+        # 535, because "table cell [January - Janvier / Fine vacuum / 2002]" is
+        # not a sentence on the page and was never going to be. The ledger
+        # verified those same records. So an instance published a reading and
+        # then refused the identical reading when somebody pushed it, and the
+        # work refused was precisely the contribution this project calls the
+        # most valuable one -- a person with a graphics card reading the tables
+        # nobody else can, once, for everyone.
+        #
+        # That is the third time two checks that are meant to be one check have
+        # disagreed. The import is the fix for the class, not just the case.
+        cell = CELL_RE.match(quote.strip())
+        if cell:
+            from .disputes import Claim, _check_cell   # local: disputes imports us
+
+            standing = _check_cell(Claim(record=record), cell, text)
+            if standing.verified:
+                verdict.verified += 1
+                supported.append(record)
+            else:
+                verdict.failed.append({**tag, "why": standing.why})
             continue
 
         if _norm(quote) not in _norm(text):
@@ -448,6 +480,23 @@ def merge_bundle(
             continue
         seen.add(k)
         fresh.append(r)
+    if not fresh:
+        # Nothing new -- so write NOTHING. The file is named by the bundle's
+        # content hash, which means a replay of the same bundle targets the file
+        # the first send created. The dedup scan then finds every record already
+        # on disk (in that very file), leaves `fresh` empty, and the write
+        # replaced a good file with an empty one.
+        #
+        # Re-sending a bundle is not an error and not an attack; it is what
+        # happens when a push times out and somebody tries again. An add-only
+        # endpoint that deletes on retry is the worst possible shape for it.
+        return {
+            "written": None,
+            "accepted": 0,
+            "duplicates_dropped": len(source),
+            "not_supported": len(bundle["records"]) - len(source),
+        }
+
     path.write_text(json.dumps({
         # NOT the note. Corpus.load treats this field as the place any record
         # lacking one inherits, so putting a free-text note here stamped every
