@@ -486,6 +486,23 @@ async function openTown(p){{
   }};
 }}
 
+/* The map is the only part of this page that needs a CDN, and it used to be
+   able to take everything else down with it. `new maplibregl.Map` sits above
+   `const LOADERS`, so on a network where unpkg is unreachable the library is
+   undefined, this line throws, the rest of the script never runs, and every one
+   of the nine views then fails with a ReferenceError inside a swallowed click
+   handler -- each panel keeping its heading and lede, so it reads as
+   deliberately empty rather than broken.
+
+   The showcase is a hall on conference wifi. Guarded so a missing map costs the
+   map and nothing else. */
+if (typeof maplibregl === "undefined") {{
+  const el = document.getElementById("map");
+  if (el) el.innerHTML = `<div style="position:absolute;inset:0;display:flex;
+    align-items:center;justify-content:center;text-align:center;padding:30px;
+    color:#8b97a4;font-size:13px;line-height:1.6">The map library could not be
+    loaded from the network.<br>Every other view works from local data.</div>`;
+}} else try {{
 const map = new maplibregl.Map({{
   container:"map", center:[-81.2,44.3], zoom:5.4,
   attributionControl:{{compact:true}},
@@ -584,7 +601,12 @@ map.on("load", async () => {{
   paint();
 }});
 
-/* ---- the other three views ------------------------------------------- */
+}} catch (err) {{
+  /* Anything the map section throws stops at the map. */
+  console.error("map unavailable:", err);
+}}
+
+/* ---- every view that is not the map ---------------------------------- */
 const LOADERS = {{
   record: async () => {{
     const el = document.getElementById("record-list");
