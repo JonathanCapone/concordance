@@ -129,7 +129,21 @@ table.gt th{{color:#6d7a86;font-weight:600;font-size:11px;text-transform:upperca
   letter-spacing:.05em}}
 table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
 .big{{font-size:34px;font-weight:600;letter-spacing:-.02em}}
-.legend{{position:absolute;left:18px;bottom:20px;z-index:11;
+.time-bar{{position:absolute;left:0;right:0;bottom:0;z-index:13;display:flex;
+  align-items:center;gap:14px;padding:11px 20px;
+  background:linear-gradient(0deg,rgba(6,10,15,.97),rgba(6,10,15,.72));
+  border-top:1px solid rgba(255,255,255,.10);backdrop-filter:blur(8px)}}
+.tl-btn{{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  border-radius:8px;color:#e8edf2;width:34px;height:30px;cursor:pointer;font-size:12px}}
+.tl-btn:hover{{background:rgba(255,255,255,.12)}}
+.tl-wide{{width:auto;padding:0 12px;font-size:12px}}
+.tl-year{{font-family:ui-monospace,monospace;font-size:15px;letter-spacing:.04em;
+  min-width:96px;color:var(--gt-hit)}}
+.tl-track{{flex:1;display:flex;align-items:center}}
+.tl-track input{{width:100%;accent-color:var(--gt-hit);cursor:pointer}}
+.tl-count{{font-size:12px;color:#8b97a4;min-width:200px;text-align:right}}
+.sr-only{{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}}
+.legend{{position:absolute;left:18px;bottom:74px;z-index:11;
   background:rgba(9,13,18,.94);border:1px solid rgba(255,255,255,.10);border-radius:9px;
   padding:10px 13px;font-size:11.5px;color:#8b97a4;backdrop-filter:blur(8px)}}
 .legend b{{display:block;color:#e8edf2;font-size:10.5px;text-transform:uppercase;
@@ -170,6 +184,16 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         <div class="key"><span class="sw" style="background:var(--gt-cold)"></span> located, not yet read</div>
         <div class="key" style="margin-top:6px;color:#6d7a86">dot size = surviving reports</div>
       </div>
+      <section class="time-bar" id="time-bar" aria-label="Timeline">
+        <button id="tl-play" class="tl-btn" aria-label="Play">&#9654;</button>
+        <strong id="tl-year" class="tl-year">ALL YEARS</strong>
+        <label class="tl-track">
+          <span class="sr-only">Year</span>
+          <input id="tl-range" type="range" min="0" max="0" step="1" value="0">
+        </label>
+        <span id="tl-count" class="tl-count"></span>
+        <button id="tl-all" class="tl-btn tl-wide">All</button>
+      </section>
       <aside class="dock" id="dock">
         <button class="dock-close" id="dock-close" aria-label="Close">&times;</button>
         <div id="dock-body"></div>
@@ -352,7 +376,63 @@ map.on("load", async () => {{
   map.on("mouseleave","dots",()=>map.getCanvas().style.cursor="");
   const b=new maplibregl.LngLatBounds();
   geo.features.forEach(f=>b.extend(f.geometry.coordinates));
-  map.fitBounds(b,{{padding:{{top:60,bottom:60,left:60,right:450}},duration:0}});
+  map.fitBounds(b,{{padding:{{top:60,bottom:120,left:60,right:450}},duration:0}});
+
+  /* Timeline. A town is drawn only in the years it actually filed a report, so
+     scrubbing shows coverage blooming and then dying -- which is the point of
+     this archive as much as the measurements are. */
+  const years = [...new Set(geo.features.flatMap(f => f.properties.reported || []))]
+                  .sort((a,b) => a-b);
+  const range = document.getElementById("tl-range");
+  const label = document.getElementById("tl-year");
+  const count = document.getElementById("tl-count");
+  const playBtn = document.getElementById("tl-play");
+  const allBtn = document.getElementById("tl-all");
+  range.max = Math.max(0, years.length - 1);
+  range.value = range.max;
+  let timer = null, showAll = true;
+
+  function paint(){{
+    if(showAll){{
+      map.setFilter("dots", null);
+      map.setFilter("halo", ["==",["get","extracted"],true]);
+      label.textContent = "ALL YEARS";
+      count.textContent = geo.features.length + " municipalities \\u00b7 "
+                        + years[0] + "\\u2013" + years[years.length-1];
+      return;
+    }}
+    const y = years[+range.value];
+    // MapLibre cannot test membership of an array property, so the reporting
+    // state is precomputed per feature and read back as a plain flag.
+    geo.features.forEach(f => {{
+      f.properties._on = (f.properties.reported || []).indexOf(y) >= 0;
+    }});
+    map.getSource("towns").setData(geo);
+    map.setFilter("dots", ["==",["get","_on"],true]);
+    map.setFilter("halo", ["all",["==",["get","_on"],true],
+                                 ["==",["get","extracted"],true]]);
+    const n = geo.features.filter(f => f.properties._on).length;
+    label.textContent = y;
+    count.textContent = n
+      ? n + " municipalities reporting"
+      : "nothing reported \\u2014 the record is silent";
+  }}
+
+  function stop(){{ if(timer){{ clearInterval(timer); timer = null; playBtn.innerHTML = "&#9654;"; }} }}
+
+  range.addEventListener("input", () => {{ showAll = false; paint(); }});
+  allBtn.onclick = () => {{ showAll = true; stop(); paint(); }};
+  playBtn.onclick = () => {{
+    if(timer) return stop();
+    showAll = false;
+    playBtn.innerHTML = "&#9632;";
+    timer = setInterval(() => {{
+      range.value = (+range.value >= years.length - 1) ? 0 : +range.value + 1;
+      paint();
+    }}, 750);
+  }};
+
+  paint();
 }});
 
 /* ---- the other three views ------------------------------------------- */

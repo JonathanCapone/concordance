@@ -71,6 +71,7 @@ class State:
                 "first": m["first_year"],
                 "last": m["last_year"],
                 "years": len(m["reported_years"]),
+                "reported": m["reported_years"],
                 "silent_since": m.get("silent_since"),
                 "extracted": p.canonical.lower() in have or m["place"].lower() in have,
             })
@@ -147,6 +148,10 @@ class State:
                         "first": p["first"], "last": p["last"],
                         "silent_since": p["silent_since"] or "",
                         "extracted": p["extracted"],
+                        # The actual years this place filed, so the timeline can
+                        # show who was reporting in a given year rather than just
+                        # who ever reported.
+                        "reported": p.get("reported", []),
                     },
                 }
                 for p in self.places
