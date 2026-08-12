@@ -549,3 +549,50 @@ Three things I would not have found alone, all from someone asking a plain
 question about a document: a fifth of the archive being discarded on line width,
 the entire deliberative record sitting unread, and the fact that a picture of the
 paper is what makes open contribution possible without a moderator.
+
+---
+
+## The controls were the bugs
+
+By the end of one day I had found four measurement errors, and every single one
+was in the instrument rather than the thing being measured. Written out
+together, because the pattern is more useful than the four stories:
+
+| what it reported | what was true |
+|---|---|
+| 49% extraction precision | 88.7% — the scorer couldn't convert "3.0 million gallons" |
+| 9 municipalities went silent | 72 — the cutoff year came from the data under test |
+| 0 of 25 table values on the page | 25 of 25 — Statistics Canada writes thousands with a space |
+| 25 census records fabricated | 0 — the heading wasn't contiguous in the OCR |
+
+**A control stricter than the world reports a catastrophe, and a catastrophe is
+the one result nobody double-checks.** That is the whole lesson. A number that
+looks bad feels like rigour, and rigour is not something you interrogate. Each
+of these cost the better part of a day, and each was found by looking at what
+the control had thrown away rather than at what it had kept.
+
+The two vision cases were worse than the others in a specific way. The label
+check rests on OCR having wrecked a table's *values* while sparing its
+*headings*, which are set in larger, cleaner type. That is true of a page whose
+text layer is damaged and false of one where it was destroyed — so the check
+fired hardest on exactly the pages the vision path exists for. The worse the
+scan, the more the model is needed and the less it can be checked, and treating
+the text layer's silence as a refusal turns that into an absence of data.
+
+I fixed it first with a minimum character count, and a test showed within a
+minute why that was wrong: the plot page that catches a model inventing
+"Phosphorus / Month" has about 150 characters of OCR, and the table page I had
+wrongly emptied has about 1,000. No threshold separates them. What separates
+them is that the plot page can find "Phosphorus" and the other page can find
+nothing at all — so each page now decides for itself whether its OCR is entitled
+to referee. That generalises; a constant tuned to two examples would not have.
+
+I also claimed, in a commit message, that the failures were a French-language
+bias, because six of the seven damaged pages were French or bilingual. The
+seventh was the Georgian Bay Ship Canal Survey of 1909, entirely in English, and
+it disproved me. The real cause had nothing to do with language.
+
+One practical thing came out of all this. The trial had been recording *how
+many* records the verifier discarded and not *what they were*, so when the rules
+turned out to be wrong the damage could not be replayed and seven pages had to
+be read again. Keep the rejects, not the count.
