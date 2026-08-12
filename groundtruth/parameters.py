@@ -33,9 +33,128 @@ from dataclasses import dataclass
 #: these agree -- a percentage and a concentration are never the same series.
 Measure = str  # "concentration" | "removal" | "rate" | "total" | "capacity" | "count" | "other"
 
+# --------------------------------------------------------------------------
+# the vocabulary
+# --------------------------------------------------------------------------
+#
+# Organised by domain so a contributor can add a block for a subject we have
+# never read without touching the resolver. This is the part that has to be
+# built centrally: whether a number is a measurement, and what of, is a
+# judgement about meaning. Running the extractor is just time and electricity,
+# and can happen on anyone's machine, in any order, whenever they care enough
+# about a subject to spend an hour on it.
+#
+# A parameter that is not in here is not lost -- it is extracted, flagged as
+# unresolved by the audit, and simply cannot join a series until someone names
+# it. That is how the water vocabulary grew: an audit found 36.7% of records
+# carried a parameter the table had never seen.
+#
+# Domain terms below are taken from the collection's own subject headings, not
+# invented: "Thirteenth grade (Education)", "Forest management -- Ontario",
+# "Census districts", "Acid precipitation (Meteorology)".
+
+VOCABULARY: dict[str, list[tuple[str, str]]] = {
+    "air": [
+        ("sulphur dioxide", "sulphur dioxide"),
+        ("sulfur dioxide", "sulphur dioxide"),
+        ("so2", "sulphur dioxide"),
+        ("nitrogen dioxide", "nitrogen dioxide"),
+        ("no2", "nitrogen dioxide"),
+        ("carbon monoxide", "carbon monoxide"),
+        ("ozone", "ozone"),
+        ("particulate", "particulate"),
+        ("suspended particulate", "particulate"),
+        ("dustfall", "dustfall"),
+        ("smoke", "smoke"),
+        ("acid precipitation", "acid precipitation"),
+        ("acid rain", "acid precipitation"),
+        ("emission", "emission"),
+        ("visibility", "visibility"),
+    ],
+    "education": [
+        ("enrolment", "enrolment"),
+        ("enrollment", "enrolment"),
+        ("attendance", "attendance"),
+        ("examination", "examination result"),
+        ("exam", "examination result"),
+        ("pass rate", "pass rate"),
+        ("failure rate", "failure rate"),
+        ("mark", "examination result"),
+        ("grade", "examination result"),
+        ("score", "examination result"),
+        ("candidates", "candidates"),
+        ("pupils", "pupils"),
+        ("students", "pupils"),
+        ("teachers", "teachers"),
+        ("classroom", "classrooms"),
+        ("expenditure per pupil", "expenditure per pupil"),
+    ],
+    "agriculture": [
+        ("yield", "yield"),
+        ("acreage", "acreage"),
+        ("area sown", "acreage"),
+        ("area harvested", "acreage"),
+        ("production", "production"),
+        ("livestock", "livestock"),
+        ("cattle", "cattle"),
+        ("swine", "swine"),
+        ("poultry", "poultry"),
+        ("fertilizer", "fertiliser"),
+        ("fertiliser", "fertiliser"),
+        ("pesticide", "pesticide"),
+        ("farms", "farms"),
+    ],
+    "forestry": [
+        ("timber", "timber volume"),
+        ("cut", "timber cut"),
+        ("merchantable volume", "timber volume"),
+        ("regeneration", "regeneration"),
+        ("basal area", "basal area"),
+        ("stocking", "stocking"),
+        ("burned area", "burned area"),
+        ("forest area", "forest area"),
+    ],
+    "population": [
+        ("dwellings", "dwellings"),
+        ("households", "households"),
+        ("families", "families"),
+        ("density", "population density"),
+        ("births", "births"),
+        ("deaths", "deaths"),
+        ("migration", "migration"),
+    ],
+    "energy": [
+        ("natural gas", "natural gas"),
+        ("petroleum", "petroleum"),
+        ("crude oil", "crude oil"),
+        ("coal", "coal"),
+        ("reserves", "reserves"),
+        ("consumption", "consumption"),
+        ("generation", "generation"),
+        ("pipeline throughput", "pipeline throughput"),
+    ],
+    "mining": [
+        ("ore", "ore"),
+        ("tonnage", "tonnage"),
+        ("grade", "ore grade"),
+        ("tailings", "tailings"),
+        ("overburden", "overburden"),
+    ],
+}
+
+
+def _domain_terms() -> list[tuple[str, str]]:
+    """Flatten the domain blocks, longest term first so specific beats general."""
+    terms = [pair for block in VOCABULARY.values() for pair in block]
+    return sorted(terms, key=lambda p: -len(p[0]))
+
+
 #: Substance synonyms found in the corpus. Longest match wins, so "biochemical
 #: oxygen demand" resolves before a bare "oxygen" ever could.
-_SUBSTANCE: list[tuple[str, str]] = [
+#:
+#: Water terms are listed explicitly here because they were built first and
+#: carry the most nuance; the other domains are appended from VOCABULARY.
+_WATER_TERMS: list[tuple[str, str]] = [
     ("biochemical oxygen demand", "bod"),
     ("five day bod", "bod"),
     ("5-day bod", "bod"),
@@ -90,8 +209,12 @@ _SUBSTANCE: list[tuple[str, str]] = [
     ("benzene", "benzene"),
     ("moisture content", "moisture"),
     ("volatile matter", "volatile matter"),
-    ("gas production", "digester gas"),
-    ("gas", "digester gas"),
+    # Named specifically. A bare "gas" -- or even "gas production" -- is a
+    # sewage term only inside a sewage document, and this table has no idea what
+    # document it is in. Left greedy, "natural gas production" resolved to
+    # digester gas: a treatment by-product standing in for a fossil fuel.
+    ("digester gas", "digester gas"),
+    ("sludge gas", "digester gas"),
     ("retention time", "retention time"),
     ("retention", "retention time"),
     ("detention", "retention time"),
@@ -106,6 +229,30 @@ _SUBSTANCE: list[tuple[str, str]] = [
     ("depth", "dimension"),
     ("volume reduction", "volume reduction"),
 ]
+
+
+#: Substances that are counted rather than measured in a concentration. Without
+#: this an enrolment of 4,200 pupils resolves as a concentration and lands on an
+#: axis with milligrams per litre.
+_COUNTED = {
+    "population", "pupils", "teachers", "candidates", "classrooms", "enrolment",
+    "attendance", "dwellings", "households", "families", "births", "deaths",
+    "farms", "cattle", "swine", "poultry", "livestock",
+}
+
+
+def _ordered_vocabulary() -> list[tuple[str, str]]:
+    """Every term, longest first.
+
+    Sorting matters across the WHOLE table, not just within a block. The water
+    list carries a bare "gas" for digester gas, and with the domain terms merely
+    appended, "natural gas production" matched "gas" and resolved to digester
+    gas -- a sewage by-product standing in for a fossil fuel.
+    """
+    return sorted(_WATER_TERMS + _domain_terms(), key=lambda pair: -len(pair[0]))
+
+
+_SUBSTANCE = _ordered_vocabulary()
 
 #: Wording that means the number counts OCCASIONS rather than quantity.
 #: Checked before anything else in resolve(), because an exceedance count and a
@@ -211,7 +358,12 @@ def resolve(name: str, unit: str | None = None) -> Parameter | None:
                 break
 
     if measure is None:
-        measure = "concentration" if substance not in {"flow", "population"} else "rate"
+        if substance in _COUNTED:
+            measure = "count"
+        elif substance in {"flow"}:
+            measure = "rate"
+        else:
+            measure = "concentration"
 
     return Parameter(substance=substance, measure=measure, raw=name)
 
