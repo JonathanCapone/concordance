@@ -314,7 +314,7 @@ groundtruth/
   vocab_builder.py  proposals a person accepts or rejects; never automatic
   vocab_sample.py   deciding when enough of the vocabulary has been seen
   tools.py       the archive-native tool layer an agent needs to be useful here
-  honu.py        the agent itself, over that toolset
+  jay.py        the agent itself, over that toolset
   repair.py      Tier 0 — proposed metadata corrections for the whole collection
   score.py       the accuracy harness
   portal.py      the map portal, forked from OMEGA-wave

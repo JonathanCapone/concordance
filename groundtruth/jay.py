@@ -1,6 +1,17 @@
-"""Honu, repointed at the archive.
+"""Jay: the agent that answers from the archive, and only from the archive.
 
-Forked from the OMEGA-wave copilot: the CopilotTool shape, the tool-calling
+Named for the Canada jay, which caches tens of thousands of items across a
+territory of several square kilometres and remembers where it put them, months
+later, under snow. That is this job exactly. The record is scattered through
+104,241 documents nobody has an index to, and the whole task is knowing where a
+thing is and going to get it.
+
+It replaces Honu, a sea turtle, which was the right mark for OMEGA -- an ocean
+instrument -- and the wrong one for a project about Canadian municipal
+paperwork. A borrowed mascot is a small thing that quietly says the work was
+borrowed too.
+
+Forked from the OMEGA-wave agent: the tool shape, the tool-calling
 loop, the pending-action idea, and the rule that the model never invents an
 answer it could have looked up.
 
@@ -224,7 +235,7 @@ def _what_is_disputed(limit: int = 10) -> dict[str, Any]:
 
 
 SYSTEM = """\
-You are Honu, answering questions about measurements recovered from scanned
+You are Jay, answering questions about measurements recovered from scanned
 Canadian government documents dating back to 1841.
 
 Rules, in order of importance:
@@ -254,7 +265,7 @@ class Turn:
     error: str | None = None
 
 
-class Honu:
+class Jay:
     """The tool-calling loop.
 
     Ollama by default so the assistant works with no API key, like everything
@@ -267,7 +278,7 @@ class Honu:
         """`timeout` is generous because one GPU serves one job at a time.
 
         A corpus extraction running in the background will queue every request
-        Honu makes behind it, and a question that answers in forty seconds on an
+        Jay makes behind it, and a question that answers in forty seconds on an
         idle machine can take ten minutes on a busy one. That is a scheduling
         limit, not a fault, and the message on failure says so."""
         self.tools = build_tools(corpus)

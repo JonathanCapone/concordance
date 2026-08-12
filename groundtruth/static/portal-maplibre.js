@@ -9,7 +9,7 @@
 //
 // Toggle button (#map-gl-toggle) shows/hides the MapLibre map overlaying the
 // Leaflet stage; #map-gl-style cycles satellite/vector basemaps; a projection
-// button flips globe<->flat. Console/Honu hook: window.omegaMapLibre.
+// button flips globe<->flat. Console/Jay hook: window.omegaMapLibre.
 (function () {
   "use strict";
 
@@ -376,7 +376,7 @@
     if (projBtn) {
       projBtn.addEventListener("click", () => setProjection());
     }
-    // Console / Honu hook + the entry points setMapView() uses.
+    // Console / Jay hook + the entry points setMapView() uses.
     window.omegaMapLibre = {
       toggle: setActive,
       setStyle: applyStyle,

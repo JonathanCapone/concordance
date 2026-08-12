@@ -111,7 +111,7 @@ $5,000 against $4,251–8,502 (really $6,230–12,461 after B12) buys 59–118% 
 **Acceptance:** `report()["people"]` counts only people with at least one appearance; Hamilton returns 52; a test pins it.
 
 ### B21. One truth-in-labelling sweep — 1.5 h total
-Nine small items, each a wrong statement rather than a wrong computation: Honu and the portal advise `ANTHROPIC_API_KEY`, which `Honu._chat` never reads (10 min — message only); `search.effort()` computes with `worth_reading=0.531` while its own note says 69.5% and 91 s (10 min); the declared console script `ground-truth-gold` cannot import after `pip install -e .` from anywhere, inside the repo or out (15 min); the README should say `pip install -e ".[dev]"` since plain install brings no pytest (2 min); `groundtruth/static/portal-maplibre.js` is 14 KB of dead Leaflet-era code from another project (2 min); `vision_trial.py:245`'s `med = lambda xs: xs[len(xs)//2]` is not a median (15 min); `library.ask` reports "No documents in the collection match that" when the *title filter* emptied it — true for 33 of 104 frontier places, including Midland's 19 documents (15 min, message only); `/api/read` calls `STATE.reload()` but not `invalidate_ledger()`, so a town you just read still shows as unread (5 min); `honu._what_is_disputed` loads 909 claims where the server loads 1,101 (5 min).
+Nine small items, each a wrong statement rather than a wrong computation: Jay and the portal advise `ANTHROPIC_API_KEY`, which `Jay._chat` never reads (10 min — message only); `search.effort()` computes with `worth_reading=0.531` while its own note says 69.5% and 91 s (10 min); the declared console script `ground-truth-gold` cannot import after `pip install -e .` from anywhere, inside the repo or out (15 min); the README should say `pip install -e ".[dev]"` since plain install brings no pytest (2 min); `groundtruth/static/portal-maplibre.js` is 14 KB of dead Leaflet-era code from another project (2 min); `vision_trial.py:245`'s `med = lambda xs: xs[len(xs)//2]` is not a median (15 min); `library.ask` reports "No documents in the collection match that" when the *title filter* emptied it — true for 33 of 104 frontier places, including Midland's 19 documents (15 min, message only); `/api/read` calls `STATE.reload()` but not `invalidate_ledger()`, so a town you just read still shows as unread (5 min); `jay._what_is_disputed` loads 909 claims where the server loads 1,101 (5 min).
 *Rationale:* each is a sentence the software says that is not true; together they are 90 minutes and they are what a careful reader trips over.
 **Acceptance:** a checklist of nine, each with the grep or command that shows it fixed.
 
@@ -206,10 +206,10 @@ Kingston writes `Moved by Ald. Keyes, Seconded by Ald. Matthews, That …`. Maki
 *Rationale:* the largest untouched stratum (13,604 items) is unreadable everywhere but one city, and the module *reports zero* rather than failing.
 **Acceptance:** both clerk styles parse; `Ald. Cook` and `Cook` collapse to one person; `tests/test_decisions.py` covers both volumes; S16's guards are green on the output.
 
-### S18. `minutes_for(place, years)` as a Honu tool — 1 h
+### S18. `minutes_for(place, years)` as a Jay tool — 1 h
 `_who_decided` requires the caller to already know an Internet Archive identifier, and no place → minutes lookup is exposed. `search.search_archive` already does the retrieval correctly (top 8 results for "Kingston council minutes" are all Kingston minutes); it is simply not in `build_tools()`.
 *Rationale:* one wiring job turns S16+S17 from a parser into an answer, and 8 municipalities have both water reports and minutes.
-**Acceptance:** Honu answers "who voted for Kingston's sewage plant" by reaching `kingstoncouncilmin69_1` unaided; a test asserts the tool returns Kingston volumes for "Kingston".
+**Acceptance:** Jay answers "who voted for Kingston's sewage plant" by reaching `kingstoncouncilmin69_1` unaided; a test asserts the tool returns Kingston volumes for "Kingston".
 
 ### S19. The deliberative-record pass — 1 overnight, paced
 Hamilton has 377 council items 1924–2004; Kingston 119 volumes 1899–1980 overlapping its water-pollution-control-plant reports on **nine** years (1965–1974). Parsing is ~0.7 s per 1.2 M-char volume, but `_djvu.xml` is 13–15× the text, so this is ~2.5–3 GB of download, not "114 seconds of CPU" — it needs S4's pacing and S2's fallback guard, and it must not run before S16.
@@ -252,7 +252,7 @@ The frontier says what to read next and offers no way to read it; the only `/api
 **Acceptance:** every row in "Read this next" has a working button; clicking one produces records in the library and the row disappears on reload.
 
 ### S27. Single-flight lock on `/api/read`, and ship or announce the 42 MB index — 2 h
-First click blocks on a 42 MB catalogue download (47.5 s measured) while the UI says "Working through the scans". `dockBody.innerHTML` rebuilds a fresh enabled button on every dot click, so reopening a town starts a second concurrent extraction on one GPU, starving Ask Honu.
+First click blocks on a 42 MB catalogue download (47.5 s measured) while the UI says "Working through the scans". `dockBody.innerHTML` rebuilds a fresh enabled button on every dot click, so reopening a town starts a second concurrent extraction on one GPU, starving Ask Jay.
 *Rationale:* an enthusiastic visitor clicking dots is the most likely single event on 28 Oct, and its worst case is a saturated GPU for the rest of the session.
 **Acceptance:** a second read for the same place returns 409; the UI states the first-read download; a test asserts concurrent calls produce one run.
 
@@ -291,7 +291,7 @@ One sentence per forecast: "In 1974 the Government of Canada projected X for 200
 - **`qualifier` in the dispute slot key.** 16 of the 21 qualifier-mixed slots differ only because one side is null — adding it would silence 16 genuine disagreements by filing them as settled. Normalise the extractor's qualifiers first, then revisit.
 - **Committing a page cache for the Disputed view.** Text-only is 9.7 MB but `State.ledger()` reads the same file with `with_words=True` to build the crops, and "the crops are the point". It also reverses an explicit gitignore decision. The failure-cache and pre-warm in B17 get the demo benefit without it.
 - **JSONL as the extraction output format now** (8–12 h and it changes the format read by nine modules). Ship the atomic writes in S3 and defer.
-- **A tool-calling Anthropic path in Honu** (3–4 h, not 1.5). Fix the message that promises it (B21) and leave the path alone unless the local model becomes the demo's bottleneck.
+- **A tool-calling Anthropic path in Jay** (3–4 h, not 1.5). Fix the message that promises it (B21) and leave the path alone unless the local model becomes the demo's bottleneck.
 - **The tribunal reader for Environmental Assessment Board hearings** (16–20 h — `moved by` occurs zero times in the target, so it shares no pattern with `decisions.py`). It is the best lens in the pile and it does not fit six weeks alongside S1–S19. Name it in the application as future work.
 - **Changing `RECORDS_PER_TABLE_PAGE`.** With 11 completed trial pages the median is 20 and the mean 17.45 against a constant of 18. The proposed correction to 25.5 rested on eight pages and reverses with more data.
 - **Demoting `township`/`concession` in `MAP_RE`.** The 43 early-MAP pages are mostly genuine survey maps and zoning schedules whose "numbers" are bearings; the remedy would break the boundary descriptions that are Path E's actual material, for 0.09% of pages.
@@ -318,7 +318,7 @@ One sentence per forecast: "In 1974 the Government of Canada projected X for 200
 | "13.1% deliberative does not reproduce" | It does, within 2–4%, under two reasonable definitions. What is real is that no script computes it — folded into B11/B13 as a `collection_census.py` that emits every corpus-level figure any document quotes. |
 | "`archive.py` has no pacing anywhere in the project" | Three pacing mechanisms exist (`providers.py`, `_PoliteDelay` with tests, `corpus_census --sleep`). The decision is made and documented; it is just not in the shared adapter (S4). |
 | "Per-item index parsing costs ~76 hours" | Describes a driver that does not exist; `run_batch` spawns one subprocess per town. Kept the 30-minute memoization (S29). |
-| "The README's `ANTHROPIC_API_KEY` promise is false" | It sits in the gold-harness section, where `extract_prose` → `default_client()` does branch on the key. True where it stands. Only the Honu and portal messages are wrong (B21). |
+| "The README's `ANTHROPIC_API_KEY` promise is false" | It sits in the gold-harness section, where `extract_prose` → `default_client()` does branch on the key. True where it stands. Only the Jay and portal messages are wrong (B21). |
 | Widen `library.ask`'s title filter to any matching title | Reverses a written decision (`extract_place.py:70-72`: later one-off studies "would pollute a plant's operating series"). The defect is the message, not the filter. |
 | "No `test_score.py` exists" | `tests/test_core.py:203-220` has three `score_page` tests. Thin, not absent — the substance survives in S14. |
 

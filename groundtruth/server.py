@@ -36,7 +36,7 @@ from .disputes import (
     resolve as resolve_claims, submit as submit_claim,
 )
 from .parameters import resolve as resolve_parameter
-from .honu import Honu
+from .jay import Jay
 from .library import ask
 from .portal import render
 from .science import series_from_records
@@ -104,7 +104,7 @@ class State:
         self._ledger: dict[str, Any] | None = None
         # Lazily built: constructing it is cheap, but every request that
         # uses it needs a model, which may not be present.
-        self.honu = Honu(self.corpus)
+        self.jay = Jay(self.corpus)
 
     def invalidate_ledger(self) -> None:
         self._ledger = None
@@ -555,7 +555,7 @@ class Handler(BaseHTTPRequestHandler):
             if not question:
                 self._send(json.dumps({"error": "no question"}).encode(), "application/json")
                 return
-            turn = STATE.honu.ask(question)
+            turn = STATE.jay.ask(question)
             self._send(json.dumps({
                 "reply": turn.reply,
                 "tools": turn.tool_calls,

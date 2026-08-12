@@ -20,7 +20,7 @@ So the chrome is OMEGA's and the views are this project's:
     Decisions   who moved what, who seconded, and how each person voted
     Disputed    measurements two readings disagree about, shown side by side
                 with both crops, because nobody here adjudicates
-    Ask Honu    the agent, over the whole toolset
+    Ask Jay    the agent, over the whole toolset
 
 This is the SERVING layer, and the one place allowed outside dependencies. The
 core stays dependency-free: nobody should need a mapping library installed to
@@ -42,7 +42,7 @@ NAV = [
     ("frontier", "Frontier", "M12 4.5v15M4.5 12h15M7.5 7.5l9 9M16.5 7.5l-9 9"),
     ("decisions", "Decisions", "M7 4.5h10v15H7Zm2.6 4h4.8m-4.8 3.6h4.8m-4.8 3.6h3"),
     ("disputed", "Disputed", "M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1"),
-    ("ask", "Ask Honu", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
+    ("ask", "Ask Jay", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
 ]
 
 
@@ -240,8 +240,8 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
 
     <section class="view" data-view="ask">
       <div class="pane">
-        <h2>Ask Honu</h2>
-        <p class="lede">Honu answers only from the extracted record. It cannot answer from
+        <h2>Ask Jay</h2>
+        <p class="lede">Jay answers only from the extracted record. It cannot answer from
         memory, every number it reports carries the page it was read from, and it will not
         state that somewhere went quiet without the control that separates real silence from
         the scanning having stopped.</p>
@@ -672,7 +672,7 @@ const LOADERS = {{
         let h = `<div class="card"><p class="lede" style="color:#e8edf2;margin:0 0 10px">`
               + `<strong style="color:var(--gt-hit)">Q</strong> ${{question}}</p>`;
         if(d.error){{
-          h += `<p class="empty">No answer: ${{d.error}}<br><br>Honu needs a local model
+          h += `<p class="empty">No answer: ${{d.error}}<br><br>Jay needs a local model
                 running (<code>ollama serve</code>), or an ANTHROPIC_API_KEY.</p>`;
         }} else {{
           h += `<p style="margin:0;white-space:pre-wrap">${{d.reply}}</p>`;

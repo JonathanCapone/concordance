@@ -260,7 +260,7 @@ pointed at any other scanned archive, because nothing in the reading layer is
 Canada-specific.
 
 **Arc E — Make it answerable (week 5)**
-Honu over the whole corpus rather than two towns. The agent exists and works; it
+Jay over the whole corpus rather than two towns. The agent exists and works; it
 needs the data underneath it. Plus the plain-language layer, so a resident rather
 than a researcher can ask what their town put in the water.
 
@@ -367,7 +367,7 @@ I previously built OMEGA-wave, an open ocean-sensing mesh with its own protocol,
 gateway, statistics suite and map portal. Ground Truth reuses that work directly:
 **the statistics layer** (Mann-Kendall, Theil-Sen, Pettitt changepoint — all
 pure-stdlib, which is why this package still has zero required dependencies),
-**the map portal**, **the agent framework** behind Honu, and **the keyless
+**the map portal**, **the agent framework** behind Jay, and **the keyless
 provider layer** that reaches ECCC and Statistics Canada. Six weeks here is not
 six weeks from zero.
 

@@ -203,7 +203,7 @@ class Corpus:
                         place=d.get("place") or place, period=d.get("period"),
                         # Without this every record loads as "unclassified" and
                         # the facility split silently does nothing -- which is how
-                        # Honu came to report that Owen Sound's sewage record runs
+                        # Jay came to report that Owen Sound's sewage record runs
                         # to 1992, when that is a drinking-water report that merely
                         # shares the town's name.
                         facility=d.get("facility"),
