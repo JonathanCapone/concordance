@@ -213,11 +213,16 @@ to what each stage ends with than to which Tuesday it lands on. Each arc ends in
 something demonstrable, and the order is chosen so that stopping early still
 leaves a complete artifact rather than a half-built one.
 
-**Arc A — Read at scale, and make reading cheap (weeks 1–2)**
-Bulk text acquisition across the collection; the cheap local filter that decides
-which pages earn a model; the vocabulary pass; the throughput pilot that turns
-the estimated cost in the table above into a measured one. Ends with: a seed
-corpus, and a per-page cost somebody could plan against.
+**Arc A — Close the loop, then read at scale (weeks 1–2)**
+First the missing destination: a contribution arrives as a pull request carrying
+a bundle, the same verification runs in CI against archive.org, and what verifies
+merges. Until that exists, "your machine reads it for everyone" is a mechanism
+with nowhere to send the result.
+
+Then bulk text acquisition across the collection; the cheap local filter that
+decides which pages earn a model; the vocabulary pass; and the throughput pilot
+that turns the estimated cost above into a measured one. Ends with: somewhere for
+a reading to go, a seed corpus, and a per-page cost somebody could plan against.
 
 **Arc B — Trustworthy at scale (weeks 2–3)**
 The gold set expanded across document types and eras, not just the three pages
@@ -259,6 +264,61 @@ than a researcher can ask what their town put in the water.
 **Arc F — Findings and the showcase (week 6)**
 The silence detector run nationally; cross-domain joins between agencies that
 have never been in the same room; write-up; Oct 28.
+
+### Who actually does what
+
+Four kinds of person, and only one of them is asked to do anything at all.
+
+**Most people just read.** They open a published page, look up the town they
+grew up in, and see what was measured there and when it stopped. They install
+nothing, contribute nothing, and are the point of the whole exercise. If this
+works, they are 99% of the users.
+
+**Someone wants a place nobody has read.** They ask for it. The panel says so
+plainly — *"Nobody has read this one yet. 12 scanned reports are waiting, about
+an hour on this machine"* — and they press a button. Their laptop does the
+reading, they get their answer, and the reading is now done. **That is the whole
+of the ask.** No account, no queue, no volunteering, no task list. The cost falls
+on the person who cared first, who is also the person most willing to wait for
+it.
+
+**Someone disagrees with a number.** They cite a page and quote a sentence, and
+the archive decides — the same check that judges the machine's own output, which
+never asks who is speaking. An evidenced correction replaces an unevidenced
+record automatically. An objection with no evidence is counted, shown, and
+changes nothing, because the moment it could, somebody would have to judge it.
+
+**And someone has a graphics card.** Tables need a model that will not fit on an
+ordinary machine, and 27% of pages hold most of the measurements. A person with
+real hardware can read those once and publish the result for everyone, which is
+the one place where "contributing" means something more than asking a question.
+
+### What is built, and what is not
+
+I would rather be exact about this than let the diagram do the arguing.
+
+| | state |
+|---|---|
+| Ask for a place, read it locally if nobody has, verify, keep it | **built** — `library.ask`, wired to a button |
+| Submit or correct a reading, checked against the scan, no moderator | **built** — `disputes.submit`, with a form |
+| Package readings as a file and re-verify them on arrival | **built** — `scripts/share.py`, tested end to end |
+| **A place for that file to go** | **not built** |
+
+That last row is the honest gap, and it is the difference between "your machine
+read it" and "it is there for everyone". Today a bundle has to be sent to
+somebody by hand.
+
+The intended answer needs no server, which matters for a project that will
+outlive its funding: **the repository is the library.** A contribution arrives as
+a pull request containing a bundle; the same verification runs in CI, against
+archive.org, on every record; what verifies merges and what does not is reported
+on the pull request with the page it failed against. Nobody adjudicates, there is
+nothing to host, nothing to pay for monthly, and the whole dataset stays in git
+where it can be forked, audited and mirrored by anyone who thinks I have got it
+wrong.
+
+That is the first thing I would build with the fellowship, because until it
+exists the distributed claim is a mechanism without a destination.
 
 **Running throughout — open contribution that needs no moderator.**
 Not an arc, because it is a property rather than a phase. Every claim in this
