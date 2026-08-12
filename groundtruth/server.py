@@ -18,6 +18,7 @@ server computes nothing it cannot show you the source of.
 from __future__ import annotations
 
 import json
+import re
 import webbrowser
 from collections import Counter
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -47,6 +48,40 @@ RESULTS = Path("data/results")
 #: tally and no evidence. Persisting them is a storage decision, not a trust
 #: one, and it can wait until there is somewhere to put them.
 FLAGS: list[Flag] = []
+
+#: Suffixes that turn a town's name into a facility's. Stripped only when
+#: deciding WHICH TOWN a record belongs to; the facility itself stays on the
+#: record, because a town's sewage plant and its water works measure opposite
+#: things and must never share a chart.
+#: Written without a word-boundary escape on purpose. This pattern was authored
+#: through a shell heredoc and every `\b` in it became a literal backspace byte
+#: -- the file read back correctly in every editor and the pattern matched
+#: nothing, so "Owen Sound Sewage Treatment Plant" failed to resolve to "Owen
+#: Sound" and the flagship trend stayed broken after being fixed. The repo-wide
+#: control-byte test caught it; removing the construct removes the trap.
+_FACILITY_SUFFIX = re.compile(
+    r"(?i)\s+(water pollution control plant|sewage treatment plant|"
+    r"pollution control plant|water treatment plant|water supply system|"
+    r"treatment plant|filtration plant|sewage works|water works|"
+    r"wpcp|stp|wtp|plant|works)(?![a-z]).*$")
+
+
+def _same_town(place: str, want: set[str]) -> bool:
+    """Is this record about one of the towns asked for?
+
+    A record's place is whatever its sentence said, so one town arrives under
+    several spellings. Owen Sound's BOD removal sits under "Owen Sound" for two
+    years and "Owen Sound Sewage Treatment Plant" for a third -- and the third
+    is the 46.4% that both the README and the application quote as the start of
+    the series.
+    """
+    if not place:
+        return False
+    if place in want:
+        return True
+    bare = _FACILITY_SUFFIX.sub("", place).strip(" ,-")
+    return bool(bare) and bare in want
+
 
 class State:
     """Everything the server can answer from, loaded once at startup."""
@@ -294,9 +329,20 @@ class State:
         if not out.get("found"):
             return out
 
-        want = {place.lower(), raw.lower()}
+        # Match the town, not the exact string. One town's records carry several
+        # place spellings because the extractor takes the place from whatever
+        # the sentence said: Owen Sound's BOD-removal series is filed under
+        # "Owen Sound" for 1963 and 1969 and under "Owen Sound Sewage Treatment
+        # Plant" for the 1963 reading of 46.4%. Exact matching therefore dropped
+        # the very number both the README and the application lead with, and the
+        # live portal drew a flat line where a rising one exists.
+        #
+        # This is a place question, so the facility suffix is noise -- and it is
+        # NOT dropped from the records, because the facility split below is what
+        # keeps a town's sewage plant off the same panel as its water works.
+        want = {p for p in (place.lower(), raw.lower()) if p}
         mine = [r for r in self.corpus.records
-                if (r.place or "").lower() in want and r.kind == "observation"]
+                if r.kind == "observation" and _same_town((r.place or "").lower(), want)]
         # One facility at a time. Effluent and tap water are opposite
         # measurements and must never share a panel.
         facilities = Counter(r.facility or "unclassified" for r in mine)

@@ -335,3 +335,47 @@ def test_a_missing_map_library_cannot_take_the_other_views_with_it():
     assert guard < construct, "the guard must precede the construction"
     assert "} catch (err) {" in html, "the map section must not be able to abort the script"
     assert construct < loaders, "layout assumption for this test no longer holds"
+
+
+# -- one town, several spellings --------------------------------------------
+
+def test_a_town_is_found_under_its_facility_spellings():
+    """The live portal drew a flat line where a rising one exists.
+
+    A record's place is whatever its sentence said, so one town arrives under
+    several spellings. Owen Sound's BOD removal sits under "Owen Sound" for 1964
+    and 1969 and under "Owen Sound Sewage Treatment Plant" for the 1963 reading
+    of 46.4% -- which is the number both the README and the application quote as
+    the start of the series. Exact matching dropped it.
+    """
+    from groundtruth.server import _same_town
+
+    want = {"owen sound"}
+    assert _same_town("owen sound", want)
+    assert _same_town("owen sound sewage treatment plant", want)
+    assert _same_town("owen sound water pollution control plant", want)
+    assert _same_town("owen sound wpcp", want)
+
+
+def test_a_different_town_is_not_swept_in():
+    from groundtruth.server import _same_town
+
+    want = {"owen sound"}
+    assert not _same_town("brantford", want)
+    assert not _same_town("brantford sewage treatment plant", want)
+    # A town whose own name ends in one of the suffix words is not truncated:
+    # the suffix must follow whitespace and end a word.
+    assert not _same_town("plantagenet", want)
+    assert _same_town("plantagenet", {"plantagenet"})
+
+
+def test_stripping_the_suffix_here_does_not_merge_two_facilities():
+    """The facility stays on the record. A town's sewage plant and its water
+    works measure opposite things, and the panel-level facility split is what
+    keeps them apart -- this only decides which TOWN a record belongs to."""
+    from groundtruth.disputes import slot_of
+
+    sewage = {"place": "Owen Sound", "facility": "water pollution control plant",
+              "parameter": "BOD", "unit": "mg/L", "period": "1969"}
+    water = dict(sewage, facility="water supply system")
+    assert slot_of(sewage) != slot_of(water)
