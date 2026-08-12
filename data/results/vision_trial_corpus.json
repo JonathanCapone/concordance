@@ -1,0 +1,1677 @@
+{
+  "31761116374760#39": {
+    "stratum": "uoftgovpubs",
+    "identifier": "31761116374760",
+    "page": 39,
+    "seconds": 547.9,
+    "n_records": 25,
+    "n_rejected": 0,
+    "values_checked": 25,
+    "values_found_in_ocr": 25,
+    "ocr_chars": 2891,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "Production of Fine vacuum salt",
+        "value": 69689.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "January 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [January - Janvier / Fine vacuum / Fin, traité sous vide 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "January - Janvier",
+          "column_label": "Fine vacuum / Fin, traité sous vide 2002",
+          "model_confidence": 1.0
+        },
+        "key": "09a51f2796d00abff815"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Fine vacuum salt",
+        "value": 83932.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "January 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [January - Janvier / Fine vacuum / Fin, traité sous vide 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "January - Janvier",
+          "column_label": "Fine vacuum / Fin, traité sous vide 2003",
+          "model_confidence": 1.0
+        },
+        "key": "878be156a72d66157995"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Mined rock salt",
+        "value": 983104.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "January 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [January - Janvier / Mined rock salt / Sel extrait des mines 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "January - Janvier",
+          "column_label": "Mined rock salt / Sel extrait des mines 2002",
+          "model_confidence": 1.0
+        },
+        "key": "c0c31798347bb4e07e23"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Mined rock salt",
+        "value": 1049632.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "January 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [January - Janvier / Mined rock salt / Sel extrait des mines 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "January - Janvier",
+          "column_label": "Mined rock salt / Sel extrait des mines 2003",
+          "model_confidence": 1.0
+        },
+        "key": "1139f3c8f7837dac4948"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salt content of brines",
+        "value": 106325.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "January 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [January - Janvier / Salt content of brines / Teneur en sel des saumures 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "January - Janvier",
+          "column_label": "Salt content of brines / Teneur en sel des saumures 2002",
+          "model_confidence": 1.0
+        },
+        "key": "bdbf42a3286d06796844"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salt content of brines",
+        "value": 103701.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "January 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [January - Janvier / Salt content of brines / Teneur en sel des saumures 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "January - Janvier",
+          "column_label": "Salt content of brines / Teneur en sel des saumures 2003",
+          "model_confidence": 1.0
+        },
+        "key": "4d96a14c68ff79b509c3"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Total Production",
+        "value": 1159118.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "January 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [January - Janvier / Total 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "January - Janvier",
+          "column_label": "Total 2002",
+          "model_confidence": 1.0
+        },
+        "key": "094509b5604ba9376561"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Total Production",
+        "value": 1237265.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "January 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [January - Janvier / Total 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "January - Janvier",
+          "column_label": "Total 2003",
+          "model_confidence": 1.0
+        },
+        "key": "c7e75f70c91d5d846237"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Fine vacuum salt",
+        "value": 61767.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "February 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [February - Février / Fine vacuum / Fin, traité sous vide 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "February - Février",
+          "column_label": "Fine vacuum / Fin, traité sous vide 2002",
+          "model_confidence": 1.0
+        },
+        "key": "5bb304a98049bb088456"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Fine vacuum salt",
+        "value": 75852.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "February 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [February - Février / Fine vacuum / Fin, traité sous vide 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "February - Février",
+          "column_label": "Fine vacuum / Fin, traité sous vide 2003",
+          "model_confidence": 1.0
+        },
+        "key": "3f6115c5347544f84566"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Mined rock salt",
+        "value": 657229.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "February 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [February - Février / Mined rock salt / Sel extrait des mines 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "February - Février",
+          "column_label": "Mined rock salt / Sel extrait des mines 2002",
+          "model_confidence": 1.0
+        },
+        "key": "4823ee020a66a35016d4"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Mined rock salt",
+        "value": 716300.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "February 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [February - Février / Mined rock salt / Sel extrait des mines 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "February - Février",
+          "column_label": "Mined rock salt / Sel extrait des mines 2003",
+          "model_confidence": 1.0
+        },
+        "key": "e9b34bd2c174d8865401"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salt content of brines",
+        "value": 86386.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "February 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [February - Février / Salt content of brines / Teneur en sel des saumures 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "February - Février",
+          "column_label": "Salt content of brines / Teneur en sel des saumures 2002",
+          "model_confidence": 1.0
+        },
+        "key": "ebfe66e079bb73b5f501"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salt content of brines",
+        "value": 92841.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "February 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [February - Février / Salt content of brines / Teneur en sel des saumures 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "February - Février",
+          "column_label": "Salt content of brines / Teneur en sel des saumures 2003",
+          "model_confidence": 1.0
+        },
+        "key": "80a71826ac92b8196429"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Total Production",
+        "value": 805382.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "February 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [February - Février / Total 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "February - Février",
+          "column_label": "Total 2002",
+          "model_confidence": 1.0
+        },
+        "key": "f39837c1c0ad53ae638d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Total Production",
+        "value": 884993.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "February 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [February - Février / Total 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "February - Février",
+          "column_label": "Total 2003",
+          "model_confidence": 1.0
+        },
+        "key": "60de793aa1b5ffddf268"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Fine vacuum salt",
+        "value": 70768.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "March 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [March - Mars / Fine vacuum / Fin, traité sous vide 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "March - Mars",
+          "column_label": "Fine vacuum / Fin, traité sous vide 2002",
+          "model_confidence": 1.0
+        },
+        "key": "a4fa669f809de0b76716"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Fine vacuum salt",
+        "value": 77253.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "March 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [March - Mars / Fine vacuum / Fin, traité sous vide 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "March - Mars",
+          "column_label": "Fine vacuum / Fin, traité sous vide 2003",
+          "model_confidence": 1.0
+        },
+        "key": "d21b8786296a10534733"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Mined rock salt",
+        "value": 514610.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "March 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [March - Mars / Mined rock salt / Sel extrait des mines 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "March - Mars",
+          "column_label": "Mined rock salt / Sel extrait des mines 2002",
+          "model_confidence": 1.0
+        },
+        "key": "6d1940593022fdf766f4"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Mined rock salt",
+        "value": 761012.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "March 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [March - Mars / Mined rock salt / Sel extrait des mines 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "March - Mars",
+          "column_label": "Mined rock salt / Sel extrait des mines 2003",
+          "model_confidence": 1.0
+        },
+        "key": "c2d196b88d509dcee979"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salt content of brines",
+        "value": 120367.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "March 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [March - Mars / Salt content of brines / Teneur en sel des saumures 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "March - Mars",
+          "column_label": "Salt content of brines / Teneur en sel des saumures 2002",
+          "model_confidence": 1.0
+        },
+        "key": "550fd5137ad6e37c6b9c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salt content of brines",
+        "value": 111483.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "March 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [March - Mars / Salt content of brines / Teneur en sel des saumures 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "March - Mars",
+          "column_label": "Salt content of brines / Teneur en sel des saumures 2003",
+          "model_confidence": 1.0
+        },
+        "key": "428b6c735737dd1f435a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Total Production",
+        "value": 705745.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "March 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [March - Mars / Total 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "March - Mars",
+          "column_label": "Total 2002",
+          "model_confidence": 1.0
+        },
+        "key": "4c6837c2e797686fb4d3"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Total Production",
+        "value": 949748.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "March 2003",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [March - Mars / Total 2003]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "March - Mars",
+          "column_label": "Total 2003",
+          "model_confidence": 1.0
+        },
+        "key": "13fd69b68b23acde72d5"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Production of Fine vacuum salt",
+        "value": 69950.0,
+        "unit": "tonnes",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "April 2002",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "31761116374760",
+          "page": 39,
+          "source_text": "table cell [April - Avril / Fine vacuum / Fin, traité sous vide 2002]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/31761116374760/page/n38/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "April - Avril",
+          "column_label": "Fine vacuum / Fin, traité sous vide 2002",
+          "model_confidence": 1.0
+        },
+        "key": "e1d762e66fcda7f33cfe"
+      }
+    ]
+  },
+  "albertaliquorcon1942albe#17": {
+    "stratum": "albertagovernmentpublications",
+    "identifier": "albertaliquorcon1942albe",
+    "page": 17,
+    "seconds": 553.4,
+    "n_records": 15,
+    "n_rejected": 7,
+    "values_checked": 15,
+    "values_found_in_ocr": 15,
+    "ocr_chars": 882,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "Inventory, Liquor",
+        "value": 1111056.64,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1942-03-31",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Liquor]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Liquor",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "715b7daa74ba637577db"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Inventory, Beer",
+        "value": 128937.58,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1942-03-31",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Beer]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Beer",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "fcd03d68a1c89264c7e0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Purchases, liquor",
+        "value": 1291849.06,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Purchases, liquor]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Purchases, liquor",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "124d3de56a65ac321553"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Purchases, confiscated liquor",
+        "value": 257.6,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Purchases, confiscated liquor]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Purchases, confiscated liquor",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "80f12825526db42e0329"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Purchases, jugs and bottles",
+        "value": 40063.88,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Purchases, jugs and bottles]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Purchases, jugs and bottles",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "5f991d47b6e7127ed26c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Duty and sales tax",
+        "value": 2311667.02,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Duty and sales tax]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Duty and sales tax",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "04bd58b2078cd1b3fa91"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Inward freight",
+        "value": 216208.22,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Inward freight]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Inward freight",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "7b740003991df5bc054e"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Marine insurance",
+        "value": 60353.46,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Marine insurance]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Marine insurance",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "6a8def70fb66737e342c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Purchases, beer",
+        "value": 7572026.87,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Purchases, beer]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Purchases, beer",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "9ada08a4757239d70d8c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Cash and trade discounts",
+        "value": 14524.45,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Cash and trade discounts]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Cash and trade discounts",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "4fd4e8e820ce359e4889"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Claims",
+        "value": 6771.12,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Claims]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Claims",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "0850f5428c9661ffc7f8"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Breakages",
+        "value": 164.57,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Breakages]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Breakages",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "b9079510f2dac1403d4e"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Inventory, Liquor",
+        "value": 958045.26,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943-03-31",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Liquor]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Liquor",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "08ec35e51b82f68f6dfb"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Inventory, Beer",
+        "value": 138673.08,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943-03-31",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Beer]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Beer",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "45208a4060cc91936b6b"
+      },
+      {
+        "kind": "conclusion",
+        "parameter": "Cost of goods sold for the year ended March 31, 1943",
+        "value": 11614241.85,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1943",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "albertaliquorcon1942albe",
+          "page": 17,
+          "source_text": "table cell [Cost of goods sold for the year ended March 31, 1943]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Cost of goods sold for the year ended March 31, 1943",
+          "column_label": "",
+          "model_confidence": 1.0
+        },
+        "key": "39ee4629843355bb702d"
+      }
+    ]
+  },
+  "simcoewellsupply1990ontauoft#42": {
+    "stratum": "omote",
+    "identifier": "simcoewellsupply1990ontauoft",
+    "page": 42,
+    "seconds": 600.0,
+    "n_records": 18,
+    "n_rejected": 0,
+    "values_checked": 18,
+    "values_found_in_ocr": 18,
+    "ocr_chars": 325,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 1.63,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "APR",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [APR / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "APR",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "44194c449ce42a8030ff"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.22,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "APR",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [APR / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "APR",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "1412580709b8f92e6a08"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 1.07,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "MAY",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [MAY / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "MAY",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "9949d94a95944624df7b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.21,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "MAY",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [MAY / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "MAY",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "83177dc3a6f4691d16c9"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 1.05,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "JUN",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [JUN / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "JUN",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "a5cfd3ebab8c4767ffea"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.42,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "JUN",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [JUN / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "JUN",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "5eeb86026dbd036fc45d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.85,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "JUL",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [JUL / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "JUL",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "c27b21a20a4e54d8744d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.42,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "JUL",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [JUL / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "JUL",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "8040884bf58068cd6b3c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 1.1,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "AUG",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [AUG / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "AUG",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "ab5e901f9e80333d2734"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.59,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "AUG",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [AUG / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "AUG",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "0822b509c1e8aff4d5a3"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.76,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "SEP",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [SEP / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "SEP",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "03bc1011d234060d5ed7"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.2,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "SEP",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [SEP / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "SEP",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "094af1646891c5423169"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.84,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "OCT",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [OCT / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "OCT",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "39b7b19abeba0cc0ce65"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.31,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "OCT",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [OCT / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "OCT",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "8c1571e913d5cb431f6a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.78,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "NOV",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [NOV / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "NOV",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "31a5412603d853e31687"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.4,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "NOV",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [NOV / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "NOV",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "d05d703b1df5a90e47e0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 1.59,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "raw",
+        "place": null,
+        "period": "DEC",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [DEC / RAW WELL 4]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "DEC",
+          "column_label": "RAW WELL 4",
+          "model_confidence": 1.0
+        },
+        "key": "f222bc782c35de09ea91"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TURBIDITY",
+        "value": 0.85,
+        "unit": "FTU",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "DEC",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "simcoewellsupply1990ontauoft",
+          "page": 42,
+          "source_text": "table cell [DEC / RESERVOIR]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/simcoewellsupply1990ontauoft/page/n41/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "DEC",
+          "column_label": "RESERVOIR",
+          "model_confidence": 1.0
+        },
+        "key": "e5ac7bdaeda051a151a7"
+      }
+    ]
+  },
+  "WATERWELLRECORDS00SNSN12154.ome#1": {
+    "stratum": "omote",
+    "identifier": "WATERWELLRECORDS00SNSN12154.ome",
+    "page": 1,
+    "seconds": 396.9,
+    "n_records": 0,
+    "n_rejected": 0,
+    "values_checked": 0,
+    "values_found_in_ocr": 0,
+    "ocr_chars": 1100262,
+    "records": []
+  }
+}

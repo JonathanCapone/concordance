@@ -1,0 +1,758 @@
+{
+  "how_to_use": "For each entry set 'decision' to keep or drop, and 'canonical' to the name this measurement should have. Entries you leave alone are ignored. Terms are grouped by a crude stem, so check 'written_as' -- if two genuinely different measurements have been grouped together, split them rather than picking one.",
+  "warning": "Grouping is string work and is done for you. Deciding what a measurement MEANS is not, and is the thing this project has got wrong before: 'BOD removal' and 'BOD exceedance frequency' are both percentages of BOD and are opposite in meaning.",
+  "n_proposals": 23,
+  "proposals": [
+    {
+      "proposed_term": "lbs boo per 100 lbs fti l s",
+      "occurrences": 8,
+      "written_as": [
+        "LBS BOO. PER 100 LBS. fti L.S."
+      ],
+      "units_seen": [
+        [
+          "lbs/100 lbs",
+          8
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 14.0,
+          "unit": "lbs/100 lbs",
+          "read_from": "JANUARY\n\n156\n\n2354\n\n14",
+          "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n26/mode/2up"
+        },
+        {
+          "value": 12.0,
+          "unit": "lbs/100 lbs",
+          "read_from": "FEBRUARY\n\n152\n\n2703\n\n12",
+          "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n26/mode/2up"
+        },
+        {
+          "value": 12.0,
+          "unit": "lbs/100 lbs",
+          "read_from": "MARCH\n\n130\n\n2509\n\n12",
+          "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n26/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "solids",
+      "occurrences": 4,
+      "written_as": [
+        "solids concentration"
+      ],
+      "units_seen": [
+        [
+          "%",
+          4
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 1.2,
+          "unit": "%",
+          "read_from": "During 1962, 8,125,300 gallons of sludge at an average concentration of ^,2 per cent solids were pumped to the digesters.",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+        },
+        {
+          "value": 4.4,
+          "unit": "%",
+          "read_from": "The average solids concentrations of 4. 4% was considerably less than the 1969 average of 5. 1%.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23773/page/n10/mode/2up"
+        },
+        {
+          "value": 5.1,
+          "unit": "%",
+          "read_from": "The average solids concentrations of 4. 4% was considerably less than the 1969 average of 5. 1%.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23773/page/n10/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "selenium",
+      "occurrences": 4,
+      "written_as": [
+        "selenium"
+      ],
+      "units_seen": [
+        [
+          "ug/L",
+          3
+        ]
+      ],
+      "suggested_domain": "water",
+      "examples": [
+        {
+          "value": 10.0,
+          "unit": "ug/L",
+          "read_from": "The ODWO of 10 ug/L for selenium was exceeded in one treated water sample.",
+          "page_url": "https://archive.org/details/brantfodrinkingw1989ontauoft/page/n4/mode/2up"
+        },
+        {
+          "value": 10.0,
+          "unit": "ug/L",
+          "read_from": "The health related ODWO of 10.0 ug/L for selenium was exceeded in",
+          "page_url": "https://archive.org/details/brantfodrinkingw1989ontauoft/page/n15/mode/2up"
+        },
+        {
+          "value": 12.0,
+          "unit": "ug/L",
+          "read_from": "the May treated water sample at 12.0 ug/L.",
+          "page_url": "https://archive.org/details/brantfodrinkingw1989ontauoft/page/n15/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "ammonium",
+      "occurrences": 4,
+      "written_as": [
+        "total ammonium"
+      ],
+      "units_seen": [
+        [
+          "mg/L",
+          4
+        ]
+      ],
+      "suggested_domain": "water",
+      "examples": [
+        {
+          "value": 0.05,
+          "unit": "mg/L",
+          "read_from": "Total ammonium exceeded the European Economic Community Aesthetic Guideline Level of 0.05 mg/L in 25 of 31 treated and distributed water sam",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n14/mode/2up"
+        },
+        {
+          "value": 0.48,
+          "unit": "mg/L",
+          "read_from": "Total ammonium exceeded the European Economic Community Aesthetic Guideline Level of 0.05 mg/L in 25 of 31 treated and distributed water sam",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n14/mode/2up"
+        },
+        {
+          "value": 0.5,
+          "unit": "mg/L",
+          "read_from": "The European Economic Community also has a Maximum Admissible Concentration of 0.50 mg/L for total ammonium set as a result of the concern f",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n14/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "hexachlorocyclopentadiene",
+      "occurrences": 4,
+      "written_as": [
+        "Hexachlorocyclopentadiene",
+        "hexachlorocyclopentadiene"
+      ],
+      "units_seen": [
+        [
+          "ng/L",
+          4
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 94.0,
+          "unit": "ng/L",
+          "read_from": "The maximum observed level was 94 ng/L.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n15/mode/2up"
+        },
+        {
+          "value": 206000.0,
+          "unit": "ng/L",
+          "read_from": "This was below the United States Environmental Protection Agency Ambient Water Quality Criteria of 206,000 ng/L.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n15/mode/2up"
+        },
+        {
+          "value": 60.0,
+          "unit": "ng/L",
+          "read_from": "Hexachlorocyclopentadiene was found at positive levels in 1 of 6\ntreated and distributed water samples associated with the water\nplant with ",
+          "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "operating costs",
+      "occurrences": 3,
+      "written_as": [
+        "operating costs"
+      ],
+      "units_seen": [
+        [
+          "$",
+          2
+        ],
+        [
+          "$ per million gallons",
+          1
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 188867.51,
+          "unit": "$",
+          "read_from": "The operating costs for the Brantford Water Pollution Control Plant in 1966 were $188, 867. 51 or $75. 83 per million gallons treated.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+        },
+        {
+          "value": 75.83,
+          "unit": "$ per million gallons",
+          "read_from": "The operating costs for the Brantford Water Pollution Control Plant in 1966 were $188, 867. 51 or $75. 83 per million gallons treated.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+        },
+        {
+          "value": 226.643,
+          "unit": "$",
+          "read_from": "The total 1967 operating costs for the Brantford Water Pollution Control Plant were $226, 643. 20 or $86. 44 per million gallons treated.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23772/page/n10/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "atrazine",
+      "occurrences": 3,
+      "written_as": [
+        "Atrazine"
+      ],
+      "units_seen": [
+        [
+          "ng/L",
+          3
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 60000.0,
+          "unit": "ng/L",
+          "read_from": "Health and Welfare Canada have a Maximum Acceptable Concentration (MAC) of 60,000 ng/L for Atrazine in drinking water.",
+          "page_url": "https://archive.org/details/brantfodrinkingw1989ontauoft/page/n16/mode/2up"
+        },
+        {
+          "value": 990.0,
+          "unit": "ng/L",
+          "read_from": "The maximum observed level was 990 ng/L.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n15/mode/2up"
+        },
+        {
+          "value": 60000.0,
+          "unit": "ng/L",
+          "read_from": "This was below the ODWO Interim Maximum Acceptable Concentration of 60,000 ng/L.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n15/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "water quality",
+      "occurrences": 3,
+      "written_as": [
+        "water quality"
+      ],
+      "units_seen": [],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": null,
+          "unit": null,
+          "read_from": "There were no noticeable effects on the raw or treated water quality.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n17/mode/2up"
+        },
+        {
+          "value": null,
+          "unit": null,
+          "read_from": "The Brantford water treatment plant, for the sample years 1991 and 1992, produced acceptable quality water and this was maintained in the di",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n17/mode/2up"
+        },
+        {
+          "value": null,
+          "unit": null,
+          "read_from": "The Owen Sound water treatment plant, and the Owen Sound spring supply, for the sample year 1990, produced good quality water and this was m",
+          "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n4/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "air delivery",
+      "occurrences": 2,
+      "written_as": [
+        "air delivery"
+      ],
+      "units_seen": [
+        [
+          "cubic feet",
+          1
+        ],
+        [
+          "cubic feet per minute",
+          1
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 13000.0,
+          "unit": "cubic feet",
+          "read_from": "Compressed air is delivered to the sewage by three air blowers of 200 hp each capable of delivering 13,^00 cubic feet of air per minute o",
+          "page_url": "https://archive.org/details/brantfordsewaget23775/page/n6/mode/2up"
+        },
+        {
+          "value": 13800.0,
+          "unit": "cubic feet per minute",
+          "read_from": "Each blower is capable of delivering 13,800 cubic feet of air per minute.",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n10/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "dry solids filtered",
+      "occurrences": 2,
+      "written_as": [
+        "dry solids filtered"
+      ],
+      "units_seen": [
+        [
+          "tons",
+          2
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 1908.0,
+          "unit": "tons",
+          "read_from": "During 1962, 8. 12 million gallons of sludge were pumped to the digester and 1,908 tons of dry solids were filtered.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+        },
+        {
+          "value": 2517.0,
+          "unit": "tons",
+          "read_from": "In 1963, sludge pumped to the digesters rose to 10. 10 million gallons and 2517 tons of dry solids were filtered.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "volume treated",
+      "occurrences": 2,
+      "written_as": [
+        "total volume treated"
+      ],
+      "units_seen": [
+        [
+          "billion gallons",
+          1
+        ],
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 2.22,
+          "unit": "billion gallons",
+          "read_from": "During the past year, 2. 22 billion gallons of raw sewage composed of both industrial and domestic waste received complete treatment.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n25/mode/2up"
+        },
+        {
+          "value": 1475.0,
+          "unit": "million gallons",
+          "read_from": "The total operating cost for treating 1475 million gallons of sewage in 1969 was $53, 549. 66.",
+          "page_url": "https://archive.org/details/owensoundwaterpo24477/page/n9/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "solids concentrations",
+      "occurrences": 2,
+      "written_as": [
+        "solids concentrations"
+      ],
+      "units_seen": [
+        [
+          "%",
+          2
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 5.1,
+          "unit": "%",
+          "read_from": "The average solids concentrations of 5. 1% was less than the 1968 average of 5.3%.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23768/page/n10/mode/2up"
+        },
+        {
+          "value": 5.3,
+          "unit": "%",
+          "read_from": "The average solids concentrations of 5. 1% was less than the 1968 average of 5.3%.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23768/page/n10/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "tank loading",
+      "occurrences": 2,
+      "written_as": [
+        "tank loading"
+      ],
+      "units_seen": [
+        [
+          "lbs. BOD per 100 lbs. MLSS",
+          2
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 11.0,
+          "unit": "lbs. BOD per 100 lbs. MLSS",
+          "read_from": "Tank loading averaged 11 lbs. BOD per 100 lbs. MLSS compared with 13 lbs. in 1968.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23768/page/n10/mode/2up"
+        },
+        {
+          "value": 13.0,
+          "unit": "lbs. BOD per 100 lbs. MLSS",
+          "read_from": "Tank loading averaged 11 lbs. BOD per 100 lbs. MLSS compared with 13 lbs. in 1968.",
+          "page_url": "https://archive.org/details/brantfordwaterpo23768/page/n10/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "standard plate count",
+      "occurrences": 2,
+      "written_as": [
+        "Standard Plate Count",
+        "Standard plate count"
+      ],
+      "units_seen": [
+        [
+          "counts/mL",
+          2
+        ]
+      ],
+      "suggested_domain": "forestry",
+      "examples": [
+        {
+          "value": 500.0,
+          "unit": "counts/mL",
+          "read_from": "One treated sample and five distribution site samples were above the ODWO aesthetic guideline of 500 counts/mL indicating some deterioration",
+          "page_url": "https://archive.org/details/brantfodrinkingw1989ontauoft/page/n14/mode/2up"
+        },
+        {
+          "value": 500.0,
+          "unit": "counts/mL",
+          "read_from": "the guideline of 500 counts/mL is exceeded.",
+          "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n10/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "hexachloroethane",
+      "occurrences": 2,
+      "written_as": [
+        "Hexachloroethane"
+      ],
+      "units_seen": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "suggested_domain": "water",
+      "examples": [
+        {
+          "value": 10.0,
+          "unit": "ug/L",
+          "read_from": "Hexachloroethane was detected positive levels in the May treated water sample at 10 ug/L.",
+          "page_url": "https://archive.org/details/brantfodrinkingw1989ontauoft/page/n16/mode/2up"
+        },
+        {
+          "value": 1900.0,
+          "unit": "ug/L",
+          "read_from": "The United States Environmental Protection Agency (EPA) cite an Ambient Water Quality Criteria value of 1,900 ug/L.",
+          "page_url": "https://archive.org/details/brantfodrinkingw1989ontauoft/page/n16/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "colour",
+      "occurrences": 2,
+      "written_as": [
+        "Colour"
+      ],
+      "units_seen": [
+        [
+          "HZU",
+          2
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 5.0,
+          "unit": "HZU",
+          "read_from": "Colour exceeded the ODWO Aesthetic Objective of 5 HZU in 20 of 31 treated and distributed water samples with a maximum reported value of 20.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n13/mode/2up"
+        },
+        {
+          "value": 20.5,
+          "unit": "HZU",
+          "read_from": "Colour exceeded the ODWO Aesthetic Objective of 5 HZU in 20 of 31 treated and distributed water samples with a maximum reported value of 20.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n13/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "dissolved organic carbon",
+      "occurrences": 2,
+      "written_as": [
+        "Dissolved organic carbon"
+      ],
+      "units_seen": [
+        [
+          "mg/L",
+          2
+        ]
+      ],
+      "suggested_domain": "water",
+      "examples": [
+        {
+          "value": 5.0,
+          "unit": "mg/L",
+          "read_from": "Dissolved organic carbon exceeded the ODWO Aesthetic Objective of 5.0 mg/L in 2 of 31 treated and distributed water samples with a maximum r",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n13/mode/2up"
+        },
+        {
+          "value": 6.5,
+          "unit": "mg/L",
+          "read_from": "Dissolved organic carbon exceeded the ODWO Aesthetic Objective of 5.0 mg/L in 2 of 31 treated and distributed water samples with a maximum r",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n13/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "dissolved solids",
+      "occurrences": 2,
+      "written_as": [
+        "Dissolved solids"
+      ],
+      "units_seen": [
+        [
+          "mg/L",
+          2
+        ]
+      ],
+      "suggested_domain": "water",
+      "examples": [
+        {
+          "value": 500.0,
+          "unit": "mg/L",
+          "read_from": "Dissolved solids exceeded the ODWO Aesthetic Objective of 500 mg/L in 4 of 31 treated and distributed water samples with a maximum reported ",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n14/mode/2up"
+        },
+        {
+          "value": 683.0,
+          "unit": "mg/L",
+          "read_from": "Dissolved solids exceeded the ODWO Aesthetic Objective of 500 mg/L in 4 of 31 treated and distributed water samples with a maximum reported ",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n14/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "1 1 1 trichloroethane",
+      "occurrences": 2,
+      "written_as": [
+        "1, 1,1-Trichloroethane"
+      ],
+      "units_seen": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "suggested_domain": "water",
+      "examples": [
+        {
+          "value": 1.14,
+          "unit": "ug/L",
+          "read_from": "The maximum observed level was 1.14 ug/L.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n16/mode/2up"
+        },
+        {
+          "value": 200.0,
+          "unit": "ug/L",
+          "read_from": "This was below the United States Environmental Protection Agency Maximum Contaminant Level of 200 ug/L.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n16/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "trihalomethanes",
+      "occurrences": 2,
+      "written_as": [
+        "Total trihalomethanes"
+      ],
+      "units_seen": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "suggested_domain": "water",
+      "examples": [
+        {
+          "value": 177.2,
+          "unit": "ug/L",
+          "read_from": "The maximum observed level was 177.2 ug/L.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n16/mode/2up"
+        },
+        {
+          "value": 350.0,
+          "unit": "ug/L",
+          "read_from": "This was below the ODWO Maximum Acceptable Concentration of 350 ug/L.",
+          "page_url": "https://archive.org/details/drinkingwaters3034ontauoft/page/n16/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "heavy flows resulting in loss of solids frequency",
+      "occurrences": 2,
+      "written_as": [
+        "heavy flows resulting in loss of solids frequency"
+      ],
+      "units_seen": [
+        [
+          "days",
+          1
+        ],
+        [
+          "%",
+          1
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 32.0,
+          "unit": "days",
+          "read_from": "The chief operator of the plant has indicated approxi- mately 32 days {9% of the time) during the year in which heavy flows resulted in the ",
+          "page_url": "https://archive.org/details/annualreport196223744/page/n12/mode/2up"
+        },
+        {
+          "value": 9.0,
+          "unit": "%",
+          "read_from": "The chief operator of the plant has indicated approxi- mately 32 days {9% of the time) during the year in which heavy flows resulted in the ",
+          "page_url": "https://archive.org/details/annualreport196223744/page/n12/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "overload percentage",
+      "occurrences": 2,
+      "written_as": [
+        "overload percentage"
+      ],
+      "units_seen": [
+        [
+          "percent",
+          2
+        ]
+      ],
+      "suggested_domain": null,
+      "examples": [
+        {
+          "value": 80.0,
+          "unit": "percent",
+          "read_from": "the percentage of the time the plant was overloaded from 80% in 1969 to 85% in 1970.",
+          "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+        },
+        {
+          "value": 85.0,
+          "unit": "percent",
+          "read_from": "the percentage of the time the plant was overloaded from 80% in 1969 to 85% in 1970.",
+          "page_url": "https://archive.org/details/owensoundwaterpo24500/page/n9/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    },
+    {
+      "proposed_term": "aluminxim",
+      "occurrences": 2,
+      "written_as": [
+        "Aluminxim"
+      ],
+      "units_seen": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "suggested_domain": "water",
+      "examples": [
+        {
+          "value": 100.0,
+          "unit": "ug/L",
+          "read_from": "Aluminxim exceeded the ODWO Aesthetic or Recommended Operational\nGuideline of 100 ug/L in 2 of 9 plant treated water samples with a",
+          "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+        },
+        {
+          "value": 140.0,
+          "unit": "ug/L",
+          "read_from": "maximum reported value of 14 0.0 ug/L.",
+          "page_url": "https://archive.org/details/owensoundwatersu1990ontauoft/page/n11/mode/2up"
+        }
+      ],
+      "decision": null,
+      "canonical": null
+    }
+  ]
+}

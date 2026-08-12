@@ -4,6 +4,11 @@
 data/cache/
 data/*.log
 
+# Page crops and scans pulled while debugging a citation. The URL is the
+# artifact -- archive.org serves the image, so nothing here needs storing.
+data/*.jpg
+data/*.png
+
 # Hand-checked ground truth (data/gold/) and published accuracy runs
 # (data/results/) ARE committed on purpose: the claim "here is how accurate it
 # is" means nothing without them.
