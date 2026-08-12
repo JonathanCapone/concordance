@@ -33,6 +33,7 @@ NAV = [
     ("silence", "Silence", "M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12"),
     ("rivers", "Rivers", "M3.5 7.5c3 0 3 3 6 3s3-3 6-3 3 3 5 3M3.5 14c3 0 3 3 6 3s3-3 6-3 3 3 5 3"),
     ("verify", "Verify", "M5 12.6 9.8 17.4 19 6.6"),
+    ("disputed", "Disputed", "M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1"),
     ("ask", "Ask Honu", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
 ]
 
@@ -259,6 +260,21 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         Published including the failures — an archive misread at scale is worse than one never
         read, because the errors look like findings.</p>
         <div id="verify-body"></div>
+      </div>
+    </section>
+
+    <section class="view" data-view="disputed">
+      <div class="pane">
+        <h2>Where the readings disagree</h2>
+        <p class="lede">Every reading here cites a page and quotes a sentence, and the archive
+        checks both. When two readings survive that check and still disagree, nobody decides
+        between them — they are shown side by side with a picture of the paper each one came
+        from. You settle it in about two seconds. That is what lets this run with no moderator.</p>
+        <p class="lede" style="opacity:.72">Flagging one tells us people think it is wrong. It
+        does not change the record: an objection with no evidence cannot outrank a sentence on a
+        page, because then somebody would have to judge the objection. To change what is shown,
+        bring a page and a sentence.</p>
+        <div id="disputed-body"></div>
       </div>
     </section>
 
@@ -594,6 +610,73 @@ const LOADERS = {{
       to ${{(t.precision*100||0).toFixed(1)}}%. Publishing the first figure would have narrowed
       the project for no reason.</p></div>`;
     el.innerHTML = h;
+  }},
+
+  disputed: async () => {{
+    const el = document.getElementById("disputed-body");
+    el.innerHTML = `<div class="card note" style="border:0">Checking every claim against the
+      scans it cites…</div>`;
+    const d = await (await fetch("/api/ledger")).json();
+
+    let h = `<div class="card"><table class="gt">
+      <tr><th>state</th><th class="n">measurements</th><th>what it means</th></tr>
+      <tr><td>settled</td><td class="n">${{d.settled||0}}</td><td>one reading, and the page backs it</td></tr>
+      <tr><td>contested</td><td class="n">${{d.contested||0}}</td><td>two readings, both backed by the page — shown, not chosen between</td></tr>
+      <tr><td>unsupported</td><td class="n">${{d.unsupported||0}}</td><td>nothing surviving cites a sentence that is really there</td></tr>
+      <tr><td>flags raised</td><td class="n">${{d.flags||0}}</td><td>counted, shown, and inert by design</td></tr>
+      </table></div>`;
+
+    (d.contested_detail || []).forEach(slot => {{
+      const parts = slot.slot.split("|");
+      const title = parts.filter(Boolean).join(" · ") || "(unnamed)";
+      h += `<div class="card"><h3 style="margin:0 0 4px;font-size:12px">${{title}}</h3>`;
+      h += `<p class="lede" style="margin:0 0 10px">${{
+        slot.same_sentence
+          ? "One sentence, read two ways. The document itself is ambiguous here."
+          : "Two different sentences are being cited. They may not be about the same thing."
+      }}${{slot.n_flags ? ` · ${{slot.n_flags}} reader flag(s)` : ""}}</p>`;
+      h += `<div style="display:flex;gap:14px;flex-wrap:wrap">`;
+      (slot.readings || []).forEach(r => {{
+        h += `<div style="flex:1 1 280px;min-width:260px;border:1px solid rgba(255,255,255,.09);
+              border-radius:10px;padding:10px">
+          <div style="font-size:20px;font-weight:600">${{r.value}} <span
+              style="font-size:12px;opacity:.6">${{r.unit||""}}</span></div>
+          <div style="font-size:11px;opacity:.6;margin:2px 0 8px">${{r.contributor||"extraction"}}</div>`;
+        if (r.crop_url) {{
+          h += `<a href="${{r.page_url}}" target="_blank" rel="noopener">
+                <img src="${{r.crop_url}}" alt="the sentence this number was read from"
+                     loading="lazy" style="width:100%;border-radius:6px;background:#f6f1e4"></a>`;
+        }}
+        h += `<div class="lede" style="margin:8px 0 0;font-size:11px">“${{
+              (r.quote||"").replace(/</g,"&lt;")}}”</div>
+          <button type="button" data-claim="${{r.claim_id}}" class="flag-btn"
+            style="margin-top:8px;background:transparent;border:1px solid rgba(255,255,255,.16);
+                   color:inherit;border-radius:7px;padding:4px 9px;font:inherit;font-size:11px;
+                   cursor:pointer">Looks wrong</button>
+        </div>`;
+      }});
+      h += `</div></div>`;
+    }});
+
+    if (!(d.contested_detail || []).length) {{
+      h += `<div class="card note" style="border:0">Nothing is contested yet. That is not the
+            same as everything being right — it means no two readings of the same measurement
+            have both survived the check.</div>`;
+    }}
+
+    (d.not_measured || []).forEach(n => {{
+      h += `<div class="card note" style="border:0;padding-left:11px">${{n}}</div>`;
+    }});
+    el.innerHTML = h;
+
+    el.querySelectorAll(".flag-btn").forEach(b => b.onclick = async () => {{
+      const reason = prompt("What looks wrong about it?") || "";
+      await fetch("/api/flag?claim=" + encodeURIComponent(b.dataset.claim)
+                  + "&reason=" + encodeURIComponent(reason));
+      b.textContent = "Flagged — the record is unchanged";
+      b.disabled = true;
+      b.style.opacity = ".6";
+    }});
   }}
 }};
 </script></body></html>"""

@@ -25,6 +25,10 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
 
+from .archive import Archive
+from .citations import cite, cite_record
+from .decisions import read_document
+from .disputes import Flag, load_claims, resolve as resolve_claims
 from .parameters import resolve as resolve_parameter
 from .honu import Honu
 from .library import ask
@@ -33,6 +37,12 @@ from .science import series_from_records
 from .tools import Corpus, find_my_town, judge_reading, read_me_the_record, what_went_quiet
 
 RESULTS = Path("data/results")
+
+#: Flags people have raised, in memory. Deliberately not persisted yet: a flag
+#: changes nothing about the data by design, so losing them on restart costs a
+#: tally and no evidence. Persisting them is a storage decision, not a trust
+#: one, and it can wait until there is somewhere to put them.
+FLAGS: list[Flag] = []
 
 class State:
     """Everything the server can answer from, loaded once at startup."""
@@ -43,9 +53,59 @@ class State:
         self.census = self._read("corpus_census.json")
         self.gold = self._read("gold_report.json")
         self.places = self._geocode()
+        self.archive = Archive()
+        # Resolving the ledger fetches every cited page, so it is built on
+        # first request and held until a flag or a new reading changes it.
+        self._ledger: dict[str, Any] | None = None
         # Lazily built: constructing it is cheap, but every request that
         # uses it needs a model, which may not be present.
         self.honu = Honu(self.corpus)
+
+    def invalidate_ledger(self) -> None:
+        self._ledger = None
+
+    def ledger(self) -> dict[str, Any]:
+        """Every claim's standing, with the contested ones carrying their crops.
+
+        The crops are the point. "These two readings disagree" is useless on its
+        own; with a picture of each sentence a reader settles it themselves,
+        which is what lets this run without a moderator.
+        """
+        if self._ledger is not None:
+            return self._ledger
+
+        resolved = resolve_claims(load_claims(RESULTS), FLAGS, archive=self.archive)
+        report = resolved.report()
+
+        contested = []
+        for slot in resolved.contested()[:40]:
+            entries = []
+            for standing in slot.surviving:
+                prov = standing.claim.record.get("provenance") or {}
+                entry = standing.to_dict()
+                entry["claim_id"] = standing.claim.id
+                entry["page_url"] = ""
+                entry["crop_url"] = ""
+                try:
+                    page = {p.page: p for p in self.archive.pages(
+                        str(prov.get("identifier")), with_words=True)}[prov.get("page")]
+                    citation = cite_record(page, standing.claim.record)
+                    entry["crop_url"] = citation.crop_url
+                    entry["page_url"] = citation.page_url
+                    entry["citation_kind"] = citation.kind
+                except Exception:  # noqa: BLE001
+                    pass
+                entries.append(entry)
+            contested.append({
+                "slot": slot.key, "values": slot.values,
+                "same_sentence": slot.same_sentence,
+                "n_flags": len(slot.flags),
+                "readings": entries,
+            })
+
+        report["contested_detail"] = contested
+        self._ledger = report
+        return report
 
     @staticmethod
     def _read(name: str) -> dict[str, Any]:
@@ -300,6 +360,72 @@ class Handler(BaseHTTPRequestHandler):
                 "unknown_parameters": answer.unknown_parameters[:20],
                 "message": answer.describe(),
             }).encode(), "application/json")
+            return
+
+        if url.path == "/api/citation":
+            # The picture of the paper. Every number on every chart can produce
+            # one, which is the difference between provenance that exists and
+            # provenance anybody uses.
+            ident = (q.get("identifier") or [""])[0]
+            quote = (q.get("quote") or [""])[0]
+            try:
+                page_no = int((q.get("page") or ["0"])[0])
+            except ValueError:
+                page_no = 0
+            if not ident or page_no < 1:
+                self._send(json.dumps({"error": "need identifier and page"}).encode(),
+                           "application/json")
+                return
+            try:
+                page = {p.page: p for p in STATE.archive.pages(ident, with_words=True)}[page_no]
+            except Exception as exc:  # noqa: BLE001
+                self._send(json.dumps({"error": f"page not retrievable: {exc}"[:160]}).encode(),
+                           "application/json")
+                return
+            citation = cite_record(page, {"provenance": {"source_text": quote}}) \
+                if quote else cite(page, "")
+            self._send(json.dumps(citation.to_dict()).encode(), "application/json")
+            return
+
+        if url.path == "/api/ledger":
+            # Settled, contested and unsupported -- the state of every claim,
+            # with nobody having adjudicated any of it.
+            self._send(json.dumps(STATE.ledger()).encode(), "application/json")
+            return
+
+        if url.path == "/api/flag":
+            # An objection with no evidence. It is counted and shown and it
+            # changes nothing, which is what makes it safe to accept from
+            # anyone without moderating it.
+            claim_id = (q.get("claim") or [""])[0].strip()
+            if not claim_id:
+                self._send(json.dumps({"error": "no claim"}).encode(), "application/json")
+                return
+            FLAGS.append(Flag(claim_id=claim_id,
+                              reason=(q.get("reason") or [""])[0][:400]))
+            STATE.invalidate_ledger()
+            self._send(json.dumps({
+                "ok": True, "flags": len(FLAGS),
+                "note": "Recorded. A flag is counted and shown; it does not change "
+                        "the record. To change what is shown, cite a page and quote "
+                        "a sentence -- then the archive decides, not us.",
+            }).encode(), "application/json")
+            return
+
+        if url.path == "/api/decisions":
+            ident = (q.get("identifier") or [""])[0].strip()
+            if not ident:
+                self._send(json.dumps({"error": "no identifier"}).encode(),
+                           "application/json")
+                return
+            try:
+                pages = STATE.archive.pages(ident)
+            except Exception as exc:  # noqa: BLE001
+                self._send(json.dumps({"error": str(exc)[:160]}).encode(),
+                           "application/json")
+                return
+            ledger = read_document(pages, body=(q.get("body") or [""])[0])
+            self._send(json.dumps(ledger.report()).encode(), "application/json")
             return
 
         if url.path == "/api/watershed":
