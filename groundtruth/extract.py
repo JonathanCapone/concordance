@@ -188,6 +188,13 @@ contain scanning errors. "mg/1" almost always means "mg/L". Numbers may have
 stray spaces, e.g. "8. 8 million gallons" means 8.8. Letters often stand where
 digits were: "I5" is 15, "3I per cent" is 31 per cent, "SOfo" is 50%.
 
+One document routinely covers many facilities, and the same parameter then means
+different things a paragraph apart. A page describing a city's hospitals gives
+430 beds, 640 beds, 620 beds and 420 beds -- four hospitals, not a contradiction
+-- and each sentence names which. Always fill "facility" when the sentence names
+what is being measured; without it those four readings collapse into one and are
+reported as a disagreement.
+
 A sentence that names a year other than the report's year may be comparing two
 years. Put each value under the year the sentence gives it, not automatically
 under the report's year:
@@ -206,6 +213,9 @@ Return ONLY a JSON array. No prose, no markdown fence. Each element:
   "qualifier":  "average"|"mean"|"median"|"maximum"|"minimum"|"total"|"percent"|"count"|"point"|null,
   "stream":     "influent"|"effluent"|"ambient"|"raw"|"treated"|"unknown",
   "place":      the place it refers to, or null,
+  "facility":   the specific thing measured, when the sentence names one, e.g.
+                "Hamilton General Hospital", "Hamilton Board of Education",
+                "water pollution control plant", or null,
   "period":     the time it refers to, e.g. "1969", "1969-11", or null,
   "confidence": 0.0 to 1.0 -- how sure you are you read this correctly,
   "source_text": the EXACT sentence or line from the text that this came from
@@ -434,6 +444,11 @@ def extract_prose(
             stream=stream if stream in
             ("influent", "effluent", "ambient", "raw", "treated", "unknown") else "unknown",  # type: ignore[arg-type]
             place=(str(c["place"]).strip() if c.get("place") else None),
+            # Taken from the sentence when the model names one. The caller
+            # overwrites this with the document's facility only when it is
+            # empty, because a page describing four hospitals knows which is
+            # which and the title does not.
+            facility=(str(c["facility"]).strip() if c.get("facility") else None),
             period=(str(c["period"]).strip() if c.get("period") else None),
             confidence=confidence,
             provenance=Provenance(

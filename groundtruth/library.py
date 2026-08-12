@@ -147,7 +147,11 @@ def ask(
             for rec in result.records:
                 d = rec.to_dict()
                 d.setdefault("place", query)
-                d["facility"] = facility
+                # Only when the sentence did not name one. A page covering
+                # four hospitals knows which is which; the title does not.
+                d.setdefault("facility", None)
+                if not d.get("facility"):
+                    d["facility"] = facility
                 if not d.get("period") and year:
                     d["period"] = year
                 records.append(d)

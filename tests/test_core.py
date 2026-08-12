@@ -229,3 +229,24 @@ def test_find_boxes_locates_a_phrase_for_highlighting():
     page = PageText(identifier="x", page=1, text=" ".join(w.text for w in words), words=words)
     boxes = page.find_boxes("average influent BOD")
     assert [b.text for b in boxes] == ["average", "influent", "BOD"]
+
+
+def test_a_sentence_named_facility_survives_the_document_title():
+    """One document routinely covers several facilities.
+
+    A page describing a city's hospitals gives 430 beds, 640 beds, 620 beds and
+    420 beds -- four hospitals, not a contradiction -- and each sentence names
+    which. Without a facility from the sentence they share one identity, and the
+    dispute ledger reports the city's hospital system as a four-way
+    disagreement. The document title says only "Hamilton".
+    """
+    from groundtruth.disputes import slot_of
+
+    general = {"place": "Hamilton", "facility": "Hamilton General Hospital",
+               "parameter": "beds", "unit": "beds", "period": "1983"}
+    josephs = dict(general, facility="St. Joseph's Hospital")
+    assert slot_of(general) != slot_of(josephs)
+
+    untitled = dict(general, facility=None)
+    also_untitled = dict(josephs, facility=None)
+    assert slot_of(untitled) == slot_of(also_untitled)   # the failure it prevents

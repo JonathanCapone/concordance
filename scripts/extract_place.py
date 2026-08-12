@@ -157,7 +157,10 @@ def main() -> int:
                 # One town commonly has several facilities measuring opposite
                 # things. Without this, a 1992 drinking-water reading and a 1969
                 # effluent reading share a place name and end up on one chart.
-                d["facility"] = facility
+                # The sentence wins over the title: one document routinely
+                # covers several facilities, and the title names none of them.
+                if not d.get("facility"):
+                    d["facility"] = facility
                 records.append(d)
 
             done.add(key)
