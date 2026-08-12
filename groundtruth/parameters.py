@@ -61,8 +61,13 @@ _SUBSTANCE: list[tuple[str, str]] = [
     ("flow", "flow"),
 ]
 
-#: Word patterns that determine the *measure*. Order matters: "removal" must be
-#: tested before "rate", or "BOD removal rate" resolves to a rate.
+#: Wording that means the number counts OCCASIONS rather than quantity.
+#: Checked before anything else in resolve(), because an exceedance count and a
+#: removal efficiency are both percentages and the unit cannot separate them.
+_FREQUENCY = re.compile(
+    r"exceedance|exceeded|frequency|occasions|of the time", re.I
+)
+
 _MEASURE_PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"\b(removal|removed|reduction|efficiency)\b"), "removal"),
     (re.compile(r"\b(per capita|per\s+million|per\s+day|daily|per\s+month|monthly|rate)\b"), "rate"),
@@ -94,6 +99,8 @@ class Parameter:
     def label(self) -> str:
         if self.measure == "removal":
             return f"{self.substance} removal"
+        if self.measure == "frequency":
+            return f"{self.substance} exceedance frequency"
         if self.measure == "total":
             return f"total {self.substance}"
         if self.measure == "rate":
@@ -128,8 +135,19 @@ def resolve(name: str, unit: str | None = None) -> Parameter | None:
     if substance is None:
         return None
 
-    # The unit overrules the wording. "BOD removal" reported in mg/L is a
-    # concentration whatever the label claims, and a value in "%" is not.
+    # Frequency is decided by wording alone, and decided FIRST.
+    #
+    # An exceedance count and a removal efficiency are both percentages, so the
+    # unit cannot separate them and whichever is tested first wins everything.
+    # The Brantford 1962 report says "the Commission's objective for BOD was
+    # exceeded only 20 per cent of the time", which the extractor filed as "BOD
+    # removal 20%". That inverts the meaning: 20% exceedance is a good year,
+    # 20% removal is a failing plant.
+    if _FREQUENCY.search(t):
+        return Parameter(substance=substance, measure="frequency", raw=name)
+
+    # Otherwise the unit overrules the wording. "BOD removal" reported in mg/L is
+    # a concentration whatever the label claims, and a value in "%" is not.
     measure = None
     if unit:
         for pat, m in _UNIT_MEASURE:

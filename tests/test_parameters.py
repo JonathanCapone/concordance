@@ -88,3 +88,22 @@ def test_unrecognised_names_fall_back_to_exact_equality_not_overlap():
 
 def test_empty_name_is_not_a_parameter():
     assert resolve("", "mg/L") is None
+
+
+# -- exceedance frequency is not removal -------------------------------------
+
+def test_exceedance_frequency_is_not_removal():
+    """Brantford 1962: "the Commission's objective for BOD was exceeded only
+    20 per cent of the time" was filed as "BOD removal 20%".
+
+    Both are percentages so the unit cannot separate them, and the meaning
+    inverts: 20% exceedance is a good year, 20% removal is a failing plant.
+    """
+    assert resolve("BOD exceeded 20 per cent of the time", "%").key == "bod|frequency"
+    assert resolve("BOD exceedance frequency", "%").key == "bod|frequency"
+    assert not same_measurement("BOD removal", "%", "BOD exceedance frequency", "%")
+
+
+def test_genuine_removal_still_resolves_as_removal():
+    assert resolve("BOD removal", "%").key == "bod|removal"
+    assert resolve("suspended solids removal", "%").key == "suspended solids|removal"

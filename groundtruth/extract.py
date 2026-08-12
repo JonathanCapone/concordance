@@ -192,6 +192,17 @@ Distinguishing the four kinds is the most important thing you do:
 - "conclusion" is the author's judgement, often with no number.
     "The plant operated above capacity 85% of the time"  -> conclusion
 
+A percentage is NOT automatically a removal efficiency. Read what it counts:
+    "an average removal of 64% BOD"                  -> observation, BOD removal
+    "the objective was exceeded 20 per cent of the time"
+        -> observation, parameter "BOD exceedance frequency" -- this counts HOW
+           OFTEN a limit was breached, not how much was taken out. Filing it as
+           removal inverts its meaning: 20% exceedance is good, 20% removal is bad.
+    "80% of the time the plant operated above design capacity"
+        -> observation, parameter "capacity exceedance frequency"
+Use the word "frequency" in the parameter whenever the number counts occasions
+rather than quantity.
+
 A design value and an observation can be the same parameter, same unit, same
 plant, in the same document. Confusing them corrupts the record. When a value
 appears under a heading like DESIGN DATA, DESIGN FLOW, or in an equipment
