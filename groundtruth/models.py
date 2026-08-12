@@ -192,7 +192,19 @@ class Record:
             # noun: "1,825 men", "75 elementary schools", "430 beds". Requiring
             # a symbol threw away every record on a Statistics Canada census
             # page -- 25 of 25 -- because a count of men has no mg/L to give.
-            if not self.unit and not self._is_a_count():
+            #
+            # And on a table page it is not a defect at all. The unit lives in
+            # the caption or the column head, which the model may not have been
+            # given and the OCR may have destroyed, while the cell itself stays
+            # perfectly checkable: its headings are on the page and its value is
+            # in the page's digits. Demanding a symbol there discarded 20 of 29
+            # records from a census table of the labour force -- counts of
+            # people, correct, and rejected for having no mg/L.
+            #
+            # Extending the counted-noun list every time a new domain appears is
+            # the wrong repair. The list is a vocabulary, vocabularies are never
+            # finished, and the vision path does not need one.
+            if not self.unit and not (self._is_a_count() or self._from_a_table()):
                 out.append("no unit")
         if self.value is not None and self.value != self.value:  # NaN
             out.append("value is NaN")
@@ -203,6 +215,10 @@ class Record:
         elif not self.provenance.source_text.strip():
             out.append("no source text -- claim is not checkable")
         return out
+
+    def _from_a_table(self) -> bool:
+        """Read off a table image rather than out of a sentence."""
+        return bool(self.provenance and self.provenance.path == "vision")
 
     def _is_a_count(self) -> bool:
         """Does this parameter name the thing it counts?

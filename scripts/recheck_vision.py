@@ -61,7 +61,10 @@ def main() -> None:
                 parameter=str(rec.get("parameter") or ""),
                 value=rec.get("value"), unit=rec.get("unit"),
                 confidence=float(rec.get("confidence") or 0.5),
-                provenance=Provenance(ident, page_no, source or "x"),
+                # path matters: a table cell is exempt from the unit rule
+                # because its unit lives in a caption. Rebuilding provenance
+                # without it made the replay judge every record as prose.
+                provenance=Provenance(ident, page_no, source or "x", path="vision"),
             )
             if ok and not candidate.problems():
                 recovered += 1

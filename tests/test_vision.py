@@ -327,3 +327,30 @@ def test_a_single_column_adds_nothing_and_is_left_alone():
         ),
     )
     assert {r.parameter for r in result.records} == {"MAX. DAILY Flow"}
+
+
+def test_a_table_cell_needs_no_unit_at_all():
+    """The unit lives in a caption the model may not have been given.
+
+    A census table of the labour force lost 20 of 29 records to "no unit" --
+    counts of people, correct, rejected for having no mg/L. The cell stays
+    checkable without one: its headings are on the page and its value is in the
+    page's digits.
+
+    Extending the counted-noun list every time a new domain turns up is the
+    wrong repair; the list is a vocabulary and vocabularies are never finished.
+    """
+    from groundtruth.models import Provenance, Record
+
+    cell = Record(kind="observation", parameter="Labour force Total", value=32125,
+                  unit=None, confidence=0.7,
+                  provenance=Provenance("x", 50, "table cell [65 and over / T]",
+                                        path="vision"))
+    assert cell.problems() == []
+
+    # The prose path is unchanged: a sentence that states a quantity almost
+    # always states its unit, and a missing one there is still a defect.
+    sentence = Record(kind="observation", parameter="BOD", value=104, unit=None,
+                      confidence=0.9,
+                      provenance=Provenance("x", 7, "the BOD was 104", path="prose"))
+    assert "no unit" in sentence.problems()
