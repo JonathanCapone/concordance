@@ -20,6 +20,11 @@ of the physical condition of the country, town by town, year by year: how much
 sewage a town discharged into its river, what was in the drinking water, what
 came out of the smelter.
 
+The fellowship brief describes the collection as roughly 48 TB. That is the
+page images. **The text layer inside them is about 59 GB** — the entire written
+output of the Canadian state, as digitised, fits on a cheap thumb drive. That is
+the fact that makes reading all of it tractable rather than absurd.
+
 The median document in that collection has been downloaded **90 times**. The
 numbers inside are not in any database. To find out what your town's sewage
 plant was discharging in 1969 you would have to know the report exists, find it,

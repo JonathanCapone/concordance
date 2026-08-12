@@ -1,7 +1,7 @@
 {
   "place": "Sault Ste. Marie",
   "model": "ollama:gemma4:12b",
-  "n_records": 326,
+  "n_records": 327,
   "pages_attempted": [
     "1962ANNUALREPORT00SNSN19915.ome#6",
     "1962ANNUALREPORT00SNSN19915.ome#7",
@@ -58,7 +58,8 @@
     "drinkingwatersur890ontauoft#18",
     "drinkingwatersur890ontauoft#21",
     "drinkingwatersur890ontauoft#22",
-    "drinkingwatersur890ontauoft#23"
+    "drinkingwatersur890ontauoft#23",
+    "drinkingwatersur890ontauoft#24"
   ],
   "records": [
     {
@@ -8862,6 +8863,33 @@
         "ocr_confidence": 0.6062
       },
       "key": "2fe658d895325bab9fec"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Methylene chloride",
+      "value": 2.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Sault Ste. Marie",
+      "period": "1988 March",
+      "facility": "Lorna well",
+      "confidence": 0.3926,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 24,
+        "source_text": "Methylene chloride was detected at 2 . 0 ug/L in the March raw water sample from Lorna well.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n23/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5702
+      },
+      "key": "4d8f9fc94fce668c112d"
     }
   ]
 }

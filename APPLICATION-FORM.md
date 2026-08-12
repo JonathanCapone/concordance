@@ -23,9 +23,14 @@ underneath it, which does not currently exist anywhere.
 Internet Archive Canada holds 104,241 scanned government publications: 22.1
 million pages, 1841 to 2013. Inside them are measurements of the physical
 condition of the country, town by town, year by year. The median document has
-been downloaded 90 times. None of those numbers are in any database — to learn
-what your town's sewage plant discharged in 1969 you would have to know the
-report exists, find it, and read it.
+been downloaded 90 times.
+
+The brief calls it ~48 TB; that is the page images. **The text inside them is
+about 59 GB** — the written output of the Canadian state, as digitised, fits on
+a thumb drive.
+
+None of those numbers are in any database. To learn what your town's plant
+discharged in 1969 you would have to know the report exists, find it, read it.
 
 **There is no central machine that reads the archive. The reading happens on the
 computer of whoever asks.** You look up your town: if somebody has already read
