@@ -166,11 +166,15 @@ def main() -> int:
 
         rows = []
         for y, v, c in s.points:
-            src = next(
-                (r for r in obs
-                 if r.period and str(r.period)[:4] == str(int(y)) and r.value is not None),
-                None,
-            )
+            # The record that produced this point, carried out of
+            # series_from_records. This used to search `obs` for ANY observation
+            # from the same year, which is how the shipped Owen Sound page came
+            # to show twelve of its thirteen numbers beside a sentence that does
+            # not contain them -- a flow of 2.1 million gallons captioned with
+            # "The total operating cost for treating 1475 million gallons of
+            # sewage in 1969 was $53, 549. 66." under a heading promising every
+            # number is linked to its scan.
+            src = s.sources.get(y)
             if src and src.provenance:
                 rows.append(
                     f'<tr><td class="num">{int(y)}</td><td class="num">{v:.4g}</td>'

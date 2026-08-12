@@ -324,18 +324,74 @@ _UNIT_MEASURE: list[tuple[re.Pattern[str], str]] = [
 ]
 
 
+#: A summary statistic named in the parameter itself. This is part of a
+#: reading's IDENTITY, not decoration, and leaving it out was the fourth time
+#: this project merged two different things by keying on too few fields.
+#:
+#: "Low Daily Flow" and "average daily flow" both resolved to flow|rate, so a
+#: series kept whichever had the higher confidence: Owen Sound's flow chart
+#: plotted the July MINIMUM for 1969 (2.1 million gallons) and the "Low Daily
+#: Flow" row for 1970 (1.1 million), producing a steep decline where the actual
+#: averages were 4.0 and 3.8 million -- flat. Brantford's total-flow series put
+#: two "maximum 24 hour flow" readings (9.5 and 9.78) between years of 2,082 and
+#: 3,498 million gallons, off by a factor of two hundred.
+#:
+#: Unqualified and "average" deliberately collapse together: the reports use
+#: "the average daily flow" and "the daily flow" for the same headline number,
+#: and splitting those would fragment every series in the corpus.
+_STATISTIC: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"(?<![a-z])(minimum|minimums|minima|lowest|low)(?![a-z])"), "minimum"),
+    (re.compile(r"(?<![a-z])(maximum|maximums|maxima|highest|peak|max)(?![a-z])"), "maximum"),
+    (re.compile(r"(?<![a-z])(increase|decrease|change|growth|rise|drop)(?![a-z])"), "change"),
+    (re.compile(r"(?<![a-z])(range|spread)(?![a-z])"), "range"),
+]
+
+#: Which part of the works a reading is about. A plant's primary section removes
+#: far less than the whole plant does, so charting one as the other understates
+#: the headline metric several-fold: Brantford's published BOD-removal series
+#: read 22.7% for 1969 because the primary-section figure on page 11 outranked
+#: the whole-plant 94% on page 10 by 0.005 of confidence.
+_SCOPE: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"(?<![a-z])primary(?![a-z])"), "primary"),
+    (re.compile(r"(?<![a-z])(secondary|final)(?![a-z])"), "secondary"),
+    (re.compile(r"(?<![a-z])(tertiary|advanced)(?![a-z])"), "tertiary"),
+]
+
+
 @dataclass(frozen=True)
 class Parameter:
     substance: str
     measure: Measure
     raw: str
+    #: "minimum" / "maximum" / "change" / "range", or "" for the headline value.
+    statistic: str = ""
+    #: "primary" / "secondary" / "tertiary", or "" for the works as a whole.
+    scope: str = ""
 
     @property
     def key(self) -> str:
-        return f"{self.substance}|{self.measure}"
+        """substance|measure, then statistic and scope only when they are set.
+
+        Trailing empties are stripped so an unqualified reading keeps the key it
+        has always had -- "bod|removal", not "bod|removal||". A qualified one
+        gets a longer key and therefore its own series, which is the entire
+        point: "flow|rate|minimum" can no longer evict "flow|rate".
+        """
+        parts = [self.substance, self.measure, self.statistic, self.scope]
+        while len(parts) > 2 and not parts[-1]:
+            parts.pop()
+        return "|".join(parts)
 
     @property
     def label(self) -> str:
+        base = self._base_label()
+        if self.scope:
+            base = f"{base} ({self.scope} section)"
+        if self.statistic:
+            base = f"{self.statistic} {base}"
+        return base
+
+    def _base_label(self) -> str:
         if self.measure == "removal":
             return f"{self.substance} removal"
         if self.measure == "frequency":
@@ -371,12 +427,41 @@ _RATIO_DENOMINATOR = re.compile(
     r"(?![a-z]).*$", re.I)
 
 
-def resolve(name: str, unit: str | None = None) -> Parameter | None:
+#: Phrases that scope a reading to part of the works when the PARAMETER NAME
+#: does not. Deliberately specific: a bare "primary" anywhere in a sentence is
+#: not enough, because reports say "the primary objective" and "primary
+#: consideration" about nothing structural at all.
+_SCOPE_IN_SENTENCE: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(r"(?i)in the primary (section|stage|units?|tanks?|treatment)"), "primary"),
+    (re.compile(r"(?i)primary (section|stage|treatment) of the (plant|works)"), "primary"),
+    (re.compile(r"(?i)(through|by|after) primary (treatment|settling|sedimentation)"), "primary"),
+    (re.compile(r"(?i)in the secondary (section|stage|units?|treatment)"), "secondary"),
+    (re.compile(r"(?i)secondary (section|stage|treatment) of the (plant|works)"), "secondary"),
+]
+
+
+def resolve(
+    name: str, unit: str | None = None, *, context: str | None = None
+) -> Parameter | None:
     """Canonical parameter for a raw name, using the unit to disambiguate.
 
     Returns None when the substance is unrecognised. Callers should keep such
     readings rather than discard them -- an unrecognised parameter is a gap in
     this table, not a defect in the record.
+
+    `context` is the sentence the reading came from, and it is consulted for one
+    narrow purpose: a scope the parameter name does not carry. Brantford's 1969
+    reading is named plainly "BOD removal efficiency" and its sentence reads
+    "Removal efficiencies in the primary section of the plant were 22.7% for
+    BOD" -- so the name alone cannot tell it apart from the whole-plant 94% on
+    the page before, and the two competed for one slot in the chart. The
+    primary-section figure won by 0.005 of confidence, and the published series
+    said Brantford removed 22.7% of its BOD.
+
+    Only scope is read from the sentence, and only via explicitly structural
+    phrases. Reading the STATISTIC from context was considered and rejected: a
+    sentence stating an average and a maximum together would scope both to
+    whichever word appeared, which trades a known error for a subtler one.
     """
     if not name:
         return None
@@ -403,6 +488,14 @@ def resolve(name: str, unit: str | None = None) -> Parameter | None:
     # into a concentration and lost "Daily Per Capita Flow" entirely.
     head = _RATIO_DENOMINATOR.sub("", t).strip() or t
 
+    # Read off the whole name, not the head: "maximum 24 hour flow" puts its
+    # statistic before the substance, and "BOD removal efficiency (primary
+    # section)" puts its scope after.
+    statistic = next((canon for pat, canon in _STATISTIC if pat.search(t)), "")
+    scope = next((canon for pat, canon in _SCOPE if pat.search(t)), "")
+    if not scope and context:
+        scope = next((c for pat, c in _SCOPE_IN_SENTENCE if pat.search(context)), "")
+
     substance = None
     for needle, canon in _SUBSTANCE:
         if re.search(rf"(?<![a-z]){re.escape(needle)}(?![a-z])", head):
@@ -420,7 +513,8 @@ def resolve(name: str, unit: str | None = None) -> Parameter | None:
     # removal 20%". That inverts the meaning: 20% exceedance is a good year,
     # 20% removal is a failing plant.
     if _FREQUENCY.search(t):
-        return Parameter(substance=substance, measure="frequency", raw=name)
+        return Parameter(substance=substance, measure="frequency", raw=name,
+                         statistic=statistic, scope=scope)
 
     # Otherwise the unit overrules the wording. "BOD removal" reported in mg/L is
     # a concentration whatever the label claims, and a value in "%" is not.
@@ -458,7 +552,8 @@ def resolve(name: str, unit: str | None = None) -> Parameter | None:
         else:
             measure = "concentration"
 
-    return Parameter(substance=substance, measure=measure, raw=name)
+    return Parameter(substance=substance, measure=measure, raw=name,
+                     statistic=statistic, scope=scope)
 
 
 def same_measurement(a: str, a_unit: str | None, b: str, b_unit: str | None) -> bool:

@@ -448,6 +448,11 @@ class Series:
     #: removed: a plant really can have a bad year, and deleting inconvenient
     #: data is a worse failure than reporting it with a warning attached.
     suspect: list[str] = field(default_factory=list)
+    #: year -> the Record each charted point actually came from. Carried out of
+    #: the normalisation rather than looked up afterwards, so a caption cannot
+    #: drift from the number it sits under. Empty when the caller did not supply
+    #: source records.
+    sources: dict[float, Any] = field(default_factory=dict)
 
     def __len__(self) -> int:
         return len(self.points)
@@ -562,7 +567,8 @@ def _one_dimension(
     for unit_key, rows in groups.items():
         if unit_key == winner:
             continue
-        for year, value, unit_raw, _conf in rows:
+        for row in rows:
+            year, value, unit_raw = row[0], row[1], row[2]
             rejects.append(
                 f"{int(year)}: {value:g} {unit_raw or '(no unit)'} is not the same "
                 f"quantity as the {winner} this series is in -- the parameter "
@@ -602,11 +608,12 @@ def series_from_records(
     want_param = resolve_param(parameter)
     want = parameter.lower()
 
-    raw: list[tuple[float, float, str | None, float]] = []
+    raw: list[tuple[Any, ...]] = []
     for r in records:
         if r.kind != kind or r.value is None:
             continue
-        got = resolve_param(r.parameter, r.unit)
+        got = resolve_param(r.parameter, r.unit,
+                            context=(r.provenance.source_text if r.provenance else None))
         if want_param is not None:
             if got is None or got.key != want_param.key:
                 continue
@@ -624,7 +631,7 @@ def series_from_records(
             year = float(str(r.period)[:4])
         except ValueError:
             continue
-        raw.append((year, float(r.value), r.unit, float(r.confidence)))
+        raw.append((year, float(r.value), r.unit, float(r.confidence), r))
 
     raw, dimension_rejects, unit = _one_dimension(raw)
     points, assumptions, rejected = normalize_series(raw, parameter=parameter)
@@ -632,10 +639,21 @@ def series_from_records(
 
     # One report per year: keep the most confident reading rather than letting a
     # page that states a value twice weight it double.
+    #
+    # The record that wins is kept alongside the number it won with. Previously
+    # only (year, value, confidence) survived, and the portal then went looking
+    # for "a record from that year with that parameter" to caption it -- which
+    # returned whichever one came first, not the one charted. Same year, same
+    # parameter, different sentence, different page, different crop.
     best: dict[float, tuple[float, float, float]] = {}
-    for y, v, c in points:
+    sources: dict[float, Any] = {}
+    for point in points:
+        y, v, c = point[0], point[1], point[2]
+        src = point[3] if len(point) > 3 else None
         if y not in best or c > best[y][2]:
             best[y] = (y, v, c)
+            if src is not None:
+                sources[y] = src
 
     final = sorted(best.values())
     return Series(
@@ -646,4 +664,5 @@ def series_from_records(
         assumptions=assumptions,
         rejected=rejected,
         suspect=find_suspect_readings(final),
+        sources=sources,
     )

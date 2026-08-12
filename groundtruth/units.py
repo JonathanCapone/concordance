@@ -279,43 +279,65 @@ def comparable(a: Quantity | None, b: Quantity | None) -> tuple[bool, str]:
 
 
 def normalize_series(
-    points: list[tuple[float, float, str | None, float]],
+    points: list[tuple[float, float, str | None, float] | tuple[Any, ...]],
     *,
     parameter: str | None = None,
-) -> tuple[list[tuple[float, float, float]], list[str], list[str]]:
+) -> tuple[list[tuple[Any, ...]], list[str], list[str]]:
     """Reduce (year, value, unit, confidence) points to one base unit.
 
     Returns (points, assumptions, rejected). Points whose unit disagrees with the
     majority dimension are REJECTED rather than coerced -- silently dropping them
     would hide a methods change, and converting them would invent one.
+
+    An input point may carry a FIFTH element, and if it does that element is
+    passed through onto the output point as a fourth. The caller uses it to keep
+    hold of the record a number came from.
+
+    This exists because the alternative was re-deriving it. The value changes in
+    here -- that is the function's job -- so a caller downstream could no longer
+    recognise which record produced which point, and the portal fell back to
+    matching on the YEAR alone. On the one town page shipped in the repo, twelve
+    of thirteen numbers were captioned with a different record's sentence: a
+    flow of 2.1 million gallons shown beside a sentence about $53,549.66, under
+    a heading promising every number is linked to its scan. A reader who
+    followed the link to check found a page saying something else and concluded
+    the project fabricates.
+
+    Carrying the source is the only way the caption cannot drift from the
+    number. A lookup that reconstructs the association is a second
+    implementation of the choice, and this project has been bitten twice by
+    having two implementations of one decision.
     """
-    parsed: list[tuple[float, Quantity, float]] = []
+    parsed: list[tuple[float, Quantity, float, Any]] = []
     rejected: list[str] = []
-    for year, value, unit, conf in points:
+    for point in points:
+        year, value, unit, conf = point[0], point[1], point[2], point[3]
+        payload = point[4] if len(point) > 4 else None
         q = to_base(value, unit, era=int(year), parameter=parameter)
         if q is None:
             rejected.append(f"{int(year)}: unrecognised unit {unit!r}")
             continue
-        parsed.append((year, q, conf))
+        parsed.append((year, q, conf, payload))
 
     if not parsed:
         return [], [], rejected
 
     counts: dict[str, int] = {}
-    for _, q, _ in parsed:
+    for _, q, _, _ in parsed:
         counts[q.unit] = counts.get(q.unit, 0) + 1
     majority = max(counts, key=lambda k: counts[k])
 
-    out: list[tuple[float, float, float]] = []
+    out: list[tuple[Any, ...]] = []
     assumptions: list[str] = []
-    for year, q, conf in parsed:
+    for year, q, conf, payload in parsed:
         if q.unit != majority:
             rejected.append(
                 f"{int(year)}: {q.unit} ({q.dimension}) is not comparable with "
                 f"the series unit {majority}"
             )
             continue
-        out.append((year, q.value, conf))
+        out.append((year, q.value, conf) if payload is None
+                   else (year, q.value, conf, payload))
         for a in q.assumptions:
             if a not in assumptions:
                 assumptions.append(a)

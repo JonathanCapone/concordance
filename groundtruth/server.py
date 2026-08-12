@@ -363,26 +363,24 @@ class State:
             if not s.points:
                 continue
             rows = []
-            want_param = resolve_parameter(param)
             for y, v, _c in s.points:
-                # Match the ORIGINAL record by year, parameter and value -- not
-                # by year alone. Matching on year attached the flow sentence to
-                # every reading in the panel, so each number displayed a quotation
-                # that had nothing to do with it. The provenance was not merely
-                # imprecise, it was wrong, which is worse than showing none: the
-                # entire trust model here is "this sentence is where this number
-                # came from".
-                src = None
-                for r in mine:
-                    if not (r.period and str(r.period)[:4] == str(int(y))):
-                        continue
-                    got = resolve_parameter(r.parameter, r.unit)
-                    if want_param is not None and (got is None or got.key != want_param.key):
-                        continue
-                    if stream is not None and r.stream != stream:
-                        continue
-                    src = r
-                    break
+                # The record that produced this point, carried out of
+                # series_from_records rather than looked up again here.
+                #
+                # The comment that used to sit here said this matched "by year,
+                # parameter and value". It did not -- the loop below it never
+                # compared the value, so a year holding more than one reading
+                # got whichever record came first. Brantford's 1969 BOD-removal
+                # point is charted at 22.7% from page 11, and was captioned with
+                # page 10's sentence "The average BOD removal efficiency was 94%
+                # in 1969", crop and all: a picture of a sentence saying 94%
+                # presented as the source of the number 22.7.
+                #
+                # A comment describing the behaviour somebody meant to write is
+                # worse than no comment, because it stops the next reader from
+                # checking. The association is now carried, not reconstructed,
+                # so there is nothing left here to get wrong.
+                src = s.sources.get(y)
                 rows.append({
                     "period": int(y),
                     "parameter": label,
