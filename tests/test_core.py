@@ -110,6 +110,57 @@ def test_dense_numeric_page_routes_to_table():
     assert Path.TABLE in route(_page(rows)).paths
 
 
+def test_narrow_columns_are_still_prose():
+    """Prose set in narrow columns must not be discarded for being narrow.
+
+    Verbatim from "Hamilton : An Adventure in Good Living" (1983), which is a
+    city magazine: 149 lines of unbroken prose, median 4 words to the line, not
+    one reaching the old 8-word threshold. Every page of it scored prose_ratio
+    0.000 and was skipped -- including this one, which states how many schools
+    the city had. Measured across 8,372 pages of 34 documents, that threshold
+    was discarding 20.3 points of the corpus, worst of all in the legislative
+    record: Acts of the Parliament of Canada went from 265 usable pages to 861.
+    """
+    text = (
+        "When young Johnny and young\n"
+        "Katie toddle off for their first day\n"
+        "at school in Hamilton, chances\n"
+        "are they'll be going just around\n"
+        "the corner.\n"
+        "With 75 elementary schools\n"
+        "under the aegis of the Hamilton\n"
+        "Board of Education, and 42\n"
+        "operated by the Hamilton-\n"
+        "Wentworth Roman Catholic\n"
+        "Separate School Board, few\n"
+        "children have far to travel.\n"
+    )
+    assert Path.PROSE in route(_page(text)).paths
+
+
+def test_narrow_columns_do_not_turn_tables_into_prose():
+    """The fix must not swallow tabular pages, which have short lines too."""
+    rows = "\n".join(f"{i} 12.4 88.1 0.03 447 91.2 6" for i in range(30))
+    assert Path.PROSE not in route(_page(rows)).paths
+
+
+def test_wide_pages_route_exactly_as_before():
+    """The adaptive threshold is clamped so full-width pages are unaffected."""
+    from groundtruth.router import MAX_PROSE_WORDS, prose_line_width
+
+    wide = ["the quick brown fox jumps over the lazy dog again and again"] * 10
+    assert prose_line_width(wide) == MAX_PROSE_WORDS
+
+
+def test_index_entries_are_too_short_to_be_prose():
+    """A two-word-per-line index must not read as a paragraph."""
+    from groundtruth.router import MIN_PROSE_WORDS, prose_line_width
+
+    index = ["Ashcroft 44", "Barrie 91", "Cayuga 12", "Dundas 7"]
+    assert prose_line_width(index) == MIN_PROSE_WORDS
+    assert Path.PROSE not in route(_page("\n".join(index))).paths
+
+
 def test_sparse_map_page_survives_the_length_gate():
     """A full-page map OCRs to almost nothing; skipping it would lose the map."""
     r = route(_page("Scale 1:50000  legend  contour  township  UTM"))

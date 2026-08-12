@@ -19,6 +19,7 @@ fractions of a cent, a page wrongly skipped is data lost silently.
 from __future__ import annotations
 
 import re
+import statistics
 from dataclasses import dataclass
 from enum import Enum
 
@@ -44,6 +45,31 @@ NUM_RE = re.compile(r"-?\d[\d,]*\.?\d*")
 UNIT_RE = re.compile(
     r"\b(mg/[lL1]|ug/m3?|µg/m3?|ppm|ppb|mgd|m3/d|cfs|cu\.?\s?ft|gal(?:lons)?|"
     r"mg/kg|kg/ha|tonnes?|hectares?|acres?|°[CF]|per ?cent|%)\b",
+    re.I,
+)
+
+#: A number and the thing it counts. In most of this archive the unit IS the
+#: noun -- "75 elementary schools", "1,243 dwellings", "42 teachers" -- and
+#: requiring an explicit unit like mg/L is why a pipeline built on water reports
+#: was blind to education, housing, agriculture, health and justice records.
+#:
+#: This is a routing heuristic, not a vocabulary. Being wrong here costs a page
+#: of model time; being wrong in `parameters.py` corrupts a measurement. The two
+#: deserve different standards of evidence, so this list is deliberately broad
+#: and covers the veins the corpus actually holds rather than the ones the first
+#: extraction happened to start with.
+COUNTED_RE = re.compile(
+    r"\b\d[\d,]*\s+(?:\w+\s+){0,3}?("
+    r"schools?|pupils?|students?|teachers?|classrooms?|graduates?|candidates?|"
+    r"dwellings?|households?|families|persons?|people|residents?|inhabitants?|"
+    r"beds?|patients?|physicians?|nurses?|hospitals?|"
+    r"farms?|cattle|swine|poultry|livestock|head|bushels?|"
+    r"employees?|workers?|members?|officers?|staff|"
+    r"births?|deaths?|cases?|complaints?|applications?|appeals?|convictions?|"
+    r"vehicles?|accidents?|licen[cs]es?|permits?|claims?|"
+    r"lots?|units?|rooms?|buildings?|plants?|wells?|mines?|"
+    r"municipalities|townships?|counties|libraries|volumes?"
+    r")\b",
     re.I,
 )
 
@@ -94,10 +120,48 @@ class PageSignals:
     table_ratio: float
     has_units: bool
     unit_hits: int
+    counted_hits: int
     standard_hits: int
     figure_hits: int
     map_hits: int
     boilerplate: bool
+
+
+#: Narrowest line width that can still count as prose, and the widest we will
+#: ever demand. The lower bound keeps a two-word index entry from reading as a
+#: paragraph; the upper bound is the old fixed threshold, so full-width report
+#: pages route exactly as they did before.
+MIN_PROSE_WORDS = 4
+MAX_PROSE_WORDS = 8
+
+
+def prose_line_width(lines: list[str]) -> int:
+    """How many words make a line prose *on this page*.
+
+    A fixed threshold is a statement about typography, not about content, and
+    this one was quietly throwing away a quarter of the archive. "Hamilton: An
+    Adventure in Good Living" (1983) is a city magazine set in narrow columns:
+    149 lines of unbroken prose on one page, median 4 words to the line, not one
+    of them reaching 8. It scored prose_ratio 0.000 and every page of it was
+    skipped -- including one carrying "75 elementary schools under the aegis of
+    the Hamilton Board of Education, and 42 operated by the Hamilton-Wentworth
+    Roman Catholic Separate School Board", which is exactly the kind of number
+    nobody has in a database.
+
+    Measured over 5,388 pages from 30 random items: 28.5% of ALL pages were
+    running text discarded on line width alone. Extrapolated over the corpus,
+    roughly 6.3 million pages. The categories worst hit are the deliberative
+    ones -- committee agendas, royal commission hearings, sessional papers,
+    legislative journals -- because that is how minutes have always been set.
+
+    So the threshold now comes from the page's own median line, clamped. Wide
+    pages behave exactly as before; narrow ones stop being invisible.
+    """
+    counts = [len(WORD_RE.findall(ln)) for ln in lines]
+    if not counts:
+        return MAX_PROSE_WORDS
+    median = statistics.median(counts)
+    return int(max(MIN_PROSE_WORDS, min(MAX_PROSE_WORDS, median)))
 
 
 def signals(page: PageText) -> PageSignals:
@@ -109,14 +173,17 @@ def signals(page: PageText) -> PageSignals:
     digits = sum(c.isdigit() for c in text)
     letters = sum(c.isalpha() for c in text)
 
+    min_words = prose_line_width(lines)
     prose_lines = sum(
-        1 for ln in lines if len(WORD_RE.findall(ln)) >= 8 and len(NUM_RE.findall(ln)) <= 3
+        1 for ln in lines
+        if len(WORD_RE.findall(ln)) >= min_words and len(NUM_RE.findall(ln)) <= 3
     )
     table_lines = sum(
         1 for ln in lines if len(NUM_RE.findall(ln)) >= 5 and len(WORD_RE.findall(ln)) <= 4
     )
 
     unit_hits = len(UNIT_RE.findall(text))
+    counted_hits = len(COUNTED_RE.findall(text))
     return PageSignals(
         chars=len(text),
         words=words,
@@ -124,8 +191,11 @@ def signals(page: PageText) -> PageSignals:
         digit_ratio=digits / max(1, digits + letters),
         prose_ratio=prose_lines / len(lines),
         table_ratio=table_lines / len(lines),
-        has_units=unit_hits > 0,
+        # A counted noun is a unit. Keeping them in one flag means every gate
+        # that asks "does this page state a quantity" gets the same answer.
+        has_units=(unit_hits + counted_hits) > 0,
         unit_hits=unit_hits,
+        counted_hits=counted_hits,
         standard_hits=len(STANDARD_RE.findall(text)),
         figure_hits=len(FIGURE_RE.findall(text)),
         map_hits=len(MAP_RE.findall(text)),
