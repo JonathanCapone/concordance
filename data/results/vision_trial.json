@@ -1,0 +1,779 @@
+{
+  "qwen3.6:latest": {
+    "identifier": "brantfordsewaget23777",
+    "page": 15,
+    "seconds": 1697.8,
+    "n_records": 27,
+    "known_recovered": [
+      "151.607",
+      "176.026",
+      "176.547",
+      "4.377",
+      "4.428",
+      "4.609",
+      "5.425",
+      "5.675",
+      "6.976",
+      "7.903"
+    ],
+    "known_total": 12,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "MAX. DAILY Flow",
+        "value": 6.976,
+        "unit": "MILLION GALLONS",
+        "qualifier": "maximum",
+        "stream": "unknown",
+        "place": null,
+        "period": "Jan.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Jan. / MAX. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Jan.",
+          "column_label": "MAX. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "6e8d5927d5059da0540a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MIN. DAILY Flow",
+        "value": 4.609,
+        "unit": "MILLION GALLONS",
+        "qualifier": "minimum",
+        "stream": "unknown",
+        "place": null,
+        "period": "Jan.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Jan. / MIN. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Jan.",
+          "column_label": "MIN. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "f75c99a7a0203eafece6"
+      },
+      {
+        "kind": "observation",
+        "parameter": "AVG. DAILY Flow",
+        "value": 5.7,
+        "unit": "MILLION GALLONS",
+        "qualifier": "average",
+        "stream": "unknown",
+        "place": null,
+        "period": "Jan.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Jan. / AVG. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Jan.",
+          "column_label": "AVG. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "7d75bf4db9d48401d42a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TOTAL MONTHLY Flow",
+        "value": 176.547,
+        "unit": "MILLION GALLONS",
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "Jan.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Jan. / TOTAL MONTHLY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Jan.",
+          "column_label": "TOTAL MONTHLY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "da303d6af73f91ea0e77"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MAX. DAILY Flow",
+        "value": 6.2,
+        "unit": "MILLION GALLONS",
+        "qualifier": "maximum",
+        "stream": "unknown",
+        "place": null,
+        "period": "Feb.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Feb. / MAX. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Feb.",
+          "column_label": "MAX. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "4012dcc32797febc245e"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MIN. DAILY Flow",
+        "value": 4.377,
+        "unit": "MILLION GALLONS",
+        "qualifier": "minimum",
+        "stream": "unknown",
+        "place": null,
+        "period": "Feb.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Feb. / MIN. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Feb.",
+          "column_label": "MIN. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "6d35c98069650f3a73b1"
+      },
+      {
+        "kind": "observation",
+        "parameter": "AVG. DAILY Flow",
+        "value": 5.425,
+        "unit": "MILLION GALLONS",
+        "qualifier": "average",
+        "stream": "unknown",
+        "place": null,
+        "period": "Feb.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Feb. / AVG. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Feb.",
+          "column_label": "AVG. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "48960c3a2e7fa5b887fe"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TOTAL MONTHLY Flow",
+        "value": 151.607,
+        "unit": "MILLION GALLONS",
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "Feb.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Feb. / TOTAL MONTHLY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Feb.",
+          "column_label": "TOTAL MONTHLY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "8a50dc19b01d6268d5ff"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MAX. DAILY Flow",
+        "value": 7.903,
+        "unit": "MILLION GALLONS",
+        "qualifier": "maximum",
+        "stream": "unknown",
+        "place": null,
+        "period": "Mar.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Mar. / MAX. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Mar.",
+          "column_label": "MAX. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "3818e596700a3a605223"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MIN. DAILY Flow",
+        "value": 4.428,
+        "unit": "MILLION GALLONS",
+        "qualifier": "minimum",
+        "stream": "unknown",
+        "place": null,
+        "period": "Mar.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Mar. / MIN. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Mar.",
+          "column_label": "MIN. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "925ededcb558c0e56a97"
+      },
+      {
+        "kind": "observation",
+        "parameter": "AVG. DAILY Flow",
+        "value": 5.675,
+        "unit": "MILLION GALLONS",
+        "qualifier": "average",
+        "stream": "unknown",
+        "place": null,
+        "period": "Mar.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Mar. / AVG. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Mar.",
+          "column_label": "AVG. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "c15c4b3f98617d4b9645"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TOTAL MONTHLY Flow",
+        "value": 176.026,
+        "unit": "MILLION GALLONS",
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "Mar.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Mar. / TOTAL MONTHLY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Mar.",
+          "column_label": "TOTAL MONTHLY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "ce46d408a2af38d84692"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MAX. DAILY Flow",
+        "value": 7.302,
+        "unit": "MILLION GALLONS",
+        "qualifier": "maximum",
+        "stream": "unknown",
+        "place": null,
+        "period": "Apr.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Apr. / MAX. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Apr.",
+          "column_label": "MAX. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "e163b301fcfdcb3c4624"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MIN. DAILY Flow",
+        "value": 4.758,
+        "unit": "MILLION GALLONS",
+        "qualifier": "minimum",
+        "stream": "unknown",
+        "place": null,
+        "period": "Apr.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Apr. / MIN. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Apr.",
+          "column_label": "MIN. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "d4d3e54d3fe3466d87d1"
+      },
+      {
+        "kind": "observation",
+        "parameter": "AVG. DAILY Flow",
+        "value": 6.216,
+        "unit": "MILLION GALLONS",
+        "qualifier": "average",
+        "stream": "unknown",
+        "place": null,
+        "period": "Apr.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Apr. / AVG. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Apr.",
+          "column_label": "AVG. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "b3bed0ea1e75c1426bb2"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TOTAL MONTHLY Flow",
+        "value": 186.491,
+        "unit": "MILLION GALLONS",
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "Apr.",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [Apr. / TOTAL MONTHLY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Apr.",
+          "column_label": "TOTAL MONTHLY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "49ae2d2842dd7e002f95"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MAX. DAILY Flow",
+        "value": 7.056,
+        "unit": "MILLION GALLONS",
+        "qualifier": "maximum",
+        "stream": "unknown",
+        "place": null,
+        "period": "May",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [May / MAX. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "May",
+          "column_label": "MAX. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "5f3932107acfb704df1d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MIN. DAILY Flow",
+        "value": 5.16,
+        "unit": "MILLION GALLONS",
+        "qualifier": "minimum",
+        "stream": "unknown",
+        "place": null,
+        "period": "May",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [May / MIN. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "May",
+          "column_label": "MIN. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "14972149f9f4a7ad3cd5"
+      },
+      {
+        "kind": "observation",
+        "parameter": "AVG. DAILY Flow",
+        "value": 6.347,
+        "unit": "MILLION GALLONS",
+        "qualifier": "average",
+        "stream": "unknown",
+        "place": null,
+        "period": "May",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [May / AVG. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "May",
+          "column_label": "AVG. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "ccd8736eae72c16bd96a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TOTAL MONTHLY Flow",
+        "value": 196.744,
+        "unit": "MILLION GALLONS",
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "May",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [May / TOTAL MONTHLY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "May",
+          "column_label": "TOTAL MONTHLY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "e62d222d309b4089644f"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MAX. DAILY Flow",
+        "value": 6.9,
+        "unit": "MILLION GALLONS",
+        "qualifier": "maximum",
+        "stream": "unknown",
+        "place": null,
+        "period": "June",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [June / MAX. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "June",
+          "column_label": "MAX. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "2f6229ad30c2813c00c9"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MIN. DAILY Flow",
+        "value": 5.5,
+        "unit": "MILLION GALLONS",
+        "qualifier": "minimum",
+        "stream": "unknown",
+        "place": null,
+        "period": "June",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [June / MIN. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "June",
+          "column_label": "MIN. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "d5aff4caa0a328123e04"
+      },
+      {
+        "kind": "observation",
+        "parameter": "AVG. DAILY Flow",
+        "value": 6.442,
+        "unit": "MILLION GALLONS",
+        "qualifier": "average",
+        "stream": "unknown",
+        "place": null,
+        "period": "June",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [June / AVG. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "June",
+          "column_label": "AVG. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "bc9a7ef65fe2eb0067f0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "TOTAL MONTHLY Flow",
+        "value": 193.245,
+        "unit": "MILLION GALLONS",
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": "June",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [June / TOTAL MONTHLY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "June",
+          "column_label": "TOTAL MONTHLY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "3e8a95aa86bbba45b60f"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MAX. DAILY Flow",
+        "value": 6.0,
+        "unit": "MILLION GALLONS",
+        "qualifier": "maximum",
+        "stream": "unknown",
+        "place": null,
+        "period": "July",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [July / MAX. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "July",
+          "column_label": "MAX. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "882f8483793a425d0fb1"
+      },
+      {
+        "kind": "observation",
+        "parameter": "MIN. DAILY Flow",
+        "value": 4.8,
+        "unit": "MILLION GALLONS",
+        "qualifier": "minimum",
+        "stream": "unknown",
+        "place": null,
+        "period": "July",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [July / MIN. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "July",
+          "column_label": "MIN. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "e907e13758c2ebb1e5f8"
+      },
+      {
+        "kind": "observation",
+        "parameter": "AVG. DAILY Flow",
+        "value": 5.597,
+        "unit": "MILLION GALLONS",
+        "qualifier": "average",
+        "stream": "unknown",
+        "place": null,
+        "period": "July",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "brantfordsewaget23777",
+          "page": 15,
+          "source_text": "table cell [July / AVG. DAILY Flow]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/brantfordsewaget23777/page/n14/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "July",
+          "column_label": "AVG. DAILY Flow",
+          "model_confidence": 1.0
+        },
+        "key": "f044e11085830ae472a9"
+      }
+    ]
+  }
+}
