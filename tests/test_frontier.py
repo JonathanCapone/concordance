@@ -105,3 +105,32 @@ def test_a_decision_question_ranks_a_town_whose_numbers_are_already_read():
     f = build([{"place": "Brantford", "period": "1962"}])
     ranked = {r["place"]: r for r in f.ranked_places()}
     assert "Brantford council minutes" in ranked
+
+
+def test_one_town_gets_one_council_question():
+    """The record set holds "Brantford", "Brantford Plant", "Brantford WPCP" and
+    "Brantford Water Pollution Control Plant" as four distinct places, so the
+    frontier proposed reading four different councils' minutes for one city.
+
+    The facility suffix is load-bearing for a measurement's identity -- a town's
+    sewage plant and its water works measure opposite things -- and noise for a
+    question about who voted. So it is stripped here rather than in the records.
+    """
+    from groundtruth.frontier import build
+
+    f = build([
+        {"place": "Brantford", "period": "1962"},
+        {"place": "Brantford Plant", "period": "1963"},
+        {"place": "Brantford WPCP", "period": "1964"},
+        {"place": "Brantford Water Pollution Control Plant", "period": "1965"},
+    ])
+    decisions = [q for q in f.questions if q.kind == "decision"]
+    assert len(decisions) == 1
+    assert "Brantford's council" in decisions[0].text
+
+
+def test_two_genuinely_different_towns_keep_their_own_questions():
+    from groundtruth.frontier import build
+
+    f = build([{"place": "Brantford"}, {"place": "Owen Sound"}])
+    assert len([q for q in f.questions if q.kind == "decision"]) == 2

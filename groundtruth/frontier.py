@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import collections
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
@@ -129,6 +130,37 @@ class Frontier:
 # building the frontier
 # --------------------------------------------------------------------------
 
+#: Words that turn a town's name into a facility's. A council governs the town,
+#: not the plant, so these are stripped before asking who voted for it.
+_FACILITY_WORDS = re.compile(
+    r"(?i)\s+(water pollution control plant|sewage treatment plant|"
+    r"pollution control plant|water treatment plant|water supply system|"
+    r"treatment plant|filtration plant|wpcp|stp|wtp|plant|works)\b.*$")
+
+
+def _towns(places: Iterable[str]) -> list[str]:
+    """One name per town, for questions that are about towns rather than plants.
+
+    The extracted record set holds "Brantford", "Brantford Plant", "Brantford
+    WPCP" and "Brantford Water Pollution Control Plant" as four distinct places,
+    so the frontier proposed reading four different councils' minutes for one
+    city. A council governs a town; the facility suffix is noise for this
+    question even though it is load-bearing for a measurement's identity, which
+    is why the stripping happens here rather than in the records.
+    """
+    seen: dict[str, str] = {}
+    for raw in places:
+        name = _FACILITY_WORDS.sub("", str(raw or "").strip()).strip(" ,-")
+        if not name:
+            continue
+        key = name.lower()
+        # Keep the shortest surviving form: "Brantford" over "Brantford Plant"
+        # once the suffix list misses a variant.
+        if key not in seen or len(name) < len(seen[key]):
+            seen[key] = name
+    return sorted(seen.values())
+
+
 def _years_for(records: Iterable[dict[str, Any]], place: str) -> set[int]:
     out = set()
     for r in records:
@@ -225,9 +257,7 @@ def build(
     # These are cheap by comparison. Minutes need no model at all -- the motion
     # and roll-call form is a pattern -- so this is the one part of the frontier
     # that a contributor can finish on a laptop over lunch.
-    for place in sorted(read_places):
-        if not place:
-            continue
+    for place in _towns(read_places):
         frontier.questions.append(Question(
             kind="decision",
             text=f"Who on {place}'s council voted for the works its numbers describe, "

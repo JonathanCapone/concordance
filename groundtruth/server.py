@@ -28,6 +28,7 @@ from urllib.parse import parse_qs, urlparse
 from .archive import Archive
 from .citations import cite, cite_record
 from .decisions import read_document
+from .frontier import load as load_frontier
 from .disputes import (
     Flag, load_claims, load_contributions, load_vision_records,
     resolve as resolve_claims, submit as submit_claim,
@@ -66,6 +67,44 @@ class State:
 
     def invalidate_ledger(self) -> None:
         self._ledger = None
+        self._frontier = None
+
+    def frontier(self) -> dict[str, Any]:
+        """Questions the archive is one document away from answering.
+
+        Cached alongside the ledger: it reads every extraction on disk and the
+        silence report, and the answer only changes when something is read.
+        """
+        if getattr(self, "_frontier", None) is not None:
+            return self._frontier  # type: ignore[return-value]
+
+        # River questions need the watershed, which is a network call. If it
+        # is unavailable the frontier still answers -- trends, silences and the
+        # decisions behind a town's numbers need no gauges -- and says so
+        # rather than failing whole.
+        try:
+            self.watershed()
+        except Exception:  # noqa: BLE001
+            pass
+        links = getattr(self, "_links", None) or []
+
+        try:
+            f = load_frontier(downstream_links=links)
+        except Exception as exc:  # noqa: BLE001
+            return {"error": str(exc)[:160], "waiting": [], "places": []}
+
+        self._frontier = {
+            "answerable": [q.to_dict() for q in f.answerable[:20]],
+            "waiting": [q.to_dict() for q in f.waiting[:40]],
+            "places": f.ranked_places(15),
+            "counts": {
+                "answerable": len(f.answerable),
+                "waiting": len(f.questions) - len(f.answerable),
+                "places_read": len(f.read_places),
+                "rivers_available": bool(links),
+            },
+        }
+        return self._frontier
 
     def ledger(self) -> dict[str, Any]:
         """Every claim's standing, with the contested ones carrying their crops.
@@ -192,6 +231,10 @@ class State:
                 if p and getattr(p, "lat", None) and getattr(p, "lon", None):
                     plants.append((p.canonical, p.lat, p.lon))
             links, warnings = downstream_links(place_plants(plants, stations))
+            # Kept as the objects rather than the serialised rivers: the
+            # frontier needs upstream/downstream/watercourse, and rebuilding
+            # them from the JSON would be a second definition to keep in step.
+            self._links = links
 
             rivers: dict[str, list[dict[str, Any]]] = {}
             for link in links:
@@ -401,6 +444,13 @@ class Handler(BaseHTTPRequestHandler):
             citation = cite_record(page, {"provenance": {"source_text": quote}}) \
                 if quote else cite(page, "")
             self._send(json.dumps(citation.to_dict()).encode(), "application/json")
+            return
+
+        if url.path == "/api/frontier":
+            # What reading one more document would make answerable, and for
+            # whom. The only ordering of eleven million pages that serves
+            # somebody rather than the person who chose the subject.
+            self._send(json.dumps(STATE.frontier()).encode(), "application/json")
             return
 
         if url.path == "/api/ledger":

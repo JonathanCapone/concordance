@@ -250,3 +250,33 @@ def test_a_sentence_named_facility_survives_the_document_title():
     untitled = dict(general, facility=None)
     also_untitled = dict(josephs, facility=None)
     assert slot_of(untitled) == slot_of(also_untitled)   # the failure it prevents
+
+
+def test_a_month_is_not_a_town():
+    """31 Brantford records landed under "January", "February", "March"...
+
+    Reading a monthly table, the model put the row label in `place`, and the
+    frontier then proposed reading "April's council minutes". The month is
+    folded back into the period, where it is more precise than the year alone.
+    """
+    from groundtruth.extract import _period_of, _place_of
+
+    monthly = {"place": "March", "period": "1962"}
+    assert _place_of(monthly) is None
+    assert _period_of(monthly) == "1962-03"
+
+
+def test_a_place_that_merely_shares_a_word_with_the_calendar_stays():
+    """March Township is a real place in Ontario. Only bare month names move."""
+    from groundtruth.extract import _period_of, _place_of
+
+    township = {"place": "March Township", "period": "1962"}
+    assert _place_of(township) == "March Township"
+    assert _period_of(township) == "1962"
+
+
+def test_a_misfiled_month_with_no_year_does_not_invent_one():
+    from groundtruth.extract import _period_of
+
+    assert _period_of({"place": "April", "period": ""}) is None
+    assert _period_of({"place": "April", "period": "1962-05"}) == "1962-05"

@@ -358,6 +358,56 @@ def _parse_json_array(raw: str) -> list[dict[str, Any]]:
     return _salvage_objects(raw)
 
 
+#: A month standing alone is a time, not a town. Reading a monthly table, the
+#: model put the row label in `place`: 31 Brantford records landed under
+#: "January", "February", "March" and so on, and the frontier duly proposed
+#: reading "April's council minutes".
+#:
+#: Only bare month names are moved. "March Township" and "Bay of May" stay put,
+#: because the failure being corrected is a row label misfiled, not a place that
+#: happens to share a word with the calendar.
+_MONTHS = {
+    "january": "01", "february": "02", "march": "03", "april": "04",
+    "may": "05", "june": "06", "july": "07", "august": "08",
+    "september": "09", "october": "10", "november": "11", "december": "12",
+    "jan": "01", "feb": "02", "mar": "03", "apr": "04", "jun": "06",
+    "jul": "07", "aug": "08", "sep": "09", "sept": "09", "oct": "10",
+    "nov": "11", "dec": "12",
+}
+
+
+def _month_of(text: str | None) -> str | None:
+    return _MONTHS.get(str(text or "").strip().strip(".").lower())
+
+
+def _place_of(c: dict[str, Any]) -> str | None:
+    """The place, unless the model handed us a month.
+
+    Returning None lets the caller's own default apply -- the town it asked to
+    read -- which is a better answer than a calendar month and better than
+    guessing here.
+    """
+    place = str(c.get("place") or "").strip()
+    if not place or _month_of(place):
+        return None
+    return place
+
+
+def _period_of(c: dict[str, Any]) -> str | None:
+    """The period, with a misfiled month folded back into it.
+
+    A monthly row of a 1962 table is 1962-03, and that is more precise than the
+    year alone -- so the misread is worth recovering rather than discarding.
+    """
+    period = str(c.get("period") or "").strip()
+    month = _month_of(c.get("place"))
+    if not month:
+        return period or None
+    if period[:4].isdigit() and len(period) == 4:
+        return f"{period[:4]}-{month}"
+    return period or None
+
+
 def _to_float(v: Any) -> float | None:
     if v is None or isinstance(v, bool):
         return None
@@ -443,13 +493,13 @@ def extract_prose(
             qualifier=(str(qualifier).strip().lower() if qualifier else None),  # type: ignore[arg-type]
             stream=stream if stream in
             ("influent", "effluent", "ambient", "raw", "treated", "unknown") else "unknown",  # type: ignore[arg-type]
-            place=(str(c["place"]).strip() if c.get("place") else None),
+            place=_place_of(c),
             # Taken from the sentence when the model names one. The caller
             # overwrites this with the document's facility only when it is
             # empty, because a page describing four hospitals knows which is
             # which and the title does not.
             facility=(str(c["facility"]).strip() if c.get("facility") else None),
-            period=(str(c["period"]).strip() if c.get("period") else None),
+            period=_period_of(c),
             confidence=confidence,
             provenance=Provenance(
                 identifier=page.identifier,
