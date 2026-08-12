@@ -76,8 +76,8 @@ Not a proposal. A measured artifact, running today:
 | Quotes failing verification across 286 records | **0** |
 | Table measurements recovered | **535** from 24 pages, 11 collections, 1879–2003 |
 | ...of which found in the page's surviving OCR | **411 of 461 (89%)** |
-| Measurements settled / contested / unsupported | **736 / 78 / 17** across 1,039 claims, with nobody adjudicating |
-| Code / tests | 498 tests · zero required dependencies in the core |
+| Measurements settled / contested / unsupported | **1,372 / 144 / 83** across 2,009 claims in 1,599 slots, with nobody adjudicating |
+| Code / tests | 523 tests · zero required dependencies in the core |
 
 Every recovered number carries the verbatim sentence it was read from, that
 sentence is verified to occur on the page, and the page is one click away. A
@@ -141,67 +141,70 @@ measurements and a third yield none, while a table page yields around eighteen �
 so the tables are likely the majority of the actual measurements while being a
 quarter of the pages.
 
-### What the money is not for
+### What the money is for
 
-Buying the whole read would cost **$4,251–8,502** of rented GPU time — a figure
-worth having, and not what I am asking for. It is the wrong thing to spend a
-fellowship on for a reason that has nothing to do with the price.
+The fellowship is $5,000. **Almost all of it is six weeks of my time.** The
+compute bill is tens of dollars, and I want to be exact about why it is that
+small rather than let the number look like an oversight.
 
-**A corpus bought in one batch is finished the day the money runs out.** It
-covers whatever was current in October 2026, it is never extended, and the next
-person who wants a document nobody thought to read has no way to get it. Anyone
-with a credit card can rent an A100. That is not the interesting version of this
-project, and it is not the version I have been building.
+| | |
+|---|---|
+| Six weeks of work | the fellowship |
+| Vocabulary pass — one stratified sample, run centrally | **$30–70** |
+| Throughput pilot — a thousand pages, to replace a guess with a measurement | tens of dollars |
+| Reading the rest of the archive | **$0**, and it never stops |
 
-The version I have been building is that **reading happens because somebody
-wanted to know something.** You ask for a place; if it has been read you get it
-in milliseconds, and if you are the first to ask, your machine reads it and it
-is there for everyone after you. No volunteer mode, no queue, nothing asked of
-anyone — the cost falls on whoever cares first, who is also the person most
-willing to wait. `share.py` moves the result to other machines as a file, and
-every reading is re-checked against archive.org on arrival, so no server has to
-be trusted or paid for.
+That last row is the whole design, so here is the argument against the obvious
+alternative.
 
-That model has one honest hole, and it is the reason the number above exists at
-all.
+**Buying the read outright would cost $4,251–8,502.** I costed it
+(`scripts/cost_model.py`) specifically so I could argue against it. A corpus
+bought in one batch is finished the day the money runs out: it covers whatever
+was current in October 2026, it is never extended, and the next person who wants
+a document nobody thought to read has no way to get it. Anyone with a credit
+card can rent an A100 — that is not the interesting version of this project.
+
+**Reading happens because somebody wanted to know something.** You ask for a
+place; if it has been read you get it in milliseconds, and if you are the first
+to ask, your machine reads it and it is there for everyone after you. No
+volunteer mode, no queue, nothing asked of anyone — the cost falls on whoever
+cares first, who is also the person most willing to wait. Results move between
+machines as a file or a push to a shared instance, and every reading is
+re-checked against archive.org on arrival, so no server has to be trusted or
+paid for.
+
+### The hole in that, named
+
+The model has one real weakness and I would rather state it than budget around
+it.
 
 | | who can do it | why |
 |---|---|---|
-| **Vocabulary** | must be central | Deciding what a measurement *means* is judgement, not compute. A stratified sample costs about **$30–70**. |
 | **Prose** — 73% of pages | anyone | 91 seconds a page on an ordinary machine. A town takes about ninety minutes. |
 | **Tables** — 27% of pages, ~69% of the measurements | **almost nobody** | Eight minutes a page on my RTX 2080, because only 18% of a 29.6 GB model fits in 8 GB of VRAM. |
+| **Vocabulary** | must be central | Deciding what a measurement *means* is judgement, not compute — and it only has to happen once. |
 
-**Tables are the problem, and I would rather say so than budget around it.** The
-measurements are concentrated in exactly the pages a contributor's hardware
-handles worst. So the fellowship funds the parts that cannot distribute and
-proves the parts that can:
+**The measurements are concentrated in exactly the pages a contributor's
+hardware handles worst.** I am not asking for money to brute-force past that,
+because doing so would buy a fixed corpus and abandon the model. Two things get
+tried first, and both are measurable:
 
-- the **vocabulary pass**, central by necessity and cheap — tens of dollars;
-- a **measured throughput pilot** on a thousand pages, which is the first thing
-  any funded run should do anyway, since the vision figure in the table above is
-  a guess and is most of its own cost;
-- a **seed corpus** large enough to make the showcase real and the frontier
-  meaningful — the towns, the rivers, and the councils that go with them;
-- and six weeks of work on the thing that makes the rest self-sustaining.
+- **a smaller vision model may be adequate.** That is a question, not a hope,
+  and I have not measured it yet.
+- **tables get read once and shared.** A person with real hardware reads a
+  document's tables and pushes the result; everyone else re-verifies it against
+  archive.org rather than re-reading it. The path for that is built and tested.
 
-The remainder of the archive fills in as people ask for it, indefinitely, at no
-recurring cost to anybody. That is a slower answer than a batch run and a much
-better one: the corpus is read in the order people actually want to know things,
-which is a better ordering than any I would impose, and it does not stop when
-the grant does.
+If both fail, the honest answer in the write-up is that 27% of this archive
+needs a graphics card most people do not own. That is worth knowing too, and it
+is a better outcome than a number that hides it.
 
-Two things I will try before conceding that tables need rented hardware. A
-smaller vision model may be adequate — that is a measurable question and I have
-not measured it. And a page's tables can be read once by whoever has the
-hardware and shared as a bundle, which is what `share.py` is for. If both fail,
-the honest answer in the write-up is that 27% of this archive needs a graphics
-card most people do not own, and that is worth knowing too.
-
-That division is also the answer to the obvious objection about distributed
-contribution. The central run does what is expensive and uniform — the
-vocabulary, and the tables — once. People do prose, on demand, on their own
-machines, which is where places, dates, narrative and the whole deliberative
-record live.
+So: the central work is the vocabulary, the pilot, and a seed corpus large
+enough to make the showcase real — the towns, the rivers and the councils that
+go with them. Everything else fills in as people ask for it, indefinitely, at no
+recurring cost to anybody. That is slower than a batch run and better: the
+corpus is read in the order people actually want to know things, and it does not
+stop when the grant does.
 
 ---
 
