@@ -195,6 +195,15 @@ def _label_on_page(label: str, page_text: str) -> bool:
     return all(_norm(t) in page for t in parts)
 
 
+#: Least OCR a page must retain before its text layer can referee a heading.
+#: Set from the observed split rather than taste: the pages whose labels checked
+#: out carry 1,800-3,300 characters, and the ones where every record was
+#: rejected for unfindable headings carry around 1,000. Below this the text
+#: layer is not evidence either way, and treating its silence as a refusal
+#: rejects hardest exactly where vision matters most.
+MIN_OCR_TO_CHECK_LABELS = 1_500
+
+
 @dataclass
 class VisionResult:
     records: list[Record]
@@ -270,7 +279,19 @@ def extract_table(
         # HEADINGS, which are set in larger and cleaner type. So the surviving
         # OCR text is exactly the right thing to check labels against, and it
         # costs one substring search.
-        if page.text.strip():
+        # ...but only where enough OCR survived to check against. The premise
+        # above -- that headings survive in cleaner type -- holds on a page whose
+        # text layer is merely damaged and fails completely on one where it was
+        # destroyed. Georgian Bay Ship Canal, 1909: a full table page reduced to
+        # 1,068 characters, and every one of its 30 candidate records rejected
+        # for headings that are simply not in the text layer at all.
+        #
+        # That is the exact circumstance the vision path exists for, so a check
+        # that fires hardest there is inverted: it discards most confidently
+        # where OCR is worst, which is where the model is most needed and least
+        # checkable. Below this threshold the honest report is "could not
+        # verify", and the record is kept and flagged rather than thrown away.
+        if len(page.text.strip()) >= MIN_OCR_TO_CHECK_LABELS:
             unverified = [
                 label for label in (row, col)
                 if label and not _label_on_page(label, page.text)
@@ -283,6 +304,12 @@ def extract_table(
                     "candidate": c,
                 })
                 continue
+            label_check = "verified against the page's OCR"
+        else:
+            label_check = (
+                f"not checked: only {len(page.text.strip())} characters of OCR "
+                "survived on this page, too little to confirm or refute a heading"
+            )
 
         value = _to_float(c.get("value"))
         if value is None:

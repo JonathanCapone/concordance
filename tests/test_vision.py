@@ -244,3 +244,24 @@ def test_no_source_file_carries_a_control_byte():
         if any(b < 9 or (13 < b < 32) for b in raw):
             offenders.append(path.name)
     assert offenders == []
+
+
+def test_a_page_with_almost_no_ocr_cannot_referee_its_own_headings():
+    """The control fired hardest exactly where vision matters most.
+
+    Georgian Bay Ship Canal, 1909: a full table page whose text layer came back
+    as 1,068 characters, and all 30 candidate records rejected for headings that
+    are simply not in it. That is the circumstance the vision path exists for,
+    so a check that discards most confidently there is inverted -- it is
+    strictest where it is least able to judge.
+
+    Below the threshold the record is kept and the reason is recorded, rather
+    than the page being thrown away.
+    """
+    from groundtruth.vision import MIN_OCR_TO_CHECK_LABELS, _label_on_page
+
+    assert MIN_OCR_TO_CHECK_LABELS > 1068          # the page that broke it
+    assert MIN_OCR_TO_CHECK_LABELS < 1828          # a page that checked out fine
+    # An empty text layer was already trusted; the threshold extends that to a
+    # nearly-empty one rather than introducing a new behaviour.
+    assert _label_on_page("anything at all", "")
