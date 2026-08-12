@@ -175,10 +175,24 @@ def _label_on_page(label: str, page_text: str) -> bool:
     if whole and whole in page:
         return True
     tokens = [t for t in re.split(r"\W+", label.lower()) if len(t) >= 4]
-    if not tokens:
-        # Very short labels ("BOD", "SS", "1969") are checked whole or not at all.
+    if tokens:
+        return any(_norm(t) in page for t in tokens)
+
+    # Short-token labels. A census column heading reads "CT - SR 135.03", and
+    # the OCR of that header row runs "CT - SR CT - SR CT - SR ... 135.02
+    # 135.03 136.01" -- the words and their numbers separated. The label is
+    # therefore nowhere on the page as a contiguous string even though every
+    # part of it is, and demanding the whole string rejected all 25 records on
+    # a Statistics Canada page whose values were entirely correct.
+    #
+    # So for these, every part must be present somewhere rather than the whole
+    # appearing intact. That is weaker, and it is the right kind of weaker: a
+    # fabricated heading still has to be assembled from fragments the page
+    # actually contains.
+    parts = [t for t in re.split(r"\W+", label.lower()) if t]
+    if not parts:
         return bool(whole) and whole in page
-    return any(_norm(t) in page for t in tokens)
+    return all(_norm(t) in page for t in parts)
 
 
 @dataclass

@@ -154,3 +154,93 @@ def test_no_ocr_text_falls_back_to_trusting_the_model():
         ),
     )
     assert result.kept == 1
+
+
+# -- the census page that was rejected entirely ------------------------------
+
+CENSUS_OCR = (
+    "Tableau 1. Certaines repartitions de la population, des logements "
+    "CT - SR CT - SR CT - SR CT - SR CT - SR "
+    "135.02 135.03 136.01 136.02 137.01 Caracteristiques "
+    "STATUT PROFESSIONNEL 1,825 790 1,780 1,070 910 "
+    "Hommes - Tous les statuts professionnels"
+)
+
+
+def test_a_header_the_ocr_split_apart_is_still_found():
+    """The control rejected all 25 records on a Statistics Canada page.
+
+    A column heading reads "CT - SR 135.03", and the OCR of that header row runs
+    "CT - SR CT - SR CT - SR ... 135.02 135.03 136.01" -- every word and every
+    number present, none of them adjacent. The label was therefore nowhere on
+    the page as a contiguous string, though every part of it was, and the values
+    the model returned were exactly right.
+    """
+    from groundtruth.vision import _label_on_page
+
+    assert _label_on_page("CT - SR 135.03", CENSUS_OCR)
+    assert _label_on_page("Hommes - Tous les statuts professionnels", CENSUS_OCR)
+
+
+def test_a_heading_that_is_not_on_the_page_is_still_refused():
+    """Weakening the check must not disarm it.
+
+    The short-token path is the one that changed, and it now requires every part
+    to be present somewhere -- so a fabricated column reference still fails,
+    because its numbers are not on the page.
+
+    The long-token path is unchanged and deliberately lenient: one substantial
+    shared token is enough, on the argument that OCR mangles headings and a
+    label sharing nothing at all is the real fabrication signal. "Population
+    totale par comte" therefore passes on the strength of "population", which is
+    the documented intent rather than a defect.
+    """
+    from groundtruth.vision import _label_on_page
+
+    assert not _label_on_page("CT - SR 999.99", CENSUS_OCR)
+    assert not _label_on_page("Superficie des exploitations agricoles", CENSUS_OCR)
+
+
+def test_a_count_needs_no_unit():
+    """The vision path's version of the water-report bias.
+
+    A census count of 1,825 men has no mg/L to give. Requiring a unit symbol
+    discarded every record on the page.
+    """
+    from groundtruth.models import Provenance, Record
+
+    counted = Record(kind="observation", parameter="Hommes - Tous les statuts",
+                     value=1825, unit=None, confidence=0.9,
+                     provenance=Provenance("x", 1, "a sentence"))
+    assert counted.problems() == []
+
+    measured = Record(kind="observation", parameter="BOD", value=104, unit=None,
+                      confidence=0.9, provenance=Provenance("x", 1, "a sentence"))
+    assert "no unit" in measured.problems()
+
+
+def test_the_counted_table_does_not_match_inside_other_words():
+    """"men" must not match "development", which the boundary-free version did
+    after a backspace byte ate the word boundaries."""
+    from groundtruth.models import _COUNTED_PARAMETER
+
+    assert not _COUNTED_PARAMETER.search("development cost")
+    assert not _COUNTED_PARAMETER.search("suspended solids")
+    assert _COUNTED_PARAMETER.search("elementary schools")
+
+
+def test_no_source_file_carries_a_control_byte():
+    """A `\b` written through a shell heredoc becomes a literal backspace.
+
+    The file then reads back correctly in every editor and the pattern matches
+    nothing -- which is how "elementary schools" failed to match `schools?`.
+    This has now happened twice in this project.
+    """
+    import pathlib
+
+    offenders = []
+    for path in pathlib.Path("groundtruth").rglob("*.py"):
+        raw = path.read_bytes()
+        if any(b < 9 or (13 < b < 32) for b in raw):
+            offenders.append(path.name)
+    assert offenders == []

@@ -81,6 +81,34 @@ class Provenance:
         return d
 
 
+#: Parameters that name what they count, so a missing unit symbol is not a
+#: defect. The archive is mostly counts -- people, schools, beds, farms, cases,
+#: dwellings -- and in French as well as English, since a third of this corpus
+#: is bilingual and Statistics Canada publishes both columns on one page.
+#: Written with `(?<![a-z])` and `(?![a-z])` rather than `\b` on purpose. This
+#: exact pattern was authored once through a shell heredoc, which turned every
+#: `\b` into a literal backspace byte (0x08) -- the file read back correctly in
+#: every editor and matched nothing at all, including "elementary schools"
+#: against `schools?`. The project has been bitten by that before and the work
+#: log says so; using no backslash-b at all removes the trap rather than
+#: documenting it. There is a repo-wide control-byte check for the same reason.
+_COUNTED_PARAMETER = re.compile(
+    r"(?<![a-z])("
+    r"population|persons?|people|men|women|males?|females?|children|"
+    r"hommes|femmes|personnes|enfants|"
+    r"pupils?|students?|teachers?|schools?|classrooms?|graduates?|enrol|"
+    r"dwellings?|households?|families|logements?|m[eé]nages?|familles|"
+    r"beds?|patients?|operations?|transplants?|physicians?|nurses?|lits|"
+    r"farms?|cattle|swine|poultry|livestock|fermes?|"
+    r"employees?|workers?|staff|members?|officers?|travailleurs?|"
+    r"births?|deaths?|cases?|complaints?|appeals?|convictions?|"
+    r"naissances|d[eé]c[eè]s|"
+    r"vehicles?|accidents?|licen[cs]es?|permits?|claims?|"
+    r"volumes?|units?|rooms?|buildings?|plants?|wells?|mines?|"
+    r"counts?|numbers?|statuts?"
+    r")(?![a-z])", re.I)
+
+
 @dataclass
 class Record:
     """One reading recovered from the paper.
@@ -159,7 +187,12 @@ class Record:
         if self.kind in ("observation", "standard", "design"):
             if self.value is None:
                 out.append("no value")
-            if not self.unit:
+            # A missing unit is a defect only where a unit was ever going to
+            # exist. Most of this archive counts things, and the unit is the
+            # noun: "1,825 men", "75 elementary schools", "430 beds". Requiring
+            # a symbol threw away every record on a Statistics Canada census
+            # page -- 25 of 25 -- because a count of men has no mg/L to give.
+            if not self.unit and not self._is_a_count():
                 out.append("no unit")
         if self.value is not None and self.value != self.value:  # NaN
             out.append("value is NaN")
@@ -170,6 +203,17 @@ class Record:
         elif not self.provenance.source_text.strip():
             out.append("no source text -- claim is not checkable")
         return out
+
+    def _is_a_count(self) -> bool:
+        """Does this parameter name the thing it counts?
+
+        Deliberately generous, because the cost of being wrong is asymmetric: a
+        counted record wrongly let through is a record with an empty unit, which
+        every chart already handles, while one wrongly rejected is data lost with
+        no trace.
+        """
+        name = self.parameter.lower()
+        return bool(_COUNTED_PARAMETER.search(name))
 
     @property
     def is_usable(self) -> bool:
