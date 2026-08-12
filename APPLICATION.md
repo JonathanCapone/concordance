@@ -231,7 +231,7 @@ that agree without trusting each other, a seed corpus, and a per-page cost
 somebody could plan against.
 
 **Arc B — Trustworthy at scale (weeks 2–3)**
-The gold set expanded across document types and eras, not just the three pages
+The gold set expanded across document types and eras, not just the four pages
 it covers now; accuracy published per era and per parameter rather than as one
 number; the record audit run over everything. Ends with: an accuracy figure I
 would defend in public, including where it is bad.
@@ -353,13 +353,14 @@ good, and it costs nothing: archive.org serves IIIF, so a citation is a URL. I
 would rather ship a record that argues with itself in public than one that is
 quietly adjudicated by me.
 
-**And readings travel as a file.** `share.py export` packages what a machine has
-read; `share.py import` re-checks every record against archive.org on arrival.
-A bundle moves by pull request, email, USB stick or a forum link — none of which
-need a server anybody has to run, pay for, or be trusted to keep honest. This
-project has no infrastructure and now needs none. Nothing about the sender is
-examined, because nothing about the sender is relevant: a signature would prove
-who sent it, and the archive proves whether it is true.
+**And readings travel.** A machine packages what it has read; whoever receives
+it re-checks every record against archive.org before believing any of it. That
+can go to a shared instance over the network, or move as a plain file by email,
+USB stick or a link in a forum post — the file route is the one that outlives
+the funding, because it needs no server anybody has to run, pay for, or be
+trusted to keep honest. Nothing about the sender is examined, because nothing
+about the sender is relevant: a signature would prove who sent it, and the
+archive proves whether it is true.
 
 ### Why six weeks is enough
 
@@ -405,9 +406,9 @@ Checkable, in four parts:
 
 ### What would count as failure, stated in advance
 
-If extraction accuracy on a broader gold set comes in materially below what three
-pages suggested, I will publish that number and narrow the scope rather than
-quietly ship a confident dataset nobody has checked. **An archive that has been
+If extraction accuracy on a broader gold set comes in materially below what four
+hand-checked pages suggested, I will publish that number and narrow the scope
+rather than quietly ship a confident dataset nobody has checked. **An archive that has been
 misread at scale is worse than one that was never read, because the errors look
 like findings.**
 
