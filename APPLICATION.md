@@ -76,8 +76,8 @@ Not a proposal. A measured artifact, running today:
 | Quotes failing verification across 286 records | **0** |
 | Table measurements recovered | **535** from 24 pages, 11 collections, 1879–2003 |
 | ...of which found in the page's surviving OCR | **411 of 461 (89%)** |
-| Measurements settled / contested / unsupported | **1,372 / 144 / 83** across 2,009 claims in 1,599 slots, with nobody adjudicating |
-| Code / tests | 523 tests · zero required dependencies in the core |
+| Measurements settled / contested / unsupported | **1,445 / 129 / 88** across 2,009 claims in 1,662 slots, with nobody adjudicating |
+| Code / tests | 529 tests · zero required dependencies in the core |
 
 Every recovered number carries the verbatim sentence it was read from, that
 sentence is verified to occur on the page, and the page is one click away. A

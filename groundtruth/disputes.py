@@ -72,7 +72,27 @@ from .contribute import _norm, _value_in_quote
 #: are not in contradiction; they are the influent and the effluent, which is
 #: the entire point of a treatment plant. Without this the ledger manufactures
 #: disputes out of the plant working.
-SLOT_FIELDS = ("place", "facility", "parameter", "unit", "period", "stream")
+#: What makes two claims claims about THE SAME THING. Getting this wrong in
+#: either direction is bad: too few fields and unrelated readings are reported as
+#: contradicting each other, too many and a genuine disagreement is split apart
+#: and never surfaces.
+#:
+#: `kind` and `qualifier` were missing, and that is the fourth time in this
+#: project that an identity has merged different things by omitting a field.
+#: What it produced:
+#:
+#:   * A regulatory LIMIT of 15 mg/L was reported as contesting the DESIGN
+#:     specification of 175 that the plant was built to, when both are true at
+#:     once and neither is a reading of anything.
+#:   * Brantford's effluent averaging 31.4 mg/L against its own 15 mg/L limit
+#:     was shown as a data dispute. It is not a dispute, it is the finding: the
+#:     plant exceeded its limit that year, which is the single most interesting
+#:     thing the archive can say about it.
+#:   * One sentence -- "ranging from a minimum reduction in BOD of 4.5 to a
+#:     maximum of 99, averaging 91.6" -- became three claims fighting over one
+#:     slot, when it plainly states three different quantities.
+SLOT_FIELDS = ("place", "facility", "parameter", "unit", "period", "stream",
+               "kind", "qualifier")
 
 
 def slot_of(record: dict[str, Any]) -> str:
