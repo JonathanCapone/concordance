@@ -288,17 +288,264 @@ since 1961" is a fact about the world.
 
 ---
 
+## A magazine about Hamilton, and a fifth of the archive
+
+Someone asked me a simple question — what happens to a document like *Hamilton:
+An Adventure in Good Living*, a 1983 city booster magazine that isn't data at
+all? I said the router handled it: 70% of its pages skipped, one page reaching
+the extractor, and that page an advertisement.
+
+Then they said: *there was lots of text in that document.* There was. The router
+was throwing away 68% of it.
+
+The cause is one number. A line counted as prose if it had at least eight words.
+That magazine is set in narrow columns — 149 lines of unbroken prose on one page,
+median four words to the line, not one reaching eight. It scored a prose ratio of
+**0.000** and every page went to the bin, including one that says *"75 elementary
+schools under the aegis of the Hamilton Board of Education, and 42 operated by
+the Hamilton-Wentworth Roman Catholic Separate School Board"* — exactly the kind
+of fact nobody has in a database. Another page had nineteen unit matches on it
+and was skipped anyway, because the prose gate is tested before units are ever
+considered.
+
+An eight-word threshold is a statement about typography, not about content, and
+it had been quietly deciding which parts of the Canadian public record exist.
+Across 8,372 pages from 34 documents in 26 collections:
+
+| | pages worth reading |
+|---|---|
+| original rule | 48.5% |
+| threshold taken from the page's own median line | 68.8% |
+| a counted noun ("75 elementary schools") reads as a unit | 69.5% |
+
+Twenty-one points. Extrapolated over the corpus, about **6.3 million pages**.
+
+The loss fell hardest on exactly the material you would least want to lose,
+because minutes have always been set in narrow columns:
+
+```
+Acts of the Parliament of Canada      265 → 861 pages
+Journals of the House of Commons      193 → 542
+Ontario Bills, 1952-53                753 → 1169
+Journals of the Legislative Assembly  145 → 185
+```
+
+Census tables and other tabular items are unchanged, so the fix is targeted
+rather than indiscriminate. And the cost model is now wrong in the expensive
+direction: 11.7 million pages worth reading becomes about 15.4 million.
+
+I would not have found this. It took someone looking at a document and saying
+*that doesn't sound right*.
+
+---
+
+## The council knows who voted for what
+
+The same conversation turned up a second thing: could the archive say who
+decided what? It can, and it OCR'd beautifully.
+
+> "It was moved by Alderman Eisenberger and seconded by Alderman Morelli that
+> the Building Commissioner be authorized to issue a demolition permit for
+> 336-338 Jackson Street West ... CARRIED."
+
+> "Recorded vote. YEAS: Mayor Morrow, Aldermen Cooke, Kiss, Agro, McCulloch,
+> Morelli, Copps, Wilson, Agostino, Eisenberger, Charters, Jackson, Merling,
+> Anderson, D'Amico, Ross. -16. NAYS: -0."
+
+That is a complete municipal roll call from 1992, naming sixteen people and how
+each of them voted, sitting in a scanned volume nobody has opened. Deliberative
+records — minutes, agendas, hansard, committee reports, royal commission
+hearings — are **13,604 items, 13.1% of the collection**, and they were the
+category most damaged by the routing bug above.
+
+One volume of Hamilton council agendas, 353 pages: **94 decisions, 64 people, 44
+recorded votes.** Each links to its scanned page, so the divided ones read like
+this:
+
+```
+[carried] against Copps     Red Hill Creek Expressway property acquisitions
+[carried] against Copps     Capital grant to McMaster for campus sports fields
+[carried] against Merling   A.M.O.'s response on Apartments in Homes
+```
+
+The spine of it needs no model at all. "It was moved by X and seconded by Y that
+Z. CARRIED." is a form that has barely changed in a century, so a pattern finds
+it — free, fast, and checkable by a person in a way a model's answer is not. A
+contributor can extract a full council year on a laptop with no GPU.
+
+The control is the clerk's own tally. That "-16." was written by someone who was
+in the room, and if the names parsed disagree with it, the roll was misread. It
+earned its place immediately by catching three of my bugs, including one where
+an empty NAYS list ran past a speck of scanner dirt and swallowed the following
+paragraph, recording twelve councillors as opposing what they had just voted
+for.
+
+What this does not claim is that a motion which carried was ever carried out. A
+resolution is a promise. Whether the expressway got built lives in a later
+document, which makes it a frontier question rather than a fact.
+
+---
+
+## The tables were never lost
+
+The vision path has been built and unproven from the start. llava invents table
+structure — it returns plausible rows that are not on the page, which is worse
+than useless, because a fabricated table is indistinguishable from a recovered
+one. About a quarter of the corpus sat behind that.
+
+qwen3.6 reads them. Given the Brantford 1962 flow table, whose OCR reads:
+
+```
+TABLE I FLOW - MILX.IQN GALLOLS MONTH MAX. DAILY r low MIN. DAILY
+TOT ^i.r i' low AVa. DAILY r .LOW TOTAL MONTHLY -C ?ow
+Jan. 6.976 4.609 5.700 176.547
+```
+
+it returned 27 records and **every one of the twelve values that survived in the
+OCR, exactly**. It also rebuilt the header row the scanner destroyed and filed
+each value under its month. I checked it against the actual scan afterwards, and
+the whole table is right.
+
+Across three more pages from completely different documents — Statistics Canada
+salt production 2003, Alberta Liquor Control 1942, a Simcoe well supply report
+from 1990 — **58 of 58 values are on the page.** A wider run is going.
+
+The honest caveat is speed. Nine minutes a page on my RTX 2080, where only 18%
+of the model fits in VRAM. It is a mixture of experts firing 8 of 256 per token,
+which is exactly the shape that runs cheaply on rented hardware where the whole
+thing is resident — but local bulk table extraction is not practical.
+
+Which raises the question someone put to me directly: **so most of this can't be
+done by people?**
+
+Most of the *pages* can. 73% of the work is text a consumer machine handles, at
+about 91 seconds a page — a typical document takes an hour and a half, which is
+exactly the "ask for your town, come back after dinner" model. But prose pages
+average 4.2 records and a third yield nothing, while a table page yields around
+eighteen. So tables are probably the majority of the *measurements* while being
+27% of the pages.
+
+That is not a retreat, it is where the line falls. The central rented pass does
+what is expensive and uniform — the vocabulary and the tables — once, and
+everyone inherits it free. People do prose, on demand, which is where places,
+dates, narrative and the entire deliberative record live.
+
+---
+
+## A picture of the paper
+
+Every record already carried a page and a sentence, which is enough for someone
+to check — except that checking meant opening a 300-page scan and hunting for a
+line, so nobody did. The provenance was real and unused, which is most of the way
+to not having it.
+
+Now a record produces a picture of the exact patch of scan its number is written
+on. Checking stops being a task and becomes a glance. It costs nothing:
+archive.org serves IIIF, so a crop is a URL — no image library, no storage, no
+key, no server of mine in the path.
+
+The trap took a while. The two archive.org endpoints number the same sheet
+differently — BookReader `n14` and IIIF `$15` are both that flow table — and
+feeding one index to the other crops the previous page. I briefly believed this
+meant every provenance link in the project was off by one. It doesn't; the
+existing links were right and my new module was wrong. The only way to settle it
+was to fetch both pages and look at them.
+
+---
+
+## Letting anyone correct anything, with nobody moderating
+
+The usual way to take public contributions is to appoint people who decide which
+ones are good. That is the part nobody wants to run, and the part that makes a
+project political — whoever holds the delete button holds the record.
+
+One rule avoids it: **every claim must cite a page and quote a sentence, and the
+archive decides.** That already governs the machine's own output, and nothing
+about it is specific to a model. It never asks who is speaking.
+
+So adding a reading, correcting one, and flagging one become the same operation,
+with one deliberate inequality. An evidenced correction replaces an unevidenced
+record automatically, nobody in the loop. An unevidenced flag is counted and
+shown and changes nothing — because the moment an objection with no evidence can
+outrank a sentence on a page, somebody has to judge the objection.
+
+And when two claims both verify, nobody wins. Both are shown with both crops.
+That is the honest outcome for what verification genuinely cannot catch: *"the
+average influent BOD and suspended solids were 104 mg/1 and 224 mg/1
+respectively"* pairs parameters to values by word order alone, so reading it the
+wrong way round produces a real number from a real sentence and passes every
+check. The machine has no basis to choose. A reader looking at two crops has an
+excellent one, and takes about two seconds — which is only possible because of
+the pictures. The crop is what makes refusing to moderate workable rather than
+wishful.
+
+Run over the machine's own records it immediately found two of my bugs. Influent
+and effluent were sharing an identity, so Brantford's 1962 raw sewage at 210 ppm
+and its effluent at 10 ppm were reported as a contradiction — they are the plant
+working. And the strict digit check was convicting the extractor of the
+scanner's crime: 1960s scans render 15 as "I5", so correct readings were being
+thrown out.
+
+```
+settled     535 → 617
+contested    76 → 56
+unsupported  29 → 13
+```
+
+Then it found something nobody was looking for. 27 of the 56 remaining disputes
+are one sentence read two ways, and most are the same shape: a comparison
+sentence carrying two years' numbers. *"The average solids concentrations of
+5.1% was less than the 1968 average of 5.3%"* files both under 1969. 8.2% of all
+records come from a sentence naming another year.
+
+I built the fix — attribute each value to its nearest year — and it was wrong.
+It moved fourteen records and got several wrong in a new direction, because in
+*"an increase of 0.7 percent over 1967 flows"* the 0.7 is the 1968 increase, not
+a 1967 value. Telling those apart is grammar, not proximity. So the sentence is
+flagged and a person decides, which is what the contested view is for. An
+invisible wrong year turns a flat series into a trend, and that is the failure
+this whole project exists to avoid.
+
+---
+
+## The ruler was wrong again
+
+Third time. The corpus-wide vision trial's first page scored **0%** on the
+fabrication control — the signal that means the model invented a table.
+
+It hadn't. The page is a Statistics Canada salt table, and Statistics Canada
+writes thousands with a space: `69 689`. My control tokenised the page into
+number-shaped strings, so that became "69" and "689" and never matched the
+model's entirely correct 69689. All twenty-five values were right.
+
+The pattern across all three occasions is worth writing down, because it is not
+obvious and it has cost me a day each time: **a control stricter than the world
+reports a catastrophe, and a catastrophe is the one result nobody double-checks.**
+49% precision, nine silent municipalities, 0% of values on the page. Each time
+the instinct was to fix the thing being measured. Each time the measurement was
+the problem.
+
+---
+
 ## Where it stands
 
 | | |
 |---|---|
-| Commits | 38 |
-| Tests | 331 |
+| Commits | 47 |
+| Tests | 397 |
 | Documents read | 22 of 104,241 |
+| Pages worth reading | 69.5% of the corpus (was 48.5%) |
 | Precision / recall | 88.7% / 82.5% — blind page 88/88 |
 | Quotes failing verification | 0 of 286 |
+| Vision values found on their own page | 58 of 58, across four documents |
+| Measurements settled / contested / unsupported | 617 / 56 / 13 |
 | Dependencies in the core | none |
 
-The pipeline works and is measured. It has barely been pointed at anything. Those
-are both true and the second one is the point: what needs funding isn't the
+The pipeline works and is measured. It has barely been pointed at anything.
+Those are both true and the second one is the point: what needs funding isn't the
 tooling, which exists — it's the reading.
+
+Three things I would not have found alone, all from someone asking a plain
+question about a document: a fifth of the archive being discarded on line width,
+the entire deliberative record sitting unread, and the fact that a picture of the
+paper is what makes open contribution possible without a moderator.
