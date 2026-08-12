@@ -280,3 +280,28 @@ def test_a_misfiled_month_with_no_year_does_not_invent_one():
 
     assert _period_of({"place": "April", "period": ""}) is None
     assert _period_of({"place": "April", "period": "1962-05"}) == "1962-05"
+
+
+def test_whitespace_around_a_slash_is_not_a_different_unit():
+    """A correct extraction was scored as both a miss and a fabrication.
+
+    The gold set writes "gal/ft2/day"; the model returned "gal/ft2 /day" for the
+    same reading. Nothing about a space beside a solidus changes what the unit
+    means, and the mismatch cost the record twice -- once in recall and once in
+    precision.
+    """
+    assert norm_unit("gal/ft2 /day") == norm_unit("gal/ft2/day")
+    assert norm_unit("lb / day") == norm_unit("lb/day")
+
+
+def test_normalising_units_does_not_flatten_a_real_difference():
+    """The scorer must not be loosened into flattering itself.
+
+    "pounds" and "pounds per month" are the same value with different precision,
+    and treating them as equal would raise the published accuracy by pretending
+    a rate was recorded when only a quantity was. That is the ruler bending to
+    the thing it measures, which this project has already done once at a cost
+    of most of a day.
+    """
+    assert norm_unit("pounds") != norm_unit("pounds per month")
+    assert norm_unit("gallons") != norm_unit("gallons per month")

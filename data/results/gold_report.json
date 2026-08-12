@@ -1,14 +1,15 @@
 {
   "model": "ollama:gemma4:12b",
   "totals": {
-    "matched": 47,
-    "missed": 10,
-    "spurious": 6,
-    "recall": 0.8246,
-    "precision": 0.8868,
-    "f1": 0.8545,
+    "matched": 48,
+    "missed": 9,
+    "spurious": 5,
+    "recall": 0.8421,
+    "precision": 0.9057,
+    "f1": 0.8727,
     "kind_accuracy": 1.0,
-    "stream_accuracy": 0.8667
+    "stream_accuracy": 0.8,
+    "stream_pairs_judged": 10
   },
   "records": [
     {
@@ -1390,5 +1391,11 @@
       "key": "86d0106d059295db94ea"
     }
   ],
-  "rescored": true
+  "rescored": true,
+  "scored_documents": [
+    "owensoundwaterpo24477"
+  ],
+  "gold_documents_not_scored": [
+    "hamiltonadventur00unse"
+  ]
 }

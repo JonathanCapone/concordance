@@ -62,10 +62,25 @@ def main() -> int:
             by_ident.setdefault(r.provenance.identifier, []).append(r)
 
     scores = []
+    scored: list[str] = []
+    skipped: list[str] = []
     for gold_path in sorted(glob.glob(args.gold)):
         gold = load_gold(gold_path)
         ident = gold["identifier"]
         got_all = by_ident.get(ident, [])
+        # A gold document the saved run never touched is not a document the
+        # extractor failed on. Scoring it turned every one of its entries into a
+        # miss and dropped published recall from 82.5% to 70.6% the moment a
+        # second gold document was added -- punishing the run for a page it was
+        # never asked to read.
+        #
+        # This is the mirror of the stream-accuracy bug fixed alongside it: one
+        # control flattered itself on an empty page and the other convicted
+        # itself. Both come from treating "no data" as a score.
+        if not got_all:
+            skipped.append(ident)
+            continue
+        scored.append(ident)
         print(f"\n=== {ident} ===")
         for page_str, entries in gold["pages"].items():
             page_no = int(page_str)
@@ -81,6 +96,13 @@ def main() -> int:
     report = Report(scores=scores)
     print("\n" + report.render())
     print(f"\nmodel: {model}  (records re-scored, not re-extracted)")
+    if skipped:
+        print(f"\nNOT SCORED -- the saved run contains no records for "
+              f"{len(skipped)} gold document(s):")
+        for ident in skipped:
+            print(f"  {ident}")
+        print("Run scripts/run_gold.py to extract them; until then this figure")
+        print("describes the documents listed above it and no others.")
 
     # Write the corrected totals back. Without this the report file keeps
     # whatever the scorer produced when extraction last ran, and everything
@@ -91,6 +113,10 @@ def main() -> int:
     payload = json.loads(path.read_text(encoding="utf-8"))
     payload["totals"] = report.totals
     payload["rescored"] = True
+    # Which documents the figure actually describes. Without this the file says
+    # "precision 90.6%" and cannot say of what.
+    payload["scored_documents"] = scored
+    payload["gold_documents_not_scored"] = skipped
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"updated totals in {path}")
     return 0

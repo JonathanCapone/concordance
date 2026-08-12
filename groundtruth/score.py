@@ -58,6 +58,11 @@ def norm_unit(unit: str | None) -> str:
     if not unit:
         return ""
     u = re.sub(r"\s+", " ", str(unit).replace(".", " ").strip().lower())
+    # Whitespace around a solidus carries no meaning. The gold set writes
+    # "gal/ft2/day" and the model returned "gal/ft2 /day" for the same reading,
+    # and the two failed to match -- a correct extraction scored as both a miss
+    # and a fabrication, costing twice.
+    u = re.sub(r"\s*/\s*", "/", u)
     u = re.sub(r"\s+", " ", u)
     if u in UNIT_ALIASES:
         return UNIT_ALIASES[u]
@@ -238,6 +243,9 @@ class Report:
         kind_ok = sum(
             1 for s in self.scores for x in s.matches if x.gold.get("kind") == x.got.kind
         )
+        stream_pairs = [x for s in self.scores for x in s.matches if x.gold.get("stream")]
+        stream_n = len(stream_pairs)
+        stream_ok = sum(1 for x in stream_pairs if x.gold.get("stream") == x.got.stream)
         return {
             "matched": m,
             "missed": miss,
@@ -246,7 +254,17 @@ class Report:
             "precision": round(precision, 4),
             "f1": round(f1, 4),
             "kind_accuracy": round(kind_ok / m, 4) if m else 1.0,
-            "stream_accuracy": round(self._agg("stream_accuracy"), 4),
+            # Micro-averaged over every stream-bearing pair, not the mean of
+            # per-page rates. PageScore.stream_accuracy returns 1.0 when a page
+            # has nothing to judge, which is right for a page and wrong for a
+            # total: adding a gold page that the extractor missed entirely
+            # raised the published figure from 86.7% to 90.0%, because a page
+            # with no matches contributed a perfect score.
+            #
+            # A control that improves when the thing it measures fails is not a
+            # control. This project has now built four of those.
+            "stream_accuracy": round(stream_ok / stream_n, 4) if stream_n else None,
+            "stream_pairs_judged": stream_n,
         }
 
     def render(self) -> str:
@@ -263,7 +281,10 @@ class Report:
             f"  f1               {t['f1']:.1%}",
             "",
             f"  kind accuracy    {t['kind_accuracy']:.1%}   (observation vs design vs standard)",
-            f"  stream accuracy  {t['stream_accuracy']:.1%}   (influent vs effluent)",
+            (f"  stream accuracy  {t['stream_accuracy']:.1%}   "
+             f"(influent vs effluent, {t['stream_pairs_judged']} pairs judged)"
+             if t["stream_accuracy"] is not None
+             else "  stream accuracy  not judged -- no matched pair carried a stream"),
         ]
         confusions = [c for s in self.scores for c in s.kind_confusions()]
         if confusions:
