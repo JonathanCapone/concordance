@@ -2,8 +2,8 @@
   "pages_worth_reading": 15359499,
   "text_pages": 11212434,
   "table_pages": 4147065,
-  "expected_measurements": 130033522,
-  "share_of_measurements_from_tables": 0.638,
+  "expected_measurements": 150768847,
+  "share_of_measurements_from_tables": 0.688,
   "tokens": {
     "text_input": 12611185141,
     "text_output": 2915232840,
@@ -13,7 +13,7 @@
   },
   "local_machine_years": {
     "prose": 62.3,
-    "vision": 77.3
+    "vision": 63.1
   },
   "rented": [
     {
