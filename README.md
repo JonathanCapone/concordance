@@ -94,18 +94,22 @@ Three things follow, and all three change the plan rather than decorate it.
 
 **Nine out of ten documents in this archive contain measurements.** The premise holds.
 
-**Local inference cannot touch the whole thing.** At the throughput measured on a consumer GPU,
-reading every page is roughly **62 machine-years of prose plus 73 of tables**. A corpus-wide pass
-is therefore not a local job and should never be described as one: it is a funded batch run,
-performed once, after which the resulting dataset costs everyone else nothing. On rented hardware
-that is **$1,510–3,019 for the text alone** or **$4,251–8,502 for both paths** — a reference
-figure rather than the plan, for the reasons the application gives, against an
-expected yield of about 122 million measurements. `scripts/cost_model.py` shows the arithmetic and
-names the estimate the answer is most sensitive to.
+**Nobody is going to read all of it at once, and that is fine.** At the throughput measured on a
+consumer GPU, reading every page is roughly **62 machine-years of prose plus 73 of tables**.
+Renting that would cost **$4,251–8,502**, against an expected yield of about **151 million
+measurements**. `scripts/cost_model.py` shows the arithmetic and names the estimate the answer is
+most sensitive to.
 
-**Which is why the split is what it is.** The central run does what is expensive and uniform —
-the vocabulary, and the tables. People do prose, on demand, on their own machines, which is where
-places, dates, narrative and the entire deliberative record live.
+That figure is a reference point, not a plan. A corpus bought in one batch is finished the day the
+money runs out — it never extends, and the next person who wants a document nobody thought to read
+has no way to get it. So reading happens **because somebody asked**: request a place, and if you
+are the first, your machine reads it and it is there for everyone after you. `scripts/share.py`
+moves the result between machines as a file, re-verified against archive.org on arrival.
+
+**The honest hole in that** is the vision path. Tables are 27% of pages and most of the actual
+measurements, and they take eight minutes a page on an RTX 2080 because only 18% of a 29.6 GB model
+fits in 8 GB of VRAM. Prose distributes; tables mostly do not, yet. Whether a smaller vision model
+closes that gap is a measurable question and it has not been measured.
 
 ## Four kinds of record
 
