@@ -7,7 +7,7 @@
     "n_records": 25,
     "n_rejected": 0,
     "values_checked": 25,
-    "values_found_in_ocr": 25,
+    "values_found_in_ocr": 0,
     "ocr_chars": 2891,
     "records": [
       {
@@ -712,439 +712,6 @@
       }
     ]
   },
-  "albertaliquorcon1942albe#17": {
-    "stratum": "albertagovernmentpublications",
-    "identifier": "albertaliquorcon1942albe",
-    "page": 17,
-    "seconds": 553.4,
-    "n_records": 15,
-    "n_rejected": 7,
-    "values_checked": 15,
-    "values_found_in_ocr": 15,
-    "ocr_chars": 882,
-    "records": [
-      {
-        "kind": "observation",
-        "parameter": "Inventory, Liquor",
-        "value": 1111056.64,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1942-03-31",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Liquor]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Liquor",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "715b7daa74ba637577db"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Inventory, Beer",
-        "value": 128937.58,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1942-03-31",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Beer]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Beer",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "fcd03d68a1c89264c7e0"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Purchases, liquor",
-        "value": 1291849.06,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Purchases, liquor]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Purchases, liquor",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "124d3de56a65ac321553"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Purchases, confiscated liquor",
-        "value": 257.6,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Purchases, confiscated liquor]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Purchases, confiscated liquor",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "80f12825526db42e0329"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Purchases, jugs and bottles",
-        "value": 40063.88,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Purchases, jugs and bottles]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Purchases, jugs and bottles",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "5f991d47b6e7127ed26c"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Duty and sales tax",
-        "value": 2311667.02,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Duty and sales tax]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Duty and sales tax",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "04bd58b2078cd1b3fa91"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Inward freight",
-        "value": 216208.22,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Inward freight]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Inward freight",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "7b740003991df5bc054e"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Marine insurance",
-        "value": 60353.46,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Marine insurance]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Marine insurance",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "6a8def70fb66737e342c"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Purchases, beer",
-        "value": 7572026.87,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Purchases, beer]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Purchases, beer",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "9ada08a4757239d70d8c"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Cash and trade discounts",
-        "value": 14524.45,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Cash and trade discounts]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Cash and trade discounts",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "4fd4e8e820ce359e4889"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Claims",
-        "value": 6771.12,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Claims]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Claims",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "0850f5428c9661ffc7f8"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Breakages",
-        "value": 164.57,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Breakages]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Breakages",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "b9079510f2dac1403d4e"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Inventory, Liquor",
-        "value": 958045.26,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943-03-31",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Liquor]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Liquor",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "08ec35e51b82f68f6dfb"
-      },
-      {
-        "kind": "observation",
-        "parameter": "Inventory, Beer",
-        "value": 138673.08,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943-03-31",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Beer]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Beer",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "45208a4060cc91936b6b"
-      },
-      {
-        "kind": "conclusion",
-        "parameter": "Cost of goods sold for the year ended March 31, 1943",
-        "value": 11614241.85,
-        "unit": "$",
-        "qualifier": null,
-        "stream": "unknown",
-        "place": null,
-        "period": "1943",
-        "facility": null,
-        "confidence": 0.8,
-        "provenance": {
-          "identifier": "albertaliquorcon1942albe",
-          "page": 17,
-          "source_text": "table cell [Cost of goods sold for the year ended March 31, 1943]",
-          "extractor": "ollama-vision:qwen3.6:latest",
-          "path": "vision",
-          "page_url": "https://archive.org/details/albertaliquorcon1942albe/page/n16/mode/2up"
-        },
-        "comparability_note": null,
-        "notes": null,
-        "raw": {
-          "row_label": "Cost of goods sold for the year ended March 31, 1943",
-          "column_label": "",
-          "model_confidence": 1.0
-        },
-        "key": "39ee4629843355bb702d"
-      }
-    ]
-  },
   "simcoewellsupply1990ontauoft#42": {
     "stratum": "omote",
     "identifier": "simcoewellsupply1990ontauoft",
@@ -1153,7 +720,7 @@
     "n_records": 18,
     "n_rejected": 0,
     "values_checked": 18,
-    "values_found_in_ocr": 18,
+    "values_found_in_ocr": 5,
     "ocr_chars": 325,
     "records": [
       {
@@ -1673,5 +1240,3165 @@
     "values_found_in_ocr": 0,
     "ocr_chars": 1100262,
     "records": []
+  },
+  "micro_IA40243301_0609#102": {
+    "stratum": "microlog",
+    "identifier": "micro_IA40243301_0609",
+    "page": 102,
+    "seconds": 1721.8,
+    "n_records": 26,
+    "n_rejected": 0,
+    "values_checked": 26,
+    "values_found_in_ocr": 26,
+    "ocr_chars": 2135,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 15.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1981-82",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1981-82 / In-House]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1981-82",
+          "column_label": "In-House",
+          "model_confidence": 1.0
+        },
+        "key": "da1a616d1f3f97b4584f"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 100.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1981-82",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1981-82 / Contracts]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1981-82",
+          "column_label": "Contracts",
+          "model_confidence": 1.0
+        },
+        "key": "98d0002a3990609ba25f"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 115.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1981-82",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1981-82 / Total]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1981-82",
+          "column_label": "Total",
+          "model_confidence": 1.0
+        },
+        "key": "6911cb786e936f396555"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 30.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1982-83",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1982-83 / In-House]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1982-83",
+          "column_label": "In-House",
+          "model_confidence": 1.0
+        },
+        "key": "1b61d1f5d1adf3be4024"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 75.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1982-83",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1982-83 / Contracts]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1982-83",
+          "column_label": "Contracts",
+          "model_confidence": 1.0
+        },
+        "key": "139361929e9b01a0c1f1"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 105.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1982-83",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1982-83 / Total]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1982-83",
+          "column_label": "Total",
+          "model_confidence": 1.0
+        },
+        "key": "3b6aab0beb804485fefa"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 40.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1983-84",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1983-84 / In-House]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1983-84",
+          "column_label": "In-House",
+          "model_confidence": 1.0
+        },
+        "key": "2d05f972ca5ae892d503"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 785.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1983-84",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1983-84 / Contracts]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1983-84",
+          "column_label": "Contracts",
+          "model_confidence": 1.0
+        },
+        "key": "bfac4bced1689bc66973"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 825.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1983-84",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1983-84 / Total]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1983-84",
+          "column_label": "Total",
+          "model_confidence": 1.0
+        },
+        "key": "51a3d428cf346da1d9a2"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 75.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1984-85",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1984-85 / In-House]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1984-85",
+          "column_label": "In-House",
+          "model_confidence": 1.0
+        },
+        "key": "40d9ec8901d5d3ed6e4d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 1025.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1984-85",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1984-85 / Contracts]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1984-85",
+          "column_label": "Contracts",
+          "model_confidence": 1.0
+        },
+        "key": "14538df8cde3130ff6fb"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 1100.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1984-85",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1984-85 / Total]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1984-85",
+          "column_label": "Total",
+          "model_confidence": 1.0
+        },
+        "key": "13e0d851dcf05cf73fb4"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 500.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1984-85",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1984-85 / Mining Sector]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1984-85",
+          "column_label": "Mining Sector",
+          "model_confidence": 1.0
+        },
+        "key": "350588a633f47a3a8097"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 75.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1985-86",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1985-86 / In-House]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1985-86",
+          "column_label": "In-House",
+          "model_confidence": 1.0
+        },
+        "key": "ca57e12510abe2e7f189"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 1200.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1985-86",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1985-86 / Contracts]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1985-86",
+          "column_label": "Contracts",
+          "model_confidence": 1.0
+        },
+        "key": "8dc39e79ce20df09f9d0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 1275.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1985-86",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1985-86 / Total]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1985-86",
+          "column_label": "Total",
+          "model_confidence": 1.0
+        },
+        "key": "b83a928516bfea735296"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 525.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1985-86",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1985-86 / Mining Sector]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1985-86",
+          "column_label": "Mining Sector",
+          "model_confidence": 1.0
+        },
+        "key": "53e1f3ca9f7967b28b5d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 300.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1986-87",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1986-87 / In-House]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1986-87",
+          "column_label": "In-House",
+          "model_confidence": 1.0
+        },
+        "key": "c7db140fd9393c01bce5"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 1075.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1986-87",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1986-87 / Contracts]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1986-87",
+          "column_label": "Contracts",
+          "model_confidence": 1.0
+        },
+        "key": "0b2f2d7f4a97bd0eccc6"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 1375.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1986-87",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1986-87 / Total]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1986-87",
+          "column_label": "Total",
+          "model_confidence": 1.0
+        },
+        "key": "dae2fed6bed075ab33bd"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 938.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1986-87",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1986-87 / Mining Sector]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1986-87",
+          "column_label": "Mining Sector",
+          "model_confidence": 1.0
+        },
+        "key": "920153899ce8475e664c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 300.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1987-88",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1987-88 / In-House]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1987-88",
+          "column_label": "In-House",
+          "model_confidence": 1.0
+        },
+        "key": "63c3fc21ce6d4f7d7685"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 1075.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1987-88",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1987-88 / Contracts]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1987-88",
+          "column_label": "Contracts",
+          "model_confidence": 1.0
+        },
+        "key": "28b8497d3890d521bca0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 1375.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1987-88",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1987-88 / Total]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1987-88",
+          "column_label": "Total",
+          "model_confidence": 1.0
+        },
+        "key": "7935b0e552e02e5c9ab4"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 715.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1987-88",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1987-88 / Mining Sector]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1987-88",
+          "column_label": "Mining Sector",
+          "model_confidence": 1.0
+        },
+        "key": "41672daaa94e8e7a4ce0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Expenditures ($000)",
+        "value": 420.0,
+        "unit": "$000",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1988-89",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "micro_IA40243301_0609",
+          "page": 102,
+          "source_text": "table cell [1988-89 / In-House]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/micro_IA40243301_0609/page/n101/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1988-89",
+          "column_label": "In-House",
+          "model_confidence": 1.0
+        },
+        "key": "ce61372e3031d9259080"
+      }
+    ]
+  },
+  "1915v50i24p30_1137#231": {
+    "stratum": "sessionalpaperscanada_title",
+    "identifier": "1915v50i24p30_1137",
+    "page": 231,
+    "seconds": 586.8,
+    "n_records": 30,
+    "n_rejected": 0,
+    "values_checked": 30,
+    "values_found_in_ocr": 30,
+    "ocr_chars": 2269,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 900.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [**Robichaud, Domitien T.. / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "**Robichaud, Domitien T..",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "3a5376ee6305aebcc102"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 900.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Lisle, Edward............ / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Lisle, Edward............",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "3a5376ee6305aebcc102"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 900.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Hiney, Ernest M.......... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Hiney, Ernest M..........",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "3a5376ee6305aebcc102"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 900.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Townshend, Herbert O..... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Townshend, Herbert O.....",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "3a5376ee6305aebcc102"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 900.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Steeves, Clarence E...... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Steeves, Clarence E......",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "3a5376ee6305aebcc102"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 900.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [**Cordelle, Harry Hart.... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "**Cordelle, Harry Hart....",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "3a5376ee6305aebcc102"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 900.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Smith, Sydney B.......... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Smith, Sydney B..........",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "3a5376ee6305aebcc102"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 850.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Todd, Wm. R.............. / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Todd, Wm. R..............",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "4902c5198308ab0622fd"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 800.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Legault, Joseph Cléophas.. / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Legault, Joseph Cléophas..",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "58b1a417874ee2c99303"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 1050.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Delaney, Mary Ellen...... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Delaney, Mary Ellen......",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "bbfea4d89be03212292a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 1000.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Killeen, Thos. Lawrence.. / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Killeen, Thos. Lawrence..",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "7e9a51f7b45f01281b7c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 1000.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Johnston, Vera Waters.... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Johnston, Vera Waters....",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "7e9a51f7b45f01281b7c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 950.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Dupuis, Joseph Rodolphe.. / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Dupuis, Joseph Rodolphe..",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "631585ec0763499b9b5a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 950.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Vézina, Oscar............ / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Vézina, Oscar............",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "631585ec0763499b9b5a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 800.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [***Robson, Harold Spencer / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "***Robson, Harold Spencer",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "58b1a417874ee2c99303"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 700.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Lyon, Mary Charlotte..... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Lyon, Mary Charlotte.....",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "a682faacc5d929fd0ac8"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 650.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Robertson, Muriel Stuart.. / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Robertson, Muriel Stuart..",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "a930c49a1279dfe3b46b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 650.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [White, Edith............. / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "White, Edith.............",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "a930c49a1279dfe3b46b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 650.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Barry, Annie L........... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Barry, Annie L...........",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "a930c49a1279dfe3b46b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Fairbairn, Helen......... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Fairbairn, Helen.........",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "025c0e707eec41b3338b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Church, Lea.............. / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Church, Lea..............",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "025c0e707eec41b3338b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Long, Mabel, Anna........ / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Long, Mabel, Anna........",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "025c0e707eec41b3338b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Lacombe, Arthur.......... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Lacombe, Arthur..........",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "025c0e707eec41b3338b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Carter, Nora R........... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Carter, Nora R...........",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "025c0e707eec41b3338b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [**Bastedo, Marjorie O.... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "**Bastedo, Marjorie O....",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "025c0e707eec41b3338b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 550.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Johnson, Erma Rhoda...... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Johnson, Erma Rhoda......",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "d5f24cd5df972d4d3ab2"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 550.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Thompson, Beatrice A..... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Thompson, Beatrice A.....",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "d5f24cd5df972d4d3ab2"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 550.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Noble, Bertha A.......... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Noble, Bertha A..........",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "d5f24cd5df972d4d3ab2"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 500.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Edmonds, Katharine M..... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Edmonds, Katharine M.....",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "9e3a31790bd6e51d09d7"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Salary",
+        "value": 500.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1915v50i24p30_1137",
+          "page": 231,
+          "source_text": "table cell [Larcher, Marie O. A...... / Salary.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/1915v50i24p30_1137/page/n230/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Larcher, Marie O. A......",
+          "column_label": "Salary.",
+          "model_confidence": 1.0
+        },
+        "key": "9e3a31790bd6e51d09d7"
+      }
+    ]
+  },
+  "documents56s1880cana#146": {
+    "stratum": "documentsdelasessioncanada",
+    "identifier": "documents56s1880cana",
+    "page": 146,
+    "seconds": 499.8,
+    "n_records": 29,
+    "n_rejected": 0,
+    "values_checked": 29,
+    "values_found_in_ocr": 29,
+    "ocr_chars": 2045,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 2600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 préfet / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 préfet",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "cf3663744e36aee824a0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 2600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 préfet / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 préfet",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "4a22c009778e8a8517a3"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 1400.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 sous-préfet / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 sous-préfet",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "a25cb81abb06273df419"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 1400.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 sous-préfet / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 sous-préfet",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "9980328ea7036d7533ab"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 2400.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [2 aumôniers / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "2 aumôniers",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "acca93163b842966d597"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 2400.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [2 aumôniers / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "2 aumôniers",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "4a4209d9cd140ee71092"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 1200.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 chirurgien / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 chirurgien",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "e57e0873df68c9f01ca9"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 1200.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 chirurgien / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 chirurgien",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "d88e0e43fe49a2835d56"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 1000.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 comptable / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 comptable",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "2c995ba8654058ee3f2f"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 1000.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 comptable / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 comptable",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "e7b26104bf4cfa0686ac"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 700.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 commis du préfet / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 commis du préfet",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "7afbea91fa4339a92404"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 699.96,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 commis du préfet / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 commis du préfet",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "0ae5c1aef3caafe8f785"
+      },
+      {
+        "kind": "observation",
+        "parameter": "En moins",
+        "value": 0.04,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 commis du préfet / En moins.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 commis du préfet",
+          "column_label": "En moins.",
+          "model_confidence": 1.0
+        },
+        "key": "58f701f26b6212f1c895"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 800.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 gardien en chef / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 gardien en chef",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "4f97c1cf664075032601"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 799.92,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 gardien en chef / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 gardien en chef",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "623ddd8d45c38e4115f1"
+      },
+      {
+        "kind": "observation",
+        "parameter": "En moins",
+        "value": 0.08,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 gardien en chef / En moins.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 gardien en chef",
+          "column_label": "En moins.",
+          "model_confidence": 1.0
+        },
+        "key": "dcfc18bef300fcc71007"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 700.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 garde-magasin / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 garde-magasin",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "7afbea91fa4339a92404"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 699.96,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 garde-magasin / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 garde-magasin",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "0ae5c1aef3caafe8f785"
+      },
+      {
+        "kind": "observation",
+        "parameter": "En moins",
+        "value": 0.04,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 garde-magasin / En moins.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 garde-magasin",
+          "column_label": "En moins.",
+          "model_confidence": 1.0
+        },
+        "key": "58f701f26b6212f1c895"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 instituteur / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 instituteur",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "3a13186529c65490f662"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 600.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 instituteur / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 instituteur",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "92469aab9140f991e29a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 650.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 économe / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 économe",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "bfc4ecc06d5ef9ab9450"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 649.92,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 économe / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 économe",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "6d150708a5c0525b4e66"
+      },
+      {
+        "kind": "observation",
+        "parameter": "En moins",
+        "value": 0.08,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 économe / En moins.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 économe",
+          "column_label": "En moins.",
+          "model_confidence": 1.0
+        },
+        "key": "dcfc18bef300fcc71007"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 1000.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 commis des travaux et instructeur en chef des métiers / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 commis des travaux et instructeur en chef des métiers",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "2c995ba8654058ee3f2f"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 999.96,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 commis des travaux et instructeur en chef des métiers / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 commis des travaux et instructeur en chef des métiers",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "488ed4633954e217a51d"
+      },
+      {
+        "kind": "observation",
+        "parameter": "En moins",
+        "value": 0.04,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [1 commis des travaux et instructeur en chef des métiers / En moins.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "1 commis des travaux et instructeur en chef des métiers",
+          "column_label": "En moins.",
+          "model_confidence": 1.0
+        },
+        "key": "58f701f26b6212f1c895"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Crédit",
+        "value": 1400.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [2 instructeurs de métiers, 1re classe / Crédit.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "2 instructeurs de métiers, 1re classe",
+          "column_label": "Crédit.",
+          "model_confidence": 1.0
+        },
+        "key": "a25cb81abb06273df419"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Dépense",
+        "value": 1399.92,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1879",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "documents56s1880cana",
+          "page": 146,
+          "source_text": "table cell [2 instructeurs de métiers, 1re classe / Dépense.]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/documents56s1880cana/page/n145/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "2 instructeurs de métiers, 1re classe",
+          "column_label": "Dépense.",
+          "model_confidence": 1.0
+        },
+        "key": "3e222aef9618a80ef4d2"
+      }
+    ]
+  },
+  "annualreportcomm1933toro#30": {
+    "stratum": "canadianmunicipal",
+    "identifier": "annualreportcomm1933toro",
+    "page": 30,
+    "seconds": 474.3,
+    "n_records": 26,
+    "n_rejected": 0,
+    "values_checked": 26,
+    "values_found_in_ocr": 24,
+    "ocr_chars": 3658,
+    "records": [
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 21769768.33,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1933",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [At Large / 1933]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "At Large",
+          "column_label": "1933",
+          "model_confidence": 1.0
+        },
+        "key": "f5c17a51709fc179598f"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 22047009.49,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1932",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [At Large / 1932]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "At Large",
+          "column_label": "1932",
+          "model_confidence": 1.0
+        },
+        "key": "e446b77fd5d898b7ac4b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 22074361.32,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1931",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [At Large / 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "At Large",
+          "column_label": "1931",
+          "model_confidence": 1.0
+        },
+        "key": "8bd267b91b7157df4015"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+        "value": 304592.99,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [At Large / Increase (+) or Decrease (-) 1933 Compared with 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "At Large",
+          "column_label": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+          "model_confidence": 1.0
+        },
+        "key": "02ddff56c8f720ad15d1"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 144550.68,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1933",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [City Council / 1933]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "City Council",
+          "column_label": "1933",
+          "model_confidence": 1.0
+        },
+        "key": "5028c3cbc464d7c7ca3c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 338533.87,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1932",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [City Council / 1932]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "City Council",
+          "column_label": "1932",
+          "model_confidence": 1.0
+        },
+        "key": "8d83df759d2ec9428b05"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 315572.3,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1931",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [City Council / 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "City Council",
+          "column_label": "1931",
+          "model_confidence": 1.0
+        },
+        "key": "c77dee2ea6b9b4c79a8f"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+        "value": 171021.62,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [City Council / Increase (+) or Decrease (-) 1933 Compared with 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "City Council",
+          "column_label": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+          "model_confidence": 1.0
+        },
+        "key": "30ce0e62852e6656c931"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 162060.47,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1933",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [City Clerk's Dept. / 1933]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "City Clerk's Dept.",
+          "column_label": "1933",
+          "model_confidence": 1.0
+        },
+        "key": "e7111b46866bbc14d54b"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 167355.34,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1932",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [City Clerk's Dept. / 1932]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "City Clerk's Dept.",
+          "column_label": "1932",
+          "model_confidence": 1.0
+        },
+        "key": "452c3c75a5b095b28ee0"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 159362.08,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1931",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [City Clerk's Dept. / 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "City Clerk's Dept.",
+          "column_label": "1931",
+          "model_confidence": 1.0
+        },
+        "key": "3f16b630c5f48a6c7933"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+        "value": 2698.39,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [City Clerk's Dept. / Increase (+) or Decrease (-) 1933 Compared with 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "City Clerk's Dept.",
+          "column_label": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+          "model_confidence": 1.0
+        },
+        "key": "46ae1ae68469095a384a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 438141.41,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1933",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Treasury Department / 1933]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Treasury Department",
+          "column_label": "1933",
+          "model_confidence": 1.0
+        },
+        "key": "b77e1d7d3577f42c35bc"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 487013.16,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1932",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Treasury Department / 1932]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Treasury Department",
+          "column_label": "1932",
+          "model_confidence": 1.0
+        },
+        "key": "a56015c44895f4a70875"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 506847.2,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1931",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Treasury Department / 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Treasury Department",
+          "column_label": "1931",
+          "model_confidence": 1.0
+        },
+        "key": "6af6289e11821046c74c"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+        "value": 68705.79,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Treasury Department / Increase (+) or Decrease (-) 1933 Compared with 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Treasury Department",
+          "column_label": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+          "model_confidence": 1.0
+        },
+        "key": "df8e4795621e281af6e9"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 285032.8,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1933",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Assessment Dept. / 1933]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Assessment Dept.",
+          "column_label": "1933",
+          "model_confidence": 1.0
+        },
+        "key": "0f68c614dbb793ab529a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 308189.93,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1932",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Assessment Dept. / 1932]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Assessment Dept.",
+          "column_label": "1932",
+          "model_confidence": 1.0
+        },
+        "key": "65f4eb956facd699ff6e"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 319711.54,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1931",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Assessment Dept. / 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Assessment Dept.",
+          "column_label": "1931",
+          "model_confidence": 1.0
+        },
+        "key": "4f743445020aa24e74fd"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+        "value": 34678.74,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Assessment Dept. / Increase (+) or Decrease (-) 1933 Compared with 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Assessment Dept.",
+          "column_label": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+          "model_confidence": 1.0
+        },
+        "key": "5a0df28e2045f5988a29"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 4812.54,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1933",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Court of Revision / 1933]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Court of Revision",
+          "column_label": "1933",
+          "model_confidence": 1.0
+        },
+        "key": "8d9b8d1d3afdba7db018"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 5000.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1932",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Court of Revision / 1932]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Court of Revision",
+          "column_label": "1932",
+          "model_confidence": 1.0
+        },
+        "key": "5b3577ea8fae3d180243"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 5000.0,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1931",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Court of Revision / 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Court of Revision",
+          "column_label": "1931",
+          "model_confidence": 1.0
+        },
+        "key": "146f7ed7c0f1d101d62a"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+        "value": 187.46,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": null,
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Court of Revision / Increase (+) or Decrease (-) 1933 Compared with 1931]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Court of Revision",
+          "column_label": "Increase (+) or Decrease (-) 1933 Compared with 1931",
+          "model_confidence": 1.0
+        },
+        "key": "03710ee7f12bab017138"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 76796.29,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1933",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Law Department / 1933]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Law Department",
+          "column_label": "1933",
+          "model_confidence": 1.0
+        },
+        "key": "d48aede0871c80477645"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Current Expenditures",
+        "value": 91108.32,
+        "unit": "$",
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1932",
+        "facility": null,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "annualreportcomm1933toro",
+          "page": 30,
+          "source_text": "table cell [Law Department / 1932]",
+          "extractor": "ollama-vision:qwen3.6:latest",
+          "path": "vision",
+          "page_url": "https://archive.org/details/annualreportcomm1933toro/page/n29/mode/2up"
+        },
+        "comparability_note": null,
+        "notes": null,
+        "raw": {
+          "row_label": "Law Department",
+          "column_label": "1932",
+          "model_confidence": 1.0
+        },
+        "key": "72fe0a0e3087c5eca3e4"
+      }
+    ]
   }
 }
