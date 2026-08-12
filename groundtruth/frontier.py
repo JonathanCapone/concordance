@@ -214,6 +214,32 @@ def build(
             value=5.0,
         ))
 
+    # -- 3b. the decision behind the measurement ---------------------------
+    #
+    # The strongest question this archive can be made to answer, and the one it
+    # is closest to answering without knowing it. A treatment plant's numbers
+    # say WHAT happened. The council minutes of the same town say who voted to
+    # build it, who voted against, and what they were told at the time. Both are
+    # in this collection; they have never been in the same room.
+    #
+    # These are cheap by comparison. Minutes need no model at all -- the motion
+    # and roll-call form is a pattern -- so this is the one part of the frontier
+    # that a contributor can finish on a laptop over lunch.
+    for place in sorted(read_places):
+        if not place:
+            continue
+        frontier.questions.append(Question(
+            kind="decision",
+            text=f"Who on {place}'s council voted for the works its numbers describe, "
+                 f"and what were they told?",
+            needs=[f"{place} council minutes"], have=[place],
+            detail="the measurements are read; the decisions behind them are not",
+            # Below a downstream comparison, above a single-place trend: it does
+            # not need a second town, but it turns a series into an account of
+            # why the series looks like that.
+            value=2.5,
+        ))
+
     # -- 4. the silence, checked against readings --------------------------
     for place, years in coverage.items():
         if not years:

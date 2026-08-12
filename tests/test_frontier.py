@@ -76,3 +76,32 @@ def test_an_already_read_town_with_enough_years_is_answerable_now():
     f = build(recs, coverage={"Owen Sound": list(range(1963, 1971))})
     trend = next(q for q in f.questions if q.kind == "trend")
     assert trend.answerable
+
+
+def test_the_decisions_behind_a_town_s_numbers_are_a_question_too():
+    """The archive's strongest unasked question, and the cheapest to close.
+
+    A plant's numbers say what happened. The same town's council minutes say who
+    voted to build it and what they were told. Both are in this collection and
+    they have never been in the same room. Minutes also need no model -- the
+    motion and roll-call form is a pattern -- so this is the part of the frontier
+    a contributor can finish on a laptop.
+    """
+    from groundtruth.frontier import build
+
+    f = build([{"place": "Brantford", "period": "1962"}])
+    decisions = [q for q in f.questions if q.kind == "decision"]
+    assert len(decisions) == 1
+    q = decisions[0]
+    assert "Brantford" in q.text
+    assert q.have == ["Brantford"]
+    assert not q.answerable            # the minutes have not been read
+    assert q.distance == 1
+
+
+def test_a_decision_question_ranks_a_town_whose_numbers_are_already_read():
+    from groundtruth.frontier import build
+
+    f = build([{"place": "Brantford", "period": "1962"}])
+    ranked = {r["place"]: r for r in f.ranked_places()}
+    assert "Brantford council minutes" in ranked
