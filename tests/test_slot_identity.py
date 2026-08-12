@@ -77,3 +77,53 @@ def test_no_published_slot_mixes_kinds() -> None:
         by[slot_of(c.record)].add(c.record.get("kind"))
     mixed = {k: v for k, v in by.items() if len(v) > 1}
     assert not mixed, f"{len(mixed)} slots mix kinds, e.g. {list(mixed)[:2]}"
+
+
+# -- what counts as published data ------------------------------------------
+
+def test_a_benchmark_run_is_not_published_data(tmp_path) -> None:
+    """The loader used to exclude reports by name. The list held "gold_report",
+    the directory also held "gold_report.before-prompt-widening.json", and a
+    superseded accuracy benchmark contributed 53 records of an older
+    extractor's output to the published dataset.
+
+    A blocklist protects against the files you thought of. This tests the
+    positive rule instead: an extraction carries a `place` key and a report
+    does not.
+    """
+    import json
+
+    from groundtruth.tools import Corpus
+
+    (tmp_path / "fergus.json").write_text(json.dumps({
+        "place": "Fergus", "model": "x", "records": [
+            {"kind": "observation", "parameter": "BOD", "value": 12.0,
+             "provenance": {"identifier": "d", "page": 1, "source_text": "BOD was 12."}}]},
+    ), encoding="utf-8")
+    (tmp_path / "gold_report.some-old-run.json").write_text(json.dumps({
+        "model": "x", "totals": {}, "scored_documents": [], "records": [
+            {"kind": "observation", "parameter": "BOD", "value": 999.0,
+             "provenance": {"identifier": "d", "page": 1, "source_text": "BOD was 999."}}]},
+    ), encoding="utf-8")
+
+    corpus = Corpus.load_dir(tmp_path)
+    values = {r.value for r in corpus.records}
+    assert 12.0 in values
+    assert 999.0 not in values, "a benchmark run reached the published dataset"
+
+
+def test_a_merged_contribution_is_still_published_data(tmp_path) -> None:
+    """The other direction: merge_bundle writes place="" on purpose, because a
+    bundle has no single town and its records carry their own. Testing the key
+    for truth rather than presence would silently drop every contribution."""
+    import json
+
+    from groundtruth.tools import Corpus
+
+    (tmp_path / "contributed-abc.json").write_text(json.dumps({
+        "place": "", "contributor": "someone", "records": [
+            {"kind": "observation", "parameter": "BOD", "value": 41.0, "place": "Fergus",
+             "provenance": {"identifier": "d", "page": 1, "source_text": "BOD was 41."}}]},
+    ), encoding="utf-8")
+
+    assert 41.0 in {r.value for r in Corpus.load_dir(tmp_path).records}

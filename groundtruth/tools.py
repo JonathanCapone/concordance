@@ -220,10 +220,34 @@ class Corpus:
     @classmethod
     def load_dir(cls, directory: str | Path = "data/results") -> "Corpus":
         d = Path(directory)
-        # Only per-place extraction files; the accuracy and metadata reports have
-        # a different shape and are not measurements about a town.
-        skip = {"gold_report", "metadata_proposals", "silence_report"}
-        return cls.load(*[p for p in d.glob("*.json") if p.stem not in skip])
+        # Identify extraction files by their SHAPE, not by their name failing to
+        # appear on a list of known reports.
+        #
+        # The list matched exact stems, so "gold_report" was excluded and
+        # "gold_report.before-prompt-widening" was not -- and a superseded
+        # accuracy benchmark contributed 53 records of a previous extractor's
+        # output to the published dataset. The same hole was open for every
+        # future report anybody drops in this directory, which is the defining
+        # weakness of a blocklist: it protects against the files you thought of.
+        #
+        # A per-place extraction carries a `place` key. Reports do not. The key
+        # is tested for PRESENCE, not truth, because a merged contribution
+        # writes place="" deliberately -- its records carry their own places and
+        # a bundle has no single town.
+        out = []
+        for path in sorted(d.glob("*.json")):
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+            except Exception:  # noqa: BLE001
+                continue
+            # Presence of `place`, and nothing else. Not its truth -- a merged
+            # contribution writes place="" because a bundle has no single town.
+            # Not a non-empty `records` either: a town that was read and yielded
+            # nothing is a fact worth keeping, and the frontier depends on
+            # knowing it has been looked at.
+            if isinstance(payload, dict) and "place" in payload:
+                out.append(path)
+        return cls.load(*out)
 
 
 # --------------------------------------------------------------------------
