@@ -1,0 +1,9625 @@
+{
+  "effort": {
+    "readings": 844,
+    "pages": 0,
+    "documents": 0,
+    "strata_planned": 1,
+    "strata_reached": 1
+  },
+  "archive_language": {
+    "readings": 574,
+    "terms_seen": 134,
+    "seen_once": 57,
+    "seen_twice": 23,
+    "miss_rate": 0.0993,
+    "coverage": 0.9007,
+    "judged": true,
+    "terms_estimated_to_exist": 200.5,
+    "estimate_ci95": [
+      167.4,
+      266.3
+    ]
+  },
+  "model_language": {
+    "readings": 270,
+    "terms_seen": 170,
+    "seen_once": 121,
+    "seen_twice": 33,
+    "miss_rate": 0.44815,
+    "coverage": 0.55185,
+    "judged": true,
+    "terms_estimated_to_exist": 383.5,
+    "estimate_ci95": [
+      299.1,
+      523.3
+    ]
+  },
+  "archive_language_excluding_damaged_ocr": {
+    "readings": 574,
+    "terms_seen": 134,
+    "seen_once": 57,
+    "seen_twice": 23,
+    "miss_rate": 0.0993,
+    "coverage": 0.9007,
+    "judged": true,
+    "terms_estimated_to_exist": 200.5,
+    "estimate_ci95": [
+      167.4,
+      266.3
+    ]
+  },
+  "unsettled_only": {
+    "readings": 209,
+    "terms_seen": 63,
+    "seen_once": 30,
+    "seen_twice": 15,
+    "miss_rate": 0.14354,
+    "coverage": 0.85646,
+    "judged": true,
+    "terms_estimated_to_exist": 90.2,
+    "estimate_ci95": [
+      73.8,
+      131.4
+    ]
+  },
+  "contested_terms": 8,
+  "stopping_rule": {
+    "rule": "min coverage across judgeable strata >= target",
+    "target": 0.975,
+    "met": false,
+    "weakest": [
+      {
+        "stratum": "omote",
+        "readings": 574,
+        "terms": 134,
+        "coverage": 0.9007,
+        "judged": true,
+        "still_missing_est": 66.5
+      }
+    ],
+    "unjudged_strata": [],
+    "n_unjudged": 0
+  },
+  "discovery_curve": {
+    "new_terms_per_round": [
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      1,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "readings_per_round": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "controls": {
+    "model_named_share": 0.3199,
+    "ocr_damage_shifts_coverage_by": 0.0,
+    "ocr_damage_material": false
+  },
+  "not_measured": [
+    "Vocabulary on TABLE pages. Only prose pages are read here, and 9.6% of the corpus is tabular with its own vocabulary living in column headers.",
+    "Whether a term MEANS what the vocabulary will say it means. This counts names; a person still decides identities in vocab_builder.",
+    "Terms the extractor never emitted because its prompt did not invite them. Coverage is of what this pipeline can see, not of the documents.",
+    "Anything in strata reported as unjudged -- those have no estimate at all."
+  ],
+  "terms": [
+    {
+      "term": "flow",
+      "measure": "rate",
+      "count": 74,
+      "archive_language": true,
+      "verbatim_sightings": 57,
+      "strata": [
+        "omote"
+      ],
+      "families": 7,
+      "units": [
+        [
+          "million gallons",
+          38
+        ],
+        [
+          "mg",
+          12
+        ],
+        [
+          "mgd",
+          7
+        ],
+        [
+          "million gallons per day",
+          5
+        ]
+      ],
+      "written_as": [
+        "average daily flow",
+        "daily flow",
+        "maximum daily flow",
+        "flow",
+        "monthly flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "at a flow rate of 12-^ million gallons per day."
+    },
+    {
+      "term": "bod",
+      "measure": "concentration",
+      "count": 55,
+      "archive_language": true,
+      "verbatim_sightings": 30,
+      "strata": [
+        "omote"
+      ],
+      "families": 6,
+      "units": [
+        [
+          "ppm",
+          40
+        ],
+        [
+          "mg/L",
+          12
+        ],
+        [
+          "pounds",
+          2
+        ],
+        [
+          "parts per million",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD",
+        "BOD concentration",
+        "BOD content"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "There was 3,639,400 pounds of BOD (lSl5i tons) and 3,630,000 pounds of suspended solids (1^1$ tpn) in the sewage entering the plant o"
+    },
+    {
+      "term": "hardness",
+      "measure": "concentration",
+      "count": 31,
+      "archive_language": true,
+      "verbatim_sightings": 31,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "mg/L",
+          31
+        ]
+      ],
+      "written_as": [
+        "hardness",
+        "Hardness",
+        "hardness level"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "the aesthetic ODWO indicates that a hardness level of between 80 and 100 mg/L"
+    },
+    {
+      "term": "suspended solids",
+      "measure": "concentration",
+      "count": 29,
+      "archive_language": true,
+      "verbatim_sightings": 22,
+      "strata": [
+        "omote"
+      ],
+      "families": 7,
+      "units": [
+        [
+          "ppm",
+          13
+        ],
+        [
+          "mg/L",
+          12
+        ],
+        [
+          "pounds",
+          2
+        ],
+        [
+          "parts per million",
+          1
+        ]
+      ],
+      "written_as": [
+        "suspended solids",
+        "suspended solids concentration",
+        "Suspended Solids",
+        "suspended solids content"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "There was 3,639,400 pounds of BOD (lSl5i tons) and 3,630,000 pounds of suspended solids (1^1$ tpn) in the sewage entering the plant o"
+    },
+    {
+      "term": "capacity",
+      "measure": "capacity",
+      "count": 12,
+      "archive_language": true,
+      "verbatim_sightings": 6,
+      "strata": [
+        "omote"
+      ],
+      "families": 5,
+      "units": [
+        [
+          "million gallons per day",
+          4
+        ],
+        [
+          "MGD",
+          3
+        ],
+        [
+          "mgd",
+          3
+        ],
+        [
+          "m3/day",
+          1
+        ]
+      ],
+      "written_as": [
+        "capacity",
+        "Capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "pumped by four raw sewage pumps, each having a capacity of 3«5 million gallons per day, to two detritors located"
+    },
+    {
+      "term": "flow",
+      "measure": "total",
+      "count": 12,
+      "archive_language": true,
+      "verbatim_sightings": 12,
+      "strata": [
+        "omote"
+      ],
+      "families": 5,
+      "units": [
+        [
+          "million gallons",
+          9
+        ],
+        [
+          "mg",
+          3
+        ]
+      ],
+      "written_as": [
+        "total flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The total flow for the year was 2082 million gallons"
+    },
+    {
+      "term": "raw sewage bod",
+      "measure": "concentration",
+      "count": 11,
+      "archive_language": true,
+      "verbatim_sightings": 9,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "ppm",
+          7
+        ],
+        [
+          "mg/L",
+          4
+        ]
+      ],
+      "written_as": [
+        "raw sewage BOD",
+        "raw sewage BOD concentration",
+        "Raw Sewage BOD"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average raw sewage BOD of 185 mg/1 was approximately 9 percent above the design value of 170 mg/1 with this design value being exceeded about 70 percent of "
+    },
+    {
+      "term": "design flow exceedance frequency",
+      "measure": "frequency",
+      "count": 11,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "%",
+          6
+        ],
+        [
+          "percent",
+          5
+        ]
+      ],
+      "written_as": [
+        "design flow exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "suspended solids removal",
+      "measure": "removal",
+      "count": 10,
+      "archive_language": true,
+      "verbatim_sightings": 6,
+      "strata": [
+        "omote"
+      ],
+      "families": 4,
+      "units": [
+        [
+          "%",
+          7
+        ],
+        [
+          "percent",
+          3
+        ]
+      ],
+      "written_as": [
+        "suspended solids removal",
+        "Suspended Solids Removal"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "and 95 percent suspended solids removal."
+    },
+    {
+      "term": "effluent bod",
+      "measure": "concentration",
+      "count": 10,
+      "archive_language": true,
+      "verbatim_sightings": 5,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "mg/L",
+          6
+        ],
+        [
+          "ppm",
+          4
+        ]
+      ],
+      "written_as": [
+        "effluent BOD",
+        "effluent BOD concentration"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average effluent BOD and suspended solids concentrations were 13 ppm and 9 ppm re- spectively."
+    },
+    {
+      "term": "effluent suspended solids",
+      "measure": "concentration",
+      "count": 10,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "mg/L",
+          6
+        ],
+        [
+          "ppm",
+          4
+        ]
+      ],
+      "written_as": [
+        "effluent suspended solids",
+        "effluent suspended solids concentration"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The effluent suspended solids concentrations of 15 mg/1 compared with the average effluent quality of 12 mg/1 in 1968 ."
+    },
+    {
+      "term": "bod reduction",
+      "measure": "removal",
+      "count": 9,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 5,
+      "units": [
+        [
+          "percent",
+          5
+        ],
+        [
+          "%",
+          4
+        ]
+      ],
+      "written_as": [
+        "BOD reduction"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "suspended solids reduction",
+      "measure": "removal",
+      "count": 9,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 5,
+      "units": [
+        [
+          "percent",
+          5
+        ],
+        [
+          "%",
+          4
+        ]
+      ],
+      "written_as": [
+        "suspended solids reduction"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "A suspended solids reduction of 85.0^ was obtained."
+    },
+    {
+      "term": "temperature",
+      "measure": "concentration",
+      "count": 9,
+      "archive_language": true,
+      "verbatim_sightings": 9,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "°C",
+          9
+        ]
+      ],
+      "written_as": [
+        "temperature"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "It is desirable that the temperature of drinking water be less than 15°C."
+    },
+    {
+      "term": "ml ss",
+      "measure": "concentration",
+      "count": 8,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ppm",
+          8
+        ]
+      ],
+      "written_as": [
+        "ML.SS."
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "lbs boo per 100 lbs fti l s",
+      "measure": "",
+      "count": 8,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "lbs/100 lbs",
+          8
+        ]
+      ],
+      "written_as": [
+        "LBS BOO. PER 100 LBS. fti L.S."
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "thms",
+      "measure": "total",
+      "count": 8,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "ug/L",
+          8
+        ]
+      ],
+      "written_as": [
+        "Total THMs",
+        "total THMs"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Total THMs were found at positive levels in 17 treated and distributed water samples analyzed with a maximum level of 188.10 ug/L."
+    },
+    {
+      "term": "design flow",
+      "measure": "capacity",
+      "count": 8,
+      "archive_language": true,
+      "verbatim_sightings": 8,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons per day",
+          4
+        ],
+        [
+          "million gallons",
+          2
+        ],
+        [
+          "mgd",
+          2
+        ]
+      ],
+      "written_as": [
+        "design flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average daily flow of 0. 645 million gallons is 14. 0 percent below the design flow of 0. 75 million gallons per day."
+    },
+    {
+      "term": "bod removal",
+      "measure": "removal",
+      "count": 8,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "%",
+          5
+        ],
+        [
+          "percent",
+          3
+        ]
+      ],
+      "written_as": [
+        "BOD removal",
+        "BOD Removal"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average BOD removal was 46. 4 percent and the average suspended solids removal was 55. 4 percent."
+    },
+    {
+      "term": "ss",
+      "measure": "concentration",
+      "count": 7,
+      "archive_language": true,
+      "verbatim_sightings": 7,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "ppm",
+          7
+        ]
+      ],
+      "written_as": [
+        "SS"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "It is seen that the o.verage BUD and SS of the raw sewage are both 210 ppm."
+    },
+    {
+      "term": "plant capacity",
+      "measure": "capacity",
+      "count": 7,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "mgd",
+          4
+        ],
+        [
+          "million gallons",
+          2
+        ],
+        [
+          "million gallons per day",
+          1
+        ]
+      ],
+      "written_as": [
+        "plant capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "However, it was still well below the rated plant capacity of 12. 5 million gallons per day."
+    },
+    {
+      "term": "cubic feet air per lb bod removed",
+      "measure": "removal",
+      "count": 7,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet",
+          7
+        ]
+      ],
+      "written_as": [
+        "CUBIC FEET AIR PER LB BOD. REMOVED"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "chlorine dosage",
+      "measure": "concentration",
+      "count": 7,
+      "archive_language": true,
+      "verbatim_sightings": 5,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "mg/L",
+          5
+        ],
+        [
+          "mg/l",
+          2
+        ]
+      ],
+      "written_as": [
+        "chlorine dosage",
+        "average chlorine dosage"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "An average chlorine dosage of 2. 5 mg/1 was required to maintain an 0. 5"
+    },
+    {
+      "term": "raw sewage suspended solids",
+      "measure": "concentration",
+      "count": 7,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "ppm",
+          4
+        ],
+        [
+          "mg/L",
+          3
+        ]
+      ],
+      "written_as": [
+        "raw sewage suspended solids",
+        "raw sewage suspended solids concentration"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average raw sewage suspended solids concentration of 233 mg/1 was approximately 33 percent above the desigji value of 175 mg/1 with the design value being e"
+    },
+    {
+      "term": "conductivity",
+      "measure": "concentration",
+      "count": 7,
+      "archive_language": true,
+      "verbatim_sightings": 6,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "umho/cm",
+          6
+        ],
+        [
+          "UMHO/cm",
+          1
+        ]
+      ],
+      "written_as": [
+        "Conductivity",
+        "conductivity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Conductivity exceeded the European Economic Community Aesthetic Guideline Level of 400 umho/cm in all 31 treated and distributed water samples with a maximum re"
+    },
+    {
+      "term": "solids",
+      "measure": "",
+      "count": 6,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "%",
+          6
+        ]
+      ],
+      "written_as": [
+        "solids concentration"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The average solids concentrations of 4. 4% was considerably less than the 1969 average of 5. 1%."
+    },
+    {
+      "term": "operating cost per million gallons",
+      "measure": "rate",
+      "count": 6,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "$",
+          6
+        ]
+      ],
+      "written_as": [
+        "operating cost per million gallons"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The operating cost per million gallons and the cost per pound of BOD removed were $73. 25 and $0. 06 respectively."
+    },
+    {
+      "term": "standard plate count",
+      "measure": "",
+      "count": 6,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "counts/mL",
+          5
+        ],
+        [
+          "organisms/mL",
+          1
+        ]
+      ],
+      "written_as": [
+        "standard plate count",
+        "Standard Plate Count",
+        "Standard plate count"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The limit for Standard Plate Count (at 35 °C after 48 hours) in the ODWO is 500 organisms/mL based on a geometric mean of 5 or more samples."
+    },
+    {
+      "term": "ammonium",
+      "measure": "",
+      "count": 6,
+      "archive_language": true,
+      "verbatim_sightings": 6,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "mg/L",
+          6
+        ]
+      ],
+      "written_as": [
+        "total ammonium",
+        "Total ammonium"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Total ammonium exceeded the European Economic Community Aesthetic Guideline Level of 0.05 mg/L in 25 of 31 treated and distributed water samples with a maximum "
+    },
+    {
+      "term": "aluminum",
+      "measure": "concentration",
+      "count": 6,
+      "archive_language": true,
+      "verbatim_sightings": 6,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "ug/L",
+          6
+        ]
+      ],
+      "written_as": [
+        "aluminum"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The ODWOs indicate that a useful guideline is to maintain a residual below 100 ug/L as aluminum in the water leaving the plant to avoid problems in the distribu"
+    },
+    {
+      "term": "retention period",
+      "measure": "concentration",
+      "count": 6,
+      "archive_language": true,
+      "verbatim_sightings": 6,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "hours",
+          6
+        ]
+      ],
+      "written_as": [
+        "retention period"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "giving a retention period of 1.3 hours at design flow."
+    },
+    {
+      "term": "grit removed",
+      "measure": "removal",
+      "count": 5,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 4,
+      "units": [
+        [
+          "cubic feet",
+          3
+        ],
+        [
+          "cu. ft.",
+          2
+        ]
+      ],
+      "written_as": [
+        "grit removed",
+        "grit removed daily"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "raw sludge volume",
+      "measure": "concentration",
+      "count": 5,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "gallons",
+          2
+        ],
+        [
+          "million gallons",
+          2
+        ],
+        [
+          "cubic yards",
+          1
+        ]
+      ],
+      "written_as": [
+        "raw sludge volume"
+      ],
+      "already_resolves": true,
+      "contested": 4,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "operating cost",
+      "measure": "concentration",
+      "count": 5,
+      "archive_language": true,
+      "verbatim_sightings": 5,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "$",
+          4
+        ],
+        [
+          "cents per cubic yard",
+          1
+        ]
+      ],
+      "written_as": [
+        "operating cost"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "the average unit annual sludge disposal operating cost was 16. 5 cents per cubic yard."
+    },
+    {
+      "term": "fluoride",
+      "measure": "concentration",
+      "count": 5,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "mg/L",
+          5
+        ]
+      ],
+      "written_as": [
+        "fluoride",
+        "fluoride concentration",
+        "Fluoride concentration"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Where fluoridation is practised, the Fluoride concentration recommended in the ODWO is 1.2 mg/L, plus or minus 0.2 mg/L."
+    },
+    {
+      "term": "atrazine",
+      "measure": "",
+      "count": 5,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ng/L",
+          5
+        ]
+      ],
+      "written_as": [
+        "Atrazine"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Health and Welfare Canada have a Maximum Acceptable Concentration (MAC) of 60,000 ng/L for Atrazine in drinking water."
+    },
+    {
+      "term": "cost per pound of bod removed",
+      "measure": "removal",
+      "count": 5,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "$",
+          4
+        ],
+        [
+          "cents",
+          1
+        ]
+      ],
+      "written_as": [
+        "cost per pound of BOD removed"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The operating cost per million gallons and the cost per pound of BOD removed were $73. 25 and $0. 06 respectively."
+    },
+    {
+      "term": "diameter",
+      "measure": "concentration",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          4
+        ]
+      ],
+      "written_as": [
+        "diameter"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The four primary settling tanks are each 70 feet in diameter and re- tain the sewage for 1 | hours at design flowo"
+    },
+    {
+      "term": "raw sewage treated",
+      "measure": "concentration",
+      "count": 4,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          4
+        ]
+      ],
+      "written_as": [
+        "raw sewage treated"
+      ],
+      "already_resolves": true,
+      "contested": 4,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod removed",
+      "measure": "removal",
+      "count": 4,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "tons",
+          3
+        ],
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD removed"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod removal efficiency",
+      "measure": "removal",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "%",
+          4
+        ]
+      ],
+      "written_as": [
+        "BOD removal efficiency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average BOD removal efficiency was 94% in 1969 compared with only 89% in 1968."
+    },
+    {
+      "term": "solids",
+      "measure": "removal",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "percent",
+          2
+        ],
+        [
+          "%",
+          2
+        ]
+      ],
+      "written_as": [
+        "total solids"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The raw sludge averaged 7. 3 percent total solids"
+    },
+    {
+      "term": "selenium",
+      "measure": "",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          3
+        ]
+      ],
+      "written_as": [
+        "selenium"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The ODWO of 10 ug/L for selenium was exceeded in one treated water sample."
+    },
+    {
+      "term": "hexachloroethane",
+      "measure": "",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          2
+        ],
+        [
+          "ng/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "Hexachloroethane"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Hexachloroethane was detected positive levels in the May treated water sample at 10 ug/L."
+    },
+    {
+      "term": "colour",
+      "measure": "",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "HZU",
+          4
+        ]
+      ],
+      "written_as": [
+        "Colour"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Colour exceeded the ODWO Aesthetic Objective of 5 HZU in 20 of 31 treated and distributed water samples with a maximum reported value of 20.5 HZU."
+    },
+    {
+      "term": "dissolved organic carbon",
+      "measure": "",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "mg/L",
+          4
+        ]
+      ],
+      "written_as": [
+        "Dissolved organic carbon"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Dissolved organic carbon exceeded the ODWO Aesthetic Objective of 5.0 mg/L in 2 of 31 treated and distributed water samples with a maximum reported value of 6.5"
+    },
+    {
+      "term": "hexachlorocyclopentadiene",
+      "measure": "",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "ng/L",
+          4
+        ]
+      ],
+      "written_as": [
+        "Hexachlorocyclopentadiene",
+        "hexachlorocyclopentadiene"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Hexachlorocyclopentadiene was found at positive levels in 1 of 6\ntreated and distributed water samples associated with the water\nplant with a reported value of "
+    },
+    {
+      "term": "capacity",
+      "measure": "total",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet",
+          2
+        ],
+        [
+          "gallons",
+          2
+        ]
+      ],
+      "written_as": [
+        "total capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The total capacity is 21,750 cubic feet (135^700 gallons)"
+    },
+    {
+      "term": "aeration tank dimensions",
+      "measure": "",
+      "count": 4,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ft",
+          4
+        ]
+      ],
+      "written_as": [
+        "aeration tank dimensions"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "flows",
+      "measure": "",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          4
+        ]
+      ],
+      "written_as": [
+        "maximum daily flows",
+        "minimum daily flows"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The maximum and minimum daily flows averaged on a monthly basis were 1. 21 million gallons and 0. 39 million gallons respectively."
+    },
+    {
+      "term": "chlorine residual",
+      "measure": "concentration",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "mg/L",
+          3
+        ],
+        [
+          "mg/l",
+          1
+        ]
+      ],
+      "written_as": [
+        "chlorine residual"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "An average chlorine dosage of 1. 9 mg/1 was required to maintain a 0. 5 mg/1 chlorine residual after 15 minutes' contact time."
+    },
+    {
+      "term": "phosphorus",
+      "measure": "concentration",
+      "count": 4,
+      "archive_language": true,
+      "verbatim_sightings": 4,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          4
+        ]
+      ],
+      "written_as": [
+        "Phosphorus"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Phosphorus concentrations in the raw sewage averaged 8.7 mg/1 during 1972 as com- pared to 10.2 mg/1 during the previous year."
+    },
+    {
+      "term": "retention time",
+      "measure": "concentration",
+      "count": 3,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "hours",
+          3
+        ]
+      ],
+      "written_as": [
+        "retention time"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "depth",
+      "measure": "concentration",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "feet",
+          3
+        ]
+      ],
+      "written_as": [
+        "average depth",
+        "depth"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "and have an average depth of 12,25 feet."
+    },
+    {
+      "term": "gas per pound volatile matter",
+      "measure": "concentration",
+      "count": 3,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet/lb",
+          3
+        ]
+      ],
+      "written_as": [
+        "gas per pound volatile matter"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "24 hour flow",
+      "measure": "rate",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          3
+        ]
+      ],
+      "written_as": [
+        "maximum 24 hour flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The maximum 24 hour flow in the past year was 9. 5 million gallons and occurred in the month of March"
+    },
+    {
+      "term": "operating costs",
+      "measure": "",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          2
+        ],
+        [
+          "$ per million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "operating costs"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The operating costs for the Brantford Water Pollution Control Plant in 1966 were $188, 867. 51 or $75. 83 per million gallons treated."
+    },
+    {
+      "term": "flow",
+      "measure": "removal",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "percent",
+          2
+        ],
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "total flow",
+        "average flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "This represents an increase of 4% over the 1965 total flow."
+    },
+    {
+      "term": "grit",
+      "measure": "concentration",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "cubic feet per million gallons",
+          2
+        ],
+        [
+          "cu ft",
+          1
+        ]
+      ],
+      "written_as": [
+        "grit"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "An average of 2. 6 cubic feet of grit per million gallons of raw sewage was removed which is a slight increase over the 2. 5 cubic feet in 1965."
+    },
+    {
+      "term": "mixed liquor suspended solids",
+      "measure": "concentration",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          3
+        ]
+      ],
+      "written_as": [
+        "mixed liquor suspended solids",
+        "mixed liquor suspended solids concentration"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The mixed liquor suspended solids averaged 2,930 mg/1, 14% greater than the 1968."
+    },
+    {
+      "term": "residual chlorine",
+      "measure": "concentration",
+      "count": 3,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "mg/L",
+          2
+        ],
+        [
+          "mg/l",
+          1
+        ]
+      ],
+      "written_as": [
+        "residual chlorine"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "rated capacity",
+      "measure": "capacity",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 3,
+      "units": [
+        [
+          "x 1000 m-^/day",
+          1
+        ],
+        [
+          "x 1000 m3/day",
+          1
+        ],
+        [
+          "1000 m^/day",
+          1
+        ]
+      ],
+      "written_as": [
+        "rated capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "This plant has a rated capacity of 104 x 1000 m-^/day."
+    },
+    {
+      "term": "water quality",
+      "measure": "",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [],
+      "written_as": [
+        "water quality"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "There were no noticeable effects on the raw or treated water quality."
+    },
+    {
+      "term": "beryllium",
+      "measure": "",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          3
+        ]
+      ],
+      "written_as": [
+        "Beryllium"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The Beryllium value of .21 ug/L in the November treated water sample"
+    },
+    {
+      "term": "sewage treated",
+      "measure": "total",
+      "count": 3,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "million gallons",
+          3
+        ]
+      ],
+      "written_as": [
+        "total sewage treated"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "flow exceedance frequency",
+      "measure": "frequency",
+      "count": 3,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "percent",
+          2
+        ],
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "total flow exceedance frequency",
+        "daily flow exceedance frequency",
+        "flow exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "amount hauled per month",
+      "measure": "",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          3
+        ]
+      ],
+      "written_as": [
+        "maximum amount hauled per month",
+        "minimum amount hauled per month",
+        "average amount hauled per month"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The maximum amount hauled per month v/as 115,473 gallons in January"
+    },
+    {
+      "term": "capacity exceedance frequency",
+      "measure": "frequency",
+      "count": 3,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          2
+        ],
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "capacity exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "mlss",
+      "measure": "",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          3
+        ]
+      ],
+      "written_as": [
+        "MLSS concentration"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The average cubic feet of air required per pound of BOD removed was 1,929 , while the average MLSS concentration was 2,123 mg/1."
+    },
+    {
+      "term": "ph",
+      "measure": "concentration",
+      "count": 3,
+      "archive_language": true,
+      "verbatim_sightings": 3,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pH units",
+          3
+        ]
+      ],
+      "written_as": [
+        "pH"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "PH exceeded the ODWO Aesthetic or Recommended Operational Guideline\nof 6.5-8.5 pH units in 1 of 9 water samples from the distribution"
+    },
+    {
+      "term": "moisture",
+      "measure": "removal",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          2
+        ]
+      ],
+      "written_as": [
+        "moisture content"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "air delivery",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet",
+          1
+        ],
+        [
+          "cubic feet per minute",
+          1
+        ]
+      ],
+      "written_as": [
+        "air delivery"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "width",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "width"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "length",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "length"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The primary tanks are both of the rectangular type, each 49o3 feet in length"
+    },
+    {
+      "term": "detention time",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "hours",
+          2
+        ]
+      ],
+      "written_as": [
+        "detention time"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The detention time is six hours with 2 5% return sludge at design flow."
+    },
+    {
+      "term": "motor power",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "HP",
+          1
+        ],
+        [
+          "hp",
+          1
+        ]
+      ],
+      "written_as": [
+        "motor power"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sludge volume",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          2
+        ]
+      ],
+      "written_as": [
+        "sludge volume"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "gas production",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "gas production"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "yield",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds per square foot per hour",
+          2
+        ]
+      ],
+      "written_as": [
+        "yield"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "During I962 the yield in pounds per square foot per hour decreased from 3.51 in I96I to 3»17 in 1962."
+    },
+    {
+      "term": "raw sewage volume",
+      "measure": "total",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "billion gallons",
+          1
+        ],
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "total raw sewage volume"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "flow increase",
+      "measure": "rate",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          1
+        ],
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "daily flow increase"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "In 1964, the addition of the Eastern Circumferential Sewer to the system should result in a daily flow increase of 700,000 gallons or about a 10% increase over "
+    },
+    {
+      "term": "dry solids filtered",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons",
+          2
+        ]
+      ],
+      "written_as": [
+        "dry solids filtered"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "man hours",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "hours",
+          1
+        ],
+        [
+          "man hours",
+          1
+        ]
+      ],
+      "written_as": [
+        "man hours"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "OWRC head office technicians spent over 100 man hours in inspecting and reporting on the mechanical and electrical maintenance being routinely performed by the "
+    },
+    {
+      "term": "volume treated",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "billion gallons",
+          1
+        ],
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "total volume treated"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "raw sewage",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          2
+        ]
+      ],
+      "written_as": [
+        "raw sewage"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "A total of 2490. 546 million gallons of raw sewage was treated at the Brantford plant in 1966."
+    },
+    {
+      "term": "suspended solids removed",
+      "measure": "removal",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "tons",
+          1
+        ],
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "suspended solids removed"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "solids concentrations",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          2
+        ]
+      ],
+      "written_as": [
+        "solids concentrations"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The average solids concentrations of 5. 1% was less than the 1968 average of 5.3%."
+    },
+    {
+      "term": "suspended solids removal efficiency",
+      "measure": "removal",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "%",
+          2
+        ]
+      ],
+      "written_as": [
+        "suspended solids removal efficiency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "tank loading",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "lbs. BOD per 100 lbs. MLSS",
+          2
+        ]
+      ],
+      "written_as": [
+        "tank loading"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Tank loading averaged 11 lbs. BOD per 100 lbs. MLSS compared with 13 lbs. in 1968."
+    },
+    {
+      "term": "volatile matter",
+      "measure": "removal",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          2
+        ]
+      ],
+      "written_as": [
+        "volatile matter"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "of which 73 percent was volatile matter."
+    },
+    {
+      "term": "true colour units",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "TCU",
+          2
+        ]
+      ],
+      "written_as": [
+        "True Colour Units"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The aesthetic ODWO of 5.0 True Colour Units (TCU) was exceeded"
+    },
+    {
+      "term": "dissolved solids",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "Dissolved solids"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Dissolved solids exceeded the ODWO Aesthetic Objective of 500 mg/L in 4 of 31 treated and distributed water samples with a maximum reported value of 683 mg/L."
+    },
+    {
+      "term": "1 1 1 trichloroethane",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "1, 1,1-Trichloroethane"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "trihalomethanes",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "Total trihalomethanes"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "coliforms",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "counts/mL",
+          1
+        ],
+        [
+          "count/mL",
+          1
+        ]
+      ],
+      "written_as": [
+        "Total Coliforms"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Total Coliforms were detected at 9 counts/mL in the September Site 1 water"
+    },
+    {
+      "term": "lindane",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ng/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "Lindane"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "phenolic substances",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "phenolic substances"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The ODWOs recommend, as an operational guideline, that phenolic substances in drinking water not exceed 2.0 ug/L."
+    },
+    {
+      "term": "velocity of flow through the channels",
+      "measure": "rate",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "foot per second",
+          2
+        ]
+      ],
+      "written_as": [
+        "velocity of flow through the channels"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The velocity of flow through the channels is maintained at approximately one foot per second by means of proportional weirs at the outlet end."
+    },
+    {
+      "term": "aeration tank length",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "aeration tank length"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "aeration tank width",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "aeration tank width"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "aeration tank depth",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "aeration tank depth"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "combined aeration tanks capacity",
+      "measure": "capacity",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          2
+        ]
+      ],
+      "written_as": [
+        "combined aeration tanks capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "new blower capacity",
+      "measure": "capacity",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cfm",
+          2
+        ]
+      ],
+      "written_as": [
+        "new blower capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "final tank diameter",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "final tank diameter"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "final tank water depth",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "foot",
+          1
+        ],
+        [
+          "feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "final tank water depth"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "capacity of the final tanks",
+      "measure": "total",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          2
+        ]
+      ],
+      "written_as": [
+        "total capacity of the final tanks"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The total capacity of the final tanks is 260,000 gallons giving a retention period of 2,5 hours at design flow."
+    },
+    {
+      "term": "return sludge pumping capacity",
+      "measure": "capacity",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mgd",
+          1
+        ],
+        [
+          "MGD",
+          1
+        ]
+      ],
+      "written_as": [
+        "return sludge pumping capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "head",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "total head"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Pumping of the return sludge is done by one of two units, each having a capacity of O.65 mgd against a total head of 2S feet at full speed."
+    },
+    {
+      "term": "primary digester capacity",
+      "measure": "capacity",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "primary digester capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "secondary digester capacity",
+      "measure": "capacity",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet",
+          2
+        ]
+      ],
+      "written_as": [
+        "secondary digester capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "heat exchanger capacity",
+      "measure": "capacity",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "B.t.u. per hour",
+          1
+        ],
+        [
+          "bot.u. per hour",
+          1
+        ]
+      ],
+      "written_as": [
+        "heat exchanger capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "percent reduction",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          2
+        ]
+      ],
+      "written_as": [
+        "average percent reduction"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "However, the average percent reduction through the plant was S^fo"
+    },
+    {
+      "term": "expected efficiency",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          2
+        ]
+      ],
+      "written_as": [
+        "expected efficiency"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "rather than an expected efficiency of from 90 to 955^0"
+    },
+    {
+      "term": "heavy flows resulting in loss of solids frequency",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "days",
+          1
+        ],
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "heavy flows resulting in loss of solids frequency"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "operating cost",
+      "measure": "total",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          2
+        ]
+      ],
+      "written_as": [
+        "TOTAL OPERATING COST"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "cost per 1000 gal",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          2
+        ]
+      ],
+      "written_as": [
+        "COST PER 1000 GAL"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sewer diameter",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "inch",
+          2
+        ]
+      ],
+      "written_as": [
+        "sewer diameter"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "flows on a basis",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          2
+        ]
+      ],
+      "written_as": [
+        "maximum daily flows average on a monthly basis",
+        "minimum daily flows average on a monthly basis"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The maximum and minimum daily flows average on a monthly basis were 1. 603 million gallons and 0. 30 million gallons respectively."
+    },
+    {
+      "term": "infiltration problem",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [],
+      "written_as": [
+        "infiltration problem"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "This suggests a serious infiltration problem."
+    },
+    {
+      "term": "sewage treated",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 2,
+      "units": [
+        [
+          "million gallons",
+          2
+        ]
+      ],
+      "written_as": [
+        "sewage treated"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "volatile solids",
+      "measure": "removal",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          2
+        ]
+      ],
+      "written_as": [
+        "volatile solids"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids."
+    },
+    {
+      "term": "overload percentage",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          2
+        ]
+      ],
+      "written_as": [
+        "overload percentage"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "treatment cost",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "per million gallons",
+          2
+        ]
+      ],
+      "written_as": [
+        "treatment cost"
+      ],
+      "already_resolves": true,
+      "contested": 2,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "aluminxim",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "Aluminxim"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Aluminxim exceeded the ODWO Aesthetic or Recommended Operational\nGuideline of 100 ug/L in 2 of 9 plant treated water samples with a"
+    },
+    {
+      "term": "toluene",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "Toluene",
+        "toluene"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Toluene was found at positive levels in 1 of the 18 treated and distributed water samples associated with the water plant with a reported value of 0.55 ug/L."
+    },
+    {
+      "term": "thms",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          2
+        ]
+      ],
+      "written_as": [
+        "THMs"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "volume reduction",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "volume reduction"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "volume",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "Imperial Gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "total volume"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The aeration section consists of two ^ three pass tanks with a total volume of 3,300,000 Imperial Gallons"
+    },
+    {
+      "term": "gallons of sewage",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "gallons of sewage"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The plant treated approximately 1,97'0,OOO5,OOO gallons of sewage from February 24th to December 31st."
+    },
+    {
+      "term": "suspended solids",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "suspended solids"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Approximately 50 percent of the suspended solids in the incoming sewage settles to the bottom of the clarifiers."
+    },
+    {
+      "term": "filtering hours",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "hours",
+          1
+        ]
+      ],
+      "written_as": [
+        "filtering hours"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sludge filtered",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "sludge filtered"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "lime used",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "lime used"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "ferric chloride used",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "ferric chloride used"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "volume of sludge hauled",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "volume of sludge hauled"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The volume of sludge hauled was only 3I per cent of the sludge pumped to the digesters."
+    },
+    {
+      "term": "commission objective",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ppm",
+          1
+        ]
+      ],
+      "written_as": [
+        "Commission objective"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Both of these averages are below the Commission objective of 15 ppm."
+    },
+    {
+      "term": "bod exceeding objective",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD exceeding objective"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "ss exceeding objective",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "SS exceeding objective"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "greatest flow for one month",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "greatest average daily flow for one month"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "as did the greatest average daily flow for one month of 6. 38 million gallons."
+    },
+    {
+      "term": "water connection",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "GPM",
+          1
+        ]
+      ],
+      "written_as": [
+        "water connection"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "the Massey Ferguson Company who have requested the installation of a 1, 000 GPM water connection."
+    },
+    {
+      "term": "treatment capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "treatment capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "With an average daily flow of 5. 6 million gallons, the plant is still below its full treatment capacity of 12. 5 million gallons per day."
+    },
+    {
+      "term": "sludge pumped to digester",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "sludge pumped to digester"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sludge pumped to digesters",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "sludge pumped to digesters"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod objectives met",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD objectives met"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "ss objectives met",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "SS objectives met"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "volume of raw sewage treated",
+      "measure": "total",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "billion gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "total volume of raw sewage treated"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "increase in operating costs",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "increase in operating costs"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "increase in flow over 1965",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "increase in flow over 1965"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "raw sludge pumped",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "raw sludge pumped"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "There was an increase of 26% in the amount of raw sludge pumped to the primary digesters in 1966."
+    },
+    {
+      "term": "hydraulic load factor",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "hydraulic load factor"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The average daily flow based on a five day work week, and excluding statutory holidays, was 7. 33 mg or a 60% hydraulic load factor."
+    },
+    {
+      "term": "organic removal increase",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "organic removal increase"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod removal improvement",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD removal improvement"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "suspended solids removal improvement",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "suspended solids removal improvement"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "organic load increase",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "organic load increase"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "increase over 1967 flows",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "increase over 1967 flows"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "organic removal",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "organic removal"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Plant efficiency averaged 89 percent organic removal based on BOD analysis"
+    },
+    {
+      "term": "raw sewage flow increase",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "raw sewage flow increase"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "chlorine dosage",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "chlorine dosage rate"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The chlorine dosage rate of 2.5 milligrams per litre was similar to last year's dosage."
+    },
+    {
+      "term": "raw sewage bod decrease",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "raw sewage BOD concentration decrease"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "haulage vehicle capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "haulage vehicle capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hydraulic loading",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "hydraulic loading"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "This represents a hydraulic loading of about 60% of the plant's design capacity."
+    },
+    {
+      "term": "contact period",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "minutes",
+          1
+        ]
+      ],
+      "written_as": [
+        "contact period"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "mg/1 residual in the effluent for a contact period of 15 minutes."
+    },
+    {
+      "term": "bod and suspended solids removal efficiency",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD and suspended solids removal efficiency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "organic loading",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds BOD per day per 100 pounds mixed liquor suspended solids",
+          1
+        ]
+      ],
+      "written_as": [
+        "organic loading"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The organic loading averaged 11 pounds BOD per day per 100 pounds mix-ed liquor suspended solids which is similar to the loading in 1969."
+    },
+    {
+      "term": "land disposal of liquid digested sludge",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [],
+      "written_as": [
+        "Land disposal of liquid digested sludge"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Land disposal of liquid digested sludge has proven to be a very satisfactory and economical method for sludge handling."
+    },
+    {
+      "term": "effluent bod objective",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "effluent BOD objective"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "effluent suspended solids objective",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "effluent suspended solids objective"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "haulage volume",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic yards",
+          1
+        ]
+      ],
+      "written_as": [
+        "haulage volume"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "volatile matter reduction",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "volatile matter reduction"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "turbidity",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "FTU",
+          1
+        ]
+      ],
+      "written_as": [
+        "Turbidity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Laboratory turbidity values reported three treated water samples above the health related ODWO of 1.0 Formazin Turbidity Units (FTU)."
+    },
+    {
+      "term": "al",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "Al"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The plant operational guideline of 100 ug/L as Al in water leaving the plant was exceeded in nine treated and eleven distribution samples."
+    },
+    {
+      "term": "phenolics",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "Phenolics"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "pesticides impact",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [],
+      "written_as": [
+        "pesticides impact"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "aitunonium",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "aitunonium"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Total aitunonium did exceeded the European Economic Community Maximum Admissible Concentration of 0.50 mg/L in one raw water sample."
+    },
+    {
+      "term": "health guidelines",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [],
+      "written_as": [
+        "health guidelines"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "chlorine residuals",
+      "measure": "total",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "Total Chlorine Residuals"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Substantial Total Chlorine Residuals (0.4 mg/L or more) were present but the high standard plate counts were detected from May to November when the temperature "
+    },
+    {
+      "term": "aesthetic guideline",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "aesthetic guideline"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "While the European Economic Community has an aesthetic guideline of .05 mg/L,"
+    },
+    {
+      "term": "admissable",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "Maximum Admissable Concentration"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "the Maximum Admissable Concentration is .50 mg/L and is set as a result of the concern for potential sewage pollution and its detection."
+    },
+    {
+      "term": "temperature of drinking water",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "°C",
+          1
+        ]
+      ],
+      "written_as": [
+        "Temperature of drinking water"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "It is desirable that the Temperature of drinking water be less than 15°C; the palatability of water is enhanced by its coolness."
+    },
+    {
+      "term": "odwo exceeded",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [],
+      "written_as": [
+        "ODWO exceeded"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "residual aluminum",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "residual Aluminum"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "background levels",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ug/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "background levels"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The sporadic background levels from this source are in the order of 0.05 ug/L."
+    },
+    {
+      "term": "population served",
+      "measure": "count",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [],
+      "written_as": [
+        "population served"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "flow for full treatment",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons per day",
+          1
+        ]
+      ],
+      "written_as": [
+        "average flow for full treatment"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "recently enlarged to a capacity of 2,5 million gallons per day average flow for full treatment."
+    },
+    {
+      "term": "primary treatment flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mgd",
+          1
+        ]
+      ],
+      "written_as": [
+        "primary treatment flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "grit channel capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mgd",
+          1
+        ]
+      ],
+      "written_as": [
+        "grit channel capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "primary tank length",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "primary tank length"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "primary tank width",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "primary tank width"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "old plant blower capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet per minute",
+          1
+        ]
+      ],
+      "written_as": [
+        "old plant blower capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "estimated flow",
+      "measure": "total",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "estimated annual flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "suspended solids",
+      "measure": "total",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ppm",
+          1
+        ]
+      ],
+      "written_as": [
+        "total suspended solids"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sewage volume",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "sewage volume"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "cost per pound of suspended solids removed",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "cost per pound of suspended solids removed"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "payroll",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Payroll"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Payroll 47.0"
+    },
+    {
+      "term": "fuel",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Fuel"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Fuel 4.1"
+    },
+    {
+      "term": "power",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Power"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Power 13.0"
+    },
+    {
+      "term": "general supplies",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "General Supplies"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "General Supplies 3.2"
+    },
+    {
+      "term": "equipment",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Equipment"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Equipment 0.9"
+    },
+    {
+      "term": "repairs and maintenance",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Repairs and maintenance"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Repairs and maintenance 0.3"
+    },
+    {
+      "term": "sundry including sludge haulage",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Sundry (including sludge haulage)"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Sundry (including sludge haulage) 22.5"
+    },
+    {
+      "term": "water",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Water"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Water 0.6"
+    },
+    {
+      "term": "debt retirement",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Debt Retirement"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Debt Retirement 13,571.00"
+    },
+    {
+      "term": "interest",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "Interest"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Interest 21,510.00"
+    },
+    {
+      "term": "cost",
+      "measure": "total",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "TOTAL cost"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "primary treatment flow capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "MGD",
+          1
+        ]
+      ],
+      "written_as": [
+        "primary treatment flow capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hourly flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "MGD",
+          1
+        ]
+      ],
+      "written_as": [
+        "maximum hourly flow rate"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "of flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "MGD",
+          1
+        ]
+      ],
+      "written_as": [
+        "Maximum monthly rate of flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "old blower capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet per minute",
+          1
+        ]
+      ],
+      "written_as": [
+        "old blower capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "aeration section bypass duration",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "hours",
+          1
+        ]
+      ],
+      "written_as": [
+        "aeration section bypass duration"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod removed per month",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD removed per month"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "suspended solids removed per month",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons",
+          1
+        ]
+      ],
+      "written_as": [
+        "suspended solids removed per month"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "grit removal",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet per million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "grit removal rate"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod objective exceedance frequency",
+      "measure": "frequency",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD objective exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "ss objective exceedance frequency",
+      "measure": "frequency",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "SS objective exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "final effluent quality met frequency",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "final effluent quality met frequency"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "required reduction",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "required reduction"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "industrial wastes",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ppm",
+          1
+        ]
+      ],
+      "written_as": [
+        "industrial wastes concentration"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "treatment efficiency",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "treatment efficiency"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The heavy flows and in particular surges resulted in a treatment efficiency of BS/^ rather than an expected efficiency"
+    },
+    {
+      "term": "s s reduction",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "S.S. reduction"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "domestic sewage capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "Imperial gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "domestic sewage capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "primary clarifier diameter",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "primary clarifier diameter"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "primary clarifier side wall depth",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "primary clarifier side wall depth"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "aeration tank capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "Imperial gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "aeration tank capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "final clarifier size",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "final clarifier size"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "final clarifier depth",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "final clarifier average depth"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "loading of bod",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "daily loading of BOD"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "loading of suspended solids",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "daily loading of suspended solids"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "domestic sewage influent bod",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ppm",
+          1
+        ]
+      ],
+      "written_as": [
+        "average domestic sewage influent BOD"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "domestic sewage influent suspended solids",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ppm",
+          1
+        ]
+      ],
+      "written_as": [
+        "average domestic sewage influent suspended solids"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "design loading of bod",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds per day",
+          1
+        ]
+      ],
+      "written_as": [
+        "design loading of BOD"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "design loading of suspended solids",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds per day",
+          1
+        ]
+      ],
+      "written_as": [
+        "design loading of suspended solids"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod overload",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD overload"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "suspended solids overload",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "suspended solids overload"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "population",
+      "measure": "count",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "persons",
+          1
+        ]
+      ],
+      "written_as": [
+        "Population"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Design Population 7,500 persons"
+    },
+    {
+      "term": "plant flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "GPD",
+          1
+        ]
+      ],
+      "written_as": [
+        "Plant Flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Design Plant Flow 750,000 GPD"
+    },
+    {
+      "term": "bod",
+      "measure": "total",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "lb/day",
+          1
+        ]
+      ],
+      "written_as": [
+        "Total BOD"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Total BOD 253 X 750,000 x 10 = 1,900 lb/day"
+    },
+    {
+      "term": "digester volume",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cu. ft.",
+          1
+        ]
+      ],
+      "written_as": [
+        "digester volume"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "per capita loading",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cu. ft.",
+          1
+        ]
+      ],
+      "written_as": [
+        "per capita loading"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Per capita loading - 4.7 cu . ft. /capita"
+    },
+    {
+      "term": "heater rating",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "BTU per hour",
+          1
+        ]
+      ],
+      "written_as": [
+        "heater rating"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "draft motor power",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "HP",
+          1
+        ]
+      ],
+      "written_as": [
+        "draft motor power"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "pump flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "GPM",
+          1
+        ]
+      ],
+      "written_as": [
+        "pump flow rate"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "pump head",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "pump head"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "pump motor power",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "HP",
+          1
+        ]
+      ],
+      "written_as": [
+        "pump motor power"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "pump speed",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "rpm",
+          1
+        ]
+      ],
+      "written_as": [
+        "pump speed"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "effluent chlorination contact time in chambers",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "minutes",
+          1
+        ]
+      ],
+      "written_as": [
+        "effluent chlorination contact time in chambers"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "effluent chlorination contact time in outfall sewer",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "minutes",
+          1
+        ]
+      ],
+      "written_as": [
+        "effluent chlorination contact time in outfall sewer"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "design hydraulic loading",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "MGD",
+          1
+        ]
+      ],
+      "written_as": [
+        "design hydraulic loading"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The design hydraulic loading is .75 MGD"
+    },
+    {
+      "term": "design hydraulic capacity exceedance frequency",
+      "measure": "frequency",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "design hydraulic capacity exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "flow receiving primary treatment",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "MGD",
+          1
+        ]
+      ],
+      "written_as": [
+        "maximum flow receiving primary treatment"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Therefore, the maximum flow of 1.402 MGD was not the maximum flow reaching the plant, but was only the maximum flow receiving primary treatment."
+    },
+    {
+      "term": "estimated flows reaching the plant",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "MGD",
+          1
+        ]
+      ],
+      "written_as": [
+        "estimated maximum flows reaching the plant"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "heavy organic loading frequency",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "heavy organic loading frequency"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hauled during the year",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "total hauled during the year"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "The total hauled during the year was 730,1^9 gallons"
+    },
+    {
+      "term": "volume sewage treated",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "M.G.",
+          1
+        ]
+      ],
+      "written_as": [
+        "VOLUME SEWAGE TREATED"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "VOLUME SEWAGE TREATED M.G.\n\n172.7"
+    },
+    {
+      "term": "cost per lb bod removed",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "COST PER LB. BOD REMOVED"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sewage velocity",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "foot per second",
+          1
+        ]
+      ],
+      "written_as": [
+        "sewage velocity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "return sludge",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "return sludge"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The detention time is six hours with 2 5% return sludge at design flow."
+    },
+    {
+      "term": "air supply",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cu.ft. per min.",
+          1
+        ]
+      ],
+      "written_as": [
+        "air supply"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "air pressure",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "psi",
+          1
+        ]
+      ],
+      "written_as": [
+        "air pressure"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hydraulic capacity limit",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons per day",
+          1
+        ]
+      ],
+      "written_as": [
+        "hydraulic capacity limit"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod exceedance frequency",
+      "measure": "frequency",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "suspended solids exceedance frequency",
+      "measure": "frequency",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "suspended solids exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "increase over 1966",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "increase over 1966"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "peak month flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "peak month flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hydraulically overloaded",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [],
+      "written_as": [
+        "hydraulically overloaded"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sewage",
+      "measure": "total",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg",
+          1
+        ]
+      ],
+      "written_as": [
+        "total sewage"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "treated flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg",
+          1
+        ]
+      ],
+      "written_as": [
+        "treated flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "flow increase percent",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "flow increase percent"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "cost increase percent",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "cost increase percent"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "raw suspended solids",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mg/L",
+          1
+        ]
+      ],
+      "written_as": [
+        "raw suspended solids"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "volatile solids reduction",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "volatile solids reduction"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average volatile solids reduction was 36%, which is less than the design volatile solids reduction."
+    },
+    {
+      "term": "hydraulically overloaded frequency",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "hydraulically overloaded frequency"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "design capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mgd",
+          1
+        ]
+      ],
+      "written_as": [
+        "design capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average daily flow of 1. 2 million gallons was 160% of the plant's design capacity of 0. 75 mgd."
+    },
+    {
+      "term": "flow treated",
+      "measure": "total",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "total flow treated"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod loading",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds of BOD per day per pound of MLSS",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD loading"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "air required to remove 1 0 pounds of bod",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic feet",
+          1
+        ]
+      ],
+      "written_as": [
+        "air required to remove 1.0 pounds of BOD"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hydraulic overload",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "hydraulic overload"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Despite a hydraulic overload of 60%, a satisfactory effluent was produced most of the time."
+    },
+    {
+      "term": "plant flow",
+      "measure": "total",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "total plant flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The total plant flow in 1972 was 286. 3 million gallons, relatively unchanged from the\nprevious year."
+    },
+    {
+      "term": "hydraulic capacity exceedance frequency",
+      "measure": "frequency",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "hydraulic capacity exceedance frequency"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sludge volume for land disposal",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cubic yards",
+          1
+        ]
+      ],
+      "written_as": [
+        "sludge volume for land disposal"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "design population",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "persons",
+          1
+        ]
+      ],
+      "written_as": [
+        "Design Population"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Design Population - 25, 000 persons."
+    },
+    {
+      "term": "design plant flow",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million Imperial gallons per day (MGD)",
+          1
+        ]
+      ],
+      "written_as": [
+        "Design Plant Flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Design Plant Flow - 3. 0 million Imperial gallons per day (MGD),"
+    },
+    {
+      "term": "per capita flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons per day",
+          1
+        ]
+      ],
+      "written_as": [
+        "Per Capita Flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Per Capita Flow - 120 gallons per day."
+    },
+    {
+      "term": "five day bod",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "PPM",
+          1
+        ]
+      ],
+      "written_as": [
+        "Five Day BOD"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "pump capacity",
+      "measure": "total",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "MGD",
+          1
+        ]
+      ],
+      "written_as": [
+        "Total pump capacity"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Total pump capacity is 9. 0 MGD."
+    },
+    {
+      "term": "flow capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mgd",
+          1
+        ]
+      ],
+      "written_as": [
+        "flow capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "biochemical oxygen demand removal",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "biochemical oxygen demand removal"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "raw sewage strength",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "raw sewage strength"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bod strength",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ppm",
+          1
+        ]
+      ],
+      "written_as": [
+        "BOD strength"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The average BOD strength of the raw sewage rose to 148 ppm"
+    },
+    {
+      "term": "increase in flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mgd",
+          1
+        ]
+      ],
+      "written_as": [
+        "increase in flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "pump capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons per minute",
+          1
+        ]
+      ],
+      "written_as": [
+        "pump capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "operating above design capacity",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "operating above design capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "chlorine used per month",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "chlorine used per month"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "chlorine per million gallons",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "pounds per million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "chlorine per million gallons"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The operation used 21.9 pounds of chlorine per million gallons of flow at an average dosage of 2.2 mg/1."
+    },
+    {
+      "term": "grit removed per million gallons",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cu. ft.",
+          1
+        ]
+      ],
+      "written_as": [
+        "grit removed per million gallons"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "raw sludge pumped",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "raw sludge pumped"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "sludge removed",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "sludge removed"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hydraulic capacity exceedance",
+      "measure": "frequency",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "hydraulic capacity exceedance"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "high flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mil gal",
+          1
+        ]
+      ],
+      "written_as": [
+        "High Daily Flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "low flow",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mil gal",
+          1
+        ]
+      ],
+      "written_as": [
+        "Low Daily Flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "recorded flow",
+      "measure": "total",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million gallons",
+          1
+        ]
+      ],
+      "written_as": [
+        "total recorded flow"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "The total recorded flow was approximately 1400 million gallons in 1970"
+    },
+    {
+      "term": "chlorine used",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "lbs.",
+          1
+        ]
+      ],
+      "written_as": [
+        "chlorine used"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "peak flow rates",
+      "measure": "rate",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mgd",
+          1
+        ]
+      ],
+      "written_as": [
+        "peak flow rates"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Peak flow rates often exceeded 10 mgd."
+    },
+    {
+      "term": "flows exceeding design capacity",
+      "measure": "removal",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "percent",
+          1
+        ]
+      ],
+      "written_as": [
+        "average daily flows exceeding design capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "percentage of water supplied",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "percentage of water supplied"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    }
+  ]
+}

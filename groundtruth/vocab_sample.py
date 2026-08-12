@@ -19,15 +19,27 @@ term, we have not sampled enough. If one in five hundred does, we have.
 Three things this guards against, each of which would otherwise produce a curve
 that flattens beautifully and lies:
 
-**The model names things the page did not.** Measured on 529 real records: 19.8%
+**The model names things the page did not.** Measured on 844 real readings: 32%
 of parameter names do not appear anywhere in the sentence they were read from.
 "The tanks are 70 feet in diameter" yields `diameter`; one sentence about a pass
 being 30 feet wide, 15 deep and 200 long yields three records. That is correct
-interpretation, not hallucination -- but the model's naming vocabulary is small
-and saturates almost immediately, so a pooled curve would flatten early on the
-model's habits while the archive's own language was still arriving. The two
-populations are therefore counted separately and the stopping rule uses only the
-archive's. See `Term.archive_language`.
+interpretation, not hallucination -- but it is a fact about the model, and
+counting it as the archive's vocabulary measures the wrong thing.
+
+The first version of this docstring said the model's naming vocabulary was
+"small and saturates almost immediately", so pooling would flatten the curve
+early. Running it proved that backwards. The two populations, over the same 844
+readings:
+
+    archive language   134 terms   57 seen once   miss rate 0.099
+    model language     170 terms  121 seen once   miss rate 0.448
+
+The model's vocabulary is *larger* and nowhere near saturating, because it is
+describing rather than quoting and every page's phrasing suggests a fresh name.
+Pooling them would therefore have made coverage look permanently worse and never
+converge -- the opposite failure from the one predicted, arriving at the same
+place. The separation stands; the reasoning behind it was wrong and is corrected
+here rather than quietly fixed. See `Term.archive_language`.
 
 **A pooled figure hides an unsampled corner.** Coverage across the whole corpus
 can read 97% while an entire agency's vocabulary is untouched, because that
