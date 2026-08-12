@@ -325,10 +325,13 @@ def test_a_missing_map_library_cannot_take_the_other_views_with_it():
     html = render({"corpus_items": 104241, "located": 102, "read": 4,
                    "records": 909, "precision": 0.9, "silent_n": 72,
                    "silent_year": 1975})
-    guard = html.find('typeof maplibregl === "undefined"')
-    construct = html.find("new maplibregl.Map")
-    loaders = html.find("const LOADERS")
+    # Match the code, not the comment above it -- the comment names the same
+    # symbols and an earlier version of this test found those instead.
+    guard = html.find('if (typeof maplibregl === "undefined")')
+    construct = html.find("const map = new maplibregl.Map(")
+    loaders = html.find("const LOADERS = {")
     assert guard != -1, "the map construction is unguarded"
+    assert construct != -1 and loaders != -1
     assert guard < construct, "the guard must precede the construction"
     assert "} catch (err) {" in html, "the map section must not be able to abort the script"
     assert construct < loaders, "layout assumption for this test no longer holds"
