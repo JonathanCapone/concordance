@@ -1,0 +1,145 @@
+{
+  "identifier": "hamiltonadventur00unse",
+  "title": "Hamilton : An Adventure in Good Living",
+  "publisher": "unstated",
+  "year": "1983",
+  "annotator": "hand-read from the OCR text of the scanned page",
+  "notes": [
+    "The gold set covered only municipal sewage reports, so it could not detect a",
+    "regression in the domains the widened extraction prompt just opened. This page",
+    "is deliberately as unlike a water report as the corpus allows: a city booster",
+    "magazine, set in narrow columns, describing a school system. Nothing on it is",
+    "a concentration, and its unit is the counted noun throughout.",
+    "",
+    "It is also a page the pipeline could not see twice over. The router discarded",
+    "it for being set in narrow columns -- 149 lines of prose, median four words to",
+    "the line, not one reaching the eight-word threshold -- and once that was fixed",
+    "the extractor returned nothing from it, because every example in its prompt was",
+    "BOD and mg/L."
+  ],
+  "annotation_caveat": [
+    "Judgement calls, recorded so the accuracy figure can be argued with:",
+    "",
+    "INCLUDED as a standard: 'students over 14 years of age' is an eligibility",
+    "threshold for the vocational schools, which is what a standard is -- a rule of",
+    "its era rather than a measurement of the world.",
+    "",
+    "EXCLUDED, though numeric: grade levels ('French begins in grade seven',",
+    "'funding continues only as far as grade 10', 'kindergarten through grade 13').",
+    "These are positions in a sequence, not quantities of anything, and counting",
+    "them as measurements would make a trend line out of a curriculum.",
+    "",
+    "EXCLUDED: 'many students have to travel more than a mile'. The number is real",
+    "but the subject is 'many students', so there is no quantity to attach it to.",
+    "",
+    "EXCLUDED: the five municipalities of the Wentworth County board are named but",
+    "never counted. Ground truth is what the page states, not what can be derived",
+    "from it.",
+    "",
+    "The 42 separate-board schools are elementary: the sentence pairs them with the",
+    "75 under the public board, and the separate board's secondary schools are",
+    "counted separately two sentences later."
+  ],
+  "pages": {
+    "20": [
+      {
+        "kind": "observation",
+        "parameter": "elementary schools",
+        "value": 75,
+        "unit": "schools",
+        "facility": "Hamilton Board of Education",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "elementary schools",
+        "value": 42,
+        "unit": "schools",
+        "facility": "Hamilton-Wentworth Roman Catholic Separate School Board",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "composite secondary schools",
+        "value": 14,
+        "unit": "schools",
+        "facility": "Hamilton Board of Education",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "vocational schools",
+        "value": 7,
+        "unit": "schools",
+        "facility": "Hamilton Board of Education",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "schools for the trainable retarded",
+        "value": 4,
+        "unit": "schools",
+        "facility": "Hamilton Board of Education",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "secondary schools",
+        "value": 7,
+        "unit": "schools",
+        "facility": "Hamilton-Wentworth Roman Catholic Separate School Board",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "pupils with exceptional needs",
+        "value": 4000,
+        "unit": "pupils",
+        "qualifier": "count",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "schools sharing one building",
+        "value": 2,
+        "unit": "schools",
+        "place": "Hamilton",
+        "period": "1971",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "French immersion schools",
+        "value": 2,
+        "unit": "schools",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "observation",
+        "parameter": "schools teaching exclusively in French",
+        "value": 1,
+        "unit": "schools",
+        "facility": "Hamilton-Wentworth Roman Catholic Separate School Board",
+        "place": "Hamilton",
+        "stream": "unknown"
+      },
+      {
+        "kind": "standard",
+        "parameter": "minimum age for vocational school",
+        "value": 14,
+        "unit": "years",
+        "facility": "Hamilton Board of Education",
+        "place": "Hamilton",
+        "stream": "unknown"
+      }
+    ]
+  }
+}
