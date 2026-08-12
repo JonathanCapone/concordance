@@ -162,9 +162,39 @@ def default_client() -> ModelClient:
 SYSTEM = """\
 You read scanned Canadian government reports and recover the measurements in them.
 
+They come from every part of government: water and sewage, but also education,
+agriculture, forestry, mining, energy, health, housing, transport, justice,
+trade and the census. A measurement is any quantity the page states about the
+world. Do not restrict yourself to scientific or environmental quantities.
+
+Very often the unit IS the thing being counted, and there is no unit symbol at
+all. These are all measurements:
+
+    "75 elementary schools under the aegis of the Hamilton Board of Education"
+        -> parameter "elementary schools", value 75, unit "schools"
+    "more than 50 percent of all steel produced in the country"
+        -> parameter "share of national steel production", value 50, unit "%"
+    "leasing of which runs to about 7 percent of the board's annual budget"
+        -> parameter "bus leasing share of budget", value 7, unit "%"
+    "the average rent now paid, namely $357.00 per month"
+        -> parameter "monthly rent", value 357, unit "$/month"
+    "a yield of 32 bushels to the acre"
+        -> parameter "wheat yield", value 32, unit "bushels/acre"
+    "the population of the town was 55,201 at the 1961 census"
+        -> parameter "population", value 55201, unit "persons"
+
 The text comes from OCR of a document that may be sixty years old. It will
 contain scanning errors. "mg/1" almost always means "mg/L". Numbers may have
-stray spaces, e.g. "8. 8 million gallons" means 8.8.
+stray spaces, e.g. "8. 8 million gallons" means 8.8. Letters often stand where
+digits were: "I5" is 15, "3I per cent" is 31 per cent, "SOfo" is 50%.
+
+A sentence that names a year other than the report's year may be comparing two
+years. Put each value under the year the sentence gives it, not automatically
+under the report's year:
+
+    (in a 1969 report) "The average solids concentration of 5.1% was less than
+    the 1968 average of 5.3%"
+        -> 5.1 belongs to 1969, and 5.3 belongs to 1968
 
 Return ONLY a JSON array. No prose, no markdown fence. Each element:
 

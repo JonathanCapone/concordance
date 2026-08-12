@@ -33,6 +33,7 @@ NAV = [
     ("silence", "Silence", "M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12"),
     ("rivers", "Rivers", "M3.5 7.5c3 0 3 3 6 3s3-3 6-3 3 3 5 3M3.5 14c3 0 3 3 6 3s3-3 6-3 3 3 5 3"),
     ("verify", "Verify", "M5 12.6 9.8 17.4 19 6.6"),
+    ("decisions", "Decisions", "M7 4.5h10v15H7Zm2.6 4h4.8m-4.8 3.6h4.8m-4.8 3.6h3"),
     ("disputed", "Disputed", "M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1"),
     ("ask", "Ask Honu", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
 ]
@@ -260,6 +261,29 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         Published including the failures — an archive misread at scale is worse than one never
         read, because the errors look like findings.</p>
         <div id="verify-body"></div>
+      </div>
+    </section>
+
+    <section class="view" data-view="decisions">
+      <div class="pane">
+        <h2>Who decided, and who voted against</h2>
+        <p class="lede">Minutes, agendas, hansard and commission hearings are 13,604 items —
+        13.1% of this collection — and they were the material most damaged by a routing bug
+        that discarded narrow columns. They are also the cheapest thing here to read: "It was
+        moved by X and seconded by Y that Z. CARRIED." is a form that has barely changed in a
+        century, so a pattern finds it. No model, no GPU, and a person can check it.</p>
+        <p class="lede" style="opacity:.72">The control is the clerk's own tally. That "-16."
+        at the end of a roll was written by someone in the room; if the names don't add up to
+        it, the roll was misread and it says so rather than publishing a division quietly
+        missing two people.</p>
+        <div style="display:flex;gap:8px;margin:0 0 12px">
+          <input id="dec-id" placeholder="archive.org identifier" value="32022213341486"
+            style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+                   border-radius:8px;padding:8px 11px;color:inherit;font:inherit">
+          <button id="dec-go" style="background:var(--gt-hit);border:0;border-radius:8px;
+            padding:8px 15px;font:inherit;cursor:pointer">Read</button>
+        </div>
+        <div id="decisions-body"></div>
       </div>
     </section>
 
@@ -610,6 +634,75 @@ const LOADERS = {{
       to ${{(t.precision*100||0).toFixed(1)}}%. Publishing the first figure would have narrowed
       the project for no reason.</p></div>`;
     el.innerHTML = h;
+  }},
+
+  decisions: async () => {{
+    const el = document.getElementById("decisions-body");
+    const run = async () => {{
+      const id = document.getElementById("dec-id").value.trim();
+      if (!id) return;
+      el.innerHTML = `<div class="card note" style="border:0">Reading every page of
+        ${{id}} for motions and recorded votes…</div>`;
+      const d = await (await fetch("/api/decisions?identifier=" + encodeURIComponent(id))).json();
+      if (d.error) {{ el.innerHTML = `<div class="card note" style="border:0">${{d.error}}</div>`; return; }}
+
+      const o = d.outcomes || {{}};
+      let h = `<div class="card"><table class="gt">
+        <tr><th>found</th><th class="n">n</th></tr>
+        <tr><td>motions and recorded divisions</td><td class="n">${{d.motions||0}}</td></tr>
+        <tr><td>people named</td><td class="n">${{d.people||0}}</td></tr>
+        <tr><td>recorded votes</td><td class="n">${{d.recorded_votes||0}}</td></tr>
+        <tr><td>rolls that do not match the clerk's tally</td><td class="n">${{d.rolls_that_do_not_reconcile||0}}</td></tr>
+        </table>
+        <p class="lede" style="margin:8px 0 0">${{
+          Object.entries(o).map(([k,v]) => `${{v}} ${{k}}`).join(" · ")}}</p></div>`;
+
+      if ((d.divided||[]).length) {{
+        h += `<div class="card"><h3 style="margin:0 0 8px;font-size:11px;color:#6d7a86;
+              text-transform:uppercase;letter-spacing:.06em">Where they disagreed</h3>`;
+        d.divided.forEach(x => {{
+          h += `<div style="margin:0 0 10px;padding-left:11px;border-left:2px solid rgba(255,255,255,.14)">
+            <div style="font-size:12px">${{(x.text||"").replace(/</g,"&lt;")}}</div>
+            <div class="lede" style="margin:3px 0 0;font-size:11px">
+              ${{x.outcome}} · against: ${{(x.against||[]).join(", ") || "—"}}
+              ${{x.page_url ? ` · <a href="${{x.page_url}}" target="_blank" rel="noopener">the page</a>` : ""}}
+            </div></div>`;
+        }});
+        h += `</div>`;
+      }}
+
+      if ((d.most_active||[]).length) {{
+        h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
+              text-transform:uppercase;letter-spacing:.06em">Who was in the room</h3>
+              <table class="gt"><tr><th>person</th><th>role</th><th class="n">moved</th>
+              <th class="n">seconded</th><th class="n">yea</th><th class="n">nay</th></tr>`;
+        d.most_active.forEach(p => {{
+          const v = p.votes || {{}};
+          h += `<tr><td>${{p.name}}</td><td>${{(p.roles||[])[0]||""}}</td>
+                <td class="n">${{p.moved||0}}</td><td class="n">${{p.seconded||0}}</td>
+                <td class="n">${{v.yea||0}}</td><td class="n">${{v.nay||0}}</td></tr>`;
+        }});
+        h += `</table></div>`;
+      }}
+
+      if ((d.dissenters||[]).length) {{
+        h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
+              text-transform:uppercase;letter-spacing:.06em">Dissent</h3>
+              <p class="lede" style="margin:0 0 6px">Most recorded votes are unanimous, so a
+              nay is the rarest and most informative thing in the record.</p>`;
+        d.dissenters.forEach(x => {{
+          h += `<div style="font-size:12px">${{x.person}} — ${{x.nays}} against, ${{x.yeas}} for</div>`;
+        }});
+        h += `</div>`;
+      }}
+
+      (d.not_measured||[]).forEach(n => {{
+        h += `<div class="card note" style="border:0;padding-left:11px">${{n}}</div>`;
+      }});
+      el.innerHTML = h;
+    }};
+    document.getElementById("dec-go").onclick = run;
+    run();
   }},
 
   disputed: async () => {{
