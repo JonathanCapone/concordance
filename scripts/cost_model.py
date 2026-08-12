@@ -115,7 +115,8 @@ def main() -> int:
         "hosted": hosted,
         "caveats": [
             "rented throughput is estimated, not measured on this project",
-            "prose path only; tables and figures are 26% of pages and cost more",
+            "prose path only; tables and figures are 27% of pages, cost more per "
+            "page, and yield roughly four times as many measurements",
             "any prompt change means paying again, so settle the prompt first",
         ],
     }, indent=2), encoding="utf-8")

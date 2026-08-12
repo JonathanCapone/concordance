@@ -75,24 +75,34 @@ Measured over a random sample of 120 items and 23,729 pages:
 | | |
 |---|---|
 | Items carrying measurements | **90.8%** (95% CI 84.3–94.8%) |
-| Pages worth reading | **53.1%** (95% CI 52.5–53.8%) |
-| Extrapolated to the collection | **11.6–11.9 million pages** |
+| Pages worth reading | **69.5%** |
+| Extrapolated to the collection | **about 15.4 million pages** |
 
-Routing, per page: skip 46.9% · prose 28.1% · table 16.5% · figure 9.5% · standard 1.7% · map 0.9%.
+Measured again over 8,372 pages from 34 documents in 26 collections, after a routing bug was
+fixed. The earlier figures — 53.1% and 11.6–11.9 million — were too low, and the reason is
+worth keeping: a line counted as prose only if it held eight words, which is a statement about
+typography rather than content. A city magazine set in narrow columns scored **zero** on pages
+of unbroken prose, and the loss fell hardest on the legislative record, because that is how
+minutes have always been typeset. Fixing it recovered about **6.3 million pages**.
 
-Two things follow, and both change the plan rather than decorate it.
+Of what is worth reading, **73% is text** a consumer machine can handle at roughly 91 seconds a
+page, and **27% needs the vision path**. Pages are the wrong unit for judging that split, though:
+a prose page averages 4.2 measurements and a third yield none, while a table page yields around
+eighteen. The tables are probably the majority of the actual data.
+
+Three things follow, and all three change the plan rather than decorate it.
 
 **Nine out of ten documents in this archive contain measurements.** The premise holds.
 
-**But local inference cannot touch it.** At the throughput measured on a consumer GPU, reading
-those pages is roughly **56 machine-years**. A corpus-wide pass is therefore not a local job and
-should never be described as one: it is a funded batch run, performed once, after which the
-resulting dataset costs everyone else nothing. That is a fact about the work, not a caveat hidden
-in a footnote.
+**Local inference cannot touch the whole thing.** At the throughput measured on a consumer GPU,
+reading every page is roughly **56 machine-years**. A corpus-wide pass is therefore not a local
+job and should never be described as one: it is a funded batch run, performed once, after which
+the resulting dataset costs everyone else nothing. That is a fact about the work, not a caveat
+hidden in a footnote.
 
-**Tables and figures are 26% of pages**, not the 10% estimated from an earlier document-level
-sample. The vision path is necessary rather than optional — and Owen Sound's 1973 and 1974 reports,
-which contain *zero* prose pages between them, are the proof.
+**Which is why the split is what it is.** The central run does what is expensive and uniform —
+the vocabulary, and the tables. People do prose, on demand, on their own machines, which is where
+places, dates, narrative and the entire deliberative record live.
 
 ## Four kinds of record
 

@@ -86,8 +86,8 @@ class Results:
             "hours": round(hours, 1),
             "days": round(hours / 24, 1),
             "note": (
-                "Estimated from the corpus census: 53.1% of pages carry "
-                "measurements, and this machine reads one in about 150 seconds. "
+                "Estimated from the corpus census: 69.5% of pages carry "
+                "measurements, and this machine reads one in about 91 seconds. "
                 "Split the work and divide the time."
             ),
         }
