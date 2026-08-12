@@ -206,21 +206,72 @@ def _bounds(words: Iterable[Word], page: PageText, *, pad: int = PAD) -> tuple[i
 
 
 def cite(page: PageText, quote: str, *, pad: int = PAD) -> Citation:
-    """Crop the sentence a value was read from.
+    """Crop the sentence a value was read from, however many lines it runs to.
 
-    Falls back to the whole page rather than guessing. `find_boxes` already
-    degrades to the longest matching opening run, so a partial match still
-    lands on the right line; only a total miss reaches the fallback.
+    `find_boxes` returns a contiguous run of words, and degrades to the longest
+    matching *opening* run when the whole phrase does not match — which it
+    frequently does not, because OCR mangles the middle of a sentence more often
+    than its start. Cropping to that run alone produced citations reading "It is
+    seen that the C", which is the right sentence and useless as evidence.
+
+    So the end of the quote is located as well as the beginning, and the crop
+    spans both. A sentence that wraps then covers several lines, and the crop is
+    widened to the full column so the intervening lines are not sliced down the
+    middle.
     """
-    words = page.find_boxes(quote) if quote else []
-    if not words:
+    if not quote:
+        return Citation(identifier=page.identifier, page=page.page, kind="page",
+                        note="no sentence was recorded for this reading")
+
+    head = page.find_boxes(quote)
+    if not head:
         return Citation(
             identifier=page.identifier, page=page.page, quote=quote, kind="page",
             note="the words of this quote are not in the page's OCR, so the "
                  "citation shows the whole page",
         )
+
+    words = list(head)
+    tail_words = [t for t in re.split(r"\W+", quote) if t][-6:]
+    if len(tail_words) >= 3:
+        tail = page.find_boxes(" ".join(tail_words))
+        # Only if it lands after the head: a phrase repeated earlier on the page
+        # would otherwise stretch the crop backwards over unrelated text.
+        if tail and min(w.y0 for w in tail) >= min(w.y0 for w in head):
+            words += tail
+
+    box = _bounds(words, page, pad=pad)
     return Citation(identifier=page.identifier, page=page.page, quote=quote,
-                    box=_bounds(words, page, pad=pad), kind="quote")
+                    box=_widen_to_column(box, page, pad=pad), kind="quote")
+
+
+def _widen_to_column(
+    box: tuple[int, int, int, int],
+    page: PageText,
+    *,
+    pad: int = PAD,
+) -> tuple[int, int, int, int]:
+    """Stretch a crop sideways to hold every word on the lines it covers.
+
+    A quote that wraps occupies whole lines, and a box drawn only around the
+    words that happened to match cuts the lines between them in half. Widening
+    to the text actually present on those lines shows the passage as it sits on
+    the page, which is what a reader is checking against.
+    """
+    x, y, w, h = box
+    if not page.words:
+        return box
+    on_lines = [word for word in page.words
+                if word.y1 >= y and word.y0 <= y + h]
+    if not on_lines:
+        return box
+    x0 = max(0, min(word.x0 for word in on_lines) - pad)
+    x1 = max(word.x1 for word in on_lines) + pad
+    if page.width:
+        x1 = min(x1, page.width)
+    # Never narrower than what matched, and never the whole page either.
+    x0, x1 = min(x0, x), max(x1, x + w)
+    return (x0, y, x1 - x0, h)
 
 
 #: How the vision path writes a cell reference.

@@ -294,6 +294,14 @@ class State:
                     "unit": s.unit,
                     "read_from": (src.provenance.source_text[:150] if src and src.provenance else ""),
                     "page_url": (src.provenance.page_url if src and src.provenance else ""),
+                    # Enough for the portal to ask /api/citation for a picture of
+                    # this exact sentence. The quote is sent whole rather than
+                    # truncated, because the crop is found by matching its words
+                    # against the page's OCR and 150 characters is not always a
+                    # sentence.
+                    "identifier": (src.provenance.identifier if src and src.provenance else ""),
+                    "page": (src.provenance.page if src and src.provenance else 0),
+                    "quote": (src.provenance.source_text if src and src.provenance else ""),
                 })
             series.append({
                 "label": label, "unit": s.unit,

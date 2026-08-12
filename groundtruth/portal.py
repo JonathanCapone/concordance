@@ -114,6 +114,11 @@ html,body{{height:100%;margin:0;background:#04080d;color:#e8edf2;
 .src{{grid-column:2/4;font-size:11.5px;color:#6d7a86;font-style:italic;line-height:1.45;
   margin-top:2px}}
 .src a{{color:var(--gt-hit);font-style:normal;text-decoration:none;white-space:nowrap}}
+.paper-btn{{background:transparent;border:0;color:var(--gt-hit);font:inherit;font-size:11px;
+  font-style:normal;cursor:pointer;padding:0 0 0 8px;white-space:nowrap}}
+.paper-btn:hover{{text-decoration:underline}}
+.paper{{display:block}}
+.paper img{{box-shadow:0 2px 10px rgba(0,0,0,.35)}}
 .spark{{width:100%;height:42px;display:block;margin:1px 0 9px}}
 .note{{font-size:11.5px;color:#6d7a86;line-height:1.55;margin-top:16px;
   border-left:2px solid rgba(255,255,255,.12);padding-left:11px}}
@@ -342,14 +347,44 @@ function seriesHtml(d){{
   (d.series||[]).forEach(s => {{
     h += `<div class="sec"><h3>${{s.label}}${{s.unit?" · "+s.unit:""}}</h3>` + spark(s.points);
     s.rows.forEach(x => {{
+      const cite = x.identifier && x.page
+        ? ` <button type="button" class="paper-btn" data-id="${{x.identifier}}"
+             data-page="${{x.page}}" data-quote="${{encodeURIComponent(x.quote||"")}}"
+             title="show the sentence on the scan">show the paper</button>` : "";
       h += `<div class="row"><span class="y">${{x.period||""}}</span>`
          + `<span>${{x.parameter}}</span><span class="v">${{x.value}} ${{x.unit||""}}</span>`
-         + `<span class="src">“${{x.read_from}}” <a href="${{x.page_url}}" target="_blank" rel="noopener">scan ↗</a></span></div>`;
+         + `<span class="src">“${{x.read_from}}” <a href="${{x.page_url}}" target="_blank" rel="noopener">scan ↗</a>${{cite}}`
+         + `<span class="paper"></span></span></div>`;
     }});
     h += `</div>`;
   }});
   return h;
 }}
+
+/* Show the sentence, on the paper, next to the number.
+   Provenance that nobody looks at is most of the way to no provenance, and
+   "open a 300-page scan and find the line" is why nobody looks. A crop is a
+   URL -- archive.org serves it -- so this costs nothing to offer. */
+document.addEventListener("click", async ev => {{
+  const b = ev.target.closest(".paper-btn");
+  if (!b) return;
+  const holder = b.parentElement.querySelector(".paper");
+  if (holder.dataset.open === "1") {{
+    holder.innerHTML = ""; holder.dataset.open = "0";
+    b.textContent = "show the paper"; return;
+  }}
+  b.textContent = "finding it…";
+  const d = await (await fetch("/api/citation?identifier=" + encodeURIComponent(b.dataset.id)
+      + "&page=" + b.dataset.page + "&quote=" + b.dataset.quote)).json();
+  if (d.error) {{ b.textContent = "not retrievable"; return; }}
+  holder.dataset.open = "1";
+  b.textContent = "hide";
+  holder.innerHTML =
+    `<a href="${{d.page_url}}" target="_blank" rel="noopener" style="display:block;margin-top:7px">
+       <img src="${{d.crop_url}}" alt="the sentence this number was read from" loading="lazy"
+            style="max-width:100%;border-radius:6px;background:#f6f1e4"></a>`
+    + (d.exact ? "" : `<div style="font-size:10px;opacity:.6;margin-top:3px">${{d.note}}</div>`);
+}});
 
 /* ---- observe --------------------------------------------------------- */
 const dock = document.getElementById("dock");
