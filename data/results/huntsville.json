@@ -1,0 +1,5116 @@
+{
+  "place": "Huntsville",
+  "model": "ollama:gemma4:12b",
+  "n_records": 188,
+  "pages_attempted": [
+    "huntsvillesewage25469#3",
+    "huntsvillesewage25469#5",
+    "huntsvillesewage25469#7",
+    "huntsvillesewage25469#9",
+    "huntsvillesewage25479#9",
+    "huntsvillesewage25479#11",
+    "huntsvillesewage25479#13",
+    "huntsvillesewage25479#15",
+    "huntsvillesewage25479#17",
+    "huntsvillesewage25479#19",
+    "huntsvillesewage25479#21",
+    "huntsvillesewage25476#5",
+    "huntsvillesewage25476#9",
+    "huntsvillesewage25476#13",
+    "huntsvillesewage25476#15",
+    "huntsvillesewage25476#27",
+    "huntsvillesewage25476#33",
+    "huntsvillesewage25476#35",
+    "HUNTSVILLEWATERP00SNSN19450.ome#3",
+    "HUNTSVILLEWATERP00SNSN19450.ome#9",
+    "HUNTSVILLEWATERP00SNSN19450.ome#10",
+    "HUNTSVILLEWATERP00SNSN19450.ome#11",
+    "HUNTSVILLEWATERP00SNSN19450.ome#21",
+    "huntsvillewaterp25468#3",
+    "huntsvillewaterp25468#10",
+    "huntsvillewaterp25468#11",
+    "huntsvillewaterp25468#12",
+    "huntsvillewaterp25468#15",
+    "huntsvillewaterp25468#22",
+    "huntsvillewaterp25468#23",
+    "huntsvillewaterp25468#35"
+  ],
+  "records": [
+    {
+      "kind": "observation",
+      "parameter": "maximum daily flow",
+      "value": 300000.0,
+      "unit": "gallons",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.4152,
+      "provenance": {
+        "identifier": "huntsvillesewage25469",
+        "page": 3,
+        "source_text": "The maximum daily flow for this\nperiod was 300,000 gallons while the minimum recorded daily flow was\n10,000 gallons,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25469/page/n2/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6609
+      },
+      "key": "b6901cd146ad839a97f9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "minimum daily flow",
+      "value": 10000.0,
+      "unit": "gallons",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.4152,
+      "provenance": {
+        "identifier": "huntsvillesewage25469",
+        "page": 3,
+        "source_text": "The maximum daily flow for this\nperiod was 300,000 gallons while the minimum recorded daily flow was\n10,000 gallons,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25469/page/n2/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6609
+      },
+      "key": "ba7cd4aa0a4e5b10abe3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 12.0,
+      "unit": "ppm",
+      "qualifier": "average",
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1960",
+      "facility": "sewage treatment plant",
+      "confidence": 0.4342,
+      "provenance": {
+        "identifier": "huntsvillesewage25469",
+        "page": 7,
+        "source_text": "The average BOD for which result's are available is 12 ppm while the suspended solids content was 23 ppmo",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25469/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7368
+      },
+      "key": "0409cf50830245ac262b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 23.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1960",
+      "facility": "sewage treatment plant",
+      "confidence": 0.4342,
+      "provenance": {
+        "identifier": "huntsvillesewage25469",
+        "page": 7,
+        "source_text": "The average BOD for which result's are available is 12 ppm while the suspended solids content was 23 ppmo",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25469/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7368
+      },
+      "key": "049f428d50b6da242d6d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total cost of operating the sewage treatment plant",
+      "value": 7665.1,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6907,
+      "provenance": {
+        "identifier": "huntsvillesewage25469",
+        "page": 9,
+        "source_text": "The total cost of operating the sewage treatment plant during the year 196O was $7665.^1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25469/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5349
+      },
+      "key": "5421d7977396a5761232"
+    },
+    {
+      "kind": "observation",
+      "parameter": "volume treated",
+      "value": 7.072,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1960 since the beginning of May",
+      "facility": "sewage treatment plant",
+      "confidence": 0.6907,
+      "provenance": {
+        "identifier": "huntsvillesewage25469",
+        "page": 9,
+        "source_text": "Since the beginning of May, 7.072 million gallons have been treated at a cost of $7665.^1 or .77 cents per thousand gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25469/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5349
+      },
+      "key": "eb25e09af89ff80a0f1c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost per thousand gallons",
+      "value": 0.77,
+      "unit": "cents",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1960 since the beginning of May",
+      "facility": "sewage treatment plant",
+      "confidence": 0.6907,
+      "provenance": {
+        "identifier": "huntsvillesewage25469",
+        "page": 9,
+        "source_text": "Since the beginning of May, 7.072 million gallons have been treated at a cost of $7665.^1 or .77 cents per thousand gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25469/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5349
+      },
+      "key": "74639e30e6a836c60db3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total project cost",
+      "value": 339024.87,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.4123,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 9,
+        "source_text": "The total cost of the project was $339,024o87o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6494
+      },
+      "key": "9cb68a28032d8b40fa7e"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention period",
+      "value": 2.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "primary clarifier",
+      "confidence": 0.406,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 11,
+        "source_text": "The sewage is settled in the primary clarifier for approximately two hours before passing on to the aeration tanks",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6238
+      },
+      "key": "dabfb00a0a93ca979dfd"
+    },
+    {
+      "kind": "design",
+      "parameter": "Per capita flow",
+      "value": 100.0,
+      "unit": "UoS0 gallons/capita/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "100 UoSo gallons/capita/day",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "e423eed93a53804ade9c"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design plant flow",
+      "value": 300000.0,
+      "unit": "UoS0 gallons/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "300,000 UoS0 gallons/day",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "b1806a4a00a57e03e456"
+    },
+    {
+      "kind": "design",
+      "parameter": "5 day BOD of raw sewage",
+      "value": 250.0,
+      "unit": "ppmc",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "5 day BOD of raw sewage 250 ppmc Removal 90=95%o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "0731f1197987dba20ca2"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "5 day BOD of raw sewage 250 ppmc Removal 90=95%o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "9d22ba1381af7bf3616a"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "5 day BOD of raw sewage 250 ppmc Removal 90=95%o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "30cc922bb8b200b9dfe8"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended solids of raw sewage",
+      "value": 250.0,
+      "unit": "ppm.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Suspended solids of raw sewage 250 ppm. Removal 90=95%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "196036e9a878b155f730"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended solids removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Suspended solids of raw sewage 250 ppm. Removal 90=95%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "7d0a0d3bbd2de1fd1a77"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended solids removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Suspended solids of raw sewage 250 ppm. Removal 90=95%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "6da5d2343a58d369abd5"
+    },
+    {
+      "kind": "design",
+      "parameter": "volume",
+      "value": 52.0,
+      "unit": "cu\" ftD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "parallel channels",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "2 parallel channels; volume 52 o 5 cu\" ftD",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "e37a3d20a107f5768a75"
+    },
+    {
+      "kind": "design",
+      "parameter": "detention time",
+      "value": 2.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "parallel channels",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "2 parallel channels; volume 52 o 5 cu\" ftD\neach; detention time two minutes \"",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "4a0e552df4dc8eac73c7"
+    },
+    {
+      "kind": "design",
+      "parameter": "surface area",
+      "value": 300.0,
+      "unit": "square feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "primary tank",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Surface area - 300 square feet*",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "ee957632a9919c2c8107"
+    },
+    {
+      "kind": "design",
+      "parameter": "volume",
+      "value": 24000.0,
+      "unit": "cu\" ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "primary tank",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Volume - 24 , 000 cu\" ft.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "34211b554bb206aad43d"
+    },
+    {
+      "kind": "design",
+      "parameter": "detention period",
+      "value": 15.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "primary tank",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Detention period = I5 hours \"",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "5e5f90625afca4e96f71"
+    },
+    {
+      "kind": "design",
+      "parameter": "surface settling rate",
+      "value": 1000.0,
+      "unit": "UoS0 gals/sq. ft of tank/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "primary tank",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Surface settling rate - 1,000 UoSo gals/\nsq. fto of tank/day \"",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "65ed4f4531c6f2bd7e09"
+    },
+    {
+      "kind": "design",
+      "parameter": "overflow rate",
+      "value": 33000.0,
+      "unit": "UoS0 gallons /lineal foot of overflow weir /day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "primary tank",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Overflow rate 33 , 000 U0S0 gallons /lineal\nfoot of overflow weir /day \"",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "dabf8324df11c0b27b25"
+    },
+    {
+      "kind": "design",
+      "parameter": "volume",
+      "value": 14000.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Aeration Section",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Volume - 14j000 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "3fe22004f7dd6bb84027"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention period",
+      "value": 6.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Aeration Section",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "Retention period 6^ hours with 25% \nreturn sludge \"",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "2e23639cc856028e6b82"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention period",
+      "value": 8.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Aeration Section",
+      "confidence": 0.3639,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 13,
+        "source_text": "&amp;\n hours with 0% return sludge \"",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4557
+      },
+      "key": "08eec152f70a4114cc7d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Surface area",
+      "value": 390.0,
+      "unit": "square feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "Surface area = 390 square feet",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "cc8f8c39354e81649cdd"
+    },
+    {
+      "kind": "design",
+      "parameter": "Volume",
+      "value": 17000.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "Volume - 1+7 , 000 cubic feet",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "06237b3bb815a2b7765b"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention period",
+      "value": 3.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "Detention period - 3 hours",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "d1148b8a677262d5c14f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Surface settling rate",
+      "value": 770.0,
+      "unit": "Gallons /square foot/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "Surface settling rate 770 UoS, Gallons /square foot/day,,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "54ebb643dfb0a021da18"
+    },
+    {
+      "kind": "design",
+      "parameter": "Overflow rate",
+      "value": 5300.0,
+      "unit": "Gallons /lineal foot of overflow weir /day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "Overflow rate 5S300 U„S0 Gallons /lineal foot of overflow weir /day o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "4be871ac3d5411f0ef81"
+    },
+    {
+      "kind": "design",
+      "parameter": "Maximum dosage",
+      "value": 20.0,
+      "unit": "lbs /day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "Maximum dosage - 20 lbs /day",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "9abf55861ad2de0818dd"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention period",
+      "value": 36.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "Detention period - 36 minutes",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "ad60e6ed79ba61b026be"
+    },
+    {
+      "kind": "design",
+      "parameter": "heated digester capacity",
+      "value": 5.0,
+      "unit": "cubic feet/capita0",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "heated digester capacity &lt;= 5 cubic feet/capita0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "19ba4a169149ad7e84f3"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 600000.0,
+      "unit": "Gallons /day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "increasing the plant capacity to 600 s 000 UoS„G„P„D„ 5",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "8c94e5ca82767c19fb0a"
+    },
+    {
+      "kind": "design",
+      "parameter": "population capacity",
+      "value": 62000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "capable of serving a population of 62000 persons,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "ebb25bc32d5c8cd8356c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sewage treated",
+      "value": 360273.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "during 1^61; 360273 million gallons of sewage were treated,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "8e3ad0467d776d5ffcaf"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit removed",
+      "value": 245.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "245 cubic feet of grit were removed",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "2c36dd90ec7b4f9651b1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit removal",
+      "value": 6.7,
+      "unit": "cubic feet/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "or a removal of 6,7 cubic feet/ million gallons,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "c8efbdb40be9cefc52d7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "natural gas consumed",
+      "value": 5950.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3732,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 15,
+        "source_text": "595$ cubic feet of natural gas were consumed in heating the plant;",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4929
+      },
+      "key": "6235284d5fa1d4b1e176"
+    },
+    {
+      "kind": "standard",
+      "parameter": "SoS",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Huntsville sewage treatment plant",
+      "confidence": 0.3908,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 17,
+        "source_text": "The quality of the final effluent is very close to meeting the objectives of the OWRC which are 15 ppm SoS0 and 15 ppm BOD in the final effluent",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5633
+      },
+      "key": "ed62c72667562080142c"
+    },
+    {
+      "kind": "standard",
+      "parameter": "BOD",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Huntsville sewage treatment plant",
+      "confidence": 0.3908,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 17,
+        "source_text": "The quality of the final effluent is very close to meeting the objectives of the OWRC which are 15 ppm SoS0 and 15 ppm BOD in the final effluent",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5633
+      },
+      "key": "44b17e8e6f1f50828d10"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Huntsville sewage treatment plant",
+      "confidence": 0.3908,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 17,
+        "source_text": "The plant is designed for a removal of from 90=95% of BOD and SS0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5633
+      },
+      "key": "b79ce7608d6fc941c4ba"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Huntsville sewage treatment plant",
+      "confidence": 0.3908,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 17,
+        "source_text": "The plant is designed for a removal of from 90=95% of BOD and SS0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5633
+      },
+      "key": "7e9cb3212e102a8309e8"
+    },
+    {
+      "kind": "design",
+      "parameter": "SoS removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Huntsville sewage treatment plant",
+      "confidence": 0.3908,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 17,
+        "source_text": "The plant is designed for a removal of from 90=95% of BOD and SS0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5633
+      },
+      "key": "a5464229a25de7a75bbb"
+    },
+    {
+      "kind": "design",
+      "parameter": "SoS removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Huntsville sewage treatment plant",
+      "confidence": 0.3908,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 17,
+        "source_text": "The plant is designed for a removal of from 90=95% of BOD and SS0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5633
+      },
+      "key": "81ae0b0131639eab36e9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "cost of power per million gallons of sewage treated",
+      "value": 1.1,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "The cost of power per million gallons of sewage treated at the plant was $l#„10o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "ce9ce4c2fde8f6ec375c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Payroll",
+      "value": 3639.68,
+      "unit": "$",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Payroll $ 3,639. 68 40 . 7",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "7c9e501d85d2fa77b5d7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Fuel",
+      "value": 595.05,
+      "unit": "$",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Fuel 595.05 6.7",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "f6d6c29479b4d015c364"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Power",
+      "value": 1273.08,
+      "unit": "$",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Power 1,273089 14o3",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "a28aeb6acfcaaea720bd"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Chemical",
+      "value": 76.42,
+      "unit": "$",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Chemical (76„42 cr« ) — --",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "4c05b0dc62162996718e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "General Supplies",
+      "value": 466.11,
+      "unit": "$",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "General Supplies 466.11 5.0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "f792d8399c833c7fa77a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Repairs & Maintenance",
+      "value": 1210.19,
+      "unit": "$",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Repairs &amp; Maintenance 121019 1»2",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "82ecdd7dcb7e79f1c340"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Water",
+      "value": 213.76,
+      "unit": "$",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Water 213 . 76 2o0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "554d43820ad5f3b43cd2"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Total operating costs",
+      "value": 8914.49,
+      "unit": "$",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "TOTAL 8,914.49 100o00",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "c2a2772d3068fd49f573"
+    },
+    {
+      "kind": "design",
+      "parameter": "Payroll",
+      "value": 4040.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Payroll 4,040.00",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "fcf4755281a767a39f82"
+    },
+    {
+      "kind": "design",
+      "parameter": "Fuel",
+      "value": 800.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Fuel 800 o 00",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "bef87465ef061b76c977"
+    },
+    {
+      "kind": "design",
+      "parameter": "Power",
+      "value": 1400.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "plant",
+      "confidence": 0.3933,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 19,
+        "source_text": "Power 1,400.00",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5732
+      },
+      "key": "8ba2ba4bb026d32bb175"
+    },
+    {
+      "kind": "observation",
+      "parameter": "cost to treat sewage",
+      "value": 246.0,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Huntsyille plant",
+      "confidence": 0.7523,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 21,
+        "source_text": "It cost $246.00 to treat each million gallons of sewage received at the Huntsyille plant during 1961.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6717
+      },
+      "key": "f0b37f191ec8803f3584"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maintenance man hours",
+      "value": 33.0,
+      "unit": "man hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1961",
+      "facility": "Huntsville plant",
+      "confidence": 0.7941,
+      "provenance": {
+        "identifier": "huntsvillesewage25479",
+        "page": 21,
+        "source_text": "During 1961, 33 man hours were spent at the Huntsville plant by the Maintenance Section of the Division of Plant Operations; also the project engineer makes periodic inspection visits to the plant -all of this is at no charge to the municipality .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25479/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.6717
+      },
+      "key": "10802466ac24eb7f3977"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total project estimated cost",
+      "value": 389024.87,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3849,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 5,
+        "source_text": "The total cost of the project was estimated at I 389,024.87.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5396
+      },
+      "key": "1f7b10b6e8e33a237cb6"
+    },
+    {
+      "kind": "design",
+      "parameter": "digester temperature",
+      "value": 90.0,
+      "unit": "°F",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "digester",
+      "confidence": 0.7928,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 9,
+        "source_text": "The sludge drawn from the primary tank and pumped to the digester is maintained at a temperature of 90 °F for a period of 28 days.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.5856
+      },
+      "key": "c1b0012d1caa0aec9c0c"
+    },
+    {
+      "kind": "design",
+      "parameter": "digestion period",
+      "value": 28.0,
+      "unit": "days",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "digester",
+      "confidence": 0.7928,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 9,
+        "source_text": "The sludge drawn from the primary tank and pumped to the digester is maintained at a temperature of 90 °F for a period of 28 days.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.5856
+      },
+      "key": "613655373f38a3ae326f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation tank surface area",
+      "value": 390.0,
+      "unit": "sq. ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "Surface area - 390 sq. ft.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "bf7242467203bb30e080"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation tank volume",
+      "value": 4700.0,
+      "unit": "cu. ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "Volume - 4700 cu. ft.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "7cfe13611a271e17d13f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention period",
+      "value": 3.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "Detention period - 3 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "1e0be37030c6e2f1df5e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Surface settling rate",
+      "value": 770.0,
+      "unit": "US Gals/sq. ft./day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "Surface settling rate 770 US Gals/sq . f t . /day .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "9c4558e293db8c48d341"
+    },
+    {
+      "kind": "design",
+      "parameter": "Overflow rate",
+      "value": 5300.0,
+      "unit": "US gals/Lineal foot of overflow weir /day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "Overflow rate 5300 US gals/ Lineal foot of overflow weir /day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "080384d59948663f39a7"
+    },
+    {
+      "kind": "design",
+      "parameter": "Chlorination maximum dosage",
+      "value": 20.0,
+      "unit": "lbs./day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "3. Chlorination -Maximum dosage - 20 lbs. /day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "26abdc1f1a405a08efe6"
+    },
+    {
+      "kind": "design",
+      "parameter": "Chlorination detention period",
+      "value": 36.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "Detention period - 36 minutes.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "29fce4d5ec78af941f25"
+    },
+    {
+      "kind": "design",
+      "parameter": "Heated digester capacity",
+      "value": 5.0,
+      "unit": "cubic feet/capita",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "Heated digester capacity - 5 cubic feet/capita.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "8deddf4c48db87f74453"
+    },
+    {
+      "kind": "design",
+      "parameter": "future plant capacity",
+      "value": 600000.0,
+      "unit": "USGPD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "increasing the plant capacity to 600,000 USGPD capable of serving a population of 6,000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "ec2c808241a6d9c68944"
+    },
+    {
+      "kind": "design",
+      "parameter": "future population served",
+      "value": 6000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3768,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 13,
+        "source_text": "increasing the plant capacity to 600,000 USGPD capable of serving a population of 6,000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.507
+      },
+      "key": "23c648402431838bcb1e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sewage processed",
+      "value": 60.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3993,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 15,
+        "source_text": "The plant processed approximately 60 million gallons of sewage, removed 112 cubic feet of grit, consumed 4357 cubic feet of gas and 119,000 gallons of digested sludge were hauled from the digester.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5973
+      },
+      "key": "e5ed893c9a4ac6582ca7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit removed",
+      "value": 112.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3993,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 15,
+        "source_text": "The plant processed approximately 60 million gallons of sewage, removed 112 cubic feet of grit, consumed 4357 cubic feet of gas and 119,000 gallons of digested sludge were hauled from the digester.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5973
+      },
+      "key": "d863143de2ab8db873ee"
+    },
+    {
+      "kind": "observation",
+      "parameter": "gas consumed",
+      "value": 4357.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3993,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 15,
+        "source_text": "The plant processed approximately 60 million gallons of sewage, removed 112 cubic feet of grit, consumed 4357 cubic feet of gas and 119,000 gallons of digested sludge were hauled from the digester.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5973
+      },
+      "key": "a5639a3878e21f6ab908"
+    },
+    {
+      "kind": "observation",
+      "parameter": "digested sludge hauled",
+      "value": 119000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3993,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 15,
+        "source_text": "The plant processed approximately 60 million gallons of sewage, removed 112 cubic feet of grit, consumed 4357 cubic feet of gas and 119,000 gallons of digested sludge were hauled from the digester.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5973
+      },
+      "key": "32e966d36245b8088d49"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 160000.0,
+      "unit": "GPD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3993,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 15,
+        "source_text": "The average daily flow at 160,000 GPD is below the design flow and the plant is overloaded on a daily basis only I07o of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5973
+      },
+      "key": "2c2050aacd3f30f2bc9c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "capacity exceedance frequency",
+      "value": 7.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3993,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 15,
+        "source_text": "The average daily flow at 160,000 GPD is below the design flow and the plant is overloaded on a daily basis only I07o of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5973
+      },
+      "key": "5070b9a37a363040dbc9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total construction cost",
+      "value": 469404.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "The total construction cost for the Huntsville project, 58-S-15, was approximately $469,404.00 which was divided as follows:",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "75e85f09ed3d462dafe6"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Sanitary Sewers and Forcemains cost",
+      "value": 150954.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "Sanitary Sewers and Forcemains $150,954",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "fd5cba838be49ddb22c4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Treatment Plant and Pumping Stations cost",
+      "value": 241643.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "Treatment Plant and Pumping Stations 241 ,643",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "af1fa9a0653932d554ca"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Engineering Fees",
+      "value": 27296.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "Engineering Fees 27,296",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "83a80a6ca7fe861eed34"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Contingencies",
+      "value": 23003.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "Contingencies 23,003",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "8f88fc8ef18b2e17cbbe"
+    },
+    {
+      "kind": "observation",
+      "parameter": "subtotal cost",
+      "value": 442896.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "$442,896",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "50805973a733bde17ec0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Tax Refund",
+      "value": 4906.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "Less Tax Refund 4,906",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "bff980731586d88f6e15"
+    },
+    {
+      "kind": "observation",
+      "parameter": "subtotal after tax refund",
+      "value": 437990.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "$437,990",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "df7fd8338705f13120dc"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Capitalized Interest",
+      "value": 31414.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "Add Capitalized Interest 31,414",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "81cd2bb71294546c132e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Final Tentative Cost",
+      "value": 469404.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "Final Tentative Cost $469,404",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "15cb266c610241c357f5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "treatment cost per million gallons",
+      "value": 142.0,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "(a) Per million gallons $ 142",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "8ad94453c348e0835109"
+    },
+    {
+      "kind": "observation",
+      "parameter": "treatment cost per lb. BOD removed",
+      "value": 0.085,
+      "unit": "$/lb.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "(b) Per lb. BOD removed $ 0.085",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "de6cffad4aed82b877f7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "treatment cost per lb. SS removed",
+      "value": 0.085,
+      "unit": "$/lb.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "(c) Per lb. SS removed $ 0.085",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "0f1289234654d727798e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "treatment cost per capita",
+      "value": 2.82,
+      "unit": "$/person",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3633,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 33,
+        "source_text": "(d) Per capita (3000 persons) $ 2.82",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4533
+      },
+      "key": "5e40cbfafde2b3074121"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage bypass percentage",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.3787,
+      "provenance": {
+        "identifier": "huntsvillesewage25476",
+        "page": 35,
+        "source_text": "At nights, when the plant is unattended, the build-up often plugs the bar screens causing at least 90% of the raw sewage to by-pass the plant and be discharged directly to the river, Tlie cost of this recommenda- tion will consist almosE entirely of equipment costs since provision was niade in the initial design for the addition of a comminutor.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillesewage25476/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5147
+      },
+      "key": "95dfbd95873dba7ae055"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow",
+      "value": 0.173,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The flow to the Huntsville Water Pollution Control Plant during 1964 aver- aged 0. 173 mgd as compared to 0. 177 mgd in 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "326f0f90212903c5af20"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow",
+      "value": 0.177,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The flow to the Huntsville Water Pollution Control Plant during 1964 aver- aged 0. 173 mgd as compared to 0. 177 mgd in 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "e2000c4b0f2bfde4c7bf"
+    },
+    {
+      "kind": "design",
+      "parameter": "flow",
+      "value": 0.25,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The flow exceeded the plant design flow of 0. 250 mgd 25% of the time as compared to 20% in 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "2e7fdbac1a304973b83e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "capacity exceedance frequency",
+      "value": 25.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The flow exceeded the plant design flow of 0. 250 mgd 25% of the time as compared to 20% in 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "961872351b5156d149d7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "capacity exceedance frequency",
+      "value": 20.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1963",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The flow exceeded the plant design flow of 0. 250 mgd 25% of the time as compared to 20% in 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "ca72203904540da8a8a6"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 136.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Huntsville",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The strength of the influent sewage during 1963 was consistent with average domestic sewage, having an average BOD of 136 ppm and an average sus- pended solids content of 194 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "ee02246bde1cbca5a064"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 194.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Huntsville",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The strength of the influent sewage during 1963 was consistent with average domestic sewage, having an average BOD of 136 ppm and an average sus- pended solids content of 194 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "dcb2874244f37db45357"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The plant efficiency for the year was consistent with design expectations for the activated sludge sewage treat- mentprocess, giving reductions of 95. 0%and 92. 5% in BOD and suspended solids respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "9bbe2578e85b45b7e43d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal",
+      "value": 92.5,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The plant efficiency for the year was consistent with design expectations for the activated sludge sewage treat- mentprocess, giving reductions of 95. 0%and 92. 5% in BOD and suspended solids respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "fd1d0e1dff461a9b13fa"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost",
+      "value": 10121.07,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The cost of operating during 1964 was $10, 121. 07 representing a per capita cost, based on 3000 persons, of $3. 37, or a cost of $159. 75 per million gallons of sewage treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "3fce9572bcc12b958591"
+    },
+    {
+      "kind": "observation",
+      "parameter": "per capita cost",
+      "value": 3.37,
+      "unit": "$/person",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The cost of operating during 1964 was $10, 121. 07 representing a per capita cost, based on 3000 persons, of $3. 37, or a cost of $159. 75 per million gallons of sewage treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "21febd97f35349cc5065"
+    },
+    {
+      "kind": "observation",
+      "parameter": "cost per million gallons",
+      "value": 159.75,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6529,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 9,
+        "source_text": "The cost of operating during 1964 was $10, 121. 07 representing a per capita cost, based on 3000 persons, of $3. 37, or a cost of $159. 75 per million gallons of sewage treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3057
+      },
+      "key": "393c24ed879108577047"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 500000.0,
+      "unit": "Imperial gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "Water Pollution Control plant",
+      "confidence": 0.3372,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 11,
+        "source_text": "This plant is designed to facilitate future construction of identical primary, aeration, final and digestion tanks thereby increasing the plant capacity to 500, 000 Imperial gallons per day capable of serving a population of G, 000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3488
+      },
+      "key": "9e84243c86fb9643d661"
+    },
+    {
+      "kind": "design",
+      "parameter": "population served",
+      "value": 6000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "Water Pollution Control plant",
+      "confidence": 0.3372,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 11,
+        "source_text": "This plant is designed to facilitate future construction of identical primary, aeration, final and digestion tanks thereby increasing the plant capacity to 500, 000 Imperial gallons per day capable of serving a population of G, 000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3488
+      },
+      "key": "1a3d9889f28709140892"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Population",
+      "value": 3000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Design Population - 3, 000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "2bbb8015e21c042bc73b"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Plant Flow",
+      "value": 250000.0,
+      "unit": "gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Design Plant Flow - 250, 000 gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "3df0fb93dfab55ff5083"
+    },
+    {
+      "kind": "design",
+      "parameter": "Per Capita Flow",
+      "value": 83.0,
+      "unit": "gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Per Capita Flow - 83 gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "ecc61afc20c71b1f01b9"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "90-95%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "4ace41e65cdfd5a52347"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "90-95%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "c8c8a49e1245b0c25f18"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "90-95%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "ae0d5fdd14012b6e8f27"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "90-95%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "ee4ccb2c00f938516da7"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal channel length",
+      "value": 10.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Two parallel channels, 10 ft. long and 19 inches wide.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "00aada9562b8f0c12632"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal channel width",
+      "value": 19.0,
+      "unit": "inches",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Two parallel channels, 10 ft. long and 19 inches wide.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "53376bb12d4b1082a095"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal channel volume",
+      "value": 52.5,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Volume - 52. 5 cubic feet each.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "d62a84c6e1c77525c85f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal detention time",
+      "value": 1.9,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Detention time - 1. 9 minutes.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "35b8c462d5667b6572ea"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Tank surface area",
+      "value": 300.0,
+      "unit": "square feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Surface area - 300 square feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "accdfe771641fb9f58ac"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Tank volume",
+      "value": 2400.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Volume - 2,400 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "5511feab8d69f0b7a8c6"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Tank detention time",
+      "value": 1.5,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Detention time - 1. 5 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "fb635c2bba81cf394c6c"
+    },
+    {
+      "kind": "design",
+      "parameter": "Surface Settling Rate",
+      "value": 833.0,
+      "unit": "gallons per sq. ft. of tank per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Surface Settling Rate - 833 gallons per sq. ft. of tank per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "8dfd4032412feb02bcb1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Overflow rate",
+      "value": 27500.0,
+      "unit": "gallons per ft. of weir per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Overflow rate - 27, 500 gallons per ft. of weir per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "73cbdbef3a009e79c10c"
+    },
+    {
+      "kind": "design",
+      "parameter": "Secondary Sedimentation Tank volume",
+      "value": 14000.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Volume - 14, 000 cubic feet",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "f4e1f3afbcb38de6c0c5"
+    },
+    {
+      "kind": "design",
+      "parameter": "Secondary Sedimentation Tank detention time",
+      "value": 6.75,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Detention time - 6. 75 hours with 25%, return sludge.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "cfcef667670e25695463"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank surface area",
+      "value": 390.0,
+      "unit": "square feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Surface area - 390 square feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "ed4b322a72579045f16e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank volume",
+      "value": 4700.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Volume - 4,700 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "c2295b8400aebf871e70"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank detention time",
+      "value": 3.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Detention time - 3 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "fe742ecc5a7caeec46e7"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank surface settling rate",
+      "value": 640.0,
+      "unit": "gallons per ft. per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Surface Settling Rate - 640 gallons per ft. per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "d7cba883c4ae21633846"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank overflow rate",
+      "value": 4400.0,
+      "unit": "gallons per lineal ft. of weir per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Overflow rate - 4400 gallons per lineal ft. of weir per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "50e380bded10e05ca199"
+    },
+    {
+      "kind": "design",
+      "parameter": "Chlorine Contact Chamber detention time",
+      "value": 36.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Detention time - 36 minutes.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "cee7b404018248c6afdd"
+    },
+    {
+      "kind": "design",
+      "parameter": "Maximum chlorine dosage",
+      "value": 20.0,
+      "unit": "lbs. of chlorine per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Maximum dosage - 20 lbs. of chlorine per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "3f11e90f2c7b755c1219"
+    },
+    {
+      "kind": "design",
+      "parameter": "Outfall pipe length",
+      "value": 105.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "The effluent is discharged to the Muskoka River through 105 ft. of 15 inch corrugated metal pipe.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "ae8aa63b24cdce744713"
+    },
+    {
+      "kind": "design",
+      "parameter": "Outfall pipe diameter",
+      "value": 15.0,
+      "unit": "inch",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "The effluent is discharged to the Muskoka River through 105 ft. of 15 inch corrugated metal pipe.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "cc6f79f4b0d6cda31d16"
+    },
+    {
+      "kind": "design",
+      "parameter": "Digester diameter",
+      "value": 30.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "One single stage digester 30 ft. in diameter by 20 ft. side wall depth.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "645ff281c07c0f7ea4d9"
+    },
+    {
+      "kind": "design",
+      "parameter": "Digester depth",
+      "value": 20.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "One single stage digester 30 ft. in diameter by 20 ft. side wall depth.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "699feb8eefa9003d8ae7"
+    },
+    {
+      "kind": "design",
+      "parameter": "Heated digester capacity",
+      "value": 5.0,
+      "unit": "cubic feet per capita",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3277,
+      "provenance": {
+        "identifier": "HUNTSVILLEWATERP00SNSN19450.ome",
+        "page": 21,
+        "source_text": "Heated digester capacity is 5 cubic feet per capita.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/HUNTSVILLEWATERP00SNSN19450.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.311
+      },
+      "key": "56ebd6681098cae7fee8"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total waste treated",
+      "value": 66647000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "In 1965, Huntsville Water Pollution Control Plant treated a total of 66, 647, 000 gallons of waste, an average daily flow of 183,000 gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "c6df74c73616642aa40c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 183000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "In 1965, Huntsville Water Pollution Control Plant treated a total of 66, 647, 000 gallons of waste, an average daily flow of 183,000 gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "39af4ded7f30261d3eaa"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating costs",
+      "value": 9949.5,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "The operating costs of the treatment plant and associated pumping stations in 1965 were $9, 949. 50 or a cost of $149. 29 per million gallons of sewage treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "cab80410ac7b1da39d73"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost per million gallons",
+      "value": 149.29,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "The operating costs of the treatment plant and associated pumping stations in 1965 were $9, 949. 50 or a cost of $149. 29 per million gallons of sewage treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "6129fb7a5d1b609d64bf"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost reduction",
+      "value": 171.57,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "The operating costs decreased by $171. 57 in 1965 from that of 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "bbc55682b49aa52c9a7a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent BOD",
+      "value": 10.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "The plant produced an average effluent of 10 ppm BOD and 15 ppm SS.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "f0816edf613c268da710"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent suspended solids",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "The plant produced an average effluent of 10 ppm BOD and 15 ppm SS.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "c5b42d6d242a1ba25707"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal efficiency",
+      "value": 93.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "The plant removed an average of 93 percent of the BOD and suspended solids received, and this is considered a good plant removal efficiency for an activated sludge plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "553a05e925d9cfd6fa90"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal efficiency",
+      "value": 93.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Huntsville Water Pollution Control Plant",
+      "confidence": 0.8904,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 10,
+        "source_text": "The plant removed an average of 93 percent of the BOD and suspended solids received, and this is considered a good plant removal efficiency for an activated sludge plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.7808
+      },
+      "key": "e7da1a672deb65fa571a"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 500000.0,
+      "unit": "Imperial gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Water Pollution Control plant",
+      "confidence": 0.4168,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 12,
+        "source_text": "This plant is designed to facilitate future construction of identical primary, aeration, final and digestion tanks thereby increasing the plant capacity to 500,000 Imperial gallons per day capable of serving a population of 6,000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6672
+      },
+      "key": "74df1981bae9c4e7dbd7"
+    },
+    {
+      "kind": "design",
+      "parameter": "population served",
+      "value": 6000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "Water Pollution Control plant",
+      "confidence": 0.4168,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 12,
+        "source_text": "This plant is designed to facilitate future construction of identical primary, aeration, final and digestion tanks thereby increasing the plant capacity to 500,000 Imperial gallons per day capable of serving a population of 6,000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6672
+      },
+      "key": "290c743fc6661ff3277f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total cost",
+      "value": 452388.75,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4168,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 12,
+        "source_text": "TOTAL COST (Final)\n$452,388. 75",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6672
+      },
+      "key": "25eda4a2818dc7fca7d2"
+    },
+    {
+      "kind": "design",
+      "parameter": "digester temperature",
+      "value": 90.0,
+      "unit": "° F.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "SLUDGE DIGESTION TANKS",
+      "confidence": 0.4198,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 15,
+        "source_text": "The sludge drawn from the primary tank\nand pumped to the digester is maintain -\ned at a temperature of 90° F. for a\nperiod of 28 days.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6793
+      },
+      "key": "6395500845b14990b479"
+    },
+    {
+      "kind": "design",
+      "parameter": "digestion period",
+      "value": 28.0,
+      "unit": "days",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "SLUDGE DIGESTION TANKS",
+      "confidence": 0.4198,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 15,
+        "source_text": "The sludge drawn from the primary tank\nand pumped to the digester is maintain -\ned at a temperature of 90° F. for a\nperiod of 28 days.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6793
+      },
+      "key": "8aecda67aa9774909e28"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Population",
+      "value": 3000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Design Population - 3,000 persons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "1d8a0bce346d69706171"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Plant Flow",
+      "value": 250000.0,
+      "unit": "gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Design Plant Flow - 250, 000 gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "d9d5d376dd497061b80d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Per Capita Flow",
+      "value": 83.0,
+      "unit": "gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Per Capita Flow - 83 gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "b15d4c2e81ddce3961d1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Five Day BOD",
+      "value": 250.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Five Day BOD - 250 PPM",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "2eb87fbe92a3a43bc93e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Raw Sewage Suspended Solids Removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "90-95%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "7352a68d51d6a60affe0"
+    },
+    {
+      "kind": "design",
+      "parameter": "Raw Sewage Suspended Solids Removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "90-95%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "cc15662da96f65111d17"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal channel length",
+      "value": 10.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Two parallel channels, 10 ft. long and 19 inches wide.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "ffd0e16974f2d20eec1e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal channel width",
+      "value": 19.0,
+      "unit": "inches",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Two parallel channels, 10 ft. long and 19 inches wide.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "40a23794ec81d9ae471e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal channel volume",
+      "value": 52.5,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Volume - 52. 5 cubic feet each.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "b740bcd8d8358fc5e5c7"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit Removal detention time",
+      "value": 1.9,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Detention time - 1. 9 minutes.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "26208c17616a1341803e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Tank surface area",
+      "value": 300.0,
+      "unit": "square feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Surface area - 300 square feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "79c9e0334c6d92764f8d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Tank volume",
+      "value": 2400.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Volume - 2,400 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "a02e39ee8b98bbe3e83f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Tank detention time",
+      "value": 1.5,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Detention time - 1. 5 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "6a561bc7bdd5ecda65a1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Tank surface settling rate",
+      "value": 833.0,
+      "unit": "gallons per sq. ft. of tank per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Surface Settling Rate - 833 gallons per sq. ft. of tank per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "fe611329ec944ad6902b"
+    },
+    {
+      "kind": "design",
+      "parameter": "Primary Sedimentation Tank overflow rate",
+      "value": 27500.0,
+      "unit": "gallons per ft. of weir per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Overflow rate - 27, 500 gallons per ft. of weir per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "cacfbb87242cb7e14965"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank volume",
+      "value": 4700.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Volume - 4,700 cubic feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "cef1ee315184b38c94ad"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank surface area",
+      "value": 390.0,
+      "unit": "square feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Surface area - 390 square feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "437dcd2a3149a6f33cfe"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank detention time",
+      "value": 3.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Detention time - 3 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "8544f61934525e323b4e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank surface settling rate",
+      "value": 640.0,
+      "unit": "gallons per ft. per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Surface Settling Rate - 640 gallons per ft. per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "3014efb0a1e0a3c16291"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Sedimentation Tank overflow rate",
+      "value": 4400.0,
+      "unit": "gallons per lineal ft. of weir per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Overflow rate - 4400 gallons per lineal ft. of weir per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "9bd5f37fe419bc907bb1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Chlorine Contact Chamber detention time",
+      "value": 36.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Detention time - 36 minutes.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "b96d74557859d1d825db"
+    },
+    {
+      "kind": "design",
+      "parameter": "Chlorine maximum dosage",
+      "value": 20.0,
+      "unit": "lbs. of chlorine per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Maximum dosage - 20 lbs. of chlorine per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "8d173cb6bf665926086b"
+    },
+    {
+      "kind": "design",
+      "parameter": "Outfall pipe length",
+      "value": 105.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "The effluent is discharged to the Muskoka River through 105 ft. of 15 inch corrugated metal pipe.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "10d22831eaac70591462"
+    },
+    {
+      "kind": "design",
+      "parameter": "Outfall pipe diameter",
+      "value": 15.0,
+      "unit": "inch",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "The effluent is discharged to the Muskoka River through 105 ft. of 15 inch corrugated metal pipe.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "bcd4406cac19c4e1397e"
+    },
+    {
+      "kind": "design",
+      "parameter": "Heated digester capacity",
+      "value": 5.0,
+      "unit": "cubic feet per capita",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.4249,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 22,
+        "source_text": "Heated digester capacity is 5 cubic feet per capita.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6998
+      },
+      "key": "43537785b17329eb2b1f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow exceedance frequency",
+      "value": 175000.0,
+      "unit": "gpd",
+      "qualifier": "percent",
+      "stream": "influent",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "From the plot of probability of flows it should be noted that the flow was equal to or exceeded 175, 000 gpd 50 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "133bce1e803a57e6d05e"
+    },
+    {
+      "kind": "design",
+      "parameter": "design flow",
+      "value": 250000.0,
+      "unit": "gpd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "The plant exceeded the design flow of 250,000 gpd approximately 20 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "e2454aa12482a0c0d7fc"
+    },
+    {
+      "kind": "observation",
+      "parameter": "design flow exceedance frequency",
+      "value": 20.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "The plant exceeded the design flow of 250,000 gpd approximately 20 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "0dd844db8d7acaab0463"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage BOD exceedance frequency",
+      "value": 10.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "From the plot of probability of BOD it should be noted that the concentration of the raw sewage exceeded 250 ppm approximately 10 percent of the time and exceeded 160 ppm approximately 50 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "9c1625b915c789b47db0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage BOD exceedance frequency",
+      "value": 50.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "From the plot of probability of BOD it should be noted that the concentration of the raw sewage exceeded 250 ppm approximately 10 percent of the time and exceeded 160 ppm approximately 50 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "4257c9251eb54f4fb687"
+    },
+    {
+      "kind": "standard",
+      "parameter": "OWRC objective BOD",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "The final effluent BOD exceeded the OWRC objective of 15 ppm approximately 15 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "aeebbeaa3b1bcf7b87ce"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent BOD exceedance frequency",
+      "value": 15.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "The final effluent BOD exceeded the OWRC objective of 15 ppm approximately 15 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "f4f616433d1cdea2dab5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids exceedance frequency",
+      "value": 50.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "From the plot of probability of suspended solids it should be noted that the concentration of suspended solids in the raw sewage exceeded 200 ppm 50 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "29780ab6fb8b728db989"
+    },
+    {
+      "kind": "standard",
+      "parameter": "OWRC objective suspended solids",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "The concentration of suspended solids in the effluent exceeded the OWRC objective of 15 ppm approximately 30 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "0a3556dda97d4559d19f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent suspended solids exceedance frequency",
+      "value": 30.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Huntsville",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7448,
+      "provenance": {
+        "identifier": "huntsvillewaterp25468",
+        "page": 23,
+        "source_text": "The concentration of suspended solids in the effluent exceeded the OWRC objective of 15 ppm approximately 30 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/huntsvillewaterp25468/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.655
+      },
+      "key": "41ec89b0c5b6686fbad5"
+    }
+  ]
+}

@@ -1,0 +1,2703 @@
+{
+  "effort": {
+    "readings": 140,
+    "pages": 0,
+    "documents": 0,
+    "strata_planned": 25,
+    "strata_reached": 19
+  },
+  "archive_language": {
+    "readings": 8,
+    "terms_seen": 7,
+    "seen_once": 6,
+    "seen_twice": 1,
+    "miss_rate": 0.75,
+    "coverage": 0.25,
+    "judged": false,
+    "terms_estimated_to_exist": 14.5,
+    "estimate_ci95": [
+      8.0,
+      62.6
+    ]
+  },
+  "model_language": {
+    "readings": 132,
+    "terms_seen": 94,
+    "seen_once": 78,
+    "seen_twice": 11,
+    "miss_rate": 0.59091,
+    "coverage": 0.40909,
+    "judged": true,
+    "terms_estimated_to_exist": 344.2,
+    "estimate_ci95": [
+      216.5,
+      605.4
+    ]
+  },
+  "archive_language_excluding_damaged_ocr": {
+    "readings": 8,
+    "terms_seen": 7,
+    "seen_once": 6,
+    "seen_twice": 1,
+    "miss_rate": 0.75,
+    "coverage": 0.25,
+    "judged": false,
+    "terms_estimated_to_exist": 14.5,
+    "estimate_ci95": [
+      8.0,
+      62.6
+    ]
+  },
+  "unsettled_only": {
+    "readings": 7,
+    "terms_seen": 6,
+    "seen_once": 5,
+    "seen_twice": 1,
+    "miss_rate": 0.71429,
+    "coverage": 0.28571,
+    "judged": false,
+    "terms_estimated_to_exist": 11.0,
+    "estimate_ci95": [
+      6.6,
+      48.3
+    ]
+  },
+  "contested_terms": 1,
+  "stopping_rule": {
+    "rule": "min coverage across judgeable strata >= target",
+    "target": 0.975,
+    "met": false,
+    "weakest": [
+      {
+        "stratum": "omote",
+        "readings": 2,
+        "terms": 2,
+        "coverage": 0.0,
+        "judged": false,
+        "still_missing_est": 1.0
+      },
+      {
+        "stratum": "sessionalpaperscanada_title",
+        "readings": 1,
+        "terms": 1,
+        "coverage": 0.0,
+        "judged": false,
+        "still_missing_est": 0
+      },
+      {
+        "stratum": "unsorted",
+        "readings": 1,
+        "terms": 1,
+        "coverage": 0.0,
+        "judged": false,
+        "still_missing_est": 0
+      },
+      {
+        "stratum": "fav-james_tierney-hynes",
+        "readings": 4,
+        "terms": 3,
+        "coverage": 0.5,
+        "judged": false,
+        "still_missing_est": 0.5
+      }
+    ],
+    "unjudged_strata": [
+      "albertagovernmentpublications",
+      "boardofinquirydecisions",
+      "canadaactsofparliament",
+      "canadianagriculturallibrary",
+      "canadianmunicipal",
+      "documentsdelasessioncanada",
+      "fav-james_tierney-hynes",
+      "fav-pere432",
+      "gerstein",
+      "hpl-govdocs",
+      "journalshouseofcommonscanada",
+      "microlog",
+      "ministryoffinance_ontario",
+      "omote",
+      "ongovedudocs",
+      "ont-attorneygen-reports",
+      "ontariobills",
+      "ontariolegassembly",
+      "ontariosessionalpapers",
+      "ontla",
+      "sessionalpaperscanada_title",
+      "sessionalpaperscanada_volume",
+      "statisticscanada",
+      "unsorted",
+      "uoftgovpubs"
+    ],
+    "n_unjudged": 25
+  },
+  "discovery_curve": {
+    "new_terms_per_round": [
+      7
+    ],
+    "readings_per_round": [
+      140
+    ]
+  },
+  "controls": {
+    "model_named_share": 0.9429,
+    "ocr_damage_shifts_coverage_by": 0.0,
+    "ocr_damage_material": false
+  },
+  "not_measured": [
+    "Vocabulary on TABLE pages. Only prose pages are read here, and 9.6% of the corpus is tabular with its own vocabulary living in column headers.",
+    "Whether a term MEANS what the vocabulary will say it means. This counts names; a person still decides identities in vocab_builder.",
+    "Terms the extractor never emitted because its prompt did not invite them. Coverage is of what this pipeline can see, not of the documents.",
+    "Anything in strata reported as unjudged -- those have no estimate at all."
+  ],
+  "terms": [
+    {
+      "term": "membership",
+      "measure": "",
+      "count": 7,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontariosessionalpapers"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "members",
+          7
+        ]
+      ],
+      "written_as": [
+        "membership"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "expenditure for horticultural purposes",
+      "measure": "",
+      "count": 7,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontariosessionalpapers"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          7
+        ]
+      ],
+      "written_as": [
+        "expenditure for horticultural purposes"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "count of societies",
+      "measure": "",
+      "count": 7,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontariosessionalpapers"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "societies",
+          7
+        ]
+      ],
+      "written_as": [
+        "count of Societies"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "government grants",
+      "measure": "",
+      "count": 7,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontariosessionalpapers"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          7
+        ]
+      ],
+      "written_as": [
+        "Government Grants"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "paisseur de sciure de bois",
+      "measure": "",
+      "count": 4,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "canadianagriculturallibrary"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "po",
+          2
+        ],
+        [
+          "cm",
+          2
+        ]
+      ],
+      "written_as": [
+        "épaisseur de sciure de bois"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "wardship age",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "uoftgovpubs"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "years",
+          2
+        ]
+      ],
+      "written_as": [
+        "wardship age"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "expected number of participants",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "participants",
+          2
+        ]
+      ],
+      "written_as": [
+        "expected number of participants"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "number of presenters per theme",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "presenters",
+          2
+        ]
+      ],
+      "written_as": [
+        "number of presenters per theme"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "couche de tourbe de sphaigne",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "canadianagriculturallibrary"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "po",
+          1
+        ],
+        [
+          "mm",
+          1
+        ]
+      ],
+      "written_as": [
+        "couche de tourbe de sphaigne"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hauteur des plantules pour transplantation",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "canadianagriculturallibrary"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "po",
+          1
+        ],
+        [
+          "cm",
+          1
+        ]
+      ],
+      "written_as": [
+        "hauteur des plantules pour transplantation"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "taille des pots de tourbe",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "canadianagriculturallibrary"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "po",
+          1
+        ],
+        [
+          "cm",
+          1
+        ]
+      ],
+      "written_as": [
+        "taille des pots de tourbe"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "volume de sol pr par",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "canadianagriculturallibrary"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "boisseaux",
+          1
+        ],
+        [
+          "litres",
+          1
+        ]
+      ],
+      "written_as": [
+        "volume de sol préparé"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "straw length",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "inches",
+          2
+        ]
+      ],
+      "written_as": [
+        "straw length"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "lot width",
+      "measure": "concentration",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "documentsdelasessioncanada"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "chains",
+          2
+        ]
+      ],
+      "written_as": [
+        "lot width"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "lot length",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "documentsdelasessioncanada"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "mile",
+          1
+        ],
+        [
+          "miles",
+          1
+        ]
+      ],
+      "written_as": [
+        "lot length"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "training tower height",
+      "measure": "",
+      "count": 2,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "fav-james_tierney-hynes"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "storeys",
+          2
+        ]
+      ],
+      "written_as": [
+        "training tower height"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "expenditures of the six area municipality fire departments",
+      "measure": "",
+      "count": 2,
+      "archive_language": true,
+      "verbatim_sightings": 2,
+      "strata": [
+        "fav-james_tierney-hynes"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million $",
+          2
+        ]
+      ],
+      "written_as": [
+        "total expenditures of the six area municipality fire departments"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "the total expenditures of the six area municipality fire departments increased from less than $30 million in 1969 to nearly $43 million'in 1973."
+    },
+    {
+      "term": "share of tourists in canada",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "share of tourists in Canada"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "share of tourism spending by canadians",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "share of tourism spending by Canadians"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "count of international conferences held annually",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "conferences",
+          1
+        ]
+      ],
+      "written_as": [
+        "count of international conferences held annually"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "number of participating countries",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "countries",
+          1
+        ]
+      ],
+      "written_as": [
+        "number of participating countries"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "number of concurrent working sessions",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "sessions",
+          1
+        ]
+      ],
+      "written_as": [
+        "number of concurrent working sessions"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "banff springs golf course size",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "holes",
+          1
+        ]
+      ],
+      "written_as": [
+        "Banff Springs golf course size"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "banff springs golf course size previous",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "holes",
+          1
+        ]
+      ],
+      "written_as": [
+        "Banff Springs golf course size (previous)"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "grazing recovery period",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "albertagovernmentpublications"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "years",
+          1
+        ]
+      ],
+      "written_as": [
+        "grazing recovery period"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "cost estimate for one boiler at keith station",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million dollars",
+          1
+        ]
+      ],
+      "written_as": [
+        "cost estimate for one boiler at Keith Station"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "station duty factor",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "station duty factor"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Although one boiler could quite easily consume all of the RDF produced (provided station duty factor is at least 25 per cent) , it would probably be advisable t"
+    },
+    {
+      "term": "cost of storage and handling facilities",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million dollars",
+          1
+        ]
+      ],
+      "written_as": [
+        "cost of storage and handling facilities"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "cost of converting one boiler plus installing all of the rdf handling and storage systems at the j clark keith station",
+      "measure": "total",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "million dollars",
+          1
+        ]
+      ],
+      "written_as": [
+        "total cost of converting one boiler plus installing all of the RDF handling and storage systems at the J. Clark Keith Station"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": "Thus, the total cost of converting one boiler plus installing all of the RDF handling and storage systems at the J. Clark Keith Station is estimated to be 3 mil"
+    },
+    {
+      "term": "rdf particle size",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "omote"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "inches",
+          1
+        ]
+      ],
+      "written_as": [
+        "RDF particle size"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "width of strongly sheared rock",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "microlog"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "m",
+          1
+        ]
+      ],
+      "written_as": [
+        "width of strongly sheared rock"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "hammer length",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "microlog"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cm",
+          1
+        ]
+      ],
+      "written_as": [
+        "hammer length"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "blister rust fungus properties in simcoe county",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "properties",
+          1
+        ]
+      ],
+      "written_as": [
+        "blister rust fungus properties in Simcoe county"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "blister rust fungus properties in haliburton county",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "properties",
+          1
+        ]
+      ],
+      "written_as": [
+        "blister rust fungus properties in Haliburton county"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "blister rust fungus properties in hastings county",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "properties",
+          1
+        ]
+      ],
+      "written_as": [
+        "blister rust fungus properties in Hastings county"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "blister rust fungus properties in kenfrew county",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "properties",
+          1
+        ]
+      ],
+      "written_as": [
+        "blister rust fungus properties in Kenfrew county"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "blister rust fungus properties in temiskaming and kenora districts",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "properties",
+          1
+        ]
+      ],
+      "written_as": [
+        "blister rust fungus properties in Temiskaming and Kenora districts"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "control areas established",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "areas",
+          1
+        ]
+      ],
+      "written_as": [
+        "control areas established"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "buffer zone for removal",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "yards",
+          1
+        ]
+      ],
+      "written_as": [
+        "buffer zone for removal"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "huron wheat yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels per acre",
+          1
+        ]
+      ],
+      "written_as": [
+        "Huron wheat yield"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "ruby wheat yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels per acre",
+          1
+        ]
+      ],
+      "written_as": [
+        "Ruby wheat yield"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "garton s regenerated abundance oats yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels 32 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "Garton's Regenerated Abundance oats yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "banner oats yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels 24 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "Banner oats yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "liberty hulless oats yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels per acre",
+          1
+        ]
+      ],
+      "written_as": [
+        "Liberty (hulless) oats yield"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "manchurian barley yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels 24 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "Manchurian barley yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "canadian thorpe barley yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels 24 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "Canadian Thorpe barley yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "arthur field pea yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels per acre",
+          1
+        ]
+      ],
+      "written_as": [
+        "Arthur field pea yield"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "prussian blue field pea yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels per acre",
+          1
+        ]
+      ],
+      "written_as": [
+        "Prussian Blue field pea yield"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "spring rye yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels 20 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "spring rye yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "Spring rye yielded at the rate of 50 bushels 20 pounds and winter rye 54 bushels and 36 pounds per acre."
+    },
+    {
+      "term": "winter rye yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels 36 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "winter rye yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "alfalfa variegated first cutting yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 450 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "Alfalfa variegated first cutting yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "alfalfa variegated second cutting yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ton, 1,450 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "Alfalfa variegated second cutting yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "alfalfa common first cutting yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 600 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "alfalfa common first cutting yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "alfalfa common second cutting yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "ton, 700 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "alfalfa common second cutting yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "red clover yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 1,550 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "red clover yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "alsike yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 150 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "alsike yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "awnless brome grass yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 950 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "awnless brome grass yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "western rye grass yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 550 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "western rye grass yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "timothy yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 1,100 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "timothy yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "meadow fescue yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 500 poimds",
+          1
+        ]
+      ],
+      "written_as": [
+        "meadow fescue yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "canary seed grass yield",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_title"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "tons, 800 pounds",
+          1
+        ]
+      ],
+      "written_as": [
+        "Canary seed grass yield"
+      ],
+      "already_resolves": true,
+      "contested": 1,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "grant threshold percentage",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ongovedudocs"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "minimum grant threshold percentage"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "tuition fee deduction percentage",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ongovedudocs"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "tuition fee deduction percentage"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "tuition fee calculation threshold percentage",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ongovedudocs"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "tuition fee calculation threshold percentage"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "assessment per class room unit cap percentage",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ongovedudocs"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "assessment per class-room unit cap percentage"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "population of urban municipality",
+      "measure": "count",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ongovedudocs"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "persons",
+          1
+        ]
+      ],
+      "written_as": [
+        "population of urban municipality"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "distance to batoche from saint laurent",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "documentsdelasessioncanada"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "miles",
+          1
+        ]
+      ],
+      "written_as": [
+        "distance to Batoche from Saint-Laurent"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "settled distance of south arm",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "documentsdelasessioncanada"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "miles",
+          1
+        ]
+      ],
+      "written_as": [
+        "settled distance of south arm"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "river lot front",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "documentsdelasessioncanada"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "chains",
+          1
+        ]
+      ],
+      "written_as": [
+        "river lot front"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "river lot depth",
+      "measure": "concentration",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "documentsdelasessioncanada"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "miles",
+          1
+        ]
+      ],
+      "written_as": [
+        "river lot depth"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "tenure as co ordinator of technical services",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "boardofinquirydecisions"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "years",
+          1
+        ]
+      ],
+      "written_as": [
+        "tenure as Co-ordinator of Technical Services"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "farm population capacity",
+      "measure": "capacity",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "canadianmunicipal"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "residents per square mile",
+          1
+        ]
+      ],
+      "written_as": [
+        "farm population capacity"
+      ],
+      "already_resolves": true,
+      "contested": 0,
+      "settled": true,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "staff count",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ont-attorneygen-reports"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "staff",
+          1
+        ]
+      ],
+      "written_as": [
+        "staff count"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "profit from stock sales",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_volume"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "total profit from stock sales"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "loan interest",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_volume"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "loan interest rate"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "loan amount",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_volume"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "loan amount"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "loan amount reported paid with interest",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_volume"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "loan amount reported paid with interest"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "balance transferred to ames advance account",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_volume"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "balance transferred to Ames advance account"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "bonus stock percentage",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_volume"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "bonus stock percentage"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "stock sale price",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_volume"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "stock sale price"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "amount of unauthorized investment",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "sessionalpaperscanada_volume"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "amount of unauthorized investment"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "increase in number of societies",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontariosessionalpapers"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "increase in number of Societies"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "new societies authorized",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontariosessionalpapers"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "societies",
+          1
+        ]
+      ],
+      "written_as": [
+        "new Societies authorized"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "increase in real per capita income",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ministryoffinance_ontario"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "annual average increase in real per capita income"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "post war increase in real per capita income",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ministryoffinance_ontario"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "post-war average increase in real per capita income"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "per capita income growth at 1 5 per cent",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ministryoffinance_ontario"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "per capita income growth at 1.5 per cent"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "per capita income growth at 1 0 per cent",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ministryoffinance_ontario"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "per capita income growth at 1.0 per cent"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "count of independently operated private and public sector employer sponsored pension plans",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ministryoffinance_ontario"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "plans",
+          1
+        ]
+      ],
+      "written_as": [
+        "count of independently operated private and public sector employer-sponsored pension plans"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "payment for children committed",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontariobills"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "cents per day",
+          1
+        ]
+      ],
+      "written_as": [
+        "maximum payment for children committed"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "oats",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "unsorted"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels",
+          1
+        ]
+      ],
+      "written_as": [
+        "oats"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "19,287,215 bushels of oats in the period specified,"
+    },
+    {
+      "term": "oats remaining after 15th december",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "unsorted"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels",
+          1
+        ]
+      ],
+      "written_as": [
+        "oats remaining after 15th December"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "grain crop movement",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "unsorted"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "bushels",
+          1
+        ]
+      ],
+      "written_as": [
+        "grain crop movement"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "members in favour of publicly funded constituency offices",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontla"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "members",
+          1
+        ]
+      ],
+      "written_as": [
+        "members in favour of publicly funded constituency offices"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "members opposed to publicly funded constituency offices",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontla"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "members",
+          1
+        ]
+      ],
+      "written_as": [
+        "members opposed to publicly funded constituency offices"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "members making other suggestions regarding funding",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontla"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "members",
+          1
+        ]
+      ],
+      "written_as": [
+        "members making other suggestions regarding funding"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "members favoring immediate or january 1st 1976 funding start",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontla"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "members",
+          1
+        ]
+      ],
+      "written_as": [
+        "members favoring immediate or January 1st, 1976 funding start"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "members suggesting a later date for funding start",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "ontla"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "members",
+          1
+        ]
+      ],
+      "written_as": [
+        "members suggesting a later date for funding start"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "call on shares",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "canadaactsofparliament"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "%",
+          1
+        ]
+      ],
+      "written_as": [
+        "call on shares"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "fire test building height",
+      "measure": "",
+      "count": 1,
+      "archive_language": false,
+      "verbatim_sightings": 0,
+      "strata": [
+        "fav-james_tierney-hynes"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "storeys",
+          1
+        ]
+      ],
+      "written_as": [
+        "fire test building height"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": ""
+    },
+    {
+      "term": "per capita expenditure by fire departments",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "fav-james_tierney-hynes"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "average per capita expenditure by fire departments"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "in 1969, the average per capita expenditure by fire departments throughout Metropolitan Toronto was just over $15; the City of Toronto was the only area municip"
+    },
+    {
+      "term": "per capita expenditure",
+      "measure": "",
+      "count": 1,
+      "archive_language": true,
+      "verbatim_sightings": 1,
+      "strata": [
+        "fav-james_tierney-hynes"
+      ],
+      "families": 1,
+      "units": [
+        [
+          "$",
+          1
+        ]
+      ],
+      "written_as": [
+        "average per capita expenditure"
+      ],
+      "already_resolves": false,
+      "contested": 0,
+      "settled": false,
+      "suspect_ocr": false,
+      "example": "By 1973 the average per capita expenditure - had risen to over $20, and only two municipalities - Toronto and York - exceeded the average (East York was only pe"
+    }
+  ]
+}
