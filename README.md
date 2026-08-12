@@ -168,6 +168,20 @@ of those are keyless and free, and none of them are in the core — the extracti
 and verification path has no network dependency beyond the archive itself, so a
 stranger can check a measurement without standing up a web stack.
 
+Share what you have read, and take what somebody else read:
+
+```bash
+python scripts/share.py export --place Fergus --out fergus.bundle.json
+python scripts/share.py import fergus.bundle.json --verified-only
+```
+
+A bundle is a file. It can travel by pull request, email, USB stick or a link in
+a forum post, and none of those need a server anybody has to run, pay for, or be
+trusted to keep honest. **Trust does not travel with it** — an imported bundle is
+re-checked against archive.org on the importing machine, record by record,
+exactly as the machine's own output is. Nothing about the sender is examined,
+because nothing about the sender is relevant.
+
 Run the accuracy harness against hand-checked ground truth:
 
 ```bash
