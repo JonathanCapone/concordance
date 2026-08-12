@@ -207,9 +207,11 @@ record live.
 
 ## 2. Work plan
 
-Structured as arcs rather than weeks, because that is how I planned OMEGA and it
-survived contact with reality. Each arc ends in something demonstrable, and the
-order is chosen so that stopping early still leaves a complete artifact.
+Structured as arcs rather than a rigid week grid, because the work has
+dependencies that do not respect calendar boundaries and I would rather commit
+to what each stage ends with than to which Tuesday it lands on. Each arc ends in
+something demonstrable, and the order is chosen so that stopping early still
+leaves a complete artifact rather than a half-built one.
 
 **Arc A — Read at scale, and make reading cheap (weeks 1–2)**
 Bulk text acquisition across the collection; the cheap local filter that decides
@@ -281,17 +283,28 @@ project has no infrastructure and now needs none. Nothing about the sender is
 examined, because nothing about the sender is relevant: a signature would prove
 who sent it, and the archive proves whether it is true.
 
-### Why I can hold that pace
+### Why six weeks is enough
 
-I built OMEGA-wave — an open ocean-sensing mesh with firmware, gateway, protocol
-and portal — in **three weeks: 762 commits, ~105,000 lines of Python, ~52,500 of
-portal JavaScript, ~390 HTTP endpoints, 25 protocol specs, 14 firmware board
-targets**, ending with a self-run adversarial audit that scored it 63/100 and
-published the ranked backlog rather than the score alone.
+Because most of it is already built, and you can check that rather than take my
+word for it.
 
-Ground Truth reuses that work directly: the statistics suite, the map portal, the
-agent framework and the provider layer are all lifted from it. Six weeks here is
-not six weeks from zero.
+I previously built OMEGA-wave, an open ocean-sensing mesh with its own protocol,
+gateway, statistics suite and map portal. Ground Truth reuses that work directly:
+**the statistics layer** (Mann-Kendall, Theil-Sen, Pettitt changepoint — all
+pure-stdlib, which is why this package still has zero required dependencies),
+**the map portal**, **the agent framework** behind Honu, and **the keyless
+provider layer** that reaches ECCC and Statistics Canada. Six weeks here is not
+six weeks from zero.
+
+The more useful evidence is this repository. Everything in the results table
+above runs today, the accuracy figure regenerates from `scripts/run_gold.py`
+against ground truth a human read by hand, and the work log records what went
+wrong at each step — including a routing bug that was silently discarding a
+fifth of the archive, found because somebody looked at one document and said
+that doesn't sound right.
+
+What the six weeks buys is not the tooling. It is the reading, the vocabulary,
+and the parts of this that cannot be done on one laptop.
 
 ---
 
