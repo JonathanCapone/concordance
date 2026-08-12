@@ -22,7 +22,13 @@ from typing import Any, Mapping, Sequence
 from .models import PageText
 
 
-_YEAR_TEXT = r"(?:1[7-9]\d{2}|20(?:0\d|1\d|2\d))"
+# These bounds are part of this corpus contract, not a claim that government
+# publishing began in 1841.  Numbers outside the archive's documented
+# 1841--2013 span are more likely historical references or OCR damage than a
+# missing catalogue year.
+MIN_PUBLICATION_YEAR = 1841
+MAX_PUBLICATION_YEAR = 2013
+_YEAR_TEXT = r"(?:184[1-9]|18[5-9]\d|19\d{2}|200\d|201[0-3])"
 _YEAR = re.compile(rf"(?<![A-Za-z0-9.])(?P<year>{_YEAR_TEXT})(?![A-Za-z0-9])")
 _RANGE = re.compile(
     rf"(?<![A-Za-z0-9.])(?P<first>{_YEAR_TEXT})\s*[-/–—]\s*"
@@ -71,11 +77,19 @@ _REVISION = re.compile(
 )
 _ANNUAL = re.compile(
     r"(?ix)(?:"
-    r"\bannual\s+report\b|\brapport\s+annuel\b|\breporting\s+(?:year|period)\b|"
-    r"\bfiscal\s+year\b|\bfor\s+the\s+year\s+ended\b|"
+    r"\bannual\s+report\b|\brapport\s+annuel\b|"
+    r"^\s*reporting\s+(?:year|period)\s*[:.-]|"
+    r"^\s*(?:report\s+)?for\s+the\s+year\s+ended\b|"
+    r"^\s*fiscal\s+year\s+(?:ended|ending)\b|"
     r"\bfinancial\s+statements?\s+for\s+the\s+year\s+ended\b|"
-    r"\b(?:year|exercice)\s+(?:ended|ending|termin[ée])\b"
+    r"^\s*this\s+report\s+(?:contains|presents?)\b[^\n]{0,100}\bfor\b"
     r")"
+)
+_REPORTING_TITLE = re.compile(
+    rf"(?ix)(?:"
+    rf"^\s*{_YEAR_TEXT}\s+(?:[A-Z&'’-]+\s+){{0,8}}REPORT\b|"
+    rf"^\s*(?:REPORT|BULLETIN)\s+(?:FOR\s+)?{_YEAR_TEXT}\b"
+    rf")"
 )
 _LETTER_ADDRESSEE = re.compile(
     r"(?ix)(?:"
@@ -93,8 +107,7 @@ _LETTER_TRANSMITTAL = re.compile(
     r")"
 )
 _NOT_A_LETTER = re.compile(
-    r"(?i)(?:\bbalance\b|\byear\s+ended\b|\bfiscal\s+year\b|"
-    r"\bfinancial\s+statements?\b|\bas\s+at\b|\btable(?:au)?\b)"
+    r"(?i)(?:\bbalance\b|\bas\s+at\b)"
 )
 _DIGITIZATION = re.compile(
     r"(?i)(?:digitiz|digitis|scann(?:ed|ing)|upload(?:ed|ing)?|internet\s+archive|"
@@ -102,14 +115,56 @@ _DIGITIZATION = re.compile(
 )
 _FUTURE_TABLE = re.compile(
     r"(?i)(?:project(?:ed|ion)|forecast|planned|proposed|scenario|target|"
-    r"anticipated|future|pro\s+forma|estimate\s+for)"
+    r"anticipated|future|pro\s+forma|estimated|estimate\s+for)"
 )
 _TABLE_HEADING = re.compile(r"(?i)\b(?:table|tableau)\s+[A-Z0-9IVX.-]+")
 _TABLE_OF_CONTENTS = re.compile(r"(?i)\btable\s+of\s+contents\b|table\s+des\s+mati")
 _NUMBER = re.compile(r"(?<![A-Za-z])[-+]?\d+(?:[.,]\d+)?(?![A-Za-z])")
 _LIBRARY_STAMP_DATE = re.compile(
-    rf"(?i)^\s*(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|SEPT|OCT|NOV|DEC)\.?”
+    rf"(?i)^\s*(?:\d{{1,4}}\s*[,;:-]?\s*)?"
+    rf"(?:JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|SEPT|OCT|NOV|DEC)\.?"
     rf"\s+\d{{1,2}}\s+{_YEAR_TEXT}\s*(?:\.\.\.)?[-.]*\s*$"
+)
+_WEEKDAY_DATE = re.compile(
+    r"(?i)^\s*(?:mon(?:day)?|tue(?:sday)?|wed(?:nesday)?|thu(?:rsday)?|"
+    r"fri(?:day)?|sat(?:urday)?|sun(?:day)?)\b"
+)
+_NON_PUBLICATION_DOCUMENT = re.compile(
+    r"(?ix)(?:"
+    r"\bagendas?\s*/?\s*minutes\b|\bcommittee\s+agendas?\b|"
+    r"\b(?:meeting|minutes|agenda)\s+of\b|\b(?:meeting|committee)\s+agenda\b|"
+    r"\b(?:inaugural|regular|special)\s+meeting\b|\bcouncil\s+met\b|"
+    r"\bby[-\s]?law\s+(?:no\.?|number)\b|\bto\s+amend\s+.*by[-\s]?law\b"
+    r")"
+)
+_NOT_FRONT_MATTER_CONTEXT = re.compile(
+    r"(?ix)(?:"
+    r"\blist\s+of\s+(?:tables|figures|appendices)\b|"
+    r"\bsampling\s+(?:site|date)s?\b|\bmeeting\s+of\b|\bcouncil\s+met\b|"
+    r"\bminutes\s+of\b|\bcommittee\s+meeting\b|\bresults?\s+of\s+voting\b|"
+    r"\b(?:letter|correspondence)\s+(?:from|to)\b|"
+    r"\b(?:public\s+)?hearing\b|\bagenda\b|\b(?:first|second|third|1st|2nd|3rd)\s+reading\b|"
+    r"\b(?:map|drawing)\s+(?:no\.?|number|date)\b|\bdrawn\s+by\b|"
+    r"\bscale\s*(?:[:=]|1\s*:)|\b(?:diagnosis|necropsy|histopathology)\b|"
+    r"\b(?:appointed|entered\s+civic\s+service)\b"
+    r")"
+)
+_NON_PUBLICATION_DATE_CONTEXT = re.compile(
+    r"(?ix)(?:"
+    r"\b(?:resigned|retired|appointed|born|died|effective)\b|"
+    r"\b(?:capacity|statistics?|sampling|measurements?)\b|"
+    r"\bfiscal\s+year\s+(?:ended|ending)\b|"
+    r"\b(?:reading|lecture)\b|"
+    r"\b(?:as\s+of|as\s+at|through|until|up\s+to|jusqu)\b"
+    r")"
+)
+_CITED_WORK_CONTEXT = re.compile(
+    r"(?ix)(?:"
+    r"\b(?:following\s+)?extract\s+from\b|"
+    r"\breference\s+paper\b|\bliterature\s+cited\b|"
+    r"\b(?:bibliography|catalogue|catalog)\b|"
+    r"\b(?:list|index)\s+of\s+(?:reports?|publications?|references?)\b"
+    r")"
 )
 
 
@@ -132,8 +187,10 @@ class DateGuess:
         if not math.isfinite(self.confidence) or not 0.0 <= self.confidence <= 1.0:
             raise ValueError("confidence must be finite and between 0 and 1")
         if self.year is not None:
-            if not 1700 <= self.year <= 2029:
-                raise ValueError("year must be between 1700 and 2029")
+            if not MIN_PUBLICATION_YEAR <= self.year <= MAX_PUBLICATION_YEAR:
+                raise ValueError(
+                    "year must be within the collection's 1841--2013 span"
+                )
             if not self.evidence:
                 raise ValueError("a proposed year requires verbatim evidence")
         if self.year in self.alternatives:
@@ -246,7 +303,7 @@ def _front(line: _Line, kind: str) -> bool:
         "publication": 4_000,
         "copyright": 12_000,
         "letter": 12_000,
-        "title": 12_000,
+        "title": 5_000,
         "annual": 30_000,
     }[kind]
     return line.position <= limit
@@ -317,6 +374,8 @@ def _candidate(
     if _reject_year_context(line.raw, match):
         return None
     year = int(match.group("year"))
+    if not MIN_PUBLICATION_YEAR <= year <= MAX_PUBLICATION_YEAR:
+        return None
     return _Candidate(
         year=year,
         confidence=confidence,
@@ -337,38 +396,194 @@ def _exact_slice(lines: list[_Line], first: int, last: int) -> str:
     return source.text[lines[first].start : lines[last].end].strip()
 
 
+def _copyright_year_matches(line: _Line) -> list[re.Match[str]]:
+    """Years grammatically attached to a copyright imprint on this line."""
+    if not _front(line, "copyright") or re.search(
+        r"(?i)\bcopyright\s+(?:act|provisions?|restrictions?)\b", line.raw
+    ):
+        return []
+
+    word = re.search(r"(?i)\b(?:copyright|copr\.?)\b|droits?\s+d", line.raw)
+    if word and word.start() <= 30:
+        attached: list[re.Match[str]] = []
+        for year in _year_matches(line.raw):
+            if year.start() < word.end() or year.start() - word.end() > 120:
+                continue
+            between = line.raw[word.end() : year.start()]
+            if re.search(r"(?i)\b(?:published|material|report|article|notice)\b", between):
+                continue
+            if not re.search(r"[A-Za-z]", between) or re.search(
+                r"(?i)\b(?:crown|queen|king|government|ministry|minister|"
+                r"printer|canada|ontario)\b",
+                between,
+            ):
+                attached.append(year)
+        if attached:
+            return attached
+
+    symbol = line.raw.find("©")
+    if symbol < 0 or line.raw[:symbol].strip(" \t.,;:()[]{}*-_"):
+        return []
+    years = _year_matches(line.raw)
+    if not years:
+        return []
+    year = years[0]
+    if year.start() - symbol > 60 or re.match(
+        r"[\N{APOSTROPHE}\N{RIGHT SINGLE QUOTATION MARK}]s\b",
+        line.raw[year.end() :],
+        re.IGNORECASE,
+    ):
+        return []
+    between = line.raw[symbol + 1 : year.start()]
+    if not re.search(r"[A-Za-z]", between) or re.search(
+            r"(?i)\b(?:crown|queen|king|government|ministry|minister|canada|ontario)\b",
+            between,
+        ):
+        # A copyright belonging to an embedded logo, certification mark, map,
+        # or photograph is not the document imprint.  Government/Crown labels
+        # are strong enough to stand alone; other rightsholders need ordinary
+        # colophon position very near the beginning of OCR.
+        after = line.raw[year.end() :]
+        government = bool(
+            re.search(
+                r"(?i)\b(?:crown|queen|king|government|ministry|minister|"
+                r"printer|canada|ontario)\b",
+                between + after,
+            )
+        )
+        if government or line.position <= 4_000:
+            return [year]
+    return []
+
+
+def _publication_year_matches(line: _Line) -> list[re.Match[str]]:
+    """Years locally attached to a line-leading publication/colophon label."""
+    anchor = _PUBLICATION.search(line.raw)
+    if not anchor or not _front(line, "publication"):
+        return []
+    imprint = bool(
+        re.search(
+            r"(?i)(?:queen|king).?s\s+printer|imprimeur|minister\s+of\s+supply",
+            anchor.group(0),
+        )
+    )
+    attached: list[re.Match[str]] = []
+    for year in _year_matches(line.raw):
+        if year.start() < anchor.end() or year.start() - anchor.end() > 100:
+            continue
+        between = line.raw[anchor.end() : year.start()]
+        after = line.raw[year.end() :]
+        if re.match(
+            r"(?i)^\s+(?:copies|reports?|articles?|brochures?|editions?|"
+            r"impressions?|leaflets?|booklets?)\b",
+            after,
+        ):
+            continue
+        if re.search(
+            r"(?i)\b(?:results?|copies|report|material|data|article|notice|"
+            r"brochure|statistics?|figures?)\b",
+            between,
+        ):
+            continue
+        by_authority = bool(re.match(r"(?is)^\s+by\s+authority\s+of\b", between))
+        has_month = bool(re.search(rf"(?i)\b(?:{_MONTH})\b", between))
+        simple = bool(
+            re.fullmatch(r"(?is)[\s,:;.-]*(?:(?:in|on|en)\s+)?", between)
+        )
+        if imprint or by_authority or has_month or simple:
+            attached.append(year)
+    return attached
+
+
+def _revision_year_matches(line: _Line) -> list[re.Match[str]]:
+    """Years attached to an explicit edition, revision, or printing date."""
+    anchor = _REVISION.search(line.raw)
+    if not anchor or re.search(
+        r"(?i)^\s*revised\s+(?:statutes?|regulations?|act)\b", line.raw
+    ):
+        return []
+    attached: list[re.Match[str]] = []
+    for year in _year_matches(line.raw):
+        if year.start() < anchor.end() or year.start() - anchor.end() > 70:
+            continue
+        between = line.raw[anchor.end() : year.start()]
+        after = line.raw[year.end() :]
+        if re.match(
+            r"(?i)^\s+(?:copies|reports?|articles?|brochures?|editions?|"
+            r"impressions?|leaflets?|booklets?)\b",
+            after,
+        ):
+            continue
+        if re.search(r"(?i)^\s+(?:of|for)\b", between) or re.search(
+            r"(?i)\b(?:estimates?|results?|statistics?|data|reference\s+paper|"
+            r"catalogue|catalog|bibliography)\b",
+            between,
+        ):
+            continue
+        if re.search(rf"(?i)\b(?:{_MONTH})\b", between) or re.fullmatch(
+            r"(?is)[\s,:;.-]*(?:(?:to|in|on)\s+)?", between
+        ):
+            attached.append(year)
+    return attached
+
+
 def _extract_explicit(lines: list[_Line]) -> list[_Candidate]:
     out: list[_Candidate] = []
-    for line in lines:
+    for index, line in enumerate(lines):
         evidence = line.evidence
         if not evidence or len(evidence) > 280 or not _year_matches(line.raw):
             continue
-        if _DIGITIZATION.search(line.raw) or re.search(r"(?i)\bcopyright\s+act\b", line.raw):
+        nearby_prefix = _exact_slice(lines, max(0, index - 3), index)
+        if (
+            _DIGITIZATION.search(line.raw)
+            or _CITED_WORK_CONTEXT.search(nearby_prefix)
+            or re.search(r"(?i)\bcopyright\s+act\b", line.raw)
+        ):
             continue
 
-        copyright_line = bool(_COPYRIGHT.search(line.raw)) and _front(line, "copyright")
-        revision_line = bool(_REVISION.search(line.raw)) and (
-            line.position <= 25_000
-            or line.position >= max(0, line.source.base + len(line.source.text) - 12_000)
-        )
-        publication_match = _PUBLICATION.search(line.raw)
-        # In body prose, "reports were published for 1986" describes another
-        # publication.  An original imprint is normally a short label at the
-        # start of its line; requiring a local anchor also blocks that common
-        # false positive near the end of nominal front matter.
-        publication_line = bool(
-            publication_match
-            and publication_match.start() <= 40
-            and _front(line, "publication")
-        )
-        if not (copyright_line or revision_line or publication_line):
-            continue
-
-        if copyright_line:
+        copyright_matches = _copyright_year_matches(line)
+        revision_matches = _revision_year_matches(line)
+        if revision_matches:
+            remaining = len(line.source.text) - line.start
+            closing_window = min(
+                1_500,
+                max(300, int(len(line.source.text) * 0.10)),
+            )
+            near_end = not line.source.physical_pages and remaining <= closing_window
+            nearby = _exact_slice(
+                lines,
+                max(0, line.index - 8),
+                min(len(lines) - 1, line.index + 8),
+            )
+            # A revision/printing line inside a bound volume dates that embedded
+            # work, not the archive item. Accept it only in a real opening or a
+            # tight closing-colophon window; a 12k-character tail proved broad
+            # enough to swallow ordinary bodies in modest documents.
+            body_form_context = bool(
+                re.search(
+                    r"(?i)\b(?:yes|no)\s*(?:[xX]|___+)?\b|\bquestionnaire\b|"
+                    r"\brules?\s+and\s+regulations?\b",
+                    nearby,
+                )
+            )
+            if (
+                not (_front(line, "publication") or near_end)
+                or body_form_context
+            ):
+                revision_matches = []
+        publication_matches = _publication_year_matches(line)
+        if copyright_matches:
+            matches = copyright_matches
             basis, confidence, revision = "copyright line", 0.96, False
+        elif revision_matches:
+            matches = revision_matches
+            basis, confidence, revision = "publication line", 0.94, True
+        elif publication_matches:
+            matches = publication_matches
+            basis, confidence, revision = "publication line", 0.94, False
         else:
-            basis, confidence, revision = "publication line", 0.94, revision_line
-        for match in _year_matches(line.raw):
+            continue
+        for match in matches:
             found = _candidate(
                 match=match,
                 line=line,
@@ -390,11 +605,27 @@ def _extract_letters(lines: list[_Line]) -> list[_Candidate]:
         date_matches = list(_FULL_DATE.finditer(line.raw))
         if not date_matches:
             continue
-        first = max(0, index - 2)
-        last = min(len(lines) - 1, index + 4)
-        context = _exact_slice(lines, first, last)
-        if not _LETTER_CUE.search(context) or _NOT_A_LETTER.search(context):
+        date_matches = [
+            match for match in date_matches if _looks_like_front_date(line.raw, match)
+        ]
+        if not date_matches:
             continue
+        first = max(0, index - 8)
+        last = min(len(lines) - 1, index + 22)
+        context = _exact_slice(lines, first, last)
+        if (
+            not _LETTER_ADDRESSEE.search(context)
+            or not _LETTER_TRANSMITTAL.search(context)
+            or _NOT_A_LETTER.search(line.raw)
+        ):
+            continue
+        period_years = {
+            int(match.group("year"))
+            for context_line in lines[first : last + 1]
+            if _ANNUAL.search(context_line.raw)
+            or re.search(r"(?i)\b(?:fiscal|calendar)\s+year\b", context_line.raw)
+            for match in _year_matches(context_line.raw)
+        }
         for date_match in date_matches:
             year_match = next(
                 (m for m in _year_matches(line.raw) if m.start() >= date_match.start()),
@@ -405,14 +636,69 @@ def _extract_letters(lines: list[_Line]) -> list[_Candidate]:
             found = _candidate(
                 match=year_match,
                 line=line,
-                confidence=0.88,
+                confidence=0.82,
                 tier=2,
                 basis="covering letter",
                 evidence=context,
+                alternatives=tuple(
+                    sorted(period_years - {int(year_match.group("year"))})
+                ),
             )
             if found:
                 out.append(found)
     return out
+
+
+def _annual_year_matches(line: _Line) -> list[re.Match[str]]:
+    """Years structurally tied to this document's reporting-period heading."""
+    text = line.raw
+    if len(line.evidence) > 320:
+        return []
+    reporting_title = _REPORTING_TITLE.search(text)
+    if reporting_title and re.match(r"(?i)^\s*\d{4}\s+report\s+on\b", text):
+        reporting_title = None
+    annual = re.search(r"(?i)\b(?:annual\s+report|rapport\s+annuel)\b", text)
+    ended = re.search(
+        r"(?i)^\s*(?:financial\s+statements?\s+)?(?:report\s+)?"
+        r"for\s+the\s+year\s+ended\b",
+        text,
+    )
+    fiscal = re.search(
+        r"(?i)^\s*fiscal\s+year\s+(?:ended|ending)\b",
+        text,
+    )
+    if reporting_title:
+        if reporting_title.start() > 35 or re.search(
+            r"(?i)\b(?:supplements?|according\s+to|examination\s+of|"
+            r"review\s+of|prior|previous|list\s+of)\b",
+            text[: reporting_title.start()],
+        ):
+            return []
+        anchor_start, anchor_end = reporting_title.span()
+    elif annual:
+        prefix = text[: annual.start()]
+        if annual.start() > 80 or re.search(
+            r"(?i)\b(?:copies?|discussion|review|summary|index|catalogue|"
+            r"available|requested|mentions?|cites?|concerning|respecting|"
+            r"examination|according|supplements?|previous|prior)\b",
+            prefix,
+        ):
+            return []
+        if _CITED_WORK_CONTEXT.search(prefix):
+            return []
+        anchor_start, anchor_end = annual.span()
+    elif ended or fiscal:
+        period = ended or fiscal
+        assert period is not None
+        anchor_start, anchor_end = period.span()
+    else:
+        return []
+
+    return [
+        match
+        for match in _year_matches(text)
+        if anchor_start - 18 <= match.start() <= anchor_end + 140
+    ]
 
 
 def _looks_like_front_date(line: str, date_match: re.Match[str]) -> bool:
@@ -437,7 +723,9 @@ def _looks_like_front_date(line: str, date_match: re.Match[str]) -> bool:
 
 def _extract_front_dates(lines: list[_Line]) -> list[_Candidate]:
     out: list[_Candidate] = []
-    for line in lines:
+    opening = _exact_slice(lines, 0, min(len(lines) - 1, 80))
+    document_is_event_record = bool(_NON_PUBLICATION_DOCUMENT.search(opening))
+    for index, line in enumerate(lines):
         if not _front(line, "title"):
             continue
         evidence = line.evidence
@@ -451,18 +739,47 @@ def _extract_front_dates(lines: list[_Line]) -> list[_Candidate]:
             r"(?i)\b(?:received|accessioned|library\s+stamp)\b", line.raw
         ):
             continue
+        if _LIBRARY_STAMP_DATE.fullmatch(line.raw) or _WEEKDAY_DATE.match(line.raw):
+            continue
+        local_context = _exact_slice(
+            lines,
+            max(0, index - 8),
+            min(len(lines) - 1, index + 8),
+        )
+        preceding_context = _exact_slice(lines, max(0, index - 3), index)
+        if (
+            _NOT_FRONT_MATTER_CONTEXT.search(local_context)
+            or _NON_PUBLICATION_DATE_CONTEXT.search(preceding_context)
+            or _CITED_WORK_CONTEXT.search(preceding_context)
+        ):
+            continue
 
         date_matches = list(_FULL_DATE.finditer(line.raw)) or list(
             _MONTH_YEAR.finditer(line.raw)
         )
+        if _RANGE.search(line.raw) or len(_MONTH_YEAR.findall(line.raw)) > 1:
+            # A span such as "January 1978 - October 1995" is almost always a
+            # chart/coverage range, not a publication date.
+            continue
         if not date_matches:
-            standalone = _STANDALONE_YEAR.match(line.raw)
+            standalone = (
+                _STANDALONE_YEAR.match(line.raw) if line.source.physical_pages else None
+            )
             date_matches = [standalone] if standalone else []
         if not date_matches:
             continue
+        if document_is_event_record:
+            continue
 
         date_matches = [
-            match for match in date_matches if match and _looks_like_front_date(line.raw, match)
+            match
+            for match in date_matches
+            if match
+            and not re.search(
+                r"(?i)\b(?:passed|ending|ended|approved|adopted|dated)\b",
+                line.raw[: match.start()],
+            )
+            and _looks_like_front_date(line.raw, match)
         ]
         if not date_matches:
             continue
@@ -499,12 +816,18 @@ def _extract_front_dates(lines: list[_Line]) -> list[_Candidate]:
 
 def _extract_annual(lines: list[_Line]) -> list[_Candidate]:
     out: list[_Candidate] = []
-    for line in lines:
-        if not _front(line, "annual") or not _ANNUAL.search(line.raw):
+    opening = _exact_slice(lines, 0, min(len(lines) - 1, 80))
+    document_is_event_record = bool(_NON_PUBLICATION_DOCUMENT.search(opening))
+    for index, line in enumerate(lines):
+        if not _front(line, "annual") or document_is_event_record:
+            continue
+        nearby_prefix = _exact_slice(lines, max(0, index - 3), index)
+        if _CITED_WORK_CONTEXT.search(nearby_prefix):
+            continue
+        year_matches = _annual_year_matches(line)
+        if not year_matches:
             continue
         evidence = line.evidence
-        if not evidence or len(evidence) > 320:
-            continue
         ranges = list(_RANGE.finditer(line.raw))
         if ranges:
             for period in ranges:
@@ -525,7 +848,7 @@ def _extract_annual(lines: list[_Line]) -> list[_Candidate]:
                     out.append(found)
             continue
 
-        for match in _year_matches(line.raw):
+        for match in year_matches:
             found = _candidate(
                 match=match,
                 line=line,
@@ -544,7 +867,10 @@ def _extract_tables(lines: list[_Line]) -> list[_Candidate]:
         if not _TABLE_HEADING.search(heading.raw) or _TABLE_OF_CONTENTS.search(heading.raw):
             continue
         window = lines[index : min(len(lines), index + 18)]
-        block = _exact_slice(lines, index, index + len(window) - 1)
+        # Projection labels often sit immediately above the TABLE heading.
+        # Include that lead-in or a future scenario can masquerade as observed
+        # data merely because its numeric grid starts on the next line.
+        block = _exact_slice(lines, max(0, index - 8), index + len(window) - 1)
         if _FUTURE_TABLE.search(block) or re.search(
             r"(?i)\b(?:bibliography|references|literature\s+cited)\b", block
         ):
@@ -554,11 +880,39 @@ def _extract_tables(lines: list[_Line]) -> list[_Candidate]:
         numeric_rows = 0
         horizontal_years = False
         for line in window:
-            line_years = [
+            raw_years = [
                 match
                 for match in _year_matches(line.raw)
                 if not _reject_year_context(line.raw, match)
             ]
+            distinct_line_years = {int(match.group("year")) for match in raw_years}
+            stripped = line.raw.lstrip(" |()[]")
+            starts_with_year = bool(
+                raw_years and raw_years[0].start() <= len(line.raw) - len(stripped) + 2
+            )
+            tabular_spacing = "|" in line.raw or bool(re.search(r"\s{2,}", line.raw))
+            prose_like = bool(
+                len(re.findall(r"[A-Za-z]{2,}", line.raw)) > 10
+                or re.search(r"[.!?](?:\s|$)", line.raw)
+            )
+            row_has_structure = bool(
+                raw_years
+                and (
+                    (starts_with_year and not prose_like)
+                    or (
+                        len(distinct_line_years) >= 2
+                        and tabular_spacing
+                        and not prose_like
+                    )
+                    or (
+                        tabular_spacing
+                        and len(_NUMBER.findall(line.raw)) >= 2
+                        and "," not in line.raw
+                        and not prose_like
+                    )
+                )
+            )
+            line_years = raw_years if row_has_structure else []
             matches.extend((line, match) for match in line_years)
             if line_years and len(_NUMBER.findall(line.raw)) >= 2:
                 numeric_rows += 1
@@ -665,6 +1019,23 @@ def _resolve(candidates: list[_Candidate]) -> DateGuess:
                 _alternative_years(candidates),
             )
 
+    # A clean front dateline can be a sampling/map/edition date rather than the
+    # document date.  A nearby, explicitly labelled reporting title many years
+    # away is enough contradiction to abstain.  A one-year lag is normal for an
+    # annual report and remains a defensible alternative instead of a conflict.
+    if chosen.tier == 3:
+        reporting_periods = [
+            candidate for candidate in candidates if candidate.tier == 4
+        ]
+        if any(abs(candidate.year - chosen.year) > 1 for candidate in reporting_periods):
+            return DateGuess(
+                None,
+                0.0,
+                "conflicting evidence",
+                "",
+                _alternative_years(candidates),
+            )
+
     confidence = chosen.confidence
     corroborating = {
         candidate.basis
@@ -712,3 +1083,88 @@ def infer_year_from_text(
         candidates.extend(_extract_annual(lines))
         candidates.extend(_extract_tables(lines))
     return _resolve(candidates)
+
+
+# --------------------------------------------------------------------------
+# whether a value's year can be trusted
+# --------------------------------------------------------------------------
+#
+# Everything above infers when a DOCUMENT was published. This asks a narrower
+# question about a single VALUE: is the year we filed it under actually safe?
+#
+# The dispute ledger surfaced the problem without anyone looking for it.
+# Brantford's 1969 report says "The average solids concentrations of 5.1% was
+# less than the 1968 average of 5.3%", and both numbers were filed under 1969.
+# A comparison sentence carries its own history, and taking the report's year
+# for every value in it manufactures a change that did not happen. 27 of the 56
+# contested measurements in the first ledger run are this shape.
+#
+# This detects the risk. It does NOT correct it, and the distinction was decided
+# by trying the other way first. A rule that reassigned values to the nearest
+# year moved 14 records and got several of them wrong in a new direction:
+#
+#   "5.1% was less than the 1968 average"      -- 5.1 is the report's own year
+#   "an increase of 0.7 percent over 1967"     -- 0.7 is the increase, and the
+#                                                 increase belongs to 1968
+#   "the 1968 average of 5.3%"                 -- 5.3 really is 1968's
+#
+# Telling those apart needs to know whether the year modifies the value's own
+# noun phrase or introduces a comparison, which is grammar rather than
+# proximity. Guessing it silently would trade a known error for an invisible
+# one, and an invisible wrong year turns a flat series into a trend. So the
+# sentence is flagged and a person -- or the dispute ledger, which already shows
+# both readings with their crops -- decides.
+
+#: Words that mean the year is a point of comparison rather than the value's
+#: own date. Their presence is what separates "over 1967 flows" from "the 1967
+#: average".
+_COMPARISON = re.compile(
+    r"(?i)\b(over|than|versus|vs\.?|compared\s+(?:to|with)|against|"
+    r"above|below|since|from|increase|decrease|higher|lower|more|less)\b")
+
+
+@dataclass
+class PeriodRisk:
+    """Whether a value's filed year survives reading its own sentence."""
+
+    period: str
+    other_years: list[str] = field(default_factory=list)
+    comparison: bool = False
+    why: str = ""
+
+    @property
+    def safe(self) -> bool:
+        return not self.other_years
+
+    def to_dict(self) -> dict[str, Any]:
+        return {"period": self.period, "safe": self.safe,
+                "other_years": self.other_years,
+                "comparison": self.comparison, "why": self.why}
+
+
+def period_risk(quote: str, *, period: str = "") -> PeriodRisk:
+    """Does this sentence mention a year other than the one we filed it under?
+
+    A cheap, total check. Any sentence naming another year can carry a value
+    belonging to that year, and every value taken from such a sentence deserves
+    to be looked at rather than trusted.
+    """
+    text = str(quote or "")
+    if not text:
+        return PeriodRisk(period, why="no sentence to read")
+
+    stated = str(period or "")[:4]
+    years = sorted({m.group("year") for m in _YEAR.finditer(text)})
+    others = [y for y in years if y != stated]
+    if not others:
+        return PeriodRisk(period, why="the sentence names no other year")
+
+    comparison = bool(_COMPARISON.search(text))
+    return PeriodRisk(
+        period, other_years=others, comparison=comparison,
+        why=(f"the sentence also names {', '.join(others)}"
+             + (" in a comparison, so at least one value in it probably belongs "
+                "to that year rather than to this report"
+                if comparison else
+                ", so a value here may belong to that year")),
+    )
