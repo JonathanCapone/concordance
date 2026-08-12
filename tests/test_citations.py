@@ -159,3 +159,62 @@ def test_a_vision_record_is_cited_as_a_cell_and_a_prose_one_as_a_quote():
 def test_a_record_with_no_evidence_shows_the_page_rather_than_inventing_one():
     assert cite_record(_page(), {"provenance": {}}).kind == "page"
     assert cite_record(_page(), {}).kind == "page"
+
+
+# -- a sentence that wraps ---------------------------------------------------
+
+def _wrapped_page():
+    """Three lines of a paragraph, as the OCR word list holds them."""
+    words = []
+    line1 = "It is seen that the Commission's objective for BOD".split()
+    line2 = "was exceeded only 20 per cent of the time and for SS 45 per".split()
+    line3 = "cent of the time. The reason for the higher concentration".split()
+    for y, line in ((100, line1), (200, line2), (300, line3)):
+        x = 200
+        for tok in line:
+            words.append(_word(tok, x, y, x + 40, y + 30))
+            x += 50
+    # A caption far to the left on the middle line, to prove widening picks up
+    # everything on the lines the crop covers.
+    words.append(_word("margin", 40, 200, 90, 230))
+    return PageText(identifier="doc", page=35, width=2000, height=1000,
+                    text=" ".join(w.text for w in words), words=words)
+
+
+def test_a_wrapped_sentence_crops_to_the_whole_passage():
+    """The bug that produced citations reading "It is seen that the C".
+
+    find_boxes returns a contiguous run and degrades to the longest matching
+    OPENING run, which it does often -- OCR mangles the middle of a sentence
+    more than its start. Cropping to that alone gives the right sentence and
+    useless evidence.
+    """
+    page = _wrapped_page()
+    quote = ("It is seen that the Commission's objective for BOD was exceeded "
+             "only 20 per cent of the time and for SS 45 per cent of the time.")
+    c = cite(page, quote)
+    assert c.kind == "quote"
+    x, y, w, h = c.box
+    assert y < 100 and y + h > 230        # reaches the last matched line
+    assert h > 130                        # more than one line tall
+
+
+def test_widening_picks_up_text_on_the_lines_it_covers():
+    """A box drawn only round the matched words slices the intervening lines."""
+    page = _wrapped_page()
+    c = cite(page, "It is seen that the Commission's objective for BOD was exceeded")
+    x, _, w, _ = c.box
+    assert x < 90                          # includes the left-margin word
+
+
+def test_a_tail_match_earlier_on_the_page_does_not_stretch_the_crop_backwards():
+    """A phrase repeated above the quote must not drag the box up over
+    unrelated text."""
+    words = [_word("the", 100, 900, 140, 930), _word("time", 150, 900, 200, 930)]
+    words += [_word(t, 100 + 50 * i, 100, 140 + 50 * i, 130)
+              for i, t in enumerate("It is seen that the Commission".split())]
+    page = PageText(identifier="doc", page=1, width=1000, height=1000,
+                    text=" ".join(w.text for w in words), words=words)
+    c = cite(page, "It is seen that the Commission")
+    _, y, _, h = c.box
+    assert y + h < 500                     # did not reach down to the decoy

@@ -233,10 +233,17 @@ class PageText:
 
         Matching is loose on purpose: OCR mangles spacing and punctuation, and a
         highlight that is slightly off is far more useful than no highlight.
+
+        The phrase is split on whitespace and each token then stripped of
+        punctuation, rather than split on punctuation directly. Splitting on
+        `\\W+` turned "Commission's" into two targets where the page holds one
+        word, so the run stopped dead at the apostrophe and fell back to the few
+        words before it. Any quote containing an apostrophe -- which is a great
+        many of them -- cropped to its opening fragment.
         """
         if not self.words or not phrase.strip():
             return []
-        target = [w for w in re.split(r"\W+", phrase.lower()) if w]
+        target = [t for t in (re.sub(r"\W+", "", w.lower()) for w in phrase.split()) if t]
         if not target:
             return []
         norm = [re.sub(r"\W+", "", w.text.lower()) for w in self.words]
