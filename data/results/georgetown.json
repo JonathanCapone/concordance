@@ -1,7 +1,7 @@
 {
   "place": "Georgetown",
   "model": "ollama:gemma4:12b",
-  "n_records": 253,
+  "n_records": 269,
   "pages_attempted": [
     "GEORGETOWNWATERP00SNSN19135.ome#3",
     "GEORGETOWNWATERP00SNSN19135.ome#6",
@@ -32,7 +32,8 @@
     "GEORGETOWNWATERP00SNSN19136.ome#22",
     "georgetownwaterp23285#3",
     "georgetownwaterp23285#11",
-    "georgetownwaterp23285#12"
+    "georgetownwaterp23285#12",
+    "georgetownwaterp23285#16"
   ],
   "records": [
     {
@@ -6865,6 +6866,438 @@
         "ocr_confidence": 0.646
       },
       "key": "dd4a359fe90a8e554723"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 1.753,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The average daily flow for the year was 1. 753 million gallons which is 117 percent of the design flow of 1. 5 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "ed10775af71bc2b3637f"
+    },
+    {
+      "kind": "design",
+      "parameter": "design flow",
+      "value": 1.5,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The average daily flow for the year was 1. 753 million gallons which is 117 percent of the design flow of 1. 5 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "be5c30c9c04265130c8b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "design flow exceedance frequency",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The design flow was exceeded 90 percent of the time in 1967.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "0f8eb0f8eb86a8059b15"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage BOD concentration",
+      "value": 85.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The average raw sewage, BOD and suspended solids concentrations were 85 ppmand 233 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "43d5782db689c232c6ae"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage suspended solids concentration",
+      "value": 233.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The average raw sewage, BOD and suspended solids concentrations were 85 ppmand 233 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "b855ea026497f38aa8ea"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage BOD as percent of design value",
+      "value": 43.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The raw sewage BOD concentrations of 85 ppm is 43 percent of the design value of 200 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "1a8ff96bffaabbdfe8a6"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage BOD design value",
+      "value": 200.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The raw sewage BOD concentrations of 85 ppm is 43 percent of the design value of 200 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "a9290a20e2a93ef25452"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage suspended solids concentration as percent of design value",
+      "value": 116.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The raw sewage suspended solids concentration of 233 ppm was 116 percent of the design value of 200 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "aa732cf599d81aaa1067"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage suspended solids design value",
+      "value": 200.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The raw sewage suspended solids concentration of 233 ppm was 116 percent of the design value of 200 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "ae4a8e6ae18111e2bc8e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids exceedance frequency",
+      "value": 64.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "However, during the year, the suspended solids concentration in the raw -sewage exceeded the design value of 200 ppm 64 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "b3101ade704a2b481fa3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent BOD concentration",
+      "value": 11.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The effluent BOD and suspended solids concentrations were 11 ppm and 23 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "1ee787baf41af241755e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent suspended solids concentration",
+      "value": 23.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The effluent BOD and suspended solids concentrations were 11 ppm and 23 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "f88ec2e12b671d131b94"
+    },
+    {
+      "kind": "standard",
+      "parameter": "OWRC objective for BOD",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The OWRC objective for each is 15 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "6874bd86c58acca15e7d"
+    },
+    {
+      "kind": "standard",
+      "parameter": "OWRC objective for suspended solids",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The OWRC objective for each is 15 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "3714073386db2b1488ea"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD exceedance frequency",
+      "value": 30.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The BOD and suspended solids concentrations in the effluent exceeded 15 ppm 30 percent and 76 percent of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "f9c71c655df7fe8d01f9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids exceedance frequency",
+      "value": 76.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8354,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 16,
+        "source_text": "The BOD and suspended solids concentrations in the effluent exceeded 15 ppm 30 percent and 76 percent of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7588
+      },
+      "key": "76360a308f0673b82094"
     }
   ]
 }

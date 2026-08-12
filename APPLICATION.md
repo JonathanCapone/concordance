@@ -33,6 +33,21 @@ each of them published to paper and the paper went into a box.
 I want to spend six weeks reading it back out, and putting the result somewhere
 a person can use it.
 
+### How it works, in one paragraph
+
+There is no central machine that reads the archive. **The reading happens on the
+computer of whoever asks.** You open the site and look up your town: if somebody
+has already read it, you get the answer instantly, from data everyone shares. If
+nobody has, the site says so — *"Nobody has read this one. 12 scanned reports
+are waiting, about an hour on this machine"* — and you can press a button. Your
+own laptop then fetches those scans and reads them, which takes roughly a minute
+a page, and the result is published back so the next person gets it instantly.
+No account, no install beyond the software itself, nothing running in the
+background afterwards.
+
+That is why there is no compute budget below, and it is the difference between a
+dataset that is finished when the grant ends and one that keeps growing.
+
 ### Why this is possible now and was not before
 
 Scanned documents are turned into searchable text by OCR — optical character
@@ -220,45 +235,99 @@ better outcome than a number that hides it.
 
 ## 2. Work plan
 
-Arcs rather than a rigid week grid, because the work has dependencies that do
-not respect calendar boundaries. Each arc ends in something demonstrable, and
-the order is chosen so that stopping early still leaves something whole.
+**What the six weeks buys, in priority order.** The two things below are what
+the money is actually for. They are the two that the evidence above says are
+unfinished, and if only these land the project is still worth having.
 
-**Arc A — Read at scale (weeks 1–2).** Bulk text acquisition across the
-collection; the cheap local filter that decides which pages are worth giving to
-a model; and a throughput pilot over a thousand pages that replaces the
-estimated cost above with a measured one. *Ends with:* a seed corpus and a
-per-page cost somebody could plan against.
+**Weeks 1–3 — Make the accuracy figure real.** The benchmark is four pages hand
+-read by one person. That is enough to justify continuing and not enough to
+publish a dataset on. So: bulk text acquisition across the collection; a much
+larger hand-read benchmark spanning document types, agencies and eras; accuracy
+published per era and per parameter rather than as one number; and the
+comparability work below, which is what stops the whole thing producing
+confident nonsense. *Ends with:* an accuracy figure I would defend in public,
+including where it is bad, and a seed corpus of towns and years.
 
-**Arc B — Trustworthy at scale (weeks 2–3).** The hand-read benchmark expanded
-well beyond four pages, across document types and eras; accuracy published per
-era and per parameter rather than as one number. *Ends with:* an accuracy figure
-I would defend in public, including where it is bad.
+**Weeks 3–5 — The tables.** 27% of pages hold about 69% of the measurements and
+need a model that will not run on an ordinary machine. Owen Sound's 1973 and
+1974 reports contain *zero* readable prose pages between them; those years are
+unreachable without this. The first vision model I tried invented table
+structure that was not on the page; the current one does not. So this is no
+longer "can it be done" — it is throughput, cost, and whether a model small
+enough for a contributor's machine is good enough. *Ends with:* either tables
+distribute, or the limit is named with a number attached.
 
-**Arc C — The tables (weeks 3–4).** This is the hard one and it gets two weeks.
-Owen Sound's 1973 and 1974 reports contain *zero* readable prose pages between
-them; those years are unreachable without reading the scan itself. The first
-vision model I tried failed honestly — it invented table structure that was not
-on the page — but the current one does not. So this is no longer "can it be
-done": it is throughput, cost, and whether a model small enough for a
-contributor's machine is good enough. *Ends with:* either tables distribute, or
-the limit is named with a number on it.
+**Week 6 — Publish.** The dataset released openly with its methodology and its
+failures; the metadata corrections offered to Internet Archive Canada; the
+write-up; the showcase on October 28.
 
-**Arc D — Publish (week 4).** The dataset released openly with its methodology
-and its failures; the metadata corrections offered to Internet Archive Canada;
-the pipeline documented so it can be pointed at any other scanned archive,
-because nothing in the reading layer is Canada-specific.
+### What happens after, and is not being funded here
 
-**Arc E — Make it answerable (week 5).** *Jay* — a question-answering assistant
-that only answers from the extracted record and always shows its source — runs
-over the whole corpus rather than two towns. It exists and works; it needs the
-data underneath it. Plus a plain-language layer, so a resident rather than a
-researcher can ask what their town put in the river.
+I would rather name these as intentions than pad six weeks with them: running
+the silence detector nationally, cross-referencing agencies whose records have
+never been in the same room, and pointing the pipeline at other scanned
+archives. All three are things this design makes possible and none of them are
+promises for October.
 
-**Arc F — Findings and the showcase (week 6).** The silence detector — the tool
-that finds where measurement *stopped* — run nationally; cross-referencing
-between agencies whose records have never been in the same room; write-up;
-October 28.
+### Comparability, which is the real scientific risk
+
+A number from 1961 and a number from 2001 are not automatically comparable, and
+this is where a project like this most easily produces a confident, plausible,
+entirely fictional trend. "BOD" was measured by different methods, in different
+laboratories, against different detection limits and different reporting rules
+across 1841–2013. Imperial and US gallons differ by a fifth. A plant that
+changes what it reports looks exactly like a plant that changes what it
+discharges.
+
+Some of the machinery for this exists already: units are converted through a
+layer that knows the era, readings whose units are not comparable are **rejected
+and reported rather than silently converted**, and a record can carry a note
+saying why it should not be compared with its neighbours. What does not exist
+yet is the method and detection-limit metadata alongside each value, and the
+rule that a series must not be plotted across a known methods change.
+
+Two commitments that follow, both of which cost me findings:
+
+- **"The series stopped" stays unproven until an administrative explanation is
+  ruled out**, the same way I already rule out "it was never scanned". The 1975
+  collapse above has the scanning control and does not yet have the reporting-
+  format control, and it should not be published as an environmental finding
+  until it does.
+- **No uncertainty column unless there is a real method behind it.** A
+  fabricated uncertainty is worse than none, because it invites exactly the
+  statistical use it cannot support.
+
+### What I have not tested, and who has not used it
+
+The rest of this document is careful about its numbers. It would be dishonest to
+be careful there and silent here.
+
+**Nobody outside this project has used it.** Not one stranger has looked up
+their town, and nobody has been asked to. The contribution model — a person
+presses a button and their laptop reads a document for everyone — is built,
+tested and entirely unproven as a *human* proposition. I believe people will do
+it for the town they grew up in. I have no evidence, and the fellowship is the
+first chance to get some.
+
+If they do not come, the project does not fail: it becomes a smaller dataset
+plus a very good finding aid, because every reading published still carries its
+scan and the machinery still works for whoever runs it. That is the fallback and
+it is worth saying out loud rather than discovering in week five.
+
+**No institution has agreed to anything.** The 13,429 metadata corrections are
+offered to Internet Archive Canada, not accepted by them — I have not asked yet,
+because offering a diff is more useful than offering a promise. Same for the
+municipalities whose records these are.
+
+**The evidence is Ontario water.** Every worked example above — Owen Sound,
+Brantford, Burlington — is an Ontario sewage plant, because that is where the
+deepest run of comparable annual reports survives. The collection itself is
+lopsided the same way: 12,467 Ontario items against 8,671 Alberta and **468 for
+British Columbia**, which is worth stating plainly in an application to a BC
+fellowship. The method is not Ontario-specific and nothing in the reading layer
+knows what province it is in — but "this works for Canada" is currently an
+extrapolation from one province and one subject, and the wider benchmark in
+weeks 1–3 is where that either holds or does not.
 
 ### Who actually does what
 
@@ -320,14 +389,17 @@ and would not be in a system where the server was the source of truth.
 Checkable, in four parts:
 
 1. **The dataset exists and is open** — measurements with place, time,
-   parameter, unit, uncertainty and a page link, published with the accuracy
-   methodology beside it.
+   parameter, unit and a page link, published with the accuracy methodology
+   beside it. No uncertainty column unless there is a real method behind it, per
+   the commitment above.
 2. **Accuracy is published including its failures**, per era and per parameter,
    on a benchmark anyone can re-score themselves.
-3. **Every number resolves to its scan.** Not a sample — every one.
-4. **The silences are mapped**, each with the check that rules out "it was never
-   scanned" as the explanation, because a silence finding is uninterpretable
-   without it.
+3. **Every number resolves to its scan.** Not a sample — every one. This is the
+   one I will not trade away, because it is what makes the rest checkable.
+4. **Where a series stops, the record says so and says what was ruled out** —
+   both "it was never scanned" and, where I can establish it, "the reporting
+   rules changed". A silence finding is uninterpretable without those, and the
+   national map of silences is after the fellowship, not in it.
 
 ### What would count as failure, stated in advance
 
