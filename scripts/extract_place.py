@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -142,8 +143,15 @@ def main() -> int:
                 d = r.to_dict()
                 # The report is *for* a year; the model rarely repeats it in
                 # every sentence, so stamp it from the item where it is missing.
-                if not d.get("period") and year:
-                    d["period"] = year
+                #
+                # It also returns bare month names -- "March", "December 9" --
+                # when a sentence names a month without repeating the year. Those
+                # parse as no year at all and drop out of every series in silence,
+                # which is the worst way to lose data. Anchor them to the report's
+                # own year instead.
+                period = str(d.get("period") or "")
+                if year and not re.search(r"\b(1[89]\d{2}|20\d{2})\b", period):
+                    d["period"] = f"{year} {period}".strip() if period else year
                 if not d.get("place"):
                     d["place"] = args.place
                 # One town commonly has several facilities measuring opposite

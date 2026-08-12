@@ -1,0 +1,2788 @@
+{
+  "place": "Brantford",
+  "model": "ollama:gemma4:12b",
+  "n_records": 102,
+  "pages_attempted": [
+    "brantfordsewaget23775#5",
+    "brantfordsewaget23775#7",
+    "brantfordsewaget23775#9",
+    "brantfordsewaget23775#11",
+    "brantfordsewaget23777#5",
+    "brantfordsewaget23777#7",
+    "brantfordsewaget23777#9",
+    "brantfordsewaget23777#11",
+    "brantfordsewaget23777#21",
+    "brantfordsewaget23777#25",
+    "brantfordsewaget23777#27",
+    "brantfordsewaget23777#31",
+    "brantfordsewaget23777#35",
+    "brantfordwaterpo23776#8",
+    "brantfordwaterpo23776#9",
+    "brantfordwaterpo23776#15",
+    "brantfordwaterpo23776#30",
+    "brantfordwaterpo23769#10",
+    "brantfordwaterpo23769#12",
+    "brantfordwaterpo23769#26",
+    "brantfordwaterpo23774#10",
+    "brantfordwaterpo23774#12",
+    "brantfordwaterpo23774#26",
+    "brantfordwaterpo23770#11",
+    "brantfordwaterpo23770#16"
+  ],
+  "records": [
+    {
+      "kind": "design",
+      "parameter": "moisture content",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6953,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 7,
+        "source_text": "With these units the moisture of the sludge is reduced from 95^ to SOfo which represents a reduction in volume of about 75^0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.7382
+      },
+      "key": "183a837059264eb4f4fe"
+    },
+    {
+      "kind": "design",
+      "parameter": "moisture content",
+      "value": 50.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6084,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 7,
+        "source_text": "With these units the moisture of the sludge is reduced from 95^ to SOfo which represents a reduction in volume of about 75^0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.7,
+        "ocr_confidence": 0.7382
+      },
+      "key": "662ab049de420e64d815"
+    },
+    {
+      "kind": "design",
+      "parameter": "volume reduction",
+      "value": 75.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6953,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 7,
+        "source_text": "With these units the moisture of the sludge is reduced from 95^ to SOfo which represents a reduction in volume of about 75^0",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.7382
+      },
+      "key": "6dc0e00c1f9afb6a740d"
+    },
+    {
+      "kind": "design",
+      "parameter": "diameter",
+      "value": 70.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.7822,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 7,
+        "source_text": "The four primary settling tanks are each 70 feet in diameter and re- tain the sewage for 1 | hours at design flowo",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7382
+      },
+      "key": "f236891f7e9638d0541c"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention time",
+      "value": 1.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6953,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 7,
+        "source_text": "The four primary settling tanks are each 70 feet in diameter and re- tain the sewage for 1 | hours at design flowo",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.7382
+      },
+      "key": "16dac725380055bd3979"
+    },
+    {
+      "kind": "design",
+      "parameter": "total volume",
+      "value": 3300000.0,
+      "unit": "Imperial Gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.7822,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 7,
+        "source_text": "The aeration section consists of two ^ three pass tanks with a total volume of 3,300,000 Imperial Gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7382
+      },
+      "key": "93a477ea286d008f24f1"
+    },
+    {
+      "kind": "design",
+      "parameter": "air delivery",
+      "value": 13000.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6953,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 7,
+        "source_text": "Compressed air is delivered to the sewage by three air blowers of 200 hp each capable of delivering 13,^00 cubic feet of air per minute o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.7382
+      },
+      "key": "2c6935b9a10005fc96d4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "gallons of sewage",
+      "value": 1970000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6802,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 11,
+        "source_text": "The plant treated approximately 1,97'0,OOO5,OOO gallons of sewage from February 24th to December 31st.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.7005
+      },
+      "key": "144a411b24aefc5e29df"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 3639400.0,
+      "unit": "pounds",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6802,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 11,
+        "source_text": "There was 3,639,400 pounds of BOD (lSl5i tons) and 3,630,000 pounds of suspended solids (1^1$ tpn) in the sewage entering the plant o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.7005
+      },
+      "key": "9e58966de1d22e7f03c0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 3630000.0,
+      "unit": "pounds",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1960",
+      "facility": "water pollution control plant",
+      "confidence": 0.6802,
+      "provenance": {
+        "identifier": "brantfordsewaget23775",
+        "page": 11,
+        "source_text": "There was 3,639,400 pounds of BOD (lSl5i tons) and 3,630,000 pounds of suspended solids (1^1$ tpn) in the sewage entering the plant o",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23775/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.7005
+      },
+      "key": "7f614a35dc55d16280ed"
+    },
+    {
+      "kind": "design",
+      "parameter": "capacity",
+      "value": 12.5,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4239,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 7,
+        "source_text": "The 12 o 5 million gallons per day Brantford Sewage Treatment Plant cost $2 5 225? 000.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6955
+      },
+      "key": "f6ae5b885f70aa7346b0"
+    },
+    {
+      "kind": "design",
+      "parameter": "capacity",
+      "value": 3.5,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4259,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 9,
+        "source_text": "pumped by four raw sewage pumps, each having a capacity of 3«5 million gallons per day, to two detritors located",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7034
+      },
+      "key": "4f770659d297d7409cae"
+    },
+    {
+      "kind": "design",
+      "parameter": "diameter",
+      "value": 70.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4259,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 9,
+        "source_text": "Pour circular clarifiers, 70 feet in diameter, receive",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7034
+      },
+      "key": "0b3ad5eb8ee695248534"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention time",
+      "value": 2.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4259,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 9,
+        "source_text": "It is retained in the clarifiers for 2 hours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7034
+      },
+      "key": "e70b2e9d028867b71ca0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids",
+      "value": 50.0,
+      "unit": "percent",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4259,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 9,
+        "source_text": "Approximately 50 percent of the suspended solids in the incoming sewage settles to the bottom of the clarifiers.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7034
+      },
+      "key": "e54f3ba90f1c9e36f18e"
+    },
+    {
+      "kind": "design",
+      "parameter": "width",
+      "value": 30.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4259,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 9,
+        "source_text": "Each &quot;pass&quot; of the aeration tanks is 30 feet wide, I5 feet deep and 200 feet long.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7034
+      },
+      "key": "4803ab6afdc0cdac8714"
+    },
+    {
+      "kind": "design",
+      "parameter": "depth",
+      "value": 15.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4259,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 9,
+        "source_text": "Each &quot;pass&quot; of the aeration tanks is 30 feet wide, I5 feet deep and 200 feet long.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7034
+      },
+      "key": "7b4ac63653b3f88f0afb"
+    },
+    {
+      "kind": "design",
+      "parameter": "length",
+      "value": 200.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4259,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 9,
+        "source_text": "Each &quot;pass&quot; of the aeration tanks is 30 feet wide, I5 feet deep and 200 feet long.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7034
+      },
+      "key": "5a335e7568ead0146c1c"
+    },
+    {
+      "kind": "design",
+      "parameter": "detention time",
+      "value": 6.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.432,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 11,
+        "source_text": "The aeration section retains the sewage for 6 hours",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7279
+      },
+      "key": "a2e6e38dd95c4cbf9f59"
+    },
+    {
+      "kind": "design",
+      "parameter": "flow rate",
+      "value": 12.0,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.432,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 11,
+        "source_text": "at a flow rate of 12-^ million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7279
+      },
+      "key": "cf6b6da4807b32fb16a3"
+    },
+    {
+      "kind": "design",
+      "parameter": "motor power",
+      "value": 200.0,
+      "unit": "HP",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.432,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 11,
+        "source_text": "Air is supplied by three blowers each equipped with a 200 HP motor.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7279
+      },
+      "key": "87bce0d94ac7864618c8"
+    },
+    {
+      "kind": "design",
+      "parameter": "air delivery",
+      "value": 13800.0,
+      "unit": "cubic feet per minute",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.432,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 11,
+        "source_text": "Each blower is capable of delivering 13,800 cubic feet of air per minute.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7279
+      },
+      "key": "cbb7f97a4c42b8d4abe1"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention time",
+      "value": 2.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.432,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 11,
+        "source_text": "is retained in four final clarifiers, identical in size to the primary clarifiers for two hours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7279
+      },
+      "key": "0d1a9403d2070eaf6e0c"
+    },
+    {
+      "kind": "design",
+      "parameter": "diameter",
+      "value": 35.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.432,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 11,
+        "source_text": "There are four digesters; two primary tanks each 35 feet in diameter",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7279
+      },
+      "key": "1abaa2bf19de37907dbd"
+    },
+    {
+      "kind": "design",
+      "parameter": "diameter",
+      "value": 70.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.432,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 11,
+        "source_text": "and two secondary tanks each 70 feet in",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7279
+      },
+      "key": "bbd2ea45206ec57225e9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 5.67,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.7039,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "During 1962 the average daily flow for tlie year was 5.67 million gallons per day",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5643
+      },
+      "key": "fabc419a4bbbc0a62b96"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 6.12,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.7039,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "compared with an average of 6.12 million gallons per day in 1961.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5643
+      },
+      "key": "4f46e0ec6bb0a554da82"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 2082.0,
+      "unit": "million gallons",
+      "qualifier": "total",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.7039,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "The total flow for the year was 2082 million gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5643
+      },
+      "key": "d38e45a99abad8523eb2"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 2280.0,
+      "unit": "million gallons",
+      "qualifier": "total",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.7039,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "a decrease of 10 per cent from the total flow of 2280 million gallons in I96I.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5643
+      },
+      "key": "3302c51b1c9967eac805"
+    },
+    {
+      "kind": "observation",
+      "parameter": "grit removed",
+      "value": 28.0,
+      "unit": "cubic feet",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.7039,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "An average of 28 cubic feet of grit was removed daily at the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5643
+      },
+      "key": "393e6804e2dac253ba44"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 210.0,
+      "unit": "ppm",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.6257,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "It is seen that the o.verage BUD and SS of the raw sewage are both 210 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.5643
+      },
+      "key": "006ec9f0834850789033"
+    },
+    {
+      "kind": "observation",
+      "parameter": "SS",
+      "value": 210.0,
+      "unit": "ppm",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.6257,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "It is seen that the o.verage BUD and SS of the raw sewage are both 210 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.5643
+      },
+      "key": "cb57f7d492203fef187d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 190.0,
+      "unit": "ppm",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.6257,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "This is not a significant difference from I96I when, the average BOD and SS were I90 and 220 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.5643
+      },
+      "key": "4fc2e4014c70a51efe81"
+    },
+    {
+      "kind": "observation",
+      "parameter": "SS",
+      "value": 220.0,
+      "unit": "ppm",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.6257,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 21,
+        "source_text": "This is not a significant difference from I96I when, the average BOD and SS were I90 and 220 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.5643
+      },
+      "key": "49e9a5b71c7db45235f9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sludge volume",
+      "value": 8125300.0,
+      "unit": "gallons",
+      "qualifier": "total",
+      "stream": "influent",
+      "place": "digesters",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.7405,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 31,
+        "source_text": "During 1962, 8,125,300 gallons of sludge at an average concentration of ^,2 per cent solids were pumped to the digesters.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6456
+      },
+      "key": "1831a37ca6ac40b22e85"
+    },
+    {
+      "kind": "observation",
+      "parameter": "solids concentration",
+      "value": 1.2,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "digesters",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.6582,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 31,
+        "source_text": "During 1962, 8,125,300 gallons of sludge at an average concentration of ^,2 per cent solids were pumped to the digesters.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.6456
+      },
+      "key": "6802369fdabab4ae45ad"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sludge volume",
+      "value": 8269000.0,
+      "unit": "gallons",
+      "qualifier": "total",
+      "stream": "influent",
+      "place": "digesters",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.7405,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 31,
+        "source_text": "This is a decrease of about 2 per cent from the 8,269,000 gallons pumped in I96I.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6456
+      },
+      "key": "3dd2a886ae1b99e96b79"
+    },
+    {
+      "kind": "observation",
+      "parameter": "gas production",
+      "value": 16511500.0,
+      "unit": "cubic feet",
+      "qualifier": "total",
+      "stream": "treated",
+      "place": "digesters",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.7405,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 31,
+        "source_text": "A total of 16,511,500 cubic feet of gas was produced in the digesters in I962 compared with 17,900,100 cubic feet in 1961,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6456
+      },
+      "key": "afb9741ab360f59a3fd7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "gas production",
+      "value": 17900100.0,
+      "unit": "cubic feet",
+      "qualifier": "total",
+      "stream": "treated",
+      "place": "digesters",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.7405,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 31,
+        "source_text": "A total of 16,511,500 cubic feet of gas was produced in the digesters in I962 compared with 17,900,100 cubic feet in 1961,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6456
+      },
+      "key": "e79bfba06d85c2cd4028"
+    },
+    {
+      "kind": "observation",
+      "parameter": "gas per pound volatile matter",
+      "value": 7.3,
+      "unit": "cubic feet/lb",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.6582,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 31,
+        "source_text": "The cubic feet of gas produced per pound of volatile matter in raw sludge was 7 &quot;3 which is within the average accepted values of 6 to 10,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.6456
+      },
+      "key": "b03394d10958ea7d1464"
+    },
+    {
+      "kind": "standard",
+      "parameter": "gas per pound volatile matter",
+      "value": 6.0,
+      "unit": "cubic feet/lb",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.7405,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 31,
+        "source_text": "The cubic feet of gas produced per pound of volatile matter in raw sludge was 7 &quot;3 which is within the average accepted values of 6 to 10,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6456
+      },
+      "key": "af0c892437cb1417f08b"
+    },
+    {
+      "kind": "standard",
+      "parameter": "gas per pound volatile matter",
+      "value": 10.0,
+      "unit": "cubic feet/lb",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.7405,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 31,
+        "source_text": "The cubic feet of gas produced per pound of volatile matter in raw sludge was 7 &quot;3 which is within the average accepted values of 6 to 10,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n30/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.6456
+      },
+      "key": "2ce8924f86f7a3ca5a7e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "filtering hours",
+      "value": 2519.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "It is seen that in a total of 2519 hours of filtering,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "b39bdc3f719fedc7582a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sludge filtered",
+      "value": 366500.0,
+      "unit": "pounds",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "the two units filtered a total of 3)Gl6,5^l'0 pounds of sludge",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "4bfbb0984b234559bd37"
+    },
+    {
+      "kind": "observation",
+      "parameter": "lime used",
+      "value": 570631.0,
+      "unit": "pounds",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "using 570 t 631 pounds of lime",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "0d294d4dc3955ecc0d0a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ferric chloride used",
+      "value": 198737.0,
+      "unit": "pounds",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "and 198,737 pounds of ferric chloride .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "90b64cf927abff61fa7b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "yield",
+      "value": 3.51,
+      "unit": "pounds per square foot per hour",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "During I962 the yield in pounds per square foot per hour decreased from 3.51 in I96I to 3»17 in 1962.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "b280ddcbf2d63b51bdfd"
+    },
+    {
+      "kind": "observation",
+      "parameter": "yield",
+      "value": 3.17,
+      "unit": "pounds per square foot per hour",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "During I962 the yield in pounds per square foot per hour decreased from 3.51 in I96I to 3»17 in 1962.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "c181d25f5de2c7129695"
+    },
+    {
+      "kind": "observation",
+      "parameter": "volume of sludge hauled",
+      "value": 31.0,
+      "unit": "percent",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "The volume of sludge hauled was only 3I per cent of the sludge pumped to the digesters.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "97d55cf52cd44dee7801"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 10.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "Graph Number 2 indicates the concentrations of the BOD and SS in the final effluent are 10 and I3 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "48c9831942f4dc356f5e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "SS",
+      "value": 13.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "Graph Number 2 indicates the concentrations of the BOD and SS in the final effluent are 10 and I3 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "7a636ba42386d634ba0c"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Commission objective",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "Both of these averages are below the Commission objective of 15 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "a3132883481536b8324e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD",
+      "value": 8.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Brantford",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "This is a significant improvement over I96I when the average BOD and SS were 8 and 28 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "86d74eae9bccb8cc2c3f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "SS",
+      "value": 28.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Brantford",
+      "period": "1961",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "This is a significant improvement over I96I when the average BOD and SS were 8 and 28 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "81bc581a7f61e90daa91"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD exceeding objective",
+      "value": 20.0,
+      "unit": "percent",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "It is seen that the Commission's objective for BOD was exceeded only 20 per cent of the time",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "b394d1a0e5f58b9958cb"
+    },
+    {
+      "kind": "observation",
+      "parameter": "SS exceeding objective",
+      "value": 45.0,
+      "unit": "percent",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.4024,
+      "provenance": {
+        "identifier": "brantfordsewaget23777",
+        "page": 35,
+        "source_text": "and for SS 45 per cent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordsewaget23777/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6097
+      },
+      "key": "270ed4808bba2194d07f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 5.59,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8322,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 15,
+        "source_text": "During 1963 the average daily flow was 5. 59 as compared to 5. 67 million gallons per day in 1962.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7519
+      },
+      "key": "6238c864e3b0e6a250cb"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 5.67,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.8322,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 15,
+        "source_text": "During 1963 the average daily flow was 5. 59 as compared to 5. 67 million gallons per day in 1962.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7519
+      },
+      "key": "5d89cfbeee41077ab904"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total raw sewage volume",
+      "value": 2.04,
+      "unit": "billion gallons",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8322,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 15,
+        "source_text": "During the past year, 2. 04 billion gallons of raw sewage composed of both industrial and domestic waste received complete treatment.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7519
+      },
+      "key": "a717bb5e8cb9913ccb52"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum 24 hour flow",
+      "value": 9.5,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8322,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 15,
+        "source_text": "The maximum 24 hour flow in the past year was 9. 5 million gallons and occurred in the month of March",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7519
+      },
+      "key": "44a5fea80154d2ae380a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "greatest average daily flow for one month",
+      "value": 6.38,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8322,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 15,
+        "source_text": "as did the greatest average daily flow for one month of 6. 38 million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7519
+      },
+      "key": "dfa3fd97965ffc8133e1"
+    },
+    {
+      "kind": "design",
+      "parameter": "daily flow increase",
+      "value": 700000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.8322,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 15,
+        "source_text": "In 1964, the addition of the Eastern Circumferential Sewer to the system should result in a daily flow increase of 700,000 gallons or about a 10% increase over existing flows.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7519
+      },
+      "key": "62a5b09dcd036b8f2e55"
+    },
+    {
+      "kind": "design",
+      "parameter": "water connection",
+      "value": 1000.0,
+      "unit": "GPM",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Massey Ferguson Company",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8322,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 15,
+        "source_text": "the Massey Ferguson Company who have requested the installation of a 1, 000 GPM water connection.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n14/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7519
+      },
+      "key": "bf018da7e776d9f20554"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 5.6,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8807,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 30,
+        "source_text": "With an average daily flow of 5. 6 million gallons, the plant is still below its full treatment capacity of 12. 5 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8541
+      },
+      "key": "e724aecd6dcaaa8cb735"
+    },
+    {
+      "kind": "design",
+      "parameter": "treatment capacity",
+      "value": 12.5,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "influent",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8807,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 30,
+        "source_text": "With an average daily flow of 5. 6 million gallons, the plant is still below its full treatment capacity of 12. 5 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8541
+      },
+      "key": "670ad97126912b42c2e3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sludge pumped to digester",
+      "value": 8.12,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.8807,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 30,
+        "source_text": "During 1962, 8. 12 million gallons of sludge were pumped to the digester and 1,908 tons of dry solids were filtered.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8541
+      },
+      "key": "8307953b5099ed5fa09d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "dry solids filtered",
+      "value": 1908.0,
+      "unit": "tons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1962",
+      "facility": "water pollution control plant",
+      "confidence": 0.8807,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 30,
+        "source_text": "During 1962, 8. 12 million gallons of sludge were pumped to the digester and 1,908 tons of dry solids were filtered.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8541
+      },
+      "key": "3f44f1042aabea5a2c7a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sludge pumped to digesters",
+      "value": 10.1,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8807,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 30,
+        "source_text": "In 1963, sludge pumped to the digesters rose to 10. 10 million gallons and 2517 tons of dry solids were filtered.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8541
+      },
+      "key": "720bc0c5428a7bf335ff"
+    },
+    {
+      "kind": "observation",
+      "parameter": "dry solids filtered",
+      "value": 2517.0,
+      "unit": "tons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8807,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 30,
+        "source_text": "In 1963, sludge pumped to the digesters rose to 10. 10 million gallons and 2517 tons of dry solids were filtered.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8541
+      },
+      "key": "2d3137ad6d57f8b5c54c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "man hours",
+      "value": 100.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8807,
+      "provenance": {
+        "identifier": "brantfordwaterpo23776",
+        "page": 30,
+        "source_text": "OWRC head office technicians spent over 100 man hours in inspecting and reporting on the mechanical and electrical maintenance being routinely performed by the plant staff.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23776/page/n29/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8541
+      },
+      "key": "51beeb01cd87d917bca4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 6.07,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.8888,
+      "provenance": {
+        "identifier": "brantfordwaterpo23769",
+        "page": 10,
+        "source_text": "The average daily flow of 6. 07 million gallons was slightly above the 1963 value.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8712
+      },
+      "key": "510ee1c954af8d5464fd"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 12.5,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.8888,
+      "provenance": {
+        "identifier": "brantfordwaterpo23769",
+        "page": 10,
+        "source_text": "However, it was still well below the rated plant capacity of 12. 5 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8712
+      },
+      "key": "3da7aabbfa72c75d2646"
+    },
+    {
+      "kind": "observation",
+      "parameter": "man hours",
+      "value": 104.0,
+      "unit": "man hours",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Brantford Water Pollution Control Plant",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.8888,
+      "provenance": {
+        "identifier": "brantfordwaterpo23769",
+        "page": 10,
+        "source_text": "OWRC head office technicians spent over 104 man hours at the plant, in- specting and reporting on the mechanical and electrical maintenance being carried out by the plant staff.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8712
+      },
+      "key": "4f22f55386221050a63b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 6.07,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.8116,
+      "provenance": {
+        "identifier": "brantfordwaterpo23769",
+        "page": 26,
+        "source_text": "During 1964 the average daily flow was 6. 07 as compared to 5. 59 million gallons per day in 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7087
+      },
+      "key": "382c35e2dc16525e714e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 5.59,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.8116,
+      "provenance": {
+        "identifier": "brantfordwaterpo23769",
+        "page": 26,
+        "source_text": "During 1964 the average daily flow was 6. 07 as compared to 5. 59 million gallons per day in 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7087
+      },
+      "key": "cd5a8aae09514eeef555"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total volume treated",
+      "value": 2.22,
+      "unit": "billion gallons",
+      "qualifier": "total",
+      "stream": "treated",
+      "place": "Brantford",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.8116,
+      "provenance": {
+        "identifier": "brantfordwaterpo23769",
+        "page": 26,
+        "source_text": "During the past year, 2. 22 billion gallons of raw sewage composed of both industrial and domestic waste received complete treatment.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7087
+      },
+      "key": "fae675fccba313c84264"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum 24 hour flow",
+      "value": 9.78,
+      "unit": "million gallons",
+      "qualifier": "maximum",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1964-05",
+      "facility": "water pollution control plant",
+      "confidence": 0.8116,
+      "provenance": {
+        "identifier": "brantfordwaterpo23769",
+        "page": 26,
+        "source_text": "The maximum 24 hour flow in the past year was 9. 78 million gallons and occurred in the month of May.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7087
+      },
+      "key": "24241c8b1b5f46bb33d5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 8.18,
+      "unit": "million gallons",
+      "qualifier": "maximum",
+      "stream": "influent",
+      "place": "Brantford",
+      "period": "1964-04",
+      "facility": "water pollution control plant",
+      "confidence": 0.8116,
+      "provenance": {
+        "identifier": "brantfordwaterpo23769",
+        "page": 26,
+        "source_text": "The greatest average daily flow for one month was 8. 18 million gallons, and occurred in April.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23769/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7087
+      },
+      "key": "a62c0a5bb54dfdbb95f7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 6.57,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "influent",
+      "place": "Brantford WPCP",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8128,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 10,
+        "source_text": "The average daily flow of 6. 57 million gallons is 8% higher than in 1964 , however, it represents only 52. 5% of the plant design capacity.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7111
+      },
+      "key": "a21ea5f2f8b7d96c27a7"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 12.6,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford WPCP",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.7272,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 10,
+        "source_text": "The average daily flow of 6. 57 million gallons is 8% higher than in 1964 , however, it represents only 52. 5% of the plant design capacity.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.85,
+        "ocr_confidence": 0.7111
+      },
+      "key": "f18a53dc5568396272c7"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "BOD objectives met",
+      "value": 55.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Brantford WPCP",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.77,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 10,
+        "source_text": "OWRC effluent objectives were met 55% and 40% of the time for BOD and SS respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7111
+      },
+      "key": "e6fdd0a6fa76de562cc8"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "SS objectives met",
+      "value": 40.0,
+      "unit": "percent",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Brantford WPCP",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.77,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 10,
+        "source_text": "OWRC effluent objectives were met 55% and 40% of the time for BOD and SS respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.7111
+      },
+      "key": "da2c34ad2cb27b5521ee"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 6.57,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8133,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 26,
+        "source_text": "During 1965 the average daily flow was 6. 57 as compared to 6. 07 million gallons per day in 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7122
+      },
+      "key": "99cc8952591b24125234"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 6.07,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.8133,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 26,
+        "source_text": "During 1965 the average daily flow was 6. 57 as compared to 6. 07 million gallons per day in 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7122
+      },
+      "key": "dc45d2f756ae67e05abb"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total volume of raw sewage treated",
+      "value": 2.4,
+      "unit": "billion gallons",
+      "qualifier": "total",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.8133,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 26,
+        "source_text": "During the past year, 2.4 billion gallons of raw sewage composed of both industrial and domestic waste received complete treatment.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7122
+      },
+      "key": "61f5ba2d965a075fa617"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum 24 hour flow",
+      "value": 11.12,
+      "unit": "million gallons",
+      "qualifier": "maximum",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1965 March",
+      "facility": "water pollution control plant",
+      "confidence": 0.8133,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 26,
+        "source_text": "The maximum 24 hour flow in the past year was 11. 12 million gallons and occurred in the month of March.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7122
+      },
+      "key": "a632a0ad9e2def668980"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 7.74,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford",
+      "period": "1965 March",
+      "facility": "water pollution control plant",
+      "confidence": 0.8133,
+      "provenance": {
+        "identifier": "brantfordwaterpo23774",
+        "page": 26,
+        "source_text": "The greatest average daily flow for one month was 7. 74 million gallons, and occurred in March.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23774/page/n25/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7122
+      },
+      "key": "5d807f257a08d5042b14"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating costs",
+      "value": 188867.51,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.464,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 11,
+        "source_text": "The operating costs for the Brantford Water Pollution Control Plant in 1966 were $188, 867. 51 or $75. 83 per million gallons treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8562
+      },
+      "key": "3d77c5d4f2ba1ced4000"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating costs",
+      "value": 75.83,
+      "unit": "$ per million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.464,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 11,
+        "source_text": "The operating costs for the Brantford Water Pollution Control Plant in 1966 were $188, 867. 51 or $75. 83 per million gallons treated.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8562
+      },
+      "key": "c64fc584de11138bbad6"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "increase in operating costs",
+      "value": 1.7,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.464,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 11,
+        "source_text": "The in-crease in operating costs over 1965 is approximately 1. 7%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8562
+      },
+      "key": "3c491ea1e591e6162fd7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage treated",
+      "value": 2490.546,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.464,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 11,
+        "source_text": "A total of 2490. 546 million gallons of raw sewage was treated in 1966 .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8562
+      },
+      "key": "45a0047b35fadad907b8"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "increase in flow over 1965",
+      "value": 4.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.464,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 11,
+        "source_text": "This represented an increase of 4% over the 1965 total flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8562
+      },
+      "key": "c24d21e96e5e25d7110f"
+    },
+    {
+      "kind": "standard",
+      "parameter": "BOD",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.464,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 11,
+        "source_text": "The plant effluent, on the basis of available analyses, failed to achieve the OWRC objective for BOD of 15 ppm during the past year.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8562
+      },
+      "key": "c17d2f939d65423c50c6"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "raw sludge pumped",
+      "value": 26.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Brantford",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.464,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 11,
+        "source_text": "There was an increase of 26% in the amount of raw sludge pumped to the primary digesters in 1966.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8562
+      },
+      "key": "1126fb842f1c1449a6dd"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage",
+      "value": 2490.546,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Brantford plant",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.873,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 16,
+        "source_text": "A total of 2490. 546 million gallons of raw sewage was treated at the Brantford plant in 1966.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8378
+      },
+      "key": "f135c885909568a4e7bd"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 4.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "raw",
+      "place": "Brantford plant",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.827,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 16,
+        "source_text": "This represents an increase of 4% over the 1965 total flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.8378
+      },
+      "key": "68b31f0f84b8d6eb9b0c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 6.82,
+      "unit": "million gallons",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford plant",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.873,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 16,
+        "source_text": "The average daily flow for the year was 6. 82 million gallons .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.8378
+      },
+      "key": "1851464eeb0b7189e6d1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 7.33,
+      "unit": "mg",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford plant",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.7811,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 16,
+        "source_text": "The average daily flow based on a five day work week, and excluding statutory holidays, was 7. 33 mg or a 60% hydraulic load factor.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.85,
+        "ocr_confidence": 0.8378
+      },
+      "key": "decabe55c6811bf9de1b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "hydraulic load factor",
+      "value": 60.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "raw",
+      "place": "Brantford plant",
+      "period": "1966",
+      "facility": "water pollution control plant",
+      "confidence": 0.7811,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 16,
+        "source_text": "The average daily flow based on a five day work week, and excluding statutory holidays, was 7. 33 mg or a 60% hydraulic load factor.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.85,
+        "ocr_confidence": 0.8378
+      },
+      "key": "e33c87edd4df9dea5b3c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total flow",
+      "value": 237.149,
+      "unit": "mg",
+      "qualifier": "maximum",
+      "stream": "raw",
+      "place": "Brantford plant",
+      "period": "1966 March",
+      "facility": "water pollution control plant",
+      "confidence": 0.7811,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 16,
+        "source_text": "The maximum total flow for a month of 237. 149 mg or an average daily flow of 7. 65 mg occurred in March",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.85,
+        "ocr_confidence": 0.8378
+      },
+      "key": "8dab2fc978d0d905a31a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 7.65,
+      "unit": "mg",
+      "qualifier": "average",
+      "stream": "raw",
+      "place": "Brantford plant",
+      "period": "1966 March",
+      "facility": "water pollution control plant",
+      "confidence": 0.7811,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 16,
+        "source_text": "The maximum total flow for a month of 237. 149 mg or an average daily flow of 7. 65 mg occurred in March",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.85,
+        "ocr_confidence": 0.8378
+      },
+      "key": "159eb03a301c11563de0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 10.813,
+      "unit": "mg",
+      "qualifier": "maximum",
+      "stream": "raw",
+      "place": "Brantford plant",
+      "period": "1966 December 9",
+      "facility": "water pollution control plant",
+      "confidence": 0.7811,
+      "provenance": {
+        "identifier": "brantfordwaterpo23770",
+        "page": 16,
+        "source_text": "and the maximum daily flow for the year of 10. 813 mg occurred on December 9.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/brantfordwaterpo23770/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.85,
+        "ocr_confidence": 0.8378
+      },
+      "key": "8f729a5d2d5784bdccbc"
+    }
+  ]
+}
