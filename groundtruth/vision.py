@@ -383,4 +383,38 @@ def extract_table(
             continue
         records.append(rec)
 
+    _disambiguate_columns(records)
     return VisionResult(records=records, rejected=rejected, raw_response=raw)
+
+
+def _disambiguate_columns(records: list[Record]) -> None:
+    """Fold a column heading into the parameter when the row alone is ambiguous.
+
+    A table is two-dimensional and a parameter name is not. An expenditure table
+    gives, for 1981-82, In-House 15, Contracts 100 and Total 115 -- three
+    different measurements whose only distinguishing feature is the column. Left
+    alone they share an identity, and the dispute ledger reports a department's
+    budget as a three-way contradiction.
+
+    This is the table form of a mistake already made twice: Owen Sound's sewage
+    plant and water works merged under one place, and Brantford's influent and
+    effluent BOD merged under one parameter. Both times the fix was to admit
+    that the identity was missing a field.
+
+    Only applied where it is needed. If every record under a parameter comes
+    from the same column, the column adds nothing and the name is left alone.
+    """
+    by_parameter: dict[str, list[Record]] = {}
+    for record in records:
+        column = str((record.raw or {}).get("column_label") or "").strip()
+        if column:
+            by_parameter.setdefault(record.parameter.strip().lower(), []).append(record)
+
+    for group in by_parameter.values():
+        columns = {str((r.raw or {}).get("column_label") or "").strip() for r in group}
+        if len(columns) < 2:
+            continue
+        for record in group:
+            column = str((record.raw or {}).get("column_label") or "").strip()
+            if column and _norm(column) not in _norm(record.parameter):
+                record.parameter = f"{record.parameter} ({column})"

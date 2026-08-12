@@ -283,3 +283,47 @@ def test_a_page_that_cannot_referee_keeps_the_record_and_says_why():
     )
     assert result.kept == 1
     assert "not checked" in result.records[0].raw["label_check"]
+
+
+def test_columns_that_measure_different_things_get_different_parameters():
+    """A table is two-dimensional; a parameter name is not.
+
+    An expenditure table gives In-House 15, Contracts 100 and Total 115 for one
+    year -- three measurements whose only distinguishing feature is the column.
+    Sharing an identity, they reach the dispute ledger as a three-way
+    contradiction about a department's budget.
+    """
+    ocr = ("PROGRAM EXPENDITURES ($000) In-House Contracts Total "
+           "1981-82 15 100 115")
+    result = extract_table(
+        _page(text=ocr),
+        b"",
+        client=FakeVision(
+            '[{"kind":"observation","parameter":"expenditures ($000)","value":15,'
+            '"unit":"$000","confidence":0.8,"row_label":"1981-82","column_label":"In-House"},'
+            '{"kind":"observation","parameter":"expenditures ($000)","value":100,'
+            '"unit":"$000","confidence":0.8,"row_label":"1981-82","column_label":"Contracts"},'
+            '{"kind":"observation","parameter":"expenditures ($000)","value":115,'
+            '"unit":"$000","confidence":0.8,"row_label":"1981-82","column_label":"Total"}]'
+        ),
+    )
+    assert result.kept == 3
+    names = {r.parameter for r in result.records}
+    assert len(names) == 3
+    assert any("In-House" in n for n in names)
+
+
+def test_a_single_column_adds_nothing_and_is_left_alone():
+    """Only disambiguate where there is an ambiguity to resolve."""
+    ocr = "MONTH MAX. DAILY Flow Jan. 6.976 Feb. 6.200"
+    result = extract_table(
+        _page(text=ocr),
+        b"",
+        client=FakeVision(
+            '[{"kind":"observation","parameter":"MAX. DAILY Flow","value":6.976,'
+            '"unit":"mgd","confidence":0.8,"row_label":"Jan.","column_label":"MAX. DAILY Flow"},'
+            '{"kind":"observation","parameter":"MAX. DAILY Flow","value":6.2,'
+            '"unit":"mgd","confidence":0.8,"row_label":"Feb.","column_label":"MAX. DAILY Flow"}]'
+        ),
+    )
+    assert {r.parameter for r in result.records} == {"MAX. DAILY Flow"}
