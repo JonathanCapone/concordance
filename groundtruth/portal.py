@@ -39,6 +39,7 @@ NAV = [
     ("silence", "Silence", "M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12"),
     ("rivers", "Rivers", "M3.5 7.5c3 0 3 3 6 3s3-3 6-3 3 3 5 3M3.5 14c3 0 3 3 6 3s3-3 6-3 3 3 5 3"),
     ("verify", "Verify", "M5 12.6 9.8 17.4 19 6.6"),
+    ("frontier", "Frontier", "M12 4.5v15M4.5 12h15M7.5 7.5l9 9M16.5 7.5l-9 9"),
     ("decisions", "Decisions", "M7 4.5h10v15H7Zm2.6 4h4.8m-4.8 3.6h4.8m-4.8 3.6h3"),
     ("disputed", "Disputed", "M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1"),
     ("ask", "Ask Honu", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
@@ -277,6 +278,20 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         Published including the failures — an archive misread at scale is worse than one never
         read, because the errors look like findings.</p>
         <div id="verify-body"></div>
+      </div>
+    </section>
+
+    <section class="view" data-view="frontier">
+      <div class="pane">
+        <h2>What one more document would answer</h2>
+        <p class="lede">Eleven million pages cannot be read alphabetically, and reading by
+        subject only serves whoever picked the subject. This orders them by <strong>what
+        reading them would unlock</strong> — because a question one document away is a
+        question somebody already wanted.</p>
+        <p class="lede" style="opacity:.72">It is also the honest replacement for a progress
+        bar. "You processed 40 documents" is a fact about you. "You made the Grand River
+        answerable, and it had been waiting on one town since 1961" is a fact about the world.</p>
+        <div id="frontier-body"></div>
       </div>
     </section>
 
@@ -705,6 +720,63 @@ const LOADERS = {{
       Fixing the measurement, with no change at all to the extractor, moved precision from 49.1%
       to ${{(t.precision*100||0).toFixed(1)}}%. Publishing the first figure would have narrowed
       the project for no reason.</p></div>`;
+    el.innerHTML = h;
+  }},
+
+  frontier: async () => {{
+    const el = document.getElementById("frontier-body");
+    el.innerHTML = `<div class="card note" style="border:0">Working out what is one
+      document away…</div>`;
+    const d = await (await fetch("/api/frontier")).json();
+    if (d.error) {{ el.innerHTML = `<div class="card note" style="border:0">${{d.error}}</div>`; return; }}
+    const c = d.counts || {{}};
+
+    let h = `<div class="card"><table class="gt">
+      <tr><th>state</th><th class="n">questions</th></tr>
+      <tr><td>answerable now</td><td class="n">${{c.answerable||0}}</td></tr>
+      <tr><td>waiting on a document</td><td class="n">${{c.waiting||0}}</td></tr>
+      <tr><td>places read so far</td><td class="n">${{c.places_read||0}}</td></tr>
+      </table>${{c.rivers_available ? "" :
+        `<p class="lede" style="margin:8px 0 0">River questions need the live gauge list,
+         which is unavailable — trends, silences and council decisions are unaffected.</p>`}}</div>`;
+
+    if ((d.places||[]).length) {{
+      h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
+            text-transform:uppercase;letter-spacing:.06em">Read this next</h3>
+            <p class="lede" style="margin:0 0 10px">Ranked by what it opens, not by size or
+            alphabet. A document sitting on several near-answerable questions beats one
+            sitting on a single distant one.</p>`;
+      d.places.forEach(p => {{
+        h += `<div style="margin:0 0 10px;padding-left:11px;border-left:2px solid var(--gt-hit)">
+          <div style="font-size:13px"><strong>${{p.place}}</strong>
+            <span style="opacity:.6;font-size:11px">score ${{p.score}} ·
+            unlocks ${{p.unlocks_now}} question${{p.unlocks_now===1?"":"s"}} immediately</span></div>`;
+        (p.questions||[]).forEach(q => {{
+          h += `<div class="lede" style="margin:2px 0 0;font-size:11.5px">${{q.replace(/</g,"&lt;")}}</div>`;
+        }});
+        h += `</div>`;
+      }});
+      h += `</div>`;
+    }}
+
+    if ((d.answerable||[]).length) {{
+      h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
+            text-transform:uppercase;letter-spacing:.06em">Already answerable</h3>`;
+      d.answerable.forEach(q => {{
+        h += `<div style="font-size:12px;margin:0 0 4px">${{q.question.replace(/</g,"&lt;")}}
+              <span style="opacity:.55;font-size:11px">— ${{q.detail}}</span></div>`;
+      }});
+      h += `</div>`;
+    }}
+
+    h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
+          text-transform:uppercase;letter-spacing:.06em">Waiting</h3>`;
+    (d.waiting||[]).slice(0,25).forEach(q => {{
+      h += `<div style="font-size:12px;margin:0 0 4px">${{q.question.replace(/</g,"&lt;")}}
+            <span style="opacity:.55;font-size:11px">— ${{q.distance}} document${{
+              q.distance===1?"":"s"}} away</span></div>`;
+    }});
+    h += `</div>`;
     el.innerHTML = h;
   }},
 
