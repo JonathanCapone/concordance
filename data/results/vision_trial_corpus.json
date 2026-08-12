@@ -12,7 +12,7 @@
     "records": [
       {
         "kind": "observation",
-        "parameter": "Production of Fine vacuum salt",
+        "parameter": "Production of Fine vacuum salt (Fine vacuum / Fin, traité sous vide 2002)",
         "value": 69689.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -40,7 +40,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Fine vacuum salt",
+        "parameter": "Production of Fine vacuum salt (Fine vacuum / Fin, traité sous vide 2003)",
         "value": 83932.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -68,7 +68,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Mined rock salt",
+        "parameter": "Production of Mined rock salt (Mined rock salt / Sel extrait des mines 2002)",
         "value": 983104.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -96,7 +96,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Mined rock salt",
+        "parameter": "Production of Mined rock salt (Mined rock salt / Sel extrait des mines 2003)",
         "value": 1049632.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -124,7 +124,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Salt content of brines",
+        "parameter": "Salt content of brines (Salt content of brines / Teneur en sel des saumures 2002)",
         "value": 106325.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -152,7 +152,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Salt content of brines",
+        "parameter": "Salt content of brines (Salt content of brines / Teneur en sel des saumures 2003)",
         "value": 103701.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -180,7 +180,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Total Production",
+        "parameter": "Total Production (Total 2002)",
         "value": 1159118.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -208,7 +208,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Total Production",
+        "parameter": "Total Production (Total 2003)",
         "value": 1237265.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -236,7 +236,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Fine vacuum salt",
+        "parameter": "Production of Fine vacuum salt (Fine vacuum / Fin, traité sous vide 2002)",
         "value": 61767.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -264,7 +264,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Fine vacuum salt",
+        "parameter": "Production of Fine vacuum salt (Fine vacuum / Fin, traité sous vide 2003)",
         "value": 75852.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -292,7 +292,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Mined rock salt",
+        "parameter": "Production of Mined rock salt (Mined rock salt / Sel extrait des mines 2002)",
         "value": 657229.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -320,7 +320,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Mined rock salt",
+        "parameter": "Production of Mined rock salt (Mined rock salt / Sel extrait des mines 2003)",
         "value": 716300.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -348,7 +348,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Salt content of brines",
+        "parameter": "Salt content of brines (Salt content of brines / Teneur en sel des saumures 2002)",
         "value": 86386.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -376,7 +376,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Salt content of brines",
+        "parameter": "Salt content of brines (Salt content of brines / Teneur en sel des saumures 2003)",
         "value": 92841.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -404,7 +404,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Total Production",
+        "parameter": "Total Production (Total 2002)",
         "value": 805382.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -432,7 +432,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Total Production",
+        "parameter": "Total Production (Total 2003)",
         "value": 884993.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -460,7 +460,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Fine vacuum salt",
+        "parameter": "Production of Fine vacuum salt (Fine vacuum / Fin, traité sous vide 2002)",
         "value": 70768.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -488,7 +488,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Fine vacuum salt",
+        "parameter": "Production of Fine vacuum salt (Fine vacuum / Fin, traité sous vide 2003)",
         "value": 77253.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -516,7 +516,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Mined rock salt",
+        "parameter": "Production of Mined rock salt (Mined rock salt / Sel extrait des mines 2002)",
         "value": 514610.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -544,7 +544,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Mined rock salt",
+        "parameter": "Production of Mined rock salt (Mined rock salt / Sel extrait des mines 2003)",
         "value": 761012.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -572,7 +572,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Salt content of brines",
+        "parameter": "Salt content of brines (Salt content of brines / Teneur en sel des saumures 2002)",
         "value": 120367.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -600,7 +600,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Salt content of brines",
+        "parameter": "Salt content of brines (Salt content of brines / Teneur en sel des saumures 2003)",
         "value": 111483.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -628,7 +628,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Total Production",
+        "parameter": "Total Production (Total 2002)",
         "value": 705745.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -656,7 +656,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Total Production",
+        "parameter": "Total Production (Total 2003)",
         "value": 949748.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -684,7 +684,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Production of Fine vacuum salt",
+        "parameter": "Production of Fine vacuum salt (Fine vacuum / Fin, traité sous vide 2002)",
         "value": 69950.0,
         "unit": "tonnes",
         "qualifier": null,
@@ -710,7 +710,8 @@
         },
         "key": "e1d762e66fcda7f33cfe"
       }
-    ]
+    ],
+    "rejected": []
   },
   "simcoewellsupply1990ontauoft#42": {
     "stratum": "omote",
@@ -725,7 +726,7 @@
     "records": [
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 1.63,
         "unit": "FTU",
         "qualifier": null,
@@ -753,7 +754,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.22,
         "unit": "FTU",
         "qualifier": null,
@@ -781,7 +782,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 1.07,
         "unit": "FTU",
         "qualifier": null,
@@ -809,7 +810,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.21,
         "unit": "FTU",
         "qualifier": null,
@@ -837,7 +838,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 1.05,
         "unit": "FTU",
         "qualifier": null,
@@ -865,7 +866,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.42,
         "unit": "FTU",
         "qualifier": null,
@@ -893,7 +894,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 0.85,
         "unit": "FTU",
         "qualifier": null,
@@ -921,7 +922,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.42,
         "unit": "FTU",
         "qualifier": null,
@@ -949,7 +950,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 1.1,
         "unit": "FTU",
         "qualifier": null,
@@ -977,7 +978,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.59,
         "unit": "FTU",
         "qualifier": null,
@@ -1005,7 +1006,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 0.76,
         "unit": "FTU",
         "qualifier": null,
@@ -1033,7 +1034,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.2,
         "unit": "FTU",
         "qualifier": null,
@@ -1061,7 +1062,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 0.84,
         "unit": "FTU",
         "qualifier": null,
@@ -1089,7 +1090,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.31,
         "unit": "FTU",
         "qualifier": null,
@@ -1117,7 +1118,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 0.78,
         "unit": "FTU",
         "qualifier": null,
@@ -1145,7 +1146,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.4,
         "unit": "FTU",
         "qualifier": null,
@@ -1173,7 +1174,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RAW WELL 4)",
         "value": 1.59,
         "unit": "FTU",
         "qualifier": null,
@@ -1201,7 +1202,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "TURBIDITY",
+        "parameter": "TURBIDITY (RESERVOIR)",
         "value": 0.85,
         "unit": "FTU",
         "qualifier": null,
@@ -1227,7 +1228,8 @@
         },
         "key": "e5ac7bdaeda051a151a7"
       }
-    ]
+    ],
+    "rejected": []
   },
   "WATERWELLRECORDS00SNSN12154.ome#1": {
     "stratum": "omote",
@@ -1239,7 +1241,8 @@
     "values_checked": 0,
     "values_found_in_ocr": 0,
     "ocr_chars": 1100262,
-    "records": []
+    "records": [],
+    "rejected": []
   },
   "micro_IA40243301_0609#102": {
     "stratum": "microlog",
@@ -1254,7 +1257,7 @@
     "records": [
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (In-House)",
         "value": 15.0,
         "unit": "$000",
         "qualifier": null,
@@ -1282,7 +1285,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Contracts)",
         "value": 100.0,
         "unit": "$000",
         "qualifier": null,
@@ -1310,7 +1313,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Total)",
         "value": 115.0,
         "unit": "$000",
         "qualifier": null,
@@ -1338,7 +1341,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (In-House)",
         "value": 30.0,
         "unit": "$000",
         "qualifier": null,
@@ -1366,7 +1369,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Contracts)",
         "value": 75.0,
         "unit": "$000",
         "qualifier": null,
@@ -1394,7 +1397,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Total)",
         "value": 105.0,
         "unit": "$000",
         "qualifier": null,
@@ -1422,7 +1425,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (In-House)",
         "value": 40.0,
         "unit": "$000",
         "qualifier": null,
@@ -1450,7 +1453,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Contracts)",
         "value": 785.0,
         "unit": "$000",
         "qualifier": null,
@@ -1478,7 +1481,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Total)",
         "value": 825.0,
         "unit": "$000",
         "qualifier": null,
@@ -1506,7 +1509,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (In-House)",
         "value": 75.0,
         "unit": "$000",
         "qualifier": null,
@@ -1534,7 +1537,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Contracts)",
         "value": 1025.0,
         "unit": "$000",
         "qualifier": null,
@@ -1562,7 +1565,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Total)",
         "value": 1100.0,
         "unit": "$000",
         "qualifier": null,
@@ -1590,7 +1593,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Mining Sector)",
         "value": 500.0,
         "unit": "$000",
         "qualifier": null,
@@ -1618,7 +1621,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (In-House)",
         "value": 75.0,
         "unit": "$000",
         "qualifier": null,
@@ -1646,7 +1649,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Contracts)",
         "value": 1200.0,
         "unit": "$000",
         "qualifier": null,
@@ -1674,7 +1677,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Total)",
         "value": 1275.0,
         "unit": "$000",
         "qualifier": null,
@@ -1702,7 +1705,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Mining Sector)",
         "value": 525.0,
         "unit": "$000",
         "qualifier": null,
@@ -1730,7 +1733,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (In-House)",
         "value": 300.0,
         "unit": "$000",
         "qualifier": null,
@@ -1758,7 +1761,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Contracts)",
         "value": 1075.0,
         "unit": "$000",
         "qualifier": null,
@@ -1786,7 +1789,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Total)",
         "value": 1375.0,
         "unit": "$000",
         "qualifier": null,
@@ -1814,7 +1817,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Mining Sector)",
         "value": 938.0,
         "unit": "$000",
         "qualifier": null,
@@ -1842,7 +1845,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (In-House)",
         "value": 300.0,
         "unit": "$000",
         "qualifier": null,
@@ -1870,7 +1873,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Contracts)",
         "value": 1075.0,
         "unit": "$000",
         "qualifier": null,
@@ -1898,7 +1901,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Total)",
         "value": 1375.0,
         "unit": "$000",
         "qualifier": null,
@@ -1926,7 +1929,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (Mining Sector)",
         "value": 715.0,
         "unit": "$000",
         "qualifier": null,
@@ -1954,7 +1957,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Expenditures ($000)",
+        "parameter": "Expenditures ($000) (In-House)",
         "value": 420.0,
         "unit": "$000",
         "qualifier": null,
@@ -1980,7 +1983,8 @@
         },
         "key": "ce61372e3031d9259080"
       }
-    ]
+    ],
+    "rejected": []
   },
   "1915v50i24p30_1137#231": {
     "stratum": "sessionalpaperscanada_title",
@@ -2833,7 +2837,8 @@
         },
         "key": "9e3a31790bd6e51d09d7"
       }
-    ]
+    ],
+    "rejected": []
   },
   "documents56s1880cana#146": {
     "stratum": "documentsdelasessioncanada",
@@ -3658,7 +3663,8 @@
         },
         "key": "3e222aef9618a80ef4d2"
       }
-    ]
+    ],
+    "rejected": []
   },
   "annualreportcomm1933toro#30": {
     "stratum": "canadianmunicipal",
@@ -3673,7 +3679,7 @@
     "records": [
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1933)",
         "value": 21769768.33,
         "unit": "$",
         "qualifier": null,
@@ -3701,7 +3707,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1932)",
         "value": 22047009.49,
         "unit": "$",
         "qualifier": null,
@@ -3729,7 +3735,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1931)",
         "value": 22074361.32,
         "unit": "$",
         "qualifier": null,
@@ -3785,7 +3791,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1933)",
         "value": 144550.68,
         "unit": "$",
         "qualifier": null,
@@ -3813,7 +3819,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1932)",
         "value": 338533.87,
         "unit": "$",
         "qualifier": null,
@@ -3841,7 +3847,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1931)",
         "value": 315572.3,
         "unit": "$",
         "qualifier": null,
@@ -3897,7 +3903,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1933)",
         "value": 162060.47,
         "unit": "$",
         "qualifier": null,
@@ -3925,7 +3931,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1932)",
         "value": 167355.34,
         "unit": "$",
         "qualifier": null,
@@ -3953,7 +3959,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1931)",
         "value": 159362.08,
         "unit": "$",
         "qualifier": null,
@@ -4009,7 +4015,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1933)",
         "value": 438141.41,
         "unit": "$",
         "qualifier": null,
@@ -4037,7 +4043,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1932)",
         "value": 487013.16,
         "unit": "$",
         "qualifier": null,
@@ -4065,7 +4071,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1931)",
         "value": 506847.2,
         "unit": "$",
         "qualifier": null,
@@ -4121,7 +4127,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1933)",
         "value": 285032.8,
         "unit": "$",
         "qualifier": null,
@@ -4149,7 +4155,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1932)",
         "value": 308189.93,
         "unit": "$",
         "qualifier": null,
@@ -4177,7 +4183,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1931)",
         "value": 319711.54,
         "unit": "$",
         "qualifier": null,
@@ -4233,7 +4239,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1933)",
         "value": 4812.54,
         "unit": "$",
         "qualifier": null,
@@ -4261,7 +4267,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1932)",
         "value": 5000.0,
         "unit": "$",
         "qualifier": null,
@@ -4289,7 +4295,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1931)",
         "value": 5000.0,
         "unit": "$",
         "qualifier": null,
@@ -4345,7 +4351,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1933)",
         "value": 76796.29,
         "unit": "$",
         "qualifier": null,
@@ -4373,7 +4379,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Current Expenditures",
+        "parameter": "Current Expenditures (1932)",
         "value": 91108.32,
         "unit": "$",
         "qualifier": null,
@@ -4399,7 +4405,8 @@
         },
         "key": "72fe0a0e3087c5eca3e4"
       }
-    ]
+    ],
+    "rejected": []
   },
   "albertaliquorcon1942albe#17": {
     "stratum": "albertagovernmentpublications",
@@ -4411,15 +4418,15 @@
     "identifier": "1981959621982engfra",
     "page": 155,
     "seconds": 693.0,
-    "n_records": 20,
-    "n_rejected": 5,
+    "n_records": 25,
+    "n_rejected": 0,
     "values_checked": 20,
     "values_found_in_ocr": 20,
     "ocr_chars": 3248,
     "records": [
       {
         "kind": "observation",
-        "parameter": "Hommes - Tous les statuts professionnels",
+        "parameter": "Hommes - Tous les statuts professionnels (CT - SR 135.02)",
         "value": 1825.0,
         "unit": null,
         "qualifier": "count",
@@ -4448,7 +4455,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Hommes - Tous les statuts professionnels",
+        "parameter": "Hommes - Tous les statuts professionnels (CT - SR 135.03)",
         "value": 790.0,
         "unit": null,
         "qualifier": "count",
@@ -4477,7 +4484,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Hommes - Tous les statuts professionnels",
+        "parameter": "Hommes - Tous les statuts professionnels (CT - SR 136.01)",
         "value": 1780.0,
         "unit": null,
         "qualifier": "count",
@@ -4506,7 +4513,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Hommes - Tous les statuts professionnels",
+        "parameter": "Hommes - Tous les statuts professionnels (CT - SR 136.02)",
         "value": 1070.0,
         "unit": null,
         "qualifier": "count",
@@ -4535,7 +4542,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Hommes - Tous les statuts professionnels",
+        "parameter": "Hommes - Tous les statuts professionnels (CT - SR 137.01)",
         "value": 910.0,
         "unit": null,
         "qualifier": "count",
@@ -4564,7 +4571,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs rémunérés",
+        "parameter": "Travailleurs rémunérés (CT - SR 135.02)",
         "value": 1725.0,
         "unit": null,
         "qualifier": "count",
@@ -4593,7 +4600,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs rémunérés",
+        "parameter": "Travailleurs rémunérés (CT - SR 135.03)",
         "value": 760.0,
         "unit": null,
         "qualifier": "count",
@@ -4622,7 +4629,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs rémunérés",
+        "parameter": "Travailleurs rémunérés (CT - SR 136.01)",
         "value": 1705.0,
         "unit": null,
         "qualifier": "count",
@@ -4651,7 +4658,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs rémunérés",
+        "parameter": "Travailleurs rémunérés (CT - SR 136.02)",
         "value": 1045.0,
         "unit": null,
         "qualifier": "count",
@@ -4680,7 +4687,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs rémunérés",
+        "parameter": "Travailleurs rémunérés (CT - SR 137.01)",
         "value": 900.0,
         "unit": null,
         "qualifier": "count",
@@ -4709,7 +4716,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs autonomes",
+        "parameter": "Travailleurs autonomes (CT - SR 135.02)",
         "value": 85.0,
         "unit": null,
         "qualifier": "count",
@@ -4738,7 +4745,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs autonomes",
+        "parameter": "Travailleurs autonomes (CT - SR 135.03)",
         "value": 30.0,
         "unit": null,
         "qualifier": "count",
@@ -4767,7 +4774,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs autonomes",
+        "parameter": "Travailleurs autonomes (CT - SR 136.01)",
         "value": 80.0,
         "unit": null,
         "qualifier": "count",
@@ -4796,7 +4803,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs autonomes",
+        "parameter": "Travailleurs autonomes (CT - SR 136.02)",
         "value": 30.0,
         "unit": null,
         "qualifier": "count",
@@ -4825,7 +4832,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Travailleurs autonomes",
+        "parameter": "Travailleurs autonomes (CT - SR 137.01)",
         "value": 10.0,
         "unit": null,
         "qualifier": "count",
@@ -4854,7 +4861,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Femmes - Tous les statuts professionnels",
+        "parameter": "Femmes - Tous les statuts professionnels (CT - SR 135.02)",
         "value": 1315.0,
         "unit": null,
         "qualifier": "count",
@@ -4883,7 +4890,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Femmes - Tous les statuts professionnels",
+        "parameter": "Femmes - Tous les statuts professionnels (CT - SR 135.03)",
         "value": 580.0,
         "unit": null,
         "qualifier": "count",
@@ -4912,7 +4919,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Femmes - Tous les statuts professionnels",
+        "parameter": "Femmes - Tous les statuts professionnels (CT - SR 136.01)",
         "value": 1290.0,
         "unit": null,
         "qualifier": "count",
@@ -4941,7 +4948,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Femmes - Tous les statuts professionnels",
+        "parameter": "Femmes - Tous les statuts professionnels (CT - SR 136.02)",
         "value": 815.0,
         "unit": null,
         "qualifier": "count",
@@ -4970,7 +4977,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Femmes - Tous les statuts professionnels",
+        "parameter": "Femmes - Tous les statuts professionnels (CT - SR 137.01)",
         "value": 745.0,
         "unit": null,
         "qualifier": "count",
@@ -4996,85 +5003,124 @@
           "label_check": "verified against the page's OCR"
         },
         "key": "9df8871c21d5367c37f7"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleuses rémunérées (CT - SR 135.02)",
+        "value": 1265,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleuses rémunérées (27) / CT - SR 135.02]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 135.02",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleuses rémunérées (CT - SR 135.03)",
+        "value": 580,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleuses rémunérées (27) / CT - SR 135.03]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 135.03",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleuses rémunérées (CT - SR 136.01)",
+        "value": 1260,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleuses rémunérées (27) / CT - SR 136.01]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 136.01",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleuses rémunérées (CT - SR 136.02)",
+        "value": 790,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleuses rémunérées (27) / CT - SR 136.02]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 136.02",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Travailleuses rémunérées (CT - SR 137.01)",
+        "value": 720,
+        "unit": null,
+        "qualifier": "count",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981959621982engfra",
+          "page": 155,
+          "source_text": "table cell [Travailleuses rémunérées (27) / CT - SR 137.01]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Travailleuses rémunérées (27)",
+          "column_label": "CT - SR 137.01",
+          "recovered": "kept by a later fix to the verifier"
+        }
       }
     ],
-    "rejected": [
-      {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Travailleuses rémunérées",
-          "value": 1265,
-          "unit": null,
-          "qualifier": "count",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 0.95,
-          "row_label": "Travailleuses rémunérées (27)",
-          "column_label": "CT - SR 135.02"
-        }
-      },
-      {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Travailleuses rémunérées",
-          "value": 580,
-          "unit": null,
-          "qualifier": "count",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 0.95,
-          "row_label": "Travailleuses rémunérées (27)",
-          "column_label": "CT - SR 135.03"
-        }
-      },
-      {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Travailleuses rémunérées",
-          "value": 1260,
-          "unit": null,
-          "qualifier": "count",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 0.95,
-          "row_label": "Travailleuses rémunérées (27)",
-          "column_label": "CT - SR 136.01"
-        }
-      },
-      {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Travailleuses rémunérées",
-          "value": 790,
-          "unit": null,
-          "qualifier": "count",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 0.95,
-          "row_label": "Travailleuses rémunérées (27)",
-          "column_label": "CT - SR 136.02"
-        }
-      },
-      {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Travailleuses rémunérées",
-          "value": 720,
-          "unit": null,
-          "qualifier": "count",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 0.95,
-          "row_label": "Travailleuses rémunérées (27)",
-          "column_label": "CT - SR 137.01"
-        }
-      }
-    ]
+    "rejected": []
   },
   "1966956121968engfra#6": {
     "stratum": "statisticscanada",
@@ -5086,8 +5132,8 @@
     "identifier": "1981929151984engfra",
     "page": 50,
     "seconds": 664.8,
-    "n_records": 9,
-    "n_rejected": 20,
+    "n_records": 29,
+    "n_rejected": 0,
     "values_checked": 9,
     "values_found_in_ocr": 8,
     "ocr_chars": 3644,
@@ -5123,7 +5169,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Population 15 years and over",
+        "parameter": "Population 15 years and over (M)",
         "value": 33515.0,
         "unit": null,
         "qualifier": "total",
@@ -5152,7 +5198,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Population 15 years and over",
+        "parameter": "Population 15 years and over (F)",
         "value": 22580.0,
         "unit": null,
         "qualifier": "total",
@@ -5210,7 +5256,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Population 15 years and over",
+        "parameter": "Population 15 years and over (M)",
         "value": 4685.0,
         "unit": null,
         "qualifier": "total",
@@ -5239,7 +5285,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Population 15 years and over",
+        "parameter": "Population 15 years and over (F)",
         "value": 1125.0,
         "unit": null,
         "qualifier": "total",
@@ -5297,7 +5343,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Population 15 years and over",
+        "parameter": "Population 15 years and over (M)",
         "value": 24780.0,
         "unit": null,
         "qualifier": "total",
@@ -5326,7 +5372,7 @@
       },
       {
         "kind": "observation",
-        "parameter": "Population 15 years and over",
+        "parameter": "Population 15 years and over (F)",
         "value": 13465.0,
         "unit": null,
         "qualifier": "total",
@@ -5352,309 +5398,1172 @@
           "label_check": "verified against the page's OCR"
         },
         "key": "118ddca6dcc46513c0e9"
+      },
+      {
+        "kind": "observation",
+        "parameter": "Labour force Total",
+        "value": 32125,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / T]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "T",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Labour force Total (M)",
+        "value": 27950,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / M]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "M",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Labour force Total",
+        "value": 4175,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / F]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "F",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Participation rate",
+        "value": 57.3,
+        "unit": null,
+        "qualifier": "percent",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / T]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "T",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Participation rate (M)",
+        "value": 83.4,
+        "unit": null,
+        "qualifier": "percent",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / M]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "M",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Participation rate (F)",
+        "value": 18.5,
+        "unit": null,
+        "qualifier": "percent",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / F]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "F",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Employed (T)",
+        "value": 32060,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / T]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "T",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Employed",
+        "value": 27925,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / M]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "M",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Employed (F)",
+        "value": 4135,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [65 years and over / F]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "65 years and over",
+          "column_label": "F",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Labour force Total",
+        "value": 3800,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / T]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "T",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Labour force Total (M)",
+        "value": 3520,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / M]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "M",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Labour force Total",
+        "value": 285,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / F]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "F",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Participation rate",
+        "value": 65.3,
+        "unit": null,
+        "qualifier": "percent",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / T]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "T",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Participation rate (M)",
+        "value": 75.1,
+        "unit": null,
+        "qualifier": "percent",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / M]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "M",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Participation rate (F)",
+        "value": 25.3,
+        "unit": null,
+        "qualifier": "percent",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / F]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "F",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Employed (T)",
+        "value": 3795,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / T]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "T",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Employed",
+        "value": 3510,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / M]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "M",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Employed (F)",
+        "value": 285,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Single (never married) / F]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Single (never married)",
+          "column_label": "F",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Labour force Total",
+        "value": 24220,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Married(1) / T]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Married(1)",
+          "column_label": "T",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Labour force Total (M)",
+        "value": 22110,
+        "unit": null,
+        "qualifier": "total",
+        "stream": "unknown",
+        "place": null,
+        "period": 1981,
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1981929151984engfra",
+          "page": 50,
+          "source_text": "table cell [Married(1) / M]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "Married(1)",
+          "column_label": "M",
+          "recovered": "kept by a later fix to the verifier"
+        }
       }
     ],
-    "rejected": [
+    "rejected": []
+  },
+  "1909v43i10p19a_0574#265": {
+    "stratum": "sessionalpaperscanada_title",
+    "identifier": "1909v43i10p19a_0574",
+    "page": 265,
+    "seconds": 485.4,
+    "n_records": 30,
+    "n_rejected": 0,
+    "values_checked": 0,
+    "values_found_in_ocr": 0,
+    "ocr_chars": 1318,
+    "records": [
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Labour force Total",
-          "value": 32125,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "T"
+        "kind": "observation",
+        "parameter": "Discharge",
+        "value": 60,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [1. / Discharge.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "1.",
+          "column_label": "Discharge.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Labour force Total",
-          "value": 27950,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "M"
+        "kind": "observation",
+        "parameter": "Storage (Talon)",
+        "value": 110,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [1. / Talon.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "1.",
+          "column_label": "Talon.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Labour force Total",
-          "value": 4175,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "F"
+        "kind": "observation",
+        "parameter": "Storage (Trout)",
+        "value": -50,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [1. / Trout.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "1.",
+          "column_label": "Trout.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Participation rate",
-          "value": 57.3,
-          "unit": null,
-          "qualifier": "percent",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "T"
+        "kind": "observation",
+        "parameter": "Storage (Turtle)",
+        "value": 0,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [1. / Turtle.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "1.",
+          "column_label": "Turtle.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Participation rate",
-          "value": 83.4,
-          "unit": null,
-          "qualifier": "percent",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "M"
+        "kind": "observation",
+        "parameter": "Storage (Nasbonsing)",
+        "value": -200,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [1. / Nasbonsing.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "1.",
+          "column_label": "Nasbonsing.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Participation rate",
-          "value": 18.5,
-          "unit": null,
-          "qualifier": "percent",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "F"
+        "kind": "observation",
+        "parameter": "Evaporation",
+        "value": 0,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [1. / Evaporation.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "1.",
+          "column_label": "Evaporation.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Employed",
-          "value": 32060,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "T"
+        "kind": "observation",
+        "parameter": "Total",
+        "value": -80,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [1. / Total.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "1.",
+          "column_label": "Total.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Employed",
-          "value": 27925,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "M"
+        "kind": "observation",
+        "parameter": "Discharge",
+        "value": 70,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [2. / Discharge.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "2.",
+          "column_label": "Discharge.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Employed",
-          "value": 4135,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "65 years and over",
-          "column_label": "F"
+        "kind": "observation",
+        "parameter": "Storage (Talon)",
+        "value": 130,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [2. / Talon.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "2.",
+          "column_label": "Talon.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Labour force Total",
-          "value": 3800,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "T"
+        "kind": "observation",
+        "parameter": "Storage (Trout)",
+        "value": -50,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [2. / Trout.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "2.",
+          "column_label": "Trout.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Labour force Total",
-          "value": 3520,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "M"
+        "kind": "observation",
+        "parameter": "Storage (Turtle)",
+        "value": 0,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [2. / Turtle.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "2.",
+          "column_label": "Turtle.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Labour force Total",
-          "value": 285,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "F"
+        "kind": "observation",
+        "parameter": "Storage (Nasbonsing)",
+        "value": -100,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [2. / Nasbonsing.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "2.",
+          "column_label": "Nasbonsing.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Participation rate",
-          "value": 65.3,
-          "unit": null,
-          "qualifier": "percent",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "T"
+        "kind": "observation",
+        "parameter": "Evaporation",
+        "value": 40,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [2. / Evaporation.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "2.",
+          "column_label": "Evaporation.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Participation rate",
-          "value": 75.1,
-          "unit": null,
-          "qualifier": "percent",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "M"
+        "kind": "observation",
+        "parameter": "Total",
+        "value": 10,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [2. / Total.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "2.",
+          "column_label": "Total.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Participation rate",
-          "value": 25.3,
-          "unit": null,
-          "qualifier": "percent",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "F"
+        "kind": "observation",
+        "parameter": "Discharge",
+        "value": 75,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [3. / Discharge.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "3.",
+          "column_label": "Discharge.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Employed",
-          "value": 3795,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "T"
+        "kind": "observation",
+        "parameter": "Storage (Talon)",
+        "value": 130,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [3. / Talon.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "3.",
+          "column_label": "Talon.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Employed",
-          "value": 3510,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "M"
+        "kind": "observation",
+        "parameter": "Storage (Trout)",
+        "value": -50,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [3. / Trout.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "3.",
+          "column_label": "Trout.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Employed",
-          "value": 285,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Single (never married)",
-          "column_label": "F"
+        "kind": "observation",
+        "parameter": "Storage (Turtle)",
+        "value": 0,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [3. / Turtle.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "3.",
+          "column_label": "Turtle.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Labour force Total",
-          "value": 24220,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Married(1)",
-          "column_label": "T"
+        "kind": "observation",
+        "parameter": "Storage (Nasbonsing)",
+        "value": -100,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [3. / Nasbonsing.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "3.",
+          "column_label": "Nasbonsing.",
+          "recovered": "kept by a later fix to the verifier"
         }
       },
       {
-        "why": "no unit",
-        "candidate": {
-          "kind": "observation",
-          "parameter": "Labour force Total",
-          "value": 22110,
-          "unit": null,
-          "qualifier": "total",
-          "stream": "unknown",
-          "period": 1981,
-          "confidence": 1.0,
-          "row_label": "Married(1)",
-          "column_label": "M"
+        "kind": "observation",
+        "parameter": "Evaporation",
+        "value": 13,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [3. / Evaporation.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "3.",
+          "column_label": "Evaporation.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Total",
+        "value": 37,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [3. / Total.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "3.",
+          "column_label": "Total.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Discharge",
+        "value": 100,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [4. / Discharge.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "4.",
+          "column_label": "Discharge.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Storage (Talon)",
+        "value": 145,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [4. / Talon.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "4.",
+          "column_label": "Talon.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Storage (Trout)",
+        "value": -50,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [4. / Trout.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "4.",
+          "column_label": "Trout.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Storage (Turtle)",
+        "value": 0,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [4. / Turtle.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "4.",
+          "column_label": "Turtle.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Storage (Nasbonsing)",
+        "value": -100,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [4. / Nasbonsing.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "4.",
+          "column_label": "Nasbonsing.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Evaporation",
+        "value": 25,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [4. / Evaporation.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "4.",
+          "column_label": "Evaporation.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Total",
+        "value": 70,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [4. / Total.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "4.",
+          "column_label": "Total.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Discharge",
+        "value": 150,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [5. / Discharge.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "5.",
+          "column_label": "Discharge.",
+          "recovered": "kept by a later fix to the verifier"
+        }
+      },
+      {
+        "kind": "observation",
+        "parameter": "Storage (Talon)",
+        "value": 140,
+        "unit": null,
+        "qualifier": null,
+        "stream": "unknown",
+        "place": null,
+        "period": "1905-10",
+        "confidence": 0.8,
+        "provenance": {
+          "identifier": "1909v43i10p19a_0574",
+          "page": 265,
+          "source_text": "table cell [5. / Talon.]",
+          "path": "vision",
+          "extractor": "recovered-by-recheck"
+        },
+        "raw": {
+          "row_label": "5.",
+          "column_label": "Talon.",
+          "recovered": "kept by a later fix to the verifier"
         }
       }
-    ]
+    ],
+    "rejected": []
   }
 }
