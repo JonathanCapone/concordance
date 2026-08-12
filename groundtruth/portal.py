@@ -31,6 +31,7 @@ NAV = [
     ("observe", "Observe", "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z"),
     ("record", "Record", "M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4"),
     ("silence", "Silence", "M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12"),
+    ("rivers", "Rivers", "M3.5 7.5c3 0 3 3 6 3s3-3 6-3 3 3 5 3M3.5 14c3 0 3 3 6 3s3-3 6-3 3 3 5 3"),
     ("verify", "Verify", "M5 12.6 9.8 17.4 19 6.6"),
     ("ask", "Ask Honu", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
 ]
@@ -214,6 +215,16 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
           </div>
         </div>
         <div id="ask-out"></div>
+      </div>
+    </section>
+
+    <section class="view" data-view="rivers">
+      <div class="pane">
+        <h2>Whose effluent was in your water</h2>
+        <p class="lede">Treatment plants tied to the nearest river gauge, then ordered by
+        catchment area — which necessarily grows downstream, so the towns sort themselves without
+        any flow routing. Read each list top to bottom the way the water runs.</p>
+        <div id="rivers-body"></div>
       </div>
     </section>
 
@@ -420,6 +431,45 @@ const LOADERS = {{
     }};
     go.onclick = run;
     input.addEventListener("keydown", e => {{ if(e.key === "Enter") run(); }});
+  }},
+
+  rivers: async () => {{
+    const el = document.getElementById("rivers-body");
+    el.innerHTML = `<div class="card empty">Fetching river gauges…</div>`;
+    const d = await (await fetch("/api/watershed")).json();
+    if(d.error){{ el.innerHTML = `<div class="card empty">${{d.error}}</div>`; return; }}
+    let h = "";
+    d.rivers.forEach(r => {{
+      const towns = [];
+      r.links.forEach(l => {{
+        if(!towns.find(t=>t.name===l.upstream)) towns.push({{name:l.upstream, area:l.up_area}});
+        if(!towns.find(t=>t.name===l.downstream)) towns.push({{name:l.downstream, area:l.down_area}});
+      }});
+      towns.sort((a,b)=>a.area-b.area);
+      const max = towns[towns.length-1].area || 1;
+      h += `<div class="card"><h3 style="margin:0 0 12px;font-size:14px;font-weight:600;
+            text-transform:capitalize">${{r.river}}</h3>`;
+      towns.forEach((t,i) => {{
+        const w = 14 + 86*(t.area/max);
+        h += `<div style="margin-bottom:3px">
+                <div style="height:8px;border-radius:2px;background:var(--gt-hit);opacity:.42;
+                     width:${{w.toFixed(0)}}%"></div>
+                <div style="font-size:14px;margin-top:2px">${{t.name}}</div>
+                <div style="font-size:11px;color:#6d7a86;font-family:ui-monospace,monospace">
+                     ${{Math.round(t.area).toLocaleString()}} km² catchment</div></div>`;
+        if(i < towns.length-1) h += `<div style="color:#6d7a86;margin:1px 0 5px">↓</div>`;
+      }});
+      h += `</div>`;
+    }});
+    if(d.warnings && d.warnings.length){{
+      h += `<div class="card"><h3 style="margin:0 0 8px;font-size:11px;color:#6d7a86;
+            text-transform:uppercase;letter-spacing:.06em">What the method refused to link</h3>`;
+      d.warnings.forEach(w => h += `<p class="lede" style="margin:0 0 6px;color:#f0a24a">${{w}}</p>`);
+      h += `<p class="lede" style="margin:8px 0 0">Shown because a page that displays only its
+            successes teaches nobody where it fails.</p></div>`;
+    }}
+    h += `<div class="card note" style="border:0;padding-left:11px">${{d.caveat||""}}</div>`;
+    el.innerHTML = h;
   }},
 
   verify: async () => {{

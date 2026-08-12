@@ -92,6 +92,49 @@ class State:
             "silent_year": stop.get("year", "—"),
         })
 
+    def watershed(self) -> dict[str, Any]:
+        """Who was downstream of whom, plus what the method refused to link.
+
+        Cached on first request: it needs the Water Survey gauge list, which is
+        a network call, and the answer does not change between requests.
+        """
+        if getattr(self, "_watershed", None) is not None:
+            return self._watershed  # type: ignore[return-value]
+
+        out: dict[str, Any] = {"rivers": [], "warnings": [], "error": None}
+        try:
+            from .places import resolve
+            from .providers import Fetcher, Registry
+            from .watershed import downstream_links, load_stations, place_plants
+
+            reg, fetch = Registry.load(), Fetcher()
+            geo = fetch.fetch(reg.providers["eccc-hydrometric-stations"],
+                              {"PROV_TERR_STATE_LOC": "ON", "limit": "3000", "f": "json"})
+            stations = load_stations(geo)
+            plants = []
+            for m in self.silence.get("municipalities", []):
+                p = resolve(m["place"], m.get("last_year") or 1970)
+                if p and getattr(p, "lat", None) and getattr(p, "lon", None):
+                    plants.append((p.canonical, p.lat, p.lon))
+            links, warnings = downstream_links(place_plants(plants, stations))
+
+            rivers: dict[str, list[dict[str, Any]]] = {}
+            for link in links:
+                rivers.setdefault(link.watercourse, []).append({
+                    "upstream": link.upstream, "downstream": link.downstream,
+                    "up_area": link.upstream_drainage_km2,
+                    "down_area": link.downstream_drainage_km2,
+                    "confidence": link.confidence,
+                })
+            out["rivers"] = [{"river": r, "links": ls} for r, ls in sorted(rivers.items())]
+            out["warnings"] = warnings
+            out["caveat"] = links[0].caveat if links else ""
+        except Exception as exc:  # noqa: BLE001
+            out["error"] = str(exc)[:200]
+
+        self._watershed = out
+        return out
+
     def geojson(self) -> dict[str, Any]:
         return {
             "type": "FeatureCollection",
@@ -226,6 +269,10 @@ class Handler(BaseHTTPRequestHandler):
                 "tools": turn.tool_calls,
                 "error": turn.error,
             }).encode(), "application/json")
+            return
+
+        if url.path == "/api/watershed":
+            self._send(json.dumps(STATE.watershed()).encode(), "application/json")
             return
 
         if url.path == "/api/accuracy":
