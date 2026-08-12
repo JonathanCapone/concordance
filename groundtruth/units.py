@@ -158,6 +158,15 @@ def parse_unit(
     # concentration
     if re.fullmatch(r"mg\s*/\s*[l1i]", t) or t in {"mgl", "mg per litre", "mg per liter"}:
         return Quantity(mult, "mg/l", "concentration")
+    # Micrograms and nanograms per litre. These are the units drinking-water
+    # surveillance reports use for trace contaminants -- trihalomethanes, lead,
+    # toluene -- and without them every one of those readings was unusable.
+    # Folded to mg/L so a trace reading and a bulk reading of the same substance
+    # can sit on one axis; 8 ug/L is 0.008 mg/L, not 8.
+    if re.fullmatch(r"(u|µ|mc)g\s*/\s*[l1i]", t) or t in {"ugl", "ug per litre"}:
+        return Quantity(mult * 1e-3, "mg/l", "concentration")
+    if re.fullmatch(r"ng\s*/\s*[l1i]", t):
+        return Quantity(mult * 1e-6, "mg/l", "concentration")
     if t in {"ppm", "p.p.m", "parts per million"}:
         # For dilute aqueous solutions 1 ppm == 1 mg/L. True for sewage effluent,
         # NOT true in general, so the assumption is recorded rather than hidden.
@@ -204,6 +213,20 @@ def parse_unit(
         return Quantity(mult, "lb", "mass")
     if re.fullmatch(r"(lb|lbs|pounds?)\s*/?\s*(?:per\s*)?day", t):
         return Quantity(mult, "lb/day", "mass_rate")
+
+    # units found by auditing real extracted records
+    if t in {"ph", "ph units", "ph unit"}:
+        return Quantity(mult, "ph", "ph")
+    if t in {"umho/cm", "umhos/cm", "us/cm", "micromhos/cm", "microsiemens/cm"}:
+        return Quantity(mult, "us/cm", "conductivity")
+    if t in {"c", "°c", "deg c", "degrees c", "celsius"}:
+        return Quantity(mult, "c", "temperature")
+    if t in {"tons", "ton", "tonnes", "tonne"}:
+        return Quantity(mult, "tonne", "mass")
+    if t in {"hp", "horsepower"}:
+        return Quantity(mult, "hp", "power")
+    if t in {"ntu", "ftu", "jtu"}:
+        return Quantity(mult, "ntu", "turbidity")
 
     # misc
     if t in {"persons", "person", "people", "population"}:

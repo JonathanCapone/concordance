@@ -120,3 +120,37 @@ def test_series_surfaces_unrecognised_units_as_rejections():
 
 def test_empty_series_is_not_an_error():
     assert normalize_series([]) == ([], [], [])
+
+
+# -- trace concentrations ----------------------------------------------------
+
+def test_micrograms_fold_into_milligrams():
+    """Drinking-water reports give trace contaminants in ug/L. Reading 8 ug/L as
+    8 mg/L overstates it by a thousand times, and both numbers look ordinary."""
+    assert to_base(8, "ug/L").value == pytest.approx(0.008)
+    assert to_base(8, "ug/L").unit == "mg/l"
+    assert to_base(8, "µg/L").value == pytest.approx(0.008)
+
+
+def test_nanograms_fold_too():
+    assert to_base(500, "ng/L").value == pytest.approx(0.0005)
+
+
+def test_trace_and_bulk_readings_share_an_axis():
+    ok, _ = comparable(to_base(8, "ug/L"), to_base(0.5, "mg/L"))
+    assert ok
+
+
+@pytest.mark.parametrize(
+    ("raw", "dimension"),
+    [("pH units", "ph"), ("umho/cm", "conductivity"), ("tons", "mass"),
+     ("HP", "power"), ("NTU", "turbidity")],
+)
+def test_units_found_by_auditing_real_records(raw, dimension):
+    q = to_base(1, raw)
+    assert q is not None and q.dimension == dimension
+
+
+def test_ph_is_not_comparable_with_a_concentration():
+    ok, _ = comparable(to_base(7.2, "pH units"), to_base(7.2, "mg/L"))
+    assert not ok

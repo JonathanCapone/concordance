@@ -59,6 +59,52 @@ _SUBSTANCE: list[tuple[str, str]] = [
     ("sewage", "sewage"),
     ("population", "population"),
     ("flow", "flow"),
+
+    # Added after auditing 281 extracted records and finding that 36.7% carried
+    # a parameter this table had never seen. Those readings were extracted
+    # correctly and then dropped from every series in silence, which is the
+    # failure this project keeps having to catch: the table was the gap, not the
+    # extraction.
+    ("hardness", "hardness"),
+    ("conductivity", "conductivity"),
+    ("temperature", "temperature"),
+    ("turbidity", "turbidity"),
+    ("fluoride", "fluoride"),
+    ("chloride", "chloride"),
+    ("sulphate", "sulphate"),
+    ("sulfate", "sulphate"),
+    ("iron", "iron"),
+    ("manganese", "manganese"),
+    ("sodium", "sodium"),
+    ("lead", "lead"),
+    ("copper", "copper"),
+    ("zinc", "zinc"),
+    ("aluminum", "aluminium"),
+    ("aluminium", "aluminium"),
+    # Trihalomethanes: disinfection by-products, and the reason drinking-water
+    # surveillance reports exist at all.
+    ("trihalomethane", "trihalomethanes"),
+    ("thms", "trihalomethanes"),
+    ("thm", "trihalomethanes"),
+    ("toluene", "toluene"),
+    ("benzene", "benzene"),
+    ("moisture content", "moisture"),
+    ("volatile matter", "volatile matter"),
+    ("gas production", "digester gas"),
+    ("gas", "digester gas"),
+    ("retention time", "retention time"),
+    ("retention", "retention time"),
+    ("detention", "retention time"),
+    ("operating cost", "cost"),
+    ("treatment cost", "cost"),
+    ("cost", "cost"),
+    ("man hours", "labour"),
+    ("plant capacity", "capacity"),
+    ("capacity", "capacity"),
+    ("diameter", "dimension"),
+    ("width", "dimension"),
+    ("depth", "dimension"),
+    ("volume reduction", "volume reduction"),
 ]
 
 #: Wording that means the number counts OCCASIONS rather than quantity.

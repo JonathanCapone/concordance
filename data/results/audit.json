@@ -1,0 +1,815 @@
+{
+  "records_audited": 286,
+  "counts": {
+    "unresolved_parameter": 43,
+    "unknown_unit": 26,
+    "scan_damage": 19,
+    "percentage_over_100": 1
+  },
+  "findings": {
+    "unresolved_parameter": [
+      {
+        "place": "Brantford",
+        "period": "1960",
+        "parameter": "total volume",
+        "value": 3300000.0,
+        "unit": "Imperial Gallons",
+        "kind": "design",
+        "page": 7,
+        "identifier": "brantfordsewaget23775"
+      },
+      {
+        "place": "Brantford",
+        "period": "1960",
+        "parameter": "air delivery",
+        "value": 13000.0,
+        "unit": "cubic feet",
+        "kind": "design",
+        "page": 7,
+        "identifier": "brantfordsewaget23775"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "length",
+        "value": 200.0,
+        "unit": "feet",
+        "kind": "design",
+        "page": 9,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "motor power",
+        "value": 200.0,
+        "unit": "HP",
+        "kind": "design",
+        "page": 11,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "air delivery",
+        "value": 13800.0,
+        "unit": "cubic feet per minute",
+        "kind": "design",
+        "page": 11,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "solids concentration",
+        "value": 1.2,
+        "unit": "%",
+        "kind": "observation",
+        "page": 31,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "filtering hours",
+        "value": 2519.0,
+        "unit": "hours",
+        "kind": "observation",
+        "page": 35,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "lime used",
+        "value": 570631.0,
+        "unit": "pounds",
+        "kind": "observation",
+        "page": 35,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1961",
+        "parameter": "yield",
+        "value": 3.51,
+        "unit": "pounds per square foot per hour",
+        "kind": "observation",
+        "page": 35,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "yield",
+        "value": 3.17,
+        "unit": "pounds per square foot per hour",
+        "kind": "observation",
+        "page": 35,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "Commission objective",
+        "value": 15.0,
+        "unit": "ppm",
+        "kind": "standard",
+        "page": 35,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1963",
+        "parameter": "water connection",
+        "value": 1000.0,
+        "unit": "GPM",
+        "kind": "design",
+        "page": 15,
+        "identifier": "brantfordwaterpo23776"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "dry solids filtered",
+        "value": 1908.0,
+        "unit": "tons",
+        "kind": "observation",
+        "page": 30,
+        "identifier": "brantfordwaterpo23776"
+      },
+      {
+        "place": "Brantford",
+        "period": "1963",
+        "parameter": "dry solids filtered",
+        "value": 2517.0,
+        "unit": "tons",
+        "kind": "observation",
+        "page": 30,
+        "identifier": "brantfordwaterpo23776"
+      },
+      {
+        "place": "Brantford",
+        "period": "1964",
+        "parameter": "total volume treated",
+        "value": 2.22,
+        "unit": "billion gallons",
+        "kind": "observation",
+        "page": 26,
+        "identifier": "brantfordwaterpo23769"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "operating costs",
+        "value": 188867.51,
+        "unit": "$",
+        "kind": "observation",
+        "page": 11,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "operating costs",
+        "value": 75.83,
+        "unit": "$ per million gallons",
+        "kind": "observation",
+        "page": 11,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "increase in operating costs",
+        "value": 1.7,
+        "unit": "%",
+        "kind": "conclusion",
+        "page": 11,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "hydraulic load factor",
+        "value": 60.0,
+        "unit": "%",
+        "kind": "observation",
+        "page": 16,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 14.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 12.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 12.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 11.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 14.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 12.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 13.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 12.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1967",
+        "parameter": "operating costs",
+        "value": 226.643,
+        "unit": "$",
+        "kind": "observation",
+        "page": 11,
+        "identifier": "brantfordwaterpo23772"
+      },
+      {
+        "place": "Brantford",
+        "period": "1967",
+        "parameter": "organic removal increase",
+        "value": 38.0,
+        "unit": "percent",
+        "kind": "conclusion",
+        "page": 11,
+        "identifier": "brantfordwaterpo23772"
+      },
+      {
+        "place": "Brantford",
+        "period": "1967",
+        "parameter": "organic load increase",
+        "value": 17.4,
+        "unit": "percent",
+        "kind": "conclusion",
+        "page": 24,
+        "identifier": "brantfordwaterpo23772"
+      },
+      {
+        "place": "Brantford",
+        "period": "1968",
+        "parameter": "increase over 1967 flows",
+        "value": 0.7,
+        "unit": "%",
+        "kind": "observation",
+        "page": 11,
+        "identifier": "brantfordwaterpo23771"
+      },
+      {
+        "place": "Brantford",
+        "period": "1968",
+        "parameter": "organic removal",
+        "value": 89.0,
+        "unit": "%",
+        "kind": "observation",
+        "page": 11,
+        "identifier": "brantfordwaterpo23771"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1969",
+        "parameter": "total volume treated",
+        "value": 1475.0,
+        "unit": "million gallons",
+        "kind": "observation",
+        "page": 10,
+        "identifier": "owensoundwaterpo24477"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1969",
+        "parameter": "overload percentage",
+        "value": 80.0,
+        "unit": "percent",
+        "kind": "conclusion",
+        "page": 10,
+        "identifier": "owensoundwaterpo24500"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1970",
+        "parameter": "overload percentage",
+        "value": 85.0,
+        "unit": "percent",
+        "kind": "conclusion",
+        "page": 10,
+        "identifier": "owensoundwaterpo24500"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "percentage of water supplied",
+        "value": 25.0,
+        "unit": "%",
+        "kind": "design",
+        "page": 5,
+        "identifier": "owensoundwatersu1990ontauoft"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "water quality",
+        "value": null,
+        "unit": null,
+        "kind": "conclusion",
+        "page": 5,
+        "identifier": "owensoundwatersu1990ontauoft"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "Standard plate count",
+        "value": 500.0,
+        "unit": "counts/mL",
+        "kind": "standard",
+        "page": 11,
+        "identifier": "owensoundwatersu1990ontauoft"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "Aluminxim",
+        "value": 100.0,
+        "unit": "ug/L",
+        "kind": "standard",
+        "page": 12,
+        "identifier": "owensoundwatersu1990ontauoft"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "Aluminxim",
+        "value": 140.0,
+        "unit": "ug/L",
+        "kind": "observation",
+        "page": 12,
+        "identifier": "owensoundwatersu1990ontauoft"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "Hexachlorocyclopentadiene",
+        "value": 60.0,
+        "unit": "ng/L",
+        "kind": "observation",
+        "page": 12,
+        "identifier": "owensoundwatersu1990ontauoft"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "hexachlorocyclopentadiene",
+        "value": 206000.0,
+        "unit": "ng/L",
+        "kind": "standard",
+        "page": 12,
+        "identifier": "owensoundwatersu1990ontauoft"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "phenolic substances",
+        "value": 2.0,
+        "unit": "ug/L",
+        "kind": "standard",
+        "page": 13,
+        "identifier": "owensoundwatersu1990ontauoft"
+      }
+    ],
+    "unknown_unit": [
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "air delivery",
+        "value": 13800.0,
+        "unit": "cubic feet per minute",
+        "kind": "design",
+        "page": 11,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "gas per pound volatile matter",
+        "value": 7.3,
+        "unit": "cubic feet/lb",
+        "kind": "observation",
+        "page": 31,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "gas per pound volatile matter",
+        "value": 6.0,
+        "unit": "cubic feet/lb",
+        "kind": "standard",
+        "page": 31,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "gas per pound volatile matter",
+        "value": 10.0,
+        "unit": "cubic feet/lb",
+        "kind": "standard",
+        "page": 31,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1961",
+        "parameter": "yield",
+        "value": 3.51,
+        "unit": "pounds per square foot per hour",
+        "kind": "observation",
+        "page": 35,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1962",
+        "parameter": "yield",
+        "value": 3.17,
+        "unit": "pounds per square foot per hour",
+        "kind": "observation",
+        "page": 35,
+        "identifier": "brantfordsewaget23777"
+      },
+      {
+        "place": "Brantford",
+        "period": "1963",
+        "parameter": "water connection",
+        "value": 1000.0,
+        "unit": "GPM",
+        "kind": "design",
+        "page": 15,
+        "identifier": "brantfordwaterpo23776"
+      },
+      {
+        "place": "Brantford",
+        "period": "1964",
+        "parameter": "man hours",
+        "value": 104.0,
+        "unit": "man hours",
+        "kind": "observation",
+        "page": 10,
+        "identifier": "brantfordwaterpo23769"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "operating costs",
+        "value": 75.83,
+        "unit": "$ per million gallons",
+        "kind": "observation",
+        "page": 11,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "grit",
+        "value": 2.6,
+        "unit": "cubic feet per million gallons",
+        "kind": "observation",
+        "page": 24,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "grit",
+        "value": 2.5,
+        "unit": "cubic feet per million gallons",
+        "kind": "observation",
+        "page": 24,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 14.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 12.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 12.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 11.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 14.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 12.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 13.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Brantford",
+        "period": "1966",
+        "parameter": "LBS BOO. PER 100 LBS. fti L.S.",
+        "value": 12.0,
+        "unit": "lbs/100 lbs",
+        "kind": "observation",
+        "page": 27,
+        "identifier": "brantfordwaterpo23770"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1963",
+        "parameter": "Design Plant Flow",
+        "value": 3.0,
+        "unit": "million Imperial gallons per day (MGD)",
+        "kind": "design",
+        "page": 12,
+        "identifier": "owensoundsewaget24479"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1969",
+        "parameter": "pump capacity",
+        "value": 3800.0,
+        "unit": "gallons per minute",
+        "kind": "design",
+        "page": 10,
+        "identifier": "owensoundwaterpo24477"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1969",
+        "parameter": "chlorine per million gallons",
+        "value": 21.9,
+        "unit": "pounds per million gallons",
+        "kind": "observation",
+        "page": 10,
+        "identifier": "owensoundwaterpo24477"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1972",
+        "parameter": "treatment cost",
+        "value": 45.0,
+        "unit": "per million gallons",
+        "kind": "observation",
+        "page": 10,
+        "identifier": "owensoundwaterpo24499"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1972",
+        "parameter": "treatment cost",
+        "value": 48.0,
+        "unit": "per million gallons",
+        "kind": "observation",
+        "page": 10,
+        "identifier": "owensoundwaterpo24499"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "rated capacity",
+        "value": 22.727,
+        "unit": "1000 m^/day",
+        "kind": "design",
+        "page": 5,
+        "identifier": "owensoundwatersu1990ontauoft"
+      },
+      {
+        "place": "Owen Sound",
+        "period": "1992",
+        "parameter": "Standard plate count",
+        "value": 500.0,
+        "unit": "counts/mL",
+        "kind": "standard",
+        "page": 11,
+        "identifier": "owensoundwatersu1990ontauoft"
+      }
+    ],
+    "scan_damage": [
+      {
+        "place": "Brantford",
+        "parameter": "suspended solids|removal (unknown)",
+        "note": "1968: 95 is far from the series median (50). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "flow|rate (influent)",
+        "note": "1963: 9.5 is far from the series median (6.07). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "flow|rate (influent)",
+        "note": "1964: 8.18 is far from the series median (6.07). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "flow|rate (influent)",
+        "note": "1964: 9.78 is far from the series median (6.07). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "sludge|concentration (unknown)",
+        "note": "1962: 366500 is far from the series median (10.1). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "bod|concentration (effluent)",
+        "note": "1961: 8 is ~10^1 from the series median (136); a dropped or misplaced digit in the scan would explain it. Check the page before using this point."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "bod|concentration (effluent)",
+        "note": "1962: 10 is ~10^1 from the series median (136); a dropped or misplaced digit in the scan would explain it. Check the page before using this point."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "bod|concentration (effluent)",
+        "note": "1966: 31.4 is far from the series median (136). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "suspended solids|concentration (effluent)",
+        "note": "1961: 28 is ~10^2 from the series median (2292); a dropped or misplaced digit in the scan would explain it. Check the page before using this point."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "suspended solids|concentration (effluent)",
+        "note": "1962: 13 is ~10^2 from the series median (2292); a dropped or misplaced digit in the scan would explain it. Check the page before using this point."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "suspended solids|concentration (effluent)",
+        "note": "1966: 19.2 is ~10^2 from the series median (2292); a dropped or misplaced digit in the scan would explain it. Check the page before using this point."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "flow|rate (raw)",
+        "note": "1967: 10.94 is far from the series median (7). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Brantford",
+        "parameter": "sewage|concentration (unknown)",
+        "note": "1966: 2490.55 is far from the series median (2621.78). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Owen Sound",
+        "parameter": "flow|rate (influent)",
+        "note": "1968: 0.12 is far from the series median (3.29). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Owen Sound",
+        "parameter": "flow|rate (influent)",
+        "note": "1970: 9.2 is far from the series median (3.29). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Owen Sound",
+        "parameter": "flow|total (influent)",
+        "note": "1968: 144.2 is ~10^1 from the series median (1318.15); a dropped or misplaced digit in the scan would explain it. Check the page before using this point."
+      },
+      {
+        "place": "Owen Sound",
+        "parameter": "flow|rate (unknown)",
+        "note": "1969: 8.8 is far from the series median (3.7). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Owen Sound",
+        "parameter": "flow|rate (unknown)",
+        "note": "1972: 10 is far from the series median (3.7). Could be a genuinely unusual year or a misreading; check the page."
+      },
+      {
+        "place": "Owen Sound",
+        "parameter": "chlorine|concentration (unknown)",
+        "note": "1970: 43430 is far from the series median (2.4). Could be a genuinely unusual year or a misreading; check the page."
+      }
+    ],
+    "percentage_over_100": [
+      {
+        "place": "Owen Sound",
+        "period": "1972",
+        "parameter": "average flow",
+        "value": 130.0,
+        "unit": "percent",
+        "kind": "observation",
+        "page": 10,
+        "identifier": "owensoundwaterpo24499"
+      }
+    ]
+  },
+  "note": "A flag does not mean a record is wrong. It marks one that cannot be trusted without a human looking at the page, which is a different and more useful thing than a confidence score."
+}
