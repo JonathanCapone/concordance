@@ -139,6 +139,17 @@ Extraction runs on a local model by default via [Ollama](https://ollama.com):
 ollama pull gemma4:12b
 ```
 
+Run it:
+
+```bash
+python -m groundtruth.server
+```
+
+Opens a live map of every municipality in the collection. Orange dots have been
+read; click one for its measurements, each linked to the scanned page it came
+from. No install, no key, no network — the map is projected and drawn from
+coordinates rather than pulled from a tile service, so it works offline.
+
 Run the accuracy harness against hand-checked ground truth:
 
 ```bash
