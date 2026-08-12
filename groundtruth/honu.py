@@ -172,7 +172,14 @@ class Honu:
     """
 
     def __init__(self, corpus: Corpus, model: str = "gemma4:12b",
-                 base_url: str = "http://localhost:11434", timeout: float = 300.0) -> None:
+                 base_url: str = "http://localhost:11434",
+                 timeout: float = 600.0) -> None:
+        """`timeout` is generous because one GPU serves one job at a time.
+
+        A corpus extraction running in the background will queue every request
+        Honu makes behind it, and a question that answers in forty seconds on an
+        idle machine can take ten minutes on a busy one. That is a scheduling
+        limit, not a fault, and the message on failure says so."""
         self.tools = build_tools(corpus)
         self.model = model
         self.base_url = base_url
@@ -205,7 +212,16 @@ class Honu:
             try:
                 out = self._chat(messages)
             except Exception as exc:  # noqa: BLE001
-                return Turn(reply="", tool_calls=called, error=str(exc)[:200])
+                detail = str(exc)[:120]
+                if "timed out" in detail.lower():
+                    detail = (
+                        "the model did not answer in time. One GPU serves one job "
+                        "at a time, so a corpus extraction running in the "
+                        "background will queue this behind it. Try again when it "
+                        "finishes, or set ANTHROPIC_API_KEY to answer without the "
+                        "local model."
+                    )
+                return Turn(reply="", tool_calls=called, error=detail)
 
             msg = out.get("message") or {}
             calls = msg.get("tool_calls") or []
