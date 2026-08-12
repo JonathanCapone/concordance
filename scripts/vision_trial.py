@@ -46,6 +46,11 @@ from groundtruth.vocab_sample import stratify
 
 OUT = Path("data/results/vision_trial_corpus.json")
 SEED = 77
+
+#: A model server under memory pressure returns 500 and then works again a
+#: minute later. Retrying in place costs a pause; not retrying costs a page.
+RETRIES = 3
+RETRY_PAUSE = 20.0
 NUMBER = re.compile(r"\d[\d,]*\.?\d*")
 
 
@@ -158,7 +163,12 @@ def main() -> None:
 
     for n, (stratum, ident, page_no) in enumerate(targets, 1):
         key = f"{ident}#{page_no}"
-        if key in done:
+        # A page that FAILED is not a page that is finished. Recording an error
+        # under the same key as a result meant a resume skipped it forever, so
+        # one transient 500 from the model server lost a page permanently --
+        # silently, because the run reported it as done. At 15.4 million pages
+        # that is the difference between a gap and a hole.
+        if key in done and "error" not in done[key]:
             continue
         try:
             page = {p.page: p for p in archive.pages(ident)}[page_no]
@@ -168,11 +178,22 @@ def main() -> None:
             continue
 
         t0 = time.time()
-        try:
-            result = extract_table(page, image, client=client, year="")
-        except Exception as exc:  # noqa: BLE001
-            print(f"[{n}/{len(targets)}] {key}: FAILED {type(exc).__name__}", flush=True)
-            done[key] = {"stratum": stratum, "error": str(exc)[:200],
+        result = None
+        for attempt in range(1, RETRIES + 1):
+            try:
+                result = extract_table(page, image, client=client, year="")
+                break
+            except Exception as exc:  # noqa: BLE001
+                last = exc
+                print(f"[{n}/{len(targets)}] {key}: attempt {attempt}/{RETRIES} "
+                      f"failed -- {type(exc).__name__}: {str(exc)[:80]}", flush=True)
+                if attempt < RETRIES:
+                    time.sleep(RETRY_PAUSE * attempt)
+        if result is None:
+            print(f"[{n}/{len(targets)}] {key}: FAILED after {RETRIES} attempts", flush=True)
+            done[key] = {"stratum": stratum, "identifier": ident, "page": page_no,
+                         "error": f"{type(last).__name__}: {str(last)[:160]}",
+                         "attempts": RETRIES,
                          "seconds": round(time.time() - t0, 1)}
             OUT.write_text(json.dumps(done, indent=2, ensure_ascii=False), encoding="utf-8")
             continue
