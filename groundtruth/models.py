@@ -109,6 +109,49 @@ _COUNTED_PARAMETER = re.compile(
     r")(?![a-z])", re.I)
 
 
+def record_key(d: dict[str, Any]) -> str:
+    """Identity of a reading, computed from the reading itself.
+
+    This exists as a function over a plain dict rather than only as a property
+    on Record because a record's identity has to be recomputable from stored
+    JSON, by code that never builds a Record. It was not, and the consequence
+    was quiet and bad.
+
+    The `key` field written into `data/results/*.json` is a snapshot from
+    whenever that file was produced. Records are normalised further after
+    extraction -- units canonicalised, places resolved, facilities named -- and
+    those steps change the identity without rewriting the stored string. So the
+    files on disk carry keys that no longer match their own contents.
+
+    `merge_bundle` deduplicated by comparing an incoming record's LIVE key
+    against those STALE stored ones. They never matched, so every import
+    appended the whole bundle again: pushing this instance's own library back at
+    it merged 19 of 20 records as new. The dataset would have doubled on every
+    round trip, and the contribution model this project is built on is round
+    trips.
+
+    Reading the field is the mistake. A record's identity is a function of its
+    content, and anything that stores it stores a cache -- so recompute, always,
+    on both sides of any comparison.
+    """
+    prov = d.get("provenance") or {}
+    page = prov.get("page")
+    parts = [
+        str(d.get("kind") or ""),
+        _slug(str(d.get("parameter") or "")),
+        f"{d.get('value')}",
+        _slug(str(d.get("unit") or "")),
+        str(d.get("qualifier") or ""),
+        str(d.get("stream") or "unknown"),
+        _slug(str(d.get("place") or "")),
+        _slug(str(d.get("facility") or "")),
+        str(d.get("period") or ""),
+        str(prov.get("identifier") or ""),
+        str(page) if page else "",
+    ]
+    return hashlib.sha256("|".join(parts).encode()).hexdigest()[:20]
+
+
 @dataclass
 class Record:
     """One reading recovered from the paper.
@@ -157,20 +200,8 @@ class Record:
         Deliberately excludes confidence and extractor: the same sentence read
         twice by different models is the same reading, and should collapse.
         """
-        parts = [
-            self.kind,
-            _slug(self.parameter),
-            f"{self.value}",
-            _slug(self.unit or ""),
-            self.qualifier or "",
-            self.stream,
-            _slug(self.place or ""),
-            _slug(self.facility or ""),
-            self.period or "",
-            self.provenance.identifier if self.provenance else "",
-            str(self.provenance.page) if self.provenance and self.provenance.page else "",
-        ]
-        return hashlib.sha256("|".join(parts).encode()).hexdigest()[:20]
+        # Via asdict, not to_dict -- to_dict calls this property.
+        return record_key(asdict(self))
 
     # -- validation -------------------------------------------------------
 

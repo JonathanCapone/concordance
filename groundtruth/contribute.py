@@ -37,6 +37,7 @@ from pathlib import Path
 from typing import Any
 
 from .archive import Archive
+from .models import record_key
 
 BUNDLE_VERSION = 1
 
@@ -175,6 +176,38 @@ def verify_bundle(
     return verdict
 
 
+#: Letters 1960s OCR substitutes for digits INSIDE a numeral. Applied only to
+#: runs that already contain a digit, so ordinary words are never turned into
+#: numbers -- "Ill" stays a word, "I5" becomes 15.
+_OCR_DIGIT = str.maketrans({"I": "1", "l": "1", "|": "1", "O": "0"})
+_NUMERAL_RUN = re.compile(r"[0-9IlO|]*[0-9][0-9IlO|]*")
+
+
+def _ocr_digits(text: str) -> str:
+    """The sentence with letter-for-digit OCR damage undone inside numerals."""
+    return _NUMERAL_RUN.sub(lambda m: m.group(0).translate(_OCR_DIGIT), text)
+
+
+def _numbers_in(text: str) -> set[float]:
+    """Every number the sentence states, read as numbers rather than as digits.
+
+    Needed because a digit string cannot represent decimal formatting. The
+    corpus writes "0.05" as ".05" and "0.5" as ".50", and comparing digit
+    strings makes both of those disagree with the value they plainly state.
+    Deliberately does NOT join numbers across whitespace: "8. 8" is already
+    handled by the digit-substring test, and joining would invent numbers that
+    the page does not contain.
+    """
+    t = re.sub(r"(?<=\d),(?=\d)", "", _ocr_digits(text))
+    out: set[float] = set()
+    for m in re.finditer(r"\d*\.\d+|\d+", t):
+        try:
+            out.add(float(m.group()))
+        except ValueError:
+            pass
+    return out
+
+
 def _value_in_quote(value: Any, quote: str) -> tuple[str, str]:
     """Does the number appear in the sentence it was supposedly read from?
 
@@ -183,7 +216,10 @@ def _value_in_quote(value: Any, quote: str) -> tuple[str, str]:
 
     Three outcomes, and the middle one matters:
 
-      ok         the digits are there
+      ok         the digits are there -- and `why` says HOW, because "the
+                 sentence states it" and "the sentence states it once the
+                 scanner's letter-for-digit damage is undone" are different
+                 strengths of evidence and a reader should see which one applied
       unchecked  the sentence has no digits at all, so the value was written in
                  words -- "just over three million gallons" really is where
                  3000000 comes from, and failing that would punish a correct read
@@ -193,7 +229,8 @@ def _value_in_quote(value: Any, quote: str) -> tuple[str, str]:
     if value is None:
         return "unchecked", "no value to check"
 
-    digits_in_quote = re.sub(r"[^0-9]", "", quote)
+    literal = re.sub(r"[^0-9]", "", quote)
+    digits_in_quote = re.sub(r"[^0-9]", "", _ocr_digits(quote))
     if not digits_in_quote:
         return "unchecked", "value is written in words, not digits"
 
@@ -208,13 +245,35 @@ def _value_in_quote(value: Any, quote: str) -> tuple[str, str]:
     if not wanted:
         return "unchecked", "value has no digits"
 
-    if wanted in digits_in_quote:
+    if wanted in literal:
         return "ok", ""
+    if wanted in digits_in_quote:
+        return "ok", "once OCR letter-for-digit damage is undone"
 
     # A rounded reading: "approximately 3,000,000" from "just over three million".
     # Leading digits still have to match something.
-    if len(wanted) > 3 and wanted.rstrip("0") and wanted.rstrip("0") in digits_in_quote:
-        return "ok", ""
+    trimmed = wanted.rstrip("0")
+    if len(wanted) > 3 and trimmed and trimmed in digits_in_quote:
+        return "ok", "as a rounding of the figure the sentence states"
+
+    # Last, compare as numbers rather than as digit strings, which is the only
+    # way ".05 mg/L" can be seen to state 0.05.
+    #
+    # Eight of eleven Brantford refusals were this and the OCR substitution
+    # above -- correct readings of "I5 feet deep", "3I per cent", ".21 ug/L" --
+    # rejected by a check that was stricter than the archive it was checking.
+    # That is the fifth time this project has built a control tighter than the
+    # world and had it report a catastrophe.
+    #
+    # The three that remain refused are all genuinely wrong, and they are the
+    # reason not to simply loosen this: a value guessed off unreadable OCR
+    # ("3)Gl6,5^l'0"), a transposition (16,200,000 for 16,120,000), and a
+    # number the model DERIVED -- 6.57 / 52.5% = 12.5 -- and reported as though
+    # the page had stated it. That last one is the most interesting failure the
+    # check catches, because the arithmetic is right and the reading is still
+    # false.
+    if isinstance(value, (int, float)) and float(value) in _numbers_in(quote):
+        return "ok", "reading the sentence's numbers as numbers, not as digits"
 
     return "failed", (
         f"the value {value} does not appear in the sentence it cites "
@@ -239,23 +298,60 @@ def merge_bundle(
 
     out_dir = Path(into)
     out_dir.mkdir(parents=True, exist_ok=True)
-    path = out_dir / f"contributed-{bundle['bundle_id']}.json"
 
+    # The id is derived from the records, so a bundle that arrives without one
+    # is not malformed -- it is merely incomplete, and the missing field can be
+    # recomputed from the thing it names. Indexing it directly raised KeyError
+    # inside a live request handler, which turned somebody else's slightly
+    # unusual JSON into a 500 with no explanation at either end.
+    #
+    # This is the second family of bug this project keeps producing: an
+    # identity treated as given rather than as something derivable from the
+    # content it identifies.
+    bid = bundle.get("bundle_id") or bundle_id(bundle.get("records") or [])
+    path = out_dir / f"contributed-{bid}.json"
+
+    # Recomputed on BOTH sides, never read from the stored field. See
+    # models.record_key: the `key` written into a results file is a snapshot
+    # from before later normalisation, so comparing a live key against a stored
+    # one never matches and every import re-adds everything.
     existing_keys: set[str] = set()
     for other in out_dir.glob("*.json"):
         try:
             payload = json.loads(other.read_text(encoding="utf-8"))
         except Exception:  # noqa: BLE001
             continue
+        # A record with no place of its own inherits the file's, exactly as
+        # Corpus.load does -- so identity is computed the same way on the way in
+        # and on the way out. Thirty-one Brantford readings store place=null and
+        # load as "Brantford", and without this they key differently in the two
+        # directions and re-import as new.
+        header_place = payload.get("place")
         for r in payload.get("records", []) or []:
-            if r.get("key"):
-                existing_keys.add(r["key"])
+            if not r.get("place") and header_place:
+                r = dict(r, place=header_place)
+            existing_keys.add(record_key(r))
 
-    fresh = [r for r in bundle["records"] if r.get("key") not in existing_keys]
+    fresh, seen = [], set()
+    for r in bundle["records"]:
+        k = record_key(r)
+        # Also dedup WITHIN the bundle. A sender who concatenated two exports
+        # would otherwise land the same reading twice in one file, where the
+        # next import would see it as one already-present record and one new.
+        if k in existing_keys or k in seen:
+            continue
+        seen.add(k)
+        fresh.append(r)
     path.write_text(json.dumps({
-        "place": bundle.get("note") or "contributed",
+        # NOT the note. Corpus.load treats this field as the place any record
+        # lacking one inherits, so putting a free-text note here stamped every
+        # placeless imported reading with a sentence -- "readings from Fergus,
+        # checked by hand" would have become a town. The note is kept, under its
+        # own name, where nothing reads it as data.
+        "place": "",
+        "note": bundle.get("note") or "",
         "contributor": bundle.get("contributor", "anonymous"),
-        "bundle_id": bundle["bundle_id"],
+        "bundle_id": bid,
         "verified": verdict.verified,
         "n_records": len(fresh),
         "records": fresh,

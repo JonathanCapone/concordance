@@ -104,7 +104,8 @@ That figure is a reference point, not a plan. A corpus bought in one batch is fi
 money runs out — it never extends, and the next person who wants a document nobody thought to read
 has no way to get it. So reading happens **because somebody asked**: request a place, and if you
 are the first, your machine reads it and it is there for everyone after you. `scripts/share.py`
-moves the result between machines as a file, re-verified against archive.org on arrival.
+moves the result between machines — as a file, or pushed to a shared instance — re-verified
+against archive.org on arrival either way.
 
 **The honest hole in that** is the vision path. Tables are 27% of pages and most of the actual
 measurements, and they take eight minutes a page on an RTX 2080 because only 18% of a 29.6 GB model
@@ -186,12 +187,34 @@ python scripts/share.py export --place Fergus --out fergus.bundle.json
 python scripts/share.py import fergus.bundle.json --verified-only
 ```
 
-A bundle is a file. It can travel by pull request, email, USB stick or a link in
-a forum post, and none of those need a server anybody has to run, pay for, or be
-trusted to keep honest. **Trust does not travel with it** — an imported bundle is
-re-checked against archive.org on the importing machine, record by record,
-exactly as the machine's own output is. Nothing about the sender is examined,
-because nothing about the sender is relevant.
+A bundle is a file. It can travel by email, USB stick or a link in a forum post,
+none of which need a server anybody has to run, pay for, or be trusted to keep
+honest. **Trust does not travel with it** — an imported bundle is re-checked
+against archive.org on the importing machine, record by record, exactly as the
+machine's own output is. Nothing about the sender is examined, because nothing
+about the sender is relevant.
+
+Or send it to a running instance, and take everything one holds:
+
+```bash
+python scripts/share.py push fergus.bundle.json --to https://example.org
+python scripts/share.py pull --frm https://example.org --out theirs.bundle.json
+```
+
+An instance re-verifies every record it is sent and keeps what archive.org
+supports, reporting what it refused and why. It is a convenience, not an
+authority: `GET /api/library.json` returns the whole dataset as a bundle, `pull`
+saves it without believing any of it, and `import --verified-only` is what
+decides — on your machine, against the scans. Anyone who mistrusts an instance
+can take everything it has and run their own.
+
+> A note on identity, since it is the kind of bug this project exists to catch.
+> Deduplication compares a reading's identity, and that identity is a hash of the
+> reading's own content — recomputed on both sides of every comparison, never
+> read from the `key` field stored in a results file. Those stored keys are
+> snapshots taken before later normalisation and no longer match their own
+> records. Trusting them made an instance merge 19 of 20 of its *own* readings
+> back in as new, which would have doubled the dataset on every round trip.
 
 Run the accuracy harness against hand-checked ground truth:
 

@@ -213,16 +213,19 @@ to what each stage ends with than to which Tuesday it lands on. Each arc ends in
 something demonstrable, and the order is chosen so that stopping early still
 leaves a complete artifact rather than a half-built one.
 
-**Arc A — Close the loop, then read at scale (weeks 1–2)**
-First the missing destination: a contribution arrives as a pull request carrying
-a bundle, the same verification runs in CI against archive.org, and what verifies
-merges. Until that exists, "your machine reads it for everyone" is a mechanism
-with nowhere to send the result.
+**Arc A — Harden the loop, then read at scale (weeks 1–2)**
+The destination now exists — an instance accepts a bundle, re-verifies every
+record against archive.org, and merges what the archive supports. What it needs
+next is the unglamorous half: a public instance that stays up, rate limiting so
+one sender cannot monopolise it, and a second instance pulling from the first, to
+prove the claim that no single one of them matters. A federation of one is just a
+server.
 
 Then bulk text acquisition across the collection; the cheap local filter that
 decides which pages earn a model; the vocabulary pass; and the throughput pilot
-that turns the estimated cost above into a measured one. Ends with: somewhere for
-a reading to go, a seed corpus, and a per-page cost somebody could plan against.
+that turns the estimated cost above into a measured one. Ends with: two instances
+that agree without trusting each other, a seed corpus, and a per-page cost
+somebody could plan against.
 
 **Arc B — Trustworthy at scale (weeks 2–3)**
 The gold set expanded across document types and eras, not just the three pages
@@ -302,23 +305,35 @@ I would rather be exact about this than let the diagram do the arguing.
 | Ask for a place, read it locally if nobody has, verify, keep it | **built** — `library.ask`, wired to a button |
 | Submit or correct a reading, checked against the scan, no moderator | **built** — `disputes.submit`, with a form |
 | Package readings as a file and re-verify them on arrival | **built** — `scripts/share.py`, tested end to end |
-| **A place for that file to go** | **not built** |
+| A place to send that file | **built** — `share.py push`, into a running instance |
 
-That last row is the honest gap, and it is the difference between "your machine
-read it" and "it is there for everyone". Today a bundle has to be sent to
-somebody by hand.
+The last row was the gap until recently, and it was the difference between "your
+machine read it" and "it is there for everyone": a bundle had to be handed to
+somebody. `POST /api/bundle` closes it. An instance re-verifies every record it
+is sent, against archive.org, on exactly the terms it judges its own output —
+so it keeps what the archive supports and reports what it refused, rather than
+rejecting a whole submission over one bad line. There is no account, no key and
+no field recording who sent it, because nothing about the sender is relevant to
+whether a sentence is on a page.
 
-The intended answer needs no server, which matters for a project that will
-outlive its funding: **the repository is the library.** A contribution arrives as
-a pull request containing a bundle; the same verification runs in CI, against
-archive.org, on every record; what verifies merges and what does not is reported
-on the pull request with the page it failed against. Nobody adjudicates, there is
-nothing to host, nothing to pay for monthly, and the whole dataset stays in git
-where it can be forked, audited and mirrored by anyone who thinks I have got it
-wrong.
+**The instance is a convenience, not an authority.** It holds nothing anyone
+else lacks: `GET /api/library.json` hands back the entire dataset as a bundle,
+and `share.py pull` fetches it and then re-checks it locally before believing a
+word of it. Anyone who mistrusts mine can take everything and run their own, and
+the readings would be no less true. That property is why a server is safe to add
+here and would not be in a system where the server was the source of truth.
 
-That is the first thing I would build with the fellowship, because until it
-exists the distributed claim is a mechanism without a destination.
+Files still work, and are still the fallback that outlives the funding — a
+bundle moves by email, USB stick or a link in a forum post, and nothing in the
+verification path needs the network to have a centre.
+
+Finding this took a bug worth admitting. Pushing an instance its own library
+merged 19 of 20 readings as new: dedup compared a freshly-computed identity
+against the one stored in the file, and the stored one was written before later
+normalisation, so it never matched. The dataset would have doubled on every
+round trip, and round trips are the whole model. Identity is now recomputed from
+content on both sides, and a test pushes the library at itself and asserts that
+nothing lands.
 
 **Running throughout — open contribution that needs no moderator.**
 Not an arc, because it is a property rather than a phase. Every claim in this

@@ -235,16 +235,23 @@ def check(claim: Claim, *, archive: Archive | None = None,
 
     state, why = _value_in_quote(claim.record.get("value"), claim.quote)
     if state == "ok":
-        return Standing(claim, True, "sentence is on the page and the value is in it")
+        # `why` is empty when the sentence states the value outright, and
+        # otherwise names the allowance that was made. Carrying it into the
+        # ledger keeps the distinction visible instead of flattening every
+        # verified record into one word.
+        note = "sentence is on the page and the value is in it"
+        return Standing(claim, True, f"{note} {why}".strip() if why else note)
     if state == "unchecked":
         # A record with no number -- a conclusion, or a name. The sentence is
         # real, which is all that can be asked of it.
         return Standing(claim, True, f"sentence is on the page ({why})")
 
-    if _value_in_damaged_quote(claim.record.get("value"), claim.quote):
-        return Standing(claim, True,
-                        "sentence is on the page and the value is in it once "
-                        "OCR letter-for-digit damage is undone", )
+    # No damaged-quote fallback here any more: _value_in_quote undoes the
+    # scanner's letter-for-digit damage itself, and says so in `why`. It used to
+    # live only on this path, which meant a reading the LEDGER verified was
+    # REFUSED when the same reading arrived in a bundle -- the two checks that
+    # are supposed to be the same check disagreeing about the same record.
+    # _value_in_damaged_quote is still used by the table-cell path above.
     return Standing(claim, False, why)
 
 

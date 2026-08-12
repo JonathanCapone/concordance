@@ -6,15 +6,25 @@ asks who is speaking -- but a contribution written to `data/contributions` on
 one laptop reached nobody, so "read it once and it is there for everyone" was
 true of the reading and false of the everyone.
 
-The mechanism is deliberately a file.
+The base mechanism is a file.
 
     python scripts/share.py export --out fergus.bundle.json
     python scripts/share.py import fergus.bundle.json
 
-A bundle can travel by pull request, email, USB stick, or a link in a forum
-post, and none of those need a server anybody has to run, pay for, or be
-trusted to keep honest. The project has no infrastructure and this way it needs
-none: whoever wants to publish a set of readings publishes a file.
+A bundle can travel by email, USB stick, or a link in a forum post, none of
+which need a server anybody has to run, pay for, or be trusted to keep honest.
+Whoever wants to publish a set of readings publishes a file.
+
+Handing files to people does not scale, so there is also a shared instance:
+
+    python scripts/share.py push fergus.bundle.json --to https://example.org
+    python scripts/share.py pull --frm https://example.org
+
+The instance changes nothing about what is true. It re-verifies everything it is
+sent, hands back everything it holds, and can be replaced by anyone who does not
+like how it is run -- `pull` then `import --verified-only` reconstructs its
+entire library locally, checked from scratch. A server that cannot be audited by
+copying it is a different kind of object than this one.
 
 **Trust does not travel with it.** Nothing about the sender is checked, because
 nothing about the sender is relevant -- an imported bundle is re-verified
@@ -37,6 +47,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+import urllib.error
+import urllib.request
 
 from groundtruth.archive import Archive
 from groundtruth.contribute import make_bundle, merge_bundle, verify_bundle
@@ -150,6 +163,69 @@ def do_import(args: argparse.Namespace) -> int:
     return 0
 
 
+def do_push(args: argparse.Namespace) -> int:
+    """Send readings to a shared instance, which re-checks every one of them.
+
+    The instance is a convenience and not an authority. It holds no key anyone
+    else lacks; it simply saves each person from being handed a file. Anything
+    it accepts, it accepted by asking archive.org -- so a contributor does not
+    have to trust it, and neither does anyone reading the result.
+    """
+    bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
+    url = args.to.rstrip("/") + "/api/bundle"
+    body = json.dumps(bundle).encode()
+    print(f"sending {bundle.get('n_records', 0)} readings to {url}")
+
+    request = urllib.request.Request(
+        url, data=body,
+        headers={"Content-Type": "application/json",
+                 "User-Agent": "ground-truth/0.1"},
+        method="POST")
+    try:
+        with urllib.request.urlopen(request, timeout=args.timeout) as response:
+            out = json.loads(response.read().decode())
+    except urllib.error.HTTPError as exc:
+        print(f"the instance refused it: HTTP {exc.code} {exc.read()[:200]!r}")
+        return 1
+    except Exception as exc:  # noqa: BLE001
+        print(f"could not reach {url}: {type(exc).__name__}: {str(exc)[:120]}")
+        print("The bundle is unharmed. Send it to somebody, or try another "
+              "instance -- nothing here depends on one server existing.")
+        return 1
+
+    print(f"  re-verified there : {out.get('verified', 0)}")
+    print(f"  merged            : {out.get('merged', 0)}")
+    print(f"  already had       : {out.get('already_here', 0)}")
+    print(f"  refused           : {out.get('refused', 0)}")
+    for why in out.get("why_refused") or []:
+        print(f"      {why}")
+    print()
+    print(out.get("note", ""))
+    return 0 if out.get("accepted") or out.get("already_here") else 1
+
+
+def do_pull(args: argparse.Namespace) -> int:
+    """Take a shared instance's readings, and check them here anyway."""
+    url = args.frm.rstrip("/") + "/api/library.json"
+    print(f"fetching {url}")
+    try:
+        request = urllib.request.Request(
+            url, headers={"User-Agent": "ground-truth/0.1"})
+        with urllib.request.urlopen(request, timeout=args.timeout) as response:
+            bundle = json.loads(response.read().decode())
+    except Exception as exc:  # noqa: BLE001
+        print(f"could not reach {url}: {type(exc).__name__}: {str(exc)[:120]}")
+        return 1
+
+    out = Path(args.out)
+    out.write_text(json.dumps(bundle, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"{bundle.get('n_records', 0)} readings -> {out}")
+    print("Nothing has been trusted yet. Run:")
+    print(f"  python scripts/share.py import {out} --verified-only")
+    print("which re-checks every record against the scans here, on your machine.")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -170,6 +246,19 @@ def main() -> int:
     im.add_argument("--verified-only", action="store_true",
                     help="merge the records the archive supports, leave the rest")
     im.set_defaults(func=do_import)
+
+    ps = sub.add_parser("push", help="send a bundle to a shared instance")
+    ps.add_argument("bundle")
+    ps.add_argument("--to", default="http://localhost:8765",
+                    help="instance URL; it re-verifies everything it is sent")
+    ps.add_argument("--timeout", type=float, default=600.0)
+    ps.set_defaults(func=do_push)
+
+    pl = sub.add_parser("pull", help="fetch a shared instance's readings")
+    pl.add_argument("--frm", default="http://localhost:8765", metavar="URL")
+    pl.add_argument("--out", default="pulled.bundle.json")
+    pl.add_argument("--timeout", type=float, default=600.0)
+    pl.set_defaults(func=do_pull)
 
     args = ap.parse_args()
     return args.func(args)

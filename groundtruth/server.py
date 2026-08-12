@@ -28,6 +28,7 @@ from urllib.parse import parse_qs, urlparse
 
 from .archive import Archive
 from .citations import cite, cite_record
+from .contribute import bundle_id, merge_bundle, verify_bundle
 from .decisions import read_document
 from .frontier import load as load_frontier
 from .disputes import (
@@ -48,6 +49,11 @@ RESULTS = Path("data/results")
 #: tally and no evidence. Persisting them is a storage decision, not a trust
 #: one, and it can wait until there is somewhere to put them.
 FLAGS: list[Flag] = []
+
+#: Largest bundle accepted over HTTP. A shared instance takes uploads from
+#: anyone, so the size limit is the one place it does need a rule -- and
+#: 8 MB is roughly forty thousand readings, far more than one town.
+MAX_BUNDLE_BYTES = 8 * 1024 * 1024
 
 #: Suffixes that turn a town's name into a facility's. Stripped only when
 #: deciding WHICH TOWN a record belongs to; the facility itself stays on the
@@ -413,6 +419,101 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    # -- receiving readings from other machines ---------------------------
+
+    def do_POST(self) -> None:  # noqa: N802
+        """Accept a bundle of readings from somebody else's machine.
+
+        This is the destination the distributed model was missing. Until it
+        existed, `library.ask` read a town on your laptop and `share.py export`
+        packaged it, and there the trail went cold -- "your machine reads it for
+        everyone" had nowhere to send the result.
+
+        Nothing about the sender is examined and no account is required, because
+        nothing about the sender is relevant. Every record is re-verified here,
+        against archive.org, on the same terms this instance judges its own
+        output: is that sentence on that page, and is that value in it. A bundle
+        from a stranger and one from the maintainer are handled identically.
+
+        The instance is a convenience, not an authority. It holds no key that
+        anyone else lacks, and anyone who mistrusts it can pull the dataset,
+        re-verify every record themselves, and run their own -- which is the
+        property that stops a shared server becoming a single point of trust.
+        """
+        assert STATE is not None
+        url = urlparse(self.path)
+        if url.path != "/api/bundle":
+            self.send_error(404)
+            return
+
+        try:
+            length = int(self.headers.get("Content-Length") or 0)
+        except ValueError:
+            length = 0
+        if length <= 0 or length > MAX_BUNDLE_BYTES:
+            self._send(json.dumps({
+                "accepted": False,
+                "why": f"bundle must be between 1 byte and {MAX_BUNDLE_BYTES} bytes",
+            }).encode(), "application/json")
+            return
+
+        try:
+            bundle = json.loads(self.rfile.read(length).decode("utf-8"))
+        except Exception as exc:  # noqa: BLE001
+            self._send(json.dumps({
+                "accepted": False, "why": f"not readable as JSON: {str(exc)[:120]}",
+            }).encode(), "application/json")
+            return
+
+        records = bundle.get("records") if isinstance(bundle, dict) else None
+        if not isinstance(records, list) or not records:
+            self._send(json.dumps({
+                "accepted": False,
+                "why": "no records in the bundle",
+            }).encode(), "application/json")
+            return
+
+        verdict = verify_bundle(bundle, archive=STATE.archive)
+
+        # Keep what the archive supports and report the rest, rather than
+        # refusing the whole bundle over one unverifiable reading. Every
+        # record's standing is individually known and the ledger has a state
+        # for "unsupported", so what is left out is a reported absence.
+        failed_keys = {
+            (f.get("identifier"), f.get("page"), (f.get("quote") or "")[:120],
+             repr(f.get("value"))) for f in verdict.failed
+        }
+        keep = []
+        for record in records:
+            prov = record.get("provenance") or {}
+            key = (prov.get("identifier"), prov.get("page"),
+                   (prov.get("source_text") or "")[:120], repr(record.get("value")))
+            if key not in failed_keys:
+                keep.append(record)
+
+        merged = {"accepted": 0, "duplicates_dropped": 0}
+        if keep:
+            trimmed = dict(bundle, records=keep, n_records=len(keep))
+            confirmed = verify_bundle(trimmed, archive=STATE.archive)
+            if confirmed.accepted:
+                merged = merge_bundle(trimmed, into=RESULTS, verdict=confirmed)
+                STATE.reload()
+                STATE.invalidate_ledger()
+
+        self._send(json.dumps({
+            "accepted": bool(merged.get("accepted")),
+            "verified": verdict.verified,
+            "merged": merged.get("accepted", 0),
+            "already_here": merged.get("duplicates_dropped", 0),
+            "refused": len(verdict.failed),
+            "why_refused": [f.get("why", "")[:160] for f in verdict.failed[:10]],
+            "note": (
+                "Every record was re-checked against the pages it cites. What "
+                "verified is now in the library on the same footing as "
+                "everything else, and nothing was taken on trust."
+            ),
+        }).encode(), "application/json")
+
     def do_GET(self) -> None:  # noqa: N802
         assert STATE is not None
         url = urlparse(self.path)
@@ -497,6 +598,26 @@ class Handler(BaseHTTPRequestHandler):
             # whom. The only ordering of eleven million pages that serves
             # somebody rather than the person who chose the subject.
             self._send(json.dumps(STATE.frontier()).encode(), "application/json")
+            return
+
+        if url.path == "/api/library.json":
+            # The whole dataset, as a bundle anyone can take and re-verify.
+            # A shared instance that could only be written to and not read from
+            # would be a silo: the point of publishing this is that somebody who
+            # mistrusts the instance can pull everything, check it against
+            # archive.org themselves, and run their own.
+            records = [r.to_dict() for r in STATE.corpus.records]
+            self._send(json.dumps({
+                "bundle_version": 1,
+                "contributor": "shared instance",
+                "note": "the whole library; re-verify it before believing it",
+                "bundle_id": bundle_id(records),
+                "n_records": len(records),
+                "identifiers": sorted({
+                    (r.get("provenance") or {}).get("identifier", "")
+                    for r in records} - {""}),
+                "records": records,
+            }).encode(), "application/json")
             return
 
         if url.path == "/api/ledger":
