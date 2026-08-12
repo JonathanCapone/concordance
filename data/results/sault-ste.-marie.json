@@ -1,7 +1,7 @@
 {
   "place": "Sault Ste. Marie",
   "model": "ollama:gemma4:12b",
-  "n_records": 327,
+  "n_records": 335,
   "pages_attempted": [
     "1962ANNUALREPORT00SNSN19915.ome#6",
     "1962ANNUALREPORT00SNSN19915.ome#7",
@@ -59,7 +59,12 @@
     "drinkingwatersur890ontauoft#21",
     "drinkingwatersur890ontauoft#22",
     "drinkingwatersur890ontauoft#23",
-    "drinkingwatersur890ontauoft#24"
+    "drinkingwatersur890ontauoft#24",
+    "drinkingwatersur890ontauoft#25",
+    "drinkingwatersur890ontauoft#26",
+    "drinkingwatersur890ontauoft#41",
+    "drinkingwatersur890ontauoft#42",
+    "drinkingwatersur1987ontauoft#3"
   ],
   "records": [
     {
@@ -8890,6 +8895,222 @@
         "ocr_confidence": 0.5702
       },
       "key": "4d8f9fc94fce668c112d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total THMs",
+      "value": 3.65,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie Water Supply System",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.7129,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 25,
+        "source_text": "All total THM occurrences, ranging from 3.65 ug/L to 23.75 ug/L, were well below the ODWO of 350 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n24/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5843
+      },
+      "key": "b76f4ada95e08885c95c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total THMs",
+      "value": 23.75,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie Water Supply System",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.7129,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 25,
+        "source_text": "All total THM occurrences, ranging from 3.65 ug/L to 23.75 ug/L, were well below the ODWO of 350 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n24/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5843
+      },
+      "key": "335079196d19c534f467"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ODWO",
+      "value": 350.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie Water Supply System",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.7129,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 25,
+        "source_text": "All total THM occurrences, ranging from 3.65 ug/L to 23.75 ug/L, were well below the ODWO of 350 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n24/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.5843
+      },
+      "key": "da5705e9c8179c1b2bdd"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Aeromonas organisms detection frequency",
+      "value": 25.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3952,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 41,
+        "source_text": "Aeromonas organisms are detected in more than 25% of samples in a single submission or in successive submissions from the same sampling site",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n40/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5806
+      },
+      "key": "4e776fc024089f393b11"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Standard Plate Count",
+      "value": 500.0,
+      "unit": "organisms per ml",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3952,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 41,
+        "source_text": "Standard Plate Count should not exceed 500 organisms per ml at 3 5 °C within 48 hours",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n40/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5806
+      },
+      "key": "b4f4ec094a0322bf6888"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness levels",
+      "value": 80.0,
+      "unit": "mg/L as calcium carbonate",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3952,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 41,
+        "source_text": "hardness levels between 80 and 100 mg/L as calcium carbonate are considered to provide an acceptable balance between corrosion and incrustation",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n40/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5806
+      },
+      "key": "dc523dc025efd54d0d11"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness levels",
+      "value": 100.0,
+      "unit": "mg/L as calcium carbonate",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3952,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 41,
+        "source_text": "hardness levels between 80 and 100 mg/L as calcium carbonate are considered to provide an acceptable balance between corrosion and incrustation",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n40/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5806
+      },
+      "key": "77b5bd28312e412dd8b4"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness levels",
+      "value": 500.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3952,
+      "provenance": {
+        "identifier": "drinkingwatersur890ontauoft",
+        "page": 41,
+        "source_text": "and those in excess of 500 mg/L are unacceptable.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur890ontauoft/page/n40/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5806
+      },
+      "key": "3299a543c9031c034875"
     }
   ]
 }
