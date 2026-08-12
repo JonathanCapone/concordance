@@ -29,8 +29,8 @@ from .archive import Archive
 from .citations import cite, cite_record
 from .decisions import read_document
 from .disputes import (
-    Flag, load_claims, load_contributions, resolve as resolve_claims,
-    submit as submit_claim,
+    Flag, load_claims, load_contributions, load_vision_records,
+    resolve as resolve_claims, submit as submit_claim,
 )
 from .parameters import resolve as resolve_parameter
 from .honu import Honu
@@ -80,7 +80,8 @@ class State:
         # The machine's readings and people's submissions go in together, on
         # the same footing. Nothing downstream can tell which is which,
         # because nothing downstream is allowed to care.
-        claims = load_claims(RESULTS) + load_contributions()
+        claims = (load_claims(RESULTS) + load_vision_records()
+                  + load_contributions())
         resolved = resolve_claims(claims, FLAGS, archive=self.archive)
         report = resolved.report()
 

@@ -577,3 +577,31 @@ def load_contributions(directory: str | Path = CONTRIBUTIONS) -> list[Claim]:
                 disputes=str(payload.get("disputes") or ""),
             ))
     return out
+
+
+def load_vision_records(
+    path: str | Path = "data/results/vision_trial_corpus.json",
+) -> list[Claim]:
+    """Table readings, as claims on the same footing as everything else.
+
+    Kept as its own loader because the trial writes a page-keyed file rather
+    than a flat record list, not because table readings deserve different
+    treatment. `check()` judges them by their headings and the page's digits,
+    which is the closest the medium allows to quoting a sentence, and nothing
+    downstream is told which path a record came from.
+    """
+    out: list[Claim] = []
+    p = Path(path)
+    if not p.exists():
+        return out
+    try:
+        rows = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return out
+    for row in rows.values():
+        if not isinstance(row, dict) or "error" in row:
+            continue
+        for record in row.get("records") or []:
+            out.append(Claim(record=record, source="extraction",
+                             contributor="vision"))
+    return out
