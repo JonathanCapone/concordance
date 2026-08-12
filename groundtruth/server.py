@@ -2,11 +2,14 @@
 
     python -m groundtruth.server
 
-Standard library only, like the rest of the core -- `http.server` rather than a
-framework, and a hand-projected SVG map rather than a tile library, so the whole
-thing starts with no install, no API key, and no network. That last part is not
-tidiness: it means the demo works on conference wifi, and it means a reviewer can
-run it before deciding whether to trust anything it says.
+The server itself is standard library -- `http.server` rather than a framework --
+and needs no API key. The map is MapLibre from a CDN, lifted from the OMEGA-wave
+portal along with its keyless Esri imagery and AWS terrain tiles.
+
+This is the serving layer, and it is the one part of the project allowed outside
+dependencies. The core stays dependency-free so that a stranger can verify a
+measurement without standing up a web stack: nobody should have to install a
+mapping library to check whether 104 mg/L is what the page actually says.
 
 Everything it serves comes from files already produced by the pipeline. The
 server computes nothing it cannot show you the source of.
@@ -15,32 +18,20 @@ server computes nothing it cannot show you the source of.
 from __future__ import annotations
 
 import json
-import math
 import webbrowser
+from collections import Counter
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
 
+from .parameters import resolve as resolve_parameter
+from .honu import Honu
+from .portal import render
+from .science import series_from_records
 from .tools import Corpus, find_my_town, judge_reading, read_me_the_record, what_went_quiet
 
 RESULTS = Path("data/results")
-
-# Ontario, roughly. Used for a simple equirectangular projection with a cosine
-# correction at the mid-latitude -- adequate for a province-scale locator map and
-# far less trouble than a projection library we would then have to depend on.
-LAT0, LAT1 = 41.5, 57.0
-LON0, LON1 = -95.5, -74.0
-MID = math.cos(math.radians((LAT0 + LAT1) / 2))
-
-
-def project(lat: float, lon: float, w: int, h: int) -> tuple[float, float]:
-    x = (lon - LON0) / (LON1 - LON0) * w
-    y = (1 - (lat - LAT0) / (LAT1 - LAT0)) * h
-    # Squeeze x so the province is not stretched sideways at this latitude.
-    cx = w / 2
-    return cx + (x - cx) * MID / 0.62, y
-
 
 class State:
     """Everything the server can answer from, loaded once at startup."""
@@ -51,6 +42,9 @@ class State:
         self.census = self._read("corpus_census.json")
         self.gold = self._read("gold_report.json")
         self.places = self._geocode()
+        # Lazily built: constructing it is cheap, but every request that
+        # uses it needs a model, which may not be present.
+        self.honu = Honu(self.corpus)
 
     @staticmethod
     def _read(name: str) -> dict[str, Any]:
@@ -83,128 +77,113 @@ class State:
         return out
 
 
+    # -- what the portal asks for -----------------------------------------
+
+    def html(self) -> str:
+        totals = self.gold.get("totals", {})
+        stop = self.silence.get("largest_simultaneous_stop", {})
+        return render({
+            "corpus_items": self.census.get("extrapolation", {}).get("corpus_items", 104241),
+            "located": len(self.places),
+            "read": sum(1 for p in self.places if p["extracted"]),
+            "records": len(self.corpus.records),
+            "precision": totals.get("precision", 0.0),
+            "silent_n": stop.get("municipalities", "—"),
+            "silent_year": stop.get("year", "—"),
+        })
+
+    def geojson(self) -> dict[str, Any]:
+        return {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {"type": "Point", "coordinates": [p["lon"], p["lat"]]},
+                    "properties": {
+                        "place": p["place"], "raw": p["raw"], "years": p["years"],
+                        "first": p["first"], "last": p["last"],
+                        "silent_since": p["silent_since"] or "",
+                        "extracted": p["extracted"],
+                    },
+                }
+                for p in self.places
+            ],
+        }
+
+    #: Charted in this order. Removal percentages first because they are the
+    #: number a non-specialist can actually read: how much the plant took out.
+    SERIES = [
+        ("BOD removal", None, "BOD removal"),
+        ("suspended solids removal", None, "Suspended solids removal"),
+        ("BOD", "effluent", "BOD discharged"),
+        ("suspended solids", "effluent", "Solids discharged"),
+        ("BOD", "influent", "BOD arriving"),
+        ("daily flow", None, "Daily flow"),
+        ("total flow", None, "Total annual flow"),
+    ]
+
+    def town(self, place: str, raw: str) -> dict[str, Any]:
+        out = find_my_town(self.corpus, place)
+        if not out.get("found") and raw:
+            out = find_my_town(self.corpus, raw)
+        if not out.get("found"):
+            return out
+
+        want = {place.lower(), raw.lower()}
+        mine = [r for r in self.corpus.records
+                if (r.place or "").lower() in want and r.kind == "observation"]
+        # One facility at a time. Effluent and tap water are opposite
+        # measurements and must never share a panel.
+        facilities = Counter(r.facility or "unclassified" for r in mine)
+        if len(facilities) > 1:
+            main = facilities.most_common(1)[0][0]
+            mine = [r for r in mine if (r.facility or "unclassified") == main]
+            out["facility"] = main
+
+        series = []
+        for param, stream, label in self.SERIES:
+            s = series_from_records(mine, parameter=param, stream=stream)
+            if not s.points:
+                continue
+            rows = []
+            want_param = resolve_parameter(param)
+            for y, v, _c in s.points:
+                # Match the ORIGINAL record by year, parameter and value -- not
+                # by year alone. Matching on year attached the flow sentence to
+                # every reading in the panel, so each number displayed a quotation
+                # that had nothing to do with it. The provenance was not merely
+                # imprecise, it was wrong, which is worse than showing none: the
+                # entire trust model here is "this sentence is where this number
+                # came from".
+                src = None
+                for r in mine:
+                    if not (r.period and str(r.period)[:4] == str(int(y))):
+                        continue
+                    got = resolve_parameter(r.parameter, r.unit)
+                    if want_param is not None and (got is None or got.key != want_param.key):
+                        continue
+                    if stream is not None and r.stream != stream:
+                        continue
+                    src = r
+                    break
+                rows.append({
+                    "period": int(y),
+                    "parameter": label,
+                    "value": f"{v:.4g}",
+                    "unit": s.unit,
+                    "read_from": (src.provenance.source_text[:150] if src and src.provenance else ""),
+                    "page_url": (src.provenance.page_url if src and src.provenance else ""),
+                })
+            series.append({
+                "label": label, "unit": s.unit,
+                "points": [[int(y), v] for y, v, _ in s.points],
+                "rows": rows,
+            })
+        out["series"] = series
+        return out
+
+
 STATE: State | None = None
-
-
-def page() -> str:
-    assert STATE is not None
-    W, H = 900, 620
-    dots = []
-    for p in STATE.places:
-        x, y = project(p["lat"], p["lon"], W, H)
-        r = 3 + min(4.0, p["years"] * 0.45)
-        cls = "has" if p["extracted"] else "dot"
-        dots.append(
-            f'<circle class="{cls}" cx="{x:.1f}" cy="{y:.1f}" r="{r:.1f}" '
-            f'data-place="{p["place"]}" data-raw="{p["raw"]}" '
-            f'data-first="{p["first"]}" data-last="{p["last"]}" '
-            f'data-years="{p["years"]}" data-silent="{p.get("silent_since") or ""}">'
-            f'<title>{p["place"]} — {p["years"]} reports, {p["first"]}–{p["last"]}</title></circle>'
-        )
-
-    n_ext = sum(1 for p in STATE.places if p["extracted"])
-    totals = STATE.gold.get("totals", {})
-    stop = STATE.silence.get("largest_simultaneous_stop", {})
-
-    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ground Truth — live</title><style>
-:root{{--bg:#fbfaf8;--panel:#fff;--ink:#17150f;--muted:#6b6559;--line:#e2ded5;--hit:#b5651d}}
-@media(prefers-color-scheme:dark){{:root{{--bg:#14130f;--panel:#1c1a16;--ink:#f2efe8;
- --muted:#9b948a;--line:#2e2b25;--hit:#d99a5b}}}}
-*{{box-sizing:border-box}}
-body{{margin:0;background:var(--bg);color:var(--ink);
- font:15px/1.6 ui-sans-serif,system-ui,-apple-system,sans-serif}}
-header{{padding:20px 26px 12px}}
-h1{{font-size:22px;font-weight:500;margin:0 0 2px;letter-spacing:-.02em}}
-.sub{{color:var(--muted);font-size:13px}}
-.wrap{{display:grid;grid-template-columns:1fr 380px;gap:18px;padding:8px 26px 40px;
- align-items:start}}
-@media(max-width:900px){{.wrap{{grid-template-columns:1fr}}}}
-.panel{{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px}}
-svg.map{{width:100%;height:auto;display:block}}
-.dot{{fill:var(--muted);opacity:.5;cursor:pointer}}
-.dot:hover{{opacity:.9}}
-.has{{fill:var(--hit);opacity:.85;cursor:pointer}}
-.has:hover{{opacity:1}}
-.sel{{stroke:var(--ink);stroke-width:2}}
-.stats{{display:flex;gap:22px;flex-wrap:wrap;margin:0 0 12px}}
-.stat .v{{font-size:19px;font-weight:500;font-variant-numeric:tabular-nums}}
-.stat .l{{font-size:11px;color:var(--muted)}}
-h2{{font-size:15px;font-weight:500;margin:0 0 8px}}
-.muted{{color:var(--muted);font-size:13px}}
-table{{border-collapse:collapse;width:100%;font-size:12.5px;margin-top:8px}}
-td,th{{text-align:left;padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}}
-th{{color:var(--muted);font-weight:500}}
-td.n{{text-align:right;font-family:ui-monospace,monospace;white-space:nowrap}}
-a{{color:inherit}}
-.q{{color:var(--muted);font-style:italic}}
-.legend{{font-size:12px;color:var(--muted);margin-top:6px}}
-.sw{{display:inline-block;width:9px;height:9px;border-radius:50%;vertical-align:middle}}
-</style></head><body>
-<header>
-  <h1>Ground Truth</h1>
-  <div class="sub">Measurements read out of {STATE.census.get('extrapolation',{}).get('corpus_items',104241):,}
-  scanned Canadian government documents. Click a town.</div>
-</header>
-<div class="wrap">
-  <div class="panel">
-    <div class="stats">
-      <div class="stat"><div class="v">{len(STATE.places)}</div><div class="l">municipalities located</div></div>
-      <div class="stat"><div class="v">{n_ext}</div><div class="l">read so far</div></div>
-      <div class="stat"><div class="v">{len(STATE.corpus.records)}</div><div class="l">measurements recovered</div></div>
-      <div class="stat"><div class="v">{totals.get('precision',0):.0%}</div><div class="l">extraction precision</div></div>
-      <div class="stat"><div class="v">{stop.get('municipalities','—')}</div><div class="l">went silent in {stop.get('year','—')}</div></div>
-    </div>
-    <svg class="map" viewBox="0 0 {W} {H}" role="img"
-         aria-label="Map of Ontario municipalities that filed water pollution control plant reports">
-      {''.join(dots)}
-    </svg>
-    <div class="legend">
-      <span class="sw" style="background:var(--hit)"></span> read &nbsp;
-      <span class="sw" style="background:var(--muted);opacity:.5"></span> located, not yet read &nbsp;·&nbsp;
-      dot size = number of surviving reports
-    </div>
-  </div>
-  <div class="panel" id="side">
-    <h2>Pick a town</h2>
-    <p class="muted">Orange dots have been read. Every number that comes back links to the
-    scanned page it was read from.</p>
-  </div>
-</div>
-<script>
-const side = document.getElementById('side');
-let current = null;
-document.querySelectorAll('circle').forEach(c => c.addEventListener('click', async () => {{
-  if (current) current.classList.remove('sel');
-  c.classList.add('sel'); current = c;
-  const place = c.dataset.place, raw = c.dataset.raw;
-  side.innerHTML = '<h2>' + place + '</h2><p class="muted">loading…</p>';
-  const r = await fetch('/api/town?place=' + encodeURIComponent(place)
-                        + '&raw=' + encodeURIComponent(raw));
-  const d = await r.json();
-  let h = '<h2>' + place + '</h2>';
-  h += '<p class="muted">' + c.dataset.years + ' surviving reports, '
-     + c.dataset.first + '–' + c.dataset.last
-     + (c.dataset.silent ? ' · silent since ' + c.dataset.silent : '') + '</p>';
-  if (!d.found) {{
-    h += '<p class="muted">Not read yet. The pipeline works town by town; this one is '
-       + 'located but its reports have not been extracted.</p>';
-  }} else {{
-    h += '<p class="muted">' + d.n_measurements + ' measurements from '
-       + d.sources.length + ' documents.</p><table><tr><th>year</th><th>what</th>'
-       + '<th class="n">value</th><th>check</th></tr>';
-    d.readings.forEach(x => {{
-      h += '<tr><td class="n">' + (x.period||'') + '</td><td>' + x.parameter
-        + '</td><td class="n">' + (x.value ?? '') + ' ' + (x.unit||'')
-        + '</td><td><a href="' + x.page_url + '" target="_blank" rel="noopener">scan</a></td></tr>'
-        + '<tr><td></td><td colspan="3" class="q">&ldquo;' + (x.read_from||'') + '&rdquo;</td></tr>';
-    }});
-    h += '</table>';
-  }}
-  side.innerHTML = h;
-}}));
-</script></body></html>"""
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -221,29 +200,44 @@ class Handler(BaseHTTPRequestHandler):
         q = parse_qs(url.query)
 
         if url.path in ("/", "/index.html"):
-            self._send(page().encode(), "text/html; charset=utf-8")
+            self._send(STATE.html().encode(), "text/html; charset=utf-8")
+            return
+
+        if url.path.startswith("/static/"):
+            name = url.path.split("/static/", 1)[1]
+            f = Path(__file__).parent / "static" / name
+            if not f.is_file() or ".." in name:
+                self.send_error(404)
+                return
+            ctype = ("text/css" if name.endswith(".css")
+                     else "application/javascript" if name.endswith(".js")
+                     else "application/octet-stream")
+            self._send(f.read_bytes(), ctype + "; charset=utf-8")
+            return
+
+        if url.path == "/api/ask":
+            question = (q.get("q") or [""])[0].strip()
+            if not question:
+                self._send(json.dumps({"error": "no question"}).encode(), "application/json")
+                return
+            turn = STATE.honu.ask(question)
+            self._send(json.dumps({
+                "reply": turn.reply,
+                "tools": turn.tool_calls,
+                "error": turn.error,
+            }).encode(), "application/json")
+            return
+
+        if url.path == "/api/accuracy":
+            self._send(json.dumps(STATE.gold).encode(), "application/json")
+            return
+
+        if url.path == "/api/places.geojson":
+            self._send(json.dumps(STATE.geojson()).encode(), "application/json")
             return
 
         if url.path == "/api/town":
-            place = (q.get("place") or [""])[0]
-            raw = (q.get("raw") or [""])[0]
-            out = find_my_town(STATE.corpus, place)
-            if not out.get("found") and raw:
-                out = find_my_town(STATE.corpus, raw)
-            if out.get("found"):
-                want = {place.lower(), raw.lower()}
-                rows = [
-                    {
-                        "period": r.period, "parameter": r.parameter, "value": r.value,
-                        "unit": r.unit, "kind": r.kind,
-                        "read_from": (r.provenance.source_text[:160] if r.provenance else ""),
-                        "page_url": (r.provenance.page_url if r.provenance else ""),
-                    }
-                    for r in STATE.corpus.records
-                    if (r.place or "").lower() in want and r.kind == "observation"
-                ]
-                rows.sort(key=lambda x: (str(x["period"]), x["parameter"]))
-                out["readings"] = rows[:60]
+            out = STATE.town((q.get("place") or [""])[0], (q.get("raw") or [""])[0])
             self._send(json.dumps(out).encode(), "application/json")
             return
 

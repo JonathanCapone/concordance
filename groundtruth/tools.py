@@ -12,6 +12,7 @@ returns the scanned page it came from alongside it.
 
 from __future__ import annotations
 
+import collections
 import json
 from dataclasses import dataclass
 from pathlib import Path
@@ -200,6 +201,12 @@ class Corpus:
                         value=d.get("value"), unit=d.get("unit"),
                         qualifier=d.get("qualifier"), stream=d.get("stream", "unknown"),
                         place=d.get("place") or place, period=d.get("period"),
+                        # Without this every record loads as "unclassified" and
+                        # the facility split silently does nothing -- which is how
+                        # Honu came to report that Owen Sound's sewage record runs
+                        # to 1992, when that is a drinking-water report that merely
+                        # shares the town's name.
+                        facility=d.get("facility"),
                         confidence=d.get("confidence", 0.0),
                         provenance=Provenance(
                             identifier=prov.get("identifier", ""),
@@ -339,8 +346,15 @@ def judge_reading(
     return out
 
 
-def find_my_town(corpus: Corpus, place: str) -> dict[str, Any]:
-    """Everything ever measured about a place, summarised."""
+def find_my_town(corpus: Corpus, place: str, facility: str | None = None) -> dict[str, Any]:
+    """Everything ever measured about a place, summarised.
+
+    Reports ONE facility at a time. A town commonly has several and they measure
+    opposite things -- a pollution control plant reports what was discharged, a
+    water supply system reports what residents drank. Merged, the summary claims
+    a town's sewage record runs to 1992 when it actually ends in 1972 and a
+    drinking-water report happens to share the town's name.
+    """
     want = place.strip().lower()
     mine = [r for r in corpus.records if (r.place or "").strip().lower() == want]
     if not mine:
@@ -350,6 +364,10 @@ def find_my_town(corpus: Corpus, place: str) -> dict[str, Any]:
             "message": f"No records for {place!r}. Known places: "
                        + ", ".join(sorted(corpus.places)),
         }
+
+    present = collections.Counter(r.facility or "unclassified" for r in mine)
+    chosen = facility or present.most_common(1)[0][0]
+    mine = [r for r in mine if (r.facility or "unclassified") == chosen]
 
     years = sorted({int(str(r.period)[:4]) for r in mine
                     if r.period and str(r.period)[:4].isdigit()})
@@ -363,6 +381,8 @@ def find_my_town(corpus: Corpus, place: str) -> dict[str, Any]:
     return {
         "place": place,
         "found": True,
+        "facility": chosen,
+        "other_facilities": [f for f in present if f != chosen],
         "years": years,
         "span": [years[0], years[-1]] if years else None,
         "n_records": len(mine),

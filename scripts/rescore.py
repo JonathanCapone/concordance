@@ -81,6 +81,18 @@ def main() -> int:
     report = Report(scores=scores)
     print("\n" + report.render())
     print(f"\nmodel: {model}  (records re-scored, not re-extracted)")
+
+    # Write the corrected totals back. Without this the report file keeps
+    # whatever the scorer produced when extraction last ran, and everything
+    # reading it -- the portal, the live server -- serves a stale accuracy
+    # figure. That already happened: the running map advertised 49% precision
+    # for hours after the harness bug causing it had been found and fixed.
+    path = Path(args.report)
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload["totals"] = report.totals
+    payload["rescored"] = True
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"updated totals in {path}")
     return 0
 
 
