@@ -329,9 +329,13 @@ slope.
 worse than useless, because a fabricated table is indistinguishable from a recovered one. A newer
 local model does not: given the Brantford 1962 flow table, whose OCR reads `TABLE I FLOW -
 MILX.IQN GALLOLS`, it returned every one of the twelve values that survived in the OCR, exactly,
-and rebuilt the header row the scanner had destroyed. Across four documents spanning 1942 to 2003,
-**58 of 58 values are on the page.** The cost is nine minutes a page on an RTX 2080 where only 18%
-of the model fits in VRAM, so this is a rented-hardware job rather than a local one.
+and rebuilt the header row the scanner had destroyed.
+
+Measured over **24 table pages from 11 collections**, 1879 to 2003: **535 measurements**, a median
+of 25 a page, 3 pages yielding nothing, and **411 of 461 values (89%) findable in the page's own
+surviving OCR**. The remaining 11% sit on pages whose text layer was destroyed — the case the path
+exists for, and the one its own corroboration cannot reach. The cost is eight minutes a page on an
+RTX 2080 where only 18% of the model fits in VRAM, so this is a rented-hardware job.
 
 **Not built:** figure extraction — reading a plotted line back into numbers — and corpus-scale
 extraction, which is what the whole cost model is about.
