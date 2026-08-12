@@ -70,8 +70,8 @@ Not a proposal. A measured artifact, running today:
 | Kind accuracy — measurement vs design spec vs regulatory limit | **100%** |
 | Quotes failing verification across 286 records | **0** |
 | Table values found on their own scanned page | **58 of 58**, four documents, 1942–2003 |
-| Measurements settled / contested / unsupported | **624 / 57 / 14**, with nobody adjudicating |
-| Code / tests | 411 tests · zero required dependencies in the core |
+| Measurements settled / contested / unsupported | **736 / 78 / 17** across 1,039 claims, with nobody adjudicating |
+| Code / tests | 426 tests · zero required dependencies in the core |
 
 Every recovered number carries the verbatim sentence it was read from, that
 sentence is verified to occur on the page, and the page is one click away. A
@@ -225,6 +225,14 @@ That last part is what makes the whole arrangement work rather than merely sound
 good, and it costs nothing: archive.org serves IIIF, so a citation is a URL. I
 would rather ship a record that argues with itself in public than one that is
 quietly adjudicated by me.
+
+**And readings travel as a file.** `share.py export` packages what a machine has
+read; `share.py import` re-checks every record against archive.org on arrival.
+A bundle moves by pull request, email, USB stick or a forum link — none of which
+need a server anybody has to run, pay for, or be trusted to keep honest. This
+project has no infrastructure and now needs none. Nothing about the sender is
+examined, because nothing about the sender is relevant: a signature would prove
+who sent it, and the archive proves whether it is true.
 
 ### Why I can hold that pace
 
