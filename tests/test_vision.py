@@ -246,22 +246,40 @@ def test_no_source_file_carries_a_control_byte():
     assert offenders == []
 
 
-def test_a_page_with_almost_no_ocr_cannot_referee_its_own_headings():
+def test_a_page_that_can_find_nothing_is_not_allowed_to_refuse_everything():
     """The control fired hardest exactly where vision matters most.
 
     Georgian Bay Ship Canal, 1909: a full table page whose text layer came back
-    as 1,068 characters, and all 30 candidate records rejected for headings that
-    are simply not in it. That is the circumstance the vision path exists for,
-    so a check that discards most confidently there is inverted -- it is
-    strictest where it is least able to judge.
+    as about 1,000 characters, and all 30 candidate records rejected for
+    headings that are simply not in it. That is the circumstance the vision path
+    exists for, so a check that discards most confidently there is inverted --
+    strictest where it can judge least.
 
-    Below the threshold the record is kept and the reason is recorded, rather
-    than the page being thrown away.
+    A minimum character count was the first fix and was too blunt: the plot page
+    that catches an invented "Phosphorus / Month" carries about 150 characters,
+    so no cutoff separates the two. The page therefore calibrates itself.
     """
-    from groundtruth.vision import MIN_OCR_TO_CHECK_LABELS, _label_on_page
+    from groundtruth.vision import _page_can_referee
 
-    assert MIN_OCR_TO_CHECK_LABELS > 1068          # the page that broke it
-    assert MIN_OCR_TO_CHECK_LABELS < 1828          # a page that checked out fine
-    # An empty text layer was already trusted; the threshold extends that to a
-    # nearly-empty one rather than introducing a new behaviour.
-    assert _label_on_page("anything at all", "")
+    destroyed = "STATEMENT No. 4 Continued. SUMMIT WATER SUPPLY. OCTOBER, 1905."
+    claims = [{"row_label": "Talon Lake storage", "column_label": "Evaporation"}]
+    assert not _page_can_referee(claims, destroyed)
+
+    # The plot page finds one of the two labels, so it has proved it can judge.
+    plot_claims = [{"row_label": "Phosphorus", "column_label": "Month"}]
+    assert _page_can_referee(plot_claims, PLOT_PAGE_OCR)
+
+
+def test_a_page_that_cannot_referee_keeps_the_record_and_says_why():
+    """Weaker evidence should travel with the record, not be forgotten."""
+    result = extract_table(
+        _page(text="STATEMENT No. 4 Continued. SUMMIT WATER SUPPLY."),
+        b"",
+        client=FakeVision(
+            '[{"kind":"observation","parameter":"discharge","value":41.2,'
+            '"unit":"cu ft","confidence":0.6,"row_label":"Talon Lake",'
+            '"column_label":"Evaporation"}]'
+        ),
+    )
+    assert result.kept == 1
+    assert "not checked" in result.records[0].raw["label_check"]

@@ -195,13 +195,32 @@ def _label_on_page(label: str, page_text: str) -> bool:
     return all(_norm(t) in page for t in parts)
 
 
-#: Least OCR a page must retain before its text layer can referee a heading.
-#: Set from the observed split rather than taste: the pages whose labels checked
-#: out carry 1,800-3,300 characters, and the ones where every record was
-#: rejected for unfindable headings carry around 1,000. Below this the text
-#: layer is not evidence either way, and treating its silence as a refusal
-#: rejects hardest exactly where vision matters most.
-MIN_OCR_TO_CHECK_LABELS = 1_500
+def _page_can_referee(candidates: list[dict[str, Any]], page_text: str) -> bool:
+    """Has this page's OCR proved it can confirm a heading at all?
+
+    Self-calibrating, and deliberately so. A page whose text layer finds at
+    least one of the headings the model claims has demonstrated that it works,
+    which makes a heading it cannot find meaningful evidence against that
+    heading. A page that finds none of them has demonstrated nothing, and its
+    silence says more about the scanner than about the model.
+
+    The alternative -- a minimum character count -- was tried and is too blunt.
+    The phosphorus plot page that caught a vision model inventing "Phosphorus /
+    Month" carries about 150 characters of OCR, and the Georgian Bay table page
+    that was wrongly emptied carries about 1,000, so no cutoff separates them.
+    What separates them is that the plot page can find "Phosphorus" and the
+    table page can find nothing.
+    """
+    if not page_text.strip():
+        return False
+    for c in candidates:
+        if not isinstance(c, dict):
+            continue
+        for key in ("row_label", "column_label"):
+            label = str(c.get(key) or "").strip()
+            if label and _label_on_page(label, page_text):
+                return True
+    return False
 
 
 @dataclass
@@ -279,19 +298,29 @@ def extract_table(
         # HEADINGS, which are set in larger and cleaner type. So the surviving
         # OCR text is exactly the right thing to check labels against, and it
         # costs one substring search.
-        # ...but only where enough OCR survived to check against. The premise
-        # above -- that headings survive in cleaner type -- holds on a page whose
-        # text layer is merely damaged and fails completely on one where it was
-        # destroyed. Georgian Bay Ship Canal, 1909: a full table page reduced to
-        # 1,068 characters, and every one of its 30 candidate records rejected
-        # for headings that are simply not in the text layer at all.
+        # ...but only on a page whose text layer can referee at all.
         #
-        # That is the exact circumstance the vision path exists for, so a check
-        # that fires hardest there is inverted: it discards most confidently
-        # where OCR is worst, which is where the model is most needed and least
-        # checkable. Below this threshold the honest report is "could not
-        # verify", and the record is kept and flagged rather than thrown away.
-        if len(page.text.strip()) >= MIN_OCR_TO_CHECK_LABELS:
+        # The premise above -- that headings survive in cleaner type -- holds on
+        # a page whose OCR is merely damaged and fails completely on one where it
+        # was destroyed. Georgian Bay Ship Canal, 1909: a full table page reduced
+        # to 1,068 characters, every one of its 30 records rejected for headings
+        # that are simply not in the text layer. That is the exact circumstance
+        # the vision path exists for, so a check that fires hardest there is
+        # inverted -- strictest where it can judge least.
+        #
+        # A character threshold was the first attempt and it was too blunt: the
+        # phosphorus plot page that caught llava's invented "Phosphorus / Month"
+        # carries about 150 characters, so any cutoff generous enough to spare
+        # Georgian Bay disarms the check on the fabrication it exists to catch.
+        #
+        # So the page calibrates itself. If ANY label the model claimed is found
+        # in the OCR, the text layer demonstrably works, and a label that is
+        # missing from it is suspicious. If NOT ONE label can be found, the text
+        # layer is not evidence either way and its silence is not a refusal.
+        # On the plot page "Phosphorus" is found and "Month" is not, so the
+        # fabrication is caught; on Georgian Bay nothing is found, so nothing is
+        # thrown away.
+        if _page_can_referee(candidates, page.text):
             unverified = [
                 label for label in (row, col)
                 if label and not _label_on_page(label, page.text)
@@ -342,7 +371,11 @@ def extract_table(
                 extractor=client.name,
                 path="vision",
             ),
-            raw={"row_label": row, "column_label": col, "model_confidence": model_conf},
+            raw={"row_label": row, "column_label": col, "model_confidence": model_conf,
+                 # Whether this page's own OCR was able to confirm the headings,
+                 # so weaker evidence travels with the record instead of being
+                 # forgotten the moment it leaves this function.
+                 "label_check": label_check},
         )
         problems = rec.problems()
         if problems:
