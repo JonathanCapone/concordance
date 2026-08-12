@@ -191,6 +191,13 @@ def main() -> None:
             "values_found_in_ocr": hits,
             "ocr_chars": len(page.text),
             "records": records[:40],
+            # The candidates the verifier threw out, not just how many. Keeping
+            # only a count meant a later fix to the rules could not be replayed
+            # over what the model had already returned -- and the rules did turn
+            # out to be wrong, rejecting whole pages of correct values because a
+            # column heading was not contiguous in the OCR. Paying for a page
+            # twice to re-test a check is avoidable, so this avoids it.
+            "rejected": result.rejected[:40],
         }
         OUT.parent.mkdir(parents=True, exist_ok=True)
         OUT.write_text(json.dumps(done, indent=2, ensure_ascii=False), encoding="utf-8")
