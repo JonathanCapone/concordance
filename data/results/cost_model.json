@@ -1,0 +1,64 @@
+{
+  "pages_worth_reading": 11735100,
+  "tokens": {
+    "input": 10852033725,
+    "output": 3051126000,
+    "total": 13903159725
+  },
+  "local_machine_years": 55.8,
+  "rented": [
+    {
+      "option": "A100 40GB, spot",
+      "usd_per_hour": 1.2,
+      "days": [
+        53.6,
+        107.3
+      ],
+      "usd": [
+        1545,
+        3090
+      ]
+    },
+    {
+      "option": "A100 80GB, on-dem",
+      "usd_per_hour": 1.8,
+      "days": [
+        40.2,
+        80.5
+      ],
+      "usd": [
+        1738,
+        3476
+      ]
+    },
+    {
+      "option": "H100, on-demand",
+      "usd_per_hour": 2.8,
+      "days": [
+        20.1,
+        40.2
+      ],
+      "usd": [
+        1352,
+        2703
+      ]
+    }
+  ],
+  "hosted": [
+    {
+      "option": "small hosted model",
+      "usd": 26108,
+      "usd_batch": 13054
+    },
+    {
+      "option": "mid hosted model",
+      "usd": 78323,
+      "usd_batch": 39161
+    }
+  ],
+  "caveats": [
+    "rented throughput is estimated, not measured on this project",
+    "prose path only; tables and figures are 26% of pages and cost more",
+    "any prompt change means paying again, so settle the prompt first"
+  ]
+}

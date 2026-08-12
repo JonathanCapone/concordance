@@ -100,6 +100,7 @@ def search(
     year_range: tuple[int, int] | None = None,
     publisher: str | None = None,
     limit: int = 40,
+    min_score: float = 2.0,
 ) -> Results:
     """Rank items by how well title and subjects match the query.
 
@@ -141,7 +142,12 @@ def search(
                     score += 2.0
                 if t in pub.lower():
                     score += 0.5
-            if score == 0:
+            # A publisher-only match is not a match. Searching "education" once
+            # returned 6,597 documents, of which 1,302 scored 0.5 -- they were
+            # about anything at all and merely happened to be published by a
+            # Department of Education. Counting those inflated the headline and
+            # every effort estimate built on it.
+            if score < min_score:
                 continue
         else:
             score = 1.0

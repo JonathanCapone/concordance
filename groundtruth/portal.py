@@ -325,8 +325,13 @@ async function openTown(p){{
         + (p.silent_since ? ` · <span style="color:var(--gt-hit)">silent since ${{p.silent_since}}</span>` : "")
         + (d.facility ? ` · ${{d.facility}}` : "") + `</div>`;
   if(!d.found){{
-    h += `<div class="empty">Located, but not read yet. Reading one town is about an hour
-      of local inference; ${{p.years}} scanned reports are waiting here.</div>`;
+    h += `<div class="empty">Nobody has read this one yet.<br><br>
+      ${{p.years}} scanned reports are waiting. If you read them, they are in the
+      library for everyone from then on &mdash; roughly an hour on this machine.</div>
+      <button id="read-now" style="margin-top:14px;background:var(--gt-hit);border:0;
+        border-radius:8px;color:#04080d;font-weight:600;padding:10px 16px;cursor:pointer;
+        font:inherit;width:100%">Read ${{p.place}} now</button>
+      <div id="read-log" style="margin-top:10px;font-size:12px;color:#8b97a4"></div>`;
   }} else {{
     h += seriesHtml(d);
     h += `<div class="note">${{d.n_measurements}} measurements from ${{d.sources.length}} documents.
@@ -335,6 +340,23 @@ async function openTown(p){{
       Nothing here should be believed without checking it.</div>`;
   }}
   dockBody.innerHTML = h;
+
+  const btn = document.getElementById("read-now");
+  if(btn) btn.onclick = async () => {{
+    btn.disabled = true; btn.textContent = "reading…";
+    const log = document.getElementById("read-log");
+    log.textContent = "Working through the scans. This takes about an hour and the "
+                    + "tab can be closed — it runs on this machine, not a server.";
+    try {{
+      const r = await (await fetch("/api/read?place=" + encodeURIComponent(p.place))).json();
+      log.innerHTML = r.message
+        + (r.contributed ? "<br><br>Verified and added to the library." : "");
+      btn.textContent = "done";
+    }} catch(e) {{
+      log.textContent = "Reading failed: " + e;
+      btn.disabled = false; btn.textContent = "Try again";
+    }}
+  }};
 }}
 
 const map = new maplibregl.Map({{

@@ -27,6 +27,7 @@ from urllib.parse import parse_qs, urlparse
 
 from .parameters import resolve as resolve_parameter
 from .honu import Honu
+from .library import ask
 from .portal import render
 from .science import series_from_records
 from .tools import Corpus, find_my_town, judge_reading, read_me_the_record, what_went_quiet
@@ -79,6 +80,11 @@ class State:
 
 
     # -- what the portal asks for -----------------------------------------
+
+    def reload(self) -> None:
+        """Re-read the library after something has been added to it."""
+        self.corpus = Corpus.load_dir(RESULTS)
+        self.places = self._geocode()
 
     def html(self) -> str:
         totals = self.gold.get("totals", {})
@@ -273,6 +279,26 @@ class Handler(BaseHTTPRequestHandler):
                 "reply": turn.reply,
                 "tools": turn.tool_calls,
                 "error": turn.error,
+            }).encode(), "application/json")
+            return
+
+        if url.path == "/api/read":
+            # Somebody asked for a town nobody has read. Their machine reads it,
+            # and it is in the library for everyone from then on. Contributing is
+            # not a separate act here -- it is what getting the data consists of.
+            place = (q.get("place") or [""])[0].strip()
+            if not place:
+                self._send(json.dumps({"error": "no place"}).encode(), "application/json")
+                return
+            answer = ask(place, read_if_missing=True)
+            STATE.reload()
+            self._send(json.dumps({
+                "place": place, "source": answer.source,
+                "records": len(answer.records), "documents": answer.documents,
+                "seconds": round(answer.seconds), "verified": answer.verified,
+                "contributed": answer.contributed,
+                "unknown_parameters": answer.unknown_parameters[:20],
+                "message": answer.describe(),
             }).encode(), "application/json")
             return
 
