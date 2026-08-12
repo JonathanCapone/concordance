@@ -130,7 +130,97 @@ def build_tools(corpus: Corpus) -> dict[str, Tool]:
             ("record_key",),
             lambda record_key: show_the_page(corpus, record_key),
         ),
+        Tool(
+            "show_the_paper",
+            "A picture of the patch of scan a number is written on -- the sentence "
+            "for a prose reading, the cell for a table one. Use this whenever "
+            "somebody doubts a figure, or asks to see it, or when two readings "
+            "disagree: an image of the page settles in seconds what an argument "
+            "cannot settle at all.",
+            {"identifier": S, "page": I, "quote": S},
+            ("identifier", "page"),
+            _show_the_paper,
+        ),
+        Tool(
+            "who_decided",
+            "Read a volume of minutes, agendas or hansard into motions and recorded "
+            "votes: who moved what, who seconded, how each person voted, and which "
+            "decisions were not unanimous. Deliberative records are 13% of this "
+            "archive and answer a different kind of question from the measurements "
+            "-- not what was measured, but who chose it.",
+            {"identifier": S, "body": S},
+            ("identifier",),
+            _who_decided,
+        ),
+        Tool(
+            "what_is_disputed",
+            "Measurements where two readings both survive checking against the scans "
+            "and still disagree, each with a picture of the sentence it came from. "
+            "Nobody adjudicates these, so say plainly that the record is contested "
+            "and show both rather than picking one.",
+            {"limit": I},
+            (),
+            _what_is_disputed,
+        ),
     ]}
+
+
+# -- tools that reach past the extracted records ---------------------------
+#
+# The tools above answer from `corpus`, which is what has already been read.
+# These three go back to the archive itself, because what they return is not a
+# measurement: a picture of a page, a council's voting record, and the state of
+# an argument nobody is refereeing.
+
+
+def _show_the_paper(identifier: str, page: int, quote: str = "") -> dict[str, Any]:
+    from .archive import Archive
+    from .citations import cite, cite_record
+
+    try:
+        pages = {p.page: p for p in Archive().pages(identifier, with_words=True)}
+        target = pages[int(page)]
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"cannot retrieve {identifier} page {page}: {str(exc)[:90]}"}
+
+    citation = (cite_record(target, {"provenance": {"source_text": quote}})
+                if quote else cite(target, ""))
+    out = citation.to_dict()
+    out["how_to_read_it"] = (
+        "crop_url is the evidence itself; page_url opens the whole page in the "
+        "reader. If 'exact' is false the words could not be located in the OCR "
+        "and this is the whole page, which is a weaker citation and should be "
+        "described as one."
+    )
+    return out
+
+
+def _who_decided(identifier: str, body: str = "") -> dict[str, Any]:
+    from .archive import Archive
+    from .decisions import read_document
+
+    try:
+        pages = Archive().pages(identifier)
+    except Exception as exc:  # noqa: BLE001
+        return {"error": f"cannot retrieve {identifier}: {str(exc)[:90]}"}
+    return read_document(pages, body=body).report()
+
+
+def _what_is_disputed(limit: int = 10) -> dict[str, Any]:
+    from .disputes import load_claims, resolve as resolve_claims
+
+    ledger = resolve_claims(load_claims())
+    return {
+        "settled": len(ledger.settled()),
+        "contested": len(ledger.contested()),
+        "unsupported": len(ledger.unsupported()),
+        "disputes": [s.to_dict() for s in ledger.contested()[: max(1, int(limit))]],
+        "how_to_read_it": (
+            "A contested measurement has two readings that BOTH cite a real "
+            "sentence on a real page. Neither has been rejected and neither is "
+            "preferred. Report both."
+        ),
+    }
 
 
 SYSTEM = """\
