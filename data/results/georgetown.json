@@ -1,0 +1,175 @@
+{
+  "place": "Georgetown",
+  "model": "ollama:gemma4:12b",
+  "n_records": 6,
+  "pages_attempted": [
+    "GEORGETOWNWATERP00SNSN19135.ome#3",
+    "GEORGETOWNWATERP00SNSN19135.ome#6",
+    "GEORGETOWNWATERP00SNSN19135.ome#8",
+    "GEORGETOWNWATERP00SNSN19135.ome#9"
+  ],
+  "records": [
+    {
+      "kind": "observation",
+      "parameter": "total cost",
+      "value": 880285.0,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.3373,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 8,
+        "source_text": "$880,285.00.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3491
+      },
+      "key": "3092387e2f416bf7fe27"
+    },
+    {
+      "kind": "design",
+      "parameter": "staff complement",
+      "value": 3.0,
+      "unit": "personnel",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6382,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 9,
+        "source_text": "The normal complement of staff consists of one Chief Operator and two operators.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.2764
+      },
+      "key": "814b17a27d86d04307b5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "staff hired",
+      "value": 1.0,
+      "unit": "personnel",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963-06",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6382,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 9,
+        "source_text": "An operator was hired in June 1963 to bring the staff up to full strength.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.2764
+      },
+      "key": "8ce0664db54b261b6ebf"
+    },
+    {
+      "kind": "design",
+      "parameter": "staffing hours per day",
+      "value": 8.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963 Monday to Friday",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6382,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 9,
+        "source_text": "During the week, Monday to Friday, the plant is staffed eight hours per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.2764
+      },
+      "key": "6bf46cfc06dfb648d7fe"
+    },
+    {
+      "kind": "design",
+      "parameter": "staff coverage per day",
+      "value": 4.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963 Saturday and Sunday",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6382,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 9,
+        "source_text": "Staff rotation provides four hours coverage per day on Saturday and Sunday.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.2764
+      },
+      "key": "81fa607c1ee771bfd7ef"
+    },
+    {
+      "kind": "observation",
+      "parameter": "courses of instruction",
+      "value": 3.0,
+      "unit": "course",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6382,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19135.ome",
+        "page": 9,
+        "source_text": "Mr. Smith received his Certificate of Qualification as a sewage works operator In 1963 after successfully completing a series of three, one week duration, courses of instruction sponsored by the OWRC.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19135.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.2764
+      },
+      "key": "b0e5e36d02b9b21f6096"
+    }
+  ]
+}

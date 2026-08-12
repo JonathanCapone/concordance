@@ -1168,3 +1168,96 @@ def period_risk(quote: str, *, period: str = "") -> PeriodRisk:
                 if comparison else
                 ", so a value here may belong to that year")),
     )
+
+
+# --------------------------------------------------------------------------
+# which year a single READING belongs to
+# --------------------------------------------------------------------------
+#
+# Everything above answers "when was this document published". This answers a
+# different question: a sentence names two years and states two numbers, and
+# each number belongs to one of them.
+#
+#     "During 1963 the average daily flow was 5. 59 as compared to
+#      5. 67 million gallons per day in 1962."
+#
+# The extractor usually gets this right -- five of the six comparative
+# sentences in the corpus are filed correctly. The sixth is Brantford's
+# headline:
+#
+#     "The average BOD removal efficiency was 94% in 1969 compared with
+#      only 89% in 1968."
+#
+# Both values were filed under 1969, so the town's published BOD-removal series
+# read 89% for a year whose page says 94%. One wrong record, on the number the
+# README leads with.
+
+#: A year a report could plausibly be talking about. Bounded so that station
+#: numbers, catalogue codes and four-digit quantities are not read as dates --
+#: this corpus is full of numbers like "1475 million gallons" and "2600 lb/day".
+_READING_YEAR = re.compile(r"(?<!\d)(1[89]\d{2}|20[0-4]\d)(?!\d)")
+
+#: Words that mean the sentence is putting two periods side by side. Without
+#: one of these, two years in a sentence are more likely a range ("between 1961
+#: and 1969") or a citation than a comparison, and reassigning inside those
+#: would invent a reading the page does not make.
+_COMPARATIVE = re.compile(
+    r"(?i)\b(compared\s+(?:with|to)|as\s+compared\s+(?:with|to)|"
+    r"against|versus|vs\.?|in\s+contrast\s+(?:with|to)|"
+    r"an\s+increase\s+(?:over|from)|a\s+decrease\s+(?:over|from))\b")
+
+
+def _value_positions(quote: str, value: float) -> list[tuple[int, int]]:
+    """Where this number appears in the sentence, tolerating OCR spacing.
+
+    The scanner splits decimals -- "5. 59" for 5.59 -- so the digits are matched
+    with optional whitespace between every character.
+    """
+    text = repr(float(value))
+    if text.endswith(".0"):
+        text = text[:-2]
+    digits = [c for c in text if c.isdigit() or c == "."]
+    if not digits:
+        return []
+    pattern = r"\s*".join(re.escape(c) for c in digits)
+    spans = []
+    for m in re.finditer(pattern, quote):
+        # A value that lands inside a year is the year, not a reading of it.
+        if any(y.start() <= m.start() < y.end() for y in _READING_YEAR.finditer(quote)):
+            continue
+        spans.append((m.start(), m.end()))
+    return spans
+
+
+def year_for_reading(quote: str, value: float | None) -> int | None:
+    """The year a sentence attaches to this particular number, or None.
+
+    Returns None unless the sentence names at least two distinct years AND
+    frames them as a comparison, because those are the only cases where the
+    question is ambiguous and the answer is decidable. Everything else is left
+    to the extractor, which is right about it.
+
+    Nearest-year wins. That is a crude rule and it is correct on every
+    comparative sentence in this corpus, including the ones the extractor
+    already got right -- which is the test that matters, since a repair that
+    "fixes" correct records is worse than no repair at all.
+    """
+    if value is None or not quote:
+        return None
+    years = [(int(m.group()), m.start()) for m in _READING_YEAR.finditer(quote)]
+    if len({y for y, _ in years}) < 2 or not _COMPARATIVE.search(quote):
+        return None
+
+    spans = _value_positions(quote, value)
+    if len(spans) != 1:
+        # Zero: the number is not in the sentence in digits, so there is nothing
+        # to measure a distance from. More than one: the sentence states it
+        # twice and nearest-year would be a coin toss. Abstain in both cases
+        # rather than guess.
+        return None
+
+    start, end = spans[0]
+    def distance(pos: int) -> int:
+        return 0 if start <= pos <= end else min(abs(pos - start), abs(pos - end))
+
+    return min(years, key=lambda yp: distance(yp[1]))[0]
