@@ -225,3 +225,52 @@ def test_influent_and_effluent_are_not_the_same_measurement():
                unit="ppm", period="1962", stream="raw")
     final = dict(raw, stream="effluent")
     assert slot_of(raw) != slot_of(final)
+
+
+# -- submitting one, as a person --------------------------------------------
+
+def test_a_person_s_reading_is_accepted_by_the_page_not_by_anyone(tmp_path):
+    """No queue, no account, no reputation -- none of which the check consults."""
+    from groundtruth.disputes import submit
+
+    good = submit(
+        {"parameter": "BOD", "value": 104, "unit": "mg/L", "place": "Owen Sound",
+         "facility": "sewage", "period": "1969", "stream": "influent",
+         "provenance": {"identifier": "owensound", "page": 7,
+                        "source_text": "The average influent BOD and suspended "
+                                       "solids were 104 mg/1"}},
+        contributor="a stranger", archive=_FakeArchive(), directory=tmp_path)
+    assert good.standing.verified and good.stored
+    assert "on the same footing" in good.to_dict()["what_happens_now"]
+
+
+def test_a_refused_submission_deletes_nothing_and_blames_nobody(tmp_path):
+    from groundtruth.disputes import submit
+
+    bad = submit(
+        {"parameter": "BOD", "value": 104, "place": "Owen Sound",
+         "provenance": {"identifier": "owensound", "page": 7,
+                        "source_text": "A flood destroyed the plant in March."}},
+        contributor="a stranger", archive=_FakeArchive(), directory=tmp_path)
+    assert not bad.standing.verified and not bad.stored
+    assert list(tmp_path.glob("*.json")) == []
+    assert "the page did" in bad.to_dict()["what_happens_now"]
+
+
+def test_a_contribution_reads_back_indistinguishable_from_the_machine_s(tmp_path):
+    """Nothing on disk records who to believe, because nothing ever asks."""
+    from groundtruth.disputes import check, load_contributions, submit
+
+    record = {"parameter": "BOD", "value": 104, "unit": "mg/L",
+              "place": "Owen Sound", "facility": "sewage", "period": "1969",
+              "stream": "influent",
+              "provenance": {"identifier": "owensound", "page": 7,
+                             "source_text": "The average influent BOD and "
+                                            "suspended solids were 104 mg/1"}}
+    submit(record, contributor="a stranger", archive=_FakeArchive(), directory=tmp_path)
+
+    theirs = load_contributions(tmp_path)
+    assert len(theirs) == 1
+    mine = Claim(record=record, source="extraction", contributor="gemma4:12b")
+    assert theirs[0].slot == mine.slot
+    assert _check(theirs[0]).verified == _check(mine).verified is True

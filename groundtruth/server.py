@@ -28,7 +28,10 @@ from urllib.parse import parse_qs, urlparse
 from .archive import Archive
 from .citations import cite, cite_record
 from .decisions import read_document
-from .disputes import Flag, load_claims, resolve as resolve_claims
+from .disputes import (
+    Flag, load_claims, load_contributions, resolve as resolve_claims,
+    submit as submit_claim,
+)
 from .parameters import resolve as resolve_parameter
 from .honu import Honu
 from .library import ask
@@ -74,7 +77,11 @@ class State:
         if self._ledger is not None:
             return self._ledger
 
-        resolved = resolve_claims(load_claims(RESULTS), FLAGS, archive=self.archive)
+        # The machine's readings and people's submissions go in together, on
+        # the same footing. Nothing downstream can tell which is which,
+        # because nothing downstream is allowed to care.
+        claims = load_claims(RESULTS) + load_contributions()
+        resolved = resolve_claims(claims, FLAGS, archive=self.archive)
         report = resolved.report()
 
         contested = []
@@ -410,6 +417,45 @@ class Handler(BaseHTTPRequestHandler):
                         "the record. To change what is shown, cite a page and quote "
                         "a sentence -- then the archive decides, not us.",
             }).encode(), "application/json")
+            return
+
+        if url.path == "/api/submit":
+            # A reading offered by a person. Checked by the same code that
+            # judges the machine's own output, and by nothing else -- there is
+            # no queue for it to sit in and nobody to approve it.
+            provenance = {
+                "identifier": (q.get("identifier") or [""])[0].strip(),
+                "source_text": (q.get("quote") or [""])[0],
+            }
+            try:
+                provenance["page"] = int((q.get("page") or ["0"])[0])
+            except ValueError:
+                provenance["page"] = 0
+            raw_value = (q.get("value") or [""])[0]
+            try:
+                value: Any = float(raw_value)
+            except ValueError:
+                value = raw_value or None
+
+            outcome = submit_claim(
+                {
+                    "parameter": (q.get("parameter") or [""])[0].strip(),
+                    "value": value,
+                    "unit": (q.get("unit") or [""])[0].strip() or None,
+                    "place": (q.get("place") or [""])[0].strip() or None,
+                    "facility": (q.get("facility") or [""])[0].strip() or None,
+                    "period": (q.get("period") or [""])[0].strip() or None,
+                    "stream": (q.get("stream") or ["unknown"])[0].strip(),
+                    "kind": "observation",
+                    "provenance": provenance,
+                },
+                contributor=(q.get("who") or ["anonymous"])[0][:60],
+                note=(q.get("note") or [""])[0][:400],
+                disputes=(q.get("disputes") or [""])[0].strip(),
+                archive=STATE.archive,
+            )
+            STATE.invalidate_ledger()
+            self._send(json.dumps(outcome.to_dict()).encode(), "application/json")
             return
 
         if url.path == "/api/decisions":

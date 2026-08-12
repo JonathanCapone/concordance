@@ -421,3 +421,105 @@ def load_claims(directory: str | Path = "data/results") -> list[Claim]:
             out.append(Claim(record=record, source="extraction",
                              contributor=str(payload.get("model") or "extraction")))
     return out
+
+
+# --------------------------------------------------------------------------
+# submitting one, as a person
+# --------------------------------------------------------------------------
+
+#: Where contributions land. A separate file per contributor keeps the
+#: machine's output and people's submissions distinguishable on disk without
+#: giving either one precedence when they are read back -- `load_claims` and
+#: `load_contributions` both produce plain Claims, and `check` cannot tell them
+#: apart.
+CONTRIBUTIONS = Path("data/contributions")
+
+
+@dataclass
+class Submission:
+    """What happened when somebody offered a reading."""
+
+    standing: Standing
+    stored: bool
+    where: str = ""
+
+    def to_dict(self) -> dict[str, Any]:
+        d = self.standing.to_dict()
+        d["accepted"] = self.standing.verified
+        d["stored"] = self.stored
+        d["where"] = self.where
+        d["what_happens_now"] = (
+            "It is in the record, on the same footing as everything else. If it "
+            "disagrees with an existing reading that also checks out, both are "
+            "shown with a picture of the sentence each came from, and nobody "
+            "decides between them."
+            if self.standing.verified else
+            "It is not in the record, and nothing was deleted. The archive did "
+            "not support it: " + self.standing.why + ". Nobody rejected this -- "
+            "the page did."
+        )
+        return d
+
+
+def submit(
+    record: dict[str, Any],
+    *,
+    contributor: str = "anonymous",
+    note: str = "",
+    disputes: str = "",
+    archive: Archive | None = None,
+    directory: str | Path = CONTRIBUTIONS,
+) -> Submission:
+    """Offer a reading. The archive accepts or refuses it; no one reviews it.
+
+    There is no queue, no account and no reputation, because none of those would
+    add anything: the check does not consult them. A submission that cites a real
+    sentence containing its own value is in, and one that does not is out, and
+    both outcomes are decided by the same code that judges the machine's output.
+
+    What a person can do that the machine cannot is disagree usefully. A reading
+    that contests an existing one is stored exactly like any other and surfaces
+    as a contested measurement, which is the honest state for two claims the
+    paper supports equally well.
+    """
+    claim = Claim(record=record, source="correction" if disputes else "person",
+                  contributor=contributor or "anonymous", note=note, disputes=disputes)
+    standing = check(claim, archive=archive)
+    if not standing.verified:
+        return Submission(standing, stored=False)
+
+    path = Path(directory) / f"{claim.id}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps({
+        "claim_id": claim.id, "contributor": claim.contributor,
+        "source": claim.source, "note": claim.note, "disputes": claim.disputes,
+        "verified_because": standing.why,
+        "records": [record],
+    }, indent=2, ensure_ascii=False), encoding="utf-8")
+    return Submission(standing, stored=True, where=str(path))
+
+
+def load_contributions(directory: str | Path = CONTRIBUTIONS) -> list[Claim]:
+    """Every reading a person has submitted, as claims.
+
+    Read back on exactly the same footing as the machine's own. Nothing here
+    records who to believe, because nothing in this design ever asks.
+    """
+    out: list[Claim] = []
+    directory = Path(directory)
+    if not directory.exists():
+        return out
+    for path in sorted(directory.glob("*.json")):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            continue
+        for record in payload.get("records") or []:
+            out.append(Claim(
+                record=record,
+                source=str(payload.get("source") or "person"),
+                contributor=str(payload.get("contributor") or "anonymous"),
+                note=str(payload.get("note") or ""),
+                disputes=str(payload.get("disputes") or ""),
+            ))
+    return out
