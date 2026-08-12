@@ -105,6 +105,33 @@ TARGETS = [
 ]
 
 
+def accuracy_sentence(report: str | Path = "data/results/gold_report.json") -> str:
+    """The measured accuracy, read from the file that holds it.
+
+    This sentence used to be typed into the template. It said 88% precision for
+    long enough that the number moved twice underneath it -- and a page whose
+    whole argument is "check this against the scan" cannot be the last place in
+    the repository still quoting a figure from memory.
+
+    Says which documents the figure covers, because after a second gold document
+    was added the totals described one of them and not the other.
+    """
+    try:
+        payload = json.loads(Path(report).read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return ("Measured accuracy is published in data/results/gold_report.json; "
+                "this build could not read it.")
+    totals = payload.get("totals") or {}
+    p_ = totals.get("precision")
+    r_ = totals.get("recall")
+    if p_ is None or r_ is None:
+        return "Measured accuracy is published in data/results/gold_report.json."
+    docs = payload.get("scored_documents") or []
+    scope = (f" on {len(docs)} hand-checked document{'s' if len(docs) != 1 else ''}"
+             if docs else "")
+    return (f"Measured accuracy against hand-checked ground truth{scope} is "
+            f"{p_:.1%} precision and {r_:.1%} recall.")
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", default="data/results/owen-sound.json")
@@ -170,6 +197,7 @@ def main() -> int:
         "Extraction may still be running.</p></section>"
     )
 
+    accuracy_text = accuracy_sentence()
     html_doc = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -221,8 +249,7 @@ a{{color:inherit}}
 {body}
 <p class="caveat">
   These values were read out of OCR'd scans by a language model, not transcribed by a person.
-  Measured accuracy on a hand-checked sample of this same document set is 88% precision and 88%
-  recall on narrative prose. Reading confidence is shown per point and controls how solid each
+  {accuracy_text} Reading confidence is shown per point and controls how solid each
   marker appears. Where a series changes units or method mid-run, the affected readings are
   rejected and listed rather than converted.
 </p>

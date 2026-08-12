@@ -10,6 +10,7 @@ missing, its card says so instead of showing a stale figure.
 from __future__ import annotations
 
 import argparse
+import collections
 import json
 import sys
 from pathlib import Path
@@ -63,16 +64,29 @@ def main() -> int:
     ))
 
     if town.get("records"):
+        # Count what the page actually shows. build_town_page renders ONE
+        # facility -- a town's sewage plant and its water works measure opposite
+        # things -- so counting every record here promised "Owen Sound,
+        # 1963-1992, 120 readings" on a card linking to a page that ends in 1972
+        # and holds 87. A card that overstates the page behind it is worse than
+        # no card, because the reader discovers the gap by clicking.
+        records = town["records"]
+        facilities = collections.Counter(
+            r.get("facility") or "unclassified" for r in records)
+        if len(facilities) > 1:
+            main = facilities.most_common(1)[0][0]
+            records = [r for r in records
+                       if (r.get("facility") or "unclassified") == main]
         years = sorted({
-            str(r.get("period"))[:4] for r in town["records"]
+            str(r.get("period"))[:4] for r in records
             if r.get("period") and str(r.get("period"))[:4].isdigit()
         })
-        obs = sum(1 for r in town["records"] if r.get("kind") == "observation")
+        obs = sum(1 for r in records if r.get("kind") == "observation")
         span = f"{years[0]}–{years[-1]}" if years else ""
         cards.append((
             "owen-sound.html",
             f"Owen Sound, {span}",
-            f"{len(town['records'])} readings recovered from scanned annual reports, "
+            f"{len(records)} readings recovered from scanned annual reports, "
             f"{obs} of them measurements. Every number links to the page it was read from.",
         ))
 
