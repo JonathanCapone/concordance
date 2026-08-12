@@ -131,3 +131,70 @@ def test_vocabulary_edits_take_effect_only_after_rebuild():
     finally:
         P.VOCABULARY["forestry"] = original
         P.rebuild()
+
+
+# -- one name, several quantities -------------------------------------------
+
+def test_a_ratio_measures_its_numerator():
+    """Brantford's BOD-removal chart plotted an air-supply ratio.
+
+    "CUBIC FEET AIR PER LB BOD. REMOVED" resolved to bod/removal on the strength
+    of the word BOD, and its twelve monthly readings around 1,200 outnumbered
+    the two real removal percentages -- so the series was published in cubic
+    feet and the portal showed "BOD removal · % = 1149".
+
+    The denominator of a ratio is what the number is normalised BY. It is never
+    what the number measures.
+    """
+    from groundtruth.parameters import resolve
+
+    assert resolve("CUBIC FEET AIR PER LB BOD. REMOVED", "cubic feet") is None
+    assert resolve("cost per pound of suspended solids removed", "$").substance == "cost"
+
+
+def test_a_qualifier_is_not_a_denominator():
+    """"per capita" and "per month" say what kind of number it is, not what of.
+
+    Stripping them lost "Daily Per Capita Flow" entirely, because there the
+    qualifier sits in front of the substance rather than after it.
+    """
+    from groundtruth.parameters import resolve
+
+    assert resolve("Daily Per Capita Flow", "gallons").key == "flow|rate"
+    assert resolve("chlorine used per month", "pounds").substance == "chlorine"
+
+
+def test_a_mass_removed_is_not_a_removal_efficiency():
+    """"A total of 2,398.4 tons of BOD was removed" and "BOD removal efficiency
+    was 94%" both say removal, and are a mass and a ratio. Sharing an identity,
+    three tonnages outvoted three percentages and the chart was published in
+    tonnes."""
+    from groundtruth.parameters import resolve
+
+    assert resolve("BOD removed", "tons").measure == "total"
+    assert resolve("BOD removal efficiency", "%").measure == "removal"
+
+
+def test_a_bare_volume_does_not_override_an_explicit_rate():
+    """"Daily flow: 6.12 million gallons" carries its rate in the wording.
+
+    Letting the unit win moved a day's flow into the annual series.
+    """
+    from groundtruth.parameters import resolve
+
+    assert resolve("daily flow", "million gallons").key == "flow|rate"
+    assert resolve("total flow", "million gallons").key == "flow|total"
+
+
+def test_an_exceedance_is_never_a_removal():
+    """20% exceedance is a good year; 20% removal is a failing plant.
+
+    "exceeded" was already caught. "exceeding" and "objectives met" were the
+    spellings that slipped past, and Brantford's 1962 exceedance reached the
+    live chart as BOD removal.
+    """
+    from groundtruth.parameters import resolve
+
+    assert resolve("BOD exceeding objective", "percent").measure == "frequency"
+    assert resolve("BOD objectives met", "percent").measure == "frequency"
+    assert resolve("BOD removal efficiency", "%").measure == "removal"

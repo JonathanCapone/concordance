@@ -276,7 +276,16 @@ def rebuild() -> None:
 #: Checked before anything else in resolve(), because an exceedance count and a
 #: removal efficiency are both percentages and the unit cannot separate them.
 _FREQUENCY = re.compile(
-    r"exceedance|exceeded|frequency|occasions|of the time", re.I
+    r"exceedance|exceeded|exceeding|frequency|occasions|of the time|"
+    # "objectives met" and "compliance" count OCCASIONS a limit was satisfied,
+    # which is the same kind of number as an exceedance and the opposite kind
+    # from a removal efficiency. Brantford's 1962 "the objective for BOD was
+    # exceeded only 20 per cent of the time" reached the chart as BOD removal
+    # 20% -- an excellent year drawn as a failing plant. "exceeded" was already
+    # here; "exceeding" and "objectives met" were the spellings that slipped
+    # past it.
+    r"objectives?\s+(?:met|achieved|satisfied)|compliance|complied",
+    re.I,
 )
 
 _MEASURE_PATTERNS: list[tuple[re.Pattern[str], str]] = [
@@ -289,10 +298,29 @@ _MEASURE_PATTERNS: list[tuple[re.Pattern[str], str]] = [
 
 #: A unit is decisive when the words are ambiguous: whatever a name says, a value
 #: in "%" is a removal or fraction, and one in mg/L is a concentration.
+#: Wording that states a rate even when the unit does not. Kept apart from
+#: _MEASURE_PATTERNS because it answers a narrower question: may a bare volume
+#: be read as a total here.
+_RATE_WORDING = re.compile(
+    r"(?<![a-z])(daily|per day|hourly|per hour|monthly|per month|"
+    r"per capita|per minute)(?![a-z])", re.I)
+
+
 _UNIT_MEASURE: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"^\s*(%|percent|per cent)\s*$", re.I), "removal"),
     (re.compile(r"mg\s*/\s*[l1i]|ppm", re.I), "concentration"),
-    (re.compile(r"/\s*(day|d|month|hour|min)\b|mgd|gpm|scfm", re.I), "rate"),
+    (re.compile(r"/\s*(day|d|month|hour|min)(?![a-z])|mgd|gpm|scfm", re.I), "rate"),
+    # A bulk mass or volume is a TOTAL, whatever the wording says. "A total of
+    # 2,398.4 tons of BOD was removed in 1966" and "BOD removal efficiency was
+    # 94%" both say "removal", and they are a mass and a ratio -- so they shared
+    # an identity and the chart drew whichever group was larger. Three tonnages
+    # outnumbered three percentages, and Brantford's BOD removal series was
+    # published in tonnes.
+    (re.compile(r"^\s*(?:\d[\d,.]*\s*)?"
+                r"(tons?|tonnes?|lbs?|pounds?|kg|kilograms?|grams?|"
+                r"gallons?|million gallons|litres?|liters?|"
+                r"cubic (?:feet|foot|metres?|meters?)|cu\.? ?ft\.?)"
+                r"\s*$", re.I), "total"),
 ]
 
 
@@ -324,6 +352,25 @@ class Parameter:
         return other is not None and self.key == other.key
 
 
+#: Everything from a ratio's "per" onward. Written with a lookahead rather
+#: than a word-boundary escape: this project has lost hours three times to a
+#: `\b` becoming a literal backspace byte in a shell heredoc.
+#: ...but only where "per" introduces a QUANTITY, which is what makes the rest
+#: of the name a denominator. "per lb BOD removed" and "per pound volatile
+#: matter" normalise by a mass and the substance is whatever came before them.
+#: "per capita", "per month", "per cent" and "per day" are qualifiers -- they
+#: say what kind of number it is, not what it is of -- and stripping those lost
+#: "Daily Per Capita Flow" entirely, since there the qualifier sits in front of
+#: the substance rather than after it.
+_RATIO_DENOMINATOR = re.compile(
+    r"(?<![a-z])per\s+"
+    r"(?:\d[\d,.]*\s+)?"
+    r"(?:lb|lbs|pound|pounds|ton|tons|tonne|tonnes|kg|kilogram|kilograms|"
+    r"gram|grams|gallon|gallons|million\s+gallons|litre|litres|liter|liters|"
+    r"cubic\s+\w+|acre|acres|hectare|hectares|foot|feet|square\s+\w+)"
+    r"(?![a-z]).*$", re.I)
+
+
 def resolve(name: str, unit: str | None = None) -> Parameter | None:
     """Canonical parameter for a raw name, using the unit to disambiguate.
 
@@ -338,9 +385,27 @@ def resolve(name: str, unit: str | None = None) -> Parameter | None:
     if not t:
         return None
 
+    # "X per Y" measures X, not Y. Without this, "CUBIC FEET AIR PER LB BOD
+    # REMOVED" resolved to bod/removal on the strength of the word BOD, and
+    # Brantford's BOD-removal chart plotted an air-supply ratio: twelve monthly
+    # readings around 1,200 cubic feet, outnumbering the two real removal
+    # percentages, so the majority rule then labelled the axis in cubic feet and
+    # the series was wrong rather than merely mislabelled.
+    #
+    # This is the same greedy-substring failure that once made "natural gas
+    # production" resolve to digester gas. The denominator of a ratio is the
+    # thing being normalised BY, and it is never what the number measures.
+    #
+    # The denominator is stripped for the SUBSTANCE only. The measure still
+    # reads the whole name, because "per month" and "per capita" say what KIND
+    # of number this is even when they say nothing about what it is of --
+    # stripping them everywhere turned "chlorine used per month" from a rate
+    # into a concentration and lost "Daily Per Capita Flow" entirely.
+    head = _RATIO_DENOMINATOR.sub("", t).strip() or t
+
     substance = None
     for needle, canon in _SUBSTANCE:
-        if re.search(rf"(?<![a-z]){re.escape(needle)}(?![a-z])", t):
+        if re.search(rf"(?<![a-z]){re.escape(needle)}(?![a-z])", head):
             substance = canon
             break
     if substance is None:
@@ -359,10 +424,20 @@ def resolve(name: str, unit: str | None = None) -> Parameter | None:
 
     # Otherwise the unit overrules the wording. "BOD removal" reported in mg/L is
     # a concentration whatever the label claims, and a value in "%" is not.
+    #
+    # With one exception, which the flow series taught: a BARE mass or volume
+    # means a total only when the name does not already say otherwise. "Daily
+    # flow: 6.12 million gallons" carries its rate in the wording and not in the
+    # unit, and letting the unit win moved a day's flow into the annual series.
+    # A "/day" in the unit still decides, because that is the unit disagreeing
+    # rather than merely being silent.
+    says_rate = bool(_RATE_WORDING.search(t))
     measure = None
     if unit:
         for pat, m in _UNIT_MEASURE:
             if pat.search(str(unit)):
+                if m == "total" and says_rate:
+                    continue
                 measure = m
                 break
 

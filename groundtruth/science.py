@@ -514,6 +514,61 @@ def find_suspect_readings(points: list[tuple[float, float, float]]) -> list[str]
     return out
 
 
+def _one_dimension(
+    raw: list[tuple[float, float, str | None, float]],
+) -> tuple[list[tuple[float, float, str | None, float]], list[dict[str, Any]], str]:
+    """Keep the readings that measure the same KIND of thing, reject the rest.
+
+    `parameters.resolve` decides a substance and a measure, and that is not
+    enough to make a series. Brantford's BOD-removal chart drew four different
+    quantities on one axis:
+
+        BOD exceeding objective                20 percent      a frequency
+        BOD objectives met                     55 percent      a frequency
+        BOD removed                        1604.9 tons         a mass
+        CUBIC FEET AIR PER LB BOD REMOVED    1149 cubic feet   an air ratio
+
+    ...and labelled the axis "%" because the first convertible reading happened
+    to be a percentage, so the live portal showed "BOD removal · % = 1149".
+
+    So the series is partitioned by base unit and the largest group wins. The
+    others are rejected with a reason rather than dropped, because a page that
+    shows only what it kept teaches nobody where it fails -- and because a
+    minority group is often the more interesting measurement, not a mistake.
+
+    Ties go to whichever group appears first, which is arbitrary and rare; the
+    rejection list makes it visible either way.
+    """
+    from .units import to_base
+
+    if not raw:
+        return raw, [], ""
+
+    groups: dict[str, list[tuple[float, float, str | None, float]]] = {}
+    for row in raw:
+        q = to_base(1.0, row[2])
+        groups.setdefault(q.unit if q is not None else (row[2] or ""), []).append(row)
+
+    if len(groups) <= 1:
+        only = next(iter(groups), "")
+        return raw, [], only
+
+    winner = max(groups, key=lambda u: len(groups[u]))
+    rejects: list[dict[str, Any]] = []
+    for unit_key, rows in groups.items():
+        if unit_key == winner:
+            continue
+        for year, value, unit_raw, _conf in rows:
+            rejects.append({
+                "year": int(year), "value": value, "unit": unit_raw,
+                "why": (f"measured in {unit_raw!r}, which is not comparable with "
+                        f"the {winner!r} this series is in -- the parameter table "
+                        "puts them under one name and they are different "
+                        "quantities"),
+            })
+    return groups[winner], rejects, winner
+
+
 def series_from_records(
     records: Sequence[Record],
     *,
@@ -569,19 +624,9 @@ def series_from_records(
             continue
         raw.append((year, float(r.value), r.unit, float(r.confidence)))
 
+    raw, dimension_rejects, unit = _one_dimension(raw)
     points, assumptions, rejected = normalize_series(raw, parameter=parameter)
-
-    unit = ""
-    if points:
-        from .units import to_base
-        for _y, _v, _c in points:
-            break
-        # Report the base unit the series settled on, for labelling a chart axis.
-        for _year, _value, _u, _conf in raw:
-            q = to_base(1.0, _u)
-            if q is not None:
-                unit = q.unit
-                break
+    rejected = list(dimension_rejects) + list(rejected)
 
     # One report per year: keep the most confident reading rather than letting a
     # page that states a value twice weight it double.

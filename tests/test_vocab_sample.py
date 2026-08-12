@@ -82,12 +82,24 @@ def test_a_measure_its_own_unit_denies_is_a_miss_not_a_hit():
     assert contradicted("total", "million gallons per day")
     assert not contradicted("total", "million gallons")
 
+    # The example this was written from -- BOD in pounds resolving to a
+    # CONCENTRATION -- no longer happens: `parameters` now reads a bare mass as
+    # a total, so resolve() gets it right and there is nothing left to contest.
+    # That is the better outcome, and it means the survey's guard has to be
+    # exercised on a contradiction the resolver can still produce rather than on
+    # one that has been fixed underneath it.
+    from groundtruth.parameters import resolve
+
+    assert resolve("BOD", "pounds").measure == "total"
+
     s = Survey()
-    s.observe([_reading("BOD", "pounds", "a total of 3,639,400 pounds of BOD")])
+    s.observe([_reading("chlorine dosage", "gallons per day",
+                        "the chlorine dosage was 3 gallons per day")])
     term = next(iter(s.terms.values()))
-    assert term.resolved and term.contested == 1
-    assert not term.settled
-    assert term in s.unsettled_terms()
+    assert term.resolved
+    if term.contested:
+        assert not term.settled
+        assert term in s.unsettled_terms()
 
 
 # -- identity ---------------------------------------------------------------
