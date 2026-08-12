@@ -254,6 +254,24 @@ def _ordered_vocabulary() -> list[tuple[str, str]]:
 
 _SUBSTANCE = _ordered_vocabulary()
 
+
+def rebuild() -> None:
+    """Re-derive the match order after VOCABULARY has been edited at runtime.
+
+    `_SUBSTANCE` is a snapshot taken at import, so adding a term to VOCABULARY
+    changes the table and not the answer. Appending ("cordwood", "cordwood")
+    and asking for "cordwood cut" still returns `timber cut` until this runs.
+
+    It matters because the vocabulary is meant to be built in rounds: sample,
+    harvest what did not resolve, accept the good proposals, measure how much
+    that improved things, sample again. Without a rebuild, every round after the
+    first scores against the round-one table and reports that nothing improved
+    -- so the run would stop early, on evidence that was an artefact of module
+    import order, and conclude the vocabulary was finished.
+    """
+    global _SUBSTANCE
+    _SUBSTANCE = _ordered_vocabulary()
+
 #: Wording that means the number counts OCCASIONS rather than quantity.
 #: Checked before anything else in resolve(), because an exceedance count and a
 #: removal efficiency are both percentages and the unit cannot separate them.

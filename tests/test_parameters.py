@@ -107,3 +107,27 @@ def test_exceedance_frequency_is_not_removal():
 def test_genuine_removal_still_resolves_as_removal():
     assert resolve("BOD removal", "%").key == "bod|removal"
     assert resolve("suspended solids removal", "%").key == "suspended solids|removal"
+
+
+def test_vocabulary_edits_take_effect_only_after_rebuild():
+    """The match order is a snapshot, and forgetting that ends a run early.
+
+    The vocabulary is meant to be built in rounds -- sample, harvest what did
+    not resolve, accept proposals, measure the improvement, sample again. The
+    ordered term list is bound at import, so a round that accepts new terms and
+    re-scores without rebuilding measures the previous round's table and reports
+    a marginal gain of exactly zero. Every stratum would then hit its stopping
+    rule simultaneously, on evidence that was an artefact of import order.
+    """
+    import groundtruth.parameters as P
+
+    original = list(P.VOCABULARY.get("forestry", []))
+    try:
+        assert P.resolve("cordwood cut", "cords") is not None
+        P.VOCABULARY.setdefault("forestry", []).append(("cordwood", "cordwood"))
+        assert P.resolve("cordwood cut", "cords").substance != "cordwood"
+        P.rebuild()
+        assert P.resolve("cordwood cut", "cords").substance == "cordwood"
+    finally:
+        P.VOCABULARY["forestry"] = original
+        P.rebuild()
