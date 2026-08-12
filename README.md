@@ -168,6 +168,12 @@ of those are keyless and free, and none of them are in the core — the extracti
 and verification path has no network dependency beyond the archive itself, so a
 stranger can check a measurement without standing up a web stack.
 
+What *is* local, once a page has been fetched once, is the page itself.
+`data/cache` holds the OCR and word boxes of everything read, so verification,
+the dispute ledger and the frontier all answer from disk. A fresh clone has no
+cache (it is gitignored and grows without bound), so the first run of anything
+needs the network; after that, most of the portal does not.
+
 Share what you have read, and take what somebody else read:
 
 ```bash
