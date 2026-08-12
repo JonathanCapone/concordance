@@ -51,8 +51,12 @@ scanner wreckage — `TABLE I FLOW - MILX.IQN GALLOLS ... AVa. DAILY r .LOW` —
 returned 27 measurements and **every one of the twelve values that survived in
 the OCR, exactly**, rebuilt the header row the scanner had eaten, and filed each
 value under its month. Across four documents as unlike each other as Statistics
-Canada salt production in 2003, Alberta Liquor Control in 1942 and a Simcoe well
-supply report in 1990: **58 of 58 values are on the page.**
+Canada salt production in 2003, a Simcoe well supply report in 1990 and the
+Georgian Bay Ship Canal Survey of 1909: across **eleven table pages from seven
+different collections it recovered 192 measurements**, a median of 20 a page,
+and 79% of those values can be found in the page's own surviving OCR. The rest
+are on pages whose text layer was destroyed, which is the case the path exists
+for and the case its own corroboration cannot reach.
 
 That is the strongest form of "only possible now" I can give you. **The tables
 were never lost. They were merely unreadable by the software that existed when
@@ -69,7 +73,8 @@ Not a proposal. A measured artifact, running today:
 | Blind page (annotated before any run) | **88% / 88%** |
 | Kind accuracy — measurement vs design spec vs regulatory limit | **100%** |
 | Quotes failing verification across 286 records | **0** |
-| Table values found on their own scanned page | **58 of 58**, four documents, 1942–2003 |
+| Table measurements recovered | **192** from 11 pages, 7 collections, 1880–2003 |
+| ...of which found in the page's surviving OCR | **151 of 192 (79%)** |
 | Measurements settled / contested / unsupported | **736 / 78 / 17** across 1,039 claims, with nobody adjudicating |
 | Code / tests | 426 tests · zero required dependencies in the core |
 
@@ -152,8 +157,9 @@ The earlier draft of this application said roughly $1,500, and that figure was
 the prose path alone against a corpus a third smaller than it turned out to be.
 The honest version is that **a complete read sits at the edge of a $5,000
 fellowship rather than comfortably inside it**, and the expected yield is about
-122 million measurements, 61% of them from the table pages that are only 27% of
-the work.
+130 million measurements, **64% of them from the table pages that are only 27%
+of the work** — which is the number deciding whether a cheaper text-only run is
+worth doing at all.
 
 I would rather show you that arithmetic than the flattering version. The first
 thing a funded run should do is measure rented throughput on a thousand pages
