@@ -64,16 +64,35 @@ Measured over all 104,241 items, not assumed:
 | Language field spellings for two languages | 8 (`eng`/`English`/`Eng`/`ENG`/`fre`/`fra`/`French`/`FRA`) |
 | Ontario / Alberta / BC items | 12,467 / 8,671 / 468 |
 
-Page classes, from a 219-item random sample:
+Because most documents mix narrative and tables in one file, routing happens per **page**. A
+document-level classifier would send a 1969 annual report down one path and discard whichever half
+didn't match.
 
-| Class | Share | Extraction path |
-|---|---|---|
-| **Mixed** | **55.3%** | Router decides **per page** |
-| Narrative | 35.2% | Prose — works today |
-| Tabular | 9.6% | Vision, off the page image |
+## How much of it is worth reading
 
-Because most documents are *mixed*, routing happens per **page**. A document-level classifier would
-send a 1969 annual report down one path and discard whichever half didn't match.
+Measured over a random sample of 120 items and 23,729 pages:
+
+| | |
+|---|---|
+| Items carrying measurements | **90.8%** (95% CI 84.3–94.8%) |
+| Pages worth reading | **53.1%** (95% CI 52.5–53.8%) |
+| Extrapolated to the collection | **11.6–11.9 million pages** |
+
+Routing, per page: skip 46.9% · prose 28.1% · table 16.5% · figure 9.5% · standard 1.7% · map 0.9%.
+
+Two things follow, and both change the plan rather than decorate it.
+
+**Nine out of ten documents in this archive contain measurements.** The premise holds.
+
+**But local inference cannot touch it.** At the throughput measured on a consumer GPU, reading
+those pages is roughly **56 machine-years**. A corpus-wide pass is therefore not a local job and
+should never be described as one: it is a funded batch run, performed once, after which the
+resulting dataset costs everyone else nothing. That is a fact about the work, not a caveat hidden
+in a footnote.
+
+**Tables and figures are 26% of pages**, not the 10% estimated from an earlier document-level
+sample. The vision path is necessary rather than optional — and Owen Sound's 1973 and 1974 reports,
+which contain *zero* prose pages between them, are the proof.
 
 ## Four kinds of record
 
@@ -184,12 +203,17 @@ No key is ever committed to this repo or used by the public instance.
 ```
 groundtruth/
   models.py      record types, provenance, page text with word boxes
-  archive.py     Internet Archive adapter: index, OCR, real page boundaries
+  archive.py     Internet Archive adapter: index, OCR, real page boundaries, page images
   router.py      per-page classification into extraction paths
   extract.py     path A — reading measurements out of prose
+  vision.py      path B — reading the tables OCR destroyed, off the scan
   parameters.py  what was measured, resolved to a canonical quantity
+  places.py      where it was measured, resolved across 150 years of renaming
   units.py       the methods-drift layer: convert what is comparable, refuse the rest
   science.py     trend with reading-uncertainty, changepoint, silence
+  watershed.py   who was downstream of whom
+  providers.py   external data, keyless first, tiers enforced by tests
+  tools.py       the archive-native tool layer an agent needs to be useful here
   repair.py      Tier 0 — proposed metadata corrections for the whole collection
   score.py       the accuracy harness
 data/
@@ -217,18 +241,36 @@ small numbers that fall when a plant improves, so it looked entirely reasonable.
 
 ## Status
 
-Early, but measured. The archive adapter, page router, prose extractor, accuracy harness and
-science layer work end to end on real documents, with a published accuracy number.
+Early, but measured. Reading, routing, extraction, accuracy scoring, unit and parameter resolution,
+place resolution, the science layer, the watershed network, the provider layer and the agent tool
+layer all work end to end on real documents. 190 tests. Zero required dependencies.
 
-The silence detector produces its first controlled finding: of 112 Ontario municipalities filing
-water pollution control plant reports, **72 go silent in the same year, 1975**. That pattern is
-equally consistent with "digitisation stopped there", so it was checked -- Ontario Ministry of the
-Environment publications in the collection run 1,449 before 1975 and 3,800 after, at a steady
-83-141 items per year straight through the cliff. The archive did not stop. This one report series
-ended.
+**What has actually been found, each with its own control attached:**
 
-Not built: vision extraction (tables, figures, maps), entity resolution across 150 years, the
-provider framework, the watershed network, and the map portal.
+- **72 of 107 Ontario municipalities stop filing water pollution control plant reports in 1975.**
+  That pattern usually means a scanning boundary, so it was checked: Ministry of the Environment
+  publications in the same collection run 1,449 before 1975 and 3,800 after, at a steady 83–141
+  items a year straight through. The archive kept growing. This series died.
+- **539 of 1,119 Ontario river gauges are discontinued** — 48%, from live ECCC data. The same
+  winding-down of measurement, still happening.
+- **Owen Sound, 1963–1972**: 120 readings recovered from 12 scanned reports, BOD removal rising
+  from 46.4% to 64%.
+- **13,429 metadata corrections proposed** across all 104,241 items.
+
+**The first trend the project produced was a refusal, and that is the point.** Owen Sound's daily
+flow rises 175,000 gal/day per year — and the same line reports p=0.71, a 90% interval spanning
+zero, only 62% of bootstrap replicates agreeing on direction once reading confidence is carried
+through, and two of six points flagged as probable scan damage. A naive pipeline publishes the
+slope.
+
+**Not built:** figure extraction (reading a plotted line back into numbers), corpus-scale
+extraction, and the agent loop itself — the tool layer exists, the agent does not.
+
+**Known limitations, stated rather than discovered later:** the local vision model invents table
+structure and is not good enough for this work; the Pettitt changepoint test is far too
+conservative at the sample sizes annual reports give, so a null result from it means nothing; the
+watershed network is name-matching and drainage area, not routed hydrology, and should be checked
+against the National Hydro Network before any claim about a specific community's water.
 
 ## Licence
 
