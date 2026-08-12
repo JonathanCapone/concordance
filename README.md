@@ -234,9 +234,21 @@ groundtruth/
   science.py     trend with reading-uncertainty, changepoint, silence
   watershed.py   who was downstream of whom
   providers.py   external data, keyless first, tiers enforced by tests
+  decisions.py   who moved what, who seconded, and how each person voted
+  dating.py      publication year from the text, and whether a value's year is safe
+  citations.py   a picture of the patch of scan a number is written on
+  contribute.py  verifying a bundle of readings against the pages they cite
+  disputes.py    open contribution and correction, with nobody adjudicating
+  library.py     ask for a place; if nobody has read it, your machine does
+  frontier.py    what reading a document would unlock, and for whom
+  vocab_builder.py  proposals a person accepts or rejects; never automatic
+  vocab_sample.py   deciding when enough of the vocabulary has been seen
   tools.py       the archive-native tool layer an agent needs to be useful here
+  honu.py        the agent itself, over that toolset
   repair.py      Tier 0 — proposed metadata corrections for the whole collection
   score.py       the accuracy harness
+  portal.py      the map portal, forked from OMEGA-wave
+  server.py      a running instance you can click, standard library only
 data/
   gold/          hand-checked ground truth
   results/       published runs: accuracy, metadata proposals, silence report
@@ -262,9 +274,10 @@ small numbers that fall when a plant improves, so it looked entirely reasonable.
 
 ## Status
 
-Early, but measured. Reading, routing, extraction, accuracy scoring, unit and parameter resolution,
-place resolution, the science layer, the watershed network, the provider layer and the agent tool
-layer all work end to end on real documents. 190 tests. Zero required dependencies.
+Early, but measured. Reading, routing, prose and table extraction, accuracy scoring, unit and
+parameter resolution, place resolution, the science layer, the watershed network, the provider
+layer, the decision record, the citation crops, the dispute ledger and the agent all work end to
+end on real documents. 403 tests. Zero required dependencies in the core.
 
 **What has actually been found, each with its own control attached:**
 
@@ -284,14 +297,24 @@ zero, only 62% of bootstrap replicates agreeing on direction once reading confid
 through, and two of six points flagged as probable scan damage. A naive pipeline publishes the
 slope.
 
-**Not built:** figure extraction (reading a plotted line back into numbers), corpus-scale
-extraction, and the agent loop itself — the tool layer exists, the agent does not.
+**Tables are now readable, and that changed the plan.** llava invented table structure and was
+worse than useless, because a fabricated table is indistinguishable from a recovered one. A newer
+local model does not: given the Brantford 1962 flow table, whose OCR reads `TABLE I FLOW -
+MILX.IQN GALLOLS`, it returned every one of the twelve values that survived in the OCR, exactly,
+and rebuilt the header row the scanner had destroyed. Across four documents spanning 1942 to 2003,
+**58 of 58 values are on the page.** The cost is nine minutes a page on an RTX 2080 where only 18%
+of the model fits in VRAM, so this is a rented-hardware job rather than a local one.
 
-**Known limitations, stated rather than discovered later:** the local vision model invents table
-structure and is not good enough for this work; the Pettitt changepoint test is far too
-conservative at the sample sizes annual reports give, so a null result from it means nothing; the
-watershed network is name-matching and drainage area, not routed hydrology, and should be checked
-against the National Hydro Network before any claim about a specific community's water.
+**Not built:** figure extraction — reading a plotted line back into numbers — and corpus-scale
+extraction, which is what the whole cost model is about.
+
+**Known limitations, stated rather than discovered later:** the Pettitt changepoint test is far
+too conservative at the sample sizes annual reports give, so a null result from it means nothing;
+the watershed network is name-matching and drainage area, not routed hydrology, and should be
+checked against the National Hydro Network before any claim about a specific community's water;
+verification catches fabrication but not misreading, so a value filed as influent when the page
+meant effluent passes every check this project has — which is why contested readings are shown
+side by side with a picture of each sentence rather than resolved.
 
 ## The work log
 

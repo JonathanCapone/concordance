@@ -9,12 +9,18 @@ routing, firmware builds, acoustic messaging and storm tracking, none of which
 exist here. Forking it wholesale would produce a menu full of controls wired to
 nothing, which is worse than a smaller portal that works.
 
-So the chrome is OMEGA's and the four views are this project's:
+So the chrome is OMEGA's and the views are this project's:
 
-    Observe   where the measurements are
-    Record    one place, read out of the scans
-    Silence   what stopped being measured, and when
-    Verify    how accurate the reading is, against hand-checked ground truth
+    Observe     where the measurements are
+    Record      one place, read out of the scans -- every number can show a
+                picture of the sentence it came from
+    Silence     what stopped being measured, and when
+    Rivers      who was downstream of whom, and what the method refused to link
+    Verify      how accurate the reading is, against hand-checked ground truth
+    Decisions   who moved what, who seconded, and how each person voted
+    Disputed    measurements two readings disagree about, shown side by side
+                with both crops, because nobody here adjudicates
+    Ask Honu    the agent, over the whole toolset
 
 This is the SERVING layer, and the one place allowed outside dependencies. The
 core stays dependency-free: nobody should need a mapping library installed to
