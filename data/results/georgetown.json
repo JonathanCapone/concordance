@@ -1,7 +1,7 @@
 {
   "place": "Georgetown",
   "model": "ollama:gemma4:12b",
-  "n_records": 128,
+  "n_records": 230,
   "pages_attempted": [
     "GEORGETOWNWATERP00SNSN19135.ome#3",
     "GEORGETOWNWATERP00SNSN19135.ome#6",
@@ -19,7 +19,19 @@
     "GEORGETOWNWATERP00SNSN19133.ome#12",
     "GEORGETOWNWATERP00SNSN19133.ome#13",
     "GEORGETOWNWATERP00SNSN19133.ome#14",
-    "GEORGETOWNWATERP00SNSN19133.ome#20"
+    "GEORGETOWNWATERP00SNSN19133.ome#20",
+    "GEORGETOWNWATERP00SNSN19133.ome#21",
+    "GEORGETOWNWATERP00SNSN19133.ome#30",
+    "GEORGETOWNWATERP00SNSN19136.ome#3",
+    "GEORGETOWNWATERP00SNSN19136.ome#9",
+    "GEORGETOWNWATERP00SNSN19136.ome#10",
+    "GEORGETOWNWATERP00SNSN19136.ome#11",
+    "GEORGETOWNWATERP00SNSN19136.ome#13",
+    "GEORGETOWNWATERP00SNSN19136.ome#14",
+    "GEORGETOWNWATERP00SNSN19136.ome#21",
+    "GEORGETOWNWATERP00SNSN19136.ome#22",
+    "georgetownwaterp23285#3",
+    "georgetownwaterp23285#11"
   ],
   "records": [
     {
@@ -3477,6 +3489,2760 @@
         "ocr_confidence": 0.3135
       },
       "key": "4a009dc80f6b4dafa373"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 0.84,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "The average daily flow was 0. 84 million gallons compared to 0. 89 million gallons per day in 1963, for a decrease of 5.6%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "81443ed226cec115776a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 0.89,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "The average daily flow was 0. 84 million gallons compared to 0. 89 million gallons per day in 1963, for a decrease of 5.6%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "fa1b67de122ecaecfa68"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow decrease percentage",
+      "value": 5.6,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "The average daily flow was 0. 84 million gallons compared to 0. 89 million gallons per day in 1963, for a decrease of 5.6%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "236f3ccdce94af89f332"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total raw sewage treated",
+      "value": 307.0,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "307 million gallons of raw sewage, a combination of both in- dustrial and domestic wastes, received complete treatment.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "f957c45b81e8233e8745"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum 24 hour flow",
+      "value": 2.072,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "The maximum 24 hour flow was 2. 072 million gallons with maximum and minimum flow rates of 4. 15 and 0. 10 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "ee63818cca999d3824d8"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum flow rate",
+      "value": 4.15,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "The maximum 24 hour flow was 2. 072 million gallons with maximum and minimum flow rates of 4. 15 and 0. 10 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "c571c01d53301b85b7c7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "minimum flow rate",
+      "value": 0.1,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "The maximum 24 hour flow was 2. 072 million gallons with maximum and minimum flow rates of 4. 15 and 0. 10 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "643dd84c17af78d71c51"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow exceeded design frequency",
+      "value": 5.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "During 1963, the flow exceeded design about 5% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "5689c6df010c75563ec2"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow exceeded design frequency",
+      "value": 2.5,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6377,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19133.ome",
+        "page": 21,
+        "source_text": "In 1964, this has been reduced to about 2 1/2.% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19133.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3426
+      },
+      "key": "0a0f0c8b8d21e3dc385b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sewage treated",
+      "value": 346.54,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "A total of 346. 54 million gallons of sewage was treated during the year at",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "6f395273b6ec98c3b4b2"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total operating cost",
+      "value": 31209.58,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "a total operating cost of $31, 209. 58.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "3d02b332e216bdeaf09c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost per million gallons",
+      "value": 90.06,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "The operating cost per million gal-lons and the cost per pound of BOD removed were $90. 06 and $0. 16 res-pectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "80abc1dfff57dc7b17b4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "cost per pound of BOD removed",
+      "value": 0.16,
+      "unit": "$/lb",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "The operating cost per million gal-lons and the cost per pound of BOD removed were $90. 06 and $0. 16 res-pectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "b32959299808cb55fd01"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 0.95,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "The average daily flow during the year was 0. 95 million gallons which",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "95328d037998a67e4ef7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 0.94,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "was an increase of 13. 1 percent as compared to the average daily flow of 0.94 million gallons in 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "a16f1bbec81c18c57e3f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow increase",
+      "value": 13.1,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "was an increase of 13. 1 percent as compared to the average daily flow of 0.94 million gallons in 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "cef0891e383b5fe93cbe"
+    },
+    {
+      "kind": "observation",
+      "parameter": "capacity exceedance frequency",
+      "value": 5.5,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "Average daily flows exceeded the design average daily flow 5. 5 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "deb6312da590211c7a4b"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage BOD",
+      "value": 200.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "The raw sewage BOD did not exceed the design value of 200 ppm while the",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "6fed78ab17262703926d"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage suspended solids",
+      "value": 200.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "raw sewage suspended solids concentration exceeded the design value of 200 ppm 40% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "d9c319025e5faeb73543"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage suspended solids exceedance frequency",
+      "value": 40.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "raw sewage suspended solids concentration exceeded the design value of 200 ppm 40% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "ef807f22a21d9ad972c7"
+    },
+    {
+      "kind": "standard",
+      "parameter": "effluent BOD",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "The final effluent BOD and suspended solids concentrations exceeded the Commission objective of 15 ppm, 32 percent and 67 percent of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "0ba0e22b38ec76d231b4"
+    },
+    {
+      "kind": "standard",
+      "parameter": "effluent suspended solids",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "The final effluent BOD and suspended solids concentrations exceeded the Commission objective of 15 ppm, 32 percent and 67 percent of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "dbc29daeb7a7d6a24319"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent BOD exceedance frequency",
+      "value": 32.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "The final effluent BOD and suspended solids concentrations exceeded the Commission objective of 15 ppm, 32 percent and 67 percent of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "1d1c3cab0d57295cd56e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent suspended solids exceedance frequency",
+      "value": 67.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3421,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 9,
+        "source_text": "The final effluent BOD and suspended solids concentrations exceeded the Commission objective of 15 ppm, 32 percent and 67 percent of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3683
+      },
+      "key": "3f8c92905f1a636424f3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total cost",
+      "value": 823297.68,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3211,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 11,
+        "source_text": "58-S-17 $823,297.68",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2846
+      },
+      "key": "a4765393c6c0c53e4da5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total cost",
+      "value": 44158.21,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3211,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 11,
+        "source_text": "61-S-77 $ 44,158.21",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2846
+      },
+      "key": "4d34c667592fac17fa31"
+    },
+    {
+      "kind": "design",
+      "parameter": "pump power",
+      "value": 50.0,
+      "unit": "hp",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Flomatcher controlled variable speed sewage pumps",
+      "confidence": 0.3437,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 13,
+        "source_text": "Two Flomatcher controlled variable speed 50 hp sewage pumps lift the sewage to an elevated flowmeter.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3746
+      },
+      "key": "66045c03145bef85e57c"
+    },
+    {
+      "kind": "design",
+      "parameter": "flume throat diameter",
+      "value": 12.0,
+      "unit": "inch",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Par shall flume",
+      "confidence": 0.3437,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 13,
+        "source_text": "Flow measurements are continuously recorded from signals originating from the sewage passing through a 12 inch throat Par shall flume.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3746
+      },
+      "key": "4c74c6335c84ea1e3b09"
+    },
+    {
+      "kind": "design",
+      "parameter": "detritor tank size",
+      "value": 12.0,
+      "unit": "foot",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Dorr-type W. A. detritor",
+      "confidence": 0.3437,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 13,
+        "source_text": "The 12 foot square, flow through tank is equipped with a raking mechanism to remove the settled grit.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3746
+      },
+      "key": "0daf5557b6e49e1b87a0"
+    },
+    {
+      "kind": "design",
+      "parameter": "primary clarifier dimensions",
+      "value": 35.0,
+      "unit": "ft. square x 10 ft. side wall depth",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "primary clarifier tanks",
+      "confidence": 0.3437,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 13,
+        "source_text": "Two 35 ft. square x 10 ft. side wall depth concrete primary clarifier tanks receive gravity flow from the detritor.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3746
+      },
+      "key": "3e0686da668792f5d993"
+    },
+    {
+      "kind": "design",
+      "parameter": "design flow",
+      "value": 1.5,
+      "unit": "MGD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "primary clarifiers",
+      "confidence": 0.3437,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 13,
+        "source_text": "The retention time in the primary clarifiers, at design flow of 1. 5 MGD, is 2. 5 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3746
+      },
+      "key": "b60de77208b9f70148a9"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention time",
+      "value": 2.5,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "primary clarifiers",
+      "confidence": 0.3437,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 13,
+        "source_text": "The retention time in the primary clarifiers, at design flow of 1. 5 MGD, is 2. 5 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3746
+      },
+      "key": "4da764ef7ce0f33bbef2"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration tank dimensions",
+      "value": 28.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Primary effluent is mixed with return\nactivated sludge and aerated in two 28 ft.\nx 112 ft. x 13. 25 ft. deep, four cell\nmechanical aeration tanks.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "22109442a961f2ecb222"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration tank dimensions",
+      "value": 112.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Primary effluent is mixed with return\nactivated sludge and aerated in two 28 ft.\nx 112 ft. x 13. 25 ft. deep, four cell\nmechanical aeration tanks.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "900e4c4034bccf58bdc4"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration tank depth",
+      "value": 13.25,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Primary effluent is mixed with return\nactivated sludge and aerated in two 28 ft.\nx 112 ft. x 13. 25 ft. deep, four cell\nmechanical aeration tanks.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "f97c7afa550afc3c75d3"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration tank count",
+      "value": 4.0,
+      "unit": "cell",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Primary effluent is mixed with return\nactivated sludge and aerated in two 28 ft.\nx 112 ft. x 13. 25 ft. deep, four cell\nmechanical aeration tanks.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "ab12b8900b276e26640c"
+    },
+    {
+      "kind": "design",
+      "parameter": "aerator count",
+      "value": 8.0,
+      "unit": "units",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Air is\nsupplied by eight Ames Crosta Simplex\nhigh intensity mechanical aerators.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "45140f6bafe6bce9aee9"
+    },
+    {
+      "kind": "design",
+      "parameter": "aeration retention time",
+      "value": 7.5,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Aeration\nretention time is approximately 7. 5\nhours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "ce167471b406ec42862b"
+    },
+    {
+      "kind": "design",
+      "parameter": "clarifier dimensions",
+      "value": 40.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "final clarifiers",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Two 40 ft. square by 10 ft. SWD con-\ncrete clarifiers receive gravity flow\nfrom the aeration section.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "c2773b2bceab461f4847"
+    },
+    {
+      "kind": "design",
+      "parameter": "clarifier width",
+      "value": 10.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "final clarifiers",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Two 40 ft. square by 10 ft. SWD con-\ncrete clarifiers receive gravity flow\nfrom the aeration section.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "e04e262f99cc2b36e5cd"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorine contact chamber dimensions",
+      "value": 24.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "chlorine contact chamber",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "It measures 24 ft.\nx 15 ft. x 6 ft. deep and provides a re-\ntention time of 26 minutes at design\nflow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "651215bf15152e39d31a"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorine contact chamber dimensions",
+      "value": 15.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "chlorine contact chamber",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "It measures 24 ft.\nx 15 ft. x 6 ft. deep and provides a re-\ntention time of 26 minutes at design\nflow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "03044bff01da89eeff17"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorine contact chamber depth",
+      "value": 6.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "chlorine contact chamber",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "It measures 24 ft.\nx 15 ft. x 6 ft. deep and provides a re-\ntention time of 26 minutes at design\nflow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "d29258ab71a472eef5bd"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention time",
+      "value": 26.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "chlorine contact chamber",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "It measures 24 ft.\nx 15 ft. x 6 ft. deep and provides a re-\ntention time of 26 minutes at design\nflow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "c5e124d2e3765d343d24"
+    },
+    {
+      "kind": "design",
+      "parameter": "gas chlorinator capacity",
+      "value": 150.0,
+      "unit": "lb/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "chlorine contact chamber",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "Chlorine is fed to this tank by a\n150 pound per day capacity gas chlori-\nnator located in the control building.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "1d8dde7fdc689ba4435e"
+    },
+    {
+      "kind": "design",
+      "parameter": "primary digester diameter",
+      "value": 66.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "primary digester",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "A 66 ft. diameter primary digester\nequipped with three mechanical draft\ntube mixers receives all of the sludge\nfrom the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "1d7844314b2a64fb67e7"
+    },
+    {
+      "kind": "design",
+      "parameter": "primary digester capacity",
+      "value": 484800.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "primary digester",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "This unit has a capa -\ncity of 484,800 gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "cbe5e55c699c67c1865a"
+    },
+    {
+      "kind": "design",
+      "parameter": "conditioning tank dimensions",
+      "value": 34.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "conditioning tank",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "A 34 ft. square conditioning tank, having\n134, 000 gallon capacity receives sludge&quot;\nby gravity from the primary digester.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "7ed6deedf2b25efd2fc0"
+    },
+    {
+      "kind": "design",
+      "parameter": "conditioning tank capacity",
+      "value": 134000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "conditioning tank",
+      "confidence": 0.3299,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 14,
+        "source_text": "A 34 ft. square conditioning tank, having\n134, 000 gallon capacity receives sludge&quot;\nby gravity from the primary digester.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3197
+      },
+      "key": "8a2d8e331728cf2cdb8d"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD Reduction",
+      "value": 30.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "BOD Reduction - 30%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "275cbcbe78f114d1a102"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Population",
+      "value": 15000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Design Population - 15, 000 persons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "b316e64f5acb0b7f52c4"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Plant Flow",
+      "value": 1.5,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Design Plant Flow - 1. 5 mgd",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "6d63024cd4fcf44b512a"
+    },
+    {
+      "kind": "design",
+      "parameter": "Per Capita Flow",
+      "value": 100.0,
+      "unit": "gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Per Capita Flow - 100 gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "764ef7652eea982d8de6"
+    },
+    {
+      "kind": "design",
+      "parameter": "Five Day BOD",
+      "value": 200.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Raw Sewage - 200 ppm",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "cad944627a6f893f5a41"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD Removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Removal - 95%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "fec4968494ea182c3733"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids",
+      "value": 200.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Raw Sewage - 200 ppm",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "56c646bcb688578049e7"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Removal - 95%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "751e86b5572ff4d1988f"
+    },
+    {
+      "kind": "design",
+      "parameter": "grit removal",
+      "value": 95.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Removal - 95% of + 65 mesh grit.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "9718035a6a66a36d73a1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Total volume",
+      "value": 24500.0,
+      "unit": "cu. ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Primary Clarifiers",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Total volume - 24, 500 cu. ft. or 153, 000 gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "71f3cb9c7a3d447dc2a2"
+    },
+    {
+      "kind": "design",
+      "parameter": "Total volume",
+      "value": 153000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Primary Clarifiers",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Total volume - 24, 500 cu. ft. or 153, 000 gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "1553c0d4bd54d1f9e3a9"
+    },
+    {
+      "kind": "design",
+      "parameter": "Retention",
+      "value": 2.5,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Primary Clarifiers",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Retention - 2. 5 hours at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "e275bc48f1afb1c022b1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Surface Settling Rate",
+      "value": 612.0,
+      "unit": "Imperial gallons per sq. ft. per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Primary Clarifiers",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Surface Settling Rate - 612 Imperial gallons per sq. ft. per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "31422a1903cf13672f07"
+    },
+    {
+      "kind": "design",
+      "parameter": "Weir Rate",
+      "value": 5360.0,
+      "unit": "Imperial gallons per ft. of weir per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Primary Clarifiers",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Weir Rate - 5, 360 Imperial gallons per ft. of weir per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "45adfd0f88f4ae89df9f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Total volume",
+      "value": 0.495,
+      "unit": "MG",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Aeration Section",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Total volume - 0.495 MG or 79,420 cu. ft.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "f43178450698fbfd3dfb"
+    },
+    {
+      "kind": "design",
+      "parameter": "Total volume",
+      "value": 79420.0,
+      "unit": "cu. ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Aeration Section",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Total volume - 0.495 MG or 79,420 cu. ft.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "2cd0327569167c4aa384"
+    },
+    {
+      "kind": "design",
+      "parameter": "Retention",
+      "value": 7.91,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Aeration Section",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Retention - 7. 91 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "154856a423efdb46384c"
+    },
+    {
+      "kind": "design",
+      "parameter": "Volume",
+      "value": 100000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Final Sedimentation Tanks",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Volume - 100, 000 gallons each or 16,000 cu. ft. each.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "59f7a29a441fe72662f3"
+    },
+    {
+      "kind": "design",
+      "parameter": "Volume",
+      "value": 16000.0,
+      "unit": "cu. ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Final Sedimentation Tanks",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Volume - 100, 000 gallons each or 16,000 cu. ft. each.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "beef06512067197429ad"
+    },
+    {
+      "kind": "design",
+      "parameter": "Retention",
+      "value": 3.2,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Final Sedimentation Tanks",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Retention - 3. 2 hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "dabadbff55ce71d8d2a9"
+    },
+    {
+      "kind": "design",
+      "parameter": "Surface Settling Rate",
+      "value": 470.0,
+      "unit": "gallons per ft. per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Final Sedimentation Tanks",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Surface Settling Rate - 470 gallons per ft. per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "2a0978e4b843a93d74d8"
+    },
+    {
+      "kind": "design",
+      "parameter": "Weir rate",
+      "value": 4700.0,
+      "unit": "gallons per ft. per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Final Sedimentation Tanks",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Weir rate -4, 700 gallons per ft. per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "bb4a9f72e11a5f5bb0fb"
+    },
+    {
+      "kind": "design",
+      "parameter": "Volume",
+      "value": 27000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Chlorine Contact Chamber",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Volume - 27,000 gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "6080709bf618cd402cca"
+    },
+    {
+      "kind": "design",
+      "parameter": "Retention",
+      "value": 26.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Chlorine Contact Chamber",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Retention - 26 minutes",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "28429ca8fdced1669f0d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Volume",
+      "value": 77800.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Primary Digestion Tanks",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Volume - 77,800 cubic feet",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "c5a538baeeb9f1459abe"
+    },
+    {
+      "kind": "design",
+      "parameter": "Volume",
+      "value": 20700.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Secondary Digestion Tanks",
+      "confidence": 0.3228,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 21,
+        "source_text": "Volume - 20,700 cubic feet",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2913
+      },
+      "key": "17c443674237ed1330ab"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 0.95,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "From the graph on page 17 showing the average daily flows, it can be seen that the yearly average for 1965 was 0. 95 million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "11a01ec3026c15c4179c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 0.84,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "Compared to the yearly average of 0. 84 million gallons for 1964, the 1965 yearly average was an increase of 13. 1%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "7e9b4d19591e4265e8a7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow increase percentage",
+      "value": 13.1,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "Compared to the yearly average of 0. 84 million gallons for 1964, the 1965 yearly average was an increase of 13. 1%.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "8f6c19f3fec73d3af906"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum 24 hour flow",
+      "value": 1.33,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "The maximum and the minimum 24 hour flows during 1965 were 1. 33 million gallons and 0. 81 million gallons respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "8f117e9be63910d6008a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "minimum 24 hour flow",
+      "value": 0.81,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "The maximum and the minimum 24 hour flows during 1965 were 1. 33 million gallons and 0. 81 million gallons respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "1397ac764ba302986b36"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow exceeded design average daily flow frequency",
+      "value": 5.5,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "The daily flowexceeded the design average daily flow 5. 5 percent of the time during the year.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "ac0a8c1ac7ab373f27bd"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage BOD below design value frequency",
+      "value": 100.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "It can be seen from the probability graphs of BOD and suspended solids concentrations that the raw sewage BOD was below the design value 100% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "cd96f16a53101011e53a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage suspended solids exceeded design value frequency",
+      "value": 40.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "The suspended solids concentration of the raw sewage exceeded the design value 40% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "d5ded7c32a9847f885f7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "final effluent BOD exceeded Commission objective frequency",
+      "value": 32.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "The final effluent BOD and suspended solids concentrations exceeded the Commission objective of 15 ppm 32 % and 67% of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "74185898759c24778c5e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "final effluent suspended solids exceeded Commission objective frequency",
+      "value": 67.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "The final effluent BOD and suspended solids concentrations exceeded the Commission objective of 15 ppm 32 % and 67% of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "cf4aa728d277ffb6ebd7"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Commission objective",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "The final effluent BOD and suspended solids concentrations exceeded the Commission objective of 15 ppm 32 % and 67% of the time respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "13419f403aaa196b5e06"
+    },
+    {
+      "kind": "observation",
+      "parameter": "peak final effluent BOD",
+      "value": 140.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "From the graph showing the year average of BOD, it can be seen that , except for peak values of 140 ppm and 73 ppm, the final effluent BOD concentrations for 1965 were below the OWRC objective of 15 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "af949563e7af96ace4e1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "peak final effluent BOD",
+      "value": 73.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "From the graph showing the year average of BOD, it can be seen that , except for peak values of 140 ppm and 73 ppm, the final effluent BOD concentrations for 1965 were below the OWRC objective of 15 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "f0550e5a31872f568e53"
+    },
+    {
+      "kind": "standard",
+      "parameter": "OWRC objective",
+      "value": 15.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1965",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.6538,
+      "provenance": {
+        "identifier": "GEORGETOWNWATERP00SNSN19136.ome",
+        "page": 22,
+        "source_text": "From the graph showing the year average of BOD, it can be seen that , except for peak values of 140 ppm and 73 ppm, the final effluent BOD concentrations for 1965 were below the OWRC objective of 15 ppm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/GEORGETOWNWATERP00SNSN19136.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3076
+      },
+      "key": "8d9f346a15ec1599edca"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sewage treated",
+      "value": 650.108,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "A total of 650. 108 million gallons of sewage was treated during the year",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "2c664e1beed8f7386f9a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost",
+      "value": 42383.25,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "at a total operating cost of $42,383. 25.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "0f380eeb3780818557c8"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost per pound of BOD removed",
+      "value": 0.09,
+      "unit": "$/lb",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The operating costs per pound of BOD removed was $0. 09.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "cc39e5354424988f3bde"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 1.753,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The average daily flow of 1. 753 million gallons was 117 percent greater than the design flow of 1. 5 million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "19e08016ac6defd34a0d"
+    },
+    {
+      "kind": "design",
+      "parameter": "design flow",
+      "value": 1.5,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The average daily flow of 1. 753 million gallons was 117 percent greater than the design flow of 1. 5 million gallons.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "b96c9c40ac8e91bb32ea"
+    },
+    {
+      "kind": "observation",
+      "parameter": "design flow exceedance frequency",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "This design flow was exceed-ed 90 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "c59fe8c211f9067612d3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage BOD",
+      "value": 85.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The average raw sewage BOD and suspended solids concentrations of 85 ppm and 233 ppm respectively combined with an average volatile solidscon- tent of 53. 6 percent in the raw sludge indicates that the raw sewage con- tained a significant amount of inert material.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "c3443406d143acaf683e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage suspended solids",
+      "value": 233.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The average raw sewage BOD and suspended solids concentrations of 85 ppm and 233 ppm respectively combined with an average volatile solidscon- tent of 53. 6 percent in the raw sludge indicates that the raw sewage con- tained a significant amount of inert material.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "05362eb22e0528699cce"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sludge volatile solids content",
+      "value": 53.6,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The average raw sewage BOD and suspended solids concentrations of 85 ppm and 233 ppm respectively combined with an average volatile solidscon- tent of 53. 6 percent in the raw sludge indicates that the raw sewage con- tained a significant amount of inert material.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "a52f5ef3619c93c4eddb"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent BOD",
+      "value": 11.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The plant produced an effluent with an average BOD and suspended solids concentration of 11 ppm and 23 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "f2de934041df718602ac"
+    },
+    {
+      "kind": "observation",
+      "parameter": "effluent suspended solids",
+      "value": 23.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "effluent",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The plant produced an effluent with an average BOD and suspended solids concentration of 11 ppm and 23 ppm respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "e4ecb6ae270ac297d5b9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal efficiency",
+      "value": 87.1,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The average BOD and suspended solids reduction efficiencies were 87. 1 and 89. 7 percent res- pectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "3ea2ea124edf0705bc79"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal efficiency",
+      "value": 89.7,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Georgetown",
+      "period": "1967",
+      "facility": "Georgetown water pollution control plant",
+      "confidence": 0.8316,
+      "provenance": {
+        "identifier": "georgetownwaterp23285",
+        "page": 11,
+        "source_text": "The average BOD and suspended solids reduction efficiencies were 87. 1 and 89. 7 percent res- pectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/georgetownwaterp23285/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.7507
+      },
+      "key": "bb62441688c7de997f28"
     }
   ]
 }

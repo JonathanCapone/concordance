@@ -1,389 +1,312 @@
-# AI Builders Fellowship — application
+# Ground Truth
 
-*Draft. Written from what has already been built and measured, not from what is
-planned. Every figure below is reproducible from the repository.*
+**A free website where anyone can look up what was measured where they live —
+the pollution readings, the water quality, the air — going back to the 1800s,
+with every number linked to a photograph of the government page it was read
+from. Plus the open dataset underneath it, which does not currently exist
+anywhere.**
+
+*AI Builders Fellowship application. Written from what is already built and
+measured rather than planned; every figure below is reproducible from the
+repository.*
 
 ---
 
 ## 1. The project
 
-**The archive is a scientific instrument that has been running for a hundred
-years, and nobody has ever read its output.**
+Internet Archive Canada holds **104,241 scanned Canadian government
+publications** — 22.1 million pages, 1841 to 2013. Inside them are measurements
+of the physical condition of the country, town by town, year by year: how much
+sewage a town discharged into its river, what was in the drinking water, what
+came out of the smelter.
 
-Internet Archive Canada holds 104,241 scanned Canadian government publications —
-22.1 million pages, 1841 to 2013. Inside them are measurements of the physical
-condition of the country: the air, the water, the soil, town by town, year by
-year. The median document in that collection has been downloaded **90 times**.
+The median document in that collection has been downloaded **90 times**. The
+numbers inside are not in any database. To find out what your town's sewage
+plant was discharging in 1969 you would have to know the report exists, find it,
+and read it.
 
-Every civil servant who ever wrote a measurement down was a node in a sensor
-network that ran for 150 years and covered a continent, and it was never once
-read *as a network*, because each node published to paper and the paper went
-into a box.
+Every civil servant who wrote one of those measurements down was, in effect, a
+sensor. Together they formed a monitoring network that ran for over a century
+and covered the country — and it was never once read *as a network*, because
+each of them published to paper and the paper went into a box.
 
-I want to spend six weeks reading it back out.
+I want to spend six weeks reading it back out, and putting the result somewhere
+a person can use it.
 
 ### Why this is possible now and was not before
 
-The finding the whole project turns on, and I found it before applying:
+Scanned documents are turned into searchable text by OCR — optical character
+recognition, the software that looks at a picture of a page and works out which
+letters are on it. The finding this project turns on, which I made before
+applying:
 
-**OCR preserved prose and destroyed tables.** A province-wide summary table comes
-back from the 2013-era scanner like this:
+**OCR preserved the prose and destroyed the tables.** A province-wide summary
+table comes back from the 2013-era scanner like this:
 
 ```
 9 /zLA' y 1? in" y 1'\ Vnlump 41 Q sailor
 ```
 
-Nothing survives that. But the narrative reads perfectly — and in these reports
-*the measurements are in the narrative*. Owen Sound, 1969:
+Nothing survives that. But the narrative paragraphs read perfectly — and in
+these reports *the measurements are in the narrative*. Owen Sound's sewage
+plant, 1969:
 
 > "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1
 > respectively. The average effluent BOD and suspended solids were 37 mg/1 and
 > 36 mg/1 respectively, giving an average removal of 64% BOD and 84% suspended
 > solids."
 
-Station, parameters, values, units — a complete observation set in readable
-English. So the hard problem is **reading**, which language models now do
-reliably, not table-recognition off a degraded scan, which they do not.
+*Influent* is what flowed into the plant, *effluent* what came out. *BOD* —
+biochemical oxygen demand — is the standard measure of how much organic
+pollution is in water; higher is worse. So that sentence says the plant removed
+64% of the pollution it received that year, and it gives the numbers.
 
-And then, this month, the second half of the argument arrived. A model released
-while I was building this reads the destroyed tables too. Given that same
-scanner wreckage — `TABLE I FLOW - MILX.IQN GALLOLS ... AVa. DAILY r .LOW` — it
-returned 27 measurements and **every one of the twelve values that survived in
-the OCR, exactly**, rebuilt the header row the scanner had eaten, and filed each
-value under its month. Across four documents as unlike each other as Statistics
-Canada salt production in 2003, a Simcoe well supply report in 1990 and the
-Georgian Bay Ship Canal Survey of 1909: across **24 table pages from 11
-collections it recovered 535 measurements**, a median of 25 a page, and 89% of
-those values can be found in the page's own surviving OCR. The rest sit on pages
-whose text layer was destroyed — which is the case the path exists for, and the
-case its own corroboration cannot reach.
+That is a complete set of readings in ordinary English. So the hard problem is
+**reading**, which language models now do reliably — not recognising a table in
+a degraded scan, which they do not.
 
-That is the strongest form of "only possible now" I can give you. **The tables
-were never lost. They were merely unreadable by the software that existed when
-the pages were scanned.** They have been sitting in public, and inaccessible,
-for a decade.
+Then, while I was building this, the second half of the argument arrived. A
+newly released model reads the destroyed tables too. Given that same wreckage —
+`TABLE I FLOW - MILX.IQN GALLOLS ... AVa. DAILY r .LOW` — it returned 27
+measurements, got **every one of the twelve values still legible in the OCR
+exactly right**, rebuilt the header row the scanner had eaten, and filed each
+value under its month. Across 24 table pages from 11 collections, in documents
+as unlike each other as Statistics Canada salt production in 2003 and the
+Georgian Bay Ship Canal Survey of 1909, it recovered **535 measurements**.
+
+I could check 461 of those against the page's own surviving OCR text — the other
+74 sit on pages whose text layer was destroyed entirely, so there is nothing to
+check them against. **Of the 461 checkable, 411 (89%) were confirmed.** The
+pages where this matters most are the pages where its own corroboration cannot
+reach, and I would rather say that plainly than quote 89% as though it covered
+everything.
+
+**The tables were never lost. They were unreadable by the software that existed
+when the pages were scanned**, and they have been sitting in public, and
+inaccessible, for a decade.
 
 ### It already works
 
-Not a proposal. A measured artifact, running today:
+Not a proposal — a running artifact. Every figure carries the size of the sample
+it came from, because a percentage without a denominator is not a measurement:
 
 | | |
 |---|---|
-| Extraction precision / recall | **96.8% / 88.2%** against hand-checked ground truth |
-| Blind page (annotated before any run) | **94% / 94%** |
-| Kind accuracy — measurement vs design spec vs regulatory limit | **98.3%** |
-| Stream accuracy — influent vs effluent | **88.9%** over 18 judged pairs |
-| Quotes failing verification across 286 records | **0** |
-| Table measurements recovered | **535** from 24 pages, 11 collections, 1879–2003 |
-| ...of which found in the page's surviving OCR | **411 of 461 (89%)** |
-| Measurements settled / contested / unsupported | **1,445 / 129 / 88** across 2,009 claims in 1,662 slots, with nobody adjudicating |
-| Code / tests | 529 tests · zero required dependencies in the core |
+| Extraction precision / recall | **96.8% / 88.2%** — on 4 pages hand-read by a person, 68 values |
+| ...of which, the one page annotated *before* any run | **94% / 94%** — 17 values |
+| Telling a measurement from a design spec from a legal limit | **98.3%** — 60 matched values |
+| Telling water going in from water coming out | **88.9%** — 18 judged pairs |
+| Quoted sentences that could not be found on the page they cite | **0** of 286 |
+| Table measurements recovered | **535** from 24 pages across 11 collections, 1879–2003 |
+| Towns read end to end | **6**, 1,470 measurements |
+
+*Precision* is how much of what it produced was correct; *recall* is how much of
+what was there it found. Both are measured against a set of pages a human read
+by hand first. Four pages is a small sample and I would not defend it as more
+than an early signal — widening it is the first thing in the work plan.
 
 Every recovered number carries the verbatim sentence it was read from, that
 sentence is verified to occur on the page, and the page is one click away. A
-measurement recovered by a model from a sixty-year-old scan has no authority on
+measurement pulled by a model out of a sixty-year-old scan has no authority on
 its own. It earns authority by being trivially easy to disprove.
 
 ### What it has already found
 
-Each with the control that makes it a finding rather than an artefact:
+Each with the check that makes it a finding rather than an artefact:
 
-**72 of 107 Ontario municipalities stop filing water pollution control plant
-reports in 1975.** A whole series vanishing at once usually means the scanning
-stopped, so it was checked: Ministry of the Environment publications in the same
-collection run 1,449 before 1975 and 3,800 after, steady at 83–141 items a year
-straight through. The archive kept growing. This series died.
+**72 of 107 Ontario municipalities stop filing sewage-plant reports in 1975.**
+A whole series vanishing at once usually means the *scanning* stopped, so I
+checked: publications from the same ministry in the same collection run 1,449
+before 1975 and 3,800 after, steady at 83–141 items a year straight through. The
+archive kept growing. This series died.
 
-**539 of 1,119 Ontario river gauges are discontinued** — 48%, from live ECCC
+**539 of 1,119 Ontario river gauges are discontinued** — 48%, from live federal
 data. The same winding-down of measurement, still happening.
 
-**Whose effluent was in whose water.** Plants tied to river gauges and ordered by
-catchment area, which necessarily grows downstream: Fergus → Brantford → Cayuga
-on the Grand; Orangeville → Streetsville → Clarkson on the Credit.
+**Whose sewage was in whose drinking water.** Plants matched to river gauges and
+ordered by catchment: Fergus → Brantford → Cayuga on the Grand; Orangeville →
+Streetsville → Clarkson on the Credit.
 
-**13,429 metadata corrections** proposed for the collection itself, to be offered
-back to Internet Archive Canada.
+**13,429 metadata corrections** for the collection itself, to be offered back to
+Internet Archive Canada. 57% of its items have no subject tag and 32% have no
+year, which is why most of it cannot be found by anyone looking.
 
-**A fifth of the archive was being thrown away, by me.** A page counted as prose
-if a line held eight words. That is a fact about typography, not about content,
-and it was silently deciding which parts of the public record exist: a 1983 city
-magazine set in narrow columns — 149 lines of unbroken prose, median four words
-to the line — scored zero and every page went in the bin, including one stating
-how many schools Hamilton had. Measured across 8,372 pages from 34 documents in
-26 collections, fixing it moved the corpus from **48.5% to 69.5%** readable,
-about **6.3 million pages**. The loss fell hardest on the legislative record,
-because that is how minutes have always been set: Acts of the Parliament of
+**A fifth of the archive was being thrown away, by me.** My code counted a page
+as prose only if its lines held eight or more words. That is a fact about
+typography, not about content, and it was quietly deciding which parts of the
+public record exist. A 1983 city magazine set in narrow columns — 149 lines of
+unbroken prose, median four words to the line — scored zero, and every page went
+in the bin, including one recording how many schools Hamilton had. Fixing it
+moved the share of the collection worth reading from **53% to 69.5%**, about
+**3.6 million more pages**. The loss fell hardest on the legislative record,
+because that is how minutes have always been typeset: Acts of the Parliament of
 Canada went from 265 usable pages to 861.
 
 I did not find that. Someone looked at a document and said *that doesn't sound
 right*. It is in the work log with the rest of my mistakes, and it is the best
 argument I have for building this in the open.
 
-**The archive knows who voted for what.** Minutes, agendas, hansard and
-commission hearings are **13,604 items, 13.1% of the collection**. One volume of
-Hamilton council agendas from 1992 yields 94 decisions, 64 named people and 44
-recorded votes — including complete roll calls, and the divisions where one
-alderman stood alone against the Red Hill Creek Expressway. That spine needs no
-model at all; a pattern finds it, free, on a laptop.
+**The archive knows who voted for what.** Minutes, agendas and commission
+hearings are 13,604 items. One volume of Hamilton council agendas from 1992
+yields 94 decisions, 64 named people and 44 recorded votes — including full roll
+calls, and the divisions where one alderman stood alone against the Red Hill
+Creek Expressway. That needs no model at all; a text pattern finds it, free, on
+a laptop.
 
 ### How big the job actually is
 
-Measured, not guessed. From a random sample of 120 items and 23,729 pages, and
-revised upward after the routing fix above:
+Measured from a random sample of 120 documents and 23,729 pages:
 
-- **90.8%** of documents carry measurements (95% CI 84.3–94.8%)
-- **69.5%** of pages are worth reading — was 48.5% before the fix
-- extrapolated: **about 15.4 million pages**, up from 11.7 million
+- **90.8%** of documents contain measurements (95% confidence interval
+  84.3–94.8%, meaning the true figure is very likely in that range)
+- **69.5%** of pages are worth reading at all
+- which is about **15.4 million pages** across the collection
 
-Of those, roughly **73% is text** a consumer machine can read at about 91
-seconds a page, and **27% needs the vision path**. But a prose page averages 4.2
-measurements and a third yield none, while a table page yields around eighteen —
-so the tables are likely the majority of the actual measurements while being a
-quarter of the pages.
+Splitting those by how they have to be read:
+
+|  | share of pages | measurements per page | share of the data |
+|---|---|---|---|
+| **Prose** — ordinary paragraphs | 73% | 4.2, and a third of pages yield none | ~31% |
+| **Tables** | 27% | ~18 | **~69%** |
+
+**Most of the data is in the quarter of pages that are hardest to read.** That
+single fact drives the entire plan below.
 
 ### What the money is for
 
-The fellowship is $5,000. **Almost all of it is six weeks of my time.** The
-compute bill is tens of dollars, and I want to be exact about why it is that
-small rather than let the number look like an oversight.
+The fellowship is $5,000. **All of it is six weeks of my time.** There is no
+compute line, and that is a deliberate design choice rather than an omission.
 
-| | |
-|---|---|
-| Six weeks of work | the fellowship |
-| Vocabulary pass — one stratified sample, run centrally | **$30–70** |
-| Throughput pilot — a thousand pages, to replace a guess with a measurement | tens of dollars |
-| Reading the rest of the archive | **$0**, and it never stops |
+The obvious thing to do with money and an archive this size is rent GPUs and
+read the whole thing. I costed that — **$4,251–8,502** — specifically so I could
+argue against it. A corpus bought in one batch is finished the day the money runs
+out. It covers whatever was current in October 2026, it never extends, and the
+next person who wants a document nobody thought to read has no way to get one.
 
-That last row is the whole design, so here is the argument against the obvious
-alternative.
+**So reading happens because somebody wanted to know something.** You ask for a
+place. If it has been read, you get it instantly. If you are the first to ask,
+your own computer reads it — and then it is there for everyone after you. No
+account, no queue, no volunteering. The cost falls on whoever cares first, who
+is also the person most willing to wait twenty minutes for it.
 
-**Buying the read outright would cost $4,251–8,502.** I costed it
-(`scripts/cost_model.py`) specifically so I could argue against it. A corpus
-bought in one batch is finished the day the money runs out: it covers whatever
-was current in October 2026, it is never extended, and the next person who wants
-a document nobody thought to read has no way to get it. Anyone with a credit
-card can rent an A100 — that is not the interesting version of this project.
-
-**Reading happens because somebody wanted to know something.** You ask for a
-place; if it has been read you get it in milliseconds, and if you are the first
-to ask, your machine reads it and it is there for everyone after you. No
-volunteer mode, no queue, nothing asked of anyone — the cost falls on whoever
-cares first, who is also the person most willing to wait. Results move between
-machines as a file or a push to a shared instance, and every reading is
-re-checked against archive.org on arrival, so no server has to be trusted or
-paid for.
+Results move between machines and are re-checked against the original scans on
+arrival, so nobody has to trust or pay for a central server. **The rest of the
+archive fills in as people ask for it, indefinitely, at no recurring cost to
+anyone** — and in the order people actually want to know things, which is a
+better order than any I would impose.
 
 ### The hole in that, named
 
-The model has one real weakness and I would rather state it than budget around
-it.
+The model has one real weakness. Tables are 27% of pages and most of the
+measurements, and they need a model that will not fit on an ordinary computer:
+on my own graphics card a table page takes eight minutes, because only 18% of
+the model's layers fit in the card's memory and the rest is shuffled in and out.
 
-| | who can do it | why |
-|---|---|---|
-| **Prose** — 73% of pages | anyone | 91 seconds a page on an ordinary machine. A town takes about ninety minutes. |
-| **Tables** — 27% of pages, ~69% of the measurements | **almost nobody** | Eight minutes a page on my RTX 2080, because only 18% of a 29.6 GB model fits in 8 GB of VRAM. |
-| **Vocabulary** | must be central | Deciding what a measurement *means* is judgement, not compute — and it only has to happen once. |
+I am not asking for money to brute-force past that, because that would buy a
+fixed corpus and abandon the model that outlives the grant. Two things get tried
+first, and both are measurable:
 
-**The measurements are concentrated in exactly the pages a contributor's
-hardware handles worst.** I am not asking for money to brute-force past that,
-because doing so would buy a fixed corpus and abandon the model. Two things get
-tried first, and both are measurable:
-
-- **a smaller vision model may be adequate.** That is a question, not a hope,
+- **A smaller vision model may be adequate.** That is a question, not a hope,
   and I have not measured it yet.
-- **tables get read once and shared.** A person with real hardware reads a
-  document's tables and pushes the result; everyone else re-verifies it against
-  archive.org rather than re-reading it. The path for that is built and tested.
+- **Tables get read once and shared.** One person with a good graphics card
+  reads a document's tables; everyone else re-verifies the result against the
+  original scan instead of re-reading it. That path is built and tested.
 
 If both fail, the honest answer in the write-up is that 27% of this archive
-needs a graphics card most people do not own. That is worth knowing too, and it
-is a better outcome than a number that hides it.
-
-So: the central work is the vocabulary, the pilot, and a seed corpus large
-enough to make the showcase real — the towns, the rivers and the councils that
-go with them. Everything else fills in as people ask for it, indefinitely, at no
-recurring cost to anybody. That is slower than a batch run and better: the
-corpus is read in the order people actually want to know things, and it does not
-stop when the grant does.
+needs hardware most people do not own. That is worth knowing too, and it is a
+better outcome than a number that hides it.
 
 ---
 
 ## 2. Work plan
 
-Structured as arcs rather than a rigid week grid, because the work has
-dependencies that do not respect calendar boundaries and I would rather commit
-to what each stage ends with than to which Tuesday it lands on. Each arc ends in
-something demonstrable, and the order is chosen so that stopping early still
-leaves a complete artifact rather than a half-built one.
+Arcs rather than a rigid week grid, because the work has dependencies that do
+not respect calendar boundaries. Each arc ends in something demonstrable, and
+the order is chosen so that stopping early still leaves something whole.
 
-**Arc A — Harden the loop, then read at scale (weeks 1–2)**
-The destination now exists — an instance accepts a bundle, re-verifies every
-record against archive.org, and merges what the archive supports. What it needs
-next is the unglamorous half: a public instance that stays up, rate limiting so
-one sender cannot monopolise it, and a second instance pulling from the first, to
-prove the claim that no single one of them matters. A federation of one is just a
-server.
+**Arc A — Read at scale (weeks 1–2).** Bulk text acquisition across the
+collection; the cheap local filter that decides which pages are worth giving to
+a model; and a throughput pilot over a thousand pages that replaces the
+estimated cost above with a measured one. *Ends with:* a seed corpus and a
+per-page cost somebody could plan against.
 
-Then bulk text acquisition across the collection; the cheap local filter that
-decides which pages earn a model; the vocabulary pass; and the throughput pilot
-that turns the estimated cost above into a measured one. Ends with: two instances
-that agree without trusting each other, a seed corpus, and a per-page cost
-somebody could plan against.
+**Arc B — Trustworthy at scale (weeks 2–3).** The hand-read benchmark expanded
+well beyond four pages, across document types and eras; accuracy published per
+era and per parameter rather than as one number. *Ends with:* an accuracy figure
+I would defend in public, including where it is bad.
 
-**Arc B — Trustworthy at scale (weeks 2–3)**
-The gold set expanded across document types and eras, not just the four pages
-it covers now; accuracy published per era and per parameter rather than as one
-number; the record audit run over everything. Ends with: an accuracy figure I
-would defend in public, including where it is bad.
+**Arc C — The tables (weeks 3–4).** This is the hard one and it gets two weeks.
+Owen Sound's 1973 and 1974 reports contain *zero* readable prose pages between
+them; those years are unreachable without reading the scan itself. The first
+vision model I tried failed honestly — it invented table structure that was not
+on the page — but the current one does not. So this is no longer "can it be
+done": it is throughput, cost, and whether a model small enough for a
+contributor's machine is good enough. *Ends with:* either tables distribute, or
+the limit is named with a number on it.
 
-**Arc C — Vision at scale (week 3)**
-Tables and figures are 27% of pages and probably the majority of the actual
-measurements. Owen Sound's 1973 and 1974 reports contain *zero* prose pages
-between them; those years are unreachable without reading the scan itself. The
-first vision model I tried failed honestly — it invented table structure that
-was not on the page — but the current one does not: 58 of 58 values found on
-their own page across four documents from 1942 to 2003. So this arc is no longer
-"can it be done". It is throughput, cost, and a control that survives being
-wrong, because the fabrication check I wrote for it was itself broken twice
-before it was right.
+**Arc D — Publish (week 4).** The dataset released openly with its methodology
+and its failures; the metadata corrections offered to Internet Archive Canada;
+the pipeline documented so it can be pointed at any other scanned archive,
+because nothing in the reading layer is Canada-specific.
 
-**Arc C2 — Make the tables reachable (week 3–4)**
-27% of pages hold most of the measurements and need a model that will not fit on
-an ordinary graphics card. Three things to try, in order of how much they would
-change: a smaller vision model that a contributor can actually run; reading a
-document's tables once and sharing the result as a bundle, so nobody pays twice;
-and failing both, a plain statement of what fraction of this archive needs
-hardware most people do not own. Ends with: either tables distribute, or the
-limit is named with a number on it.
+**Arc E — Make it answerable (week 5).** *Jay* — a question-answering assistant
+that only answers from the extracted record and always shows its source — runs
+over the whole corpus rather than two towns. It exists and works; it needs the
+data underneath it. Plus a plain-language layer, so a resident rather than a
+researcher can ask what their town put in the river.
 
-**Arc D — Publish (week 4)**
-The dataset released openly with its methodology and its failures; the metadata
-diff offered to Internet Archive Canada; the pipeline documented so it can be
-pointed at any other scanned archive, because nothing in the reading layer is
-Canada-specific.
-
-**Arc E — Make it answerable (week 5)**
-Jay over the whole corpus rather than two towns. The agent exists and works; it
-needs the data underneath it. Plus the plain-language layer, so a resident rather
-than a researcher can ask what their town put in the water.
-
-**Arc F — Findings and the showcase (week 6)**
-The silence detector run nationally; cross-domain joins between agencies that
-have never been in the same room; write-up; Oct 28.
+**Arc F — Findings and the showcase (week 6).** The silence detector — the tool
+that finds where measurement *stopped* — run nationally; cross-referencing
+between agencies whose records have never been in the same room; write-up;
+October 28.
 
 ### Who actually does what
 
-Four kinds of person, and only one of them is asked to do anything at all.
+Four kinds of person, and only one of them is asked to do anything.
 
-**Most people just read.** They open a published page, look up the town they
-grew up in, and see what was measured there and when it stopped. They install
-nothing, contribute nothing, and are the point of the whole exercise. If this
-works, they are 99% of the users.
+**Most people just read.** They open the site, look up the town they grew up in,
+and see what was measured there and when it stopped. They install nothing and
+contribute nothing, and they are the point of the whole exercise. If this works
+they are 99% of the users.
 
-**Someone wants a place nobody has read.** They ask for it. The panel says so
-plainly — *"Nobody has read this one yet. 12 scanned reports are waiting, about
-an hour on this machine"* — and they press a button. Their laptop does the
-reading, they get their answer, and the reading is now done. **That is the whole
-of the ask.** No account, no queue, no volunteering, no task list. The cost falls
-on the person who cared first, who is also the person most willing to wait for
-it.
+**Someone wants a place nobody has read yet.** The site says so plainly —
+*"Nobody has read this one. 12 scanned reports are waiting, about an hour on
+this machine"* — and they press a button. Their computer does the reading, they
+get their answer, and it is now done for everybody. **That is the entire ask.**
 
 **Someone disagrees with a number.** They cite a page and quote a sentence, and
-the archive decides — the same check that judges the machine's own output, which
-never asks who is speaking. An evidenced correction replaces an unevidenced
-record automatically. An objection with no evidence is counted, shown, and
-changes nothing, because the moment it could, somebody would have to judge it.
+the archive settles it: the same check that judges my own output, which never
+asks who is speaking. A correction with evidence replaces a record without it,
+automatically. An objection with no evidence is counted, displayed, and changes
+nothing — because the moment it could, somebody would have to sit in judgement,
+and I am not willing to be that person or to appoint one.
 
-**And someone has a graphics card.** Tables need a model that will not fit on an
-ordinary machine, and 27% of pages hold most of the measurements. A person with
-real hardware can read those once and publish the result for everyone, which is
-the one place where "contributing" means something more than asking a question.
+When two readings both survive the check, neither wins. Both are shown with **a
+cropped photograph of the sentence each was read from**, and the reader settles
+it in seconds. That is what makes the whole arrangement work rather than merely
+sound good, and it costs nothing: the Internet Archive already serves page
+images, so a citation is just a URL.
+
+**And someone has a good graphics card.** They can read the tables the rest of
+us cannot, once, for everyone — the one place where contributing means more than
+asking a question.
 
 ### What is built, and what is not
 
-I would rather be exact about this than let the diagram do the arguing.
-
-| | state |
+| | |
 |---|---|
-| Ask for a place, read it locally if nobody has, verify, keep it | **built** — `library.ask`, wired to a button |
-| Submit or correct a reading, checked against the scan, no moderator | **built** — `disputes.submit`, with a form |
-| Package readings as a file and re-verify them on arrival | **built** — `scripts/share.py`, tested end to end |
-| A place to send that file | **built** — `share.py push`, into a running instance |
+| Look up a town and see every measurement with its scan | **built** |
+| Ask for a place nobody has read; your machine reads it | **built** |
+| Correct a number, checked against the scan, no moderator | **built** |
+| Send readings to a shared instance, re-verified on arrival | **built** |
+| Read the tables on ordinary hardware | **not built — this is Arc C** |
+| The dataset, published, at scale | **not built — this is the fellowship** |
 
-The last row was the gap until recently, and it was the difference between "your
-machine read it" and "it is there for everyone": a bundle had to be handed to
-somebody. `POST /api/bundle` closes it. An instance re-verifies every record it
-is sent, against archive.org, on exactly the terms it judges its own output —
-so it keeps what the archive supports and reports what it refused, rather than
-rejecting a whole submission over one bad line. There is no account, no key and
-no field recording who sent it, because nothing about the sender is relevant to
-whether a sentence is on a page.
-
-**The instance is a convenience, not an authority.** It holds nothing anyone
-else lacks: `GET /api/library.json` hands back the entire dataset as a bundle,
-and `share.py pull` fetches it and then re-checks it locally before believing a
-word of it. Anyone who mistrusts mine can take everything and run their own, and
-the readings would be no less true. That property is why a server is safe to add
-here and would not be in a system where the server was the source of truth.
-
-Files still work, and are still the fallback that outlives the funding — a
-bundle moves by email, USB stick or a link in a forum post, and nothing in the
-verification path needs the network to have a centre.
-
-Finding this took a bug worth admitting. Pushing an instance its own library
-merged 19 of 20 readings as new: dedup compared a freshly-computed identity
-against the one stored in the file, and the stored one was written before later
-normalisation, so it never matched. The dataset would have doubled on every
-round trip, and round trips are the whole model. Identity is now recomputed from
-content on both sides, and a test pushes the library at itself and asserts that
-nothing lands.
-
-**Running throughout — open contribution that needs no moderator.**
-Not an arc, because it is a property rather than a phase. Every claim in this
-system cites a page and quotes a sentence, and the archive checks both. That
-rule never asks who is speaking, so a stranger's correction is checked exactly
-as the machine's own output is: an evidenced correction replaces an unevidenced
-record automatically, and an objection with no evidence is counted, shown, and
-changes nothing. When two readings both survive, neither wins — both are
-displayed with a **cropped image of the sentence each came from**, and the
-reader settles it in seconds.
-
-That last part is what makes the whole arrangement work rather than merely sound
-good, and it costs nothing: archive.org serves IIIF, so a citation is a URL. I
-would rather ship a record that argues with itself in public than one that is
-quietly adjudicated by me.
-
-**And readings travel.** A machine packages what it has read; whoever receives
-it re-checks every record against archive.org before believing any of it. That
-can go to a shared instance over the network, or move as a plain file by email,
-USB stick or a link in a forum post — the file route is the one that outlives
-the funding, because it needs no server anybody has to run, pay for, or be
-trusted to keep honest. Nothing about the sender is examined, because nothing
-about the sender is relevant: a signature would prove who sent it, and the
-archive proves whether it is true.
-
-### Why six weeks is enough
-
-Because most of it is already built, and you can check that rather than take my
-word for it.
-
-I previously built OMEGA-wave, an open ocean-sensing mesh with its own protocol,
-gateway, statistics suite and map portal. Ground Truth reuses that work directly:
-**the statistics layer** (Mann-Kendall, Theil-Sen, Pettitt changepoint — all
-pure-stdlib, which is why this package still has zero required dependencies),
-**the map portal**, **the agent framework** behind Jay, and **the keyless
-provider layer** that reaches ECCC and Statistics Canada. Six weeks here is not
-six weeks from zero.
-
-The more useful evidence is this repository. Everything in the results table
-above runs today, the accuracy figure regenerates from `scripts/run_gold.py`
-against ground truth a human read by hand, and the work log records what went
-wrong at each step — including a routing bug that was silently discarding a
-fifth of the archive, found because somebody looked at one document and said
-that doesn't sound right.
-
-What the six weeks buys is not the tooling. It is the reading, the vocabulary,
-and the parts of this that cannot be done on one laptop.
+An instance re-verifies every record it is sent and keeps what the archive
+supports, reporting what it refused. It holds nothing anyone else lacks: it will
+hand back its entire dataset on request, and anyone who mistrusts mine can take
+everything and run their own. That property is why adding a server is safe here
+and would not be in a system where the server was the source of truth.
 
 ---
 
@@ -391,57 +314,52 @@ and the parts of this that cannot be done on one laptop.
 
 > **A resident of any Canadian community can ask what was measured where they
 > live, get a straight answer in plain language with every number traceable to
-> the scanned page it came from — and the system can show them what stopped
-> being measured, and when.**
+> the scanned page it came from — and can see what stopped being measured, and
+> when.**
 
 Checkable, in four parts:
 
-1. **The dataset exists and is open** — measurements with place, time, parameter,
-   unit, uncertainty and a page link, published with its accuracy methodology.
-2. **Accuracy is published including failures**, per era and per parameter, on a
-   gold set anyone can re-score.
+1. **The dataset exists and is open** — measurements with place, time,
+   parameter, unit, uncertainty and a page link, published with the accuracy
+   methodology beside it.
+2. **Accuracy is published including its failures**, per era and per parameter,
+   on a benchmark anyone can re-score themselves.
 3. **Every number resolves to its scan.** Not a sample — every one.
-4. **The negative record is mapped**, with the digitisation control attached to
-   every claim, because a silence finding is uninterpretable without it.
+4. **The silences are mapped**, each with the check that rules out "it was never
+   scanned" as the explanation, because a silence finding is uninterpretable
+   without it.
 
 ### What would count as failure, stated in advance
 
-If extraction accuracy on a broader gold set comes in materially below what four
-hand-checked pages suggested, I will publish that number and narrow the scope
-rather than quietly ship a confident dataset nobody has checked. **An archive that has been
-misread at scale is worse than one that was never read, because the errors look
-like findings.**
+If accuracy on a wider benchmark comes in materially below what four pages
+suggested, I will publish that number and narrow the scope rather than quietly
+ship a confident dataset nobody has checked. **An archive that has been misread
+at scale is worse than one that was never read, because the errors look like
+findings.**
 
 That is not a hypothetical caution. The first accuracy figure this project
-produced was 49% precision — and it was wrong. The scorer could not convert
-"3.0 million gallons" to "3000000 gallons", and the hand-written ground truth was
-incomplete. Fixing the *measurement*, with no change at all to the extractor,
-moved it to 96.8%. Publishing the first number would have narrowed the project
-for no reason at all. Everything in this proposal is built to catch that class of
-error, because it is the one that looks like success.
+produced was 49% precision — and it was wrong. The scorer could not tell that
+"3.0 million gallons" and "3000000 gallons" are the same number, and the
+hand-written answer key was incomplete. Fixing the *measurement*, with no change
+at all to the extraction, moved it to 96.8%. Publishing the first number would
+have narrowed the project for no reason. Everything here is built to catch that
+class of error, because it is the one that looks like success.
 
-It keeps happening, which is why I keep building the checks. An adversarial
-audit of this repo, run days before submitting, found nine confirmed defects
-and six of them were serious. The value check accepted any round number against
-any sentence containing its first digit — 3,000,000 verified against a sentence
-about the year 1913 — so the headline safeguard had a hole shaped exactly like
-the numbers this corpus is full of. One genuine reading could carry five
-hundred fabrications into the library through a public endpoint. And the
-shipped town page captioned twelve of its thirteen numbers with a sentence that
-does not contain them, under a heading promising every number is linked to its
-scan, because the number and its citation were chosen by two different pieces of
-code.
-
-All of that is fixed, tested against the attacks that found it, and written up
-in the commit history rather than quietly repaired. I am including it here
-because a project whose entire claim is "check my work" should say what happened
-when someone did.
+It keeps happening, which is why I keep building the checks. Days before
+submitting this I ran an adversarial audit over the whole repository. It found
+nine real defects, six of them serious — including one where the verification
+that is supposed to catch invented numbers would accept any round number
+against any sentence containing its first digit. All of it is fixed and tested
+against the attacks that found it. I am reporting it here because a project
+whose entire claim is *check my work* should say what happened when somebody
+did.
 
 ---
 
 ## Open source
 
-MIT. Public repository, zero required dependencies in the core — clone it and
-verify a measurement in five minutes with no install and no API key. The map
-portal and the agent are a separate optional layer, so nobody has to stand up a
-web stack to check whether 104 mg/L is what the page says.
+MIT licence, public repository. The core has **zero required dependencies** —
+clone it and verify a measurement in five minutes, with nothing to install and
+no API key. The map and the assistant are a separate optional layer, so nobody
+has to stand up a web stack to check whether 104 mg/L is really what the page
+says.
