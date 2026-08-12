@@ -40,11 +40,17 @@ VISION_SHARE = 0.270
 PAGE_CHARS = 899                   # median OCR chars/page, measured
 
 #: Measurements recovered per page, by path. The prose figure is from 83 timed
-#: pages; the vision figure is the median of six table pages read by qwen3.6.
-#: The gap is the reason pages are the wrong unit for judging this split:
-#: tables are 27% of the pages and probably most of the actual data.
+#: pages; the vision figure is the median over 11 table pages read by qwen3.6
+#: across seven different collections -- census tables, sessional papers,
+#: municipal reports, a liquor board, a mining microlog. The gap is the reason
+#: pages are the wrong unit for judging this split: tables are 27% of the pages
+#: and probably most of the actual data.
+#:
+#: Two of the eleven pages yielded nothing at all, and the median is used rather
+#: than the mean (17.5) so that neither the empty pages nor the densest one
+#: decides the corpus estimate.
 RECORDS_PER_PROSE_PAGE = 4.2
-RECORDS_PER_TABLE_PAGE = 18
+RECORDS_PER_TABLE_PAGE = 20
 
 # Tokens. ~4 chars/token for English prose is the usual rule of thumb; the
 # system prompt is fixed per page and measured directly from extract.py.
@@ -62,11 +68,11 @@ VISION_OUTPUT_TOKENS = 900
 
 LOCAL_TOK_PER_SEC = 7.9            # gemma4:12b on this machine, measured
 
-#: qwen3.6 on an RTX 2080, measured over six pages: median 9.2 minutes each,
+#: qwen3.6 on an RTX 2080, measured over 11 pages: median 9.8 minutes each,
 #: with only 18% of a 29.6 GB model resident in 8 GB of VRAM. That figure says
 #: more about the card than the model and is here to be honest about what a
 #: contributor's machine can do, not to be extrapolated.
-LOCAL_VISION_MIN_PER_PAGE = 9.2
+LOCAL_VISION_MIN_PER_PAGE = 9.8
 
 # ---- rented hardware, ESTIMATED -------------------------------------------
 #
