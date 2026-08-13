@@ -1,7 +1,7 @@
 {
   "place": "Waterloo",
   "model": "ollama:gemma4:12b",
-  "n_records": 322,
+  "n_records": 407,
   "pages_attempted": [
     "WATERLOOSEWAGETR00SNSN19597.ome#3",
     "WATERLOOSEWAGETR00SNSN19597.ome#4",
@@ -50,7 +50,19 @@
     "WATERLOOWATERPOL00SNSN19600.ome#10",
     "WATERLOOWATERPOL00SNSN19600.ome#11",
     "WATERLOOWATERPOL00SNSN19600.ome#12",
-    "WATERLOOWATERPOL00SNSN19600.ome#13"
+    "WATERLOOWATERPOL00SNSN19600.ome#13",
+    "WATERLOOWATERPOL00SNSN19600.ome#21",
+    "WATERLOOWATERPOL00SNSN19600.ome#22",
+    "WATERLOOWATERPOL00SNSN19601.ome#3",
+    "WATERLOOWATERPOL00SNSN19601.ome#8",
+    "WATERLOOWATERPOL00SNSN19601.ome#9",
+    "WATERLOOWATERPOL00SNSN19601.ome#10",
+    "WATERLOOWATERPOL00SNSN19601.ome#11",
+    "WATERLOOWATERPOL00SNSN19601.ome#12",
+    "WATERLOOWATERPOL00SNSN19601.ome#13",
+    "WATERLOOWATERPOL00SNSN19601.ome#21",
+    "WATERLOOWATERPOL00SNSN19601.ome#22",
+    "WATERLOOWATERPOL00SNSN19601.ome#35"
   ],
   "records": [
     {
@@ -8746,6 +8758,2301 @@
         "ocr_confidence": 0.3155
       },
       "key": "f425e2e8f944d1454796"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Population",
+      "value": 20000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Design Population - 20, 000.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "6b9bcdd1426f0cbd2ee2"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Plant Flow",
+      "value": 4.0,
+      "unit": "MGD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Design Plant Flow - 4. 0 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "e4eda772c21b1b5ca144"
+    },
+    {
+      "kind": "design",
+      "parameter": "Per Capita Flow",
+      "value": 200.0,
+      "unit": "GPCD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Per Capita Flow - 200 GPCD",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "cc66d6c16c3239827457"
+    },
+    {
+      "kind": "design",
+      "parameter": "Five Day BOD Raw Sewage",
+      "value": 300.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Raw Sewage - 300 PPM",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "ca20f88b21fc89fc2499"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD Removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Removal - 90%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "986e08ac9a587b8bdf8d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Raw Sewage",
+      "value": 270.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Raw Sewage - 270 PPM",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "ce8e6d66c6eb60640d56"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Removal - 90%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "edafa8e67a5eba1e9218"
+    },
+    {
+      "kind": "design",
+      "parameter": "grit chamber size",
+      "value": 12.0,
+      "unit": "ft. square",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "12 ft. square concrete grit chamber",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "fe48f991178fde11882b"
+    },
+    {
+      "kind": "design",
+      "parameter": "clarifier diameter",
+      "value": 75.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "One 75 ft. diameter concrete clarifier",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "5c157d01c8652e14ac1c"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention time (Primary)",
+      "value": 1.66,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Detention time - 1. 66 hours @ 4. 0 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "9a60014e62719ce7e9df"
+    },
+    {
+      "kind": "design",
+      "parameter": "Aeration tank side wall depth",
+      "value": 15.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "with a 15 ft. side wall depth.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "368f355dbce834a7639c"
+    },
+    {
+      "kind": "design",
+      "parameter": "compressor capacity",
+      "value": 3750.0,
+      "unit": "cubic ft. per minute",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "each rated at 3, 750 cubic ft. per minute.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "9bfddc987981820039ae"
+    },
+    {
+      "kind": "design",
+      "parameter": "sparger count",
+      "value": 264.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Air supplied through 264 Walker spargers in the aeration tanks",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "af898b3138ff4f90e812"
+    },
+    {
+      "kind": "design",
+      "parameter": "sparger spacing",
+      "value": 2.0,
+      "unit": "ft. c/c",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "on 2 ft. c/c spacings.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "85b238ff1c2b2ae0caf1"
+    },
+    {
+      "kind": "design",
+      "parameter": "settling tank diameter",
+      "value": 65.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Two 65 ft. diameter concrete tanks with",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "e3e2a4bc1e1bb9bdd587"
+    },
+    {
+      "kind": "design",
+      "parameter": "settling tank side wall depth",
+      "value": 10.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "10 ft. side wall depth equipped with",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "7e5eab2b1f56dd1db336"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention time (Secondary)",
+      "value": 2.75,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "Detention time - 2. 75 hours @ 4. 0 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "b0cfc7dd52de35a13dc4"
+    },
+    {
+      "kind": "design",
+      "parameter": "filter area",
+      "value": 300.0,
+      "unit": "square ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "One 300 square ft. Komi ine- Sander son",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "ad2731ee8f6b0101b504"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorine capacity",
+      "value": 400.0,
+      "unit": "pounds per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.3292,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 21,
+        "source_text": "One B. L F. 400 pounds per day chlori-",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3167
+      },
+      "key": "bc4acabe3e279dde71f6"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 2.34,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "The average daily flow during 1964 was 2. 34 million gallons, an increase of 12. 0 percent over the average of 2. 09 million gallons per day received during 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "c808f408b83c34656aa5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 2.09,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1963",
+      "facility": "water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "The average daily flow during 1964 was 2. 34 million gallons, an increase of 12. 0 percent over the average of 2. 09 million gallons per day received during 1963.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "0a938128c89706a11120"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total raw sewage treated",
+      "value": 852.94,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "Waterloo water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "Duringthe past year, 852. 94 million gallons of raw sewage composed of both domestic and industrial wastes received complete treatment.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "ec19b94d02b49a871d08"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum 24 hour flow",
+      "value": 3.73,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "The maximum 24 hour flow during 1964 was 3. 73 million gallons and occurred in the month of August.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "5ebd82ba72c3ba77e9e1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum average daily flow for one month",
+      "value": 2.58,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "The maximum average daily flow for one month occurred in August and was 2. 58 million gallons per day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "86472dee5705203ff364"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 2.55,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964-04",
+      "facility": "water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "An ave- rage daily flow for a month of 2. 55 mgd was also recorded in April pro- ducing the two peaked curves shown on Figure No. 2.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "e0c3b75518bedb2a4791"
+    },
+    {
+      "kind": "observation",
+      "parameter": "minimum average daily flow for a month",
+      "value": 2.05,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964-02",
+      "facility": "water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "The minimum ave- rage daily flow for a month occurred in February and was 2. 05 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "8a0a3211edae28d6ac81"
+    },
+    {
+      "kind": "design",
+      "parameter": "design flow",
+      "value": 4.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "Waterloo water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "From figure No. 1, it can be seen that the average daily flows for 1964 did not exceed the design flow of 4. 0 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "4945f9de5652afe5c378"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow greater than 3 mgd frequency",
+      "value": 10.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6202,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19600.ome",
+        "page": 22,
+        "source_text": "It may also be seen from this graph that the flow received at the plant during 1964 was equal to or greater than 3 mgd only 10 percent of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19600.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3057
+      },
+      "key": "d364c6e5670ff239ea10"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sewage treated",
+      "value": 924.094,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.334,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 8,
+        "source_text": "A total of 924. 094 million gallons of sewage were treated during the year at a total cost of $140, 427. 32.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3359
+      },
+      "key": "f8a12a805b4d5309bf07"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total cost",
+      "value": 140427.32,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.334,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 8,
+        "source_text": "A total of 924. 094 million gallons of sewage were treated during the year at a total cost of $140, 427. 32.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3359
+      },
+      "key": "62a81be3dbb4d2870863"
+    },
+    {
+      "kind": "observation",
+      "parameter": "operating cost per million gallons",
+      "value": 151.96,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.334,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 8,
+        "source_text": "The operating cost per million gallons and the cost per pound of BOD removed were $151. 96 and $0. 04 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3359
+      },
+      "key": "e50aa9e75560847b81d4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "cost per pound of BOD removed",
+      "value": 0.04,
+      "unit": "$/lb",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.334,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 8,
+        "source_text": "The operating cost per million gallons and the cost per pound of BOD removed were $151. 96 and $0. 04 respectively.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3359
+      },
+      "key": "460502e9736089e9518a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 2.53,
+      "unit": "million gallons per day",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "Waterloo WPCP",
+      "confidence": 0.334,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 8,
+        "source_text": "The average daily flow during 1965 was 2. 53 million gallons per day which represents; increase over the average daily flow of 2. 34 million",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3359
+      },
+      "key": "a202d31ec95e104d461c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 2.34,
+      "unit": "million gallons per day",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "Waterloo WPCP",
+      "confidence": 0.334,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 8,
+        "source_text": "The average daily flow during 1965 was 2. 53 million gallons per day which represents; increase over the average daily flow of 2. 34 million gallons per day for 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3359
+      },
+      "key": "215254cd51dacb2f1374"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal",
+      "value": 92.5,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "Waterloo WPCP",
+      "confidence": 0.334,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 8,
+        "source_text": "The average BOD and suspended solids removals of 92. 5% and 89. 0% res-pectively are considered good for the type of treatment at the project.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3359
+      },
+      "key": "f875cfdda2e318fded82"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal",
+      "value": 89.0,
+      "unit": "%",
+      "qualifier": "average",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "Waterloo WPCP",
+      "confidence": 0.334,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 8,
+        "source_text": "The average BOD and suspended solids removals of 92. 5% and 89. 0% res-pectively are considered good for the type of treatment at the project.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3359
+      },
+      "key": "d29ad6038f526321b746"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total cost Stage I",
+      "value": 728675.93,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3267,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 10,
+        "source_text": "STAGE I : $728,675.93",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3067
+      },
+      "key": "420bb6ce906206b45fc1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total cost Stage II",
+      "value": 13226.41,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3267,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 10,
+        "source_text": "STAGE 11: $ 13,226.41",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3067
+      },
+      "key": "9a20de4085230fc9cd50"
+    },
+    {
+      "kind": "design",
+      "parameter": "staffing hours per day",
+      "value": 16.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3356,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 11,
+        "source_text": "The plant is staffed 16 hours per day, 7 days per week between the hours of 7 a. m. and 11 p.m.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3425
+      },
+      "key": "aab74333457075a52115"
+    },
+    {
+      "kind": "design",
+      "parameter": "staffing days per week",
+      "value": 7.0,
+      "unit": "days",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3356,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 11,
+        "source_text": "The plant is staffed 16 hours per day, 7 days per week between the hours of 7 a. m. and 11 p.m.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3425
+      },
+      "key": "729d593496e2d0980ecf"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total staff complement",
+      "value": 8.0,
+      "unit": "men",
+      "qualifier": "total",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3356,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 11,
+        "source_text": "The total staff complement is eight men.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n10/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3425
+      },
+      "key": "9a64d77e2061c2aa4ba0"
+    },
+    {
+      "kind": "design",
+      "parameter": "detritor size",
+      "value": 12.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3618,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 12,
+        "source_text": "A twelve foot square detritor provides 30 seconds retention at design flow to remove non-organic solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4471
+      },
+      "key": "7e1e284590550448cd6f"
+    },
+    {
+      "kind": "design",
+      "parameter": "detritor retention time",
+      "value": 30.0,
+      "unit": "seconds",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3618,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 12,
+        "source_text": "A twelve foot square detritor provides 30 seconds retention at design flow to remove non-organic solids.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4471
+      },
+      "key": "da6a3f0bdd61c16f9b71"
+    },
+    {
+      "kind": "design",
+      "parameter": "clarifier diameter",
+      "value": 75.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3618,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 12,
+        "source_text": "A 75 foot diameter concrete clarifier receives sewage from the grit removal unit.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4471
+      },
+      "key": "d36d45091a9ce0d4f47a"
+    },
+    {
+      "kind": "design",
+      "parameter": "clarifier side wall depth",
+      "value": 9.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3618,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 12,
+        "source_text": "The clarifier has a 9 foot side wall depth with a 12 foot depth at the centre.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4471
+      },
+      "key": "e6c01470eebf887c427e"
+    },
+    {
+      "kind": "design",
+      "parameter": "clarifier center depth",
+      "value": 12.0,
+      "unit": "feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3618,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 12,
+        "source_text": "The clarifier has a 9 foot side wall depth with a 12 foot depth at the centre.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4471
+      },
+      "key": "929e1fac4990fa722951"
+    },
+    {
+      "kind": "design",
+      "parameter": "clarifier retention period",
+      "value": 1.66,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3618,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 12,
+        "source_text": "A retention period of 1. 66 hours at design flow allows settleable solids in the incoming sewage to settle to the bottom of the tank.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4471
+      },
+      "key": "d2672e8760e14f780548"
+    },
+    {
+      "kind": "design",
+      "parameter": "total volume",
+      "value": 1.5,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Four single pass aeration tanks with a total volume of 1. 5 million gallons pro- vides 7. 2 hours retention at design flow and 25% return sludge.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "cccc74658b9d8caef9b6"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention time",
+      "value": 7.2,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Four single pass aeration tanks with a total volume of 1. 5 million gallons pro- vides 7. 2 hours retention at design flow and 25% return sludge.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "06c4a10225f5be22b32e"
+    },
+    {
+      "kind": "design",
+      "parameter": "return sludge",
+      "value": 25.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "aeration tanks",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Four single pass aeration tanks with a total volume of 1. 5 million gallons pro- vides 7. 2 hours retention at design flow and 25% return sludge.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "a9f9b44b9cfb5e0239d6"
+    },
+    {
+      "kind": "design",
+      "parameter": "tank dimensions",
+      "value": 136.0,
+      "unit": "ft. x 30 ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "aeration tank",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Each tank is 136 ft. x 30 ft. with a 15 ft. side wall depth.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "98e2fea28db7430d4a39"
+    },
+    {
+      "kind": "design",
+      "parameter": "side wall depth",
+      "value": 15.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "aeration tank",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Each tank is 136 ft. x 30 ft. with a 15 ft. side wall depth.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "02410923e9dd30212812"
+    },
+    {
+      "kind": "design",
+      "parameter": "air capacity",
+      "value": 3750.0,
+      "unit": "cubic feet of air per minute",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "air compressors",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Air is supplied by two air com- pressors each rated at 3, 750 cubic feet of air per minute.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "e69d75ebdb184c3fea98"
+    },
+    {
+      "kind": "design",
+      "parameter": "diameter",
+      "value": 65.0,
+      "unit": "foot",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "final clarifiers",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Two 65 foot diameter circular concrete final clarifiers with a 10 foot side wall depth receive the mixed liquor from the aeration section.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "e510e3ab7176e6274425"
+    },
+    {
+      "kind": "design",
+      "parameter": "side wall depth",
+      "value": 10.0,
+      "unit": "foot",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "final clarifiers",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Two 65 foot diameter circular concrete final clarifiers with a 10 foot side wall depth receive the mixed liquor from the aeration section.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "d1d5b762a52fccb489cd"
+    },
+    {
+      "kind": "design",
+      "parameter": "volume",
+      "value": 230000.0,
+      "unit": "Imperial gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "final clarifier",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Each tank has a volume of 230, 000 Imperial gallons and together they provide 2. 75 hours retention at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "b9316fe44deff7cc0598"
+    },
+    {
+      "kind": "design",
+      "parameter": "retention time",
+      "value": 2.75,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "final clarifiers",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "Each tank has a volume of 230, 000 Imperial gallons and together they provide 2. 75 hours retention at design flow.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "7d5a1bc3fddaface7b18"
+    },
+    {
+      "kind": "design",
+      "parameter": "area",
+      "value": 300.0,
+      "unit": "square foot",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "Komline-Sanderson stainless steel coil spring vacuum filter",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "This unit is a 300 square foot Komline-Sanderson stainless steel coil spring vacuum filter.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "ea02cd8ed687349007dd"
+    },
+    {
+      "kind": "observation",
+      "parameter": "chlorine residual",
+      "value": 0.5,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3617,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 13,
+        "source_text": "A chlorine residual of 0. 5 PPM after 15 minutes of contact time is maintained.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4468
+      },
+      "key": "489a460be60726420e72"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Population",
+      "value": 20000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Design Population - 20,000.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "ae936086d6477ce25b64"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Plant Flow",
+      "value": 4.0,
+      "unit": "MGD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Design Plant Flow - 4. 0 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "37481603f6df02a2d3a6"
+    },
+    {
+      "kind": "design",
+      "parameter": "Per Capita Flow",
+      "value": 200.0,
+      "unit": "GPCD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Per Capita Flow - 200 GPCD",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "816898f4153a5175300f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Five Day BOD Raw Sewage",
+      "value": 300.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Raw Sewage 300 PPM",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "ae690283310933ab453b"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD Removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Removal 90%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "7cfc362f5918a6a27c95"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Raw Sewage",
+      "value": 270.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Raw Sewage 270 PPM",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "8326aadddcc3ac109729"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Removal",
+      "value": 90.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Removal - 90%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "63426440985a8099bf15"
+    },
+    {
+      "kind": "design",
+      "parameter": "grit chamber size",
+      "value": 12.0,
+      "unit": "ft. square",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "12 ft. square concrete grit chamber",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "93bda0aeb044e6409ffb"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention time (Primary)",
+      "value": 1.66,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Detention time - 1. 66 hours § 4. 0 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "0c45c82a407c6d12e897"
+    },
+    {
+      "kind": "design",
+      "parameter": "Aeration tank dimensions",
+      "value": 136.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Four concrete tanks 136 ft. x 30 ft.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "66efe2e6b2b1e247e29d"
+    },
+    {
+      "kind": "design",
+      "parameter": "Aeration tank side wall depth",
+      "value": 15.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "with a 15 ft. side wall depth.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "40b4132505a3038c2607"
+    },
+    {
+      "kind": "design",
+      "parameter": "compressor capacity",
+      "value": 3750.0,
+      "unit": "cubic ft. per minute",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "each rated at 3, 750 cubic ft. per minute.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "ab0e6d618b29f1cd89fa"
+    },
+    {
+      "kind": "design",
+      "parameter": "sparger spacing",
+      "value": 2.0,
+      "unit": "ft. c/c",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "on 2 ft. c/c spacings.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "801dae71e449a9d21099"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Settling Tank diameter",
+      "value": 65.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Two 65 ft. diameter concrete tanks with",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "06d365840f4b938046d3"
+    },
+    {
+      "kind": "design",
+      "parameter": "Final Settling Tank side wall depth",
+      "value": 10.0,
+      "unit": "ft.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "10 ft. side wall depth equipped with",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "c4aa0fd6f6875fefc5f1"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention time (Secondary)",
+      "value": 2.75,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "Detention time - 2. 75 hours (g] 4. 0 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "82f1d0e5f5d457c3591b"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorine dosage",
+      "value": 400.0,
+      "unit": "pounds per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.319,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 21,
+        "source_text": "One B. L F. 400 pounds per day chlori-",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.276
+      },
+      "key": "8c56e415239fd744eedc"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 2.53,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "The average daily flow of 2. 53 million gallons per day for 1965 represents an 8. 3% increase over the average of 2. 34 million gallons per day for 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "1dd99114b05a6e893c5e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "increase in average daily flow",
+      "value": 8.3,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "The average daily flow of 2. 53 million gallons per day for 1965 represents an 8. 3% increase over the average of 2. 34 million gallons per day for 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "35d422d3964459f4ca9a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 2.34,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1964",
+      "facility": "water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "The average daily flow of 2. 53 million gallons per day for 1965 represents an 8. 3% increase over the average of 2. 34 million gallons per day for 1964.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "a527d9921b6b2ad94a21"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total raw sewage volume",
+      "value": 924.09,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "During 1965, 924. 09 million gallons of raw sewage composed of domestic and industrial wastes received treatment.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "8a3059a2570d8ef0742f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum average daily flow",
+      "value": 3.18,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965 December",
+      "facility": "water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "The maximum average daily flow for the month of 3. 18 million gallons was received in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "61443ab6c85e81925a72"
+    },
+    {
+      "kind": "observation",
+      "parameter": "peak average daily flow",
+      "value": 2.9,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965 April",
+      "facility": "water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "A peak average daily flow for the month of 2. 90 million gallons also was received in April during the spring run-off period.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "ac45c108ffd3abea2db3"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant design flow",
+      "value": 4.0,
+      "unit": "million gallons per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "Waterloo water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "From Figure No. 1, it can be seen that the plant design flow of 4. 0 million gallons per day was exceeded less than 1% of the time during 1965 and one-half the design flow was exceeded 88% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "6692a42bd4fac3b144a5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "design flow exceedance frequency",
+      "value": 1.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "From Figure No. 1, it can be seen that the plant design flow of 4. 0 million gallons per day was exceeded less than 1% of the time during 1965 and one-half the design flow was exceeded 88% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "1d3d274467316856c48f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "half design flow exceedance frequency",
+      "value": 88.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Waterloo",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.6404,
+      "provenance": {
+        "identifier": "WATERLOOWATERPOL00SNSN19601.ome",
+        "page": 22,
+        "source_text": "From Figure No. 1, it can be seen that the plant design flow of 4. 0 million gallons per day was exceeded less than 1% of the time during 1965 and one-half the design flow was exceeded 88% of the time.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/WATERLOOWATERPOL00SNSN19601.ome/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3482
+      },
+      "key": "c1212e554ad6d7d40948"
     }
   ]
 }
