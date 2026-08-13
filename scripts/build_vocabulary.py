@@ -340,13 +340,16 @@ def validate_output(path: str | Path) -> tuple[Vocabulary, dict[str, Any]]:
     errors: list[str] = []
     if not isinstance(payload, dict):
         raise ValueError("vocabulary output must be a JSON object")
-    if payload.get("version") != 1:
+    if type(payload.get("version")) is not int or payload.get("version") != 1:
         errors.append("version must be 1")
+    if not isinstance(payload.get("note"), str):
+        errors.append("note must be a string")
     rows = payload.get("terms")
     if not isinstance(rows, list):
         errors.append("terms must be a list")
         rows = []
-    if payload.get("n_terms") != len(rows):
+    if (type(payload.get("n_terms")) is not int or
+            payload.get("n_terms") != len(rows)):
         errors.append("n_terms does not equal the number of terms")
 
     text_fields = ("canonical", "substance", "measure", "domain")

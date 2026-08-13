@@ -143,3 +143,28 @@ def test_saved_output_round_trips_and_validates(tmp_path) -> None:
 def test_worktree_mode_requires_explicit_inputs() -> None:
     with pytest.raises(ValueError, match="requires"):
         read_sources(worktree=True)
+
+
+def test_output_envelope_rejects_boolean_counts_and_nontext_note(tmp_path) -> None:
+    vocab, _ = build_vocabulary([("fixture.json", _result([
+        _record("population", "Population 100.", unit="persons"),
+    ]))])
+    path = save(vocab, tmp_path / "vocabulary.json", note="fixture")
+    envelope = json.loads(path.read_text(encoding="utf-8"))
+
+    envelope["version"] = True
+    path.write_text(json.dumps(envelope), encoding="utf-8")
+    with pytest.raises(ValueError, match="version must be 1"):
+        validate_output(path)
+
+    envelope["version"] = 1
+    envelope["n_terms"] = True
+    path.write_text(json.dumps(envelope), encoding="utf-8")
+    with pytest.raises(ValueError, match="n_terms"):
+        validate_output(path)
+
+    envelope["n_terms"] = 1
+    envelope["note"] = ["not", "text"]
+    path.write_text(json.dumps(envelope), encoding="utf-8")
+    with pytest.raises(ValueError, match="note must be a string"):
+        validate_output(path)

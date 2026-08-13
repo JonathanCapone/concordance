@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from concordance.archive import Archive                        # noqa: E402
 from concordance.extract import OllamaClient, extract_prose    # noqa: E402
 from concordance.parameters import facility_of                 # noqa: E402
+from concordance.places import scope_record_location            # noqa: E402
 from concordance.router import Path as RPath, route            # noqa: E402
 
 
@@ -141,6 +142,7 @@ def main() -> int:
 
             for r in result.records:
                 d = r.to_dict()
+                reported_place = d.get("place")
                 # The report is *for* a year; the model rarely repeats it in
                 # every sentence, so stamp it from the item where it is missing.
                 #
@@ -152,15 +154,21 @@ def main() -> int:
                 period = str(d.get("period") or "")
                 if year and not re.search(r"\b(1[89]\d{2}|20\d{2})\b", period):
                     d["period"] = f"{year} {period}".strip() if period else year
-                if not d.get("place"):
-                    d["place"] = args.place
                 # One town commonly has several facilities measuring opposite
                 # things. Without this, a 1992 drinking-water reading and a 1969
                 # effluent reading share a place name and end up on one chart.
                 # The sentence wins over the title: one document routinely
                 # covers several facilities, and the title names none of them.
-                if not d.get("facility"):
-                    d["facility"] = facility
+                try:
+                    location_year = int(year[:4]) if year else None
+                except ValueError:
+                    location_year = None
+                d["place"], d["facility"] = scope_record_location(
+                    d.get("place"), args.place, d.get("facility") or facility,
+                    location_year,
+                )
+                if reported_place and d["place"] != reported_place:
+                    d.setdefault("raw", {}).setdefault("reported_place", reported_place)
                 records.append(d)
 
             done.add(key)

@@ -56,7 +56,7 @@ points at. It is *not* what gets pasted into the form.
 
 ## 3. Where it stands
 
-**5,147 source-linked records across 14 municipalities**, 539 tests, zero required dependencies in
+**5,147 source-linked records across 14 municipalities**, 564 tests, zero required dependencies in
 the core. Every published figure below is reproducible from the repo.
 
 | | |
@@ -82,47 +82,50 @@ parameter name the model invented rather than one the archive uses**, against
 
 ## 4. In flight right now
 
-- **Town batch** (`scripts/run_batch.py`) — reading municipal water reports,
-  ~2 hours per town on this machine. Was on Belleville. Restart with
-  `python -u scripts/run_batch.py --towns 12 --model gemma4:12b --timeout 900`;
-  `--skip-done` is on by default so it will not redo finished towns.
-- ~~Vocabulary workflow~~ — **finished and collected.**
-  `data/vocabulary/vocabulary.json` holds 200 canonical terms and 1,812 aliases,
-  covering 93.4% of the 5,479 observed readings, zero matching collisions. The
-  reconcile pass's own notes are in `data/vocabulary/reconcile_notes.json`,
-  including the pairs it deliberately refused to merge and the 15 judgement
-  calls it wants a human to confirm.
+- **Town batch** — the pre-fix runner is still actively reading Belleville; do
+  not start a second model job. It predates completion receipts, so it will not
+  create one. The patched runner treats every legacy result as resumable, skips
+  its already-attempted pages, and writes a receipt only after the child reports
+  the exact ordered document selection and the result, selection and extractor
+  fingerprints agree. There are currently no receipts. On a future restart,
+  `--skip-done` skips only receipt-backed results, never a filename by itself.
+- **Vocabulary workflow** — a conservative first artifact is built and wired
+  into extraction. `data/vocabulary/vocabulary.json` holds 697 source-attested
+  terms from the frozen 5,147-record checkpoint and stratified survey: 229 have
+  one consistent existing identity; 468 deliberately leave identity blank; all
+  are `reviewed: false`; matching collisions are zero. Grouping is orthographic
+  only, so words such as `design`, `total`, `maximum`, `minimum`, `per capita`
+  and `24 hour` cannot be silently erased.
 
 ---
 
 ## 5. What to do next, in priority order
 
-### A. Finish the vocabulary (highest value, half-built)
+### A. Validate and improve the vocabulary (highest value)
 
 The measurement above says this is *the* thing standing between "works on
 municipal sewage reports" and "works on the Canadian public record".
 
-1. ~~Build the vocabulary.~~ **Done.** 200 terms in
-   `data/vocabulary/vocabulary.json`, loaded and matched by
-   `concordance/vocabulary.py`. Verified: "average daily flow" resolves to
-   `flow`, "Design Population" to `population`, and the two names the model
-   invented — "cost estimate for one boiler at keith station", "width of
-   strongly sheared rock" — are correctly flagged NEW rather than absorbed.
+1. ~~Build a safe provisional artifact.~~ **Done.** The deterministic builder
+   reads committed evidence by default, validates source attestation and matching
+   invariants, and refuses semantic collisions. Reproduce it with
+   `python scripts/build_vocabulary.py --dry-run`; validate the saved file with
+   `python scripts/build_vocabulary.py --validate data/vocabulary/vocabulary.json`.
 
-   **Every entry is `reviewed: false`.** Nobody has confirmed them. Start with
-   the 15 questions in `reconcile_notes.json` and the `deliberately_kept_apart`
-   list, which is where the dangerous judgements are (bod concentration vs
-   removal vs exceedance frequency vs loading are four different measurements
-   and three of them are percentages).
+2. ~~Wire it into extraction.~~ **Done.** The model chooses from the prompt list
+   or explicitly proposes a reusable term; the extractor independently checks
+   that claim, canonicalizes only an exact canonical/orthographic-alias match,
+   and records the naming version and vocabulary size in `Record.raw`.
 
-2. **Wire it into extraction — this is now the top task.** `concordance/extract.py` holds `SYSTEM`. Note
-   that its current examples actively teach the failure — `"bus leasing share of
-   budget"`, `"share of national steel production"` are invented per-sentence
-   descriptions. Replace with: here is the vocabulary, choose from it, and if
-   nothing fits say so and propose a term. Use
-   `vocabulary.load().for_prompt(hint=<document title>)`.
-3. **Measure that it worked.** Re-run the sweep and check `model_named_share`
-   falls from 0.76. That number is the test.
+3. **Improve prompt retrieval before claiming success.** The safe artifact knows
+   235 of the 244 archive-language terms in the stratified survey, but the
+   current 240-term prompt exposes only 39 of those 235 because the artifact has
+   no reviewed domain labels and report titles rarely share words with parameter
+   names. Improve page-aware retrieval without broad semantic aliasing.
+
+4. **Then measure the model.** Re-run the same stratified sweep and check
+   `model_named_share` falls from the measured 0.7578 baseline. No post-change
+   model run has happened yet; vocabulary membership is only a preflight proxy.
 
 Every entry carries `reviewed: false` until a person confirms it. Keep that —
 the project's line is that the machine proposes and a human decides what a term
@@ -144,22 +147,28 @@ He chose this. Blocked on one thing only he can do: **a DNS A record**.
 
 ### C. Remaining audit findings
 
-An adversarial audit found nine confirmed defects; six were fixed. Still open,
+An adversarial audit found nine confirmed defects. These are now fixed:
+
+- `library.ask` no longer reports or writes a contribution when it recovered
+  zero records.
+- `/api/citation` now returns an explicit unavailable-image result and keeps the
+  whole-page archive link separate, rather than feeding HTML to an image tag.
+- A slow MapLibre download degrades only the map after four seconds; all local
+  views initialize first, and a late download can still recover the map.
+- `/api/bundle` now admits at most three valid expensive submissions per socket
+  peer per minute and returns an explicit HTTP 429 before archive verification.
+- `/api/read` no longer launches an hours-long local-model job from a GET. The
+  public UI labels the browser-to-local handoff as fellowship work instead of
+  claiming it already runs on the visitor's laptop.
+
+Still open,
 from `data/results/` and the audit output:
 
-- `library.ask` reports success and tells the user the data was kept when it
-  read nothing.
-- `/api/citation` degrades to a broken image with no explanation for 23 of 39
-  cited documents.
-- The maplibre CDN guard covers a fast failure but not a slow one — a hanging
-  unpkg leaves all nine views inert.
 - ~154 records store a facility or a piece of plant equipment where a town
   belongs ("digesters", "primary", "Site 1", "Lake Ontario"). Two problems
   mixed: facility strings that contain a town ("Brantford Water Treatment
   Plant") need splitting into place + facility, and genuine non-places should
   inherit the town from the file header.
-- One request can trigger a large number of archive.org fetches; there is no
-  rate limit on `/api/bundle`. Matters only once public.
 
 ### D. Application polish
 
@@ -176,7 +185,154 @@ from `data/results/` and the audit output:
 
 ---
 
-## 6. How this project fails, which is worth knowing before you change anything
+### E. Lift more from OMEGA — an explicit request, not yet started
+
+**Jonathan asked for this directly and it never got done.** His words: *"I just
+think we need to utilize more of the OMEGA code base since the work is mostly
+done and it looks good."* The decision he made was: Concordance stays a separate
+repository, but stops rebuilding what OMEGA already has.
+
+OMEGA-wave lives at `C:/Users/jdcap/Documents/Codex/OMEGA-wave` — ~30,000 lines,
+118 provider definitions. Some of it is already here (`science.py`, `portal.py`,
+`jay.py`, `static/omega-portal.css` all came from it). A survey ran subsystem by
+subsystem and costed each candidate; **its findings were never acted on.** Full
+output in the session task file `w5gzy32rc.output`; the headline items, all
+stdlib with **zero new dependencies**:
+
+| Lift | From | Replaces | Effort |
+|---|---|---|---|
+| "Glass bridge" floating panels — map stays live behind every view | `gateway/static/portal.css` (.page-panel, .context-drawer) | `portal.py` `.dock`, a flat opaque slab; and `.view`, which currently *hides the map* on every non-map view | hours |
+| `drawLineChart` / `drawMultiSeriesChart` — inline-SVG charts with axes, titles, confidence bands and per-point quality flags | `gateway/static/portal.js:29665–29881` | `portal.py` `spark()`, 12 lines, a bare polyline with no axis or scale | hours |
+| `tilecache.py` + prewarm, plus an offline tile pack | `gateway/tilecache.py`, `main.py` | nothing — this is the fix for the CDN dependency | 1–2 days |
+| Vendor MapLibre locally (OMEGA has its own precedent for this) | — | the unpkg `<script>` in `portal.py` | hours |
+
+The QC-flag vocabulary in those charts (SUSPECT / FAIL / MISSING) maps almost
+exactly onto this project's ledger states (settled / contested / unsupported),
+which would let a chart **show which points are disputed** — a capability
+Concordance does not currently have.
+
+**One correction to that survey:** it recommends lifting OMEGA's animated sea
+turtle as the agent's mark. That was written before the rename. The agent is now
+**Jay**, a Canada jay, because a Hawaiian sea turtle was right for an ocean
+instrument and wrong for Canadian municipal paperwork. Take the launcher and the
+animation machinery if useful; do not take the turtle.
+
+---
+
+## 6. Environment, and one trap that has cost hours three times
+
+Windows 11, **Python 3.14.5**, PowerShell and Git Bash both available. Ollama is
+running locally with `gemma4:12b` (the default extractor), `gemma4:26b`,
+`qwen3.6:latest` (the vision model) and `llava:latest`.
+
+Measured timings on this machine, so you can plan:
+
+- prose page: **~91 seconds**
+- table page via the vision model: **~8 minutes** (only 18% of the model's
+  layers fit in 8 GB of VRAM)
+- one town, end to end: **~2 hours**
+- the stratified vocabulary sweep: **12 hours** for 1,416 readings
+
+Server: `python -m concordance.server`, port **8765**. `STATE` loads everything
+at startup, so **any code or data change needs a restart** — this has caused
+"my fix didn't work" confusion more than once.
+
+### The trap
+
+**A `` written into a regex through a shell heredoc becomes a literal
+backspace byte (0x08).** The file then reads back correctly in every editor and
+the pattern silently matches nothing.
+
+This has happened **three times** in this project — in `models.py`, in
+`server.py`'s facility-suffix pattern, and once in vision. The second time it
+made the flagship trend stay broken *after being fixed*, because "Owen Sound
+Sewage Treatment Plant" stopped resolving to "Owen Sound" and nobody could see
+why.
+
+`tests/test_vision.py::test_no_source_file_carries_a_control_byte` catches it
+and caught the third occurrence. Two habits avoid it entirely: write regexes
+with `(?<![a-z])` / `(?![a-z])` instead of ``, and prefer the Write/Edit tools
+over heredocs when authoring patterns.
+
+---
+
+## 7. Decisions already made — do not relitigate
+
+Each of these was argued and settled with Jonathan. Reopening them wastes his
+time.
+
+- **Separate repository from OMEGA**, but lift its code rather than rebuild.
+  Considered merging into OMEGA and rejected: the trust models differ (OMEGA
+  trusts a signed node; here the sender is irrelevant and the archive decides),
+  and the zero-dependency core is what makes "a stranger's laptop can read a
+  document" plausible.
+- **No GPU rental in the budget.** $4,251–8,502 was costed specifically to argue
+  against it: a corpus bought in one batch is finished when the money stops.
+- **The vocabulary was done before applying**, not proposed as funded work.
+- **Name: Concordance.** Ground Truth was taken. He rejected roughly fifteen
+  alternatives before this one — including Verbatim, Gazetteer, Cairn, Portage,
+  Baseline — so if you dislike it, keep it anyway.
+- **The agent is Jay**, for the Canada jay, which caches thousands of items
+  across a territory and remembers where each one is.
+- **Never the word "copilot"** for an AI. It is another company's product name.
+- **Repo private now, public before submitting.**
+- **Deploy to the droplet** rather than only linking the repo.
+
+---
+
+## 8. Working with Jonathan
+
+- **He wants short answers.** Answer first, in a line or two. He has asked for
+  this explicitly and it is in the persistent memory file. I repeatedly failed
+  at it and he called it out.
+- **He catches real errors.** The routing bug that was discarding a fifth of the
+  archive was found because he said *"there was lots of text in the Good Living
+  document."* When he pushes back on a technical claim, check before defending.
+- **He will reject names and framings until one is right.** That is not
+  indecision; the naming round took fifteen tries and the result is better.
+- He asks for work to continue without check-ins. Do the work, report at the
+  end, do not narrate each step.
+
+---
+
+## 8b. Prior investigations, and where their output lives
+
+A lot of analysis was run that is not in the code. The raw results are in the
+session task directory
+`C:/Users/jdcap/AppData/Local/Temp/claude/.../2b3847e7-.../tasks/<id>.output`
+as JSON. **Read these before re-doing the work.**
+
+| id | what it was | status |
+|---|---|---|
+| `w5qp6221v` | Adversarial audit: verification path, claims-vs-code, abuse surface, data integrity, demo robustness. Nine confirmed defects, six serious. | six fixed; the rest are section 5C |
+| `w5gzy32rc` | OMEGA lift survey, subsystem by subsystem, each candidate costed | **never acted on** — section 5E |
+| `w1ume7jp3` | Reader panel 1 on the application — five personas. Verdict: none of five could name the deliverable. | acted on; drove the rewrite |
+| `wl1cwxsvo` | Reader panel 2 on the rewrite. 4 of 5 could explain it from line 7. | acted on |
+| `wbz5lcp9y` | Vocabulary clustering, 8 domains + reconcile | collected into `data/vocabulary/` |
+
+The reader panels are re-runnable and cheap. If you materially change
+`APPLICATION-FORM.md`, run one — both rounds found things no amount of
+re-reading it myself would have.
+
+### Commands worth knowing
+
+```bash
+python -m pytest -q                      # 586 tests, ~6s, no network
+python scripts/check_form.py             # application answers vs the form's limits
+python scripts/rescore.py                # accuracy, no model needed
+python -m concordance.server             # the portal, port 8765
+python -u scripts/run_batch.py --towns 12 --model gemma4:12b --timeout 900
+python scripts/run_vocab.py --budget 1400 --per-stratum 1 --pages-per-doc 2 --max-strata 25 --out data/results/vocab_coverage.stratified.json
+```
+
+Note `data/results/` holds **two** vocabulary reports: `vocab_coverage.json` is
+the old single-stratum run over water reports only (90% coverage, ~200 terms,
+and misleading for exactly that reason), and `vocab_coverage.stratified.json` is
+the real one. Do not quote the first.
+
+---
+
+## 9. How this project fails, which is worth knowing before you change anything
 
 Two bug families have each recurred five or more times. When something is wrong
 here, look at these first.
@@ -205,7 +361,7 @@ records each instance and how long it hid.
 
 ---
 
-## 7. Map of the code
+## 10. Map of the code
 
 ```
 concordance/

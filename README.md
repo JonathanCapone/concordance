@@ -102,10 +102,10 @@ most sensitive to.
 
 That figure is a reference point, not a plan. A corpus bought in one batch is finished the day the
 money runs out — it never extends, and the next person who wants a document nobody thought to read
-has no way to get it. So reading happens **because somebody asked**: request a place, and if you
-are the first, your machine reads it and it is there for everyone after you. `scripts/share.py`
-moves the result between machines — as a file, or pushed to a shared instance — re-verified
-against archive.org on arrival either way.
+has no way to get it. The local reader and the sharing path are built: `scripts/share.py` moves a
+result between machines — as a file, or pushed to a shared instance — and it is re-verified against
+archive.org on arrival. The safe one-click handoff from the public website to that local reader is
+not built yet; the site does not start an hours-long model job from a web request.
 
 **The honest hole in that** is the vision path. Tables are 27% of pages and most of the actual
 measurements, and they take eight minutes a page on an RTX 2080 because only 18% of a 29.6 GB model

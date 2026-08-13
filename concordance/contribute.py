@@ -39,6 +39,7 @@ from typing import Any
 from .archive import Archive
 from . import numerals
 from .models import record_key
+from .places import scope_record_location
 
 BUNDLE_VERSION = 1
 
@@ -447,16 +448,32 @@ def merge_bundle(
             payload = json.loads(other.read_text(encoding="utf-8"))
         except Exception:  # noqa: BLE001
             continue
-        # A record with no place of its own inherits the file's, exactly as
-        # Corpus.load does -- so identity is computed the same way on the way in
-        # and on the way out. Thirty-one Brantford readings store place=null and
-        # load as "Brantford", and without this they key differently in the two
-        # directions and re-import as new.
+        # Resolve each stored record's place EXACTLY as Corpus.load does, by
+        # calling the same function it calls. Identity has to be computed the
+        # same way on the way in and on the way out.
+        #
+        # This used to do only the empty-place fallback, which covered the
+        # thirty-one Brantford readings that store place=null. It missed the
+        # other case: models put equipment and site labels in the place field
+        # ("digesters", "Site 1", "Brantford Water Treatment Plant"), and the
+        # loader resolves those to the municipality while the raw file keeps the
+        # original. 231 of 5,241 records keyed differently in the two directions
+        # and re-imported as new -- the same doubling-on-every-round-trip bug
+        # this dedup was written to prevent, returning through a door nobody had
+        # checked.
+        #
+        # Approximating another module's normalisation is what went wrong. Call
+        # it instead.
         header_place = payload.get("place")
         for r in payload.get("records", []) or []:
-            if not r.get("place") and header_place:
-                r = dict(r, place=header_place)
-            existing_keys.add(record_key(r))
+            year = None
+            try:
+                year = int(str(r.get("period"))[:4])
+            except (TypeError, ValueError):
+                pass
+            place, facility = scope_record_location(
+                r.get("place"), header_place, r.get("facility"), year)
+            existing_keys.add(record_key(dict(r, place=place, facility=facility)))
 
     # Merge ONLY what the archive stood behind. This used to iterate the whole
     # bundle, so every record that was not outright FAILED rode in -- including

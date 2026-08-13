@@ -23,6 +23,7 @@ Two guards make the output trustworthy:
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
@@ -31,6 +32,7 @@ from dataclasses import dataclass
 from typing import Any, Protocol
 
 from . import vocabulary
+from .contribute import _value_in_quote
 from .models import PageText, Provenance, Record
 
 DEFAULT_OLLAMA_MODEL = "gemma4:12b"
@@ -300,9 +302,14 @@ can be reviewed and added later.
 """
 
 
-def _system_prompt(vocab: vocabulary.Vocabulary, *, hint: str = "") -> str:
+def _system_prompt(
+    vocab: vocabulary.Vocabulary,
+    *,
+    hint: str = "",
+    rendered_terms: str | None = None,
+) -> str:
     """Add the relevant archive vocabulary without making it a prerequisite."""
-    terms = vocab.for_prompt(hint=hint)
+    terms = vocab.for_prompt(hint=hint) if rendered_terms is None else rendered_terms
     instructions = VOCABULARY_TEMPLATE.format(terms=terms) if terms else NO_VOCABULARY
     return f"{SYSTEM.rstrip()}\n\n{instructions}"
 
@@ -486,16 +493,27 @@ def extract_prose(
     """Read one page. Returns records plus an audit trail of what was rejected."""
     client = client or default_client()
     vocab = vocabulary.load()
-    # A title carries the strongest domain signal. Publisher and a small slice
-    # of page text keep the relevance sort useful for untitled archive items.
-    vocab_hint = title or publisher or page.text[:240]
-    system = _system_prompt(vocab, hint=vocab_hint)
+    # Select from exactly the evidence the model will see. Complete phrase
+    # matches on the page are a much stronger and safer retrieval signal than
+    # generic report titles, and this text is used only for ranking -- it is not
+    # duplicated in the prompt.
+    page_text = page.text[:12000]
+    vocab_hint = "\n".join(part for part in (title, publisher, page_text) if part)
+    rendered_vocabulary = vocab.for_prompt(hint=vocab_hint)
+    system = _system_prompt(vocab, hint=vocab_hint, rendered_terms=rendered_vocabulary)
+    prompted_term_count = sum(
+        1 for line in rendered_vocabulary.splitlines()
+        if line.strip() and not line.startswith("#")
+    )
+    vocabulary_prompt_digest = hashlib.sha256(
+        rendered_vocabulary.encode("utf-8")
+    ).hexdigest()[:20]
     user = USER_TEMPLATE.format(
         title=title or "(unknown)",
         publisher=publisher or "(unknown)",
         year=year or "(unknown)",
         page=page.page,
-        text=page.text[:12000],
+        text=page_text,
     )
     raw = client.complete(system, user)
     candidates = _parse_json_array(raw)
@@ -510,6 +528,7 @@ def extract_prose(
         source = str(c.get("source_text") or "").strip()
         kind = str(c.get("kind") or "").strip().lower()
         parameter = str(c.get("parameter") or "").strip()
+        model_parameter = parameter
 
         if kind not in ("observation", "standard", "design", "conclusion"):
             rejected.append({"why": f"unknown kind {kind!r}", "candidate": c})
@@ -536,6 +555,12 @@ def extract_prose(
             rejected.append({"why": "source_text not found on page", "candidate": c})
             continue
 
+        value = _to_float(c.get("value"))
+        value_state, value_evidence = _value_in_quote(value, source)
+        if value_state == "failed":
+            rejected.append({"why": value_evidence, "candidate": c})
+            continue
+
         model_conf = _to_float(c.get("confidence"))
         model_conf = 0.5 if model_conf is None else max(0.0, min(1.0, model_conf))
         # Legibility of the scan bounds how much a confident reading is worth.
@@ -548,13 +573,17 @@ def extract_prose(
         raw_metadata: dict[str, Any] = {
             "model_confidence": model_conf,
             "ocr_confidence": scan_conf,
+            "model_parameter": model_parameter,
             "parameter_status": parameter_status,
+            "value_evidence": value_evidence or "exactly present in source_text",
             # Old extraction records have neither of these fields.  Keeping the
             # prompt generation and vocabulary size on each new record makes a
             # batch that crosses this rollout auditable instead of making old
             # free-named and new vocabulary-guided output look homogeneous.
             "parameter_naming_version": PARAMETER_NAMING_VERSION,
             "vocabulary_terms_available": len(vocab),
+            "vocabulary_terms_prompted": prompted_term_count,
+            "vocabulary_prompt_digest": vocabulary_prompt_digest,
         }
         if model_parameter_status in ("controlled", "proposed"):
             raw_metadata["model_parameter_status"] = model_parameter_status
@@ -562,7 +591,7 @@ def extract_prose(
         record = Record(
             kind=kind,  # type: ignore[arg-type]
             parameter=parameter,
-            value=_to_float(c.get("value")),
+            value=value,
             unit=(str(c["unit"]).strip() if c.get("unit") else None),
             qualifier=(str(qualifier).strip().lower() if qualifier else None),  # type: ignore[arg-type]
             stream=stream if stream in

@@ -522,4 +522,46 @@ def resolve(name: str, year: int | None = None) -> Place | None:
     return _choose_populated(name, lookup, year)
 
 
-__all__ = ["Place", "resolve"]
+def scope_record_location(
+    place: str | None,
+    file_place: str | None,
+    facility: str | None,
+    year: int | None = None,
+) -> tuple[str | None, str | None]:
+    """Keep a record inside its extraction scope without losing what it named.
+
+    A municipality result file is the strong context. Models nevertheless put
+    plant names (``Brantford Water Treatment Plant``), equipment (``digesters``)
+    and site labels (``Site 1``) in the place field. If the candidate is not a
+    populated place, or it resolves to the same municipality as the file, the
+    file label becomes the place and the more specific wording is preserved as
+    a facility when no better facility was already extracted.
+
+    A genuinely different populated place is retained. Reports can compare
+    municipalities, and file scope is not permission to erase that evidence.
+    """
+    raw = " ".join(str(place or "").split()) or None
+    scope = " ".join(str(file_place or "").split()) or None
+    specific = " ".join(str(facility or "").split()) or None
+    if scope is None:
+        return raw, specific
+    if raw is None or raw.casefold() == scope.casefold():
+        return scope, specific
+
+    resolved_raw = resolve(raw, year)
+    resolved_scope = resolve(scope, year)
+    same_entity = bool(
+        resolved_raw is not None
+        and resolved_scope is not None
+        and resolved_raw.canonical.casefold() == resolved_scope.canonical.casefold()
+    )
+    # Curated file labels may include a locality/facility that the gazetteer can
+    # also resolve independently (Elizabeth Gardens inside Burlington). A raw
+    # substring of that scoped label remains the more specific facility here.
+    nested_label = raw.casefold() in scope.casefold() or scope.casefold() in raw.casefold()
+    if resolved_raw is None or same_entity or nested_label:
+        return scope, specific or raw
+    return raw, specific
+
+
+__all__ = ["Place", "resolve", "scope_record_location"]

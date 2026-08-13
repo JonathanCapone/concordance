@@ -82,6 +82,21 @@ def test_the_prompt_list_leads_with_what_the_document_is_about() -> None:
     assert "dustfall" in listing and "population" in listing
 
 
+def test_a_complete_page_phrase_outranks_global_frequency() -> None:
+    vocab = Vocabulary(terms=[
+        Term("population", "population", "count", readings_covered=100),
+        Term("flow", "flow", "rate", readings_covered=90),
+        Term("ascorbic acid", "", "", readings_covered=1),
+    ])
+
+    listing = vocab.for_prompt(
+        hint="The ascorbic-acid value was 18 mg.", limit=1,
+    )
+
+    assert "ascorbic acid" in listing
+    assert "population" not in listing
+
+
 def test_entries_are_unreviewed_until_somebody_says_otherwise() -> None:
     """The machine proposes; a person confirms. Published output has to be able
     to say which entries have been looked at."""

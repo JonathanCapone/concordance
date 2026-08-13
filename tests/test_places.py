@@ -5,11 +5,31 @@ import zipfile
 
 import pytest
 
-from concordance.places import Place, resolve
+from concordance.places import Place, resolve, scope_record_location
 from scripts import build_gazetteer as builder
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+@pytest.mark.parametrize(
+    ("reported", "scope", "facility", "expected_place", "expected_facility"),
+    [
+        ("Brantford Water Treatment Plant", "Brantford", None,
+         "Brantford", "Brantford Water Treatment Plant"),
+        ("digesters", "Brantford", "water pollution control plant",
+         "Brantford", "water pollution control plant"),
+        ("Elizabeth Gardens", "Burlington Elizabeth Gardens", None,
+         "Burlington Elizabeth Gardens", "Elizabeth Gardens"),
+        ("Toronto", "Belleville", None, "Toronto", None),
+    ],
+)
+def test_record_location_separates_town_scope_from_facility_wording(
+    reported, scope, facility, expected_place, expected_facility,
+):
+    assert scope_record_location(reported, scope, facility, 1987) == (
+        expected_place, expected_facility,
+    )
 
 
 @pytest.mark.parametrize("raw", ["Sault Ste Marie", "Sault Ste. Marie"])

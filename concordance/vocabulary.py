@@ -175,9 +175,9 @@ class Vocabulary:
         """The list to hand a model, shortened to what will plausibly be needed.
 
         The whole vocabulary is a few thousand tokens, which is affordable but
-        wasteful on a page about schools. Terms whose domain or words match the
-        document's title come first, then the most-used terms overall, because a
-        term used 132 times is likelier than one used once.
+        wasteful on a page about schools. Complete archive phrases visible in
+        the page come first, then weaker word overlap, then the most-used terms
+        overall. Phrase presence is orthographic evidence, not a semantic guess.
 
         Truncation is a real risk here -- a term left out is a term the model
         will invent instead -- so the caller is told to flag anything that does
@@ -186,13 +186,12 @@ class Vocabulary:
         h = normalise(hint)
         words = {w for w in h.split() if len(w) > 3}
 
-        def relevance(t: Term) -> tuple[int, int]:
-            hit = 0
-            if t.domain and t.domain.replace("-", " ") in h:
-                hit += 2
-            if words & set(normalise(t.canonical).split()):
-                hit += 1
-            return (-hit, -t.readings_covered)
+        def relevance(t: Term) -> tuple[int, int, int]:
+            keys = t.keys
+            phrase_hit = any(f" {key} " in f" {h} " for key in keys)
+            term_words = {word for key in keys for word in key.split() if len(word) > 3}
+            word_hit = bool(words & term_words)
+            return (-int(phrase_hit), -int(word_hit), -t.readings_covered)
 
         chosen = sorted(self.terms, key=relevance)[:limit]
         chosen.sort(key=lambda t: (t.domain, t.canonical))

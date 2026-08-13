@@ -40,18 +40,16 @@ a person can use it.
 
 ### How it works, in one paragraph
 
-There is no central machine that reads the archive. **The reading happens on the
-computer of whoever asks.** You open the site and look up your town: if somebody
-has already read it, you get the answer instantly, from data everyone shares. If
-nobody has, the site says so — *"Nobody has read this one. 12 scanned reports
-are waiting, about an hour on this machine"* — and you can press a button. Your
-own laptop then fetches those scans and reads them, which takes roughly a minute
-a page, and the result is published back so the next person gets it instantly.
-No account, no install beyond the software itself, nothing running in the
-background afterwards.
+The site and the reader already work, but the bridge between them is the
+fellowship build. Today, anyone can run the open-source reader locally and send
+a result to a Concordance instance, where every record is checked again against
+the cited scan. The browser can show existing results, but it does not yet hand
+a requested place to a visitor's local reader. I will build and test that
+handoff so a volunteer can contribute without an account, an API key, or a
+process left running.
 
-That is why there is no compute budget below, and it is the difference between a
-dataset that is finished when the grant ends and one that keeps growing.
+That is the path to growth without a permanent central compute bill. It is a
+deliverable, not something I am claiming is already deployed.
 
 ### Why this is possible now and was not before
 
@@ -230,17 +228,18 @@ argue against it. A corpus bought in one batch is finished the day the money run
 out. It covers whatever was current in October 2026, it never extends, and the
 next person who wants a document nobody thought to read has no way to get one.
 
-**So reading happens because somebody wanted to know something.** You ask for a
-place. If it has been read, you get it instantly. If you are the first to ask,
-your own computer reads it — and then it is there for everyone after you. No
-account, no queue, no volunteering. The cost falls on whoever cares first, who
-is also the person most willing to wait twenty minutes for it.
+**So the planned reading loop starts because somebody wanted to know
+something.** You ask for a place. If it has been read, you get it instantly. If
+you are first, the site will make an explicit handoff to the local reader, let
+you preview what it found, and offer the evidence-checked result back. The
+reader, bundle format and receiving endpoint work today; the safe one-click
+handoff does not, and building it is in scope for the fellowship.
 
-Results move between machines and are re-checked against the original scans on
-arrival, so nobody has to trust or pay for a central server. **The rest of the
-archive fills in as people ask for it, indefinitely, at no recurring cost to
-anyone** — and in the order people actually want to know things, which is a
-better order than any I would impose.
+Results already move between machines and are re-checked against the original
+scans on arrival, so no central instance has to be trusted as the authority. If
+the handoff and user test succeed, **the archive can fill in as people ask for
+it without a permanent central inference bill** — in the order people actually
+want to know things, which is a better order than any I would impose.
 
 ### The hole in that, named
 
@@ -335,11 +334,11 @@ The rest of this document is careful about its numbers. It would be dishonest to
 be careful there and silent here.
 
 **Nobody outside this project has used it.** Not one stranger has looked up
-their town, and nobody has been asked to. The contribution model — a person
-presses a button and their laptop reads a document for everyone — is built,
-tested and entirely unproven as a *human* proposition. I believe people will do
-it for the town they grew up in. I have no evidence, and the fellowship is the
-first chance to get some.
+their town, and nobody has been asked to. The contribution primitives — local
+reading, bundle export, server-side re-verification and merge — are built. The
+safe browser-to-local handoff is not. I believe people will contribute for the
+town they grew up in, but I have no evidence; building and testing that complete
+loop is fellowship work.
 
 If they do not come, the project does not fail: it becomes a smaller dataset
 plus a very good finding aid, because every reading published still carries its
@@ -370,10 +369,10 @@ and see what was measured there and when it stopped. They install nothing and
 contribute nothing, and they are the point of the whole exercise. If this works
 they are 99% of the users.
 
-**Someone wants a place nobody has read yet.** The site says so plainly —
-*"Nobody has read this one. 12 scanned reports are waiting, about an hour on
-this machine"* — and they press a button. Their computer does the reading, they
-get their answer, and it is now done for everybody. **That is the entire ask.**
+**Someone wants a place nobody has read yet.** The intended experience is one
+explicit handoff from the site to a local reader, followed by a preview and an
+evidence-checked contribution. Today those pieces exist separately; joining
+them safely and testing whether anyone will use them is part of the build.
 
 **Someone disagrees with a number.** They cite a page and quote a sentence, and
 the archive settles it: the same check that judges my own output, which never
@@ -397,7 +396,7 @@ asking a question.
 | | |
 |---|---|
 | Look up a town and see every measurement with its scan | **built** |
-| Ask for a place nobody has read; your machine reads it | **built** |
+| Ask for a place nobody has read; your machine reads it | **not yet end-to-end** — fellowship work |
 | Correct a number, checked against the scan, no moderator | **built** |
 | Send readings to a shared instance, re-verified on arrival | **built** |
 | Ask a question in plain English and get an answer that cites its pages | **built** — over two towns, needs the data |

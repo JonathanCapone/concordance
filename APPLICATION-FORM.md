@@ -32,17 +32,16 @@ a thumb drive.
 None of those numbers are in any database. To learn what your town's plant
 discharged in 1969 you would have to know the report exists, find it, read it.
 
-**There is no central machine that reads the archive. The reading happens on the
-computer of whoever asks.** You look up your town: if somebody has already read
-it you get the answer instantly, from data everyone shares. If nobody has, the
-site says so — *"Nobody has read this one. 12 scanned reports are waiting, about
-an hour on this machine"* — and you can press a button. Your own laptop fetches
-those scans and reads them, roughly a minute a page, and the result is published
-back so the next person gets it instantly. No account, nothing left running.
+**The site and the reader already work, but the bridge between them is the
+fellowship build.** Today, anyone can run the open-source reader locally and
+send a result to a Concordance instance, where every record is checked again
+against the cited scan. The browser can show existing results, but it does not
+yet hand a requested place to a visitor's local reader. I will build and test
+that handoff so a volunteer can contribute without an account, an API key, or a
+process left running.
 
-That is why there is no compute line in my budget, and it is the difference
-between a dataset that is finished the day the grant ends and one that keeps
-growing afterwards.
+That is the path to growth without a permanent central compute bill. It is a
+deliverable, not something I am claiming is already deployed.
 
 It already runs: 5,147 source-linked records across 14 municipalities, including
 2,384 observations; 96.8% precision on four hand-read pages; and no sentence/page
@@ -255,7 +254,7 @@ both "never scanned" and "the reporting rules changed".
 
 **I have built the hard half already, and you can check it rather than take my
 word.** The repository runs today: 5,147 source-linked records across 14
-municipalities; 96.8% precision on four hand-read pages; 539 tests pass; no core
+municipalities; 96.8% precision on four hand-read pages; 564 tests pass; no core
 dependencies are required.
 
 Before this I built OMEGA-wave, an open ocean-sensing system with its own

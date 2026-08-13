@@ -69,7 +69,10 @@ def test_document_title_selects_the_vocabulary_for_the_model(monkeypatch) -> Non
         publisher="Dominion Bureau of Statistics",
     )
 
-    assert seen_hints == ["Canadian railway statistics"]
+    assert len(seen_hints) == 1
+    assert "Canadian railway statistics" in seen_hints[0]
+    assert "Dominion Bureau of Statistics" in seen_hints[0]
+    assert "Total mileage was 334.15 miles." in seen_hints[0]
     assert "--- BEGIN CONTROLLED VOCABULARY ---" in client.system
     assert "mileage  [miles]" in client.system
     assert 'set "parameter_status" to "proposed"' in client.system
@@ -98,6 +101,9 @@ def test_known_alias_is_replaced_by_the_canonical_archive_term(monkeypatch) -> N
         extraction.PARAMETER_NAMING_VERSION
     )
     assert result.records[0].raw["vocabulary_terms_available"] == 1
+    assert result.records[0].raw["vocabulary_terms_prompted"] == 1
+    assert result.records[0].raw["model_parameter"] == "inhabitants"
+    assert len(result.records[0].raw["vocabulary_prompt_digest"]) == 20
 
 
 def test_unknown_term_remains_an_auditable_proposal(monkeypatch) -> None:
@@ -135,3 +141,19 @@ def test_missing_vocabulary_file_keeps_extraction_working(monkeypatch, tmp_path)
     assert "No controlled vocabulary is available" in client.system
     assert "Extraction must still\ncontinue" in client.system
     assert result.records[0].raw["vocabulary_terms_available"] == 0
+    assert result.records[0].raw["vocabulary_terms_prompted"] == 0
+
+
+def test_a_value_absent_from_its_real_sentence_is_rejected(monkeypatch) -> None:
+    source = "The rock seam was 12 metres wide."
+    monkeypatch.setattr(extraction.vocabulary, "load", lambda: Vocabulary())
+    client = CaptureClient([
+        _candidate(source, "rock seam width", parameter_status="proposed",
+                   value=99, unit="metres"),
+    ])
+
+    result = extraction.extract_prose(_page(source), client=client)
+
+    assert result.kept == 0
+    assert len(result.rejected) == 1
+    assert "does not appear in the sentence" in result.rejected[0]["why"]

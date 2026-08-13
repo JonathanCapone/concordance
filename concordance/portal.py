@@ -66,7 +66,6 @@ def render(s: dict) -> str:
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Concordance — Canada's public record, read</title>
-<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@{MAPLIBRE_VERSION}/dist/maplibre-gl.css">
 <link rel="stylesheet" href="/static/omega-portal.css">
 <style>
 /* Concordance overrides on top of the inherited OMEGA chrome. */
@@ -362,7 +361,6 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
   </div>
 </div>
 
-<script src="https://unpkg.com/maplibre-gl@{MAPLIBRE_VERSION}/dist/maplibre-gl.js"></script>
 <script>
 const PRECISION = "{s['precision']:.0%}";
 
@@ -469,12 +467,10 @@ async function openTown(p){{
         + (d.facility ? ` · ${{esc(d.facility)}}` : "") + `</div>`;
   if(!d.found){{
     h += `<div class="empty">Nobody has read this one yet.<br><br>
-      ${{p.years}} scanned reports are waiting. If you read them, they are in the
-      library for everyone from then on &mdash; roughly an hour on this machine.</div>
-      <button id="read-now" style="margin-top:14px;background:var(--gt-hit);border:0;
-        border-radius:8px;color:#04080d;font-weight:600;padding:10px 16px;cursor:pointer;
-        font:inherit;width:100%">Read ${{esc(p.place)}} now</button>
-      <div id="read-log" style="margin-top:10px;font-size:12px;color:#8b97a4"></div>`;
+      ${{p.years}} scanned reports are waiting. The open-source reader can process
+      them locally and submit a bundle that this instance re-verifies.<br><br>
+      A safe one-click browser-to-local handoff is fellowship work; this public
+      site will not start an hours-long server job from a web request.</div>`;
   }} else {{
     h += seriesHtml(d);
     h += `<div class="note">${{d.n_measurements}} measurements from ${{d.sources.length}} documents.
@@ -484,41 +480,35 @@ async function openTown(p){{
   }}
   dockBody.innerHTML = h;
 
-  const btn = document.getElementById("read-now");
-  if(btn) btn.onclick = async () => {{
-    btn.disabled = true; btn.textContent = "reading…";
-    const log = document.getElementById("read-log");
-    log.textContent = "Working through the scans. This takes about an hour and the "
-                    + "tab can be closed — it runs on this machine, not a server.";
-    try {{
-      const r = await (await fetch("/api/read?place=" + encodeURIComponent(p.place))).json();
-      log.innerHTML = r.message
-        + (r.contributed ? "<br><br>Verified and added to the library." : "");
-      btn.textContent = "done";
-    }} catch(e) {{
-      log.textContent = "Reading failed: " + e;
-      btn.disabled = false; btn.textContent = "Try again";
-    }}
-  }};
 }}
 
-/* The map is the only part of this page that needs a CDN, and it used to be
-   able to take everything else down with it. `new maplibregl.Map` sits above
-   `const LOADERS`, so on a network where unpkg is unreachable the library is
-   undefined, this line throws, the rest of the script never runs, and every one
-   of the nine views then fails with a ReferenceError inside a swallowed click
-   handler -- each panel keeping its heading and lede, so it reads as
-   deliberately empty rather than broken.
+/* The map is the only part of this page that needs a CDN. It is loaded
+   dynamically so a slow request cannot hold up the local script and leave all
+   nine views inert. After four seconds the map says what is wrong; a late CDN
+   response may still recover it without reloading the page. */
+const MAP_LOAD_TIMEOUT_MS = 4000;
 
-   The showcase is a hall on conference wifi. Guarded so a missing map costs the
-   map and nothing else. */
-if (typeof maplibregl === "undefined") {{
+function showMapMessage(message, state) {{
   const el = document.getElementById("map");
-  if (el) el.innerHTML = `<div style="position:absolute;inset:0;display:flex;
+  if (!el || window._map) return;
+  el.dataset.mapState = state;
+  el.innerHTML = `<div style="position:absolute;inset:0;display:flex;
     align-items:center;justify-content:center;text-align:center;padding:30px;
-    color:#8b97a4;font-size:13px;line-height:1.6">The map library could not be
-    loaded from the network.<br>Every other view works from local data.</div>`;
-}} else try {{
+    color:#8b97a4;font-size:13px;line-height:1.6">${{message}}</div>`;
+}}
+
+let mapInitializationStarted = false;
+function initializeMap() {{
+  if (mapInitializationStarted || window._map) return;
+  if (typeof maplibregl === "undefined") {{
+    showMapMessage("The map library could not be loaded from the network.<br>"
+      + "Every other view works from local data.", "unavailable");
+    return;
+  }}
+  mapInitializationStarted = true;
+  const mapElement = document.getElementById("map");
+  if (mapElement) {{ mapElement.replaceChildren(); mapElement.dataset.mapState = "ready"; }}
+  try {{
 const map = new maplibregl.Map({{
   container:"map", center:[-96.8,58.5], zoom:2.9,
   attributionControl:{{compact:true}},
@@ -627,9 +617,47 @@ map.on("load", async () => {{
   paint();
 }});
 
-}} catch (err) {{
-  /* Anything the map section throws stops at the map. */
-  console.error("map unavailable:", err);
+  }} catch (err) {{
+    /* Anything the map section throws stops at the map. */
+    console.error("map unavailable:", err);
+    if (window._map && typeof window._map.remove === "function") {{
+      try {{ window._map.remove(); }} catch (_) {{ /* already incomplete */ }}
+    }}
+    window._map = null;
+    showMapMessage("The map could not be started.<br>Every other view works from local data.",
+      "unavailable");
+  }}
+}}
+
+function loadMapLibrary() {{
+  const css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "https://unpkg.com/maplibre-gl@{MAPLIBRE_VERSION}/dist/maplibre-gl.css";
+  css.dataset.maplibre = "";
+  document.head.appendChild(css);
+
+  if (typeof maplibregl !== "undefined") {{ initializeMap(); return; }}
+  showMapMessage("Loading the map&hellip;", "loading");
+  const script = document.createElement("script");
+  script.src = "https://unpkg.com/maplibre-gl@{MAPLIBRE_VERSION}/dist/maplibre-gl.js";
+  script.async = true;
+  let settled = false;
+  const timer = window.setTimeout(() => {{
+    if (!settled) showMapMessage("The map is taking too long to load from the network.<br>"
+      + "Every other view is available from local data.", "timed-out");
+  }}, MAP_LOAD_TIMEOUT_MS);
+  script.addEventListener("load", () => {{
+    settled = true;
+    window.clearTimeout(timer);
+    initializeMap();
+  }}, {{once:true}});
+  script.addEventListener("error", () => {{
+    settled = true;
+    window.clearTimeout(timer);
+    showMapMessage("The map library could not be loaded from the network.<br>"
+      + "Every other view works from local data.", "unavailable");
+  }}, {{once:true}});
+  document.head.appendChild(script);
 }}
 
 /* ---- every view that is not the map ---------------------------------- */
@@ -985,4 +1013,15 @@ const LOADERS = {{
     }});
   }}
 }};
+
+/* LOADERS is deliberately complete before optional map startup. Even a
+   synchronous DOM/CSP failure in the map loader therefore cannot strand the
+   locally backed views. */
+try {{
+  loadMapLibrary();
+}} catch (err) {{
+  console.error("map library load unavailable:", err);
+  showMapMessage("The map library could not be loaded from the network.<br>"
+    + "Every other view works from local data.", "unavailable");
+}}
 </script></body></html>"""

@@ -18,9 +18,12 @@ server computes nothing it cannot show you the source of.
 from __future__ import annotations
 
 import json
+import math
 import re
+import threading
+import time
 import webbrowser
-from collections import Counter
+from collections import Counter, deque
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
@@ -37,7 +40,6 @@ from .disputes import (
 )
 from .parameters import resolve as resolve_parameter
 from .jay import Jay
-from .library import ask
 from .portal import render
 from .science import series_from_records
 from .tools import Corpus, find_my_town, judge_reading, read_me_the_record, what_went_quiet
@@ -54,6 +56,64 @@ FLAGS: list[Flag] = []
 #: anyone, so the size limit is the one place it does need a rule -- and
 #: 8 MB is roughly forty thousand readings, far more than one town.
 MAX_BUNDLE_BYTES = 8 * 1024 * 1024
+
+#: Archive verification is the expensive public write path: one bundle can
+#: require many remote page reads. Three valid submissions per source address
+#: per minute permits an ordinary contribution and a couple of corrections,
+#: while bounding a tight retry loop. Navigation and every GET endpoint bypass
+#: this limiter entirely.
+BUNDLE_RATE_LIMIT = 3
+BUNDLE_RATE_WINDOW_SECONDS = 60.0
+
+
+class _BundleRateLimiter:
+    """Small, process-local sliding window keyed by the socket peer address."""
+
+    def __init__(self, limit: int, window: float) -> None:
+        if limit < 1 or window <= 0:
+            raise ValueError("rate-limit values must be positive")
+        self.limit = limit
+        self.window = window
+        self._hits: dict[str, deque[float]] = {}
+        self._lock = threading.Lock()
+
+    def check(self, key: str, *, now: float | None = None) -> tuple[bool, int]:
+        """Consume one allowance, or return seconds until another is free."""
+        moment = time.monotonic() if now is None else now
+        cutoff = moment - self.window
+        with self._lock:
+            hits = self._hits.setdefault(key, deque())
+            while hits and hits[0] <= cutoff:
+                hits.popleft()
+            if len(hits) >= self.limit:
+                retry_after = max(1, math.ceil(hits[0] + self.window - moment))
+                return False, retry_after
+            hits.append(moment)
+
+            # Peer addresses cannot be supplied in request headers, but a
+            # long-running public process can still see many of them. Retire
+            # expired empty windows occasionally rather than growing forever.
+            if len(self._hits) > 4096:
+                stale = [peer for peer, seen in self._hits.items()
+                         if not seen or seen[-1] <= cutoff]
+                for peer in stale:
+                    self._hits.pop(peer, None)
+            return True, 0
+
+
+BUNDLE_RATE_LIMITER = _BundleRateLimiter(
+    BUNDLE_RATE_LIMIT, BUNDLE_RATE_WINDOW_SECONDS,
+)
+
+# Reading a missing place invokes archive fetches and a local model and can run
+# for hours. It is not a safe GET action: crawlers, link previews and browser
+# prefetch may issue GETs without a person choosing the work. Keep the future
+# browser-to-local handoff visible as unfinished rather than running that job on
+# the public server by accident.
+REMOTE_READ_DISABLED = (
+    "server-side reading is disabled; run the local reader and submit a "
+    "verified bundle instead"
+)
 
 #: Suffixes that turn a town's name into a facility's. Stripped only when
 #: deciding WHICH TOWN a record belongs to; the facility itself stays on the
@@ -410,10 +470,19 @@ STATE: State | None = None
 
 
 class Handler(BaseHTTPRequestHandler):
-    def _send(self, body: bytes, ctype: str) -> None:
-        self.send_response(200)
+    def _send(
+        self,
+        body: bytes,
+        ctype: str,
+        *,
+        status: int = 200,
+        headers: dict[str, str] | None = None,
+    ) -> None:
+        self.send_response(status)
         self.send_header("Content-Type", ctype)
         self.send_header("Content-Length", str(len(body)))
+        for name, value in (headers or {}).items():
+            self.send_header(name, value)
         self.end_headers()
         self.wfile.write(body)
 
@@ -469,6 +538,17 @@ class Handler(BaseHTTPRequestHandler):
                 "accepted": False,
                 "why": "no records in the bundle",
             }).encode(), "application/json")
+            return
+
+        peer = str(self.client_address[0]) if self.client_address else "unknown"
+        allowed, retry_after = BUNDLE_RATE_LIMITER.check(peer)
+        if not allowed:
+            self._send(json.dumps({
+                "accepted": False,
+                "why": "too many bundle submissions; try again later",
+                "retry_after": retry_after,
+            }).encode(), "application/json", status=429,
+                headers={"Retry-After": str(retry_after)})
             return
 
         verdict = verify_bundle(bundle, archive=STATE.archive)
@@ -564,23 +644,13 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if url.path == "/api/read":
-            # Somebody asked for a town nobody has read. Their machine reads it,
-            # and it is in the library for everyone from then on. Contributing is
-            # not a separate act here -- it is what getting the data consists of.
-            place = (q.get("place") or [""])[0].strip()
-            if not place:
-                self._send(json.dumps({"error": "no place"}).encode(), "application/json")
-                return
-            answer = ask(place, read_if_missing=True)
-            STATE.reload()
             self._send(json.dumps({
-                "place": place, "source": answer.source,
-                "records": len(answer.records), "documents": answer.documents,
-                "seconds": round(answer.seconds), "verified": answer.verified,
-                "contributed": answer.contributed,
-                "unknown_parameters": answer.unknown_parameters[:20],
-                "message": answer.describe(),
-            }).encode(), "application/json")
+                "error": REMOTE_READ_DISABLED,
+                "local_reader": (
+                    "python scripts/extract_place.py --place PLACE "
+                    "--title-filter PLACE"
+                ),
+            }).encode(), "application/json", status=501)
             return
 
         if url.path == "/api/citation":
