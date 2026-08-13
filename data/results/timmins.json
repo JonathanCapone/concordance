@@ -1,0 +1,1827 @@
+{
+  "place": "Timmins",
+  "model": "ollama:gemma4:12b",
+  "n_records": 67,
+  "pages_attempted": [
+    "TIMMINSWATERPOLL00SNSN19587.ome#3",
+    "TIMMINSWATERPOLL00SNSN19587.ome#8",
+    "TIMMINSWATERPOLL00SNSN19587.ome#9",
+    "TIMMINSWATERPOLL00SNSN19587.ome#10",
+    "TIMMINSWATERPOLL00SNSN19587.ome#12",
+    "TIMMINSWATERPOLL00SNSN19587.ome#13",
+    "TIMMINSWATERPOLL00SNSN19587.ome#19",
+    "TIMMINSWATERPOLL00SNSN19587.ome#20",
+    "TIMMINSWATERPOLL00SNSN19587.ome#21"
+  ],
+  "records": [
+    {
+      "kind": "observation",
+      "parameter": "total operating costs",
+      "value": 31001.3,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "Total operating costs for Timmins Water Pollution Control Plant in 1965 were $31, 001. 30.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "fd22fe0abc594f0a7754"
+    },
+    {
+      "kind": "observation",
+      "parameter": "payroll cost",
+      "value": 813545.17,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "Payroll accounted for the largest portion of the costs at 813,545. 17, while items such as power and sundry contributed considerably to the total expenditure.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "1240f62668be2f263e07"
+    },
+    {
+      "kind": "observation",
+      "parameter": "raw sewage treated",
+      "value": 1061.29,
+      "unit": "million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "A total of 1,061. 29 million gallons of raw sewage was treated at the plant at a cost of $29. 21 per million gallons or $4. 17 per family per year.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "779b92a8a4036d795ea7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "treatment cost per million gallons",
+      "value": 29.21,
+      "unit": "$/million gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "A total of 1,061. 29 million gallons of raw sewage was treated at the plant at a cost of $29. 21 per million gallons or $4. 17 per family per year.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "be530cee2271001ea1b8"
+    },
+    {
+      "kind": "observation",
+      "parameter": "treatment cost per family per year",
+      "value": 4.17,
+      "unit": "$/family/year",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "A total of 1,061. 29 million gallons of raw sewage was treated at the plant at a cost of $29. 21 per million gallons or $4. 17 per family per year.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "f1ead7f72b4b9074b77d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "cost per pound of BOD removed",
+      "value": 0.03,
+      "unit": "$/lb",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "The cost per pound of BOD removed was $. 03.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "f0143ce80a96bf19005c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "average daily flow",
+      "value": 3.07,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "The average daily flow in 1965 was 3. 07 mgd which was 0. 07 mgd above the average design flow o! the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "3e3d09f24fa4aa1559ca"
+    },
+    {
+      "kind": "design",
+      "parameter": "average design flow",
+      "value": 3.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "The average daily flow in 1965 was 3. 07 mgd which was 0. 07 mgd above the average design flow o! the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "f19b10313e6b962e7659"
+    },
+    {
+      "kind": "design",
+      "parameter": "maximum design flow",
+      "value": 9.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.627,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "The maximum design flow is 9. 0 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.95,
+        "ocr_confidence": 0.3201
+      },
+      "key": "73d703de0e4288f1a69f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "BOD removal",
+      "value": 63.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.594,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "A reduction of 63. 0% in BOD and 70. ~/&gt; in suspended solids was obtained during the year.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3201
+      },
+      "key": "195397e074f1b9183684"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids removal",
+      "value": 70.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.528,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "A reduction of 63. 0% in BOD and 70. ~/&gt; in suspended solids was obtained during the year.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.3201
+      },
+      "key": "ad8133c45942739c1cf1"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "plant operation status",
+      "value": null,
+      "unit": null,
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins Water Pollution Control Plant",
+      "confidence": 0.6601,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 8,
+        "source_text": "Inspection by OWRC engineers and technicians found the plant well operat- ed and maintained.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.3201
+      },
+      "key": "447ee86362624f94d85b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total cost",
+      "value": 785344.04,
+      "unit": "$",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.2923,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 10,
+        "source_text": "TOTAL COST\n$785,344. 04",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.1693
+      },
+      "key": "77068397c66b9eb8474e"
+    },
+    {
+      "kind": "design",
+      "parameter": "trunk sewer diameter",
+      "value": 36.0,
+      "unit": "inch",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "wet well",
+      "confidence": 0.3218,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 12,
+        "source_text": "I law sewage enters the wet well of the\ntreatment plant through a 36-inch dia-\nmeter trunk sewer.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2871
+      },
+      "key": "8fc3d26c71e116876477"
+    },
+    {
+      "kind": "design",
+      "parameter": "overflow capacity",
+      "value": 3.0,
+      "unit": "DWF",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "overflow manhole",
+      "confidence": 0.3218,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 12,
+        "source_text": "An overflow man-hole ahead of the wet well by-passes\nflow in excess of 3 DWF through a 36-\ninch diameter overflow and outfall sewer\ninto the Mattaganii River.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2871
+      },
+      "key": "9b848c3b97e975e34d59"
+    },
+    {
+      "kind": "design",
+      "parameter": "overflow sewer diameter",
+      "value": 36.0,
+      "unit": "inch",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "overflow manhole",
+      "confidence": 0.3218,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 12,
+        "source_text": "An overflow man-hole ahead of the wet well by-passes\nflow in excess of 3 DWF through a 36-\ninch diameter overflow and outfall sewer\ninto the Mattaganii River.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2871
+      },
+      "key": "98a666656957752172f9"
+    },
+    {
+      "kind": "design",
+      "parameter": "fine screen spacing",
+      "value": 0.375,
+      "unit": "inch",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "screen chamber",
+      "confidence": 0.3218,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 12,
+        "source_text": "Particles\naccumulating on the fine screens which\nhave 3/8 inch clear spacings, are shred-\nded by the rotating drum of the Bar-\nminutor.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2871
+      },
+      "key": "e9e8ce49e7030d055e44"
+    },
+    {
+      "kind": "observation",
+      "parameter": "suspended solids settlement",
+      "value": 65.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "influent",
+      "place": "Timmins water pollution control plant",
+      "period": "1965",
+      "facility": "sedimentation tanks",
+      "confidence": 0.6486,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 13,
+        "source_text": "Ap-proximately 65 percent of the suspended solids settle out during the three hour detention period.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.4414
+      },
+      "key": "c9fa59956b64d72b255b"
+    },
+    {
+      "kind": "design",
+      "parameter": "sludge temperature range",
+      "value": 85.0,
+      "unit": "°F",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Timmins water pollution control plant",
+      "period": "1965",
+      "facility": "digester",
+      "confidence": 0.5766,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 13,
+        "source_text": "to maintain constant sludge temperature (adjustable within a range of 85° to 105O F).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.4414
+      },
+      "key": "785df35433933956e425"
+    },
+    {
+      "kind": "design",
+      "parameter": "sludge temperature range",
+      "value": 105.0,
+      "unit": "°F",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Timmins water pollution control plant",
+      "period": "1965",
+      "facility": "digester",
+      "confidence": 0.5766,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 13,
+        "source_text": "to maintain constant sludge temperature (adjustable within a range of 85° to 105O F).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.4414
+      },
+      "key": "8681548b0d954709f72a"
+    },
+    {
+      "kind": "design",
+      "parameter": "digester diameter",
+      "value": 65.0,
+      "unit": "feet",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Timmins water pollution control plant",
+      "period": "1965",
+      "facility": "single-stage digester",
+      "confidence": 0.6486,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 13,
+        "source_text": "THE SINGLE-STAGE DIGESTER IS 65 FEET IN DIAMETER.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.4414
+      },
+      "key": "124d48fed6f42e8c0307"
+    },
+    {
+      "kind": "design",
+      "parameter": "Design Population",
+      "value": 30000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Design Population - 30, 000 persons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "c7dda0c88d11bccbd156"
+    },
+    {
+      "kind": "design",
+      "parameter": "Per Capita Flow",
+      "value": 100.0,
+      "unit": "GPD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Per Capita Flow - 100 GPD",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "c55bc06d957bdac26f9f"
+    },
+    {
+      "kind": "design",
+      "parameter": "Average Design Plant Flow",
+      "value": 3000.0,
+      "unit": "GPD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Average Design Plant Flow 3, 000 GPD",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "bd5d23f6c9922fc8ddd2"
+    },
+    {
+      "kind": "design",
+      "parameter": "Maximum Design Plant Flow",
+      "value": 9000000.0,
+      "unit": "GPD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Maximum Design Plant Flow - 9, 000, 000\nGPD (3 DWF)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "8b8ee34c1ea7a0610f14"
+    },
+    {
+      "kind": "design",
+      "parameter": "Five Day BOD Raw Sewage",
+      "value": 180.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Raw Sewage - 180 ppm",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "9b754fceec91ac82bdae"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD Removal",
+      "value": 35.0,
+      "unit": "%",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Removal 35-40%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "6abf7a4f9fc6c75ea04f"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOD Removal",
+      "value": 40.0,
+      "unit": "%",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Removal 35-40%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "45d12ce1ee82211848c5"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Raw Sewage",
+      "value": 200.0,
+      "unit": "ppm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Raw Sewage - 200 ppm",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "e4140b9185ffe33dc2cc"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Removal",
+      "value": 60.0,
+      "unit": "%",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Removal - 60-65%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "85d43516a053abf3c086"
+    },
+    {
+      "kind": "design",
+      "parameter": "Suspended Solids Removal",
+      "value": 65.0,
+      "unit": "%",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Removal - 60-65%",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "7dfe98b1510ee5ee508a"
+    },
+    {
+      "kind": "design",
+      "parameter": "Influent Pipe Capacity",
+      "value": 14.0,
+      "unit": "MGD",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Capacity\n14. 0 MGD.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "8c649deee622724eb846"
+    },
+    {
+      "kind": "design",
+      "parameter": "Bypass Flow Limit",
+      "value": 9.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Flows in ex-\ncess of 9. 0 mgd will by-pass plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "b9313b357237127bc666"
+    },
+    {
+      "kind": "design",
+      "parameter": "Grit tank liquid volume",
+      "value": 19000.0,
+      "unit": "imperial gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Liquid volume - 19, 000 imperial gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "c5ab0f1e04f5f66d79e3"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention period at 3.0 mgd",
+      "value": 9.1,
+      "unit": "min",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Detention period - at 3. 0 mgd-9. 1 min .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "036c36f5ddac4a3513ac"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention period at 9.0 mgd",
+      "value": 3.03,
+      "unit": "min",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "at 9.0 mgd-3. 03 min.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "e358fc5c24227c5c7c0c"
+    },
+    {
+      "kind": "design",
+      "parameter": "Total volume of primary sedimentation tanks",
+      "value": 374000.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Total volume - 374,000 gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "9622f7f2878b38aaf935"
+    },
+    {
+      "kind": "design",
+      "parameter": "Detention period at design flow (3 mgd)",
+      "value": 3.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Detention period at design flow (3 mgd)\n\n3. 0 hours",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "f57afdd297cd429a83b3"
+    },
+    {
+      "kind": "design",
+      "parameter": "Surface settling rate at 3 mgd",
+      "value": 600.0,
+      "unit": "gals/sq. ft. of tank/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Surface settling rate at (3 mgd) - 600\n\ngals/sq. ft. of tank/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "05a0701cab7b38a3441a"
+    },
+    {
+      "kind": "design",
+      "parameter": "Weir overflow rate at 3 mgd",
+      "value": 9900.0,
+      "unit": "gals/lin. ft. of weir /day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "water pollution control plant",
+      "confidence": 0.3193,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 19,
+        "source_text": "Weir overflow rate at (3 mgd) - 9, 900\n\ngals/lin. ft. of weir /day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.277
+      },
+      "key": "0262678927b9abe1d4f1"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sludge pump capacity",
+      "value": 50.0,
+      "unit": "gpm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "main control building",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Capacity of each pump - 50 gpm @ 50 TDH.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "2a351ee56f82c0aa5ec2"
+    },
+    {
+      "kind": "design",
+      "parameter": "scum pump capacity",
+      "value": 80.0,
+      "unit": "gpm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "digester",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Capacity- 80 gpm @ 351 TDH.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "42f5ec3e9847039003ed"
+    },
+    {
+      "kind": "design",
+      "parameter": "motor power",
+      "value": 5.0,
+      "unit": "hp",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "scum pump",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Motor - 5hp, elec- tric, with constant torque drive.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "8cf01c6b520d128b84e3"
+    },
+    {
+      "kind": "design",
+      "parameter": "baffle thickness",
+      "value": 2.0,
+      "unit": "inch",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "primary tanks",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "2 inch creosoted timber baffles installed to reduce turbulence at the influent to the primary tanks.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "7747933c7b415636185f"
+    },
+    {
+      "kind": "design",
+      "parameter": "chamber volume",
+      "value": 37400.0,
+      "unit": "gallons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Chlorine Contact Chamber",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Volume - 37,400 gallons",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "d3b362ffac6c8131575e"
+    },
+    {
+      "kind": "design",
+      "parameter": "contact period at 3.0 MGD",
+      "value": 19.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Chlorine Contact Chamber",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "19 minutes + 6. 0 minutes detention in outfall pipe.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "1697e120c2e1e712eb05"
+    },
+    {
+      "kind": "design",
+      "parameter": "contact period at 9.0 MGD",
+      "value": 9.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Chlorine Contact Chamber",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "9. 0 minutes ■+ 2. 0 minutes detention in outfall pipe",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "43c0f2c26b8f09d7941f"
+    },
+    {
+      "kind": "design",
+      "parameter": "chlorinator maximum capacity",
+      "value": 2000.0,
+      "unit": "lbs. per day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Chlorinator",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Maximum Capacity 2, 000 lbs. per day at maximum flows of 9. 0 mgd.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "57e851243df50438747c"
+    },
+    {
+      "kind": "design",
+      "parameter": "outfall sewer maximum capacity",
+      "value": 24.0,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "OUTFALL SEWER",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Maximum Capacity 24. 0 mgd @ head of 1. 36'",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "84dab6609a69fbb830f2"
+    },
+    {
+      "kind": "design",
+      "parameter": "velocity at 3.0 mgd",
+      "value": 0.8,
+      "unit": "ft. /sec.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "OUTFALL SEWER",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "3. 0 mgd - 0. 8 ft. /sec.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "158191ff575316415b25"
+    },
+    {
+      "kind": "design",
+      "parameter": "velocity at 9.0 mgd",
+      "value": 2.4,
+      "unit": "ft. /sec.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "OUTFALL SEWER",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "9. 0 mgd - 2. 4 ft. /sec.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "5e62ffca0209ee8ea7d2"
+    },
+    {
+      "kind": "design",
+      "parameter": "digester diameter",
+      "value": 65.0,
+      "unit": "ft",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "digester",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "One digester - 65' in diameter by 24' high, employing single stage digestion.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "2448667c21c82219a6ce"
+    },
+    {
+      "kind": "design",
+      "parameter": "digester height",
+      "value": 24.0,
+      "unit": "ft",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "digester",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "One digester - 65' in diameter by 24' high, employing single stage digestion.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "ea31c943d1e28cb1708b"
+    },
+    {
+      "kind": "design",
+      "parameter": "digester volume",
+      "value": 80000.0,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "digester",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Volume - 80,000 cubic feet",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "f039eaee99603c343a50"
+    },
+    {
+      "kind": "design",
+      "parameter": "digester loading per capita",
+      "value": 2.66,
+      "unit": "cubic feet",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "digester",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "2. 66 cubic feet per capita",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "a47dcfe2bff0e0a680b0"
+    },
+    {
+      "kind": "design",
+      "parameter": "solids per cubic foot of tank per month",
+      "value": 1.35,
+      "unit": "lbs.",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "digester",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "1. 35 lbs. solids per cubic foot of tank per month",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "a571ae6fa1cf7658b320"
+    },
+    {
+      "kind": "design",
+      "parameter": "sludge heater capacity",
+      "value": 500000.0,
+      "unit": "B. T. U. 's per hour",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Sludge Heater",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "500, 000 B. T. U. 's per hour",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "31a3bb7376b13b94bb7a"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump capacity (pump 1)",
+      "value": 3050.0,
+      "unit": "gpm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Capacity - 3, 050 gpin = 5. 25 mgd @ TDH of 26 feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "db6e968bb0fdf2653a41"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump capacity (pump 1)",
+      "value": 5.25,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Capacity - 3, 050 gpin = 5. 25 mgd @ TDH of 26 feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "b663c0db8d74eedabd53"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump speed (pump 1)",
+      "value": 1100.0,
+      "unit": "RPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Speed - 1100 RPM",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "214016ac5ed2d893fe2e"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump capacity (pump 2)",
+      "value": 3120.0,
+      "unit": "gpm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Capacity - 3, 120 gpm = 4. 5 mgd § TDH of 26 feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "a5957c8ae078e729e839"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump capacity (pump 2)",
+      "value": 4.5,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Capacity - 3, 120 gpm = 4. 5 mgd § TDH of 26 feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "e3ce57b50556fb78eebf"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump speed (pump 2)",
+      "value": 1150.0,
+      "unit": "RPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Speed - 1150 RPM",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "ce497515576f20ec91ea"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump capacity (pump 3)",
+      "value": 3120.0,
+      "unit": "gpm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Capacity - 3, 120 gpm - 4. 5 mgd @ TDH of 26 feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "f30240f077e14683531a"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump capacity (pump 3)",
+      "value": 4.5,
+      "unit": "mgd",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Capacity - 3, 120 gpm - 4. 5 mgd @ TDH of 26 feet.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "a2258d8d654258e741e5"
+    },
+    {
+      "kind": "design",
+      "parameter": "raw sewage pump speed (pump 3)",
+      "value": 1150.0,
+      "unit": "RPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "RAW SEWAGE PUMPS",
+      "confidence": 0.325,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 20,
+        "source_text": "Speed - 1150 RPM",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3001
+      },
+      "key": "48561f01d7b765f78237"
+    },
+    {
+      "kind": "observation",
+      "parameter": "flow exceedance frequency of average design flow",
+      "value": 44.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Timmins",
+      "period": "1965",
+      "facility": "Timmins WPCP",
+      "confidence": 0.6107,
+      "provenance": {
+        "identifier": "TIMMINSWATERPOLL00SNSN19587.ome",
+        "page": 21,
+        "source_text": "From the probability of daily flow curve it may be noted that 44 percent of the time flows were equal to or greater than the average design flow of the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/TIMMINSWATERPOLL00SNSN19587.ome/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.357
+      },
+      "key": "15f4c5bc1c62e4e5bec8"
+    }
+  ]
+}

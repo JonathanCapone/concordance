@@ -165,13 +165,15 @@ And it is public and openly licensed, so everything built on it can be too.
 
 ## Work plan — *phases, and where you expect to learn or change course* (2000)
 
-**Weeks 1–3 — Make the accuracy figure real.** The benchmark is four pages read
-by hand by one person: enough to justify continuing, not enough to publish a
-dataset on. So: bulk text acquisition across the collection, then a much larger
-hand-read benchmark spanning document types, agencies and eras, with accuracy
-published per era and per parameter rather than as a single number. *Ends with:*
-a figure I would defend in public, including where it is bad, plus a seed corpus
-of towns and years.
+**Weeks 1–3 — Make it work outside water reports.** I measured this gap
+overnight rather than guessing: 1,416 readings across 25 collections. Coverage
+of the archive's own measurement vocabulary reached 44%, the estimate of how
+many kinds exist is 727 (95% CI 557–987), and **76% of readings outside water
+reports used a parameter name the model invented rather than one the archive
+uses**, against 32% inside them. So: the vocabulary, plus a hand-read benchmark
+far larger than four pages, across agencies and eras, accuracy published per era
+and per parameter. *Ends with:* a figure I would defend in public, including
+where it is bad.
 
 **Weeks 3–5 — The tables.** This is the hard one and it gets two weeks. Tables
 are 27% of pages and about 69% of the measurements, and they need a model that
@@ -183,7 +185,7 @@ limit is named with a number attached.
 **Week 6 — Publish.** Dataset released with its methodology and failures;
 metadata corrections offered to Internet Archive Canada; write-up; showcase.
 
-**Where I expect to change course.** Three places, honestly:
+**Where I expect to change course:**
 
 1. **The tables may not distribute.** A smaller vision model may or may not be
    good enough for a contributor's laptop. I have not measured it. If it is not,
@@ -193,9 +195,9 @@ metadata corrections offered to Internet Archive Canada; write-up; showcase.
    Ontario water reports. If accuracy drops on other agencies and eras, I will
    publish that and narrow the scope rather than ship a confident dataset nobody
    has checked.
-3. **Comparability may bite harder than expected.** If methods changes turn out
-   to be pervasive, more of this becomes a finding aid and less of it becomes a
-   dataset. That is a real possible outcome and not a failure.
+3. **Comparability may bite harder than expected.** If methods changes are
+   pervasive, more of this becomes a finding aid and less a dataset. That is a
+   real outcome, not a failure.
 
 ---
 

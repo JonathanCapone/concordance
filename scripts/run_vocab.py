@@ -94,6 +94,8 @@ def main() -> int:
     while survey.readings < args.budget:
         round_no += 1
         batch: list[Reading] = []
+        pages_read = 0
+        docs_read: set[str] = set()
 
         for name, items in chosen:
             pool = [it for it in items if it.get("identifier") not in seen_docs]
@@ -112,6 +114,7 @@ def main() -> int:
                             if RoutePath.PROSE in route(p).paths]
                 if not readable:
                     continue
+                docs_read.add(ident)
                 for page in random.sample(
                         readable, min(args.pages_per_doc, len(readable))):
                     try:
@@ -123,6 +126,7 @@ def main() -> int:
                         print(f"    {ident[:34]:<36} extract failed: "
                               f"{str(exc)[:40]}")
                         continue
+                    pages_read += 1
                     for rec in result.records:
                         batch.append(Reading(
                             parameter=rec.parameter, unit=rec.unit,
@@ -136,6 +140,14 @@ def main() -> int:
         if not batch:
             print("no further readings available; stopping early")
             break
+
+        # Survey.observe counts readings and terms; effort in PAGES and
+        # DOCUMENTS is the runner's to record, and the first run reported
+        # "1,416 readings, 0 documents" because nothing here was setting it.
+        # Effort is half of a saturation result -- coverage means nothing
+        # without how much reading bought it.
+        survey.pages += pages_read
+        survey.documents.update(docs_read)
 
         fresh = survey.observe(batch)
         cov = survey.coverage()

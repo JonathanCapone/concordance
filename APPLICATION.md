@@ -171,6 +171,28 @@ I did not find that. Someone looked at a document and said *that doesn't sound
 right*. It is in the work log with the rest of my mistakes, and it is the best
 argument I have for building this in the open.
 
+**How many kinds of measurement are in there? About 700, and I am nowhere near
+them.** I ran a stratified sample across 25 collections overnight — 1,416
+readings, twelve hours on one machine — to find out where the archive's
+measurement vocabulary saturates. It does not. Coverage of the archive's own
+terms reached **44%**, and Good–Turing/Chao1 puts the number of distinct
+measurement types at **727, with a 95% interval of 557 to 987**. The discovery
+curve is still climbing: the last round found more new terms than any round
+before it.
+
+The useful part is the contrast. The same estimator run over water reports alone
+had said 90% coverage and about 200 terms — it looked finished because it was
+only looking at the one domain the extractor was built for. Widening the sample
+to 25 collections cut coverage in half and tripled the estimate.
+
+And the control that matters most: **76% of readings outside the water reports
+used a parameter name the model chose rather than one the archive uses**, against
+32% inside them. That is the honest size of the gap between "this works on
+municipal sewage reports" and "this works on the Canadian public record", and it
+is the first thing weeks 1–3 are for. It is also exactly the class of error this
+project keeps finding in itself: a number that looked good because it was
+measured on the easy case.
+
 **The archive knows who voted for what.** Minutes, agendas and commission
 hearings are 13,604 items. One volume of Hamilton council agendas from 1992
 yields 94 decisions, 64 named people and 44 recorded votes — including full roll
