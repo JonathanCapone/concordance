@@ -2,19 +2,35 @@
 
 from __future__ import annotations
 
-from concordance.vocabulary import Term, Vocabulary, load, normalise
+import pytest
+
+from concordance.vocabulary import Term, Vocabulary, load, normalise, save
 
 
-def test_a_qualifier_is_not_part_of_a_name() -> None:
-    """"golf course size" and "golf course size previous" are ONE measurement.
+def test_semantic_qualifiers_are_part_of_a_name() -> None:
+    """Matching may forgive orthography, never words that alter identity.
 
-    The model produced both, which is the same disease as the parameter-identity
-    bug: a qualifier welded onto the name instead of living in its own field.
+    These pairs all occur in the evidence. Collapsing them before review merges
+    observations with specifications, rates with totals, and extrema with the
+    headline series -- three failures the project has already seen downstream.
     """
-    assert normalise("golf course size previous") == normalise("golf course size")
-    assert normalise("average daily flow") == normalise("daily flow")
-    assert normalise("Design Population") == normalise("population")
-    assert normalise("Maximum 24 hour flow") == normalise("flow")
+    dangerous_pairs = [
+        ("population", "design population"),
+        ("flow", "total flow"),
+        ("average daily flow", "maximum daily flow"),
+        ("flow", "per capita flow"),
+        ("flow", "24 hour flow"),
+        ("THMs", "total THMs"),
+        ("operating cost", "total operating cost"),
+    ]
+    for left, right in dangerous_pairs:
+        assert normalise(left) != normalise(right), (left, right)
+
+
+def test_normalisation_is_orthographic_and_unicode_aware() -> None:
+    assert normalise("Suspended-Solids") == normalise(" suspended  solids. ")
+    assert normalise("ascorbic&#x2011;acid") == normalise("ASCORBIC ACID")
+    assert normalise("épaisseur") != normalise("paisseur")
 
 
 def test_matching_is_case_and_punctuation_blind() -> None:
@@ -71,3 +87,16 @@ def test_entries_are_unreviewed_until_somebody_says_otherwise() -> None:
     to say which entries have been looked at."""
     v = Vocabulary(terms=[Term("population", "population", "count")])
     assert v.unreviewed() == v.terms
+
+
+def test_save_refuses_colliding_or_half_resolved_entries(tmp_path) -> None:
+    colliding = Vocabulary(terms=[
+        Term("total-flow", "flow", "total"),
+        Term("total flow", "flow", "rate"),
+    ])
+    with pytest.raises(ValueError, match="matching key"):
+        save(colliding, tmp_path / "collision.json")
+
+    half_resolved = Vocabulary(terms=[Term("mileage", "mileage", "")])
+    with pytest.raises(ValueError, match="both be set or both be empty"):
+        save(half_resolved, tmp_path / "half.json")

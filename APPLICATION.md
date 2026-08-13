@@ -116,9 +116,9 @@ it came from, because a percentage without a denominator is not a measurement:
 | ...of which, the one page annotated *before* any run | **94% / 94%** — 17 values |
 | Telling a measurement from a design spec from a legal limit | **98.3%** — 60 matched values |
 | Telling water going in from water coming out | **88.9%** — 18 judged pairs |
-| Quoted sentences that could not be found on the page they cite | **0** of 286 |
+| Source-sentence mismatches in a 286-record audit | **0** |
 | Table measurements recovered | **535** from 24 pages across 11 collections, 1879–2003 |
-| Towns read end to end | **6**, 1,470 measurements |
+| Current committed corpus | **5,147 source-linked records** across 14 municipalities, including 2,384 observations |
 
 *Precision* is how much of what it produced was correct; *recall* is how much of
 what was there it found. Both are measured against a set of pages a human read

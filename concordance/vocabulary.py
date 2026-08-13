@@ -32,8 +32,10 @@ false until somebody says otherwise.
 
 from __future__ import annotations
 
+import html
 import json
 import re
+import unicodedata
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
@@ -41,38 +43,26 @@ from typing import Any, Iterable
 
 DEFAULT_PATH = Path(__file__).resolve().parents[1] / "data" / "vocabulary" / "vocabulary.json"
 
-#: Qualifiers that belong in their own field and must never be part of a name.
-#: "golf course size" and "golf course size previous" are one term; so are
-#: "average daily flow" and "daily flow". Stripping these before matching is
-#: what stops the vocabulary fragmenting the way the model's did.
-_QUALIFIER = re.compile(
-    r"(?<![a-z])(average|avg|mean|minimum|min|maximum|max|peak|lowest|highest|"
-    r"total|design|designed|estimated|previous|prior|proposed|actual|annual|"
-    r"daily|monthly|weekly|yearly|per\s+capita)(?![a-z])")
-
-#: A period written as a number. Stripped for the same reason "daily" is: a
-#: reading's period lives in its own field, and leaving it in the name makes
-#: "maximum 24 hour flow" a different term from "average daily flow" when they
-#: are the same measurement over the same span. "5 day BOD" is the standard BOD
-#: test, not a separate substance, and normalises to "bod" correctly.
-_NUMERIC_PERIOD = re.compile(
-    r"(?<![a-z0-9])\d+\s*[- ]?\s*(hour|hr|day|week|month|year|minute|min)s?(?![a-z])")
-
-_NOISE = re.compile(r"[^a-z0-9 ]+")
-
-
 def normalise(name: str) -> str:
     """The form two spellings of one term have in common.
 
-    Deliberately crude: lowercase, strip punctuation, drop qualifiers, collapse
-    whitespace. It is a matching key, not a canonical name -- the canonical name
-    is whatever the archive itself says, which is a judgement recorded in the
-    vocabulary file rather than computed here.
+    This is deliberately *orthographic* only: case, punctuation, Unicode width,
+    HTML entities and whitespace do not make two names different. Words and
+    digits always do. In particular, ``design``, ``total``, ``minimum``,
+    ``maximum``, ``per capita`` and periods such as ``24 hour`` are preserved.
+
+    Those words can change what a number means. The earlier matcher stripped
+    them, which put ``population`` and ``design population`` under one key and
+    collapsed rate, total, capacity and extrema variants of ``flow``. A matching
+    key must never make that semantic decision. A reviewed alias can still join
+    genuinely equivalent archive spellings explicitly.
     """
-    t = _NOISE.sub(" ", str(name or "").lower())
-    t = _NUMERIC_PERIOD.sub(" ", t)
-    t = _QUALIFIER.sub(" ", t)
-    return re.sub(r"\s+", " ", t).strip()
+    text = unicodedata.normalize("NFKC", html.unescape(str(name or ""))).casefold()
+    # ``isalnum`` keeps accented French letters and digits while treating every
+    # punctuation mark consistently. Hyphenated and spaced spellings therefore
+    # match, but no word is silently removed.
+    text = "".join(ch if ch.isalnum() else " " for ch in text)
+    return re.sub(r"\s+", " ", text).strip()
 
 
 @dataclass(frozen=True)
@@ -92,7 +82,8 @@ class Term:
 
     @property
     def keys(self) -> set[str]:
-        return {normalise(self.canonical)} | {normalise(a) for a in self.aliases} - {""}
+        return ({normalise(self.canonical)} |
+                {normalise(a) for a in self.aliases}) - {""}
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -137,6 +128,48 @@ class Vocabulary:
 
     def unreviewed(self) -> list[Term]:
         return [t for t in self.terms if not t.reviewed]
+
+    def validation_errors(self) -> list[str]:
+        """Structural defects that make matching or prompting unsafe.
+
+        Meaning is intentionally outside this check -- that is what ``reviewed``
+        records. These checks cover invariants a machine can establish without
+        pretending to know meaning: usable names, paired identity fields,
+        non-negative evidence counts and one owner for every matching key.
+        """
+        errors: list[str] = []
+        for i, term in enumerate(self.terms):
+            where = f"term {i + 1} ({term.canonical!r})"
+            if not term.canonical.strip():
+                errors.append(f"{where}: empty canonical name")
+            elif not normalise(term.canonical):
+                errors.append(f"{where}: canonical name has no letters or digits")
+            if bool(term.substance.strip()) != bool(term.measure.strip()):
+                errors.append(f"{where}: substance and measure must both be set or both be empty")
+            if (isinstance(term.readings_covered, bool) or
+                    not isinstance(term.readings_covered, int)):
+                errors.append(f"{where}: readings_covered must be an integer")
+            elif term.readings_covered < 0:
+                errors.append(f"{where}: readings_covered must be non-negative")
+            if not isinstance(term.reviewed, bool):
+                errors.append(f"{where}: reviewed must be true or false")
+            if any(not str(alias).strip() for alias in term.aliases):
+                errors.append(f"{where}: aliases cannot be empty")
+            if len(term.aliases) != len(set(term.aliases)):
+                errors.append(f"{where}: aliases must be unique")
+            if any(not str(unit).strip() for unit in term.typical_units):
+                errors.append(f"{where}: typical_units cannot be empty")
+            if len(term.typical_units) != len(set(term.typical_units)):
+                errors.append(f"{where}: typical_units must be unique")
+
+        for key, names in self.collisions():
+            errors.append(f"matching key {key!r} is claimed by: {', '.join(names)}")
+        return errors
+
+    def require_valid(self) -> None:
+        errors = self.validation_errors()
+        if errors:
+            raise ValueError("invalid vocabulary:\n- " + "\n- ".join(errors))
 
     def for_prompt(self, *, hint: str = "", limit: int = 240) -> str:
         """The list to hand a model, shortened to what will plausibly be needed.
@@ -206,6 +239,7 @@ def load(path: str | Path = DEFAULT_PATH) -> Vocabulary:
 
 
 def save(vocab: Vocabulary, path: str | Path = DEFAULT_PATH, *, note: str = "") -> Path:
+    vocab.require_valid()
     p = Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps({

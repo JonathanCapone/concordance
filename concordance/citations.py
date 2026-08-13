@@ -162,7 +162,11 @@ class Citation:
     def _url(self, region: str, size: str) -> str:
         base = iiif_base(self.identifier, self.iiif_index)
         if not base:
-            return self.page_url          # no scan to point at; the reader link stands
+            # ``page_url`` is an HTML reader, not an image. Returning it here
+            # makes callers put HTML into an <img>, producing a silent broken
+            # image. Keep the useful reader link in its own field and make the
+            # missing image visible in ``to_dict``.
+            return ""
         return f"{base}/{region}/{size}/0/default.jpg"
 
     @property
@@ -183,12 +187,21 @@ class Citation:
         return self.box is not None
 
     def to_dict(self) -> dict[str, Any]:
+        image_url = self.image_url
+        crop_url = self.crop_url if image_url else ""
+        error = ""
+        note = self.note
+        if not image_url:
+            error = ("scan image could not be resolved; open page_url to inspect "
+                     "the whole page")
+            note = f"{note.rstrip('.')}. {error}" if note else error
         return {
             "identifier": self.identifier, "page": self.page,
             "quote": self.quote, "kind": self.kind, "exact": self.exact,
             "box": list(self.box) if self.box else None,
-            "crop_url": self.crop_url, "image_url": self.image_url,
-            "page_url": self.page_url, "note": self.note,
+            "crop_url": crop_url, "image_url": image_url,
+            "image_available": bool(image_url),
+            "page_url": self.page_url, "note": note, "error": error,
         }
 
 

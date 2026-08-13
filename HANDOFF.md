@@ -56,7 +56,7 @@ points at. It is *not* what gets pasted into the form.
 
 ## 3. Where it stands
 
-**5,147 measurements across 14 towns**, 539 tests, zero required dependencies in
+**5,147 source-linked records across 14 municipalities**, 539 tests, zero required dependencies in
 the core. Every published figure below is reproducible from the repo.
 
 | | |
@@ -64,7 +64,7 @@ the core. Every published figure below is reproducible from the repo.
 | Extraction precision / recall | 96.8% / 88.2% on 4 hand-read pages, 68 values |
 | Kind accuracy (measurement vs design spec vs legal limit) | 98.3%, 60 matched values |
 | Stream accuracy (influent vs effluent) | 88.9%, 18 judged pairs |
-| Quotes not found on the page they cite | 0 of 286 |
+| Source-sentence mismatches in a 286-record audit | 0 |
 | Table measurements recovered by the vision path | 535 from 24 pages, 11 collections |
 | Dispute ledger | 1,445 settled / 129 contested / 88 unsupported |
 
@@ -86,10 +86,12 @@ parameter name the model invented rather than one the archive uses**, against
   ~2 hours per town on this machine. Was on Belleville. Restart with
   `python -u scripts/run_batch.py --towns 12 --model gemma4:12b --timeout 900`;
   `--skip-done` is on by default so it will not redo finished towns.
-- **Vocabulary workflow** — eight domain agents clustering the 2,135 observed
-  parameter strings in `data/vocabulary/observed_terms.json` into a controlled
-  vocabulary, then a reconcile pass. **Its output was not yet collected.** See
-  next section.
+- ~~Vocabulary workflow~~ — **finished and collected.**
+  `data/vocabulary/vocabulary.json` holds 200 canonical terms and 1,812 aliases,
+  covering 93.4% of the 5,479 observed readings, zero matching collisions. The
+  reconcile pass's own notes are in `data/vocabulary/reconcile_notes.json`,
+  including the pairs it deliberately refused to merge and the 15 judgement
+  calls it wants a human to confirm.
 
 ---
 
@@ -100,11 +102,20 @@ parameter name the model invented rather than one the archive uses**, against
 The measurement above says this is *the* thing standing between "works on
 municipal sewage reports" and "works on the Canadian public record".
 
-1. Collect the workflow result (run id in the session; or just re-run the
-   clustering). Assemble it into `data/vocabulary/vocabulary.json` using
-   `concordance.vocabulary.save()`. The loader, matcher, collision check and
-   prompt renderer are built and tested in `concordance/vocabulary.py`.
-2. **Wire it into extraction.** `concordance/extract.py` holds `SYSTEM`. Note
+1. ~~Build the vocabulary.~~ **Done.** 200 terms in
+   `data/vocabulary/vocabulary.json`, loaded and matched by
+   `concordance/vocabulary.py`. Verified: "average daily flow" resolves to
+   `flow`, "Design Population" to `population`, and the two names the model
+   invented — "cost estimate for one boiler at keith station", "width of
+   strongly sheared rock" — are correctly flagged NEW rather than absorbed.
+
+   **Every entry is `reviewed: false`.** Nobody has confirmed them. Start with
+   the 15 questions in `reconcile_notes.json` and the `deliberately_kept_apart`
+   list, which is where the dangerous judgements are (bod concentration vs
+   removal vs exceedance frequency vs loading are four different measurements
+   and three of them are percentages).
+
+2. **Wire it into extraction — this is now the top task.** `concordance/extract.py` holds `SYSTEM`. Note
    that its current examples actively teach the failure — `"bus leasing share of
    budget"`, `"share of national steel production"` are invented per-sentence
    descriptions. Replace with: here is the vocabulary, choose from it, and if

@@ -44,9 +44,9 @@ That is why there is no compute line in my budget, and it is the difference
 between a dataset that is finished the day the grant ends and one that keeps
 growing afterwards.
 
-It already runs. Six towns read end to end, 1,470 measurements, 96.8% precision
-against pages a human read by hand first, and every quoted sentence verified to
-occur on the page it cites — 0 failures in 286 records.
+It already runs: 5,147 source-linked records across 14 municipalities, including
+2,384 observations; 96.8% precision on four hand-read pages; and no sentence/page
+mismatches found in a 286-record quote audit.
 
 ---
 
@@ -209,7 +209,7 @@ Four things, all public, all open source under MIT.
 when, as charts and as a table. Every value has a button that shows you a
 cropped photograph of the sentence on the original scan it was read from. A
 plain-language layer answers "was 104 mg/L bad?" against the regulatory limit
-*of that era*, not today's. It runs now, over six towns; the fellowship makes it
+*of that era*, not today's. It runs now, across 14 municipalities; the fellowship makes it
 worth visiting.
 
 **2. The dataset, published open.** Every measurement with place, time,
@@ -254,9 +254,9 @@ both "never scanned" and "the reporting rules changed".
 ## Relevant experience — *What prepares you to do this work* (2000)
 
 **I have built the hard half already, and you can check it rather than take my
-word.** The repository runs today: six towns read end to end, 1,470
-measurements, 96.8% precision against hand-read pages, 531 tests, zero required
-dependencies in the core.
+word.** The repository runs today: 5,147 source-linked records across 14
+municipalities; 96.8% precision on four hand-read pages; 539 tests pass; no core
+dependencies are required.
 
 Before this I built OMEGA-wave, an open ocean-sensing system with its own
 protocol, gateway, statistics suite and map portal — about 30,000 lines with 118

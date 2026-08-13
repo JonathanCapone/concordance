@@ -30,9 +30,11 @@ import urllib.request
 from dataclasses import dataclass
 from typing import Any, Protocol
 
+from . import vocabulary
 from .models import PageText, Provenance, Record
 
 DEFAULT_OLLAMA_MODEL = "gemma4:12b"
+PARAMETER_NAMING_VERSION = "controlled-vocabulary-v1"
 DEFAULT_ANTHROPIC_MODEL = "claude-sonnet-5"
 
 
@@ -172,10 +174,10 @@ all. These are all measurements:
 
     "75 elementary schools under the aegis of the Hamilton Board of Education"
         -> parameter "elementary schools", value 75, unit "schools"
-    "more than 50 percent of all steel produced in the country"
-        -> parameter "share of national steel production", value 50, unit "%"
-    "leasing of which runs to about 7 percent of the board's annual budget"
-        -> parameter "bus leasing share of budget", value 7, unit "%"
+    "Total mileage was 334.15 miles"
+        -> parameter "mileage", value 334.15, unit "miles"
+    "The incubation period lasted from 20 to 30 days"
+        -> parameter "incubation period", values 20 and 30, unit "days"
     "the average rent now paid, namely $357.00 per month"
         -> parameter "monthly rent", value 357, unit "$/month"
     "a yield of 32 bushels to the acre"
@@ -208,6 +210,8 @@ Return ONLY a JSON array. No prose, no markdown fence. Each element:
 {
   "kind":       "observation" | "standard" | "design" | "conclusion",
   "parameter":  what was measured, e.g. "BOD", "suspended solids", "chlorine dosage",
+  "parameter_status": "controlled" if parameter is copied from the supplied
+                vocabulary, otherwise "proposed",
   "value":      the number, or null,
   "unit":       e.g. "mg/L", "%", "million gallons", "cu ft",
   "qualifier":  "average"|"mean"|"median"|"maximum"|"minimum"|"total"|"percent"|"count"|"point"|null,
@@ -254,12 +258,54 @@ Rules:
 - Emit one element per measured value. "104 mg/1 and 224 mg/1 respectively"
   is TWO observations, not one.
 - Do not invent. An empty array is a correct answer for a page with no measurements.
-- OMIT any field that would be null. Only "kind", "parameter" and "source_text"
-  are always required. Shorter output is better.
+- OMIT any field that would be null. Only "kind", "parameter",
+  "parameter_status" and "source_text" are always required. Shorter output is
+  better.
 - When several values share one sentence, repeat that same sentence as the
   source_text for each. Do not shorten it.
 - Output the array and nothing else. Stop immediately after the closing bracket.
 """
+
+VOCABULARY_TEMPLATE = """\
+CONTROLLED MEASUREMENT VOCABULARY
+
+The list below contains reusable measurement types found in this archive. For
+each output element, choose the one term that means what the sentence measured,
+copy its spelling exactly into "parameter", and set "parameter_status" to
+"controlled".
+
+Keep sentence context out of the parameter name. Place, facility, period and
+qualifier belong in their own fields; do not weld a report-specific
+organisation or comparison onto the name. A parameter must be able to recur in
+another report: use "mileage", not "mileage of railway operated by this
+commission".
+
+The list is shortened for this document and may not contain the right term. Do
+not force a near match. When no listed term fits, put a short, reusable proposed
+term in "parameter" and set "parameter_status" to "proposed". That explicit
+proposal is how a genuinely missing term is found and reviewed.
+
+--- BEGIN CONTROLLED VOCABULARY ---
+{terms}
+--- END CONTROLLED VOCABULARY ---
+"""
+
+NO_VOCABULARY = """\
+CONTROLLED MEASUREMENT VOCABULARY
+
+No controlled vocabulary is available in this clone yet. Extraction must still
+continue. Use a short, reusable measurement type in "parameter", never a
+sentence-specific description, and set "parameter_status" to "proposed" so it
+can be reviewed and added later.
+"""
+
+
+def _system_prompt(vocab: vocabulary.Vocabulary, *, hint: str = "") -> str:
+    """Add the relevant archive vocabulary without making it a prerequisite."""
+    terms = vocab.for_prompt(hint=hint)
+    instructions = VOCABULARY_TEMPLATE.format(terms=terms) if terms else NO_VOCABULARY
+    return f"{SYSTEM.rstrip()}\n\n{instructions}"
+
 
 USER_TEMPLATE = """\
 Document: {title}
@@ -439,6 +485,11 @@ def extract_prose(
 ) -> ExtractionResult:
     """Read one page. Returns records plus an audit trail of what was rejected."""
     client = client or default_client()
+    vocab = vocabulary.load()
+    # A title carries the strongest domain signal. Publisher and a small slice
+    # of page text keep the relevance sort useful for untitled archive items.
+    vocab_hint = title or publisher or page.text[:240]
+    system = _system_prompt(vocab, hint=vocab_hint)
     user = USER_TEMPLATE.format(
         title=title or "(unknown)",
         publisher=publisher or "(unknown)",
@@ -446,7 +497,7 @@ def extract_prose(
         page=page.page,
         text=page.text[:12000],
     )
-    raw = client.complete(SYSTEM, user)
+    raw = client.complete(system, user)
     candidates = _parse_json_array(raw)
 
     page_norm = _normalize(page.text)
@@ -467,6 +518,14 @@ def extract_prose(
             rejected.append({"why": "empty parameter", "candidate": c})
             continue
 
+        # Do not trust the model to declare its own proposal controlled. The
+        # file is authoritative: aliases collapse to the canonical spelling,
+        # while anything it cannot match remains a visible proposal.
+        controlled_term = vocab.match(parameter)
+        parameter_status = "controlled" if controlled_term else "proposed"
+        if controlled_term:
+            parameter = controlled_term.canonical
+
         # The hallucination guard. A fabricated value nearly always comes with a
         # fabricated sentence, and a sentence that isn't on the page is not
         # evidence of anything.
@@ -485,6 +544,21 @@ def extract_prose(
 
         qualifier = c.get("qualifier")
         stream = str(c.get("stream") or "unknown").strip().lower()
+        model_parameter_status = str(c.get("parameter_status") or "").strip().lower()
+        raw_metadata: dict[str, Any] = {
+            "model_confidence": model_conf,
+            "ocr_confidence": scan_conf,
+            "parameter_status": parameter_status,
+            # Old extraction records have neither of these fields.  Keeping the
+            # prompt generation and vocabulary size on each new record makes a
+            # batch that crosses this rollout auditable instead of making old
+            # free-named and new vocabulary-guided output look homogeneous.
+            "parameter_naming_version": PARAMETER_NAMING_VERSION,
+            "vocabulary_terms_available": len(vocab),
+        }
+        if model_parameter_status in ("controlled", "proposed"):
+            raw_metadata["model_parameter_status"] = model_parameter_status
+
         record = Record(
             kind=kind,  # type: ignore[arg-type]
             parameter=parameter,
@@ -508,7 +582,7 @@ def extract_prose(
                 extractor=client.name,
                 path="prose",
             ),
-            raw={"model_confidence": model_conf, "ocr_confidence": scan_conf},
+            raw=raw_metadata,
         )
 
         problems = record.problems()

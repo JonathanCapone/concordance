@@ -54,9 +54,12 @@ class Answer:
             return (f"{len(self.records)} readings for {self.query!r}, already in the "
                     f"library from {self.documents} documents.")
         if self.source == "read now":
-            return (f"{len(self.records)} readings for {self.query!r}, read from "
-                    f"{self.documents} documents in {self.seconds/60:.0f} minutes. "
-                    "Nobody had read these before; they are in the library now.")
+            head = (f"{len(self.records)} readings for {self.query!r}, read from "
+                    f"{self.documents} documents in {self.seconds/60:.0f} minutes. ")
+            if self.contributed:
+                return (head + "Nobody had read these before; they are in the "
+                        "library now.")
+            return head + "The readings were not added to the library."
         return f"Nothing found for {self.query!r}. {self.note}"
 
 
@@ -160,6 +163,22 @@ def ask(
                 # them -- maintaining the vocabulary is our job, not theirs.
                 if resolve_parameter(d.get("parameter") or "", d.get("unit")) is None:
                     unknown.add(str(d.get("parameter") or "").strip())
+
+    # An empty bundle is not a contribution, and reaching the end of a read is
+    # not success by itself.  Returning ``source="read now"`` here made the API
+    # say "they are in the library now" even though there was nothing to verify
+    # or write.  Preserve the attempted-document count, but make the outcome and
+    # the absence of a side effect explicit.
+    if not records:
+        noun = "document" if len(items) == 1 else "documents"
+        note = (f"No readings were recovered from {len(items)} matching {noun}; "
+                "nothing was added to the library.")
+        say(note)
+        return Answer(
+            query=query, source="empty", documents=len(items),
+            seconds=time.time() - t0,
+            unknown_parameters=sorted(unknown), note=note,
+        )
 
     # Verify our own work before adding it to the shared library, on exactly the
     # same terms a stranger's contribution would be checked. Reading it yourself

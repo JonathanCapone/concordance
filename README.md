@@ -347,7 +347,7 @@ small numbers that fall when a plant improves, so it looked entirely reasonable.
 Early, but measured. Reading, routing, prose and table extraction, accuracy scoring, unit and
 parameter resolution, place resolution, the science layer, the watershed network, the provider
 layer, the decision record, the citation crops, the dispute ledger and the agent all work end to
-end on real documents. 403 tests. Zero required dependencies in the core.
+end on real documents. The full test suite passes. Zero required dependencies in the core.
 
 **What has actually been found, each with its own control attached:**
 

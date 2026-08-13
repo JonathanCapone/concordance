@@ -61,6 +61,29 @@ def test_page_one_does_not_produce_a_negative_leaf():
     assert Citation(identifier="doc", page=0).leaf == 0
 
 
+def test_an_unresolved_scan_is_an_explicit_failure_not_an_html_image(monkeypatch):
+    """BookReader is a useful fallback link, but it is HTML, not an image.
+
+    Returning it as ``crop_url`` makes the portal feed a web page to an image
+    element, leaving a silent broken-image icon.  The API already understands an
+    ``error`` field, so the citation must name the failure and keep the reader
+    URL separate.
+    """
+    monkeypatch.setattr(citations, "iiif_base", lambda *args, **kwargs: None)
+
+    citation = Citation(identifier="no-iiif-scan", page=7, box=(1, 2, 3, 4))
+    payload = citation.to_dict()
+
+    assert citation.crop_url == ""
+    assert citation.image_url == ""
+    assert payload["crop_url"] == ""
+    assert payload["image_url"] == ""
+    assert not payload["image_available"]
+    assert "scan image could not be resolved" in payload["error"]
+    assert "open page_url" in payload["note"]
+    assert payload["page_url"].startswith("https://archive.org/details/")
+
+
 # -- prose ------------------------------------------------------------------
 
 def test_a_quote_is_cropped_to_its_own_words():

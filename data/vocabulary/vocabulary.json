@@ -1,0 +1,4466 @@
+{
+ "version": 1,
+ "note": "Measurement types in the archive's own words, clustered from 2,135 strings that really occur in the corpus. Covers 93.4% of 5,479 observed readings. Machine-proposed; `reviewed` is false until a person confirms an entry. Measures in use: concentration, removal, frequency, rate, total, capacity, count, duration, length, area, cost, ratio, temperature, loading, power, voltage, guideline, detection limit.",
+ "n_terms": 200,
+ "terms": [
+  {
+   "canonical": "flow",
+   "substance": "flow",
+   "measure": "rate",
+   "domain": "water",
+   "aliases": [
+    "average daily 24 hour flow (all days)",
+    "average daily 24 hour flow (working days)",
+    "average daily flow",
+    "average daily flow increase",
+    "average daily flow of waste",
+    "average flow",
+    "average flow for full treatment",
+    "daily flow",
+    "daily flow increase",
+    "daily per capita flow",
+    "estimated average daily flow during rainy periods",
+    "estimated maximum flows reaching the plant",
+    "estimated sewage flow",
+    "flow",
+    "flow decrease",
+    "flow decrease percentage",
+    "flow increase",
+    "flow increase percent",
+    "flow increase percentage",
+    "flow rate",
+    "greatest average daily flow for one month",
+    "high daily flow",
+    "increase in average daily flow",
+    "increase in flow over 1965",
+    "increase over 1967 flows",
+    "low daily flow",
+    "maximum 24 hour flow",
+    "maximum average daily flow for one month",
+    "maximum daily flow",
+    "maximum daily flows",
+    "maximum daily flows average on a monthly basis",
+    "maximum flow",
+    "maximum flow rate",
+    "maximum flow receiving primary treatment",
+    "maximum hourly flow rate",
+    "maximum monthly average flow",
+    "maximum monthly flow",
+    "maximum monthly rate of flow",
+    "maximum rate of flow",
+    "maximum short duration peak flow rate",
+    "maximum surge",
+    "maximum total daily flow average by month",
+    "mgd flow (working days) average",
+    "mgd flow (working days) maximum",
+    "minimum 24 hour flow",
+    "minimum average daily flow for a month",
+    "minimum daily flow",
+    "minimum daily flows",
+    "minimum daily flows average on a monthly basis",
+    "minimum flow rate",
+    "monthly average flow",
+    "monthly flow",
+    "monthly flow december",
+    "normal dry weather flow",
+    "overall flow increase",
+    "peak average daily flow",
+    "peak flow rate",
+    "peak flow rates",
+    "peak month flow",
+    "per capita flow",
+    "plant flow",
+    "primary treatment flow",
+    "primary treatment storm flow",
+    "pump flow rate",
+    "pumping rate",
+    "raw sewage flow increase",
+    "raw sewage volume",
+    "raw water flow",
+    "sample day flow",
+    "sample day flow maximum",
+    "sample day flow minimum",
+    "sample day flows",
+    "secondary treatment flow",
+    "sewage flow reduction",
+    "short period flow",
+    "total plant flow",
+    "total recorded flow",
+    "treated flow",
+    "treated water flow",
+    "volume per capita",
+    "waste discharge"
+   ],
+   "typical_units": [
+    "gpm",
+    "igpd",
+    "m3/d",
+    "mgd"
+   ],
+   "readings_covered": 398,
+   "reviewed": false
+  },
+  {
+   "canonical": "dimension",
+   "substance": "dimension",
+   "measure": "length",
+   "domain": "water",
+   "aliases": [
+    "aeration tank depth",
+    "aeration tank dimensions",
+    "aeration tank length",
+    "aeration tank side wall depth",
+    "aeration tank size",
+    "aeration tank width",
+    "air degrittor dimensions",
+    "air pump size",
+    "average depth",
+    "bar screen spacing",
+    "bar screens bar size",
+    "bar screens spacing",
+    "barminutor diameter",
+    "chlorine contact chamber depth",
+    "chlorine contact chamber dimensions",
+    "chlorine contact chamber size",
+    "chlorine contact chamber width",
+    "clarifier center depth",
+    "clarifier depth change",
+    "clarifier diameter",
+    "clarifier dimensions",
+    "clarifier side wall depth",
+    "clarifier width",
+    "coarse bar screen spacing",
+    "conditioning tank dimensions",
+    "decanting trough dimensions",
+    "depth",
+    "detritor depth",
+    "detritor diameter",
+    "detritor dimensions",
+    "detritor size",
+    "detritor tank dimensions",
+    "detritor tank size",
+    "diameter",
+    "diameter of inlet sewer",
+    "diffuser diameter",
+    "digester depth",
+    "digester diameter",
+    "digester height",
+    "digestion tank primary diameter",
+    "digestion tank secondary size",
+    "final clarifier average depth",
+    "final clarifier diameter",
+    "final clarifier dimensions",
+    "final clarifier side wall depth",
+    "final clarifier size",
+    "final sedimentation tank size",
+    "final settling tank diameter",
+    "final settling tank side wall depth",
+    "final tank diameter",
+    "final tank water depth",
+    "fine screen spacing",
+    "flume length",
+    "flume size",
+    "flume throat",
+    "flume throat diameter",
+    "force main diameter",
+    "gravity sewer diameter",
+    "grit chamber size",
+    "grit decanting trough depth",
+    "grit decanting trough dimensions",
+    "grit decanting trough size",
+    "grit removal channel length",
+    "grit removal channel width",
+    "grit size",
+    "grit tank dimensions",
+    "impeller size",
+    "influent and bypass sewer diameter",
+    "inlet sewer diameter",
+    "length",
+    "liquid depth",
+    "main diameter",
+    "main floor dimensions",
+    "main floor height",
+    "main floor width",
+    "mean liquid level",
+    "new sludge digester height",
+    "new sludge digester size",
+    "old sludge digester height",
+    "old sludge digester size",
+    "outfall diameter",
+    "outfall length",
+    "outfall pipe diameter",
+    "outfall pipe length",
+    "overflow sewer diameter",
+    "parshail flume width",
+    "parshall flume length",
+    "parshall flume throat diameter",
+    "parshall flume throat width",
+    "parshall flume width",
+    "pipe diameter",
+    "pore-size screen",
+    "primary clarifier center depth",
+    "primary clarifier diameter",
+    "primary clarifier dimensions",
+    "primary clarifier side wall depth",
+    "primary clarifiers size",
+    "primary digester depth",
+    "primary digester diameter",
+    "primary digester swd",
+    "primary sedimentation tank depth",
+    "primary sedimentation tank diameter",
+    "primary sedimentation tank size",
+    "primary tank length",
+    "primary tank width",
+    "pump diameter",
+    "pump size",
+    "screen diameter",
+    "screen size",
+    "screening spacing",
+    "secondary digerster swd",
+    "secondary digester diameter",
+    "secondary sedimentation tank depth",
+    "secondary sedimentation tank size",
+    "secondary tank diameter",
+    "settling tank diameter",
+    "settling tank side wall depth",
+    "sewer diameter",
+    "side wall depth",
+    "size",
+    "sluice gate size",
+    "sluice gate width",
+    "solids size",
+    "solids size limit",
+    "sparger spacing",
+    "stroke",
+    "tank depth",
+    "tank diameter",
+    "tank dimensions",
+    "tank length",
+    "trimming height",
+    "trunk main diameter",
+    "trunk sewer diameter",
+    "width"
+   ],
+   "typical_units": [
+    "ft",
+    "in",
+    "m",
+    "mm"
+   ],
+   "readings_covered": 370,
+   "reviewed": false
+  },
+  {
+   "canonical": "tank volume",
+   "substance": "tank",
+   "measure": "capacity",
+   "domain": "water",
+   "aliases": [
+    "aerated sludge holding tank volume (cubic feet)",
+    "aerated sludge holding tank volume (gallons)",
+    "aeration section tank volume",
+    "aeration tank capacity",
+    "aeration tank volume",
+    "aeration tank volume (cu. ft.)",
+    "aeration tank volume (mg)",
+    "aeration tanks total volume",
+    "aeration tanks volume",
+    "air degrittor volume",
+    "air degrittors total volume",
+    "chamber volume",
+    "chlorine contact chamber volume",
+    "chlorine contact chambers volume",
+    "clamshell bucket volume",
+    "clarifier volume",
+    "combined aeration tanks capacity",
+    "conditioning tank capacity",
+    "detritor volume",
+    "digester volume",
+    "digestion system volume",
+    "digestion tank primary volume",
+    "digestion tank secondary volume",
+    "digestion volume",
+    "final clarifier volume",
+    "final sedimentation tank volume",
+    "final sedimentation tank volume (cu. ft.)",
+    "final sedimentation tank volume (gallons)",
+    "final settling tanks volume",
+    "final tanks capacity",
+    "grit chamber volume",
+    "grit removal channel volume",
+    "grit tank liquid volume",
+    "grit tank volume",
+    "heated digester capacity",
+    "heated digesters capacity",
+    "liquid volume",
+    "new sludge digester volume",
+    "old sludge digester volume",
+    "primary chamber volume",
+    "primary clarifier volume",
+    "primary clarifier volume (cu. ft.)",
+    "primary clarifier volume (gallons)",
+    "primary clarifiers volume",
+    "primary digester capacity",
+    "primary digester total volume",
+    "primary digester volume",
+    "primary digesters volume",
+    "primary sedimentation tank volume",
+    "primary sedimentation tank volume (cubic feet)",
+    "primary sedimentation tank volume (imperial gallons)",
+    "primary sedimentation volume",
+    "primary settling tanks capacity",
+    "primary stage volume",
+    "secondary chamber volume",
+    "secondary clarifiers volume",
+    "secondary digester capacity",
+    "secondary digester total volume",
+    "secondary digester volume",
+    "secondary digesters volume",
+    "secondary digestion volume",
+    "secondary sedimentation tank volume",
+    "secondary sedimentation volume",
+    "secondary stage volume",
+    "sedimentation tank volume",
+    "tank volume",
+    "tank volume per tank",
+    "total aeration tank volume",
+    "total capacity of the final tanks",
+    "total secondary digestion volume",
+    "total volume",
+    "total volume of primary sedimentation tanks",
+    "total volume of tanks",
+    "volume",
+    "volume of aerated grit chamber",
+    "volume of each",
+    "volume of each tank",
+    "volume of tanks"
+   ],
+   "typical_units": [
+    "cu. ft.",
+    "gallons",
+    "m3",
+    "mg"
+   ],
+   "readings_covered": 232,
+   "reviewed": false
+  },
+  {
+   "canonical": "guideline",
+   "substance": "(the substance named in the string)",
+   "measure": "guideline",
+   "domain": "drinking water",
+   "aliases": [
+    "acceptable hardness level",
+    "aesthetic guideline",
+    "aesthetic guideline level for conductivity",
+    "aesthetic objective for ethylbenzene",
+    "aesthetic objective for toluene",
+    "aesthetic objective for total xylenes",
+    "aesthetic odwo",
+    "aesthetic odwo for hardness",
+    "aesthetic odwo for manganese",
+    "aesthetic odwo of true colour units",
+    "aesthetic or recommended operational guideline of hardness",
+    "alkalinity guideline",
+    "alpha bhc guideline",
+    "aluminum guideline",
+    "aluminum residual guideline",
+    "ambient benzene guideline",
+    "ammonium total guideline",
+    "antimony guideline",
+    "arsenic guideline",
+    "background levels",
+    "barium guideline",
+    "benzene guideline",
+    "benzo(a)pyrene maximum acceptable concentration",
+    "beryllium guideline",
+    "bod objective",
+    "boron guideline",
+    "cadmium guideline",
+    "cal c benzene guideline",
+    "calcium eec aesthetic guideline level",
+    "calcium guideline",
+    "cdwg c benzene guideline",
+    "chloride guideline",
+    "chloroform guideline",
+    "chromium guideline",
+    "colour guideline",
+    "commission objective",
+    "commission objective bod and suspended solids",
+    "commission objectives for bod and suspended solids",
+    "conductivity eec aesthetic guideline level",
+    "conductivity guideline",
+    "copper guideline",
+    "dichlorobromomethane guideline",
+    "dissolved organic carbon guideline",
+    "eec aesthetic guideline level for conductivity",
+    "eec guidelines for calcium",
+    "eec guidelines for conductivity",
+    "effluent bod objective",
+    "effluent suspended solids objective",
+    "ethylbenzene guideline",
+    "european economic community aesthetic guideline level calcium",
+    "european economic community aesthetic guideline level conductivity",
+    "european economic community aesthetic guideline level of magnesium",
+    "european economic community aesthetic guideline level of total ammonium",
+    "field temperature maximum desirable concentration",
+    "fluoranthene awq guideline",
+    "fluoride concentration recommended in the odwo",
+    "fluoride guideline",
+    "guideline",
+    "guideline for aluminum in water leaving the plant",
+    "guideline for phenolics",
+    "guidelines",
+    "hardness guideline",
+    "hardness level (acceptable balance)",
+    "hardness level threshold",
+    "hardness level threshold for poor water",
+    "hardness odwo aesthetic or recommended operational guideline",
+    "hardness threshold for poor water",
+    "health guidelines",
+    "health related and aesthetic objectives",
+    "hexachlorocyclopentadiene ambient water quality criteria",
+    "iron concentration limit",
+    "iron guideline",
+    "iron maximum desirable concentration",
+    "lead guideline",
+    "lead maximum acceptable concentration",
+    "lindane guideline",
+    "m-xylene guideline",
+    "mac",
+    "mac benzene guideline",
+    "magnesium eec aesthetic guideline level",
+    "magnesium guideline",
+    "manganese guideline",
+    "manganese maximum desirable concentration",
+    "maximum acceptable concentration for fluoride",
+    "maximum acceptable concentration for turbidity",
+    "maximum acceptable concentration of fluoride",
+    "maximum acceptable concentration of lead",
+    "maximum acceptable concentration of total thms",
+    "maximum contaminant level (mcl) for 1,1,1-trichloroethane",
+    "maximum desirable concentration of colour",
+    "maximum desirable concentration of standard plate count",
+    "maximum desirable concentration of standard plate count (membrane filtration)",
+    "maximum desirable concentration of temperature",
+    "mcl",
+    "mcl benzene guideline (epaa)",
+    "mcl benzene guideline (who)",
+    "mercury guideline",
+    "nickel guideline",
+    "nitrite guideline",
+    "o-xylene guideline",
+    "odwo",
+    "odwo aesthetic guideline for toluene",
+    "odwo aesthetic objective colour",
+    "odwo aesthetic objective of dissolved solids",
+    "odwo aesthetic objective of manganese",
+    "odwo aesthetic objective temperature",
+    "odwo for total thms",
+    "odwo maximum acceptable concentration of thms",
+    "odwo maximum acceptable concentration of total thms",
+    "odwo maximum acceptable concentration of total trihalomethanes",
+    "odwo recommended operational guideline for aluminum",
+    "odwo recommended operational guideline of aluminum",
+    "odwo recommended operational guideline of hardness",
+    "odwo turbidity limit",
+    "ontario drinking water objective for fluoride",
+    "ontario drinking water objective for lead",
+    "ontario maximum acceptable concentration (mac) for lead",
+    "owrc bod objective",
+    "owrc objective",
+    "owrc objective bod",
+    "owrc objective for bod",
+    "owrc objective for suspended solids",
+    "owrc objective suspended solids",
+    "owrc suspended solids objective",
+    "phenolic substances in drinking water operational guideline",
+    "phenolic substances limit",
+    "phenolics guideline",
+    "phosphorus total guideline",
+    "plant operational guideline of al",
+    "poor water threshold (hardness)",
+    "recommended dissolved oxygen criterion",
+    "selenium guideline",
+    "silver guideline",
+    "sodium and sulphate contamination guideline",
+    "sodium guideline",
+    "ss objective",
+    "standard plate count guideline",
+    "standard plate count limit",
+    "styrene background level",
+    "styrene background level maximum",
+    "styrene background level minimum",
+    "styrene background levels",
+    "styrene guideline",
+    "sulphate guideline",
+    "t-chloroethylene guideline",
+    "temperature guideline",
+    "thallium guideline",
+    "theoretical 24-hour objective",
+    "toluene guideline",
+    "total ammonium eec aesthetic guideline level",
+    "total coliform guideline",
+    "total nitrates guideline",
+    "total pah criteria",
+    "total trihalomethanes guideline",
+    "trichloroethane guideline",
+    "trs air quality objective",
+    "trs guideline",
+    "turbidity guideline",
+    "uranium guideline",
+    "usepa ambient water quality criteria for hexachloroethane",
+    "zinc guideline"
+   ],
+   "typical_units": [
+    "%",
+    "mg/l",
+    "ug/l"
+   ],
+   "readings_covered": 209,
+   "reviewed": false
+  },
+  {
+   "canonical": "bod",
+   "substance": "bod",
+   "measure": "concentration",
+   "domain": "water",
+   "aliases": [
+    "5 day bod of raw sewage",
+    "average bod",
+    "average bod concentration",
+    "average concentration of bod",
+    "average domestic sewage influent bod",
+    "average raw sewage bod",
+    "average strength of waste bod",
+    "bod",
+    "bod - raw sewage",
+    "bod average",
+    "bod concentration",
+    "bod content",
+    "domestic sewage bod",
+    "effluent bod",
+    "effluent bod concentration",
+    "five day bod",
+    "five day bod raw sewage",
+    "maximum influent bod",
+    "minimum bod",
+    "minimum influent bod",
+    "peak final effluent bod",
+    "primary effluent bod",
+    "raw sewage bod",
+    "raw sewage bod as percent of design value",
+    "raw sewage bod concentration",
+    "raw sewage bod concentration decrease",
+    "raw sewage bod design value",
+    "raw sewage strength",
+    "raw sewage strength avg. bod",
+    "sewage strength",
+    "total bod",
+    "weekday bod"
+   ],
+   "typical_units": [
+    "mg/l",
+    "ppm"
+   ],
+   "readings_covered": 194,
+   "reviewed": false
+  },
+  {
+   "canonical": "capacity",
+   "substance": "capacity",
+   "measure": "capacity",
+   "domain": "water",
+   "aliases": [
+    "activated sludge plant capacity",
+    "bar screen maximum capacity",
+    "barminutor capacity",
+    "barminutor flow capacity",
+    "barminutor flow capacity (short period)",
+    "capacity",
+    "capacity increase",
+    "complete treatment capacity (short period)",
+    "current capacity",
+    "digestion system capacity",
+    "domestic sewage capacity",
+    "expansion capacity",
+    "flow capacity per pair of tanks",
+    "flow capacity with four aeration tanks",
+    "flow rate capacity for complete treatment",
+    "full treatment capacity",
+    "future plant capacity",
+    "grit channel capacity",
+    "grit settling capacity",
+    "haulage vehicle capacity",
+    "influent pipe capacity",
+    "mill capacity",
+    "operating capacity",
+    "original plant capacity",
+    "outfall sewer maximum capacity",
+    "plant capacity",
+    "population capacity",
+    "primary sedimentation capacity",
+    "primary treatment capacity",
+    "primary treatment plant capacity",
+    "proposed expansion capacity",
+    "pumping station capacity",
+    "rated capacity",
+    "scale capacity",
+    "secondary treatment capacity",
+    "short period capacity",
+    "sludge capacity",
+    "storm overflow weir capacity",
+    "total capacity",
+    "total plant capacity",
+    "treatment capacity",
+    "treatment capacity increase",
+    "truck weight capacity",
+    "underground storage tank capacity"
+   ],
+   "typical_units": [
+    "gallons per day",
+    "igpd",
+    "mgd"
+   ],
+   "readings_covered": 174,
+   "reviewed": false
+  },
+  {
+   "canonical": "suspended solids",
+   "substance": "suspended solids",
+   "measure": "concentration",
+   "domain": "water",
+   "aliases": [
+    "average concentration of suspended solids",
+    "average domestic sewage influent suspended solids",
+    "average suspended solids",
+    "average suspended solids concentration",
+    "effluent suspended solids",
+    "effluent suspended solids concentration",
+    "industrial wastes concentration",
+    "maximum influent suspended solids",
+    "minimum influent suspended solids",
+    "raw sewage strength avg. s.s.",
+    "raw sewage suspended solids",
+    "raw sewage suspended solids concentration",
+    "raw sewage suspended solids concentration as percent of design value",
+    "raw sewage suspended solids design value",
+    "raw sludge concentration",
+    "raw sludge solids concentration",
+    "raw suspended solids",
+    "s.s.",
+    "solids concentration",
+    "solids concentrations",
+    "sos",
+    "ss",
+    "ss - raw sewage",
+    "ss concentration",
+    "suspended solids",
+    "suspended solids (s.s.) average for all days of week",
+    "suspended solids (s.s.) on working days",
+    "suspended solids average",
+    "suspended solids concentration",
+    "suspended solids content",
+    "suspended solids in the primary effluent",
+    "suspended solids of raw sewage",
+    "suspended solids raw be",
+    "suspended solids raw sewage",
+    "total suspended solids",
+    "weekday suspended solids"
+   ],
+   "typical_units": [
+    "mg/l",
+    "ppm"
+   ],
+   "readings_covered": 170,
+   "reviewed": false
+  },
+  {
+   "canonical": "retention time",
+   "substance": "retention time",
+   "measure": "duration",
+   "domain": "water",
+   "aliases": [
+    "aeration retention",
+    "aeration retention time",
+    "aeration tank retention",
+    "aeration tank retention time",
+    "aeration tanks retention time",
+    "chlorination detention period",
+    "chlorine contact chamber detention time",
+    "chlorine contact chamber retention",
+    "chlorine contact chamber retention time",
+    "clarifier retention period",
+    "contact period",
+    "contact period at 3.0 mgd",
+    "contact period at 9.0 mgd",
+    "detention period",
+    "detention time",
+    "detention time (primary)",
+    "detention time (secondary)",
+    "detritor retention time",
+    "digestion period",
+    "digestion time",
+    "effluent chlorination contact time in chambers",
+    "effluent chlorination contact time in outfall sewer",
+    "final sedimentation retention time",
+    "final sedimentation tank detention time",
+    "final sedimentation tank retention",
+    "grit removal detention time",
+    "grit removal tanks retention",
+    "grit tank retention time",
+    "minimum detention time",
+    "primary clarifier retention",
+    "primary clarifier retention period",
+    "primary clarifiers retention",
+    "primary clarifiers retention time",
+    "primary sedimentation retention time",
+    "primary sedimentation tank detention time",
+    "primary settling tanks retention",
+    "raw sludge vacuum filtration detention time",
+    "retention",
+    "retention at design",
+    "retention at design flow",
+    "retention period",
+    "retention time",
+    "retention time at design flow",
+    "secondary sedimentation retention time",
+    "secondary sedimentation tank detention time",
+    "sedimentation retention time"
+   ],
+   "typical_units": [
+    "days",
+    "hours",
+    "minutes"
+   ],
+   "readings_covered": 162,
+   "reviewed": false
+  },
+  {
+   "canonical": "cost",
+   "substance": "cost",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "budget",
+    "budgeted amount",
+    "budgeted operating cost difference",
+    "cost",
+    "cost increase percent",
+    "cost of operation",
+    "cost of operation increase over 1964",
+    "cost of treatment",
+    "cost to industry of suspensions",
+    "cost to treat sewage",
+    "estimated operating cost",
+    "final tentative cost",
+    "increase in operating costs",
+    "operating budget",
+    "operating cost",
+    "operating cost increase",
+    "operating cost reduction",
+    "operating costs",
+    "operating costs increase",
+    "operating expenses",
+    "operation cost",
+    "reduction in cost of treatment",
+    "subtotal cost",
+    "total additional costs",
+    "total annual budget",
+    "total budget forecast for 1962",
+    "total cost",
+    "total cost of operating the sewage treatment plant",
+    "total cost of treatment",
+    "total estimated cost",
+    "total of three items",
+    "total operating cost",
+    "total operating costs",
+    "total treatment cost",
+    "treatment cost",
+    "treatment costs"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 121,
+   "reviewed": false
+  },
+  {
+   "canonical": "design flow",
+   "substance": "flow",
+   "measure": "capacity",
+   "domain": "water",
+   "aliases": [
+    "average design plant flow",
+    "design capacity",
+    "design flow",
+    "design plant flow",
+    "design plant flow (primary)",
+    "design plant flow (secondary)",
+    "flow capacity",
+    "flow to reach design capacity",
+    "future flow threshold",
+    "hydraulic capacity",
+    "hydraulic capacity limit",
+    "hydraulic design",
+    "hydraulic loading capacity",
+    "maximum design plant flow",
+    "overflow capacity",
+    "peak flow capacity",
+    "plant design flow",
+    "present design flow",
+    "previous design flow",
+    "primary section design flow",
+    "primary treatment flow capacity",
+    "storm flow capacity",
+    "storm overflow capacity",
+    "treatment flow capacity",
+    "utilizable aeration section design flow",
+    "utilizable aeration section percentage"
+   ],
+   "typical_units": [
+    "igpd",
+    "mgd"
+   ],
+   "readings_covered": 118,
+   "reviewed": false
+  },
+  {
+   "canonical": "bod removal",
+   "substance": "bod",
+   "measure": "removal",
+   "domain": "water",
+   "aliases": [
+    "bod and suspended solids removal efficiency",
+    "bod reduction",
+    "bod reduction complete treatment",
+    "bod reduction during primary treatment",
+    "bod removal",
+    "bod removal efficiency",
+    "bod removal improvement",
+    "bod removal percent",
+    "bod removed",
+    "bod removed per month",
+    "heavy organic material removal",
+    "organic removal",
+    "organic removal increase",
+    "sewage strength reduction",
+    "wpcp bod reduction efficiency"
+   ],
+   "typical_units": [
+    "%",
+    "lbs",
+    "tons"
+   ],
+   "readings_covered": 108,
+   "reviewed": false
+  },
+  {
+   "canonical": "population",
+   "substance": "population",
+   "measure": "count",
+   "domain": "population",
+   "aliases": [
+    "design population",
+    "design population (extended)",
+    "design population (initial)",
+    "design population extended",
+    "design population initial",
+    "future population served",
+    "planned expansion population",
+    "population",
+    "population served"
+   ],
+   "typical_units": [
+    "persons"
+   ],
+   "readings_covered": 104,
+   "reviewed": false
+  },
+  {
+   "canonical": "suspended solids removal",
+   "substance": "suspended solids",
+   "measure": "removal",
+   "domain": "water",
+   "aliases": [
+    "raw sewage suspended solids removal",
+    "raw sludge reduction",
+    "s.s. reduction",
+    "sos removal",
+    "ss reduction",
+    "ss removal",
+    "suspended solids reduction",
+    "suspended solids reduction efficiency",
+    "suspended solids reduction percent",
+    "suspended solids removal",
+    "suspended solids removal efficiency",
+    "suspended solids removal improvement",
+    "suspended solids removal percent",
+    "suspended solids removed",
+    "suspended solids removed per month",
+    "suspended solids settlement",
+    "suspended solids settling"
+   ],
+   "typical_units": [
+    "%",
+    "lbs",
+    "tons"
+   ],
+   "readings_covered": 104,
+   "reviewed": false
+  },
+  {
+   "canonical": "pump capacity",
+   "substance": "pump",
+   "measure": "capacity",
+   "domain": "water",
+   "aliases": [
+    "aurora condensate pump capacity",
+    "aurora condensate pumps capacity",
+    "backup pump capacity",
+    "diesel engine capacity",
+    "ferric chloride pump capacity",
+    "ferric chloride pumps capacity",
+    "gas pump capacity",
+    "lime pump capacity",
+    "lime pumps capacity",
+    "maximum pump capacity",
+    "maximum pumping capacity",
+    "pump capacity",
+    "pump capacity (diesel)",
+    "pump capacity (electric)",
+    "pump rating",
+    "pumping capacity",
+    "pumps - one worthington capacity",
+    "pumps - two worthington capacity",
+    "pumps capacity",
+    "pumps gpm",
+    "raw sewage pump capacity (pump 1)",
+    "raw sewage pump capacity (pump 2)",
+    "raw sewage pump capacity (pump 3)",
+    "raw sludge pump capacity",
+    "return sludge pumping capacity",
+    "scum pump capacity",
+    "sewage lift pumps capacity",
+    "sludge pump capacity",
+    "total capacity of three pumps",
+    "total pump capacity"
+   ],
+   "typical_units": [
+    "gpm",
+    "igpm",
+    "mgd"
+   ],
+   "readings_covered": 93,
+   "reviewed": false
+  },
+  {
+   "canonical": "total flow",
+   "substance": "flow",
+   "measure": "total",
+   "domain": "water",
+   "aliases": [
+    "estimated annual flow",
+    "gallons of sewage",
+    "maximum total flow",
+    "raw sewage treated",
+    "raw sewage volume treated",
+    "secondary treatment volume",
+    "sewage processed",
+    "sewage treated",
+    "sewage volume",
+    "total flow",
+    "total flow treated",
+    "total output",
+    "total raw sewage treated",
+    "total raw sewage volume",
+    "total sewage",
+    "total sewage flow",
+    "total sewage treated",
+    "total volume of raw sewage treated",
+    "total volume treated",
+    "total waste treated",
+    "treated volume",
+    "volume of sewage receiving complete treatment",
+    "volume sewage treated",
+    "volume treated"
+   ],
+   "typical_units": [
+    "gallons",
+    "m3",
+    "million gallons"
+   ],
+   "readings_covered": 90,
+   "reviewed": false
+  },
+  {
+   "canonical": "motor power",
+   "substance": "motor",
+   "measure": "power",
+   "domain": "equipment",
+   "aliases": [
+    "air blower power",
+    "bepco motor power",
+    "brooks electric motor power",
+    "brooks motor power",
+    "buil-e. r. &amp; f. turner ltd. motor power",
+    "c. g. e. induction motor power",
+    "dor-oliver-long organic return pumps power",
+    "dorman diesel engine power",
+    "draft motor power",
+    "engine horsepower",
+    "engine power",
+    "horsepower",
+    "hp",
+    "leland-newman motor power",
+    "motor horsepower",
+    "motor power",
+    "nash hytor vacuum pump motor power",
+    "nash hytor vacuum pumps power",
+    "organic return pump motor power",
+    "pump motor power",
+    "pump power",
+    "raw sludge pump motor power",
+    "reeves motor power (ferric)",
+    "reeves motor power (lime)",
+    "sewage pump power",
+    "smart turner sump pumps power",
+    "smart-turner sump pump motor power",
+    "sutorbilt 8 hvb blower motor power"
+   ],
+   "typical_units": [
+    "hp",
+    "kw"
+   ],
+   "readings_covered": 79,
+   "reviewed": false
+  },
+  {
+   "canonical": "guideline exceedance frequency",
+   "substance": "(the substance named in the string)",
+   "measure": "frequency",
+   "domain": "drinking water",
+   "aliases": [
+    "1, 1, 1-trichloroethane detection frequency",
+    "1, 1, 1-trichloroethane trace level frequency",
+    "1, 4-dichlorobenzene trace level frequency",
+    "alpha bhc detection frequency",
+    "aluminum exceedance frequency",
+    "days above guideline",
+    "desired odwo exceeded frequency",
+    "detectable concentration frequency",
+    "ethylbenzene detection count",
+    "exceedance count",
+    "exceedance frequency",
+    "health related drinking water guidelines exceeded",
+    "hexachlorocyclopentadiene detection frequency",
+    "lead exceedance count",
+    "lead exceedance frequency",
+    "lindane detection frequency",
+    "magnesium exceedance frequency",
+    "odwo exceedance frequency",
+    "odwo exceeded",
+    "organic parameter share",
+    "ortho-xylene trace level frequency",
+    "pah parameters at trace levels",
+    "pah parameters detected next month",
+    "percent of days above guideline",
+    "pesticides above trace levels",
+    "samples containing more than 9 mg",
+    "standard plate count exceedance frequency",
+    "styrene detection frequency",
+    "tetrachloroethylene detection frequency",
+    "tetrachloroethylene trace level frequency",
+    "toluene detection count",
+    "toluene detection frequency",
+    "total ammonium exceedance frequency",
+    "total thm occurrences",
+    "trs exceedance count"
+   ],
+   "typical_units": [
+    "%",
+    "occasions",
+    "samples"
+   ],
+   "readings_covered": 78,
+   "reviewed": false
+  },
+  {
+   "canonical": "hardness",
+   "substance": "hardness",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "hardness",
+    "hardness level",
+    "hardness level for domestic waters",
+    "hardness levels",
+    "hardness values",
+    "treated plant water hardness",
+    "victoria street treated water hardness"
+   ],
+   "typical_units": [
+    "mg/l as caco3"
+   ],
+   "readings_covered": 76,
+   "reviewed": false
+  },
+  {
+   "canonical": "temperature",
+   "substance": "temperature",
+   "measure": "temperature",
+   "domain": "water",
+   "aliases": [
+    "digester temperature",
+    "drinking water temperature",
+    "drying temperature",
+    "field temperature",
+    "maximum field temperature",
+    "sludge temperature",
+    "sludge temperature range",
+    "storage temperature",
+    "temperature",
+    "temperature of drinking water"
+   ],
+   "typical_units": [
+    "degc",
+    "degf"
+   ],
+   "readings_covered": 75,
+   "reviewed": false
+  },
+  {
+   "canonical": "detection limit",
+   "substance": "(the substance named in the string)",
+   "measure": "detection limit",
+   "domain": "drinking water",
+   "aliases": [
+    "alpha bhc detection limit",
+    "aluminum detection limit",
+    "ammonium total detection limit",
+    "antimony detection limit",
+    "arsenic detection limit",
+    "barium detection limit",
+    "benzene detection limit",
+    "beryllium detection limit",
+    "boron detection limit",
+    "cadmium detection limit",
+    "chloroform detection limit",
+    "chromium detection limit",
+    "cobalt detection limit",
+    "copper detection limit",
+    "det'n limit",
+    "det'n limit chlorine (comb)",
+    "detection limit",
+    "detection limit (for method pocodo)",
+    "detection limit for phenolics",
+    "dichlorobromomethane detection limit",
+    "ethylbenzene detection limit",
+    "fecal coliform det'n limit",
+    "hardness detection limit",
+    "iron detection limit",
+    "lead detection limit",
+    "lindane detection limit",
+    "m-xylene detection limit",
+    "magnesium detection limit",
+    "manganese detection limit",
+    "mercury detection limit",
+    "molybdenum detection limit",
+    "nickel detection limit",
+    "nitrite detection limit",
+    "o-xylene detection limit",
+    "phenolics detection limit",
+    "selenium detection limit",
+    "silver detection limit",
+    "sodium detection limit",
+    "standard plate count det'n limit",
+    "strontium detection limit",
+    "styrene detection limit",
+    "t coliform bckgrd det'n limit",
+    "t-chloroethylene det'n limit",
+    "thallium detection limit",
+    "toluene detection limit",
+    "total coliform det'n limit",
+    "total trihalomethanes det'n limit",
+    "trichloroethane detection limit",
+    "uranium detection limit",
+    "vanadium detection limit",
+    "zinc detection limit"
+   ],
+   "typical_units": [
+    "mg/l",
+    "ug/l"
+   ],
+   "readings_covered": 70,
+   "reviewed": false
+  },
+  {
+   "canonical": "flow exceedance frequency",
+   "substance": "flow",
+   "measure": "frequency",
+   "domain": "water",
+   "aliases": [
+    "aeration section capacity exceedance frequency",
+    "average daily flows exceeding design capacity",
+    "capacity exceedance frequency",
+    "daily flow exceedance frequency",
+    "design flow exceedance frequency",
+    "design hydraulic capacity exceedance frequency",
+    "flow equal to or greater than design flow frequency",
+    "flow exceedance frequency",
+    "flow exceeded design average daily flow frequency",
+    "flow exceeded design frequency",
+    "flow frequency",
+    "flow threshold for 50% exceedance",
+    "hydraulic capacity exceedance",
+    "hydraulic capacity exceedance frequency",
+    "hydraulic design capacity exceedance frequency",
+    "hydraulic loading exceedance of design capacity",
+    "hydraulically overloaded frequency",
+    "operating above design capacity",
+    "primary section capacity exceedance frequency",
+    "total flow exceedance frequency",
+    "weeks below average daily flow threshold"
+   ],
+   "typical_units": [
+    "%",
+    "days",
+    "occasions"
+   ],
+   "readings_covered": 69,
+   "reviewed": false
+  },
+  {
+   "canonical": "chlorine residual",
+   "substance": "chlorine residual",
+   "measure": "concentration",
+   "domain": "water",
+   "aliases": [
+    "chlorine (comb)",
+    "chlorine (total)",
+    "chlorine free",
+    "chlorine residual",
+    "residual chlorine",
+    "total chlorine residuals"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 66,
+   "reviewed": false
+  },
+  {
+   "canonical": "construction cost",
+   "substance": "construction cost",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "air pipe lines renovation cost",
+    "average annual capital cost",
+    "bid amount",
+    "connecting sewers cost",
+    "construction cost",
+    "contract a award amount",
+    "contract award amount",
+    "cost of contract a",
+    "cost of contract b",
+    "cost of contracts c and d",
+    "cost of first stage construction",
+    "cost of fourth stage construction",
+    "cost of fourth stage contract",
+    "cost of new substation",
+    "cost of plant extension",
+    "cost of third stage construction",
+    "curbs and driveway work cost",
+    "doon primary plant enlargements cost",
+    "expansion cost",
+    "extension cost estimate",
+    "fence construction cost",
+    "force main cost",
+    "interceptor sewer on ontario st. cost",
+    "original cost of all permanent assets",
+    "project cost estimate",
+    "river crossing cost",
+    "sanitary sewers and forcemains cost",
+    "secondary treatment facilities cost",
+    "sewage pumping station cost",
+    "sewage treatment plant cost",
+    "sewers plant total cost",
+    "total construction cost",
+    "total cost of plant extension",
+    "total cost of second stage contracts",
+    "total cost stage i",
+    "total cost stage ii",
+    "total project cost",
+    "total project estimated cost",
+    "total value of trunk sewer work",
+    "treatment plant and pumping stations cost"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 57,
+   "reviewed": false
+  },
+  {
+   "canonical": "unit cost of treatment",
+   "substance": "treatment cost",
+   "measure": "ratio",
+   "domain": "finance",
+   "aliases": [
+    "average cost per million gallons of sewage",
+    "average operating cost per thousand gallons",
+    "cost of power per million gallons of sewage treated",
+    "cost of treatment per 1,000 gallons",
+    "cost per 1,000 gallons of raw sewage treated",
+    "cost per 1.000 gal treated",
+    "cost per 1000 gal",
+    "cost per 1000 gallons",
+    "cost per million gallons",
+    "cost per million gallons of sewage",
+    "cost per million gallons of sewage treated",
+    "cost per million gallons of waste treated",
+    "cost per million gallons treated",
+    "operating cost per million gallons",
+    "operating cost per thousand gallons",
+    "total operating and capital cost per thousand gallons",
+    "treatment cost per million gallons",
+    "unit cost of treating one million gallons",
+    "unit cost of treating one million gallons of sewage",
+    "unit cost of treatment",
+    "unit cost of treatment reduction",
+    "unit operating cost per 1000 gallons raw sewage treated"
+   ],
+   "typical_units": [
+    "$/million gallons"
+   ],
+   "readings_covered": 53,
+   "reviewed": false
+  },
+  {
+   "canonical": "phenolics",
+   "substance": "phenolics",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "maximum desirable concentration of phenolic substances",
+    "phenolic compounds",
+    "phenolic substances",
+    "phenolic substances in drinking water",
+    "phenolics",
+    "phenolics concentration"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 51,
+   "reviewed": false
+  },
+  {
+   "canonical": "sludge volume",
+   "substance": "sludge",
+   "measure": "total",
+   "domain": "water",
+   "aliases": [
+    "digested sludge filtered",
+    "digested sludge hauled",
+    "digested sludge volume",
+    "digested sludge volume by tank truck haulage",
+    "digested sludge volume on plant site",
+    "dry sludge filtered",
+    "dry solids filtered",
+    "haulage volume",
+    "land disposal of liquid digested sludge",
+    "raw sludge pumped",
+    "raw sludge pumped to digesters",
+    "raw sludge vacuum filtration volume",
+    "raw sludge volume",
+    "return sludge",
+    "return sludge colume",
+    "return sludge percentage",
+    "settled sludge volume",
+    "sludge filtered",
+    "sludge pumped to digester",
+    "sludge pumped to digesters",
+    "sludge pumped to the digester",
+    "sludge removed",
+    "sludge removed from digesters",
+    "sludge volume",
+    "sludge volume for land disposal",
+    "tons of dry solids filtered",
+    "total hauled during the year",
+    "volume of sludge hauled",
+    "volume of sludge removed"
+   ],
+   "typical_units": [
+    "cu. ft.",
+    "gallons",
+    "tons"
+   ],
+   "readings_covered": 48,
+   "reviewed": false
+  },
+  {
+   "canonical": "surface settling rate",
+   "substance": "surface settling rate",
+   "measure": "loading",
+   "domain": "water",
+   "aliases": [
+    "final sedimentation tank overflow rate",
+    "final sedimentation tank surface settling rate",
+    "overflow rate",
+    "primary clarifiers overflow rate",
+    "primary clarifiers surface settling rate",
+    "primary sedimentation surface loading",
+    "primary sedimentation tank overflow rate",
+    "primary sedimentation tank surface settling rate",
+    "secondary clarifiers surface settling rate",
+    "secondary sedimentation surface loading",
+    "surface loading",
+    "surface settling rate",
+    "surface settling rate @ 1 mgd",
+    "surface settling rate @ 1.25 mgd",
+    "surface settling rate at 3 mgd"
+   ],
+   "typical_units": [
+    "gal/day/sq ft"
+   ],
+   "readings_covered": 47,
+   "reviewed": false
+  },
+  {
+   "canonical": "pumping head",
+   "substance": "pumping head",
+   "measure": "length",
+   "domain": "water",
+   "aliases": [
+    "head",
+    "pump discharge head",
+    "pump head",
+    "sewage lift pumps discharge head",
+    "tdh",
+    "total head"
+   ],
+   "typical_units": [
+    "ft"
+   ],
+   "readings_covered": 42,
+   "reviewed": false
+  },
+  {
+   "canonical": "trihalomethanes",
+   "substance": "trihalomethanes",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "thms",
+    "total thm",
+    "total thms",
+    "total trihalomethanes"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 39,
+   "reviewed": false
+  },
+  {
+   "canonical": "equipment cost",
+   "substance": "equipment",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "actual equipment expenditure",
+    "bench grinder cost",
+    "chemical pumps cost",
+    "cost of lawnmower",
+    "cost of mixing equipment for the primary digester",
+    "cost of spare parts",
+    "double travel chain cost",
+    "equipment",
+    "equipment actual cost",
+    "equipment budget",
+    "equipment budget forecast for 1962",
+    "equipment cost",
+    "equipment cost for fourth stage",
+    "equipment cost for third stage",
+    "equipment estimate",
+    "equipment expenditure",
+    "equipment purchase increase",
+    "estimated cost of substation equipment",
+    "fairbanks-morse cost",
+    "fuel oil tank cost",
+    "gas mask with separate air supply cost",
+    "general electric motor frame cost",
+    "pipe threader cost",
+    "rotary power lawn mower cost",
+    "sale price of old tank",
+    "skiphoist cost",
+    "submersible pump cost",
+    "sump pumps cost",
+    "truck purchase cost",
+    "truck purchase price",
+    "vacuum filter cost",
+    "varibelt motor cost"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 37,
+   "reviewed": false
+  },
+  {
+   "canonical": "supplies monitored",
+   "substance": "water supplies monitored",
+   "measure": "count",
+   "domain": "drinking water",
+   "aliases": [
+    "monitored supplies",
+    "municipal supplies being monitored",
+    "municipal supplies monitored",
+    "plants being monitored",
+    "plants monitored",
+    "plants monitored by dwsp",
+    "supplies",
+    "supplies being monitored",
+    "supplies monitored",
+    "systems monitored"
+   ],
+   "typical_units": [
+    "supplies"
+   ],
+   "readings_covered": 36,
+   "reviewed": false
+  },
+  {
+   "canonical": "weir loading",
+   "substance": "weir",
+   "measure": "loading",
+   "domain": "water",
+   "aliases": [
+    "final sedimentation tank weir rate",
+    "primary clarifier weir rate",
+    "primary clarifiers weir overflow rate",
+    "primary sedimentation weir loading",
+    "secondary clarifiers weir overflow rate",
+    "secondary sedimentation weir loading",
+    "weir loading",
+    "weir overflow rate",
+    "weir overflow rate @ 1.0 mgd",
+    "weir overflow rate @ 1.25 mgd",
+    "weir overflow rate at 3 mgd",
+    "weir rate"
+   ],
+   "typical_units": [
+    "gal/day/ft"
+   ],
+   "readings_covered": 36,
+   "reviewed": false
+  },
+  {
+   "canonical": "blower capacity",
+   "substance": "blower",
+   "measure": "capacity",
+   "domain": "water",
+   "aliases": [
+    "air capacity",
+    "air compressor capacity",
+    "blower capacity",
+    "blower motor capacity",
+    "compressor capacity",
+    "compressors capacity",
+    "free air delivery per compressor",
+    "gas booster capacity",
+    "gas compressor capacity",
+    "heat exchanger capacity",
+    "heater rating",
+    "maximum capacity of each blower",
+    "new blower capacity",
+    "old blower capacity",
+    "old plant blower capacity",
+    "sludge heater capacity"
+   ],
+   "typical_units": [
+    "cfm",
+    "scfm"
+   ],
+   "readings_covered": 35,
+   "reviewed": false
+  },
+  {
+   "canonical": "trichloroethane",
+   "substance": "trichloroethane",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "1, 1, 1-trichloroethane",
+    "1, 1,1-trichloroethane",
+    "1,1 dichloroethane",
+    "1,1,1-trichloroethane",
+    "trichloroethane",
+    "trichloroethylene"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 32,
+   "reviewed": false
+  },
+  {
+   "canonical": "cost per pound of bod removed",
+   "substance": "bod removal cost",
+   "measure": "ratio",
+   "domain": "finance",
+   "aliases": [
+    "average cost per pound of bod removed at similar plants",
+    "average cost per ton of bod removed",
+    "cost of treating a pound of bod",
+    "cost per lb bod removed",
+    "cost per lb. bod removed",
+    "cost per mg bod removed",
+    "cost per pound bod removed",
+    "cost per pound of bod removed",
+    "cost per pound of bod removed reduction",
+    "cost per ton of bod removed",
+    "cost to treat a pound of bod",
+    "operating cost per pound of bod removed",
+    "treatment cost per lb. bod removed",
+    "treatment cost per pound of bod removed",
+    "unit operating cost per lb. of bod removed"
+   ],
+   "typical_units": [
+    "$/lb"
+   ],
+   "readings_covered": 31,
+   "reviewed": false
+  },
+  {
+   "canonical": "chlorine dosage",
+   "substance": "chlorine",
+   "measure": "rate",
+   "domain": "water",
+   "aliases": [
+    "average chlorine dosage",
+    "chlorination maximum dosage",
+    "chlorine dosage",
+    "chlorine dosage rate",
+    "chlorine maximum dosage",
+    "maximum chlorine dosage",
+    "maximum dosage",
+    "post chlorination dosage"
+   ],
+   "typical_units": [
+    "lbs per day",
+    "mg/l"
+   ],
+   "readings_covered": 30,
+   "reviewed": false
+  },
+  {
+   "canonical": "bod loading",
+   "substance": "bod",
+   "measure": "loading",
+   "domain": "water",
+   "aliases": [
+    "bod loading",
+    "bod loading on the aeration section",
+    "bod overload",
+    "daily loading of bod",
+    "design loading of bod",
+    "lbs boo. per 100 lbs. fti l.s.",
+    "optimal loading range lower limit",
+    "optimal loading range upper limit",
+    "organic load increase",
+    "organic loading",
+    "per capita loading",
+    "total pounds of bod in the raw sewage",
+    "weekday bod loading",
+    "weekday bod share of total"
+   ],
+   "typical_units": [
+    "lbs per 1000 cu ft",
+    "lbs per day"
+   ],
+   "readings_covered": 27,
+   "reviewed": false
+  },
+  {
+   "canonical": "motor speed",
+   "substance": "motor",
+   "measure": "rate",
+   "domain": "equipment",
+   "aliases": [
+    "maximum pump r.p.m.",
+    "motor rpm",
+    "motor speed",
+    "pump speed",
+    "raw sewage pump speed (pump 1)",
+    "raw sewage pump speed (pump 2)",
+    "raw sewage pump speed (pump 3)",
+    "rpm"
+   ],
+   "typical_units": [
+    "rpm"
+   ],
+   "readings_covered": 26,
+   "reviewed": false
+  },
+  {
+   "canonical": "grit removed",
+   "substance": "grit",
+   "measure": "total",
+   "domain": "water",
+   "aliases": [
+    "grit",
+    "grit removal",
+    "grit removal rate",
+    "grit removal volume",
+    "grit removed",
+    "grit removed daily",
+    "grit volume",
+    "normal grit quantity",
+    "screenings removed"
+   ],
+   "typical_units": [
+    "cu. yds",
+    "tons"
+   ],
+   "readings_covered": 25,
+   "reviewed": false
+  },
+  {
+   "canonical": "expenditure",
+   "substance": "expenditure",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "cafeteria expense",
+    "commissions",
+    "depreciation furniture and equipment",
+    "expenditures of the six area municipality fire departments",
+    "other expenses",
+    "outlay",
+    "postage",
+    "printing and stationery",
+    "rent",
+    "rent and property expense",
+    "sask property management corp expenses",
+    "sasktel expenses",
+    "staff training",
+    "staff transfer moving expense",
+    "telegraph and telephone",
+    "telegraph telephone and postage",
+    "travelling"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 24,
+   "reviewed": false
+  },
+  {
+   "canonical": "repairs and maintenance cost",
+   "substance": "repairs and maintenance",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "boiler tube replacement cost",
+    "cost to improve complete hoist",
+    "estimate to completely rehabilitate both units",
+    "heating system inspection and repair cost",
+    "maintenance actual cost",
+    "maintenance budget",
+    "maintenance of equipment",
+    "paint cost",
+    "painting costs",
+    "repair & maintenance estimate",
+    "repair and maintenance",
+    "repair and maintenance actual cost",
+    "repair and maintenance budget",
+    "repair costs for pump components",
+    "repairs & maintenance",
+    "repairs & maintenance estimate",
+    "repairs and maintenance",
+    "repairs and maintenance budget forecast for 1962",
+    "repairs and maintenance cost increase",
+    "repairs, maintenance and supplies for filter cost",
+    "spring valley pump repairs",
+    "truck maintenance costs",
+    "welding and piping costs"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 24,
+   "reviewed": false
+  },
+  {
+   "canonical": "aluminium",
+   "substance": "aluminium",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "al",
+    "aluminum",
+    "aluminum concentration",
+    "aluminxim",
+    "maximum aluminum concentration",
+    "residual aluminum"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 23,
+   "reviewed": false
+  },
+  {
+   "canonical": "interest",
+   "substance": "interest",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "capitalized interest",
+    "interest",
+    "interest charged",
+    "interest cost",
+    "interest payment",
+    "total interest charged"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 23,
+   "reviewed": false
+  },
+  {
+   "canonical": "sodium",
+   "substance": "sodium",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "sodium"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 23,
+   "reviewed": false
+  },
+  {
+   "canonical": "suspended solids exceedance frequency",
+   "substance": "suspended solids",
+   "measure": "frequency",
+   "domain": "water",
+   "aliases": [
+    "effluent suspended solids exceedance frequency",
+    "final effluent suspended solids exceeded commission objective frequency",
+    "heavy flows resulting in loss of solids frequency",
+    "raw sewage suspended solids exceedance frequency",
+    "raw sewage suspended solids exceeded design value frequency",
+    "s.s. exceedance frequency",
+    "samples with concentration less than 100 ppm",
+    "ss exceedance frequency",
+    "ss exceeding objective",
+    "ss objective exceedance frequency",
+    "ss objectives met",
+    "ss samples exceeding 400 ppm frequency",
+    "suspended solids concentration compliance frequency",
+    "suspended solids exceedance frequency",
+    "suspended solids frequency between 140 ppm and 420 ppm",
+    "suspended solids in the primary effluent exceedance frequency"
+   ],
+   "typical_units": [
+    "%",
+    "occasions"
+   ],
+   "readings_covered": 23,
+   "reviewed": false
+  },
+  {
+   "canonical": "air supply",
+   "substance": "air",
+   "measure": "rate",
+   "domain": "water",
+   "aliases": [
+    "air delivery",
+    "air pressure",
+    "air requirements",
+    "air supplied",
+    "air supply",
+    "free air delivery",
+    "theoretical volume of air required"
+   ],
+   "typical_units": [
+    "cfm",
+    "scfm"
+   ],
+   "readings_covered": 22,
+   "reviewed": false
+  },
+  {
+   "canonical": "bod exceedance frequency",
+   "substance": "bod",
+   "measure": "frequency",
+   "domain": "water",
+   "aliases": [
+    "bod exceedance frequency",
+    "bod exceeding objective",
+    "bod objective compliance frequency",
+    "bod objective exceedance frequency",
+    "bod objectives met",
+    "bod reduction frequency",
+    "effluent bod exceedance frequency",
+    "final effluent bod exceeded commission objective frequency",
+    "heavy organic loading frequency",
+    "primary effluent bod exceedance frequency",
+    "raw sewage bod below design value frequency",
+    "raw sewage bod exceedance frequency"
+   ],
+   "typical_units": [
+    "%",
+    "occasions"
+   ],
+   "readings_covered": 22,
+   "reviewed": false
+  },
+  {
+   "canonical": "conductivity",
+   "substance": "conductivity",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "conductivity",
+    "conductivity values",
+    "maximum conductivity"
+   ],
+   "typical_units": [
+    "umho/cm"
+   ],
+   "readings_covered": 22,
+   "reviewed": false
+  },
+  {
+   "canonical": "cost per capita",
+   "substance": "cost",
+   "measure": "ratio",
+   "domain": "finance",
+   "aliases": [
+    "annual cost per person",
+    "cost per capita",
+    "cost per person",
+    "cost per person per year for sewage treatment",
+    "operating cost per capita",
+    "operating cost per capita monthly",
+    "operating cost per person for sewage disposal",
+    "per capita cost",
+    "per capita cost of sewage treatment",
+    "per capita cost of treating sewage",
+    "per capita expenditure",
+    "per capita expenditure by fire departments",
+    "total annual cost per person",
+    "treatment cost per capita",
+    "treatment cost per family per year"
+   ],
+   "typical_units": [
+    "$ per capita"
+   ],
+   "readings_covered": 22,
+   "reviewed": false
+  },
+  {
+   "canonical": "staff",
+   "substance": "staff",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "chief operator count",
+    "employment",
+    "men employed",
+    "normal complement of staff",
+    "operator count",
+    "staff complement",
+    "staff count",
+    "total employees engaged in sewage treatment",
+    "total number of operators",
+    "total plant staff",
+    "total staff complement",
+    "total staff count"
+   ],
+   "typical_units": [
+    "persons"
+   ],
+   "readings_covered": 22,
+   "reviewed": false
+  },
+  {
+   "canonical": "alpha bhc",
+   "substance": "alpha bhc",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "alpha bhc"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 21,
+   "reviewed": false
+  },
+  {
+   "canonical": "area",
+   "substance": "area",
+   "measure": "area",
+   "domain": "water",
+   "aliases": [
+    "area",
+    "available area",
+    "filter area",
+    "filter surface area",
+    "final sedimentation tank surface area",
+    "primary sedimentation tank surface area",
+    "sludge drying beds area",
+    "surface area",
+    "vacuum filter surface area"
+   ],
+   "typical_units": [
+    "acres",
+    "sq ft"
+   ],
+   "readings_covered": 21,
+   "reviewed": false
+  },
+  {
+   "canonical": "staff coverage",
+   "substance": "staff coverage",
+   "measure": "rate",
+   "domain": "administration",
+   "aliases": [
+    "staff coverage per day",
+    "staffing days per week",
+    "staffing hours per day",
+    "supervision days per week",
+    "supervision duration",
+    "supervision frequency",
+    "supervision hours per day",
+    "supervision time"
+   ],
+   "typical_units": [
+    "days per week",
+    "hours per day"
+   ],
+   "readings_covered": 21,
+   "reviewed": false
+  },
+  {
+   "canonical": "tank count",
+   "substance": "tank",
+   "measure": "count",
+   "domain": "water",
+   "aliases": [
+    "aeration tank count",
+    "aeration units",
+    "aerator count",
+    "digestion tank mixer count",
+    "final sedimentation tank count",
+    "final sedimentation tanks count",
+    "number of primary settling tanks",
+    "number of tanks",
+    "primary clarifiers count",
+    "primary digester mixer count",
+    "primary settling tank count",
+    "reservoirs",
+    "sparger count"
+   ],
+   "typical_units": [
+    "tanks"
+   ],
+   "readings_covered": 21,
+   "reviewed": false
+  },
+  {
+   "canonical": "chloroform",
+   "substance": "chloroform",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "chlorofm",
+    "chloroform"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 20,
+   "reviewed": false
+  },
+  {
+   "canonical": "fuel cost",
+   "substance": "fuel",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "actual fuel expenditure",
+    "fuel",
+    "fuel actual",
+    "fuel budget",
+    "fuel budget forecast for 1962",
+    "fuel cost",
+    "fuel costs increase",
+    "fuel deficit",
+    "fuel difference",
+    "fuel forecast",
+    "fuel tank labor cost",
+    "light water and fuel"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 19,
+   "reviewed": false
+  },
+  {
+   "canonical": "ph",
+   "substance": "ph",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "ph"
+   ],
+   "typical_units": [
+    "ph units"
+   ],
+   "readings_covered": 19,
+   "reviewed": false
+  },
+  {
+   "canonical": "chemicals used",
+   "substance": "treatment chemical",
+   "measure": "total",
+   "domain": "water",
+   "aliases": [
+    "ammonium anhydrous dosage",
+    "chlorine cylinder weight",
+    "cylinder weight",
+    "ferric chloride required for filtration of digested primary sludge",
+    "ferric chloride used",
+    "lime quantity",
+    "lime required",
+    "lime required for filtration of digested primary sludge",
+    "lime used",
+    "pickle liquor required"
+   ],
+   "typical_units": [
+    "lbs",
+    "tons"
+   ],
+   "readings_covered": 18,
+   "reviewed": false
+  },
+  {
+   "canonical": "chlorinator capacity",
+   "substance": "chlorinator",
+   "measure": "capacity",
+   "domain": "water",
+   "aliases": [
+    "chlorination capacity",
+    "chlorinator capacity",
+    "chlorinator maximum capacity",
+    "chlorine capacity",
+    "gas chlorinator capacity"
+   ],
+   "typical_units": [
+    "lbs per day"
+   ],
+   "readings_covered": 18,
+   "reviewed": false
+  },
+  {
+   "canonical": "inspections",
+   "substance": "inspections",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "major unsatisfactory inspections",
+    "minor unsatisfactory inspection",
+    "minor unsatisfactory inspections",
+    "new installation inspections",
+    "routine drilling waste disposal inspections",
+    "satisfactory inspections",
+    "steam off inspections",
+    "steam on inspections"
+   ],
+   "typical_units": [
+    "inspections"
+   ],
+   "readings_covered": 18,
+   "reviewed": false
+  },
+  {
+   "canonical": "phenolics detection frequency",
+   "substance": "phenolics",
+   "measure": "frequency",
+   "domain": "drinking water",
+   "aliases": [
+    "phenolic compounds detection frequency",
+    "phenolics detection count",
+    "phenolics detection frequency",
+    "phenolics trace level detection frequency",
+    "treated water samples exceeding aesthetic odwo for phenols"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 18,
+   "reviewed": false
+  },
+  {
+   "canonical": "power cost",
+   "substance": "power",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "actual power expenditure",
+    "estimated power saving",
+    "power",
+    "power actual",
+    "power budget",
+    "power budget forecast for 1962",
+    "power cost",
+    "power cost saving",
+    "power costs increase",
+    "power difference",
+    "power forecast",
+    "total power cost"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 18,
+   "reviewed": false
+  },
+  {
+   "canonical": "chemicals cost",
+   "substance": "chemicals",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "actual chemicals expenditure",
+    "chemical",
+    "chemical budget forecast for 1962",
+    "chemicals actual cost",
+    "chemicals budget",
+    "chlorine and water cost increase",
+    "chlorine cost",
+    "chlorine cost estimate",
+    "chlorine costs increase",
+    "defoaming agent cost",
+    "fecl2 cost",
+    "lime cost",
+    "polycide cost",
+    "scale removal chemicals cost",
+    "total chemical costs"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 17,
+   "reviewed": false
+  },
+  {
+   "canonical": "standard plate count",
+   "substance": "standard plate count",
+   "measure": "count",
+   "domain": "drinking water",
+   "aliases": [
+    "maximum standard plate count",
+    "standard plate count",
+    "standard plate count (at 35°c after 48 hours)",
+    "standard plate count (membrane filtration)"
+   ],
+   "typical_units": [
+    "counts/ml"
+   ],
+   "readings_covered": 17,
+   "reviewed": false
+  },
+  {
+   "canonical": "suspended solids loading",
+   "substance": "suspended solids",
+   "measure": "loading",
+   "domain": "water",
+   "aliases": [
+    "daily loading of suspended solids",
+    "design loading of suspended solids",
+    "solids loading",
+    "solids per cubic foot of tank per month",
+    "solids per cubic foot per month",
+    "solids per cubic ft.",
+    "ss loading",
+    "suspended solids loading",
+    "suspended solids overload",
+    "suspended solids received per day",
+    "tank loading",
+    "total pounds of suspended solids in the raw sewage",
+    "weekday suspended solids share of total"
+   ],
+   "typical_units": [
+    "lbs per day"
+   ],
+   "readings_covered": 17,
+   "reviewed": false
+  },
+  {
+   "canonical": "solubility in water",
+   "substance": "solubility",
+   "measure": "concentration",
+   "domain": "chemistry",
+   "aliases": [
+    "solubility in water"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 16,
+   "reviewed": false
+  },
+  {
+   "canonical": "total solids",
+   "substance": "total solids",
+   "measure": "concentration",
+   "domain": "water",
+   "aliases": [
+    "dissolved solids",
+    "moisture content",
+    "nitrogen tot kjeld",
+    "nitrogen total kjeldahl",
+    "raw sludge volatile solids content",
+    "total solids",
+    "volatile matter",
+    "volatile solids",
+    "volatile solids concentration"
+   ],
+   "typical_units": [
+    "%",
+    "mg/l"
+   ],
+   "readings_covered": 16,
+   "reviewed": false
+  },
+  {
+   "canonical": "ascorbic acid",
+   "substance": "ascorbic acid",
+   "measure": "concentration",
+   "domain": "food",
+   "aliases": [
+    "ascorbic acid"
+   ],
+   "typical_units": [
+    "mg/100 g"
+   ],
+   "readings_covered": 15,
+   "reviewed": false
+  },
+  {
+   "canonical": "fluoride",
+   "substance": "fluoride",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "fluoride",
+    "fluoride concentration",
+    "fluoride concentration range",
+    "maximum fluoride concentration",
+    "naturally occurring fluoride"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 15,
+   "reviewed": false
+  },
+  {
+   "canonical": "payroll",
+   "substance": "payroll",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "additional help cost",
+    "casual payroll actual",
+    "difference in payroll",
+    "payroll",
+    "payroll actual",
+    "payroll budget",
+    "payroll budget forecast for 1962",
+    "payroll cost",
+    "payroll costs increase",
+    "payroll forecast",
+    "total payroll"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 15,
+   "reviewed": false
+  },
+  {
+   "canonical": "reserve fund",
+   "substance": "reserve fund",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "amount from reserve account",
+    "contingencies",
+    "parks fund",
+    "reserve",
+    "reserve account balance",
+    "reserve account payment",
+    "reserve cost",
+    "reserve for contingencies",
+    "reserve fund",
+    "reserve fund amount",
+    "reserve fund balance",
+    "spending from reserve for contingencies for paving"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 15,
+   "reviewed": false
+  },
+  {
+   "canonical": "colour",
+   "substance": "colour",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "colour",
+    "true colour",
+    "true colour units"
+   ],
+   "typical_units": [
+    "tcu"
+   ],
+   "readings_covered": 14,
+   "reviewed": false
+  },
+  {
+   "canonical": "debt retirement",
+   "substance": "debt retirement",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "debt retirement",
+    "debt retirement balance at credit (sinking fund)",
+    "debt retirement cost",
+    "debt retirement payment",
+    "net operating debt retirement reserve"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 14,
+   "reviewed": false
+  },
+  {
+   "canonical": "labour hours",
+   "substance": "labour",
+   "measure": "duration",
+   "domain": "administration",
+   "aliases": [
+    "flow meter overhaul man hours",
+    "labour hours",
+    "maintenance man hours",
+    "man hours",
+    "man hours spent by maintenance section",
+    "mechanical maintenance man hours",
+    "owrc electronics staff time",
+    "owrc maintenance staff time",
+    "repairing the #1 pump man hours",
+    "supervision and repair man hours",
+    "working hours at trenton plant",
+    "working hours at village of batawa treatment plant"
+   ],
+   "typical_units": [
+    "man hours"
+   ],
+   "readings_covered": 14,
+   "reviewed": false
+  },
+  {
+   "canonical": "mixed liquor suspended solids",
+   "substance": "mixed liquor suspended solids",
+   "measure": "concentration",
+   "domain": "water",
+   "aliases": [
+    "mixed liquor suspended solids",
+    "mixed liquor suspended solids concentration",
+    "ml.ss.",
+    "mlss concentration"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 14,
+   "reviewed": false
+  },
+  {
+   "canonical": "plant running time",
+   "substance": "plant operation",
+   "measure": "duration",
+   "domain": "water",
+   "aliases": [
+    "aeration section bypass duration",
+    "bypass days",
+    "bypass duration",
+    "bypass time",
+    "filtering hours",
+    "operation duration",
+    "operation hours per week",
+    "raw sewage bypass percentage",
+    "running time",
+    "skip hoist manual operation period",
+    "truck haulage weeks",
+    "truck hours per week",
+    "vacuum filtration duration"
+   ],
+   "typical_units": [
+    "hours"
+   ],
+   "readings_covered": 14,
+   "reviewed": false
+  },
+  {
+   "canonical": "sludge haulage cost",
+   "substance": "sludge haulage",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "cost of sludge removal",
+    "minimum amount hauled per month",
+    "sludge haulage",
+    "sludge haulage actual cost",
+    "sludge haulage budget",
+    "sludge haulage budget 1961",
+    "sludge haulage budget difference",
+    "sludge haulage difference",
+    "sludge hauling cost",
+    "sludge removal cost",
+    "total sludge haulage cost"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 14,
+   "reviewed": false
+  },
+  {
+   "canonical": "threshold odour",
+   "substance": "odour",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "threshold odour"
+   ],
+   "typical_units": [
+    "ton"
+   ],
+   "readings_covered": 14,
+   "reviewed": false
+  },
+  {
+   "canonical": "voltage",
+   "substance": "voltage",
+   "measure": "voltage",
+   "domain": "equipment",
+   "aliases": [
+    "bus voltage",
+    "motor voltage",
+    "primary switch gear voltage",
+    "substation voltage",
+    "supply voltage",
+    "transformer voltage",
+    "voltage",
+    "volts"
+   ],
+   "typical_units": [
+    "kv",
+    "volts"
+   ],
+   "readings_covered": 14,
+   "reviewed": false
+  },
+  {
+   "canonical": "alkalinity",
+   "substance": "alkalinity",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "alkalinity"
+   ],
+   "typical_units": [
+    "mg/l as caco3"
+   ],
+   "readings_covered": 13,
+   "reviewed": false
+  },
+  {
+   "canonical": "total ammonium",
+   "substance": "ammonia",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "aitunonium",
+    "ammonium",
+    "free ammonia",
+    "total ammonium"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 13,
+   "reviewed": false
+  },
+  {
+   "canonical": "turbidity",
+   "substance": "turbidity",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "formazin turbidity unit (ftu)",
+    "turbidity"
+   ],
+   "typical_units": [
+    "ntu"
+   ],
+   "readings_covered": 13,
+   "reviewed": false
+  },
+  {
+   "canonical": "dichlorobromomethane",
+   "substance": "dichlorobromomethane",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "dichlorobromomethane"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 12,
+   "reviewed": false
+  },
+  {
+   "canonical": "iron",
+   "substance": "iron",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "iron",
+    "iron concentration"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 12,
+   "reviewed": false
+  },
+  {
+   "canonical": "parameters analysed",
+   "substance": "parameters analysed",
+   "measure": "count",
+   "domain": "drinking water",
+   "aliases": [
+    "organic parameters",
+    "parameters",
+    "parameters analyzed on a monthly basis",
+    "parameters sampled",
+    "parameters sampled monthly",
+    "total parameters analyzed",
+    "volatile parameters detected count"
+   ],
+   "typical_units": [
+    "parameters"
+   ],
+   "readings_covered": 12,
+   "reviewed": false
+  },
+  {
+   "canonical": "salary",
+   "substance": "salary",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "chief operator salary",
+    "extra operator salary allowance",
+    "operator salary",
+    "operators salary",
+    "salaries",
+    "salary of c. w0 biggin (new)",
+    "salary of c. w0 biggin (old)",
+    "salary of j. craig (new)",
+    "salary of j. craig (old)",
+    "wage"
+   ],
+   "typical_units": [
+    "$/year"
+   ],
+   "readings_covered": 12,
+   "reviewed": false
+  },
+  {
+   "canonical": "sundry cost",
+   "substance": "sundry",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "average sundry cost",
+    "miscellaneous",
+    "sundry (including sludge haulage)",
+    "sundry actual cost",
+    "sundry budget",
+    "sundry budget difference",
+    "sundry budget forecast for 1962",
+    "sundry costs decrease",
+    "sundry estimate"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 12,
+   "reviewed": false
+  },
+  {
+   "canonical": "general supplies cost",
+   "substance": "general supplies",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "actual general supplies expenditure",
+    "general supplies",
+    "general supplies actual cost",
+    "general supplies budget",
+    "general supplies budget forecast for 1962",
+    "general supplies estimate",
+    "general supply costs decrease"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 11,
+   "reviewed": false
+  },
+  {
+   "canonical": "treatment efficiency",
+   "substance": "treatment",
+   "measure": "removal",
+   "domain": "water",
+   "aliases": [
+    "average percent reduction",
+    "expected efficiency",
+    "primary clarification removal",
+    "primary removal",
+    "removal efficiency",
+    "required reduction",
+    "treatment efficiency",
+    "treatment process efficiency"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 11,
+   "reviewed": false
+  },
+  {
+   "canonical": "benzene",
+   "substance": "benzene",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "benzene"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 10,
+   "reviewed": false
+  },
+  {
+   "canonical": "investment",
+   "substance": "investment",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "book of bonds and debentures united states government securities",
+    "fair of investments",
+    "investment",
+    "net american purchases of outstanding canadian securities"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 10,
+   "reviewed": false
+  },
+  {
+   "canonical": "phosphorus",
+   "substance": "phosphorus",
+   "measure": "concentration",
+   "domain": "water",
+   "aliases": [
+    "phosphorus",
+    "phosphorus content",
+    "phosphorus fil react",
+    "phosphorus filter react",
+    "phosphorus removal",
+    "phosphorus total"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 10,
+   "reviewed": false
+  },
+  {
+   "canonical": "revenue",
+   "substance": "revenue",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "cash sales to licensees",
+    "earnings",
+    "mail earnings",
+    "net operating revenue",
+    "operating revenue",
+    "revenue",
+    "revenue from other than transportation",
+    "revenue from transportation",
+    "unearned revenue"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 10,
+   "reviewed": false
+  },
+  {
+   "canonical": "total reduced sulphur",
+   "substance": "total reduced sulphur",
+   "measure": "concentration",
+   "domain": "air",
+   "aliases": [
+    "annual average trs",
+    "maximum hourly trs",
+    "maximum trs reading",
+    "trs concentration associated with winds from u.s. mill",
+    "trs concentration downwind of canadian mill",
+    "trs concentration downwind of u.s. mill",
+    "trs concentration relative to objective"
+   ],
+   "typical_units": [
+    "ppb",
+    "ug/m3"
+   ],
+   "readings_covered": 10,
+   "reviewed": false
+  },
+  {
+   "canonical": "air supplied per pound of bod removed",
+   "substance": "air",
+   "measure": "ratio",
+   "domain": "water",
+   "aliases": [
+    "air required to remove 1.0 pounds of bod",
+    "cubic feet air per lb bod. removed",
+    "recommended air per pound of bod removed"
+   ],
+   "typical_units": [
+    "cu ft per lb"
+   ],
+   "readings_covered": 9,
+   "reviewed": false
+  },
+  {
+   "canonical": "digester gas production",
+   "substance": "digester gas",
+   "measure": "total",
+   "domain": "water",
+   "aliases": [
+    "digester gas production",
+    "gas per pound volatile matter",
+    "gas production",
+    "sludge digestion gas production"
+   ],
+   "typical_units": [
+    "cu. ft."
+   ],
+   "readings_covered": 9,
+   "reviewed": false
+  },
+  {
+   "canonical": "hydraulic loading",
+   "substance": "hydraulic loading",
+   "measure": "loading",
+   "domain": "water",
+   "aliases": [
+    "design hydraulic loading",
+    "hydraulic load",
+    "hydraulic load factor",
+    "hydraulic loading",
+    "hydraulic overload",
+    "hydraulically overloaded",
+    "overload percentage"
+   ],
+   "typical_units": [
+    "%",
+    "gal/day/sq ft"
+   ],
+   "readings_covered": 9,
+   "reviewed": false
+  },
+  {
+   "canonical": "insurance cost",
+   "substance": "insurance",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "group insurance",
+    "insurance",
+    "insurance budget per year",
+    "insurance premium",
+    "medical insurance",
+    "pension contributions",
+    "pension expense",
+    "workmen's compensation"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 9,
+   "reviewed": false
+  },
+  {
+   "canonical": "velocity",
+   "substance": "velocity",
+   "measure": "rate",
+   "domain": "water",
+   "aliases": [
+    "raw sludge vacuum filtration velocity",
+    "sewage velocity",
+    "velocity",
+    "velocity at 3.0 mgd",
+    "velocity at 9.0 mgd",
+    "velocity of flow",
+    "velocity of flow through the channels"
+   ],
+   "typical_units": [
+    "ft/sec"
+   ],
+   "readings_covered": 9,
+   "reviewed": false
+  },
+  {
+   "canonical": "bacteriology scan",
+   "substance": "bacteriology scan",
+   "measure": "count",
+   "domain": "drinking water",
+   "aliases": [
+    "bacteriology scan positive results",
+    "bacteriology scan results",
+    "langelier index frequency positive"
+   ],
+   "typical_units": [
+    "samples"
+   ],
+   "readings_covered": 8,
+   "reviewed": false
+  },
+  {
+   "canonical": "hexachlorocyclopentadiene",
+   "substance": "hexachlorocyclopentadiene",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "hexachlorocyclopentadiene",
+    "hexachlorocyclopentadiene concentration"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 8,
+   "reviewed": false
+  },
+  {
+   "canonical": "lindane",
+   "substance": "lindane",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "lindane"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 8,
+   "reviewed": false
+  },
+  {
+   "canonical": "manganese",
+   "substance": "manganese",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "manganese",
+    "maximum manganese"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 8,
+   "reviewed": false
+  },
+  {
+   "canonical": "teachers",
+   "substance": "teachers",
+   "measure": "count",
+   "domain": "education",
+   "aliases": [
+    "lay teachers",
+    "teachers"
+   ],
+   "typical_units": [
+    "persons"
+   ],
+   "readings_covered": 8,
+   "reviewed": false
+  },
+  {
+   "canonical": "threshold taste",
+   "substance": "taste",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "threshold taste"
+   ],
+   "typical_units": [
+    "ttn"
+   ],
+   "readings_covered": 8,
+   "reviewed": false
+  },
+  {
+   "canonical": "calcium",
+   "substance": "calcium",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "calcium"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 7,
+   "reviewed": false
+  },
+  {
+   "canonical": "cost per pound of suspended solids removed",
+   "substance": "suspended solids removal cost",
+   "measure": "ratio",
+   "domain": "finance",
+   "aliases": [
+    "cost of treating a pound of suspended solids",
+    "cost per pound of suspended solids removed",
+    "cost per pound suspended solids removed",
+    "cost to treat a pound of suspended solids",
+    "treatment cost per lb. ss removed",
+    "unit operating cost per lb. of s.s. removed"
+   ],
+   "typical_units": [
+    "$/lb"
+   ],
+   "readings_covered": 7,
+   "reviewed": false
+  },
+  {
+   "canonical": "debt",
+   "substance": "debt",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "aggregate amount of all loans in respect of which insurance policies have been issued",
+    "amount of unpaid instalments levied during 1928",
+    "debenture debt",
+    "original amount of debentures issued",
+    "total long term debt to owrc"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 7,
+   "reviewed": false
+  },
+  {
+   "canonical": "engineering fees",
+   "substance": "engineering fees",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "engineering cost",
+    "engineering fees",
+    "engineering fees for fourth stage",
+    "engineering fees for third stage"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 7,
+   "reviewed": false
+  },
+  {
+   "canonical": "equipment inspected",
+   "substance": "equipment inspected",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "air receivers inspected",
+    "cylinders inspected",
+    "pipe lines inspected",
+    "tanks inspected",
+    "used boilers inspected",
+    "vulcanizing moulds inspected"
+   ],
+   "typical_units": [
+    "units"
+   ],
+   "readings_covered": 7,
+   "reviewed": false
+  },
+  {
+   "canonical": "taxes",
+   "substance": "taxes",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "higher taxes",
+    "local improvement taxes baker st sidewalk",
+    "reserve for state taxes",
+    "subtotal after tax refund",
+    "tax refund",
+    "taxes"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 7,
+   "reviewed": false
+  },
+  {
+   "canonical": "toluene",
+   "substance": "toluene",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "toluene",
+    "toluene level"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 7,
+   "reviewed": false
+  },
+  {
+   "canonical": "atrazine",
+   "substance": "atrazine",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "atrazine"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 6,
+   "reviewed": false
+  },
+  {
+   "canonical": "boiling point",
+   "substance": "boiling point",
+   "measure": "temperature",
+   "domain": "chemistry",
+   "aliases": [
+    "boiling point"
+   ],
+   "typical_units": [
+    "degc"
+   ],
+   "readings_covered": 6,
+   "reviewed": false
+  },
+  {
+   "canonical": "dissolved organic carbon",
+   "substance": "dissolved organic carbon",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "dissolved organic carbon"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 6,
+   "reviewed": false
+  },
+  {
+   "canonical": "henry's law constant",
+   "substance": "henry's law constant",
+   "measure": "ratio",
+   "domain": "chemistry",
+   "aliases": [
+    "henry's law constant"
+   ],
+   "typical_units": [
+    "atm m3/mol"
+   ],
+   "readings_covered": 6,
+   "reviewed": false
+  },
+  {
+   "canonical": "melting point",
+   "substance": "melting point",
+   "measure": "temperature",
+   "domain": "chemistry",
+   "aliases": [
+    "melting point"
+   ],
+   "typical_units": [
+    "degc"
+   ],
+   "readings_covered": 6,
+   "reviewed": false
+  },
+  {
+   "canonical": "vapour pressure",
+   "substance": "vapour pressure",
+   "measure": "ratio",
+   "domain": "chemistry",
+   "aliases": [
+    "vapour pressure"
+   ],
+   "typical_units": [
+    "mm hg"
+   ],
+   "readings_covered": 6,
+   "reviewed": false
+  },
+  {
+   "canonical": "volatile matter reduction",
+   "substance": "volatile matter",
+   "measure": "removal",
+   "domain": "water",
+   "aliases": [
+    "volatile matter reduction",
+    "volatile solids reduction",
+    "volume reduction"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 6,
+   "reviewed": false
+  },
+  {
+   "canonical": "assessment",
+   "substance": "assessment",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "assessment school section"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "claims paid",
+   "substance": "claims",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "amount covered by policies in force",
+    "expenses of adjustment and settlement of losses",
+    "gross claims paid",
+    "net provision for unpaid losses and claims",
+    "return guaranty deposits on cancelled insurance"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "coliform",
+   "substance": "coliform",
+   "measure": "count",
+   "domain": "drinking water",
+   "aliases": [
+    "total coliform",
+    "total coliforms"
+   ],
+   "typical_units": [
+    "counts/100ml"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "dissolved oxygen",
+   "substance": "dissolved oxygen",
+   "measure": "concentration",
+   "domain": "water",
+   "aliases": [
+    "dissolved oxygen",
+    "dissolved oxygen content"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "distance",
+   "substance": "distance",
+   "measure": "length",
+   "domain": "works",
+   "aliases": [
+    "distance",
+    "distance from plant",
+    "distance of control locations from pulp mills",
+    "visible particulate matter distance"
+   ],
+   "typical_units": [
+    "ft",
+    "miles"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "fee",
+   "substance": "fee",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "audit fee",
+    "customs locker fees",
+    "gal fees",
+    "license fee"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "filtering cost",
+   "substance": "filtering",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "cost of filtering",
+    "cost of vacuum filtering",
+    "filtering cost",
+    "filtering cost estimate",
+    "filtering cost total"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "hexachloroethane",
+   "substance": "hexachloroethane",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "hexachloroethane",
+    "hexachloroethane concentration"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "lead",
+   "substance": "lead",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "lead",
+    "lead concentration",
+    "lead in drinking water",
+    "maximum lead concentration"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "share of operating costs",
+   "substance": "operating cost",
+   "measure": "ratio",
+   "domain": "finance",
+   "aliases": [
+    "chemicals share of operating costs",
+    "fuel share of operating costs",
+    "general supplies share of operating costs",
+    "payroll share of operating costs",
+    "power share of operating costs"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "staff hired",
+   "substance": "staff hired",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "new operators hired",
+    "new staff members",
+    "staff hired",
+    "staff resignations"
+   ],
+   "typical_units": [
+    "persons"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "work week",
+   "substance": "work week",
+   "measure": "duration",
+   "domain": "administration",
+   "aliases": [
+    "legislated work week",
+    "staff work week",
+    "work week duration"
+   ],
+   "typical_units": [
+    "hours"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "xylenes",
+   "substance": "xylenes",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "meta-xylene (m-xylene)",
+    "ortho-xylene",
+    "total xylenes"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 5,
+   "reviewed": false
+  },
+  {
+   "canonical": "aeromonas detection frequency",
+   "substance": "aeromonas",
+   "measure": "frequency",
+   "domain": "drinking water",
+   "aliases": [
+    "aeromonas organisms detection frequency"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "capacity utilisation",
+   "substance": "capacity",
+   "measure": "ratio",
+   "domain": "water",
+   "aliases": [
+    "design capacity percentage",
+    "flow as percent of design capacity",
+    "flow as percent of design flow",
+    "flow as percent of plant capacity"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "course duration",
+   "substance": "training course",
+   "measure": "duration",
+   "domain": "education",
+   "aliases": [
+    "course duration"
+   ],
+   "typical_units": [
+    "days"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "digester loading",
+   "substance": "digester",
+   "measure": "loading",
+   "domain": "water",
+   "aliases": [
+    "digester loading"
+   ],
+   "typical_units": [
+    "lbs volatile solids per cu ft per day"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "injury zone",
+   "substance": "injury zone",
+   "measure": "area",
+   "domain": "air",
+   "aliases": [
+    "injury zone area"
+   ],
+   "typical_units": [
+    "acres"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "mileage",
+   "substance": "mileage",
+   "measure": "length",
+   "domain": "transport",
+   "aliases": [
+    "mileage"
+   ],
+   "typical_units": [
+    "miles"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "profit",
+   "substance": "profit",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "appropriation of profits for capital account and reserve fund",
+    "balance to profit and loss",
+    "net income",
+    "profit for the year"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "selenium",
+   "substance": "selenium",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "selenium"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "visits",
+   "substance": "visits",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "project engineer visits",
+    "trips by metering and control section",
+    "visits by head office maintenance staff",
+    "visits by head office project engineer"
+   ],
+   "typical_units": [
+    "visits"
+   ],
+   "readings_covered": 4,
+   "reviewed": false
+  },
+  {
+   "canonical": "admissions",
+   "substance": "admissions",
+   "measure": "count",
+   "domain": "health",
+   "aliases": [
+    "treatment admissions"
+   ],
+   "typical_units": [
+    "admissions"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "beryllium",
+   "substance": "beryllium",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "beryllium"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "chloride",
+   "substance": "chloride",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "chloride"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "classrooms",
+   "substance": "classrooms",
+   "measure": "count",
+   "domain": "education",
+   "aliases": [
+    "classrooms",
+    "rooms"
+   ],
+   "typical_units": [
+    "rooms"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "efficiency per overnight stay",
+   "substance": "overnight stays",
+   "measure": "ratio",
+   "domain": "health",
+   "aliases": [
+    "efficiency per overnight stay"
+   ],
+   "typical_units": [
+    "$ per stay"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "groundwater share of water demand",
+   "substance": "groundwater",
+   "measure": "ratio",
+   "domain": "water",
+   "aliases": [
+    "groundwater contribution to total water demand",
+    "groundwater share of total water demand",
+    "well supply share of total water demand"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "heating system cost",
+   "substance": "heating system",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "contract for heating system",
+    "heating contract",
+    "installing hot water heating"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "incubation period",
+   "substance": "incubation period",
+   "measure": "duration",
+   "domain": "food",
+   "aliases": [
+    "incubation period"
+   ],
+   "typical_units": [
+    "days",
+    "hours"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "insurance premiums written",
+   "substance": "insurance premiums",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "net premium deposits earned in the province",
+    "net premium deposits written in the province",
+    "unassessed premium note capital"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "molybdenum",
+   "substance": "molybdenum",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "molybdenum"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "overnight stays",
+   "substance": "overnight stays",
+   "measure": "count",
+   "domain": "health",
+   "aliases": [
+    "overnight stays"
+   ],
+   "typical_units": [
+    "stays"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "power factor",
+   "substance": "power factor",
+   "measure": "ratio",
+   "domain": "equipment",
+   "aliases": [
+    "power factor with capacitors",
+    "power factor without capacitors"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "snow cover",
+   "substance": "snow cover",
+   "measure": "length",
+   "domain": "air",
+   "aliases": [
+    "average snow cover depth",
+    "snow cover range"
+   ],
+   "typical_units": [
+    "cm"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "training courses",
+   "substance": "training course",
+   "measure": "count",
+   "domain": "education",
+   "aliases": [
+    "courses of instruction",
+    "training frequency"
+   ],
+   "typical_units": [
+    "courses"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "water consumption",
+   "substance": "water consumption",
+   "measure": "total",
+   "domain": "water",
+   "aliases": [
+    "percentage of water supplied",
+    "water consumption"
+   ],
+   "typical_units": [
+    "gallons"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "water cost",
+   "substance": "water",
+   "measure": "cost",
+   "domain": "finance",
+   "aliases": [
+    "increased water costs",
+    "water budget forecast for 1962",
+    "water cost actual"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "years of experience",
+   "substance": "experience",
+   "measure": "duration",
+   "domain": "administration",
+   "aliases": [
+    "retirement age",
+    "years of experience"
+   ],
+   "typical_units": [
+    "years"
+   ],
+   "readings_covered": 3,
+   "reviewed": false
+  },
+  {
+   "canonical": "attendance",
+   "substance": "attendance",
+   "measure": "count",
+   "domain": "education",
+   "aliases": [
+    "attendance",
+    "school attendance"
+   ],
+   "typical_units": [
+    "pupils"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "audits",
+   "substance": "audits",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "audits"
+   ],
+   "typical_units": [
+    "audits"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "batteries",
+   "substance": "battery",
+   "measure": "count",
+   "domain": "energy",
+   "aliases": [
+    "gas batteries",
+    "oil batteries and associated satellites"
+   ],
+   "typical_units": [
+    "batteries"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "cattle",
+   "substance": "cattle",
+   "measure": "count",
+   "domain": "agriculture",
+   "aliases": [
+    "for cattle"
+   ],
+   "typical_units": [
+    "head"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "control area",
+   "substance": "control area",
+   "measure": "count",
+   "domain": "agriculture",
+   "aliases": [
+    "control areas"
+   ],
+   "typical_units": [
+    "areas"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "cost per ton of dry solids filtered",
+   "substance": "sludge filtration cost",
+   "measure": "ratio",
+   "domain": "finance",
+   "aliases": [
+    "average cost per ton of dry solids filtered"
+   ],
+   "typical_units": [
+    "$/ton"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "deficiencies",
+   "substance": "deficiencies",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "major deficiencies",
+    "minor deficiencies"
+   ],
+   "typical_units": [
+    "deficiencies"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "efficiency per admission",
+   "substance": "admissions",
+   "measure": "ratio",
+   "domain": "health",
+   "aliases": [
+    "efficiency per admission"
+   ],
+   "typical_units": [
+    "$ per admission"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "enrolment",
+   "substance": "enrolment",
+   "measure": "count",
+   "domain": "education",
+   "aliases": [
+    "school enrolment"
+   ],
+   "typical_units": [
+    "pupils"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "ethylbenzene",
+   "substance": "ethylbenzene",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "ethylbenzene"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "fox",
+   "substance": "fox",
+   "measure": "cost",
+   "domain": "agriculture",
+   "aliases": [
+    "cost of a pair of foxes"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "magnesium",
+   "substance": "magnesium",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "magnesium",
+    "maximum magnesium"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "natural gas consumption",
+   "substance": "natural gas",
+   "measure": "total",
+   "domain": "energy",
+   "aliases": [
+    "gas consumed",
+    "natural gas consumed"
+   ],
+   "typical_units": [
+    "cu ft"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "polycyclic aromatic hydrocarbons",
+   "substance": "pah",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "benzo(a)pyrene",
+    "pyrene concentration"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "safety valve setting",
+   "substance": "safety valve",
+   "measure": "count",
+   "domain": "energy",
+   "aliases": [
+    "setting of safety valves"
+   ],
+   "typical_units": [
+    "valves"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "service life",
+   "substance": "service life",
+   "measure": "duration",
+   "domain": "works",
+   "aliases": [
+    "plant life",
+    "sewers life"
+   ],
+   "typical_units": [
+    "years"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "styrene",
+   "substance": "styrene",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "styrene"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "transformer capacity",
+   "substance": "transformer",
+   "measure": "capacity",
+   "domain": "equipment",
+   "aliases": [
+    "capacitor capacity",
+    "transformer capacity"
+   ],
+   "typical_units": [
+    "kva"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "unemployment",
+   "substance": "unemployment",
+   "measure": "rate",
+   "domain": "economy",
+   "aliases": [
+    "unemployment"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "wells",
+   "substance": "well",
+   "measure": "count",
+   "domain": "energy",
+   "aliases": [
+    "operating wells",
+    "wells drilled"
+   ],
+   "typical_units": [
+    "wells"
+   ],
+   "readings_covered": 2,
+   "reviewed": false
+  },
+  {
+   "canonical": "applicants",
+   "substance": "applicants",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "number of applicants"
+   ],
+   "typical_units": [
+    "persons"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "certificates issued",
+   "substance": "certificates issued",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "duplicate certificates issued"
+   ],
+   "typical_units": [
+    "certificates"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "crop yield",
+   "substance": "yield",
+   "measure": "ratio",
+   "domain": "agriculture",
+   "aliases": [
+    "spring rye yield"
+   ],
+   "typical_units": [
+    "bushels per acre"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "crown attorneys",
+   "substance": "crown attorneys",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "crown attorneys"
+   ],
+   "typical_units": [
+    "persons"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "explosion investigations",
+   "substance": "pressure vessel explosion",
+   "measure": "count",
+   "domain": "administration",
+   "aliases": [
+    "investigations of explosions of pressure vessels"
+   ],
+   "typical_units": [
+    "investigations"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "fuel oil consumption",
+   "substance": "fuel oil",
+   "measure": "total",
+   "domain": "energy",
+   "aliases": [
+    "fuel oil consumption"
+   ],
+   "typical_units": [
+    "gallons"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "gas plants",
+   "substance": "gas plant",
+   "measure": "count",
+   "domain": "energy",
+   "aliases": [
+    "gas plants"
+   ],
+   "typical_units": [
+    "plants"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "guideline exceedance duration",
+   "substance": "(the substance named in the string)",
+   "measure": "duration",
+   "domain": "drinking water",
+   "aliases": [
+    "total reduced sulphur (trs) exceedance duration"
+   ],
+   "typical_units": [
+    "hours"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "liquid limit",
+   "substance": "liquid limit",
+   "measure": "ratio",
+   "domain": "earth",
+   "aliases": [
+    "liquid limit"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "methylene chloride",
+   "substance": "methylene chloride",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "methylene chloride"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "nitrate",
+   "substance": "nitrate",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "total nitrates"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "oats",
+   "substance": "oats",
+   "measure": "total",
+   "domain": "agriculture",
+   "aliases": [
+    "oats"
+   ],
+   "typical_units": [
+    "bushels"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "ore royalties",
+   "substance": "ore",
+   "measure": "cost",
+   "domain": "mining",
+   "aliases": [
+    "ore royalties"
+   ],
+   "typical_units": [
+    "$"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "pcb",
+   "substance": "pcb",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "pcb"
+   ],
+   "typical_units": [
+    "ug/l"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "pipelines",
+   "substance": "pipeline",
+   "measure": "count",
+   "domain": "energy",
+   "aliases": [
+    "pipelines"
+   ],
+   "typical_units": [
+    "pipelines"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "plastic limit",
+   "substance": "plastic limit",
+   "measure": "ratio",
+   "domain": "earth",
+   "aliases": [
+    "plastic limit"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "plasticity index",
+   "substance": "plasticity index",
+   "measure": "ratio",
+   "domain": "earth",
+   "aliases": [
+    "plasticity index"
+   ],
+   "typical_units": [],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "prescriptions",
+   "substance": "prescriptions",
+   "measure": "count",
+   "domain": "health",
+   "aliases": [
+    "new prescriptions made up"
+   ],
+   "typical_units": [
+    "prescriptions"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "sawdust detection",
+   "substance": "sawdust",
+   "measure": "count",
+   "domain": "air",
+   "aliases": [
+    "sawdust detection count"
+   ],
+   "typical_units": [
+    "count"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "specific gravity",
+   "substance": "specific gravity",
+   "measure": "ratio",
+   "domain": "chemistry",
+   "aliases": [
+    "specific gravity"
+   ],
+   "typical_units": [],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "station duty factor",
+   "substance": "generating station",
+   "measure": "ratio",
+   "domain": "energy",
+   "aliases": [
+    "station duty factor"
+   ],
+   "typical_units": [
+    "%"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  },
+  {
+   "canonical": "sulphate",
+   "substance": "sulphate",
+   "measure": "concentration",
+   "domain": "drinking water",
+   "aliases": [
+    "sulphate"
+   ],
+   "typical_units": [
+    "mg/l"
+   ],
+   "readings_covered": 1,
+   "reviewed": false
+  }
+ ]
+}
