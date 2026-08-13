@@ -16,8 +16,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.models import Provenance, Record          # noqa: E402
-from groundtruth.science import (                          # noqa: E402
+from concordance.models import Provenance, Record          # noqa: E402
+from concordance.science import (                          # noqa: E402
     changepoint,
     series_from_records,
     silence,

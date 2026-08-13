@@ -8,7 +8,7 @@ than earned.
 
 from __future__ import annotations
 
-from groundtruth.vocab_sample import (
+from concordance.vocab_sample import (
     Coverage, Reading, Survey, allocate, contradicted, plan, stratify,
     stratum_of,
 )
@@ -88,7 +88,7 @@ def test_a_measure_its_own_unit_denies_is_a_miss_not_a_hit():
     # That is the better outcome, and it means the survey's guard has to be
     # exercised on a contradiction the resolver can still produce rather than on
     # one that has been fixed underneath it.
-    from groundtruth.parameters import resolve
+    from concordance.parameters import resolve
 
     assert resolve("BOD", "pounds").measure == "total"
 

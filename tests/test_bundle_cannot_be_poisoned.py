@@ -16,7 +16,7 @@ from pathlib import Path
 
 import pytest
 
-from groundtruth.contribute import (
+from concordance.contribute import (
     _value_in_quote,
     make_bundle,
     merge_bundle,
@@ -155,7 +155,7 @@ def test_bundle_id_is_recomputed_not_trusted():
     """Two different bundles must not collide on one filename. bundle_id read
     the stored `key` field, which key-less records do not have, so every such
     bundle hashed to the sha256 of an empty string and overwrote the last."""
-    from groundtruth.contribute import bundle_id
+    from concordance.contribute import bundle_id
 
     other = dict(GENUINE, value=99.0, parameter="suspended solids")
     assert bundle_id([GENUINE]) != bundle_id([other])

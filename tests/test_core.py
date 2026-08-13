@@ -10,10 +10,10 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.extract import _normalize, _parse_json_array, _salvage_objects, _to_float
-from groundtruth.models import PageText, Provenance, Record, Word
-from groundtruth.router import Path, route
-from groundtruth.score import norm_unit, score_page, values_match
+from concordance.extract import _normalize, _parse_json_array, _salvage_objects, _to_float
+from concordance.models import PageText, Provenance, Record, Word
+from concordance.router import Path, route
+from concordance.score import norm_unit, score_page, values_match
 
 
 # -- provenance -------------------------------------------------------------
@@ -146,7 +146,7 @@ def test_narrow_columns_do_not_turn_tables_into_prose():
 
 def test_wide_pages_route_exactly_as_before():
     """The adaptive threshold is clamped so full-width pages are unaffected."""
-    from groundtruth.router import MAX_PROSE_WORDS, prose_line_width
+    from concordance.router import MAX_PROSE_WORDS, prose_line_width
 
     wide = ["the quick brown fox jumps over the lazy dog again and again"] * 10
     assert prose_line_width(wide) == MAX_PROSE_WORDS
@@ -154,7 +154,7 @@ def test_wide_pages_route_exactly_as_before():
 
 def test_index_entries_are_too_short_to_be_prose():
     """A two-word-per-line index must not read as a paragraph."""
-    from groundtruth.router import MIN_PROSE_WORDS, prose_line_width
+    from concordance.router import MIN_PROSE_WORDS, prose_line_width
 
     index = ["Ashcroft 44", "Barrie 91", "Cayuga 12", "Dundas 7"]
     assert prose_line_width(index) == MIN_PROSE_WORDS
@@ -240,7 +240,7 @@ def test_a_sentence_named_facility_survives_the_document_title():
     dispute ledger reports the city's hospital system as a four-way
     disagreement. The document title says only "Hamilton".
     """
-    from groundtruth.disputes import slot_of
+    from concordance.disputes import slot_of
 
     general = {"place": "Hamilton", "facility": "Hamilton General Hospital",
                "parameter": "beds", "unit": "beds", "period": "1983"}
@@ -259,7 +259,7 @@ def test_a_month_is_not_a_town():
     frontier then proposed reading "April's council minutes". The month is
     folded back into the period, where it is more precise than the year alone.
     """
-    from groundtruth.extract import _period_of, _place_of
+    from concordance.extract import _period_of, _place_of
 
     monthly = {"place": "March", "period": "1962"}
     assert _place_of(monthly) is None
@@ -268,7 +268,7 @@ def test_a_month_is_not_a_town():
 
 def test_a_place_that_merely_shares_a_word_with_the_calendar_stays():
     """March Township is a real place in Ontario. Only bare month names move."""
-    from groundtruth.extract import _period_of, _place_of
+    from concordance.extract import _period_of, _place_of
 
     township = {"place": "March Township", "period": "1962"}
     assert _place_of(township) == "March Township"
@@ -276,7 +276,7 @@ def test_a_place_that_merely_shares_a_word_with_the_calendar_stays():
 
 
 def test_a_misfiled_month_with_no_year_does_not_invent_one():
-    from groundtruth.extract import _period_of
+    from concordance.extract import _period_of
 
     assert _period_of({"place": "April", "period": ""}) is None
     assert _period_of({"place": "April", "period": "1962-05"}) == "1962-05"
@@ -320,7 +320,7 @@ def test_a_missing_map_library_cannot_take_the_other_views_with_it():
     Verified headless with node and maplibregl undefined: the script now runs to
     completion and all eight non-map loaders are defined.
     """
-    from groundtruth.portal import render
+    from concordance.portal import render
 
     html = render({"corpus_items": 104241, "located": 102, "read": 4,
                    "records": 909, "precision": 0.9, "silent_n": 72,
@@ -348,7 +348,7 @@ def test_a_town_is_found_under_its_facility_spellings():
     of 46.4% -- which is the number both the README and the application quote as
     the start of the series. Exact matching dropped it.
     """
-    from groundtruth.server import _same_town
+    from concordance.server import _same_town
 
     want = {"owen sound"}
     assert _same_town("owen sound", want)
@@ -358,7 +358,7 @@ def test_a_town_is_found_under_its_facility_spellings():
 
 
 def test_a_different_town_is_not_swept_in():
-    from groundtruth.server import _same_town
+    from concordance.server import _same_town
 
     want = {"owen sound"}
     assert not _same_town("brantford", want)
@@ -373,7 +373,7 @@ def test_stripping_the_suffix_here_does_not_merge_two_facilities():
     """The facility stays on the record. A town's sewage plant and its water
     works measure opposite things, and the panel-level facility split is what
     keeps them apart -- this only decides which TOWN a record belongs to."""
-    from groundtruth.disputes import slot_of
+    from concordance.disputes import slot_of
 
     sewage = {"place": "Owen Sound", "facility": "water pollution control plant",
               "parameter": "BOD", "unit": "mg/L", "period": "1969"}

@@ -8,10 +8,10 @@ noticed in a minute. A misattributed vote would be quoted.
 
 from __future__ import annotations
 
-from groundtruth.decisions import (
+from concordance.decisions import (
     Ledger, Motion, Roll, clean_name, read_document, read_page,
 )
-from groundtruth.models import PageText
+from concordance.models import PageText
 
 
 def _page(text: str, page: int = 1) -> PageText:

@@ -24,8 +24,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive     # noqa: E402
-from groundtruth.science import silence     # noqa: E402
+from concordance.archive import Archive     # noqa: E402
+from concordance.science import silence     # noqa: E402
 
 #: Real title shapes in the corpus. A single pattern gets this badly wrong in
 #: both directions: too strict and it finds 41 municipalities, too loose and it

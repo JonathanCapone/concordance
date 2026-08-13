@@ -1,4 +1,4 @@
-"""Ground Truth — reading Canada's public record as a hundred-year instrument.
+"""Concordance — reading Canada's public record as a hundred-year instrument.
 
 The Internet Archive Canada government publications collection is 104,241
 documents and 22.1 million scanned pages. Inside them are measurements of the

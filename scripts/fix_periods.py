@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive  # noqa: E402
+from concordance.archive import Archive  # noqa: E402
 
 YEAR = re.compile(r"\b(1[89]\d{2}|20\d{2})\b")
 SKIP = {"gold_report", "metadata_proposals", "silence_report", "corpus_census"}

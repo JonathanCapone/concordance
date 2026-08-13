@@ -22,10 +22,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive                        # noqa: E402
-from groundtruth.extract import OllamaClient, extract_prose    # noqa: E402
-from groundtruth.parameters import facility_of                 # noqa: E402
-from groundtruth.router import Path as RPath, route            # noqa: E402
+from concordance.archive import Archive                        # noqa: E402
+from concordance.extract import OllamaClient, extract_prose    # noqa: E402
+from concordance.parameters import facility_of                 # noqa: E402
+from concordance.router import Path as RPath, route            # noqa: E402
 
 
 def load_done(out_path: Path) -> tuple[list[dict], set[str]]:

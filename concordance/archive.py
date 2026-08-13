@@ -41,7 +41,7 @@ _DOWNLOAD = "https://archive.org/download"
 
 #: Identify ourselves. archive.org is a nonprofit; anonymous hammering is rude
 #: and gets you rate-limited anyway.
-USER_AGENT = "ground-truth/0.1 (+https://archive.org/details/governmentpublications)"
+USER_AGENT = "concordance/0.1 (+https://archive.org/details/governmentpublications)"
 
 INDEX_FIELDS = (
     "identifier,title,year,date,language,subject,collection,"

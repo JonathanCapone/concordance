@@ -24,8 +24,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive
-from groundtruth.vision import OllamaVisionClient, extract_table
+from concordance.archive import Archive
+from concordance.vision import OllamaVisionClient, extract_table
 
 IDENT, PAGE = "brantfordsewaget23777", 15
 

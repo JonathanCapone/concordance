@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.repair import infer_year, normalize_language, repair
+from concordance.repair import infer_year, normalize_language, repair
 
 
 @pytest.mark.parametrize(

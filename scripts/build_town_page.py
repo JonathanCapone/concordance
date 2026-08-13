@@ -22,8 +22,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.models import Provenance, Record   # noqa: E402
-from groundtruth.science import series_from_records, trend  # noqa: E402
+from concordance.models import Provenance, Record   # noqa: E402
+from concordance.science import series_from_records, trend  # noqa: E402
 
 W, H = 720, 200
 PAD_L, PAD_R, PAD_T, PAD_B = 54, 18, 18, 30

@@ -13,8 +13,8 @@ from copy import deepcopy
 
 import pytest
 
-from groundtruth.dating import DateGuess, infer_year_from_text
-from groundtruth.models import PageText
+from concordance.dating import DateGuess, infer_year_from_text
+from concordance.models import PageText
 from scripts.recover_years import (
     _PoliteDelay,
     _check_resume,
@@ -799,7 +799,7 @@ def test_a_comparison_sentence_is_flagged_not_silently_trusted():
     """Brantford 1969: "The average solids concentrations of 5.1% was less than
     the 1968 average of 5.3%" filed both numbers under 1969. 27 of the 56
     contested measurements in the first dispute-ledger run are this shape."""
-    from groundtruth.dating import period_risk
+    from concordance.dating import period_risk
 
     r = period_risk("The average solids concentrations of 5. 1% was less than "
                     "the 1968 average of 5.3%.", period="1969")
@@ -809,7 +809,7 @@ def test_a_comparison_sentence_is_flagged_not_silently_trusted():
 
 
 def test_an_ordinary_sentence_is_left_alone():
-    from groundtruth.dating import period_risk
+    from concordance.dating import period_risk
 
     r = period_risk("The average influent BOD was 104 mg/1.", period="1969")
     assert r.safe
@@ -817,7 +817,7 @@ def test_an_ordinary_sentence_is_left_alone():
 
 
 def test_the_report_s_own_year_in_its_own_sentence_is_not_another_year():
-    from groundtruth.dating import period_risk
+    from concordance.dating import period_risk
 
     r = period_risk("During 1963 the average daily flow was 5. 59 mgd.", period="1963")
     assert r.safe
@@ -833,7 +833,7 @@ def test_it_flags_rather_than_reassigning():
     grammar, not proximity, and an invisible wrong year turns a flat series into
     a trend.
     """
-    from groundtruth.dating import period_risk
+    from concordance.dating import period_risk
 
     r = period_risk("representing an increase of 0. 7 percent over 1967 flows.",
                     period="1968")

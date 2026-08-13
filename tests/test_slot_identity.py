@@ -10,7 +10,7 @@ identity merged different things by omitting a field.
 
 from __future__ import annotations
 
-from groundtruth.disputes import SLOT_FIELDS, slot_of
+from concordance.disputes import SLOT_FIELDS, slot_of
 
 
 def _rec(**kw):
@@ -65,7 +65,7 @@ def test_the_slot_carries_the_fields_that_change_what_is_claimed() -> None:
 def test_no_published_slot_mixes_kinds() -> None:
     """The property, over the real dataset rather than fixtures."""
     import collections
-    from groundtruth.disputes import (
+    from concordance.disputes import (
         load_claims, load_contributions, load_vision_records,
     )
     claims = load_claims("data/results") + load_vision_records() + load_contributions()
@@ -93,7 +93,7 @@ def test_a_benchmark_run_is_not_published_data(tmp_path) -> None:
     """
     import json
 
-    from groundtruth.tools import Corpus
+    from concordance.tools import Corpus
 
     (tmp_path / "fergus.json").write_text(json.dumps({
         "place": "Fergus", "model": "x", "records": [
@@ -118,7 +118,7 @@ def test_a_merged_contribution_is_still_published_data(tmp_path) -> None:
     for truth rather than presence would silently drop every contribution."""
     import json
 
-    from groundtruth.tools import Corpus
+    from concordance.tools import Corpus
 
     (tmp_path / "contributed-abc.json").write_text(json.dumps({
         "place": "", "contributor": "someone", "records": [

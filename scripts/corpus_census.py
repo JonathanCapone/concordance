@@ -26,8 +26,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive              # noqa: E402
-from groundtruth.router import Path as RPath, route  # noqa: E402
+from concordance.archive import Archive              # noqa: E402
+from concordance.router import Path as RPath, route  # noqa: E402
 
 
 def wilson(successes: int, n: int, z: float = 1.96) -> tuple[float, float]:

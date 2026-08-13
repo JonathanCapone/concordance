@@ -19,8 +19,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.models import Provenance, Record       # noqa: E402
-from groundtruth.score import Report, load_gold, score_page  # noqa: E402
+from concordance.models import Provenance, Record       # noqa: E402
+from concordance.score import Report, load_gold, score_page  # noqa: E402
 
 
 def records_from_report(path: Path) -> list[Record]:

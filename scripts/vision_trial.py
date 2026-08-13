@@ -39,10 +39,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive
-from groundtruth.router import Path as RPath, route
-from groundtruth.vision import OllamaVisionClient, extract_table
-from groundtruth.vocab_sample import stratify
+from concordance.archive import Archive
+from concordance.router import Path as RPath, route
+from concordance.vision import OllamaVisionClient, extract_table
+from concordance.vocab_sample import stratify
 
 OUT = Path("data/results/vision_trial_corpus.json")
 SEED = 77

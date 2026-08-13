@@ -13,9 +13,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from groundtruth.contribute import make_bundle, merge_bundle, Verdict
-from groundtruth.models import record_key
-from groundtruth.tools import Corpus
+from concordance.contribute import make_bundle, merge_bundle, Verdict
+from concordance.models import record_key
+from concordance.tools import Corpus
 
 RESULTS = Path("data/results")
 

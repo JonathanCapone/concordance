@@ -12,9 +12,9 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth import citations
-from groundtruth.citations import Citation, cite, cite_cell, cite_record
-from groundtruth.models import PageText, Word
+from concordance import citations
+from concordance.citations import Citation, cite, cite_cell, cite_record
+from concordance.models import PageText, Word
 
 
 @pytest.fixture(autouse=True)

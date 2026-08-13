@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.numerals import (
+from concordance.numerals import (
     quantities_in,
     scan,
     states_value,

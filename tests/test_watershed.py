@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.watershed import (
+from concordance.watershed import (
     MAX_RIVER_SPREAD_KM,
     PlacedPlant,
     Station,

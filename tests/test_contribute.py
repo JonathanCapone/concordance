@@ -11,7 +11,7 @@ import copy
 
 import pytest
 
-from groundtruth.contribute import (
+from concordance.contribute import (
     _value_in_quote,
     bundle_id,
     make_bundle,
@@ -104,7 +104,7 @@ def test_a_value_written_in_words_is_now_read_rather_than_excused():
     """"Just over three million gallons" really is where 3000000 comes from.
 
     This used to assert "unchecked" -- the honest answer available to a check
-    that could only see digits. It is now VERIFIED, because groundtruth.numerals
+    that could only see digits. It is now VERIFIED, because concordance.numerals
     reads the words, and the reason says which allowance was made. The old
     assertion was not wrong when it was written; it recorded a limit that has
     since been removed.

@@ -23,7 +23,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive  # noqa: E402
+from concordance.archive import Archive  # noqa: E402
 
 PATTERNS = [
     re.compile(r"^(?P<p>.+?)\s*:\s*water pollution control plant", re.I),

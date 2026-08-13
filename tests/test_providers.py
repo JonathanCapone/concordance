@@ -14,7 +14,7 @@ import json
 
 import pytest
 
-from groundtruth.providers import (
+from concordance.providers import (
     Fetcher,
     NeedsCredential,
     Provider,

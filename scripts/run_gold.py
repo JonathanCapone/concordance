@@ -17,9 +17,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive           # noqa: E402
-from groundtruth.extract import OllamaClient, extract_prose  # noqa: E402
-from groundtruth.score import Report, load_gold, score_page  # noqa: E402
+from concordance.archive import Archive           # noqa: E402
+from concordance.extract import OllamaClient, extract_prose  # noqa: E402
+from concordance.score import Report, load_gold, score_page  # noqa: E402
 
 
 def main() -> int:

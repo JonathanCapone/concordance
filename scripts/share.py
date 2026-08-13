@@ -51,9 +51,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import urllib.error
 import urllib.request
 
-from groundtruth.archive import Archive
-from groundtruth.contribute import make_bundle, merge_bundle, verify_bundle
-from groundtruth.disputes import CONTRIBUTIONS, load_claims, load_contributions
+from concordance.archive import Archive
+from concordance.contribute import make_bundle, merge_bundle, verify_bundle
+from concordance.disputes import CONTRIBUTIONS, load_claims, load_contributions
 
 
 def do_export(args: argparse.Namespace) -> int:
@@ -179,7 +179,7 @@ def do_push(args: argparse.Namespace) -> int:
     request = urllib.request.Request(
         url, data=body,
         headers={"Content-Type": "application/json",
-                 "User-Agent": "ground-truth/0.1"},
+                 "User-Agent": "concordance/0.1"},
         method="POST")
     try:
         with urllib.request.urlopen(request, timeout=args.timeout) as response:
@@ -210,7 +210,7 @@ def do_pull(args: argparse.Namespace) -> int:
     print(f"fetching {url}")
     try:
         request = urllib.request.Request(
-            url, headers={"User-Agent": "ground-truth/0.1"})
+            url, headers={"User-Agent": "concordance/0.1"})
         with urllib.request.urlopen(request, timeout=args.timeout) as response:
             bundle = json.loads(response.read().decode())
     except Exception as exc:  # noqa: BLE001

@@ -1,6 +1,6 @@
 # Work log
 
-Notes from building Ground Truth. Written as it went, kept honest on purpose —
+Notes from building Concordance. Written as it went, kept honest on purpose —
 the wrong turns are most of the value here, and every one of them is still in the
 git history if you want to check.
 

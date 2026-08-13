@@ -16,9 +16,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive
-from groundtruth.extract import OllamaClient, extract_prose
-from groundtruth.router import Path as RPath, route
+from concordance.archive import Archive
+from concordance.extract import OllamaClient, extract_prose
+from concordance.router import Path as RPath, route
 
 IDENT = "hamiltonadventur00unse"
 PAGES = (20, 16, 21, 28)

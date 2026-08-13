@@ -31,10 +31,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive                      # noqa: E402
-from groundtruth.parameters import resolve as resolve_param  # noqa: E402
-from groundtruth.science import find_suspect_readings        # noqa: E402
-from groundtruth.units import parse_unit                     # noqa: E402
+from concordance.archive import Archive                      # noqa: E402
+from concordance.parameters import resolve as resolve_param  # noqa: E402
+from concordance.science import find_suspect_readings        # noqa: E402
+from concordance.units import parse_unit                     # noqa: E402
 
 SKIP = {"gold_report", "metadata_proposals", "silence_report", "corpus_census"}
 

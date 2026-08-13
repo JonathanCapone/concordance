@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.disputes import (
+from concordance.disputes import (
     Claim, Flag, Ledger, Slot, check, resolve, slot_of,
 )
 
@@ -231,7 +231,7 @@ def test_influent_and_effluent_are_not_the_same_measurement():
 
 def test_a_person_s_reading_is_accepted_by_the_page_not_by_anyone(tmp_path):
     """No queue, no account, no reputation -- none of which the check consults."""
-    from groundtruth.disputes import submit
+    from concordance.disputes import submit
 
     good = submit(
         {"parameter": "BOD", "value": 104, "unit": "mg/L", "place": "Owen Sound",
@@ -245,7 +245,7 @@ def test_a_person_s_reading_is_accepted_by_the_page_not_by_anyone(tmp_path):
 
 
 def test_a_refused_submission_deletes_nothing_and_blames_nobody(tmp_path):
-    from groundtruth.disputes import submit
+    from concordance.disputes import submit
 
     bad = submit(
         {"parameter": "BOD", "value": 104, "place": "Owen Sound",
@@ -259,7 +259,7 @@ def test_a_refused_submission_deletes_nothing_and_blames_nobody(tmp_path):
 
 def test_a_contribution_reads_back_indistinguishable_from_the_machine_s(tmp_path):
     """Nothing on disk records who to believe, because nothing ever asks."""
-    from groundtruth.disputes import check, load_contributions, submit
+    from concordance.disputes import check, load_contributions, submit
 
     record = {"parameter": "BOD", "value": 104, "unit": "mg/L",
               "place": "Owen Sound", "facility": "sewage", "period": "1969",

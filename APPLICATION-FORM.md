@@ -1,4 +1,4 @@
-# Ground Truth — answers for the BC + AI application form
+# Concordance — answers for the BC + AI application form
 
 Each answer is written to stand alone, because they are read as separate fields
 in a review database and a reviewer may not read them in order. Character counts
@@ -8,7 +8,7 @@ are checked by `scripts/check_form.py`; the limits are the form's own.
 
 ## Project title
 
-Ground Truth
+Concordance
 
 ---
 
@@ -258,7 +258,7 @@ dependencies in the core.
 
 Before this I built OMEGA-wave, an open ocean-sensing system with its own
 protocol, gateway, statistics suite and map portal — about 30,000 lines with 118
-data-provider definitions. Ground Truth reuses that directly: the statistics
+data-provider definitions. Concordance reuses that directly: the statistics
 layer (Mann-Kendall trend detection, Theil-Sen, Pettitt changepoint, all pure
 standard library, which is why this package still has no required dependencies),
 the map portal, the agent framework, and the keyless provider layer that reaches

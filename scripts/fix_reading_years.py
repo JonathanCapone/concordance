@@ -28,7 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.dating import year_for_reading
+from concordance.dating import year_for_reading
 
 SKIP = {"gold_report", "metadata_proposals", "silence_report", "corpus_census"}
 

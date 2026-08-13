@@ -109,7 +109,7 @@ def main() -> int:
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ground Truth — reading Canada's public record</title>
+<title>Concordance — reading Canada's public record</title>
 <style>
 :root{{--bg:#fbfaf8;--panel:#fff;--ink:#17150f;--muted:#6b6559;--line:#e2ded5}}
 @media (prefers-color-scheme:dark){{
@@ -134,7 +134,7 @@ h1{{font-size:36px;font-weight:500;margin:0 0 10px;letter-spacing:-.025em}}
  font-size:14px;margin-top:34px;max-width:74ch}}
 a.plain{{color:inherit}}
 </style></head><body><main>
-<h1>Ground Truth</h1>
+<h1>Concordance</h1>
 <p class="lede">Reading Canada's public record as a hundred-year instrument.</p>
 <p class="quiet">
   Internet Archive Canada holds 104,241 scanned government publications. Inside them are

@@ -27,9 +27,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive
-from groundtruth.models import Provenance, Record
-from groundtruth.vision import (
+from concordance.archive import Archive
+from concordance.models import Provenance, Record
+from concordance.vision import (
     _disambiguate_columns, _label_on_page, _page_can_referee,
 )
 

@@ -45,10 +45,10 @@ One unreachable CDN request makes `maplibregl` undefined at `portal.py:489`, the
 *Rationale:* ten minutes converts "nine dead views on conference wifi" into "eight working views and no map"; it is the worst thing that can happen on 28 Oct and it is unguarded.
 **Acceptance:** with the unpkg host unresolvable, every non-map view renders its data; exactly one console error; a note in the demo runbook.
 
-### B8. Vendor `maplibre-gl.js` and `.css` into `groundtruth/static/` — 1.5 h
+### B8. Vendor `maplibre-gl.js` and `.css` into `concordance/static/` — 1.5 h
 `build_portal.py:1` already states the lesson ("no server and no network — which matters for showing it on conference wifi"); it was applied to the static exports and not to the thing that gets demoed.
 *Rationale:* removes the remaining network dependency in the demo path; separable from B7, which is the emergency half.
-**Acceptance:** `grep unpkg groundtruth/` returns nothing; the portal renders fully with the network disabled after first byte.
+**Acceptance:** `grep unpkg concordance/` returns nothing; the portal renders fully with the network disabled after first byte.
 
 ### B9. `scripts/share.py import` tracebacks on any realistic bundle — 15 min
 `share.py:104-111` strips the failed records but passes the original `verdict` (still carrying `failed`) to `merge_bundle`, whose gate rejects it. With `--verified-only` it raises `ValueError`; without it, it exits 1. The command is documented verbatim in the README and the sharing claim is in APPLICATION.md.
@@ -111,7 +111,7 @@ $5,000 against $4,251–8,502 (really $6,230–12,461 after B12) buys 59–118% 
 **Acceptance:** `report()["people"]` counts only people with at least one appearance; Hamilton returns 52; a test pins it.
 
 ### B21. One truth-in-labelling sweep — 1.5 h total
-Nine small items, each a wrong statement rather than a wrong computation: Jay and the portal advise `ANTHROPIC_API_KEY`, which `Jay._chat` never reads (10 min — message only); `search.effort()` computes with `worth_reading=0.531` while its own note says 69.5% and 91 s (10 min); the declared console script `ground-truth-gold` cannot import after `pip install -e .` from anywhere, inside the repo or out (15 min); the README should say `pip install -e ".[dev]"` since plain install brings no pytest (2 min); `groundtruth/static/portal-maplibre.js` is 14 KB of dead Leaflet-era code from another project (2 min); `vision_trial.py:245`'s `med = lambda xs: xs[len(xs)//2]` is not a median (15 min); `library.ask` reports "No documents in the collection match that" when the *title filter* emptied it — true for 33 of 104 frontier places, including Midland's 19 documents (15 min, message only); `/api/read` calls `STATE.reload()` but not `invalidate_ledger()`, so a town you just read still shows as unread (5 min); `jay._what_is_disputed` loads 909 claims where the server loads 1,101 (5 min).
+Nine small items, each a wrong statement rather than a wrong computation: Jay and the portal advise `ANTHROPIC_API_KEY`, which `Jay._chat` never reads (10 min — message only); `search.effort()` computes with `worth_reading=0.531` while its own note says 69.5% and 91 s (10 min); the declared console script `concordance-gold` cannot import after `pip install -e .` from anywhere, inside the repo or out (15 min); the README should say `pip install -e ".[dev]"` since plain install brings no pytest (2 min); `concordance/static/portal-maplibre.js` is 14 KB of dead Leaflet-era code from another project (2 min); `vision_trial.py:245`'s `med = lambda xs: xs[len(xs)//2]` is not a median (15 min); `library.ask` reports "No documents in the collection match that" when the *title filter* emptied it — true for 33 of 104 frontier places, including Midland's 19 documents (15 min, message only); `/api/read` calls `STATE.reload()` but not `invalidate_ledger()`, so a town you just read still shows as unread (5 min); `jay._what_is_disputed` loads 909 claims where the server loads 1,101 (5 min).
 *Rationale:* each is a sentence the software says that is not true; together they are 90 minutes and they are what a careful reader trips over.
 **Acceptance:** a checklist of nine, each with the grep or command that shows it fixed.
 

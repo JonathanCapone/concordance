@@ -244,7 +244,7 @@ class SpelledNumber:
 
 
 #: Enough of a unit vocabulary to tell "three feet" from "three of them". Not
-#: the authority on units -- groundtruth.units is -- just a gate.
+#: the authority on units -- concordance.units is -- just a gate.
 _UNIT_AFTER_RE = re.compile(
     r"\s*(?:gallons?|litres?|liters?|feet|foot|inches|inch|miles?|acres?|yards?|"
     r"tons?|tonnes?|pounds?|lbs?|kilograms?|kg|grams?|degrees?|per\s?cent|percent|"

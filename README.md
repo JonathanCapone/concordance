@@ -1,4 +1,4 @@
-# Ground Truth
+# Concordance
 
 **Reading Canada's public record as a hundred-year instrument.**
 
@@ -147,7 +147,7 @@ No number in this system is unfalsifiable.
 Requires Python 3.11+. No API key is needed for anything.
 
 ```bash
-git clone <this repo> && cd ground-truth
+git clone <this repo> && cd concordance
 pip install -e .
 ```
 
@@ -160,7 +160,7 @@ ollama pull gemma4:12b
 Run it:
 
 ```bash
-python -m groundtruth.server
+python -m concordance.server
 ```
 
 Opens a live map of every municipality in the collection. Orange dots have been
@@ -292,7 +292,7 @@ No key is ever committed to this repo or used by the public instance.
 ## Layout
 
 ```
-groundtruth/
+concordance/
   models.py      record types, provenance, page text with word boxes
   archive.py     Internet Archive adapter: index, OCR, real page boundaries, page images
   router.py      per-page classification into extraction paths

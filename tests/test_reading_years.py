@@ -19,7 +19,7 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.dating import year_for_reading
+from concordance.dating import year_for_reading
 
 # Real sentences from the corpus, with the year each value belongs to.
 COMPARATIVE = [

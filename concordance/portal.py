@@ -65,11 +65,11 @@ def render(s: dict) -> str:
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ground Truth — Canada's public record, read</title>
+<title>Concordance — Canada's public record, read</title>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@{MAPLIBRE_VERSION}/dist/maplibre-gl.css">
 <link rel="stylesheet" href="/static/omega-portal.css">
 <style>
-/* Ground Truth overrides on top of the inherited OMEGA chrome. */
+/* Concordance overrides on top of the inherited OMEGA chrome. */
 :root{{--gt-hit:#f0a24a;--gt-cold:#5b7285}}
 html,body{{height:100%;margin:0;background:#04080d;color:#e8edf2;
   font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}}
@@ -180,7 +180,7 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
 
   <header class="app-header">
     <div class="brand-block">
-      <p class="brand-wordmark">GROUND TRUTH</p>
+      <p class="brand-wordmark">CONCORDANCE</p>
       <p class="brand-sub">Canada's public record, read</p>
     </div>
     <nav class="primary-nav icon-nav" aria-label="Views">{_nav()}</nav>

@@ -1,7 +1,7 @@
 {
   "place": "Sault Ste. Marie",
   "model": "ollama:gemma4:12b",
-  "n_records": 335,
+  "n_records": 448,
   "pages_attempted": [
     "1962ANNUALREPORT00SNSN19915.ome#6",
     "1962ANNUALREPORT00SNSN19915.ome#7",
@@ -64,7 +64,39 @@
     "drinkingwatersur890ontauoft#26",
     "drinkingwatersur890ontauoft#41",
     "drinkingwatersur890ontauoft#42",
-    "drinkingwatersur1987ontauoft#3"
+    "drinkingwatersur1987ontauoft#3",
+    "drinkingwatersur1987ontauoft#5",
+    "drinkingwatersur1987ontauoft#10",
+    "drinkingwatersur1987ontauoft#11",
+    "drinkingwatersur1987ontauoft#12",
+    "drinkingwatersur1987ontauoft#13",
+    "drinkingwatersur1987ontauoft#14",
+    "drinkingwatersur1987ontauoft#21",
+    "drinkingwatersur1987ontauoft#47",
+    "drinkingwatersur1987ontauoft#48",
+    "drinkingwatersur1987ontauoft#59",
+    "drinkingwatersur1987ontauoft#96",
+    "drinkingwatersur1987ontauoft#102",
+    "drinkingwatersur1987ontauoft#104",
+    "drinkingwatersur1987ontauoft#105",
+    "drinkingwatersur1987ontauoft#108",
+    "drinkingwatersur1987ontauoft#109",
+    "drinkingwatersur1987ontauoft#110",
+    "drinkingwatersur1987ontauoft#111",
+    "drinkingwatersur1987ontauoft#112",
+    "drinkingwatersur1987ontauoft#113",
+    "saultsdrinkingw1989ontauoft#3",
+    "saultsdrinkingw1989ontauoft#5",
+    "saultsdrinkingw1989ontauoft#7",
+    "saultsdrinkingw1989ontauoft#8",
+    "saultsdrinkingw1989ontauoft#10",
+    "saultsdrinkingw1989ontauoft#13",
+    "saultsdrinkingw1989ontauoft#17",
+    "saultsdrinkingw1989ontauoft#18",
+    "saultsdrinkingw1989ontauoft#19",
+    "saultsdrinkingw1989ontauoft#20",
+    "saultsdrinkingw1989ontauoft#32",
+    "saultsdrinkingw1989ontauoft#34"
   ],
   "records": [
     {
@@ -9111,6 +9143,3057 @@
         "ocr_confidence": 0.5806
       },
       "key": "3299a543c9031c034875"
+    },
+    {
+      "kind": "observation",
+      "parameter": "systems monitored",
+      "value": 76.0,
+      "unit": "systems",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.403,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 5,
+        "source_text": "In 1990, 76 systems were being monitored.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6118
+      },
+      "key": "259fc785d453ce1f04fe"
+    },
+    {
+      "kind": "design",
+      "parameter": "plant capacity",
+      "value": 40.0,
+      "unit": "x 1000 m-^/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water treatment plant",
+      "confidence": 0.403,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 5,
+        "source_text": "This plant has a design capacity of 40.0 x 1000 m-^/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6118
+      },
+      "key": "4049bb734578e394fac9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "well supply share of total water demand",
+      "value": 50.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.403,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 5,
+        "source_text": "These wells represent up to 50% of the total water demand.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6118
+      },
+      "key": "432bc232016bffebbd42"
+    },
+    {
+      "kind": "observation",
+      "parameter": "population served",
+      "value": 85000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.403,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 5,
+        "source_text": "The Sault Ste. Marie water treatment plant and well supply serves a population of approximately 85,000.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6118
+      },
+      "key": "4261c0fd176ec9572c86"
+    },
+    {
+      "kind": "standard",
+      "parameter": "temperature of drinking water",
+      "value": 15.0,
+      "unit": "°C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3964,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 12,
+        "source_text": "It is desirable that the temperature of drinking water be less than 15°C.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5858
+      },
+      "key": "e5db7618d0e116bd116d"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Field temperature maximum desirable concentration",
+      "value": 15.0,
+      "unit": "°C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3964,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 12,
+        "source_text": "Field temperature exceeded the ODWO Maximum Desirable Concentration of 15°C in 2 of 16 plant treated and distributed water samples with a maximum reported value of 16.0°C.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5858
+      },
+      "key": "3bc400cc71210d913f52"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum field temperature",
+      "value": 16.0,
+      "unit": "°C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "plant treated and distributed water samples",
+      "confidence": 0.3964,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 12,
+        "source_text": "Field temperature exceeded the ODWO Maximum Desirable Concentration of 15°C in 2 of 16 plant treated and distributed water samples with a maximum reported value of 16.0°C.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5858
+      },
+      "key": "3a9436dd48c7026148e0"
+    },
+    {
+      "kind": "standard",
+      "parameter": "conductivity",
+      "value": 400.0,
+      "unit": "umho/cm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3964,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 12,
+        "source_text": "Conductivity exceeded the European Economic Community (EEC) Aesthetic Guideline Level of 4 00 umho/cm in 4 of 6 treated well water samples with a maximum reported value of 445.0 umho/cm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5858
+      },
+      "key": "f314d637e8b8e53f633c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "maximum conductivity",
+      "value": 445.0,
+      "unit": "umho/cm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "treated well water samples",
+      "confidence": 0.3964,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 12,
+        "source_text": "Conductivity exceeded the European Economic Community (EEC) Aesthetic Guideline Level of 4 00 umho/cm in 4 of 6 treated well water samples with a maximum reported value of 445.0 umho/cm.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5858
+      },
+      "key": "33897b270fdd036f74c5"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness level for domestic waters",
+      "value": 80.0,
+      "unit": "mg/L as calcium carbonate",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3964,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 12,
+        "source_text": "The ODWOs indicate that a hardness level of between 80 and 100 mg/L as calcium carbonate for domestic waters provides an acceptable balance between corrosion and encrustation.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n11/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5858
+      },
+      "key": "82d565fc3e71d518e9e2"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Maximum Acceptable Concentration for turbidity",
+      "value": 1.0,
+      "unit": "FTU",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3975,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 13,
+        "source_text": "The ODWO Maximum Acceptable Concentration for turbidity is 1.0 Formazin Turbidity Units (FTU) .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5899
+      },
+      "key": "3addf12a9b8909b835ef"
+    },
+    {
+      "kind": "observation",
+      "parameter": "laboratory turbidity",
+      "value": 1.3,
+      "unit": "FTU",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "well water samples",
+      "confidence": 0.3975,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 13,
+        "source_text": "The laboratory turbidity exceeded the Maximum Acceptable Concentration in 1 of 6 treated well water samples with a reported value of 1.3 FTU.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5899
+      },
+      "key": "e6136d8e5d6cfece5c58"
+    },
+    {
+      "kind": "standard",
+      "parameter": "guideline for aluminum in water leaving the plant",
+      "value": 100.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3975,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 13,
+        "source_text": "The ODWOs indicate that a useful guideline is to maintain a residual below 100 ug/L as aluminum in the water leaving the plant, to avoid problems in the distribution system.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5899
+      },
+      "key": "319b812e7a1b7b0a6546"
+    },
+    {
+      "kind": "observation",
+      "parameter": "aluminum concentration",
+      "value": 100.0,
+      "unit": "ug/L",
+      "qualifier": "standard",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3975,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 13,
+        "source_text": "Aluminum exceeded the ODWO Aesthetic or Recommended Operational Guideline of 100 ug/L in 3 of 6 plant treated water samples with a maximum reported value of 220.0 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5899
+      },
+      "key": "435564bbc0052bc931ef"
+    },
+    {
+      "kind": "observation",
+      "parameter": "aluminum concentration",
+      "value": 220.0,
+      "unit": "ug/L",
+      "qualifier": "maximum",
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "plant treated water samples",
+      "confidence": 0.3975,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 13,
+        "source_text": "Aluminum exceeded the ODWO Aesthetic or Recommended Operational Guideline of 100 ug/L in 3 of 6 plant treated water samples with a maximum reported value of 220.0 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5899
+      },
+      "key": "de30712423b6025bee48"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Maximum Acceptable Concentration of lead",
+      "value": 10.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3975,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 13,
+        "source_text": "Lead exceeded the ODWO Maximum Acceptable Concentration of 10.0 ug/L in 1 of 10 distributed water samples with a reported value of 11.0 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5899
+      },
+      "key": "7799b4f7149e42172a03"
+    },
+    {
+      "kind": "observation",
+      "parameter": "lead concentration",
+      "value": 11.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "distributed water samples",
+      "confidence": 0.3975,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 13,
+        "source_text": "Lead exceeded the ODWO Maximum Acceptable Concentration of 10.0 ug/L in 1 of 10 distributed water samples with a reported value of 11.0 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5899
+      },
+      "key": "574d8216320cf3f20ea4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "total THMs",
+      "value": 17.1,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "Sault Ste. Marie Water Supply System",
+      "confidence": 0.4042,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 14,
+        "source_text": "The maximum observed level was 17.1 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.617
+      },
+      "key": "e87ce3f5200fd4ec4233"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Maximum Acceptable Concentration of total THMs",
+      "value": 350.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "Sault Ste. Marie Water Supply System",
+      "confidence": 0.4042,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 14,
+        "source_text": "This was below the ODWO Maximum Acceptable Concentration of 350 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n13/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.617
+      },
+      "key": "7b9c186b93d754a14832"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ammonium Anhydrous dosage",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-05",
+      "facility": "COULAIS WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "MAY U .50 3.500 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "0e0d575d7d4ed470ab19"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Post Chlorination dosage",
+      "value": 3.5,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-05",
+      "facility": "COULAIS WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "MAY U .50 3.500 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "9f45bb12f60310d5bcad"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Chlorine dosage",
+      "value": 0.1,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-05",
+      "facility": "COULAIS WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "MAY U .50 3.500 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "ef02d335dcb8fbd3568d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Flow",
+      "value": 0.3,
+      "unit": "1000m3",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-05",
+      "facility": "COULAIS WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "MAY U .50 3.500 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "2210d3d23e57afda1f19"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ammonium Anhydrous dosage",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-11",
+      "facility": "COULAIS WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "NOV 13 .50 3.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "c33212bf49e403a875a7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Post Chlorination dosage",
+      "value": 3.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-11",
+      "facility": "COULAIS WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "NOV 13 .50 3.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "bbc1ac58abd12321b00b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Chlorine dosage",
+      "value": 0.1,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-11",
+      "facility": "COULAIS WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "NOV 13 .50 3.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "96cac8191996a780695c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Flow",
+      "value": 0.3,
+      "unit": "1000m3",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-11",
+      "facility": "COULAIS WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "NOV 13 .50 3.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "064eaa8d79e1b05d626f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ammonium Anhydrous dosage",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-05",
+      "facility": "SHANNON WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "MAY 14 .50 2.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "ac85f61890fecf55b9ae"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Post Chlorination dosage",
+      "value": 2.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-05",
+      "facility": "SHANNON WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "MAY 14 .50 2.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "eb04bed1f7f25dd22377"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Chlorine dosage",
+      "value": 0.1,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-05",
+      "facility": "SHANNON WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "MAY 14 .50 2.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "e9dca7d40bfa58878bc0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Flow",
+      "value": 0.3,
+      "unit": "1000m3",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-05",
+      "facility": "SHANNON WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "MAY 14 .50 2.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "d528d40d53514d0c77cc"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ammonium Anhydrous dosage",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-11",
+      "facility": "SHANNON WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "NOV 13 .50 1.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "ab360cdebb3bb4ab63a6"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Post Chlorination dosage",
+      "value": 1.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-11",
+      "facility": "SHANNON WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "NOV 13 .50 1.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "92a32bfedcdfd7604b2b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Chlorine dosage",
+      "value": 0.1,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-11",
+      "facility": "SHANNON WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "NOV 13 .50 1.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "379fc1c7db5d16d6fdb3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Flow",
+      "value": 0.3,
+      "unit": "1000m3",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1990-11",
+      "facility": "SHANNON WELL",
+      "confidence": 0.6253,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 21,
+        "source_text": "NOV 13 .50 1.000 .10 .30",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.3895
+      },
+      "key": "f41789d0f7bea3c7bd99"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ALPHA BHC detection limit",
+      "value": 1.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "ALPHA BHC (NG/L ) DET'N LIMIT = 1.000 GUIDELINE = 700 (G)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "deaf2d406e932b00f3d4"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ALPHA BHC guideline",
+      "value": 700.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "ALPHA BHC (NG/L ) DET'N LIMIT = 1.000 GUIDELINE = 700 (G)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "54ba19e78a2c71586949"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 5.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Sault Ste. Marie",
+      "period": "1992 JAN",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "JAN 5.000 &lt;T 6.000 &lt;T .BOL . BOL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "5398766be5bc91a9054b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 6.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992 JAN",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "JAN 5.000 &lt;T 6.000 &lt;T .BOL . BOL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "a1b4c5ebec67a4bbb767"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 2.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Sault Ste. Marie",
+      "period": "1992 MAR",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "MAR 2.000 &lt;T 2.000 &lt;T .BOL . BOL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "90db4fc160ed0c7591d5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 2.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992 MAR",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "MAR 2.000 &lt;T 2.000 &lt;T .BOL . BOL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "b3d95c8771798c50e86f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 4.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Sault Ste. Marie",
+      "period": "1992 MAY",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "MAY 4.000 &lt;T 4.000 &lt;T .BOL . 2.000 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "21cd46955fdbb7f6ddb4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 4.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992 MAY",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "MAY 4.000 &lt;T 4.000 &lt;T .BOL . 2.000 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "5164d6e549ac3be06abf"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 2.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992 MAY",
+      "facility": "Distribution System",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "MAY 4.000 &lt;T 4.000 &lt;T .BOL . 2.000 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "7ac79d6e3bb59ae5b9a3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 5.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Sault Ste. Marie",
+      "period": "1992 JUL",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "JUL 5.000 &lt;T 4.000 &lt;T .BOL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "526cb5b11301e45815d1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 4.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992 JUL",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "JUL 5.000 &lt;T 4.000 &lt;T .BOL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "031f2abed5dcafa9ae93"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 3.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Sault Ste. Marie",
+      "period": "1992 SEP",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "SEP 3.000 &lt;T 2.000 &lt;T .BOL . 2.000 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "998474a6db0cea99589a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 2.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992 SEP",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "SEP 3.000 &lt;T 2.000 &lt;T .BOL . 2.000 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "a45cd0cb45778491bdb1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 2.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992 SEP",
+      "facility": "Distribution System",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "SEP 3.000 &lt;T 2.000 &lt;T .BOL . 2.000 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "032732e1c31f5ea091d9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 5.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Sault Ste. Marie",
+      "period": "1992 NOV",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "NOV 5.000 &lt;T 7.000 &lt;T . . . IIS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "736e67bd81a455098560"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 7.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992 NOV",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "NOV 5.000 &lt;T 7.000 &lt;T . . . IIS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "ea3f1bf60acc600cf843"
+    },
+    {
+      "kind": "standard",
+      "parameter": "LINDANE detection limit",
+      "value": 1.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "LINDANE (NG/L ) DET'N LIMIT = 1.000 GUIDELINE = 4000 (AI)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "1505150e1c6a30335192"
+    },
+    {
+      "kind": "standard",
+      "parameter": "LINDANE guideline",
+      "value": 4000.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "LINDANE (NG/L ) DET'N LIMIT = 1.000 GUIDELINE = 4000 (AI)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "70d3b9d45454fcca0e6b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "LINDANE",
+      "value": 1.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992 NOV",
+      "facility": "Water Treatment Plant",
+      "confidence": 0.3141,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 59,
+        "source_text": "NOV BOL 1.000 &lt;T . . !IS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n58/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.2563
+      },
+      "key": "499b6fe616b7876d2982"
+    },
+    {
+      "kind": "standard",
+      "parameter": "detection limit for phenolics",
+      "value": 0.2,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "SHANNON WELL",
+      "confidence": 0.3266,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 96,
+        "source_text": "PHENOLICS (UG/L ) DET'N LIMIT = .200",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n95/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3063
+      },
+      "key": "63b9c76b44ca143576fc"
+    },
+    {
+      "kind": "standard",
+      "parameter": "guideline for phenolics",
+      "value": 2.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "SHANNON WELL",
+      "confidence": 0.3266,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 96,
+        "source_text": "PHENOLICS (UG/L ) DET'N LIMIT = .200 GUIDELINE = 2 (A4)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n95/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3063
+      },
+      "key": "f1956645ecf451a9b898"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 0.6,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Sault Ste. Marie",
+      "period": "1992 NOV",
+      "facility": "SHANNON WELL",
+      "confidence": 0.3266,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 96,
+        "source_text": "NOV .600 &lt;T .600 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n95/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3063
+      },
+      "key": "5b8dcdc49dfe8f826637"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 0.6,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "1992 NOV",
+      "facility": "SHANNON WELL",
+      "confidence": 0.3266,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 96,
+        "source_text": "NOV .600 &lt;T .600 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n95/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.3063
+      },
+      "key": "030647f5acbefc2ab889"
+    },
+    {
+      "kind": "observation",
+      "parameter": "systems monitored",
+      "value": 76.0,
+      "unit": "systems",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.4061,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 102,
+        "source_text": "In 1990, 76 systems were being monitored.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n101/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6243
+      },
+      "key": "d1b70796fda266c94759"
+    },
+    {
+      "kind": "design",
+      "parameter": "DETECTION LIMIT",
+      "value": 0.05,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.4073,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 108,
+        "source_text": "DETECTION LIMIT: (FOR METHOD POCODO) 0.05 /ig/L",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n107/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6294
+      },
+      "key": "e5673543032736274837"
+    },
+    {
+      "kind": "standard",
+      "parameter": "SOLUBILITY IN WATER",
+      "value": 1780.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.4073,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 108,
+        "source_text": "PROPERTIES: SOLUBILITY IN WATER: 1780-1800 mg/L AT 25C (41).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n107/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6294
+      },
+      "key": "cf21a5de2537dc5dfa14"
+    },
+    {
+      "kind": "standard",
+      "parameter": "SOLUBILITY IN WATER",
+      "value": 1800.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.4073,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 108,
+        "source_text": "PROPERTIES: SOLUBILITY IN WATER: 1780-1800 mg/L AT 25C (41).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n107/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6294
+      },
+      "key": "6b685c151489bf0dc736"
+    },
+    {
+      "kind": "standard",
+      "parameter": "THRESHOLD ODOUR",
+      "value": 0.5,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.4073,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 108,
+        "source_text": "THRESHOLD ODOUR: 0.5 - 10 PPM IN WATER",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n107/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6294
+      },
+      "key": "251027ca8f702a032c15"
+    },
+    {
+      "kind": "standard",
+      "parameter": "THRESHOLD ODOUR",
+      "value": 10.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.4073,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 108,
+        "source_text": "THRESHOLD ODOUR: 0.5 - 10 PPM IN WATER",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n107/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6294
+      },
+      "key": "1bf3144e43a301e08b67"
+    },
+    {
+      "kind": "standard",
+      "parameter": "THRESHOLD TASTE",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1992",
+      "facility": "water supply system",
+      "confidence": 0.4073,
+      "provenance": {
+        "identifier": "drinkingwatersur1987ontauoft",
+        "page": 108,
+        "source_text": "THRESHOLD TASTE: 0.5 mg/L IN WATER (39).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur1987ontauoft/page/n107/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6294
+      },
+      "key": "869be16b846d7ffb9705"
+    },
+    {
+      "kind": "design",
+      "parameter": "design capacity",
+      "value": 40.0,
+      "unit": "000m3/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Water Treatment Plant",
+      "confidence": 0.7223,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 5,
+        "source_text": "The plant has a design capacity of 40 x lOOOm'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.605
+      },
+      "key": "b3c5c01a757cf9678c2e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "population served",
+      "value": 85000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Water Treatment Plant and four well pumping stations",
+      "confidence": 0.8025,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 5,
+        "source_text": "The plant and the four well pumping stations serve a population of 85,000.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.605
+      },
+      "key": "ea07dea251830ebfdf95"
+    },
+    {
+      "kind": "observation",
+      "parameter": "plants monitored by DWSP",
+      "value": 65.0,
+      "unit": "plants",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.3878,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 7,
+        "source_text": "In 1989, 65 plants were being monitored.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5513
+      },
+      "key": "6a32ecb5d1ef57497981"
+    },
+    {
+      "kind": "design",
+      "parameter": "design capacity",
+      "value": 40.0,
+      "unit": "1000 m^3/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Water Treatment Plant",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The plant has a design capacity of 40 x 1000 m^/day and daily flows ranging from 17 x 1000 m^/day to 32 x 1000 m^/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "524ea70921f2b246eb74"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 17.0,
+      "unit": "1000 m^/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Water Treatment Plant",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The plant has a design capacity of 40 x 1000 m^/day and daily flows ranging from 17 x 1000 m^/day to 32 x 1000 m^/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "86561f021c9237c5b331"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 32.0,
+      "unit": "1000 m^/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Water Treatment Plant",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The plant has a design capacity of 40 x 1000 m^/day and daily flows ranging from 17 x 1000 m^/day to 32 x 1000 m^/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "d4a090c50fb0a217fcc9"
+    },
+    {
+      "kind": "design",
+      "parameter": "pumping rate",
+      "value": 13.65,
+      "unit": "1000 m'/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Lorna Well",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The Lorna Well has a pumping rate of 13.65 x 1000 m'/day and daily flows ranging from 1.0 x 1000 m'/day to 10.0 x 1000 m'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "3b4378fe6fefb9d11c43"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 1.0,
+      "unit": "1000 m'/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Lorna Well",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The Lorna Well has a pumping rate of 13.65 x 1000 m'/day and daily flows ranging from 1.0 x 1000 m'/day to 10.0 x 1000 m'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "c3e9a56bfd29b1ac7d4b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 10.0,
+      "unit": "1000 m'/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Lorna Well",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The Lorna Well has a pumping rate of 13.65 x 1000 m'/day and daily flows ranging from 1.0 x 1000 m'/day to 10.0 x 1000 m'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "5435126342aa6e5a1637"
+    },
+    {
+      "kind": "design",
+      "parameter": "pumping rate",
+      "value": 8.2,
+      "unit": "1000 m'/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Steelton Well",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The Steelton Well has a pumping rate of 8.2 x 1000 m'/day and daily flows of 8.1 X 1000 m'/day to 9.0 x 1000 m'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "2be527f8e78c5ff7f045"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 8.1,
+      "unit": "1000 m'/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Steelton Well",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The Steelton Well has a pumping rate of 8.2 x 1000 m'/day and daily flows of 8.1 X 1000 m'/day to 9.0 x 1000 m'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "5e52f30b616758064321"
+    },
+    {
+      "kind": "observation",
+      "parameter": "daily flow",
+      "value": 9.0,
+      "unit": "1000 m'/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "Steelton Well",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The Steelton Well has a pumping rate of 8.2 x 1000 m'/day and daily flows of 8.1 X 1000 m'/day to 9.0 x 1000 m'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "b47574cb265d8af27ec6"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "groundwater contribution to total water demand",
+      "value": 50.0,
+      "unit": "%",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.385,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 8,
+        "source_text": "The groundwater delivered from the four well pumping stations can contribute approximately 50% of the total water demand which mixes with the water from the treatment plant in the Zone 1 distribution system.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.54
+      },
+      "key": "df8b61774a67f97f5f8c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "parameters analyzed on a monthly basis",
+      "value": 180.0,
+      "unit": "parameters",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": "1989",
+      "facility": "water supply system",
+      "confidence": 0.7738,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 10,
+        "source_text": "Samples were taken on a monthly basis and analyzed for approximately 180 parameters on a monthly basis in 1989.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n9/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 1.0,
+        "ocr_confidence": 0.5476
+      },
+      "key": "dc4cd8a3ebbce2f433a5"
+    },
+    {
+      "kind": "design",
+      "parameter": "intake pipe",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "1 INTAKE PIPE",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "ee34769e95b7c309945c"
+    },
+    {
+      "kind": "design",
+      "parameter": "screen & surge well",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "1 SCREEN &amp; SURGE WELL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "b60d46ee57d8cfd91b40"
+    },
+    {
+      "kind": "design",
+      "parameter": "lowlift chamber",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "1 LOWLIFT CHAMBER",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "8d70ba9af68428293179"
+    },
+    {
+      "kind": "design",
+      "parameter": "lowlift pumps",
+      "value": 5.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "5 LOWLIFT PUMPS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "1783adb1b5403d29c1a0"
+    },
+    {
+      "kind": "design",
+      "parameter": "flash mixers",
+      "value": 4.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "4 FLA.SH MIXERS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "628dffdce81387d05df2"
+    },
+    {
+      "kind": "design",
+      "parameter": "flocculation tanks",
+      "value": 4.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "4 FLOCCULATION TANKS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "4389ff5426844aa9316f"
+    },
+    {
+      "kind": "design",
+      "parameter": "filter tanks",
+      "value": 4.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "4 FILTER TANKS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "9af6279703b53ab98fac"
+    },
+    {
+      "kind": "design",
+      "parameter": "clear wells",
+      "value": 2.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "2 CLEAR WELLS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "d924d90a2958cc65fb9c"
+    },
+    {
+      "kind": "design",
+      "parameter": "reservoirs",
+      "value": 2.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "2 RESERVOIRS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "a76aedd3711f4affd453"
+    },
+    {
+      "kind": "design",
+      "parameter": "highlift pumps",
+      "value": 3.0,
+      "unit": "count",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "SAULT STE MARIE WTP",
+      "confidence": 0.3619,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 13,
+        "source_text": "3HIGHLIFTPUMPS",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4477
+      },
+      "key": "1b0656a2f9228c9197e0"
+    },
+    {
+      "kind": "standard",
+      "parameter": "health related and aesthetic objectives",
+      "value": 49.0,
+      "unit": "parameters",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.4038,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 17,
+        "source_text": "The Province of Ontario has health related and aesthetic objectives for 49 parameters, these are currently under review.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6154
+      },
+      "key": "328021f9edc42f939cd3"
+    },
+    {
+      "kind": "standard",
+      "parameter": "guidelines",
+      "value": 1750.0,
+      "unit": "guidelines",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.4038,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 17,
+        "source_text": "The Parameters Listing System (PALIS) recently published (ISBN 0-7729-4461-X) by the MOE catalogues and keeps current over 1750 guidelines for 650 parameters from agencies throughout the world.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6154
+      },
+      "key": "c75e199959930f8f0f75"
+    },
+    {
+      "kind": "standard",
+      "parameter": "parameters",
+      "value": 650.0,
+      "unit": "parameters",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.4038,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 17,
+        "source_text": "The Parameters Listing System (PALIS) recently published (ISBN 0-7729-4461-X) by the MOE catalogues and keeps current over 1750 guidelines for 650 parameters from agencies throughout the world.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.6154
+      },
+      "key": "fffbc56966e62372e8f4"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Standard Plate Count",
+      "value": 500.0,
+      "unit": "counts/mL",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.3926,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 18,
+        "source_text": "The ODWO for Standard Plate Count of 500 counts/mL (indicating some\ndeterioration) was exceeded, once in the Site 1 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n17/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5706
+      },
+      "key": "2749c0d1169154f415c5"
+    },
+    {
+      "kind": "standard",
+      "parameter": "True Colour Units",
+      "value": 5.0,
+      "unit": "TCU",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.3926,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 18,
+        "source_text": "The aesthetic ODWO of 5.00 True Colour Units (TCU) was exceeded in\none treated water sample.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n17/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5706
+      },
+      "key": "5a0aa20b9457fb7503de"
+    },
+    {
+      "kind": "standard",
+      "parameter": "aesthetic guideline",
+      "value": 0.05,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "European Economic Community has an aesthetic guideline of .05 mg/L,",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "5f977fb435cb7d1aa0fc"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Maximum Admissible Concentration",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "the Maximvim Admissible Concentration is .50 mg/L and is set as a",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "9ec9bb944e6dda696c3d"
+    },
+    {
+      "kind": "standard",
+      "parameter": "acceptable hardness level",
+      "value": 100.0,
+      "unit": "mg/L as calcium carbonate",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "The ODWOs indicate that a hardness level of between 80 and 100 mg/L as calcium carbonate for domestic waters, provides an acceptable balance between corrosion and encrustation.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "c7de1d089dd6f8f7c689"
+    },
+    {
+      "kind": "standard",
+      "parameter": "acceptable hardness level",
+      "value": 80.0,
+      "unit": "mg/L as calcium carbonate",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "The ODWOs indicate that a hardness level of between 80 and 100 mg/L as calcium carbonate for domestic waters, provides an acceptable balance between corrosion and encrustation.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "a277c2cfef79b2ef419a"
+    },
+    {
+      "kind": "standard",
+      "parameter": "poor water threshold (hardness)",
+      "value": 200.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "Water supplies with a hardness greater than 2 00 mg/L are considered poor and would possess a tendency to form scale deposits and result in excessive soap consumption.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "9cf26205e2dc520af3f0"
+    },
+    {
+      "kind": "standard",
+      "parameter": "aesthetic guideline level for Conductivity",
+      "value": 400.0,
+      "unit": "UMHO/cm",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "The European Economic Community (EEC) aesthetic guideline level for Conductivity of 400 UMHO/cm was exceeded in all of the water samples from Lorna Well, and is a result of the high hardness levels.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "5d58fa9accc0b7b76de5"
+    },
+    {
+      "kind": "standard",
+      "parameter": "plant operational guideline of Al",
+      "value": 100.0,
+      "unit": "Mg/L as Al",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "The plant operational guideline of 100 Mg/L as Al in the water leaving the plant was exceeded ten times in the treated water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "dde574f116ea575a8dc0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Al exceedance frequency",
+      "value": 10.0,
+      "unit": "times",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "The plant operational guideline of 100 Mg/L as Al in the water leaving the plant was exceeded ten times in the treated water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "b6ec7ab58723722afb71"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Ontario Maximum Acceptable Concentration (MAC) for lead",
+      "value": 50.0,
+      "unit": "Mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.392,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 19,
+        "source_text": "The Ontario Maximum Acceptable Concentration (MAC) for lead in drinking water (50 Mg/L) was exceeded in the October Site 1 standing water sample.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n18/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5678
+      },
+      "key": "bfd3798204f14b0dda34"
+    },
+    {
+      "kind": "observation",
+      "parameter": "toluene level",
+      "value": 4.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "April",
+      "facility": "Site 2",
+      "confidence": 0.6876,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 20,
+        "source_text": "The toluene level for the April Site 2 water was 4.0 Mg/L and for the Lorna Well treated water in May was 1.1 Mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.528
+      },
+      "key": "faf4b69511f8e7838f96"
+    },
+    {
+      "kind": "observation",
+      "parameter": "toluene level",
+      "value": 1.1,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": "May",
+      "facility": "Lorna Well",
+      "confidence": 0.6876,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 20,
+        "source_text": "The toluene level for the April Site 2 water was 4.0 Mg/L and for the Lorna Well treated water in May was 1.1 Mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.528
+      },
+      "key": "3886db929f006a8dc8bd"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Aesthetic Objective for toluene",
+      "value": 24.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.6876,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 20,
+        "source_text": "Health and Welfare Canada use an Aesthetic Objective of 24 mÇ/L for toluene in drinking water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.9,
+        "ocr_confidence": 0.528
+      },
+      "key": "91e0e4546c12ea244ef5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Total THM",
+      "value": 19.8,
+      "unit": "µg/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.6112,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 20,
+        "source_text": "All Total THM occurrences, ranging from a trace to 19.8 /ig/Lf were well below the ODWO of 350 Mg/L'",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.528
+      },
+      "key": "dafd4c930beac2efef65"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ODWO for total THMs",
+      "value": 350.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.6112,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 20,
+        "source_text": "All Total THM occurrences, ranging from a trace to 19.8 /ig/Lf were well below the ODWO of 350 Mg/L'",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n19/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.8,
+        "ocr_confidence": 0.528
+      },
+      "key": "ee61c43b6b2a9d5a20b3"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Aeromonas organisms detection frequency",
+      "value": 25.0,
+      "unit": "%",
+      "qualifier": "percent",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.3919,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 32,
+        "source_text": "Aeromonas organisms are detected in more than 25% of samples in a single submission or in successive submissions from the same sampling site",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n31/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5676
+      },
+      "key": "2ed16c9e1410427cf93a"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Standard Plate Count",
+      "value": 500.0,
+      "unit": "organisms per ml",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.3919,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 32,
+        "source_text": "Standard Plate Count should not exceed 500 organisms per ml at 3 5 °C within 48 hours",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n31/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5676
+      },
+      "key": "cbc91595fc18e207ae67"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness levels",
+      "value": 80.0,
+      "unit": "mg/L as calcium carbonate",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.3919,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 32,
+        "source_text": "hardness levels between 80 and 100 mg/L as calcium carbonate are considered to provide an acceptable balance between corrosion and incrustation",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n31/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5676
+      },
+      "key": "b5d9feddffdce224a0d3"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness levels",
+      "value": 100.0,
+      "unit": "mg/L as calcium carbonate",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.3919,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 32,
+        "source_text": "hardness levels between 80 and 100 mg/L as calcium carbonate are considered to provide an acceptable balance between corrosion and incrustation",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n31/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5676
+      },
+      "key": "0b733117eaee1950db0c"
+    },
+    {
+      "kind": "standard",
+      "parameter": "hardness levels",
+      "value": 500.0,
+      "unit": "mg/L",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Sault Ste. Marie",
+      "period": null,
+      "facility": "water supply system",
+      "confidence": 0.3919,
+      "provenance": {
+        "identifier": "saultsdrinkingw1989ontauoft",
+        "page": 32,
+        "source_text": "and those in excess of 500 mg/L are unacceptable.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/saultsdrinkingw1989ontauoft/page/n31/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5676
+      },
+      "key": "ab53450afa8a151d56c2"
     }
   ]
 }

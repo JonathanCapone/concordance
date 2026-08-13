@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ground-truth"
+name = "concordance"
 version = "0.1.0"
 description = "Reading Canada's public record as a hundred-year instrument"
 readme = "README.md"
@@ -21,10 +21,10 @@ dependencies = []
 dev = ["pytest>=8.0"]
 
 [project.scripts]
-ground-truth-gold = "scripts.run_gold:main"
+concordance-gold = "scripts.run_gold:main"
 
 [tool.setuptools.packages.find]
-include = ["groundtruth*"]
+include = ["concordance*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

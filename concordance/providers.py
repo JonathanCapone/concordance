@@ -32,7 +32,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-USER_AGENT = "ground-truth/0.1 (open research; see repository)"
+USER_AGENT = "concordance/0.1 (open research; see repository)"
 
 
 class ProviderError(RuntimeError):

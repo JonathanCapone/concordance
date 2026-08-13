@@ -10,8 +10,8 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.downstream import MIN_OVERLAP, spearman, upstream_influence
-from groundtruth.models import Provenance, Record
+from concordance.downstream import MIN_OVERLAP, spearman, upstream_influence
+from concordance.models import Provenance, Record
 
 
 def _rec(year, value, stream, parameter="BOD", unit="mg/L"):

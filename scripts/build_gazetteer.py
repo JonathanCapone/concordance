@@ -39,7 +39,7 @@ CGNDB_ONTARIO_URL = (
 OPEN_GOVERNMENT_LICENCE_URL = (
     "https://open.canada.ca/en/open-government-licence-canada"
 )
-USER_AGENT = "ground-truth/0.1 (CGNDB gazetteer builder)"
+USER_AGENT = "concordance/0.1 (CGNDB gazetteer builder)"
 
 ROOT = Path(__file__).resolve().parents[1]
 GAZETTEER_DIR = ROOT / "data" / "gazetteer"

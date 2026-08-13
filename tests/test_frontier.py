@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from groundtruth.frontier import build
+from concordance.frontier import build
 
 
 @dataclass
@@ -87,7 +87,7 @@ def test_the_decisions_behind_a_town_s_numbers_are_a_question_too():
     motion and roll-call form is a pattern -- so this is the part of the frontier
     a contributor can finish on a laptop.
     """
-    from groundtruth.frontier import build
+    from concordance.frontier import build
 
     f = build([{"place": "Brantford", "period": "1962"}])
     decisions = [q for q in f.questions if q.kind == "decision"]
@@ -100,7 +100,7 @@ def test_the_decisions_behind_a_town_s_numbers_are_a_question_too():
 
 
 def test_a_decision_question_ranks_a_town_whose_numbers_are_already_read():
-    from groundtruth.frontier import build
+    from concordance.frontier import build
 
     f = build([{"place": "Brantford", "period": "1962"}])
     ranked = {r["place"]: r for r in f.ranked_places()}
@@ -116,7 +116,7 @@ def test_one_town_gets_one_council_question():
     sewage plant and its water works measure opposite things -- and noise for a
     question about who voted. So it is stripped here rather than in the records.
     """
-    from groundtruth.frontier import build
+    from concordance.frontier import build
 
     f = build([
         {"place": "Brantford", "period": "1962"},
@@ -130,7 +130,7 @@ def test_one_town_gets_one_council_question():
 
 
 def test_two_genuinely_different_towns_keep_their_own_questions():
-    from groundtruth.frontier import build
+    from concordance.frontier import build
 
     f = build([{"place": "Brantford"}, {"place": "Owen Sound"}])
     assert len([q for q in f.questions if q.kind == "decision"]) == 2

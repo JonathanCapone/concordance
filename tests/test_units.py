@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.units import (
+from concordance.units import (
     IMPERIAL_TO_US,
     comparable,
     normalize_series,

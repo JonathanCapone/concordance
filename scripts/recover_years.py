@@ -48,7 +48,7 @@ CALIBRATION_VALIDATION_SAMPLE = 300
 
 def _detector_fingerprint() -> str:
     """Hash dating source so a resumed run cannot mix detector revisions."""
-    source = Path(__file__).resolve().parents[1] / "groundtruth" / "dating.py"
+    source = Path(__file__).resolve().parents[1] / "concordance" / "dating.py"
     return hashlib.sha256(source.read_bytes()).hexdigest()
 
 
@@ -722,9 +722,9 @@ def main(argv: list[str] | None = None) -> int:
 
     # Delayed until after argument parsing so `--help` never initializes the
     # archive or requires a partially installed checkout.
-    from groundtruth.archive import Archive
-    from groundtruth.dating import infer_year_from_text
-    from groundtruth.repair import infer_year
+    from concordance.archive import Archive
+    from concordance.dating import infer_year_from_text
+    from concordance.repair import infer_year
 
     out_path = Path(args.out)
     archive = Archive(cache_dir=args.cache_dir)

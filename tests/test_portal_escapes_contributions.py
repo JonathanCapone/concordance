@@ -16,7 +16,7 @@ import re
 
 import pytest
 
-import groundtruth.server as S
+import concordance.server as S
 
 #: Fields that arrive on a record and end up drawn as labels.
 CONTRIBUTOR_FIELDS = ("contributor", ".place", ".facility", ".parameter",

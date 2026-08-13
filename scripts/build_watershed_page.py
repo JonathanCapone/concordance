@@ -18,8 +18,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.providers import Fetcher, Registry            # noqa: E402
-from groundtruth.watershed import (                            # noqa: E402
+from concordance.providers import Fetcher, Registry            # noqa: E402
+from concordance.watershed import (                            # noqa: E402
     downstream_links,
     load_stations,
     place_plants,
@@ -41,7 +41,7 @@ def build() -> dict:
     )
 
     try:
-        from groundtruth.places import resolve
+        from concordance.places import resolve
     except Exception:  # noqa: BLE001
         resolve = None
 

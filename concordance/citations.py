@@ -92,7 +92,7 @@ def iiif_base(identifier: str, index: int, *, timeout: float = 30.0) -> str | No
     try:
         request = urllib.request.Request(
             INFO.format(ident=identifier, index=index),
-            headers={"User-Agent": "ground-truth/0.1"})
+            headers={"User-Agent": "concordance/0.1"})
         with urllib.request.urlopen(request, timeout=timeout) as response:
             info = json.loads(response.read().decode())
         base = info.get("id") or info.get("@id")

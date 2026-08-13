@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import pytest
 
-from groundtruth.parameters import resolve, same_measurement
+from concordance.parameters import resolve, same_measurement
 
 
 @pytest.mark.parametrize(
@@ -119,7 +119,7 @@ def test_vocabulary_edits_take_effect_only_after_rebuild():
     a marginal gain of exactly zero. Every stratum would then hit its stopping
     rule simultaneously, on evidence that was an artefact of import order.
     """
-    import groundtruth.parameters as P
+    import concordance.parameters as P
 
     original = list(P.VOCABULARY.get("forestry", []))
     try:
@@ -146,7 +146,7 @@ def test_a_ratio_measures_its_numerator():
     The denominator of a ratio is what the number is normalised BY. It is never
     what the number measures.
     """
-    from groundtruth.parameters import resolve
+    from concordance.parameters import resolve
 
     assert resolve("CUBIC FEET AIR PER LB BOD. REMOVED", "cubic feet") is None
     assert resolve("cost per pound of suspended solids removed", "$").substance == "cost"
@@ -158,7 +158,7 @@ def test_a_qualifier_is_not_a_denominator():
     Stripping them lost "Daily Per Capita Flow" entirely, because there the
     qualifier sits in front of the substance rather than after it.
     """
-    from groundtruth.parameters import resolve
+    from concordance.parameters import resolve
 
     assert resolve("Daily Per Capita Flow", "gallons").key == "flow|rate"
     assert resolve("chlorine used per month", "pounds").substance == "chlorine"
@@ -169,7 +169,7 @@ def test_a_mass_removed_is_not_a_removal_efficiency():
     was 94%" both say removal, and are a mass and a ratio. Sharing an identity,
     three tonnages outvoted three percentages and the chart was published in
     tonnes."""
-    from groundtruth.parameters import resolve
+    from concordance.parameters import resolve
 
     assert resolve("BOD removed", "tons").measure == "total"
     assert resolve("BOD removal efficiency", "%").measure == "removal"
@@ -180,7 +180,7 @@ def test_a_bare_volume_does_not_override_an_explicit_rate():
 
     Letting the unit win moved a day's flow into the annual series.
     """
-    from groundtruth.parameters import resolve
+    from concordance.parameters import resolve
 
     assert resolve("daily flow", "million gallons").key == "flow|rate"
     assert resolve("total flow", "million gallons").key == "flow|total"
@@ -193,7 +193,7 @@ def test_an_exceedance_is_never_a_removal():
     spellings that slipped past, and Brantford's 1962 exceedance reached the
     live chart as BOD removal.
     """
-    from groundtruth.parameters import resolve
+    from concordance.parameters import resolve
 
     assert resolve("BOD exceeding objective", "percent").measure == "frequency"
     assert resolve("BOD objectives met", "percent").measure == "frequency"

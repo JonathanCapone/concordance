@@ -5,7 +5,7 @@ import zipfile
 
 import pytest
 
-from groundtruth.places import Place, resolve
+from concordance.places import Place, resolve
 from scripts import build_gazetteer as builder
 
 

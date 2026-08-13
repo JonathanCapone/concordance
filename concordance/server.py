@@ -1,6 +1,6 @@
 """A running instance you can click.
 
-    python -m groundtruth.server
+    python -m concordance.server
 
 The server itself is standard library -- `http.server` rather than a framework --
 and needs no API key. The map is MapLibre from a CDN, lifted from the OMEGA-wave
@@ -767,7 +767,7 @@ class Handler(BaseHTTPRequestHandler):
 def main(port: int = 8765, open_browser: bool = True) -> int:
     global STATE
     STATE = State()
-    print(f"Ground Truth — {len(STATE.places)} municipalities located, "
+    print(f"Concordance — {len(STATE.places)} municipalities located, "
           f"{len(STATE.corpus.records)} measurements loaded")
     url = f"http://localhost:{port}/"
     print(f"serving {url}   (ctrl-c to stop)")

@@ -37,10 +37,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from groundtruth.archive import Archive
-from groundtruth.extract import default_client, extract_prose
-from groundtruth.router import Path as RoutePath, route
-from groundtruth.vocab_sample import Reading, Survey, stratify
+from concordance.archive import Archive
+from concordance.extract import default_client, extract_prose
+from concordance.router import Path as RoutePath, route
+from concordance.vocab_sample import Reading, Survey, stratify
 
 
 def _family(title: str) -> str:
