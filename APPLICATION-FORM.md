@@ -14,11 +14,12 @@ Concordance
 
 ## Project summary — *What do you want to build or create?* (2000)
 
-A free website where anyone can look up what was actually measured where they
-live — sewage discharged into the river, what was in the drinking water, what
-came out of the smelter — going back to the 1800s, with every number linked to
-the exact government page it was read from. Plus an open, source-linked seed
-dataset designed to grow beyond the pilot communities.
+Concordance turns a century and a half of scanned public records into a free
+neighbourhood instrument panel: ask what was measured where you live —
+sewage discharged into the river, what was in the drinking water, what came out
+of the smelter — then challenge any published number on the exact government
+page it came from. The fellowship will also publish an open, source-linked seed dataset
+designed to grow beyond the pilot communities.
 
 My August 11 catalogue snapshot holds 104,241 scanned government publications
 and 22.1 million pages; this project scopes its historical run from 1841 to
@@ -65,9 +66,10 @@ gap to investigate, not proof that measurement itself stopped.
 to every value — and, just as importantly, explicit refusals where two numbers
 are not comparable, rather than a tidy line that hides a change of method.
 
-**Internet Archive Canada itself.** In my catalogue snapshot, 57% has no subject
-tag and 32% no parsed year. I have 13,429 language/year metadata proposals ready
-to offer for review.
+**A British Columbia pilot community**, chosen before tuning, can test whether
+the method transfers beyond Ontario and whether residents can follow the source
+trail without archive expertise. I can also offer Internet Archive Canada
+13,429 language/year metadata proposals for review.
 
 **And anyone who wants to question it** — which is the part I care most about.
 Every prose number carries its source sentence; a table number carries its cell
@@ -148,8 +150,9 @@ beside the environmental reports, creating the possibility of linking what was
 measured to the public decisions around it. That civic parser is promising but
 not yet part of the validated measurement benchmark.
 
-The scans are publicly accessible. I will publish code under MIT and derived data
-under an appropriate licence while preserving source-item rights.
+Public access to a scan is not a blanket licence for its contents. I will publish
+code under MIT and release only derived data I can license, documenting the terms
+while preserving each source item's rights.
 
 ---
 
@@ -232,15 +235,15 @@ without a permanent central inference bill.
 
 ## Success metric (600)
 
-A resident in every published pilot community — the existing 14 plus at least
-one British Columbia pilot — can look up what was measured, get a plain-language
-explanation (including unknown), and click each published record to its page.
+A resident in each published pilot community — the frozen 14 plus at least one
+British Columbia pilot — can look up a measurement, see "unknown" when no verdict
+is justified, and open every published record's source page.
 
-Checkable: the data, code and benchmark are public; accuracy is reported per era
-and parameter on a benchmark anyone can re-score; the browser-to-local
-contribution loop passes a first-time-user test; and an archival gap is labelled
-with what the evidence rules out and what remains unknown. National coverage is
-a stretch goal, not the pass/fail claim.
+Pass/fail: code, data and a benchmark anyone can re-score are public; precision
+and recall are reported by era and parameter; and one person outside the project
+completes request → local extraction → preview → source-check → share without
+assistance. Each published archival gap states what evidence rules out and what
+remains unknown. National coverage is a stretch goal.
 
 ---
 
@@ -258,8 +261,8 @@ Pettitt changepoints and keyless Environment Canada/Statistics Canada access.
 Six weeks here is not six weeks from zero.
 
 **What I think actually qualifies me is how I handle being wrong**, because that
-is the whole risk in this kind of project. Three examples, all in the public work
-log:
+is the whole risk in this kind of project. Three examples are documented in the
+project evidence prepared for publication:
 
 The first accuracy figure I produced was 49% precision — and it was wrong. My
 scorer could not tell that "3.0 million gallons" and "3000000 gallons" are the
