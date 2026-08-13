@@ -86,9 +86,10 @@ class Results:
             "hours": round(hours, 1),
             "days": round(hours / 24, 1),
             "note": (
-                "Estimated from the corpus census: 69.5% of pages carry "
-                "measurements, and this machine reads one in about 91 seconds. "
-                "Split the work and divide the time."
+                f"Provisional planning estimate using {worth_reading:.1%} of pages "
+                f"as reading candidates and {seconds_per_page:g} seconds per page. "
+                "Candidate pages are not proven measurements; rerun the census "
+                "before budgeting a corpus-scale job."
             ),
         }
 

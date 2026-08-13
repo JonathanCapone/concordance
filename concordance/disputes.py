@@ -5,15 +5,20 @@ which ones are good. That is the part nobody wants to run, and it is also the
 part that makes a project political: whoever holds the delete button holds the
 record.
 
-This avoids it with one rule applied to everybody equally:
+This avoids it for prose with one rule applied to everybody equally:
 
     Every claim must cite a page and quote a sentence. The archive decides.
 
-That rule already governs the machine's own output -- `contribute.verify_bundle`
-checks that the quoted sentence really is on the page, and that the value really
-is in the quoted sentence. Nothing about it is specific to a model. Point it at a
-stranger's submission and it works the same way, because it never asks who is
-speaking, only whether the paper says what they claim it says.
+That rule already governs the machine's own prose output --
+`contribute.verify_bundle` checks that the quoted sentence really is on the page,
+and that the complete value token is in the matched page span. Nothing about it
+is specific to a model. Point it at a stranger's submission and it works the same
+way, because it never asks who is speaking, only whether the paper says what they
+claim it says.
+
+Experimental table claims retain page/row/column locators, but those headings do
+not independently prove which number occupies the cell. They therefore abstain
+unless localized cell evidence is available.
 
 So the three things people want all become the same operation:
 
@@ -53,12 +58,17 @@ import collections
 import hashlib
 import json
 import re
+import threading
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
 
 from .archive import Archive
-from .contribute import _norm, _value_in_quote
+from .contribute import (
+    _atomic_create, _has_prose_context, _match_evidence_span, _norm, _value_in_quote,
+    public_record_key, record_problems,
+)
+from .places import scope_record_dict
 
 #: What two claims have to share to be talking about the same thing.
 #:
@@ -116,7 +126,10 @@ class Claim:
         raw = json.dumps({
             "i": prov.get("identifier"), "p": prov.get("page"),
             "q": (prov.get("source_text") or "")[:200],
-            "v": repr(self.record.get("value")),
+            # Numeric JSON spelling (1 versus 1.0, 0 versus -0.0) is not a
+            # different public claim. The same canonical record identity used by
+            # bundle merge keeps claim deduplication aligned with publication.
+            "record": public_record_key(self.record),
             "k": slot_of(self.record),
         }, sort_keys=True)
         return hashlib.sha256(raw.encode()).hexdigest()[:16]
@@ -174,49 +187,66 @@ class Standing:
 
 
 #: How the vision path writes a cell reference: "table cell [row / column]".
-# Imported, not redefined. Two copies of "what a table citation looks like"
-# is two chances to disagree, and the bundle path and the ledger path
-# disagreeing about exactly that is what refused all 535 vision records.
+# Imported, not redefined, so bundle and ledger parsing cannot drift. The
+# shared syntax preserves experimental locators; both public verification
+# paths still abstain until a locator carries independently checkable,
+# localized cell evidence.
 from .contribute import CELL_RE  # noqa: E402
 
 
 def _check_cell(claim: Claim, cell: Any, text: str) -> Standing:
-    """Verify a table reading, which has headings instead of a sentence.
+    """Assess table headings, then abstain without localized cell proof.
 
-    Two questions, chosen to mirror the prose check as closely as the medium
-    allows: are the cited headings on the page, and does the value appear in the
-    page's digits. Neither is as strong as quoting a sentence, and the standing
-    says so in words rather than pretending otherwise.
+    Confirming row and column headings on a page is necessary but not sufficient:
+    a value elsewhere on that page may belong to another row or column. Current
+    table citations carry no independently checkable cell coordinates, so this
+    path never grants public/ledger standing. It records whether even the
+    headings are supportable, then explicitly abstains until localized cell
+    evidence exists.
 
-    Headings are judged by the vision path's own rule, which lets a page whose
-    OCR can find nothing at all abstain rather than refuse. A table whose text
-    layer was destroyed is precisely the case that path exists for, and its
-    silence is a fact about the scanner.
+    Experimental vision extraction remains preserved separately; refusing to
+    verify it here prevents weaker page-global evidence from being laundered
+    through the unauthenticated contribution boundary.
     """
     from .vision import _label_on_page, _page_can_referee
 
     labels = [part.strip() for part in cell.group(1).split("/") if part.strip()]
+    if len(labels) < 2:
+        return Standing(
+            claim, False,
+            "table evidence must cite both a row heading and a column heading",
+        )
+    if _norm(labels[0]) == _norm(labels[1]):
+        return Standing(
+            claim, False,
+            "table row and column headings must identify two distinct dimensions",
+        )
     claimed = [{"row_label": labels[0] if labels else "",
                 "column_label": labels[1] if len(labels) > 1 else ""}]
 
-    if _page_can_referee(claimed, text):
-        missing = [lab for lab in labels if not _label_on_page(lab, text)]
-        if missing:
-            return Standing(claim, False,
-                            "the table headings cited are not on that page: "
-                            + ", ".join(repr(m) for m in missing))
-        heading_note = "the table headings are on the page"
-    else:
-        heading_note = ("the page's OCR is too damaged to confirm or refute the "
-                        "headings, which is the case this path exists for")
+    if not _page_can_referee(claimed, text):
+        return Standing(
+            claim, False,
+            "the page OCR cannot referee the cited table headings; evidence abstained",
+        )
+    missing = [lab for lab in labels if not _label_on_page(lab, text)]
+    if missing:
+        return Standing(claim, False,
+                        "the table headings cited are not on that page: "
+                        + ", ".join(repr(m) for m in missing))
+    heading_note = "the table headings are on the page"
 
-    if claim.record.get("value") is None:
-        return Standing(claim, True, f"{heading_note}; no value to check")
-    if _value_in_damaged_quote(claim.record.get("value"), text):
-        return Standing(claim, True, f"{heading_note}, and the value is in its digits")
-    return Standing(claim, False,
-                    f"{heading_note}, but the value does not appear anywhere in "
-                    "the page's digits")
+    # The current table citation records headings but no independently checkable
+    # cell coordinates or localized OCR span. Page-global co-occurrence is not
+    # cell evidence: on ``January 41.2 / February 99.0`` it would let a sender
+    # cite February and attach January's real number. Preserve the experimental
+    # vision record, but never give it public/ledger standing until the citation
+    # carries a locator the archive can referee at the claimed intersection.
+    return Standing(
+        claim,
+        False,
+        f"{heading_note}, but the citation has no localized cell evidence; abstained",
+    )
 
 
 def check(claim: Claim, *, archive: Archive | None = None,
@@ -227,8 +257,9 @@ def check(claim: Claim, *, archive: Archive | None = None,
     sentence on that page, and is that value in that sentence. Nothing here
     depends on who submitted it, which is the entire reason this can be open.
     """
-    if not claim.has_evidence:
-        return Standing(claim, False, "no page or no quoted sentence")
+    schema_problems = record_problems(claim.record)
+    if schema_problems:
+        return Standing(claim, False, "invalid record: " + "; ".join(schema_problems))
 
     prov = claim.record.get("provenance") or {}
     ident, page_no = str(prov.get("identifier")), prov.get("page")
@@ -244,19 +275,28 @@ def check(claim: Claim, *, archive: Archive | None = None,
     if not text:
         return Standing(claim, False, "page not retrievable")
 
-    # A reading off a table image cannot be checked the same way, and treating
-    # it as though it could would mark the entire table dataset unsupported.
-    # Its evidence is not a sentence -- a table has none -- but a cell
-    # reference, "table cell [Jan. / MAX. DAILY Flow]", and the thing to verify
-    # is that those headings are on the page and the value is in its digits.
+    # A reading off a table image cannot be checked like prose. Its current
+    # citation names row/column headings but carries no archive-refereeable cell
+    # coordinates, so _check_cell confirms what it can and abstains from granting
+    # standing rather than laundering a page-wide number into the named cell.
     cell = CELL_RE.match(claim.quote.strip())
     if cell:
         return _check_cell(claim, cell, text)
 
-    if _norm(claim.quote) not in _norm(text):
+    if not _has_prose_context(claim.quote):
+        return Standing(
+            claim, False,
+            "prose evidence must include textual context, not only a number",
+        )
+    matched_evidence = _match_evidence_span(claim.quote, text)
+    if matched_evidence is None:
         return Standing(claim, False, "the quoted sentence is not on that page")
+    # Once the archive has supplied the matching characters, keep those exact
+    # characters as the claim's citation. A contributor's tidied punctuation is
+    # useful for matching but is not verbatim evidence to persist.
+    prov["source_text"] = matched_evidence.strip()
 
-    state, why = _value_in_quote(claim.record.get("value"), claim.quote)
+    state, why = _value_in_quote(claim.record.get("value"), matched_evidence)
     if state == "ok":
         # `why` is empty when the sentence states the value outright, and
         # otherwise names the allowance that was made. Carrying it into the
@@ -274,58 +314,7 @@ def check(claim: Claim, *, archive: Archive | None = None,
     # live only on this path, which meant a reading the LEDGER verified was
     # REFUSED when the same reading arrived in a bundle -- the two checks that
     # are supposed to be the same check disagreeing about the same record.
-    # _value_in_damaged_quote is still used by the table-cell path above.
     return Standing(claim, False, why)
-
-
-#: Glyphs 1960s scanners routinely read as letters. Every one of these was found
-#: in the real record: "I5 feet deep" for 15, "3I per cent" for 31, "SOfo" for
-#: 50%.
-_OCR_DIGITS = str.maketrans({
-    "I": "1", "l": "1", "|": "1", "i": "1",
-    "O": "0", "o": "0", "Q": "0", "D": "0",
-    "S": "5", "s": "5", "Z": "2", "z": "2",
-    "B": "8", "G": "6", "g": "9", "T": "7", "A": "4",
-})
-
-
-def _value_in_damaged_quote(value: Any, quote: str) -> bool:
-    """Is the value in the sentence, once the scanner's letters are read as digits?
-
-    Needed because the strict check convicts the extractor of the scanner's
-    crime. "Each pass of the aeration tanks is 30 feet wide, I5 feet deep" holds
-    the digits 3-0-5-2-0-0 as far as a literal reading is concerned, so a
-    perfectly correct depth of 15 was rejected as unsupported. Three of the 29
-    unsupported slots in the first real run were this, and throwing away right
-    answers is not a conservative failure -- it is the same silent data loss the
-    project exists to reverse.
-
-    This cannot be used to smuggle anything in. The sentence still has to be on
-    the page, letter for letter; all that is relaxed is how its own characters
-    are read. An attacker gains only what the scan already ambiguously contains.
-    """
-    if value is None:
-        return False
-    text = str(quote or "").translate(_OCR_DIGITS)
-    digits = "".join(c for c in text if c.isdigit())
-    if not digits:
-        return False
-    for form in _forms(value):
-        if form and form in digits:
-            return True
-    return False
-
-
-def _forms(value: Any) -> list[str]:
-    """The ways a number can appear once punctuation and scale are stripped."""
-    try:
-        number = float(value)
-    except (TypeError, ValueError):
-        return []
-    out = {repr(number), f"{number:f}", str(value)}
-    if number.is_integer():
-        out.add(str(int(number)))
-    return ["".join(c for c in s if c.isdigit()).lstrip("0") or "0" for s in out]
 
 
 @dataclass
@@ -488,21 +477,24 @@ def load_claims(directory: str | Path = "data/results") -> list[Claim]:
 
     The extractor's output enters the ledger on exactly the same footing as a
     stranger's submission. It gets no standing for having been produced by this
-    project.
+    project. Location scoping is the same transformation the displayed Corpus
+    uses, so a correction contests the claim a person actually saw.
     """
-    skip = {"gold_report", "metadata_proposals", "silence_report", "corpus_census",
-            "audit", "cost_model", "vocab_proposals", "frontier", "vision_trial",
-            "vision_trial_corpus"}
     out: list[Claim] = []
     for path in Path(directory).glob("*.json"):
-        if path.stem in skip:
-            continue
         try:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except Exception:  # noqa: BLE001
             continue
+        # Use the same positive extraction-file shape rule as Corpus.load_dir.
+        # A renamed report such as gold_report.before-prompt-widening.json must
+        # not quietly become live evidence merely because a blocklist did not
+        # anticipate its stem. Empty-string place is valid for merged bundles.
+        if not isinstance(payload, dict) or "place" not in payload:
+            continue
+        file_place = payload.get("place")
         for record in payload.get("records") or []:
-            out.append(Claim(record=record, source="extraction",
+            out.append(Claim(record=scope_record_dict(record, file_place), source="extraction",
                              contributor=str(payload.get("model") or "extraction")))
     return out
 
@@ -517,6 +509,7 @@ def load_claims(directory: str | Path = "data/results") -> list[Claim]:
 #: `load_contributions` both produce plain Claims, and `check` cannot tell them
 #: apart.
 CONTRIBUTIONS = Path("data/contributions")
+_SUBMISSION_LOCK = threading.Lock()
 
 
 @dataclass
@@ -535,8 +528,8 @@ class Submission:
         d["what_happens_now"] = (
             "It is in the record, on the same footing as everything else. If it "
             "disagrees with an existing reading that also checks out, both are "
-            "shown with a picture of the sentence each came from, and nobody "
-            "decides between them."
+            "shown with their archive pages and available crops, and nobody "
+            "decides between them. Evidence presence does not settle interpretation."
             if self.standing.verified else
             "It is not in the record, and nothing was deleted. The archive did "
             "not support it: " + self.standing.why + ". Nobody rejected this -- "
@@ -557,9 +550,10 @@ def submit(
     """Offer a reading. The archive accepts or refuses it; no one reviews it.
 
     There is no queue, no account and no reputation, because none of those would
-    add anything: the check does not consult them. A submission that cites a real
-    sentence containing its own value is in, and one that does not is out, and
-    both outcomes are decided by the same code that judges the machine's output.
+    add anything: the check does not consult them. A valid submission must carry
+    a supported prose sentence/value token. Locator-only table evidence currently
+    abstains until the cited value can be localized to the cell. Unsupported
+    evidence is left out. The same code judges machine output and incoming claims.
 
     What a person can do that the machine cannot is disagree usefully. A reading
     that contests an existing one is stored exactly like any other and surfaces
@@ -572,22 +566,37 @@ def submit(
     if not standing.verified:
         return Submission(standing, stored=False)
 
-    path = Path(directory) / f"{claim.id}.json"
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({
+    out_dir = Path(directory)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    path = out_dir / f"{claim.id}.json"
+    document = json.dumps({
         "claim_id": claim.id, "contributor": claim.contributor,
         "source": claim.source, "note": claim.note, "disputes": claim.disputes,
         "verified_because": standing.why,
         "records": [record],
-    }, indent=2, ensure_ascii=False), encoding="utf-8")
+    }, indent=2, ensure_ascii=False).encode("utf-8")
+
+    # Replay is idempotent and concurrent writers never truncate or replace an
+    # accepted claim. The in-process lock makes the common case deterministic;
+    # _atomic_create supplies create-new semantics against other processes too.
+    with _SUBMISSION_LOCK:
+        if path.exists():
+            return Submission(standing, stored=False, where=str(path))
+        try:
+            _atomic_create(path, document)
+        except RuntimeError:
+            if path.exists():
+                return Submission(standing, stored=False, where=str(path))
+            raise
     return Submission(standing, stored=True, where=str(path))
 
 
 def load_contributions(directory: str | Path = CONTRIBUTIONS) -> list[Claim]:
     """Every reading a person has submitted, as claims.
 
-    Read back on exactly the same footing as the machine's own. Nothing here
-    records who to believe, because nothing in this design ever asks.
+    Read back on exactly the same footing, including location scoping, as the
+    machine's own. Nothing here records who to believe, because nothing in this
+    design ever asks.
     """
     out: list[Claim] = []
     directory = Path(directory)
@@ -598,9 +607,10 @@ def load_contributions(directory: str | Path = CONTRIBUTIONS) -> list[Claim]:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except Exception:  # noqa: BLE001
             continue
+        file_place = payload.get("place")
         for record in payload.get("records") or []:
             out.append(Claim(
-                record=record,
+                record=scope_record_dict(record, file_place),
                 source=str(payload.get("source") or "person"),
                 contributor=str(payload.get("contributor") or "anonymous"),
                 note=str(payload.get("note") or ""),
@@ -612,13 +622,13 @@ def load_contributions(directory: str | Path = CONTRIBUTIONS) -> list[Claim]:
 def load_vision_records(
     path: str | Path = "data/results/vision_trial_corpus.json",
 ) -> list[Claim]:
-    """Table readings, as claims on the same footing as everything else.
+    """Load experimental table readings so their abstentions remain visible.
 
     Kept as its own loader because the trial writes a page-keyed file rather
-    than a flat record list, not because table readings deserve different
-    treatment. `check()` judges them by their headings and the page's digits,
-    which is the closest the medium allows to quoting a sentence, and nothing
-    downstream is told which path a record came from.
+    than a flat record list. ``check()`` can assess headings but grants no public
+    or ledger standing from page-global OCR: without an independently checkable
+    cell span or coordinates, a locator conservatively abstains even when both
+    headings and the claimed number occur on the page.
     """
     out: list[Claim] = []
     p = Path(path)
@@ -634,4 +644,26 @@ def load_vision_records(
         for record in row.get("records") or []:
             out.append(Claim(record=record, source="extraction",
                              contributor="vision"))
+    return out
+
+
+def load_public_claims(
+    results: str | Path = "data/results",
+    contributions: str | Path = CONTRIBUTIONS,
+    vision: str | Path = "data/results/vision_trial_corpus.json",
+) -> list[Claim]:
+    """All public evidence claims, deduplicated by content-derived claim id."""
+
+    claims = (
+        load_claims(results)
+        + load_vision_records(vision)
+        + load_contributions(contributions)
+    )
+    out: list[Claim] = []
+    seen: set[str] = set()
+    for claim in claims:
+        if claim.id in seen:
+            continue
+        seen.add(claim.id)
+        out.append(claim)
     return out

@@ -26,7 +26,7 @@ def _claim(value, quote, *, source="extraction", parameter="BOD",
            stream="influent", contributor="anonymous", note=""):
     return Claim(
         record={
-            "parameter": parameter, "value": value, "unit": "mg/L",
+            "kind": "observation", "parameter": parameter, "value": value, "unit": "mg/L",
             "place": "Owen Sound", "facility": "sewage", "period": "1969",
             "stream": stream,
             "provenance": {"identifier": "owensound", "page": 7,
@@ -187,7 +187,7 @@ def test_a_value_written_with_scanner_letters_still_verifies():
     readings -- three of the 29 unsupported slots in the first real run."""
     page = {"doc": {1: 'Each pass of the aeration tanks is 30 feet wide, I5 feet deep.'}}
     c = Claim(record={
-        "parameter": "depth", "value": 15, "unit": "feet",
+        "kind": "observation", "parameter": "depth", "value": 15, "unit": "feet",
         "provenance": {"identifier": "doc", "page": 1,
                        "source_text": "is 30 feet wide, I5 feet deep"}})
     s = check(c, pages={k: dict(v) for k, v in page.items()})
@@ -200,7 +200,7 @@ def test_relaxing_the_digits_does_not_relax_the_sentence():
     An invented sentence still fails, so nothing can be smuggled in."""
     page = {"doc": {1: "The plant ran well."}}
     c = Claim(record={
-        "parameter": "depth", "value": 15,
+        "kind": "observation", "parameter": "depth", "value": 15, "unit": "feet",
         "provenance": {"identifier": "doc", "page": 1,
                        "source_text": "I5 feet deep"}})
     assert not check(c, pages={k: dict(v) for k, v in page.items()}).verified
@@ -209,7 +209,8 @@ def test_relaxing_the_digits_does_not_relax_the_sentence():
 def test_a_genuinely_wrong_number_is_still_rejected():
     page = {"doc": {1: "A total of 16,120,000 gallons of raw sludge was pumped."}}
     c = Claim(record={
-        "parameter": "raw sludge volume", "value": 16200000,
+        "kind": "observation", "parameter": "raw sludge volume", "value": 16200000,
+        "unit": "gallons",
         "provenance": {"identifier": "doc", "page": 1,
                        "source_text": "A total of 16,120,000 gallons of raw sludge was pumped"}})
     assert not check(c, pages={k: dict(v) for k, v in page.items()}).verified
@@ -234,7 +235,7 @@ def test_a_person_s_reading_is_accepted_by_the_page_not_by_anyone(tmp_path):
     from concordance.disputes import submit
 
     good = submit(
-        {"parameter": "BOD", "value": 104, "unit": "mg/L", "place": "Owen Sound",
+        {"kind": "observation", "parameter": "BOD", "value": 104, "unit": "mg/L", "place": "Owen Sound",
          "facility": "sewage", "period": "1969", "stream": "influent",
          "provenance": {"identifier": "owensound", "page": 7,
                         "source_text": "The average influent BOD and suspended "
@@ -248,7 +249,7 @@ def test_a_refused_submission_deletes_nothing_and_blames_nobody(tmp_path):
     from concordance.disputes import submit
 
     bad = submit(
-        {"parameter": "BOD", "value": 104, "place": "Owen Sound",
+        {"kind": "observation", "parameter": "BOD", "value": 104, "unit": "mg/L", "place": "Owen Sound",
          "provenance": {"identifier": "owensound", "page": 7,
                         "source_text": "A flood destroyed the plant in March."}},
         contributor="a stranger", archive=_FakeArchive(), directory=tmp_path)
@@ -261,7 +262,7 @@ def test_a_contribution_reads_back_indistinguishable_from_the_machine_s(tmp_path
     """Nothing on disk records who to believe, because nothing ever asks."""
     from concordance.disputes import check, load_contributions, submit
 
-    record = {"parameter": "BOD", "value": 104, "unit": "mg/L",
+    record = {"kind": "observation", "parameter": "BOD", "value": 104, "unit": "mg/L",
               "place": "Owen Sound", "facility": "sewage", "period": "1969",
               "stream": "influent",
               "provenance": {"identifier": "owensound", "page": 7,
@@ -287,7 +288,7 @@ TABLE_PAGES = {"brantford": {15: TABLE_OCR}}
 
 def _cell_claim(value, cell="table cell [Jan. / MAX. DAILY Flow]"):
     return Claim(record={
-        "parameter": "MAX. DAILY Flow", "value": value, "unit": "million gallons",
+        "kind": "observation", "parameter": "MAX. DAILY Flow", "value": value, "unit": "million gallons",
         "place": "Brantford", "period": "1962",
         "provenance": {"identifier": "brantford", "page": 15, "source_text": cell},
     })
@@ -297,20 +298,17 @@ def _check_table(claim):
     return check(claim, pages={k: dict(v) for k, v in TABLE_PAGES.items()})
 
 
-def test_a_table_reading_is_not_judged_as_if_it_were_a_sentence():
-    """Every vision record failed the ledger -- 154 of 154.
-
-    "table cell [Jan. / MAX. DAILY Flow]" is not text on the page and never will
-    be, so the quote-on-page rule marked the whole table dataset unsupported. A
-    table has no sentences; its evidence is a cell reference.
-    """
-    assert _check_table(_cell_claim(6.976)).verified
+def test_a_table_heading_pair_without_localized_cell_proof_abstains():
+    """Headings plus a page-wide number do not prove their intersection."""
+    standing = _check_table(_cell_claim(6.976))
+    assert not standing.verified
+    assert "localized cell evidence" in standing.why
 
 
 def test_a_table_value_that_is_not_in_the_page_digits_is_refused():
     s = _check_table(_cell_claim(9999.1))
     assert not s.verified
-    assert "does not appear" in s.why
+    assert "localized cell evidence" in s.why
 
 
 def test_a_cited_heading_that_is_not_on_the_page_is_refused():
@@ -319,17 +317,16 @@ def test_a_cited_heading_that_is_not_on_the_page_is_refused():
     assert "headings cited are not on that page" in s.why
 
 
-def test_a_page_whose_ocr_can_find_nothing_abstains_rather_than_refusing():
-    """The case the vision path exists for. A destroyed text layer is a fact
-    about the scanner, not evidence against the model."""
+def test_a_page_whose_ocr_cannot_referee_headings_does_not_verify():
+    """Damaged OCR is a reason to abstain, never positive evidence for import."""
     pages = {"x": {1: "STATEMENT No. 4 Continued. SUMMIT WATER SUPPLY. 41.2"}}
     c = Claim(record={
-        "parameter": "discharge", "value": 41.2, "unit": "cu ft",
+        "kind": "observation", "parameter": "discharge", "value": 41.2, "unit": "cu ft",
         "provenance": {"identifier": "x", "page": 1,
                        "source_text": "table cell [Talon Lake / Evaporation]"}})
     s = check(c, pages={k: dict(v) for k, v in pages.items()})
-    assert s.verified
-    assert "too damaged to confirm or refute" in s.why
+    assert not s.verified
+    assert "cannot referee" in s.why
 
 
 def test_prose_records_are_unaffected():

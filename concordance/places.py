@@ -20,7 +20,7 @@ import unicodedata
 from dataclasses import dataclass, replace
 from functools import lru_cache
 from pathlib import Path
-from typing import Any
+from typing import Any, Mapping
 
 
 @dataclass(frozen=True, slots=True)
@@ -466,6 +466,21 @@ def _append_note(place: Place, addition: str, *, confidence_factor: float = 1.0)
     )
 
 
+def _curated_scope_contains_place(place: str, file_place: str) -> bool:
+    """Return whether a curated file label explicitly embeds this locality.
+
+    Composite report labels such as ``Burlington Elizabeth Gardens`` point to
+    a specific CGNDB candidate in ``aliases.json``.  That explicit link is
+    strong enough to keep ``Elizabeth Gardens`` as the facility/locality under
+    the file label.  Mere text containment is not: ``Arthur`` and historical
+    ``Port Arthur`` are distinct populated places despite sharing a word.
+    """
+    entry = _alias_data()[0].get(_key(file_place))
+    candidate_id = entry.get("candidate_id") if entry is not None else None
+    candidate = _candidates()[1].get(str(candidate_id)) if candidate_id else None
+    return candidate is not None and _key(candidate.name) == _key(place)
+
+
 def resolve(name: str, year: int | None = None) -> Place | None:
     """Resolve an Ontario title label, or return ``None`` when it is not a place.
 
@@ -555,13 +570,49 @@ def scope_record_location(
         and resolved_scope is not None
         and resolved_raw.canonical.casefold() == resolved_scope.canonical.casefold()
     )
-    # Curated file labels may include a locality/facility that the gazetteer can
-    # also resolve independently (Elizabeth Gardens inside Burlington). A raw
-    # substring of that scoped label remains the more specific facility here.
-    nested_label = raw.casefold() in scope.casefold() or scope.casefold() in raw.casefold()
-    if resolved_raw is None or same_entity or nested_label:
+    # A curated file label can explicitly include a locality that also resolves
+    # independently (Elizabeth Gardens inside Burlington). Text containment by
+    # itself is insufficient: Arthur and Port Arthur are different places.
+    curated_relation = _curated_scope_contains_place(raw, scope)
+    if resolved_raw is None or same_entity or curated_relation:
         return scope, specific or raw
     return raw, specific
 
 
-__all__ = ["Place", "resolve", "scope_record_location"]
+def scope_record_dict(
+    record: Mapping[str, Any],
+    file_place: str | None,
+) -> dict[str, Any]:
+    """Return one record with its location interpreted in its file's scope.
+
+    Result files are the durable boundary that says which municipality or site
+    an extraction belongs to.  Every reader of those files must apply the same
+    transformation before computing record identities or dispute slots.  If
+    the portal normalises a record but export/dedup keeps the raw model field,
+    the same reading becomes two different claims on a round trip.
+
+    The model's original wording remains in ``raw.reported_place`` whenever
+    scoping changes it.  Callers receive a copy; source evidence on disk is not
+    rewritten.
+    """
+    scoped = dict(record)
+    period = scoped.get("period")
+    year = None
+    try:
+        year = int(str(period)[:4])
+    except (TypeError, ValueError):
+        pass
+    place, facility = scope_record_location(
+        scoped.get("place"), file_place, scoped.get("facility"), year,
+    )
+    raw = dict(scoped.get("raw") or {})
+    reported_place = " ".join(str(scoped.get("place") or "").split())
+    if reported_place and place != reported_place:
+        raw.setdefault("reported_place", reported_place)
+    scoped["place"] = place
+    scoped["facility"] = facility
+    scoped["raw"] = raw
+    return scoped
+
+
+__all__ = ["Place", "resolve", "scope_record_dict", "scope_record_location"]

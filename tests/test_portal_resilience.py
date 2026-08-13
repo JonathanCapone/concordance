@@ -57,6 +57,74 @@ def test_a_hanging_map_load_reaches_a_visible_degraded_state() -> None:
     assert "initializeMap();" in html
 
 
+def test_external_text_is_escaped_before_it_reaches_innerhtml() -> None:
+    html = render(PORTAL_STATE)
+
+    # Model output, server errors, OCR-derived decision fields, contribution
+    # metadata, and free-form notes all cross a trust boundary. Keep the
+    # expected wrappers explicit so a future view cannot quietly regress to
+    # interpolating one of them as markup.
+    expected = (
+        "${esc(d.error)}",
+        "${esc(d.reply)}",
+        '"<code>"+esc(t.tool)+"</code>"',
+        "${esc(d.message)}",
+        "${esc(d.caveat)}",
+        "${esc(r.river)}",
+        "${esc(x.outcome)}",
+        '${esc((x.against||[]).join(", ") || "—")}',
+        '${esc((p.roles||[])[0]||"")}',
+        "${esc(x.person)}",
+        "+ esc(d.what_happens_now);",
+        '${esc(r.claim_id)}',
+        "${esc(n)}",
+    )
+    for fragment in expected:
+        assert fragment in html
+
+    unsafe = (
+        "${d.error}",
+        "${d.reply}",
+        "${t.tool}",
+        "${x.outcome}",
+        "${x.person}",
+        "${d.what_happens_now}",
+        "+ d.what_happens_now",
+        "${r.claim_id}",
+    )
+    for fragment in unsafe:
+        assert fragment not in html
+
+
+def test_external_urls_are_scheme_checked_before_becoming_attributes() -> None:
+    html = render(PORTAL_STATE)
+
+    assert "const safeHttpUrl = value =>" in html
+    assert 'url.protocol === "http:" || url.protocol === "https:"' in html
+    assert "safeHttpUrl(x.page_url)" in html
+    assert "safeHttpUrl(d.page_url)" in html
+    assert "safeHttpUrl(d.crop_url)" in html
+    assert "safeHttpUrl(r.page_url)" in html
+    assert "safeHttpUrl(r.crop_url)" in html
+    for raw_attribute in (
+        'href="${x.page_url}"',
+        'href="${d.page_url}"',
+        'src="${d.crop_url}"',
+        'href="${r.page_url}"',
+        'src="${r.crop_url}"',
+    ):
+        assert raw_attribute not in html
+
+
+def test_citation_image_failure_keeps_an_escaped_page_fallback() -> None:
+    html = render(PORTAL_STATE)
+
+    assert "esc(d.note || d.error)" in html
+    assert "open the whole page ↗" in html
+    assert 'pageUrl ? `<a href="${pageUrl}"' in html
+    assert 'cropUrl = safeHttpUrl(d.crop_url)' in html
+
+
 def test_bundle_limiter_is_a_per_peer_sliding_window() -> None:
     limiter = server._BundleRateLimiter(limit=3, window=60.0)
 
@@ -72,7 +140,11 @@ def _bare_handler(path: str, body: bytes = b"") -> server.Handler:
     handler = object.__new__(server.Handler)
     handler.path = path
     handler.client_address = ("192.0.2.44", 4567)
-    handler.headers = {"Content-Length": str(len(body))}
+    handler.headers = {
+        "Content-Length": str(len(body)),
+        "Content-Type": "application/json",
+        "Host": "localhost:8765",
+    }
     handler.rfile = io.BytesIO(body)
     return handler
 

@@ -130,6 +130,21 @@ def test_thousands_separators_do_not_break_it():
     assert state == "ok"
 
 
+@pytest.mark.parametrize(
+    ("fabricated", "sentence"),
+    [
+        (12, "The value was 3120 mg/L."),
+        (1, "The value was 10 mg/L."),
+        (5, "The total operating cost was $53,549.66."),
+        (5, "The temperature was -5 C."),
+        (-5, "The temperature was 5 C."),
+    ],
+)
+def test_a_digit_substring_is_not_the_number_the_sentence_states(fabricated, sentence):
+    state, _ = _value_in_quote(fabricated, sentence)
+    assert state == "failed"
+
+
 # -- merging -----------------------------------------------------------------
 
 def test_merge_refuses_an_unverified_bundle():

@@ -70,3 +70,25 @@ def test_the_card_does_not_promise_more_than_the_page_behind_it():
     assert card.group(1) in page and card.group(2) in page, (
         "the card's year span does not appear on the page it links to"
     )
+
+
+@pytest.mark.skipif(
+    not (PORTAL / "index.html").exists() or not (PORTAL / "silence.html").exists(),
+    reason="no built silence pages",
+)
+def test_the_published_silence_claim_preserves_the_catalogue_boundary():
+    pages = "\n".join(
+        (PORTAL / name).read_text(encoding="utf-8")
+        for name in ("index.html", "silence.html")
+    ).lower()
+    for overclaim in (
+        "municipalities stop filing",
+        "municipalities stop reporting",
+        "what ontario stopped measuring",
+        "the silence is real",
+        "this one series died",
+    ):
+        assert overclaim not in pages
+    assert "title-derived report series" in pages
+    assert "individual gaps remain unexplained" in pages
+    assert "not a collection-wide scanning stop" in pages

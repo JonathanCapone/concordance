@@ -11,15 +11,15 @@ nothing, which is worse than a smaller portal that works.
 
 So the chrome is OMEGA's and the views are this project's:
 
-    Observe     where the measurements are
-    Record      one place, read out of the scans -- every number can show a
-                picture of the sentence it came from
-    Silence     what stopped being measured, and when
+    Observe     where the extracted records are
+    Record      one place, read out of the scans -- every number keeps its page
+                link and can show a crop when the image service permits
+    Silence     where title-derived series have no later indexed entry
     Rivers      who was downstream of whom, and what the method refused to link
     Verify      how accurate the reading is, against hand-checked ground truth
     Decisions   who moved what, who seconded, and how each person voted
-    Disputed    measurements two readings disagree about, shown side by side
-                with both crops, because nobody here adjudicates
+    Disputed    claims two readings disagree about, shown with source links and
+                available crops, because nobody here adjudicates
     Ask Jay    the agent, over the whole toolset
 
 This is the SERVING layer, and the one place allowed outside dependencies. The
@@ -186,7 +186,7 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
     <div class="header-stats">
       <div class="hstat"><b>{s['located']}</b><span>located</span></div>
       <div class="hstat"><b>{s['read']}</b><span>read</span></div>
-      <div class="hstat"><b>{s['records']}</b><span>measurements</span></div>
+      <div class="hstat"><b>{s['records']}</b><span>source-linked records</span></div>
       <div class="hstat"><b>{s['precision']:.0%}</b><span>precision</span></div>
       <div class="hstat"><b>{s['silent_n']}</b><span>silent {s['silent_year']}</span></div>
     </div>
@@ -229,10 +229,10 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
 
     <section class="view" data-view="silence">
       <div class="pane" id="silence-pane">
-        <h2>What stopped being measured</h2>
-        <p class="lede">A whole series vanishing at once usually means the scanning stopped,
-        not the reporting. So it is checked against the rest of the collection before it is
-        called a finding.</p>
+        <h2>Where the indexed record goes quiet</h2>
+        <p class="lede">A missing catalogue entry does not establish that reporting stopped.
+        These title-derived gaps are checked against broader collection activity to test for a
+        collection-wide scanning cutoff; each individual cause remains unknown.</p>
         <div id="silence-body"></div>
       </div>
     </section>
@@ -242,11 +242,10 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         <h2>Ask Jay</h2>
         <p class="lede">Jay answers only from the extracted record. It cannot answer from
         memory, every number it reports carries the page it was read from, and it will not
-        state that somewhere went quiet without the control that separates real silence from
-        the scanning having stopped.</p>
+        describe a title-series gap without the collection-wide control and its limits.</p>
         <div class="card">
           <div style="display:flex;gap:9px">
-            <input id="ask-input" placeholder="What did Owen Sound discharge?"
+            <input id="ask-input" maxlength="1000" placeholder="What did Owen Sound discharge?"
               style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
               border-radius:8px;color:#e8edf2;padding:10px 12px;font:inherit;font-size:14px">
             <button id="ask-go" style="background:var(--gt-hit);border:0;border-radius:8px;
@@ -297,9 +296,9 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
     <section class="view" data-view="decisions">
       <div class="pane">
         <h2>Who decided, and who voted against</h2>
-        <p class="lede">Minutes, agendas, hansard and commission hearings are 13,604 items —
-        13.1% of this collection — and they were the material most damaged by a routing bug
-        that discarded narrow columns. They are also the cheapest thing here to read: "It was
+        <p class="lede">A title-keyword census found roughly 13,600 minutes, agendas, hansard
+        and commission-hearing items. The civic parser is promising, but it does not yet have
+        the measurement path's hand-read benchmark. Such records can still be cheap to read: "It was
         moved by X and seconded by Y that Z. CARRIED." is a form that has barely changed in a
         century, so a pattern finds it. No model, no GPU, and a person can check it.</p>
         <p class="lede" style="opacity:.72">The control is the clerk's own tally. That "-16."
@@ -307,7 +306,7 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         it, the roll was misread and it says so rather than publishing a division quietly
         missing two people.</p>
         <div style="display:flex;gap:8px;margin:0 0 12px">
-          <input id="dec-id" placeholder="archive.org identifier" value="32022213341486"
+          <input id="dec-id" maxlength="256" placeholder="archive.org identifier" value="32022213341486"
             style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
                    border-radius:8px;padding:8px 11px;color:inherit;font:inherit">
           <button id="dec-go" style="background:var(--gt-hit);border:0;border-radius:8px;
@@ -320,10 +319,11 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
     <section class="view" data-view="disputed">
       <div class="pane">
         <h2>Where the readings disagree</h2>
-        <p class="lede">Every reading here cites a page and quotes a sentence, and the archive
-        checks both. When two readings survive that check and still disagree, nobody decides
-        between them — they are shown side by side with a picture of the paper each one came
-        from. You settle it in about two seconds. That is what lets this run with no moderator.</p>
+        <p class="lede">Every claim here keeps its cited archive page. Prose uses sentence
+        evidence; experimental table records retain cell locators but abstain without localized
+        cell proof. When two source-backed readings still disagree, nobody decides between them
+        — both remain visible with page links and crops when available. The evidence check
+        establishes what the cited page says, not which interpretation is correct.</p>
         <p class="lede" style="opacity:.72">Flagging one tells us people think it is wrong. It
         does not change the record: an objection with no evidence cannot outrank a sentence on a
         page, because then somebody would have to judge the objection. To change what is shown,
@@ -338,16 +338,16 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
             on exactly the same footing as everything the machine read. If it isn't, nothing is
             deleted and nobody has rejected you; the page did.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <input id="sb-id" placeholder="archive.org identifier">
-              <input id="sb-page" placeholder="page number" inputmode="numeric">
-              <input id="sb-param" placeholder="what was measured, e.g. BOD">
-              <input id="sb-value" placeholder="the number">
-              <input id="sb-unit" placeholder="unit, e.g. mg/L">
-              <input id="sb-place" placeholder="place">
-              <input id="sb-facility" placeholder="which plant / hospital / board (optional)">
-              <input id="sb-period" placeholder="year">
+              <input id="sb-id" maxlength="256" placeholder="archive.org identifier">
+              <input id="sb-page" maxlength="7" placeholder="page number" inputmode="numeric">
+              <input id="sb-param" maxlength="400" placeholder="what was measured, e.g. BOD">
+              <input id="sb-value" maxlength="100" placeholder="the number">
+              <input id="sb-unit" maxlength="400" placeholder="unit, e.g. mg/L">
+              <input id="sb-place" maxlength="400" placeholder="place">
+              <input id="sb-facility" maxlength="400" placeholder="which plant / hospital / board (optional)">
+              <input id="sb-period" maxlength="400" placeholder="year">
             </div>
-            <textarea id="sb-quote" rows="2" placeholder="the exact sentence, copied from the page"
+            <textarea id="sb-quote" rows="2" maxlength="4000" placeholder="the exact sentence, copied from the page"
               style="width:100%;margin-top:8px"></textarea>
             <button id="sb-go" style="margin-top:8px;background:var(--gt-hit);border:0;
               border-radius:8px;padding:8px 15px;font:inherit;cursor:pointer">Offer it</button>
@@ -379,6 +379,34 @@ const PRECISION = "{s['precision']:.0%}";
 const esc = v => String(v === null || v === undefined ? "" : v)
   .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
   .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+
+/* Attribute escaping does not make a URL safe: javascript:alert(1) contains
+   no markup to escape. Links and images built from records/API responses are
+   restricted to HTTP(S), then escaped for the quoted attribute. Relative
+   paths resolve against this instance and are therefore allowed too. */
+const safeHttpUrl = value => {{
+  try {{
+    const raw = String(value || "").trim();
+    if (!raw) return "";
+    const url = new URL(raw, window.location.origin);
+    return (url.protocol === "http:" || url.protocol === "https:") ? esc(url.href) : "";
+  }} catch (_) {{
+    return "";
+  }}
+}};
+
+/* Work that invokes a model/archive or changes process state is deliberately
+   JSON POST. Besides making browser prefetch and crawlers harmless, this is a
+   non-simple request cross-origin, and the server independently checks any
+   Origin it receives against its actual Host. */
+const postJson = async (path, payload) => {{
+  const response = await fetch(path, {{
+    method: "POST",
+    headers: {{"Content-Type": "application/json"}},
+    body: JSON.stringify(payload),
+  }});
+  return response.json();
+}};
 
 /* ---- view switching ------------------------------------------------ */
 const views = [...document.querySelectorAll(".view")];
@@ -415,11 +443,14 @@ function seriesHtml(d){{
     s.rows.forEach(x => {{
       const cite = x.identifier && x.page
         ? ` <button type="button" class="paper-btn" data-id="${{esc(x.identifier)}}"
-             data-page="${{x.page}}" data-quote="${{esc(encodeURIComponent(x.quote||""))}}"
+             data-page="${{esc(x.page)}}" data-quote="${{esc(encodeURIComponent(x.quote||""))}}"
              title="show the sentence on the scan">show the paper</button>` : "";
+      const scanUrl = safeHttpUrl(x.page_url);
+      const scanLink = scanUrl
+        ? ` <a href="${{scanUrl}}" target="_blank" rel="noopener">scan ↗</a>` : "";
       h += `<div class="row"><span class="y">${{esc(x.period||"")}}</span>`
          + `<span>${{esc(x.parameter)}}</span><span class="v">${{esc(x.value)}} ${{esc(x.unit||"")}}</span>`
-         + `<span class="src">“${{esc(x.read_from)}}” <a href="${{x.page_url}}" target="_blank" rel="noopener">scan ↗</a>${{cite}}`
+         + `<span class="src">“${{esc(x.read_from)}}”${{scanLink}}${{cite}}`
          + `<span class="paper"></span></span></div>`;
     }});
     h += `</div>`;
@@ -440,15 +471,39 @@ document.addEventListener("click", async ev => {{
     b.textContent = "show the paper"; return;
   }}
   b.textContent = "finding it…";
-  const d = await (await fetch("/api/citation?identifier=" + encodeURIComponent(b.dataset.id)
-      + "&page=" + b.dataset.page + "&quote=" + b.dataset.quote)).json();
-  if (d.error) {{ b.textContent = "not retrievable"; return; }}
+  const d = await postJson("/api/citation", {{
+    identifier: b.dataset.id,
+    page: Number(b.dataset.page),
+    quote: decodeURIComponent(b.dataset.quote || ""),
+  }});
+  const pageUrl = safeHttpUrl(d.page_url);
+  if (d.error) {{
+    holder.dataset.open = "1";
+    b.textContent = "hide";
+    holder.innerHTML = `<div style="font-size:11px;opacity:.72;margin-top:7px">${{
+      esc(d.note || d.error)}}</div>`
+      + (pageUrl ? `<a href="${{pageUrl}}" target="_blank" rel="noopener"
+          style="display:inline-block;margin-top:5px">open the whole page ↗</a>` : "");
+    return;
+  }}
+  const cropUrl = safeHttpUrl(d.crop_url);
+  if (!cropUrl) {{
+    holder.dataset.open = "1";
+    b.textContent = "hide";
+    holder.innerHTML = `<div style="font-size:11px;opacity:.72;margin-top:7px">${{
+      esc(d.note || "The scan image is unavailable.")}}</div>`
+      + (pageUrl ? `<a href="${{pageUrl}}" target="_blank" rel="noopener"
+          style="display:inline-block;margin-top:5px">open the whole page ↗</a>` : "");
+    return;
+  }}
   holder.dataset.open = "1";
   b.textContent = "hide";
   holder.innerHTML =
-    `<a href="${{d.page_url}}" target="_blank" rel="noopener" style="display:block;margin-top:7px">
-       <img src="${{d.crop_url}}" alt="the sentence this number was read from" loading="lazy"
-            style="max-width:100%;border-radius:6px;background:#f6f1e4"></a>`
+    (pageUrl ? `<a href="${{pageUrl}}" target="_blank" rel="noopener"
+        style="display:block;margin-top:7px">` : `<div style="display:block;margin-top:7px">`)
+    + `<img src="${{cropUrl}}" alt="the sentence this number was read from" loading="lazy"
+            style="max-width:100%;border-radius:6px;background:#f6f1e4">`
+    + (pageUrl ? "</a>" : "</div>")
     + (d.exact ? "" : `<div style="font-size:10px;opacity:.6;margin-top:3px">${{esc(d.note)}}</div>`);
 }});
 
@@ -462,18 +517,18 @@ async function openTown(p){{
   dockBody.innerHTML = `<h2>${{esc(p.place)}}</h2><div class="meta">loading…</div>`;
   const d = await (await fetch("/api/town?place=" + encodeURIComponent(p.place)
                    + "&raw=" + encodeURIComponent(p.raw||""))).json();
-  let h = `<h2>${{esc(p.place)}}</h2><div class="meta">${{p.years}} surviving reports · ${{p.first}}–${{p.last}}`
-        + (p.silent_since ? ` · <span style="color:var(--gt-hit)">silent since ${{p.silent_since}}</span>` : "")
+  let h = `<h2>${{esc(p.place)}}</h2><div class="meta">${{esc(p.years)}} surviving reports · ${{esc(p.first)}}–${{esc(p.last)}}`
+        + (p.silent_since ? ` · <span style="color:var(--gt-hit)">silent since ${{esc(p.silent_since)}}</span>` : "")
         + (d.facility ? ` · ${{esc(d.facility)}}` : "") + `</div>`;
   if(!d.found){{
     h += `<div class="empty">Nobody has read this one yet.<br><br>
-      ${{p.years}} scanned reports are waiting. The open-source reader can process
+      ${{esc(p.years)}} scanned reports are waiting. The open-source reader can process
       them locally and submit a bundle that this instance re-verifies.<br><br>
       A safe one-click browser-to-local handoff is fellowship work; this public
       site will not start an hours-long server job from a web request.</div>`;
   }} else {{
     h += seriesHtml(d);
-    h += `<div class="note">${{d.n_measurements}} measurements from ${{d.sources.length}} documents.
+    h += `<div class="note">${{esc(d.n_measurements)}} observations from ${{esc((d.sources||[]).length)}} documents.
       Every value was read from a scanned page by a language model and links back to it.
       Measured precision against hand-checked ground truth is ${{PRECISION}}.
       Nothing here should be believed without checking it.</div>`;
@@ -548,9 +603,9 @@ map.on("load", async () => {{
   map.on("mouseleave","dots",()=>map.getCanvas().style.cursor="");
   /* Frame the country, not the data. Every town read so far is in southern
      Ontario, so fitting to the dots opened the map on one province and quietly
-     implied that is what the archive covers. It is not: the corpus is national
-     (Ontario 12,467 items, Alberta 8,671, BC 468), and the emptiness everywhere
-     else is a finding rather than a background. Starting at Canada shows the
+     implied that is what the archive covers. It is not: the corpus is national,
+     while simple province-keyword counts are not reliable jurisdiction totals.
+     The emptiness elsewhere is a finding rather than a background. Starting at Canada shows the
      gap, which is the honest first impression and also the project's argument.
 
      Capped at 74N: Canada reaches 83.1N at Ellesmere, and including it spends
@@ -560,9 +615,8 @@ map.on("load", async () => {{
   geo.features.forEach(f=>b.extend(f.geometry.coordinates));
   map.fitBounds(b,{{padding:{{top:60,bottom:120,left:60,right:450}},duration:0}});
 
-  /* Timeline. A town is drawn only in the years it actually filed a report, so
-     scrubbing shows coverage blooming and then dying -- which is the point of
-     this archive as much as the measurements are. */
+  /* Timeline of dated catalogue-title entries. It shows the indexed collection,
+     not proof that a municipality did or did not report in a given year. */
   const years = [...new Set(geo.features.flatMap(f => f.properties.reported || []))]
                   .sort((a,b) => a-b);
   const range = document.getElementById("tl-range");
@@ -579,7 +633,7 @@ map.on("load", async () => {{
       map.setFilter("dots", null);
       map.setFilter("halo", ["==",["get","extracted"],true]);
       label.textContent = "ALL YEARS";
-      count.textContent = geo.features.length + " municipalities \\u00b7 "
+      count.textContent = geo.features.length + " title-derived place/site series \\u00b7 "
                         + years[0] + "\\u2013" + years[years.length-1];
       return;
     }}
@@ -596,8 +650,8 @@ map.on("load", async () => {{
     const n = geo.features.filter(f => f.properties._on).length;
     label.textContent = y;
     count.textContent = n
-      ? n + " municipalities reporting"
-      : "nothing reported \\u2014 the record is silent";
+      ? n + " series with a dated title entry"
+      : "no dated title entry in the loaded series";
   }}
 
   function stop(){{ if(timer){{ clearInterval(timer); timer = null; playBtn.innerHTML = "&#9654;"; }} }}
@@ -672,7 +726,7 @@ const LOADERS = {{
       const d = await (await fetch("/api/town?place="+encodeURIComponent(p.place)
                        +"&raw="+encodeURIComponent(p.raw||""))).json();
       h += `<div class="card"><h2 style="font-size:18px">${{esc(p.place)}}</h2>`
-         + `<p class="lede" style="margin-bottom:10px">${{p.years}} reports · ${{p.first}}–${{p.last}}`
+         + `<p class="lede" style="margin-bottom:10px">${{esc(p.years)}} reports · ${{esc(p.first)}}–${{esc(p.last)}}`
          + (d.facility?` · ${{esc(d.facility)}}`:"") + `</p>` + seriesHtml(d) + `</div>`;
     }}
     el.innerHTML = h || `<div class="card empty">Nothing read yet.</div>`;
@@ -681,24 +735,24 @@ const LOADERS = {{
   silence: async () => {{
     const d = await (await fetch("/api/quiet")).json();
     const el = document.getElementById("silence-body");
-    if(!d.available){{ el.innerHTML = `<div class="card empty">${{d.message}}</div>`; return; }}
+    if(!d.available){{ el.innerHTML = `<div class="card empty">${{esc(d.message)}}</div>`; return; }}
     const st = d.largest_simultaneous_stop || {{}};
-    let h = `<div class="card"><div class="big">${{st.municipalities}} of ${{d.n_municipalities}}</div>`
-          + `<p class="lede" style="margin:4px 0 0">municipalities stop filing reports in
-             <strong style="color:var(--gt-hit)">${{st.year}}</strong>.</p></div>`;
+    let h = `<div class="card"><div class="big">${{esc(st.municipalities)}} of ${{esc(d.n_municipalities)}}</div>`
+          + `<p class="lede" style="margin:4px 0 0">title-derived report series have no dated entry after
+             <strong style="color:var(--gt-hit)">${{esc(Number(st.year)-1)}}</strong>.</p></div>`;
     h += `<div class="card"><h3 style="margin:0 0 8px;font-size:11px;color:#6d7a86;
           text-transform:uppercase;letter-spacing:.06em">Did the collection itself stop?</h3>
           <table class="gt"><tr><th>series</th><th class="n">before</th><th class="n">after</th><th></th></tr>`;
     (d.control||[]).forEach(c => {{
       const grew = c.from_cliff_onward > c.before*0.5;
-      h += `<tr><td>${{c.series}}</td><td class="n">${{c.before.toLocaleString()}}</td>`
-         + `<td class="n">${{c.from_cliff_onward.toLocaleString()}}</td>`
+      h += `<tr><td>${{esc(c.series)}}</td><td class="n">${{esc(c.before)}}</td>`
+         + `<td class="n">${{esc(c.from_cliff_onward)}}</td>`
          + `<td style="color:${{grew?"#36e0c8":"#f0a24a"}}">${{grew?"keeps going":"also stops"}}</td></tr>`;
     }});
     h += `</table><p class="lede" style="margin:12px 0 0">${{d.control_verdict === "real"
-        ? "The archive kept growing while this one series died. <strong>The silence is real.</strong>"
-        : "The whole collection thins at once — probably a digitisation boundary."}}</p></div>`;
-    h += `<div class="card note" style="border:0;padding-left:11px">${{d.caveat}}</div>`;
+        ? "Broader publishing continued, so this is not a collection-wide scanning cutoff. Individual causes remain unknown."
+        : "The whole collection thins at once — a scanning boundary remains possible."}}</p></div>`;
+    h += `<div class="card note" style="border:0;padding-left:11px">${{esc(d.caveat)}}</div>`;
     el.innerHTML = h;
   }},
 
@@ -712,24 +766,24 @@ const LOADERS = {{
       go.disabled = true; go.textContent = "thinking…";
       out.innerHTML = `<div class="card empty">Reading the record…</div>` + out.innerHTML;
       try {{
-        const d = await (await fetch("/api/ask?q=" + encodeURIComponent(question))).json();
+        const d = await postJson("/api/ask", {{question}});
         let h = `<div class="card"><p class="lede" style="color:#e8edf2;margin:0 0 10px">`
               + `<strong style="color:var(--gt-hit)">Q</strong> ${{esc(question)}}</p>`;
         if(d.error){{
-          h += `<p class="empty">No answer: ${{d.error}}<br><br>Jay needs a local model
-                running (<code>ollama serve</code>), or an ANTHROPIC_API_KEY.</p>`;
+          h += `<p class="empty">No answer: ${{esc(d.error)}}<br><br>Jay needs its configured
+                local Ollama service running (<code>ollama serve</code>).</p>`;
         }} else {{
-          h += `<p style="margin:0;white-space:pre-wrap">${{d.reply}}</p>`;
+          h += `<p style="margin:0;white-space:pre-wrap">${{esc(d.reply)}}</p>`;
           if(d.tools && d.tools.length){{
             h += `<p style="margin:12px 0 0;font-size:11.5px;color:#6d7a86">`
-               + `Answered using: ${{d.tools.map(t=>"<code>"+t.tool+"</code>").join(", ")}}`
+               + `Answered using: ${{d.tools.map(t=>"<code>"+esc(t.tool)+"</code>").join(", ")}}`
                + ` — no part of this came from the model's own knowledge.</p>`;
           }}
         }}
         out.innerHTML = h + "</div>" + out.innerHTML.replace(
           `<div class="card empty">Reading the record…</div>`, "");
       }} catch(e) {{
-        out.innerHTML = `<div class="card empty">Request failed: ${{e}}</div>`
+        out.innerHTML = `<div class="card empty">Request failed: ${{esc(e)}}</div>`
           + out.innerHTML.replace(`<div class="card empty">Reading the record…</div>`,"");
       }}
       go.disabled = false; go.textContent = "Ask";
@@ -741,8 +795,8 @@ const LOADERS = {{
   rivers: async () => {{
     const el = document.getElementById("rivers-body");
     el.innerHTML = `<div class="card empty">Fetching river gauges…</div>`;
-    const d = await (await fetch("/api/watershed")).json();
-    if(d.error){{ el.innerHTML = `<div class="card empty">${{d.error}}</div>`; return; }}
+    const d = await postJson("/api/watershed", {{}});
+    if(d.error){{ el.innerHTML = `<div class="card empty">${{esc(d.error)}}</div>`; return; }}
     let h = "";
     d.rivers.forEach(r => {{
       const towns = [];
@@ -753,7 +807,7 @@ const LOADERS = {{
       towns.sort((a,b)=>a.area-b.area);
       const max = towns[towns.length-1].area || 1;
       h += `<div class="card"><h3 style="margin:0 0 12px;font-size:14px;font-weight:600;
-            text-transform:capitalize">${{r.river}}</h3>`;
+            text-transform:capitalize">${{esc(r.river)}}</h3>`;
       towns.forEach((t,i) => {{
         const w = 14 + 86*(t.area/max);
         h += `<div style="margin-bottom:3px">
@@ -769,11 +823,11 @@ const LOADERS = {{
     if(d.warnings && d.warnings.length){{
       h += `<div class="card"><h3 style="margin:0 0 8px;font-size:11px;color:#6d7a86;
             text-transform:uppercase;letter-spacing:.06em">What the method refused to link</h3>`;
-      d.warnings.forEach(w => h += `<p class="lede" style="margin:0 0 6px;color:#f0a24a">${{w}}</p>`);
+      d.warnings.forEach(w => h += `<p class="lede" style="margin:0 0 6px;color:#f0a24a">${{esc(w)}}</p>`);
       h += `<p class="lede" style="margin:8px 0 0">Shown because a page that displays only its
             successes teaches nobody where it fails.</p></div>`;
     }}
-    h += `<div class="card note" style="border:0;padding-left:11px">${{d.caveat||""}}</div>`;
+    h += `<div class="card note" style="border:0;padding-left:11px">${{esc(d.caveat||"")}}</div>`;
     el.innerHTML = h;
   }},
 
@@ -803,18 +857,18 @@ const LOADERS = {{
     const el = document.getElementById("frontier-body");
     el.innerHTML = `<div class="card note" style="border:0">Working out what is one
       document away…</div>`;
-    const d = await (await fetch("/api/frontier")).json();
-    if (d.error) {{ el.innerHTML = `<div class="card note" style="border:0">${{d.error}}</div>`; return; }}
+    const d = await postJson("/api/frontier", {{}});
+    if (d.error) {{ el.innerHTML = `<div class="card note" style="border:0">${{esc(d.error)}}</div>`; return; }}
     const c = d.counts || {{}};
 
     let h = `<div class="card"><table class="gt">
       <tr><th>state</th><th class="n">questions</th></tr>
-      <tr><td>answerable now</td><td class="n">${{c.answerable||0}}</td></tr>
-      <tr><td>waiting on a document</td><td class="n">${{c.waiting||0}}</td></tr>
+      <tr><td>answerable now</td><td class="n">${{esc(c.answerable||0)}}</td></tr>
+      <tr><td>waiting on a document</td><td class="n">${{esc(c.waiting||0)}}</td></tr>
       <tr><td>places read so far</td><td class="n">${{esc(c.places_read||0)}}</td></tr>
-      </table>${{esc(c.rivers_available ? "" :
+      </table>${{c.rivers_available ? "" :
         `<p class="lede" style="margin:8px 0 0">River questions need the live gauge list,
-         which is unavailable — trends, silences and council decisions are unaffected.</p>`)}}</div>`;
+         which is unavailable — trends, silences and council decisions are unaffected.</p>`}}</div>`;
 
     if ((d.places||[]).length) {{
       h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
@@ -825,10 +879,10 @@ const LOADERS = {{
       d.places.forEach(p => {{
         h += `<div style="margin:0 0 10px;padding-left:11px;border-left:2px solid var(--gt-hit)">
           <div style="font-size:13px"><strong>${{esc(p.place)}}</strong>
-            <span style="opacity:.6;font-size:11px">score ${{p.score}} ·
-            unlocks ${{p.unlocks_now}} question${{p.unlocks_now===1?"":"s"}} immediately</span></div>`;
+            <span style="opacity:.6;font-size:11px">score ${{esc(p.score)}} ·
+            unlocks ${{esc(p.unlocks_now)}} question${{p.unlocks_now===1?"":"s"}} immediately</span></div>`;
         (p.questions||[]).forEach(q => {{
-          h += `<div class="lede" style="margin:2px 0 0;font-size:11.5px">${{esc(q.replace(/</g,"&lt;"))}}</div>`;
+          h += `<div class="lede" style="margin:2px 0 0;font-size:11.5px">${{esc(q)}}</div>`;
         }});
         h += `</div>`;
       }});
@@ -839,8 +893,8 @@ const LOADERS = {{
       h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
             text-transform:uppercase;letter-spacing:.06em">Already answerable</h3>`;
       d.answerable.forEach(q => {{
-        h += `<div style="font-size:12px;margin:0 0 4px">${{esc(q.question.replace(/</g,"&lt;"))}}
-              <span style="opacity:.55;font-size:11px">— ${{q.detail}}</span></div>`;
+        h += `<div style="font-size:12px;margin:0 0 4px">${{esc(q.question)}}
+              <span style="opacity:.55;font-size:11px">— ${{esc(q.detail)}}</span></div>`;
       }});
       h += `</div>`;
     }}
@@ -848,8 +902,8 @@ const LOADERS = {{
     h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
           text-transform:uppercase;letter-spacing:.06em">Waiting</h3>`;
     (d.waiting||[]).slice(0,25).forEach(q => {{
-      h += `<div style="font-size:12px;margin:0 0 4px">${{esc(q.question.replace(/</g,"&lt;"))}}
-            <span style="opacity:.55;font-size:11px">— ${{q.distance}} document${{
+      h += `<div style="font-size:12px;margin:0 0 4px">${{esc(q.question)}}
+            <span style="opacity:.55;font-size:11px">— ${{esc(q.distance)}} document${{
               q.distance===1?"":"s"}} away</span></div>`;
     }});
     h += `</div>`;
@@ -862,30 +916,31 @@ const LOADERS = {{
       const id = document.getElementById("dec-id").value.trim();
       if (!id) return;
       el.innerHTML = `<div class="card note" style="border:0">Reading every page of
-        ${{id}} for motions and recorded votes…</div>`;
-      const d = await (await fetch("/api/decisions?identifier=" + encodeURIComponent(id))).json();
-      if (d.error) {{ el.innerHTML = `<div class="card note" style="border:0">${{d.error}}</div>`; return; }}
+        ${{esc(id)}} for motions and recorded votes…</div>`;
+      const d = await postJson("/api/decisions", {{identifier: id}});
+      if (d.error) {{ el.innerHTML = `<div class="card note" style="border:0">${{esc(d.error)}}</div>`; return; }}
 
       const o = d.outcomes || {{}};
       let h = `<div class="card"><table class="gt">
         <tr><th>found</th><th class="n">n</th></tr>
-        <tr><td>motions and recorded divisions</td><td class="n">${{d.motions||0}}</td></tr>
-        <tr><td>people named</td><td class="n">${{d.people||0}}</td></tr>
-        <tr><td>recorded votes</td><td class="n">${{d.recorded_votes||0}}</td></tr>
-        <tr><td>rolls that do not match the clerk's tally</td><td class="n">${{d.rolls_that_do_not_reconcile||0}}</td></tr>
+        <tr><td>motions and recorded divisions</td><td class="n">${{esc(d.motions||0)}}</td></tr>
+        <tr><td>people named</td><td class="n">${{esc(d.people||0)}}</td></tr>
+        <tr><td>recorded votes</td><td class="n">${{esc(d.recorded_votes||0)}}</td></tr>
+        <tr><td>rolls that do not match the clerk's tally</td><td class="n">${{esc(d.rolls_that_do_not_reconcile||0)}}</td></tr>
         </table>
         <p class="lede" style="margin:8px 0 0">${{
-          Object.entries(o).map(([k,v]) => `${{v}} ${{k}}`).join(" · ")}}</p></div>`;
+          Object.entries(o).map(([k,v]) => `${{esc(v)}} ${{esc(k)}}`).join(" · ")}}</p></div>`;
 
       if ((d.divided||[]).length) {{
         h += `<div class="card"><h3 style="margin:0 0 8px;font-size:11px;color:#6d7a86;
               text-transform:uppercase;letter-spacing:.06em">Where they disagreed</h3>`;
         d.divided.forEach(x => {{
+          const decisionPage = safeHttpUrl(x.page_url);
           h += `<div style="margin:0 0 10px;padding-left:11px;border-left:2px solid rgba(255,255,255,.14)">
-            <div style="font-size:12px">${{esc((x.text||"").replace(/</g,"&lt;"))}}</div>
+            <div style="font-size:12px">${{esc(x.text||"")}}</div>
             <div class="lede" style="margin:3px 0 0;font-size:11px">
-              ${{x.outcome}} · against: ${{(x.against||[]).join(", ") || "—"}}
-              ${{x.page_url ? ` · <a href="${{x.page_url}}" target="_blank" rel="noopener">the page</a>` : ""}}
+              ${{esc(x.outcome)}} · against: ${{esc((x.against||[]).join(", ") || "—")}}
+              ${{decisionPage ? ` · <a href="${{decisionPage}}" target="_blank" rel="noopener">the page</a>` : ""}}
             </div></div>`;
         }});
         h += `</div>`;
@@ -898,9 +953,9 @@ const LOADERS = {{
               <th class="n">seconded</th><th class="n">yea</th><th class="n">nay</th></tr>`;
         d.most_active.forEach(p => {{
           const v = p.votes || {{}};
-          h += `<tr><td>${{esc(p.name)}}</td><td>${{(p.roles||[])[0]||""}}</td>
-                <td class="n">${{p.moved||0}}</td><td class="n">${{p.seconded||0}}</td>
-                <td class="n">${{v.yea||0}}</td><td class="n">${{v.nay||0}}</td></tr>`;
+          h += `<tr><td>${{esc(p.name)}}</td><td>${{esc((p.roles||[])[0]||"")}}</td>
+                <td class="n">${{esc(p.moved||0)}}</td><td class="n">${{esc(p.seconded||0)}}</td>
+                <td class="n">${{esc(v.yea||0)}}</td><td class="n">${{esc(v.nay||0)}}</td></tr>`;
         }});
         h += `</table></div>`;
       }}
@@ -911,13 +966,13 @@ const LOADERS = {{
               <p class="lede" style="margin:0 0 6px">Most recorded votes are unanimous, so a
               nay is the rarest and most informative thing in the record.</p>`;
         d.dissenters.forEach(x => {{
-          h += `<div style="font-size:12px">${{x.person}} — ${{x.nays}} against, ${{x.yeas}} for</div>`;
+          h += `<div style="font-size:12px">${{esc(x.person)}} — ${{esc(x.nays)}} against, ${{esc(x.yeas)}} for</div>`;
         }});
         h += `</div>`;
       }}
 
       (d.not_measured||[]).forEach(n => {{
-        h += `<div class="card note" style="border:0;padding-left:11px">${{n}}</div>`;
+        h += `<div class="card note" style="border:0;padding-left:11px">${{esc(n)}}</div>`;
       }});
       el.innerHTML = h;
     }};
@@ -936,32 +991,34 @@ const LOADERS = {{
         return;
       }}
       out.textContent = "Asking the page…";
-      const qs = new URLSearchParams({{
+      const submission = {{
         identifier: v("sb-id"), page: v("sb-page"), parameter: v("sb-param"),
         value: v("sb-value"), unit: v("sb-unit"), place: v("sb-place"),
         facility: v("sb-facility"), period: v("sb-period"), quote: v("sb-quote"),
-      }});
-      const d = await (await fetch("/api/submit?" + qs)).json();
+      }};
+      const d = await postJson("/api/submit", submission);
       out.innerHTML = (d.accepted
           ? `<strong style="color:#36e0c8">In the record.</strong> `
           : `<strong style="color:#f0a24a">Not in the record.</strong> `)
-        + d.what_happens_now;
+        + esc(d.what_happens_now);
       if (d.accepted) LOADERS.disputed();
     }};
     el.innerHTML = `<div class="card note" style="border:0">Checking every claim against the
       scans it cites…</div>`;
-    const d = await (await fetch("/api/ledger")).json();
+    const d = await postJson("/api/ledger", {{}});
+    if (d.error) {{ el.innerHTML = `<div class="card note" style="border:0">${{
+      esc(d.error)}}</div>`; return; }}
 
     let h = `<div class="card"><table class="gt">
-      <tr><th>state</th><th class="n">measurements</th><th>what it means</th></tr>
-      <tr><td>settled</td><td class="n">${{d.settled||0}}</td><td>one reading, and the page backs it</td></tr>
-      <tr><td>contested</td><td class="n">${{d.contested||0}}</td><td>two readings, both backed by the page — shown, not chosen between</td></tr>
-      <tr><td>unsupported</td><td class="n">${{d.unsupported||0}}</td><td>nothing surviving cites a sentence that is really there</td></tr>
-      <tr><td>flags raised</td><td class="n">${{d.flags||0}}</td><td>counted, shown, and inert by design</td></tr>
+      <tr><th>state</th><th class="n">claims</th><th>what it means</th></tr>
+      <tr><td>settled</td><td class="n">${{esc(d.settled||0)}}</td><td>one claim survives its cited-page evidence check</td></tr>
+      <tr><td>contested</td><td class="n">${{esc(d.contested||0)}}</td><td>two source-backed readings disagree — shown, not chosen between</td></tr>
+      <tr><td>unsupported</td><td class="n">${{esc(d.unsupported||0)}}</td><td>no claim survives the available cited-page evidence check</td></tr>
+      <tr><td>flags raised</td><td class="n">${{esc(d.flags||0)}}</td><td>counted, shown, and inert by design</td></tr>
       </table></div>`;
 
     (d.contested_detail || []).forEach(slot => {{
-      const parts = slot.slot.split("|");
+      const parts = String(slot.slot || "").split("|");
       const title = parts.filter(Boolean).join(" · ") || "(unnamed)";
       h += `<div class="card"><h3 style="margin:0 0 4px;font-size:12px">${{esc(title)}}</h3>`;
       h += `<p class="lede" style="margin:0 0 10px">${{esc(
@@ -971,19 +1028,22 @@ const LOADERS = {{
       )}}${{slot.n_flags ? ` · ${{esc(slot.n_flags)}} reader flag(s)` : ""}}</p>`;
       h += `<div style="display:flex;gap:14px;flex-wrap:wrap">`;
       (slot.readings || []).forEach(r => {{
+        const pageUrl = safeHttpUrl(r.page_url);
+        const cropUrl = safeHttpUrl(r.crop_url);
         h += `<div style="flex:1 1 280px;min-width:260px;border:1px solid rgba(255,255,255,.09);
               border-radius:10px;padding:10px">
           <div style="font-size:20px;font-weight:600">${{esc(r.value)}} <span
               style="font-size:12px;opacity:.6">${{esc(r.unit||"")}}</span></div>
           <div style="font-size:11px;opacity:.6;margin:2px 0 8px">${{esc(r.contributor||"extraction")}}</div>`;
-        if (r.crop_url) {{
-          h += `<a href="${{r.page_url}}" target="_blank" rel="noopener">
-                <img src="${{r.crop_url}}" alt="the sentence this number was read from"
-                     loading="lazy" style="width:100%;border-radius:6px;background:#f6f1e4"></a>`;
+        if (cropUrl) {{
+          h += (pageUrl ? `<a href="${{pageUrl}}" target="_blank" rel="noopener">` : `<div>`)
+            + `<img src="${{cropUrl}}" alt="the sentence this number was read from"
+                     loading="lazy" style="width:100%;border-radius:6px;background:#f6f1e4">`
+            + (pageUrl ? `</a>` : `</div>`);
         }}
         h += `<div class="lede" style="margin:8px 0 0;font-size:11px">“${{esc(
-              (r.quote||"").replace(/</g,"&lt;"))}}”</div>
-          <button type="button" data-claim="${{r.claim_id}}" class="flag-btn"
+              r.quote||"")}}”</div>
+          <button type="button" data-claim="${{esc(r.claim_id)}}" class="flag-btn"
             style="margin-top:8px;background:transparent;border:1px solid rgba(255,255,255,.16);
                    color:inherit;border-radius:7px;padding:4px 9px;font:inherit;font-size:11px;
                    cursor:pointer">Looks wrong</button>
@@ -999,14 +1059,21 @@ const LOADERS = {{
     }}
 
     (d.not_measured || []).forEach(n => {{
-      h += `<div class="card note" style="border:0;padding-left:11px">${{n}}</div>`;
+      h += `<div class="card note" style="border:0;padding-left:11px">${{esc(n)}}</div>`;
     }});
     el.innerHTML = h;
 
     el.querySelectorAll(".flag-btn").forEach(b => b.onclick = async () => {{
       const reason = prompt("What looks wrong about it?") || "";
-      await fetch("/api/flag?claim=" + encodeURIComponent(b.dataset.claim)
-                  + "&reason=" + encodeURIComponent(reason));
+      if (reason.length > 400) {{
+        alert("Please keep the reason to 400 characters or fewer.");
+        return;
+      }}
+      const d = await postJson("/api/flag", {{claim: b.dataset.claim, reason}});
+      if (d.error) {{
+        b.textContent = "Could not flag: " + d.error;
+        return;
+      }}
       b.textContent = "Flagged — the record is unchanged";
       b.disabled = true;
       b.style.opacity = ".6";

@@ -97,9 +97,9 @@ def build_tools(corpus: Corpus) -> dict[str, Tool]:
         ),
         Tool(
             "what_went_quiet",
-            "Which municipalities stopped being measured and when, WITH the control "
-            "that distinguishes real institutional silence from the digitisation "
-            "simply stopping. Never quote the finding without the control.",
+            "Which title-derived report series have no later indexed entry, WITH "
+            "the control that argues against a collection-wide scanning stop. The "
+            "control does not explain any individual place gap; always say so.",
             {"year": {**I, "description": "optional: only places silent from this year"}},
             (),
             lambda year=None: what_went_quiet(year=year),
@@ -143,11 +143,11 @@ def build_tools(corpus: Corpus) -> dict[str, Tool]:
         ),
         Tool(
             "show_the_paper",
-            "A picture of the patch of scan a number is written on -- the sentence "
-            "for a prose reading, the cell for a table one. Use this whenever "
+            "The cited archive page and, when the image service and word boxes allow, "
+            "a focused crop of the sentence or table cell. Use this whenever "
             "somebody doubts a figure, or asks to see it, or when two readings "
-            "disagree: an image of the page settles in seconds what an argument "
-            "cannot settle at all.",
+            "disagree. The source check establishes whether the cited page evidence "
+            "exists; it does not settle whether its interpretation is correct.",
             {"identifier": S, "page": I, "quote": S},
             ("identifier", "page"),
             _show_the_paper,
@@ -165,8 +165,8 @@ def build_tools(corpus: Corpus) -> dict[str, Tool]:
         ),
         Tool(
             "what_is_disputed",
-            "Measurements where two readings both survive checking against the scans "
-            "and still disagree, each with a picture of the sentence it came from. "
+            "Measurements where two readings both survive cited-page evidence checks "
+            "and still disagree, each with a source link and a crop when available. "
             "Nobody adjudicates these, so say plainly that the record is contested "
             "and show both rather than picking one.",
             {"limit": I},
@@ -218,18 +218,18 @@ def _who_decided(identifier: str, body: str = "") -> dict[str, Any]:
 
 
 def _what_is_disputed(limit: int = 10) -> dict[str, Any]:
-    from .disputes import load_claims, resolve as resolve_claims
+    from .disputes import load_public_claims, resolve as resolve_claims
 
-    ledger = resolve_claims(load_claims())
+    ledger = resolve_claims(load_public_claims())
     return {
         "settled": len(ledger.settled()),
         "contested": len(ledger.contested()),
         "unsupported": len(ledger.unsupported()),
         "disputes": [s.to_dict() for s in ledger.contested()[: max(1, int(limit))]],
         "how_to_read_it": (
-            "A contested measurement has two readings that BOTH cite a real "
-            "sentence on a real page. Neither has been rejected and neither is "
-            "preferred. Report both."
+            "A contested measurement has two readings that both survive their "
+            "cited-page evidence checks. Neither is preferred. Report both and "
+            "say that evidence presence does not settle interpretation."
         ),
     }
 
@@ -245,8 +245,9 @@ Rules, in order of importance:
 2. Every number you report must carry where it came from -- the year, the place,
    and the fact that it was read from a scanned page. If a tool returns a page
    link, include it.
-3. These figures were read off sixty-year-old scans by a language model, not
-   transcribed by a person. Measured precision is about 89%. Say so when a
+3. These figures were read from old scans by a language model, not transcribed
+   by a person. The frozen benchmark measured 96.8% precision on four pages and
+   68 gold values — an early signal, not a corpus-wide guarantee. Say so when a
    number is load-bearing to your answer.
 4. When judging whether a measurement was bad, use judge_reading so it is
    compared against the rule in force AT THE TIME. Comparing a 1969 reading to a
@@ -268,8 +269,8 @@ class Turn:
 class Jay:
     """The tool-calling loop.
 
-    Ollama by default so the assistant works with no API key, like everything
-    else in this project; Anthropic when a key happens to be present.
+    Jay uses the configured Ollama endpoint and does not inspect API-key
+    environment variables.
     """
 
     def __init__(self, corpus: Corpus, model: str = "gemma4:12b",
@@ -319,8 +320,7 @@ class Jay:
                         "the model did not answer in time. One GPU serves one job "
                         "at a time, so a corpus extraction running in the "
                         "background will queue this behind it. Try again when it "
-                        "finishes, or set ANTHROPIC_API_KEY to answer without the "
-                        "local model."
+                        "finishes. Jay uses the configured local Ollama endpoint."
                     )
                 return Turn(reply="", tool_calls=called, error=detail)
 

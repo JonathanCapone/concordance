@@ -1,8 +1,8 @@
 """Measure the vision path across the corpus, not on one lucky page.
 
-The single-page proof (Brantford 1962 p15) showed qwen3.6 recovering all twelve
-values that survived in the OCR, and 27 records from a page whose text layer is
-unusable. Two numbers were then carried into planning that only one page
+The single-page proof (Brantford 1962 p15) showed qwen3.6 recovering 10 of 12
+values identified in the OCR beforehand, and 27 records from a page whose text
+layer is badly degraded. Two numbers were then carried into planning that only one page
 supports: **27 records per table page**, and **28.3 minutes per page**. The first
 decides what share of the archive's measurements live behind the vision path --
 and therefore how much of this work contributors can do at all. The second was a
@@ -166,7 +166,7 @@ def main() -> None:
         # A page that FAILED is not a page that is finished. Recording an error
         # under the same key as a result meant a resume skipped it forever, so
         # one transient 500 from the model server lost a page permanently --
-        # silently, because the run reported it as done. At 15.4 million pages
+        # silently, because the run reported it as done. At corpus scale
         # that is the difference between a gap and a hole.
         if key in done and "error" not in done[key]:
             continue

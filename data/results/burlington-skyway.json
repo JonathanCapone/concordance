@@ -1,9 +1,0 @@
-{
-  "place": "Burlington Skyway",
-  "model": "ollama:gemma4:12b",
-  "n_records": 0,
-  "pages_attempted": [
-    "burlingtonskyway23761#3"
-  ],
-  "records": []
-}

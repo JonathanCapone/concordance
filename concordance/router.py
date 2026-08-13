@@ -11,7 +11,7 @@ document-level classifier would send a 1969 annual report down one path and
 discard whichever half didn't match.
 
 Routing is deliberately cheap and local -- no model call. It runs over the whole
-59 GB corpus to decide which pages are worth spending a model on, so it must be
+OCR corpus to decide which pages are worth spending a model on, so it must be
 fast and it must fail toward inclusion: a page wrongly sent to a model costs
 fractions of a cent, a page wrongly skipped is data lost silently.
 """

@@ -1,7 +1,7 @@
 """Internet Archive adapter.
 
-Reads the `governmentpublications` collection -- 104,241 items, 22.1 million
-scanned pages, roughly 59 GB of OCR text. Everything here is cached to disk and
+Reads a snapshot of the `governmentpublications` collection -- 104,241 items,
+22.1 million scanned pages and tens of gigabytes of OCR text. Everything here is cached to disk and
 resumable, because a full pass takes days and archive.org is a charity whose
 bandwidth we are borrowing.
 
@@ -48,19 +48,74 @@ INDEX_FIELDS = (
     "publisher,imagecount,downloads,item_size"
 )
 
+# Internet Archive identifiers are deliberately much narrower than paths or
+# URLs.  Keeping that distinction at this boundary matters because the same
+# public value is used in both cache filenames and archive.org URLs.
+_IDENTIFIER_RE = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,99}\Z", re.ASCII)
+_WINDOWS_DEVICE_NAMES = frozenset(
+    {"CON", "PRN", "AUX", "NUL"}
+    | {f"COM{n}" for n in range(1, 10)}
+    | {f"LPT{n}" for n in range(1, 10)}
+)
+
 
 class ArchiveError(RuntimeError):
     pass
 
 
-def _get(url: str, *, timeout: float = 180.0, retries: int = 4) -> bytes:
+def _require_safe_identifier(value: str, *, label: str = "identifier") -> str:
+    """Return a cache/URL-safe Internet Archive identifier or refuse it.
+
+    IA identifiers use ASCII letters, digits, periods, underscores and
+    hyphens.  Requiring an alphanumeric first character rejects dot traversal;
+    the allow-list also rejects separators, drive/ADS syntax, controls,
+    whitespace and URL metacharacters.  Windows device names need an explicit
+    check because names such as ``CON.json`` do not behave like ordinary files.
+    """
+    if not isinstance(value, str) or not _IDENTIFIER_RE.fullmatch(value):
+        raise ArchiveError(f"unsafe archive {label}: {value!r}")
+    if value.split(".", 1)[0].upper() in _WINDOWS_DEVICE_NAMES:
+        raise ArchiveError(f"unsafe archive {label}: {value!r}")
+    return value
+
+
+MAX_DOWNLOAD_BYTES = 64 * 1024 * 1024
+MAX_ITEM_METADATA_BYTES = 16 * 1024 * 1024
+MAX_OCR_TEXT_BYTES = 64 * 1024 * 1024
+MAX_DJVU_XML_BYTES = 64 * 1024 * 1024
+MAX_PAGE_IMAGE_BYTES = 32 * 1024 * 1024
+
+
+def _get(
+    url: str,
+    *,
+    timeout: float = 180.0,
+    retries: int = 4,
+    max_bytes: int = MAX_DOWNLOAD_BYTES,
+) -> bytes:
     """Fetch with backoff. Transient 5xx and timeouts are normal at this scale."""
     last: Exception | None = None
     for attempt in range(retries):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                return resp.read()
+                header = resp.headers.get("Content-Length")
+                if header is not None:
+                    try:
+                        if int(header) > max_bytes:
+                            raise ArchiveError(
+                                f"archive response exceeds {max_bytes} bytes: {url}"
+                            )
+                    except ValueError:
+                        pass
+                data = resp.read(max_bytes + 1)
+                if len(data) > max_bytes:
+                    raise ArchiveError(
+                        f"archive response exceeds {max_bytes} bytes: {url}"
+                    )
+                return data
+        except ArchiveError:
+            raise
         except urllib.error.HTTPError as exc:
             # 404 will never succeed on retry; don't waste the archive's time.
             if exc.code == 404:
@@ -80,15 +135,24 @@ class Archive:
     """
 
     def __init__(self, cache_dir: str | Path = "data/cache", collection: str = COLLECTION) -> None:
-        self.collection = collection
-        self.cache = Path(cache_dir)
-        (self.cache / "meta").mkdir(parents=True, exist_ok=True)
-        (self.cache / "text").mkdir(parents=True, exist_ok=True)
+        self.collection = _require_safe_identifier(collection, label="collection")
+        self.cache = Path(cache_dir).expanduser().resolve(strict=False)
+        self._cache_path("meta").mkdir(parents=True, exist_ok=True)
+        self._cache_path("text").mkdir(parents=True, exist_ok=True)
+
+    def _cache_path(self, *parts: str) -> Path:
+        """Build a resolved cache path and prove it remains below the cache."""
+        candidate = self.cache.joinpath(*parts).resolve(strict=False)
+        try:
+            candidate.relative_to(self.cache)
+        except ValueError as exc:
+            raise ArchiveError("archive cache path escaped its configured directory") from exc
+        return candidate
 
     # -- index ------------------------------------------------------------
 
     def index_path(self) -> Path:
-        return self.cache / f"index_{self.collection}.json"
+        return self._cache_path(f"index_{self.collection}.json")
 
     def fetch_index(self, *, force: bool = False) -> list[dict[str, Any]]:
         """The whole collection index. ~104k rows; a few minutes cold, instant warm."""
@@ -125,14 +189,18 @@ class Archive:
     # -- per item ---------------------------------------------------------
 
     def metadata(self, identifier: str) -> dict[str, Any]:
-        path = self.cache / "meta" / f"{identifier}.json"
+        identifier = _require_safe_identifier(identifier)
+        path = self._cache_path("meta", f"{identifier}.json")
         if path.exists():
             return json.loads(path.read_text(encoding="utf-8"))
-        data = json.loads(_get(f"{_META}/{identifier}").decode())
+        data = json.loads(_get(
+            f"{_META}/{identifier}", max_bytes=MAX_ITEM_METADATA_BYTES,
+        ).decode())
         path.write_text(json.dumps(data), encoding="utf-8")
         return data
 
     def _ocr_filename(self, identifier: str) -> str | None:
+        identifier = _require_safe_identifier(identifier)
         for f in self.metadata(identifier).get("files", []):
             name = f.get("name", "")
             if name.endswith("_djvu.txt"):
@@ -145,7 +213,8 @@ class Archive:
         In a 150-item sample every item had one, but 'every item so far' is not
         'every item', so callers must handle None.
         """
-        path = self.cache / "text" / f"{identifier}.txt"
+        identifier = _require_safe_identifier(identifier)
+        path = self._cache_path("text", f"{identifier}.txt")
         if path.exists():
             return path.read_text(encoding="utf-8", errors="replace")
 
@@ -153,13 +222,13 @@ class Archive:
         if not name:
             return None
         url = f"{_DOWNLOAD}/{identifier}/{urllib.parse.quote(name)}"
-        text = _get(url).decode("utf-8", "replace")
+        text = _get(url, max_bytes=MAX_OCR_TEXT_BYTES).decode("utf-8", "replace")
         path.write_text(text, encoding="utf-8")
         return text
 
     # -- pages ------------------------------------------------------------
     #
-    # Two-tier by necessity. `_djvu.txt` is ~15 KB/item (59 GB corpus-wide) and
+    # Two-tier by necessity. `_djvu.txt` is small enough for a corpus-wide text pass and
     # is what the cheap filter pass reads -- but it has NO page markers at all,
     # so it cannot carry provenance. `_djvu.xml` is ~271 KB/item (~1 TB
     # corpus-wide, far too much for a full pass) but has real page boundaries
@@ -167,7 +236,8 @@ class Archive:
     # items that earn it.
 
     def _page_cache(self, identifier: str) -> Path:
-        return self.cache / "pages" / f"{identifier}.json"
+        identifier = _require_safe_identifier(identifier)
+        return self._cache_path("pages", f"{identifier}.json")
 
     def pages(self, identifier: str, *, with_words: bool = False) -> list[PageText]:
         """Real pages, parsed from `_djvu.xml` and cached in compact form.
@@ -175,6 +245,7 @@ class Archive:
         The raw XML is discarded after parsing -- keeping it would bloat the
         cache by an order of magnitude for data we have already extracted.
         """
+        identifier = _require_safe_identifier(identifier)
         cache = self._page_cache(identifier)
         cache.parent.mkdir(parents=True, exist_ok=True)
 
@@ -207,6 +278,7 @@ class Archive:
         return out
 
     def _parse_djvu_xml(self, identifier: str) -> dict[str, Any] | None:
+        identifier = _require_safe_identifier(identifier)
         name = None
         for f in self.metadata(identifier).get("files", []):
             if f.get("name", "").endswith("_djvu.xml"):
@@ -216,7 +288,10 @@ class Archive:
             return None
 
         try:
-            raw = _get(f"{_DOWNLOAD}/{identifier}/{urllib.parse.quote(name)}").decode(
+            raw = _get(
+                f"{_DOWNLOAD}/{identifier}/{urllib.parse.quote(name)}",
+                max_bytes=MAX_DJVU_XML_BYTES,
+            ).decode(
                 "utf-8", "replace"
             )
         except ArchiveError:
@@ -292,15 +367,14 @@ class Archive:
         return {"identifier": identifier, "pages": pages}
 
     def _fallback_pages(self, identifier: str) -> list[PageText]:
-        """No usable XML: return the whole item as one page, honestly labelled.
+        """No usable XML: abstain because the OCR has no page boundaries.
 
         A wrong page number is worse than a missing one -- provenance is what
-        makes a claim checkable, so we never guess at boundaries.
+        makes a claim checkable, so we never guess at boundaries.  The whole
+        item remains available through :meth:`ocr_text` for coarse filtering.
         """
-        text = self.ocr_text(identifier)
-        if not text:
-            return []
-        return [PageText(identifier=identifier, page=1, text=text)]
+        identifier = _require_safe_identifier(identifier)
+        return []
 
     # -- page images (the vision / map / figure paths) --------------------
 
@@ -317,21 +391,27 @@ class Archive:
         Width matters: a 1969 table is unreadable at w500, which is the
         difference between the vision path working and not.
         """
+        identifier = _require_safe_identifier(identifier)
         w = min(int(width), self.MAX_PAGE_WIDTH)
         return f"https://archive.org/download/{identifier}/page/n{page - 1}_w{w}.jpg"
 
     def page_image(self, identifier: str, page: int, *, width: int = 1500) -> bytes:
         """Page image bytes, cached on disk."""
+        identifier = _require_safe_identifier(identifier)
         w = min(int(width), self.MAX_PAGE_WIDTH)
-        path = self.cache / "images" / f"{identifier}_n{page - 1}_w{w}.jpg"
+        path = self._cache_path("images", f"{identifier}_n{page - 1}_w{w}.jpg")
         path.parent.mkdir(parents=True, exist_ok=True)
         if path.exists():
             return path.read_bytes()
-        data = _get(self.page_image_url(identifier, page, width=w))
+        data = _get(
+            self.page_image_url(identifier, page, width=w),
+            max_bytes=MAX_PAGE_IMAGE_BYTES,
+        )
         path.write_bytes(data)
         return data
 
     def has_page_images(self, identifier: str) -> bool:
+        identifier = _require_safe_identifier(identifier)
         names = [f.get("name", "") for f in self.metadata(identifier).get("files", [])]
         return any(n.endswith(("_jp2.zip", "_jp2.tar")) for n in names) or any(
             n.endswith(".pdf") for n in names

@@ -49,11 +49,11 @@ def main() -> int:
     if silence:
         cards.append((
             "silence.html",
-            "What Ontario stopped measuring",
+            "Where Ontario's indexed record goes quiet",
             f"{stop.get('municipalities','?')} of {silence.get('n_municipalities','?')} "
-            f"municipalities stop filing water pollution control plant reports in "
-            f"{stop.get('year','?')} — checked against the archive's own growth to rule out "
-            "a digitisation boundary.",
+            f"title-derived report series have no dated entry after "
+            f"{stop.get('year', 1975) - 1 if isinstance(stop.get('year'), int) else '?'}; "
+            "broader ministry publishing continues, but individual gaps remain unexplained.",
         ))
 
     cards.append((
@@ -102,7 +102,7 @@ def main() -> int:
         stat("104,241", "documents in the collection"),
         stat("22.1M", "scanned pages"),
         stat(f"{totals.get('precision', 0):.0%}" if totals else "—", "extraction precision"),
-        stat(f"{msum.get('proposals', 0):,}" if msum else "—", "metadata repairs proposed"),
+        stat(f"{msum.get('proposals', 0):,}" if msum else "—", "catalogue-field proposals"),
         stat("90", "median downloads per document"),
     ])
 
@@ -138,9 +138,9 @@ a.plain{{color:inherit}}
 <p class="lede">Reading Canada's public record as a hundred-year instrument.</p>
 <p class="quiet">
   Internet Archive Canada holds 104,241 scanned government publications. Inside them are
-  measurements of the physical condition of the country — air, water, soil — town by town, from
-  1841 onward. Almost nobody has read them. Every civil servant who wrote a measurement down was a
-  node in a sensor network that ran for 150 years and was never once read as a network.
+  records of the physical condition of the country — air, water, soil — town by town, from
+  1841 onward. Concordance tests what becomes possible when those scattered documents are read as
+  one connected historical monitoring record.
 </p>
 
 <div class="stats">{stats}</div>
@@ -149,8 +149,8 @@ a.plain{{color:inherit}}
 
 <p class="note">
   These figures were recovered from scanned paper by a language model, not transcribed by a person.
-  Measured accuracy against hand-checked ground truth is published in the repository, including the
-  failures. Every number on every page here links back to the scan it came from, because a
+  The early four-page benchmark and its failures are published in the repository. Every published
+  number here carries its cited archive page, because a
   measurement read out of a sixty-year-old scan has no authority on its own — it earns authority by
   being trivially easy to check.
 </p>

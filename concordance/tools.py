@@ -20,7 +20,7 @@ from typing import Any
 
 from .models import Provenance, Record
 from .parameters import resolve as resolve_parameter
-from .places import scope_record_location
+from .places import scope_record_dict
 from .science import series_from_records, silence, trend
 
 # --------------------------------------------------------------------------
@@ -194,33 +194,23 @@ class Corpus:
             place = payload.get("place")
             if place and place not in places:
                 places.append(place)
-            for d in payload.get("records", []):
+            for source_record in payload.get("records", []):
+                d = scope_record_dict(source_record, place)
                 prov = d.get("provenance") or {}
                 period = d.get("period")
-                year = None
-                try:
-                    year = int(str(period)[:4])
-                except (TypeError, ValueError):
-                    pass
-                record_place, record_facility = scope_record_location(
-                    d.get("place"), place, d.get("facility"), year,
-                )
                 raw = dict(d.get("raw") or {})
-                reported_place = " ".join(str(d.get("place") or "").split())
-                if reported_place and record_place != reported_place:
-                    raw.setdefault("reported_place", reported_place)
                 records.append(
                     Record(
                         kind=d["kind"], parameter=d.get("parameter", ""),
                         value=d.get("value"), unit=d.get("unit"),
                         qualifier=d.get("qualifier"), stream=d.get("stream", "unknown"),
-                        place=record_place, period=period,
+                        place=d.get("place"), period=period,
                         # Without this every record loads as "unclassified" and
                         # the facility split silently does nothing -- which is how
                         # Jay came to report that Owen Sound's sewage record runs
                         # to 1992, when that is a drinking-water report that merely
                         # shares the town's name.
-                        facility=record_facility,
+                        facility=d.get("facility"),
                         confidence=d.get("confidence", 0.0),
                         provenance=Provenance(
                             identifier=prov.get("identifier", ""),

@@ -157,3 +157,47 @@ def test_a_value_absent_from_its_real_sentence_is_rejected(monkeypatch) -> None:
     assert result.kept == 0
     assert len(result.rejected) == 1
     assert "does not appear in the sentence" in result.rejected[0]["why"]
+
+
+def test_a_value_that_is_only_a_digit_substring_is_rejected(monkeypatch) -> None:
+    source = "The rock seam was 3120 metres wide."
+    monkeypatch.setattr(extraction.vocabulary, "load", lambda: Vocabulary())
+    client = CaptureClient([
+        _candidate(source, "rock seam width", parameter_status="proposed",
+                   value=12, unit="metres"),
+    ])
+
+    result = extraction.extract_prose(_page(source), client=client)
+
+    assert result.kept == 0
+    assert "does not appear in the sentence" in result.rejected[0]["why"]
+
+
+def test_model_cannot_insert_a_decimal_into_its_page_quote(monkeypatch) -> None:
+    page = "The BOD result was 312 mg/L."
+    invented = "The BOD result was 3.12 mg/L."
+    monkeypatch.setattr(extraction.vocabulary, "load", lambda: Vocabulary())
+    client = CaptureClient([
+        _candidate(invented, "BOD", parameter_status="proposed",
+                   value=3.12, unit="mg/L"),
+    ])
+
+    result = extraction.extract_prose(_page(page), client=client)
+
+    assert result.kept == 0
+    assert result.rejected[0]["why"] == "source_text not found on page"
+
+
+def test_extractor_stores_exact_page_punctuation_after_tolerant_match(monkeypatch) -> None:
+    page = "The daily flow was 8. 8 million gallons."
+    tidied = "The daily flow was 8.8 million gallons."
+    monkeypatch.setattr(extraction.vocabulary, "load", lambda: Vocabulary())
+    client = CaptureClient([
+        _candidate(tidied, "daily flow", parameter_status="proposed",
+                   value=8.8, unit="million gallons"),
+    ])
+
+    result = extraction.extract_prose(_page(page), client=client)
+
+    assert result.kept == 1
+    assert result.records[0].provenance.source_text == page

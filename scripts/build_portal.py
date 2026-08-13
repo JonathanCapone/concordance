@@ -1,4 +1,4 @@
-"""Build a self-contained page showing what stopped being measured.
+"""Build a self-contained page showing where title-derived series go quiet.
 
 Data is inlined rather than fetched, so the page opens from the filesystem with
 no server and no network -- which matters for showing it on conference wifi, and
@@ -21,7 +21,7 @@ TEMPLATE = """<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>What Ontario stopped measuring</title>
+<title>Where Ontario's indexed record goes quiet</title>
 <style>
   :root {
     --bg: #fbfaf8; --panel: #fff; --ink: #17150f; --muted: #6b6559;
@@ -84,33 +84,33 @@ TEMPLATE = """<!doctype html>
 </head>
 <body>
 <main>
-  <h1>What Ontario stopped measuring</h1>
+  <h1>Where Ontario's indexed record goes quiet</h1>
   <p class="sub">
-    Every Ontario municipality that filed a water pollution control plant annual report to the
-    provincial government, and the year each one stopped. Built from the Internet Archive Canada
-    government publications collection &mdash; __NMUNI__ municipalities, read out of scanned paper.
+    Title-derived Ontario municipal report series and their last dated entries. Built from the
+    Internet Archive Canada government publications collection &mdash; __NMUNI__ parsed labels from
+    scanned paper, including unresolved facility and name variants.
   </p>
 
   <div class="panel scroll">
     <div class="fab" id="fab"></div>
   </div>
   <div class="legend">
-    <span class="key"><i class="sw" style="background:var(--mark);opacity:.85"></i> filed a report</span>
-    <span class="key"><i class="sw" style="background:var(--line)"></i> no report that year</span>
-    <span class="key"><i class="sw" style="background:var(--gap);opacity:.16"></i> after this town's last report</span>
+    <span class="key"><i class="sw" style="background:var(--mark);opacity:.85"></i> dated title entry found</span>
+    <span class="key"><i class="sw" style="background:var(--line)"></i> no dated title entry found</span>
+    <span class="key"><i class="sw" style="background:var(--gap);opacity:.16"></i> after this series' last indexed entry</span>
   </div>
 
   <h2>The cliff</h2>
   <div class="panel">
     <div class="big">__CLIFFN__ of __NMUNI__</div>
-    <div>municipalities stop reporting in <strong>__CLIFFY__</strong>.</div>
+    <div>series have no dated entry after <strong>__PRECLIFFY__</strong>.</div>
   </div>
 
   <h2>Is that real, or did the scanning just stop?</h2>
   <div class="panel">
     <p style="margin-top:0;color:var(--muted);font-size:14px;max-width:72ch">
-      A whole series vanishing at once usually means a digitisation boundary, not history.
-      So: does the rest of the collection also stop in __CLIFFY__?
+      A whole series vanishing at once can mean a collection-wide scanning boundary.
+      So: does broader ministry publishing also stop in __CLIFFY__?
     </p>
     <table>
       <tr><th>Series in the same collection</th><th style="text-align:right">before</th>
@@ -155,7 +155,7 @@ munis.slice().sort((a, b) =>
   let cells = '';
   years.forEach(y => {
     const cls = has.has(y) ? 'on' : (y > m.last_year ? 'dead' : 'off');
-    cells += `<div class="c ${cls}" title="${m.place} — ${y}${has.has(y) ? ': report filed' : ''}"></div>`;
+    cells += `<div class="c ${cls}" title="${m.place} — ${y}${has.has(y) ? ': dated title entry found' : ''}"></div>`;
   });
   fab.insertAdjacentHTML('beforeend',
     `<div class="row"><div class="nm" title="${m.place}">${m.place}</div>` +
@@ -187,8 +187,9 @@ def main() -> int:
         )
 
     verdict = (
-        "The archive kept growing while this one series died. "
-        "<strong>The silence is real.</strong>"
+        "Broader ministry publishing continued after this title-series gap. "
+        "<strong>This is not a collection-wide scanning stop.</strong> "
+        "It does not explain why any individual report series ends."
         if payload.get("control_verdict") == "real"
         else "The whole collection thins at the same time. "
         "<strong>This is probably a digitisation boundary, not history.</strong>"
@@ -199,6 +200,7 @@ def main() -> int:
         .replace("__NMUNI__", str(payload["n_municipalities"]))
         .replace("__CLIFFN__", str(stop["municipalities"]))
         .replace("__CLIFFY__", str(stop["year"]))
+        .replace("__PRECLIFFY__", str(stop["year"] - 1))
         .replace("__CONTROL_ROWS__", "\n      ".join(rows))
         .replace("__VERDICT__", verdict)
     )

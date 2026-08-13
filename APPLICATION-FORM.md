@@ -16,36 +16,37 @@ Concordance
 
 A free website where anyone can look up what was actually measured where they
 live — sewage discharged into the river, what was in the drinking water, what
-came out of the smelter — going back to the 1800s, with every number linked to a
-photograph of the government page it was read from. Plus the open dataset
-underneath it, which does not currently exist anywhere.
+came out of the smelter — going back to the 1800s, with every number linked to
+the exact government page it was read from. Plus an open, source-linked seed
+dataset designed to grow beyond the pilot communities.
 
-Internet Archive Canada holds 104,241 scanned government publications: 22.1
-million pages, 1841 to 2013. Inside them are measurements of the physical
-condition of the country, town by town, year by year. The median document has
-been downloaded 90 times.
+My August 11 catalogue snapshot holds 104,241 scanned government publications
+and 22.1 million pages; this project scopes its historical run from 1841 to
+2013. Inside are measurements of the country, town by town, year by year. The
+median document has been downloaded 90 times.
 
-The brief calls it ~48 TB; that is the page images. **The text inside them is
-about 59 GB** — the written output of the Canadian state, as digitised, fits on
-a thumb drive.
+The fellowship brief puts the collection at roughly 48 TB. For prose, the reader
+works first from the separate OCR text layer and requests images only as needed.
 
-None of those numbers are in any database. To learn what your town's plant
-discharged in 1969 you would have to know the report exists, find it, read it.
+I found no usable national database of those numbers. To learn what your town's
+plant discharged in 1969 you would have to know the report exists, find it,
+read it.
 
 **The site and the reader already work, but the bridge between them is the
-fellowship build.** Today, anyone can run the open-source reader locally and
-send a result to a Concordance instance, where every record is checked again
-against the cited scan. The browser can show existing results, but it does not
-yet hand a requested place to a visitor's local reader. I will build and test
+fellowship build.** Today, the reader runs locally and can send prose results
+to a Concordance instance, where each cited sentence and
+number are checked again. Current table locators are preserved but fail closed
+without localized cell proof. The browser can show existing results, but it does
+not yet hand a requested place to a visitor's local reader. I will build and test
 that handoff so a volunteer can contribute without an account, an API key, or a
 process left running.
 
 That is the path to growth without a permanent central compute bill. It is a
 deliverable, not something I am claiming is already deployed.
 
-It already runs: 5,147 source-linked records across 14 municipalities, including
-2,384 observations; 96.8% precision on four hand-read pages; and no sentence/page
-mismatches found in a 286-record quote audit.
+At frozen application checkpoint `f8fbca2`: 5,147 source-linked records across
+14 municipalities, including 2,384 observations; 96.8% precision on four
+hand-read pages; and no mismatches found in a 286-record source-sentence audit.
 
 ---
 
@@ -56,30 +57,28 @@ the plant upstream was putting in it. That person cannot use an archive; they
 can use a search box and a chart, and this is aimed at them.
 
 **Journalists and local historians**, who currently need to know a report exists
-before they can find it. The negative record matters as much: 72 of 107 Ontario
-municipalities stop filing sewage-plant reports in 1975, and knowing *when a
-place stopped being measured* is often the story.
+before they can find it. The negative record matters too: 72 of 107 title-derived
+Ontario municipal report series have no entry after 1974. That is an archival
+gap to investigate, not proof that measurement itself stopped.
 
 **Scientists**, who get a machine-readable series with the source page attached
 to every value — and, just as importantly, explicit refusals where two numbers
 are not comparable, rather than a tidy line that hides a change of method.
 
-**Internet Archive Canada itself.** 57% of the collection has no subject tag and
-32% has no year, which is why most of it cannot be found by anyone looking. I
-have 13,429 metadata corrections ready to offer back.
+**Internet Archive Canada itself.** In my catalogue snapshot, 57% has no subject
+tag and 32% no parsed year. I have 13,429 language/year metadata proposals ready
+to offer for review.
 
 **And anyone who wants to question it** — which is the part I care most about.
-Every number carries the verbatim sentence it came from, and that sentence is
-checked against the scan. Anyone can dispute a value by citing a page and
-quoting a sentence, and the archive settles it: the same check that judges my
-own output, which never asks who is speaking. Evidence beats no evidence,
-automatically. An objection without evidence is counted and displayed and
-changes nothing — because the moment it could, somebody would have to sit in
-judgement, and I am not willing to be that person or appoint one.
+Every prose number carries its source sentence; a table number carries its cell
+locator. Both carry the exact page. Prose claims from my reader and a stranger
+face the same sentence-and-number check. Table claims currently abstain unless
+the value can be localized to the cited cell. An objection without evidence is
+counted and displayed but changes nothing; supported disagreements remain visible.
 
-When two readings both survive, neither wins. Both are shown with a cropped
-photograph of the sentence each was read from, and the reader decides in
-seconds.
+When two readings both survive, neither wins. Both link to the exact archive
+page and, when its image service permits, show a cropped photograph of the
+cited sentence; the reader decides from the evidence.
 
 A measurement pulled by a model out of a sixty-year-old scan has no authority on
 its own. It earns authority by being trivially easy to disprove.
@@ -88,16 +87,13 @@ its own. It earns authority by being trivially easy to disprove.
 
 ## Proposed approach — *core method, tools, and a scope you can finish* (2000)
 
-**The finding this rests on: OCR preserved the prose and destroyed the tables.**
-A province-wide summary table comes back from the scanner as
-`9 /zLA' y 1? in" y 1'\ Vnlump 41 Q sailor`. Nothing survives that. But the
-narrative paragraphs read perfectly — and in these reports the measurements are
-*in the narrative*: "The average influent BOD and suspended solids were 104 mg/1
-and 224 mg/1 respectively... giving an average removal of 64% BOD."
+**The finding: OCR often preserves prose while damaging table layout.** One
+summary table becomes `9 /zLA' y 1? in" y 1'\ Vnlump 41 Q sailor`, yet narrative
+measurements remain legible: "The average influent BOD and suspended solids were
+104 mg/1 and 224 mg/1 respectively... giving an average removal of 64% BOD."
 
-So the hard problem is **reading**, which language models now do reliably, not
-table-recognition off a degraded scan, which they do not. That is what makes
-this tractable rather than absurd.
+So the tractable first problem is **reading prose**, where my four-page benchmark
+measures 96.8% precision. Degraded tables remain the harder, unproven path.
 
 **Method.** A cheap local filter routes each page — prose, table, figure, map,
 or skip — so the expensive path only touches pages that earn it. A language
@@ -107,16 +103,17 @@ load-bearing: one report states BOD 180 mg/L as a design figure and 104 mg/L as
 a measurement, and conflating them produces a clean, plausible, entirely
 fictional trend.
 
-**Every record must quote the sentence it came from, and that sentence is
-verified to occur on the cited page, and the value verified to occur in the
-sentence.** A model that invents a number nearly always invents the sentence
-too, so this catches fabrication for the cost of a substring search.
+**Every prose record must quote its source sentence; that sentence and its
+complete numeric token are checked on the cited page.** A model that invents a
+number often invents the sentence too, so these local checks catch fabrication
+without another model call. Table trials carry page, row and column locators,
+but public verification abstains until the value is localized to that exact cell.
 
-**Tools.** Python, standard library only — the core has zero required
-dependencies, so anyone can clone it and check a measurement in five minutes
-with nothing to install and no API key. Extraction runs on a local model via
-Ollama by default. Accuracy is measured against pages a human read by hand, and
-the harness re-scores without re-running the model.
+**Tools.** The core is standard-library Python with zero package dependencies,
+so someone with Python can clone it and check a stored measurement without an
+API key. New extraction additionally needs Ollama and a local model. Accuracy is
+measured against pages a human read by hand, and the harness re-scores without
+re-running the model.
 
 **Scope I can finish:** widen the accuracy benchmark far beyond its current four
 pages, settle whether tables can be read on ordinary hardware, and publish the
@@ -126,63 +123,57 @@ dataset with its methodology and its failures. Not: reading the whole archive.
 
 ## Dataset interest — *Why does this idea need the Canadian civics and open-government collection?* (2000)
 
-Because the numbers exist nowhere else. This is not a convenient corpus for a
-general method — it is the only surviving record of most of what it describes.
-
-Statistics Canada does not hold what Owen Sound's sewage plant discharged in
-1969. The province's modern pollutant inventories start in the 1990s. The
-municipality itself, in many cases, no longer has the file. The measurement
-survives because a civil servant typed it into an annual report, the report was
-deposited, and Internet Archive Canada scanned it. **If it is not recovered from
-this collection it is not recovered.**
+I did not find these local historical readings in a usable national series, and
+municipal holdings have not been surveyed here. The evidence survives in
+scattered annual reports deposited with government and scanned by Internet
+Archive Canada. Concordance can make it searchable together for the first time.
 
 The collection is also uniquely suited to the method, in three specific ways.
 
-**It repeats.** 547 municipal water pollution control plant reports, 1961–1996,
-across 411 distinct municipalities, in a standardised recurring form. One schema
-generalises across hundreds of places and thirty-five years, which is what turns
-isolated readings into comparable series.
+**It repeats.** A title search found 546 dated matching reports, 1961–1996; 524
+resolve to 107 title-derived place/site reporting series. One schema can turn
+those readings into comparable series after duplicate facilities and names are
+resolved.
 
 **It is deep enough to show absence.** Silence is the most interesting signal
 here — a town that vanishes from the record because a plant closed, a programme
 was defunded, or records were lost. You can only detect that against a long
-continuous baseline, and you can only distinguish it from a digitisation gap if
-the collection is complete enough to check. It is: I verified the 1975 collapse
-against the same ministry's own publication counts, which run 1,449 before and
-3,800 after.
+continuous baseline. Broader ministry publishing continued — 1,449 indexed items
+before 1975 and 3,800 afterward — so this is not a collection-wide scanning
+cutoff. It does not, by itself, explain the gap for any individual place.
 
-**It is civics, not just science.** Minutes, agendas and commission hearings are
-13,604 items. One volume of Hamilton council agendas from 1992 yields 94
-decisions, 64 named people and 44 recorded votes, including the divisions where
-one alderman stood alone against an expressway. The measurements and the
-decisions that produced them are in the same collection, which is the thing that
-makes joins possible.
+**It is civics, not just science.** Roughly 13,600 titles match minutes, agendas
+or hearings. They preserve motions and votes
+beside the environmental reports, creating the possibility of linking what was
+measured to the public decisions around it. That civic parser is promising but
+not yet part of the validated measurement benchmark.
 
-And it is public and openly licensed, so everything built on it can be too.
+The scans are publicly accessible. I will publish code under MIT and derived data
+under an appropriate licence while preserving source-item rights.
 
 ---
 
 ## Work plan — *phases, and where you expect to learn or change course* (2000)
 
-**Weeks 1–3 — Make it work outside water reports.** I measured this gap
-overnight rather than guessing: 1,416 readings across 25 collections. Coverage
-of the archive's own measurement vocabulary reached 44%, the estimate of how
-many kinds exist is 727 (95% CI 557–987), and **76% of readings outside water
-reports used a parameter name the model invented rather than one the archive
-uses**, against 32% inside them. So: the vocabulary, plus a hand-read benchmark
-far larger than four pages, across agencies and eras, accuracy published per era
-and per parameter. *Ends with:* a figure I would defend in public, including
-where it is bad.
+**Week 1 — Freeze the test.** Design and hand-label a benchmark spanning eras,
+agencies and document types; choose a British Columbia pilot before tuning.
 
-**Weeks 3–5 — The tables.** This is the hard one and it gets two weeks. Tables
-are 27% of pages and about 69% of the measurements, and they need a model that
-will not run on an ordinary machine. Owen Sound's 1973 and 1974 reports contain
-*zero* readable prose pages between them; those years are unreachable without
-this. *Ends with:* either tables distribute to contributors' machines, or the
-limit is named with a number attached.
+**Week 2 — Keep unlike records unlike.** Apply the 697-term source-attested
+vocabulary already built; test units, methods and reporting changes; publish the
+refusal rules for comparisons that are not defensible.
 
-**Week 6 — Publish.** Dataset released with its methodology and failures;
-metadata corrections offered to Internet Archive Canada; write-up; showcase.
+**Week 3 — Measure prose.** Run the benchmark, inspect failures, and publish
+precision and recall by era and parameter, not only one flattering average.
+
+**Week 4 — Test tables.** Compare smaller vision models on ordinary hardware
+against hand-read pages. *Ends with:* a distributable path, or a measured limit.
+
+**Week 5 — Complete the contribution loop.** Build the browser-to-local handoff,
+then test request, preview, source-check and sharing with first-time users.
+
+**Week 6 — Publish.** Release the seed dataset, accuracy report, methodology and
+failures; offer the metadata proposals for review; write up and, if ready,
+prepare for the conditional showcase.
 
 **Where I expect to change course:**
 
@@ -202,19 +193,19 @@ metadata corrections offered to Internet Archive Canada; write-up; showcase.
 
 ## Expected deliverable — *What working artifact will exist at the end?* (2000)
 
-Four things, all public, all open source under MIT.
+Four public things: MIT-licensed code, plus open data and methods with source
+document rights preserved.
 
-**1. A live website.** Search a Canadian town, see what was measured there and
-when, as charts and as a table. Every value has a button that shows you a
-cropped photograph of the sentence on the original scan it was read from. A
-plain-language layer answers "was 104 mg/L bad?" against the regulatory limit
-*of that era*, not today's. It runs now, across 14 municipalities; the fellowship makes it
-worth visiting.
+**1. A live website.** For a pilot town, see selected series and source records.
+Every value links to its archive page and, when the
+image service permits, a focused crop. The plain-language layer uses a documented
+contemporary standard when one exists and otherwise gives no verdict. The frozen
+seed covers 14 municipalities; the fellowship makes it worth visiting.
 
-**2. The dataset, published open.** Every measurement with place, time,
-parameter, unit, and a link resolving to the exact scanned page. Not a sample —
-every record. This object does not currently exist: there is no machine-readable
-series of what Canadian municipalities discharged, decade by decade, anywhere.
+**2. The dataset, published open.** Every accepted pilot record carries place,
+time, parameter and unit where applicable, plus an exact archive-page link. The
+seed is not national coverage; I found no usable national machine-readable series
+of historical municipal discharges.
 
 **3. An accuracy report, including the failures.** Precision and recall per era
 and per parameter, measured against pages a human read by hand, published with
@@ -222,49 +213,49 @@ the methodology and a script anyone can re-run to re-score my own output against
 my own answer key. If the number is bad in places, those places are named.
 
 **4. A metadata diff offered back to Internet Archive Canada** — 13,429
-corrections proposed so far for items with no subject tag or no year, which is
-57% and 32% of the collection respectively.
+catalogue-field proposals so far: 11,151 deterministic language-code
+normalizations and 2,278 year proposals, all for review. Deterministic OCR dating
+also proposed 111 dates in a 300-item yearless sample; 142/145 non-bound held-out
+guesses agreed with catalogue years, a noisy surrogate rather than ground truth.
 
 Plus the pipeline itself, documented so it can be pointed at any other scanned
-archive, because nothing in the reading layer is Canada-specific.
+archive. The document-reading method is reusable; place resolution and validation
+currently remain Ontario-specific.
 
-**What will not exist:** the whole archive read. 22.1 million pages is roughly
-$4,251–8,502 of rented GPU time and I am not asking for that, because a corpus
-bought in one batch is finished the day the money stops. What will exist is the
-machinery, a seed corpus, an honest accuracy figure, and a system where the rest
-fills in as people ask for it — at no recurring cost to anyone.
+**What will not exist:** the whole 22.1-million-page archive read. A full
+rented-GPU pass is outside this fellowship, and the current cost model is not
+reliable enough to quote. What will exist is the machinery, a seed corpus, an
+honest accuracy figure, and a system where the rest can fill in on demand —
+without a permanent central inference bill.
 
 ---
 
 ## Success metric (600)
 
-A resident of any Canadian community can look up what was measured where they
-live, get a plain-language answer, and click any number through to the scanned
-page it came from.
+A resident in every published pilot community — the existing 14 plus at least
+one British Columbia pilot — can look up what was measured, get a plain-language
+explanation (including unknown), and click each published record to its page.
 
-Checkable: the dataset is published open, with place, time, parameter and unit;
-**every** record resolves to its scan, not a sample; accuracy is published per
-era and per parameter on a benchmark anyone can re-score themselves, including
-where it is bad; and where a series stops, the record says what was ruled out —
-both "never scanned" and "the reporting rules changed".
+Checkable: the data, code and benchmark are public; accuracy is reported per era
+and parameter on a benchmark anyone can re-score; the browser-to-local
+contribution loop passes a first-time-user test; and an archival gap is labelled
+with what the evidence rules out and what remains unknown. National coverage is
+a stretch goal, not the pass/fail claim.
 
 ---
 
 ## Relevant experience — *What prepares you to do this work* (2000)
 
 **I have built the hard half already, and you can check it rather than take my
-word.** The repository runs today: 5,147 source-linked records across 14
-municipalities; 96.8% precision on four hand-read pages; 564 tests pass; no core
-dependencies are required.
+word.** At checkpoint `f8fbca2`: 5,147 source-linked records across 14
+municipalities and 96.8% precision on four hand-read pages. The full test suite
+passes; no core package dependencies are required.
 
 Before this I built OMEGA-wave, an open ocean-sensing system with its own
-protocol, gateway, statistics suite and map portal — about 30,000 lines with 118
-data-provider definitions. Concordance reuses that directly: the statistics
-layer (Mann-Kendall trend detection, Theil-Sen, Pettitt changepoint, all pure
-standard library, which is why this package still has no required dependencies),
-the map portal, the agent framework, and the keyless provider layer that reaches
-Environment Canada and Statistics Canada. Six weeks here is not six weeks from
-zero.
+protocol, gateway, statistics and map portal. Concordance reuses its
+standard-library statistics and provider patterns: Mann-Kendall, Theil-Sen,
+Pettitt changepoints and keyless Environment Canada/Statistics Canada access.
+Six weeks here is not six weeks from zero.
 
 **What I think actually qualifies me is how I handle being wrong**, because that
 is the whole risk in this kind of project. Three examples, all in the public work
@@ -276,16 +267,14 @@ same number. Fixing the *measurement*, with no change to the extraction, moved
 it to 96.8%. Publishing the first number would have narrowed the project for no
 reason.
 
-My page router was silently discarding a fifth of the archive, because it
-counted a page as prose only if its lines held eight or more words — a fact about
-typography, not content. I did not find that. Somebody looked at a document and
-said *that doesn't sound right*.
+My page router was silently discarding narrow-column prose because it required
+eight words on a line — a fact about typography, not content. I did not find
+that. Somebody looked at a document and said *that doesn't sound right*.
 
-And days before writing this I ran an adversarial audit over the whole
-repository. It found nine real defects, six serious, including one where the
-check that is supposed to catch invented numbers would accept any round number
-against any sentence containing its first digit. All fixed and tested against the
-attacks that found them.
+And days before writing this I ran an adversarial audit over the repository. It
+found nine defects, six rated serious, including a check that accepted a number
+against a sentence containing only its first digit. The fixes have targeted
+regressions, and the full test suite passes.
 
 A project whose entire claim is *check my work* should say what happened when
 somebody did.

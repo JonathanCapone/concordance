@@ -32,7 +32,7 @@ from dataclasses import dataclass
 from typing import Any, Protocol
 
 from . import vocabulary
-from .contribute import _value_in_quote
+from .contribute import _has_prose_context, _match_evidence_span, _norm, _value_in_quote
 from .models import PageText, Provenance, Record
 
 DEFAULT_OLLAMA_MODEL = "gemma4:12b"
@@ -332,13 +332,13 @@ Return the JSON array."""
 # --------------------------------------------------------------------------
 
 def _normalize(s: str) -> str:
-    """Collapse whitespace and drop punctuation, for tolerant substring matching.
+    """Canonical evidence tokens for compatibility and focused tests.
 
-    OCR spacing is chaotic ("8. 8 million"), and the model will silently tidy it
-    when quoting. Comparing normalized forms keeps the provenance check strict
-    about *content* while forgiving about *spacing*.
+    OCR spacing is chaotic ("8. 8 million"), but numeric punctuation carries
+    meaning.  The shared verifier retains decimal and comparison structure while
+    forgiving ordinary sentence punctuation and whitespace.
     """
-    return re.sub(r"[^a-z0-9]+", "", s.lower())
+    return _norm(s)
 
 
 def _salvage_objects(raw: str) -> list[dict[str, Any]]:
@@ -518,7 +518,6 @@ def extract_prose(
     raw = client.complete(system, user)
     candidates = _parse_json_array(raw)
 
-    page_norm = _normalize(page.text)
     records: list[Record] = []
     rejected: list[dict[str, Any]] = []
 
@@ -551,15 +550,27 @@ def extract_prose(
         if not source:
             rejected.append({"why": "no source_text", "candidate": c})
             continue
-        if _normalize(source) not in page_norm:
+        if not _has_prose_context(source):
+            rejected.append({
+                "why": "source_text must include textual context, not only a number",
+                "candidate": c,
+            })
+            continue
+        matched_source = _match_evidence_span(source, page.text)
+        if matched_source is None:
             rejected.append({"why": "source_text not found on page", "candidate": c})
             continue
 
         value = _to_float(c.get("value"))
-        value_state, value_evidence = _value_in_quote(value, source)
+        value_state, value_evidence = _value_in_quote(value, matched_source)
         if value_state == "failed":
             rejected.append({"why": value_evidence, "candidate": c})
             continue
+
+        # Store the archive's characters, not the model's punctuation-normalized
+        # rendering.  A citation remains verbatim even when OCR line spacing was
+        # repaired for the match.
+        source = matched_source.strip()
 
         model_conf = _to_float(c.get("confidence"))
         model_conf = 0.5 if model_conf is None else max(0.0, min(1.0, model_conf))

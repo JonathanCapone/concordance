@@ -9,11 +9,10 @@ Nothing can be recovered from that string. But the string is not the data -- the
 scan is, and it is still there, at 1500 pixels wide, perfectly legible to a human
 and now to a model.
 
-**This is the part of the project that was impossible until recently.** The
-tables were never lost. They were merely unreadable by the tools that existed
-when the pages were scanned. Pointing a vision model at the page image rather
-than at the OCR of the page image recovers data that has been sitting in public
-and inaccessible for a decade.
+The page images can preserve tables whose OCR structure was lost. Pointing a
+vision model at the image rather than its text layer can recover candidate data,
+but that output still needs a hand-read accuracy benchmark; the current trial is
+a feasibility signal, not proof that every degraded table is recoverable.
 
 The same two guards as the prose path apply, with one change forced by the
 medium: a vision model cannot quote a source sentence from a table, because a
@@ -176,7 +175,12 @@ def _label_on_page(label: str, page_text: str) -> bool:
         return True
     tokens = [t for t in re.split(r"\W+", label.lower()) if len(t) >= 4]
     if tokens:
-        return any(_norm(t) in page for t in tokens)
+        # Every substantial claimed word must have page support. Accepting ANY
+        # one let an attacker pad an invented row and column with a real common
+        # heading such as FLOW, then attach an unrelated number from anywhere on
+        # the page. OCR tolerance may relax spelling, never erase the rest of a
+        # multiword locator.
+        return all(_norm(t) in page for t in tokens)
 
     # Short-token labels. A census column heading reads "CT - SR 135.03", and
     # the OCR of that header row runs "CT - SR CT - SR CT - SR ... 135.02

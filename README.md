@@ -2,16 +2,17 @@
 
 **Reading Canada's public record as a hundred-year instrument.**
 
-Internet Archive Canada holds 104,241 scanned Canadian government publications —
-22.1 million pages, roughly 59 GB of OCR text, spanning 1841 to 2013. Inside them are
+An August 11 catalogue snapshot holds 104,241 scanned Canadian government publications —
+about 22.1 million page images with a separate OCR text layer. This project scopes the
+historical run from 1841 to 2013. Inside are
 measurements of the physical condition of Canada: the air, the water, the soil, town by town,
 decade by decade.
 
 The median document in that collection has been downloaded **90 times**.
 
-Every civil servant who ever wrote a measurement down was a node in a sensor network that ran for
-150 years and covered a continent, and was never once read *as a network* — because each node
-published to paper, and the paper went into a box.
+Historical measurements across these publications can be treated as nodes in a long-running
+distributed record. I have not found evidence that this collection has been analyzed as one
+connected historical monitoring network.
 
 This project reads it back out.
 
@@ -22,7 +23,8 @@ This project reads it back out.
 
 ## The finding this rests on
 
-OCR **preserved prose and destroyed tables**.
+OCR often preserves narrative prose while damaging table layout; values may survive even when
+row and column structure is lost.
 
 A province-wide summary table comes back from the scanner like this:
 
@@ -30,7 +32,7 @@ A province-wide summary table comes back from the scanner like this:
 9 /zLA' y 1? in" y 1'\ Vnlump 41 Q sailor
 ```
 
-But the narrative reads perfectly — and in these reports, **the measurements are in the narrative**.
+But much of the narrative remains legible — and in these reports, **the measurements are in the narrative**.
 Owen Sound water pollution control plant, annual report, 1969:
 
 > "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively. The
@@ -39,9 +41,8 @@ Owen Sound water pollution control plant, annual report, 1969:
 
 Station, parameters, values, units — a complete observation set, in readable English.
 
-So extraction is a **reading** task, which language models do reliably, rather than a
-table-recognition task off a degraded 1969 scan, which they do not. That is what makes reading
-this corpus tractable rather than absurd.
+So prose extraction is a **reading** task; the current four-page benchmark measures 96.8%
+precision. Table recognition on degraded scans remains the harder, less certain path.
 
 ## Three properties that make it an instrument
 
@@ -62,7 +63,9 @@ Measured over all 104,241 items, not assumed:
 | Items with **no subject tag** | 59,819 (**57%**) |
 | Items with **no year** | 33,844 (32%) |
 | Language field spellings for two languages | 8 (`eng`/`English`/`Eng`/`ENG`/`fre`/`fra`/`French`/`FRA`) |
-| Ontario / Alberta / BC items | 12,467 / 8,671 / 468 |
+
+Province totals are not quoted here: catalogue geography is inconsistent, and
+simple keyword counts undercount British Columbia material.
 
 Because most documents mix narrative and tables in one file, routing happens per **page**. A
 document-level classifier would send a 1969 annual report down one path and discard whichever half
@@ -74,42 +77,25 @@ Measured over a random sample of 120 items and 23,729 pages:
 
 | | |
 |---|---|
-| Items carrying measurements | **90.8%** (95% CI 84.3–94.8%) |
-| Pages worth reading | **69.5%** |
-| Extrapolated to the collection | **about 15.4 million pages** |
+| Items with at least one prose/table candidate | **90.8%** (95% CI 84.3–94.8%) |
+| Pages flagged for some reading path | **53.1%** (95% CI 52.5–53.8%) |
+| Extrapolated under that frozen router | **11.6–11.9 million pages** |
 
-Measured again over 8,372 pages from 34 documents in 26 collections, after a routing bug was
-fixed. The earlier figures — 53.1% and 11.6–11.9 million — were too low, and the reason is
-worth keeping: a line counted as prose only if it held eight words, which is a statement about
-typography rather than content. A city magazine set in narrow columns scored **zero** on pages
-of unbroken prose, and the loss fell hardest on the legislative record, because that is how
-minutes have always been typeset. Fixing it recovered about **6.3 million pages**.
+These are classifier outputs, not proof that a document contains measurements. A later
+8,372-page convenience sample produced 69.5% after a routing fix; it was not random and cannot
+replace this census. The router has changed again. Coverage, the prose/table split and the cost
+model must therefore be re-measured together before any corpus-wide budget or yield is quoted.
 
-Of what is worth reading, **73% is text** a consumer machine can handle at roughly 91 seconds a
-page, and **27% needs the vision path**. Pages are the wrong unit for judging that split, though:
-a prose page averages 4.2 measurements and a third yield none, while a table page yields around
-eighteen. The tables are probably the majority of the actual data.
-
-Three things follow, and all three change the plan rather than decorate it.
-
-**Nine out of ten documents in this archive contain measurements.** The premise holds.
-
-**Nobody is going to read all of it at once, and that is fine.** At the throughput measured on a
-consumer GPU, reading every page is roughly **62 machine-years of prose plus 73 of tables**.
-Renting that would cost **$4,251–8,502**, against an expected yield of about **151 million
-measurements**. `scripts/cost_model.py` shows the arithmetic and names the estimate the answer is
-most sensitive to.
-
-That figure is a reference point, not a plan. A corpus bought in one batch is finished the day the
-money runs out — it never extends, and the next person who wants a document nobody thought to read
-has no way to get it. The local reader and the sharing path are built: `scripts/share.py` moves a
-result between machines — as a file, or pushed to a shared instance — and it is re-verified against
-archive.org on arrival. The safe one-click handoff from the public website to that local reader is
+That uncertainty changes the plan rather than decorating it. A corpus bought in one batch is
+finished the day the money runs out; it never extends, and the next person who wants an unread
+document has no way to get one. The local reader and sharing path are built: `scripts/share.py` moves a
+result between machines — as a file, or pushed to a shared instance — and its cited page evidence is
+rechecked on arrival. The safe one-click handoff from the public website to that local reader is
 not built yet; the site does not start an hours-long model job from a web request.
 
-**The honest hole in that** is the vision path. Tables are 27% of pages and most of the actual
-measurements, and they take eight minutes a page on an RTX 2080 because only 18% of a 29.6 GB model
-fits in 8 GB of VRAM. Prose distributes; tables mostly do not, yet. Whether a smaller vision model
+**The honest hole in that** is the vision path. Its corpus-wide share is not currently measured
+reliably, and trial pages take about eight minutes each on an RTX 2080 because only 18% of a 29.6 GB
+model fits in 8 GB of VRAM. Prose distributes; tables mostly do not, yet. Whether a smaller model
 closes that gap is a measurable question and it has not been measured.
 
 ## Four kinds of record
@@ -135,16 +121,17 @@ And `standard` exists because you cannot answer *"was 104 mg/L bad?"* without kn
 
 No number in this system is unfalsifiable.
 
-- Every record carries the **verbatim sentence** it was read from, and that sentence is verified to
-  occur on the page. A model that invents a value nearly always invents the sentence too, so this
-  catches fabrication for the cost of a substring search.
-- Every record deep-links to **the scanned page**, and word-level coordinates mean the source
-  sentence can be highlighted *on* the scan rather than merely linked to.
+- Every prose record carries its **verbatim source sentence**; table records carry row/column
+  locators. The sentence and complete numeric token are checked on the cited page before a prose
+  record is accepted.
+- Every record deep-links to **the scanned page**. When word boxes and the image service permit,
+  prose gets a focused crop; otherwise the page link remains with an unavailable state.
 - Reading confidence is the model's own certainty **multiplied by how legible the scan was**.
 
 ## Install and run
 
-Requires Python 3.11+. No API key is needed for anything.
+Requires Python 3.11+. No API key is required for the core local workflow;
+new extraction also requires Ollama and a downloaded model.
 
 ```bash
 git clone <this repo> && cd concordance
@@ -163,22 +150,21 @@ Run it:
 python -m concordance.server
 ```
 
-Opens a live map of every municipality in the collection. Orange dots have been
-read; click one for its measurements, each with a button that shows a picture of
-the sentence on the scan it was read from.
+Opens a map of municipalities represented in the loaded result set. Orange dots
+have records; click one for selected series, archive page links and, when
+available, focused citation crops.
 
-**No API key is needed for any of it.** It is not fully offline, and saying so
-would be untrue: the serving layer pulls MapLibre and its basemap tiles from
+Optional external clients may use a user-supplied key. The portal is not fully
+offline: the serving layer pulls MapLibre and its basemap tiles from
 public CDNs, and the citation crops come from archive.org's IIIF endpoint. All
 of those are keyless and free, and none of them are in the core — the extraction
 and verification path has no network dependency beyond the archive itself, so a
 stranger can check a measurement without standing up a web stack.
 
-What *is* local, once a page has been fetched once, is the page itself.
-`data/cache` holds the OCR and word boxes of everything read, so verification,
-the dispute ledger and the frontier all answer from disk. A fresh clone has no
-cache (it is gitignored and grows without bound), so the first run of anything
-needs the network; after that, most of the portal does not.
+Once fetched, OCR text, page structures and word boxes are cached locally.
+Scan images and citation crops still come from Archive.org unless separately
+cached. A fresh clone has no cache, so its first archive operation needs the
+network; many later evidence views can answer from disk.
 
 Share what you have read, and take what somebody else read:
 
@@ -189,10 +175,11 @@ python scripts/share.py import fergus.bundle.json --verified-only
 
 A bundle is a file. It can travel by email, USB stick or a link in a forum post,
 none of which need a server anybody has to run, pay for, or be trusted to keep
-honest. **Trust does not travel with it** — an imported bundle is re-checked
-against archive.org on the importing machine, record by record, exactly as the
-machine's own output is. Nothing about the sender is examined, because nothing
-about the sender is relevant.
+honest. **Trust does not travel with it** — an imported bundle's cited OCR
+sentence and complete numeric token are rechecked on the importing machine,
+record by record. Locator-only table claims currently abstain: headings anywhere
+on a page do not prove which number occupies their intersection. This verifies
+prose evidence presence, not semantic interpretation.
 
 Or send it to a running instance, and take everything one holds:
 
@@ -201,11 +188,11 @@ python scripts/share.py push fergus.bundle.json --to https://example.org
 python scripts/share.py pull --frm https://example.org --out theirs.bundle.json
 ```
 
-An instance re-verifies every record it is sent and keeps what archive.org
-supports, reporting what it refused and why. It is a convenience, not an
+An instance evaluates each submitted record's cited page evidence and reports
+what it accepted or refused; locator-only table claims currently abstain. It is a convenience, not an
 authority: `GET /api/library.json` returns the whole dataset as a bundle, `pull`
 saves it without believing any of it, and `import --verified-only` is what
-decides — on your machine, against the scans. Anyone who mistrusts an instance
+decides — on your machine, against cited page evidence. Anyone who mistrusts an instance
 can take everything it has and run their own.
 
 > A note on identity, since it is the kind of bug this project exists to catch.
@@ -222,7 +209,8 @@ Run the accuracy harness against hand-checked ground truth:
 python scripts/run_gold.py --model gemma4:12b
 ```
 
-`ANTHROPIC_API_KEY` is picked up automatically if present, but is never required.
+The extraction clients can optionally use an Anthropic key, but Jay itself uses
+the configured local Ollama endpoint only.
 
 ## Accuracy
 
@@ -279,7 +267,7 @@ worse than one that was never read, because the errors look like findings.
 
 ## Credentials
 
-Keyless by default, and the public instance uses only keyless sources.
+Keyless by default; the planned public instance will use only keyless sources.
 
 | Tier | Auth | Rule |
 |---|---|---|
@@ -287,7 +275,7 @@ Keyless by default, and the public instance uses only keyless sources.
 | 1 | free, user-supplied | Optional enrichment, never required |
 | 2 | paid, user-supplied | Never required, ever |
 
-No key is ever committed to this repo or used by the public instance.
+No key is committed to this repo or required by the planned public instance.
 
 ## Layout
 
@@ -306,7 +294,7 @@ concordance/
   providers.py   external data, keyless first, tiers enforced by tests
   decisions.py   who moved what, who seconded, and how each person voted
   dating.py      publication year from the text, and whether a value's year is safe
-  citations.py   a picture of the patch of scan a number is written on
+  citations.py   page links plus focused scan crops when available
   contribute.py  verifying a bundle of readings against the pages they cite
   disputes.py    open contribution and correction, with nobody adjudicating
   library.py     ask for a place; if nobody has read it, your machine does
@@ -327,7 +315,7 @@ scripts/
   rescore.py          re-score a saved run without calling a model
   extract_place.py    read every surviving report for one town
   analyze_place.py    turn those records into trends and findings
-  silence_report.py   map what stopped being measured, with a control
+  silence_report.py   map title-derived catalogue gaps, with a collection control
   propose_metadata.py generate the catalogue repair diff
   build_portal.py     render the reporting cliff as a self-contained page
   build_town_page.py  render one town's record, every number linked to its scan
@@ -344,22 +332,22 @@ small numbers that fall when a plant improves, so it looked entirely reasonable.
 
 ## Status
 
-Early, but measured. Reading, routing, prose and table extraction, accuracy scoring, unit and
-parameter resolution, place resolution, the science layer, the watershed network, the provider
-layer, the decision record, the citation crops, the dispute ledger and the agent all work end to
-end on real documents. The full test suite passes. Zero required dependencies in the core.
+Early, but measured. The repository contains reading, routing, prose and table extraction,
+accuracy scoring, unit and parameter resolution, place resolution, science, watershed, provider,
+decision, citation, dispute and assistant components. They run on real documents and the full test
+suite passes; only the four-page prose benchmark currently has a hand-read accuracy score. The core
+has zero required package dependencies.
 
 **What has actually been found, each with its own control attached:**
 
-- **72 of 107 Ontario municipalities stop filing water pollution control plant reports in 1975.**
-  That pattern usually means a scanning boundary, so it was checked: Ministry of the Environment
-  publications in the same collection run 1,449 before 1975 and 3,800 after, at a steady 83–141
-  items a year straight through. The archive kept growing. This series died.
-- **539 of 1,119 Ontario river gauges are discontinued** — 48%, from live ECCC data. The same
-  winding-down of measurement, still happening.
-- **Owen Sound, 1963–1972**: 120 readings recovered from 12 scanned reports, BOD removal rising
-  from 46.4% to 64%.
-- **13,429 metadata corrections proposed** across all 104,241 items.
+- **72 of 107 parsed municipal report series have no dated entry after 1974.** Broader Ministry
+  publishing continues — 1,449 indexed items before 1975 and 3,800 afterward — arguing against a
+  collection-wide scanning stop. The artifact does not explain any individual series gap.
+- A live ECCC query suggested that about **48%** of returned Ontario gauge records were marked
+  discontinued. Its exact response was not preserved, so it is not a frozen benchmark.
+- **Owen Sound, 1963–1972**: 120 source-linked records from 12 scanned reports, including 69
+  observations; the extracted BOD-removal series rises from 46.4% to 64%.
+- **13,429 language/year metadata proposals** across all 104,241 items, offered for review.
 
 **The first trend the project produced was a refusal, and that is the point.** Owen Sound's daily
 flow rises 175,000 gal/day per year — and the same line reports p=0.71, a 90% interval spanning
@@ -367,17 +355,17 @@ zero, only 62% of bootstrap replicates agreeing on direction once reading confid
 through, and two of six points flagged as probable scan damage. A naive pipeline publishes the
 slope.
 
-**Tables are now readable, and that changed the plan.** llava invented table structure and was
-worse than useless, because a fabricated table is indistinguishable from a recovered one. A newer
-local model does not: given the Brantford 1962 flow table, whose OCR reads `TABLE I FLOW -
-MILX.IQN GALLOLS`, it returned every one of the twelve values that survived in the OCR, exactly,
-and rebuilt the header row the scanner had destroyed.
+**Tables may be recoverable, and that changed the plan.** llava invented table structure and was
+worse than useless, because a fabricated table is indistinguishable from a recovered one. On the
+Brantford 1962 flow page, a newer local model returned 27 records and recovered 10 of 12 values
+identified in the OCR beforehand.
 
-Measured over **24 table pages from 11 collections**, 1879 to 2003: **535 measurements**, a median
-of 25 a page, 3 pages yielding nothing, and **411 of 461 values (89%) findable in the page's own
-surviving OCR**. The remaining 11% sit on pages whose text layer was destroyed — the case the path
-exists for, and the one its own corroboration cannot reach. The cost is eight minutes a page on an
-RTX 2080 where only 18% of the model fits in VRAM, so this is a rented-hardware job.
+Across **24 table pages from 11 collections**, 1879 to 2003, the trial returned **535 records**.
+The stored trial checked 461 of those records for a matching digit sequence in page OCR and found
+411 (89%). That is a permissive consistency check, not an accuracy score: short numbers match by
+chance, 50 did not match, and the artifact does not preserve why 74 records were excluded. Their
+status is unknown; all 24 pages had OCR text. Trial throughput was about eight minutes a page on an
+RTX 2080, where only 18% of the model fit in VRAM.
 
 **Not built:** figure extraction — reading a plotted line back into numbers — and corpus-scale
 extraction, which is what the whole cost model is about.
@@ -386,9 +374,10 @@ extraction, which is what the whole cost model is about.
 too conservative at the sample sizes annual reports give, so a null result from it means nothing;
 the watershed network is name-matching and drainage area, not routed hydrology, and should be
 checked against the National Hydro Network before any claim about a specific community's water;
-verification catches fabrication but not misreading, so a value filed as influent when the page
-meant effluent passes every check this project has — which is why contested readings are shown
-side by side with a picture of each sentence rather than resolved.
+verification catches some fabrication but not misreading, so a value filed as influent when the
+page meant effluent can pass — which is why contested readings remain side by side. Each keeps a
+page link; prose uses sentence evidence, while table records retain row/column locators but are not
+accepted as verified without localized cell proof. Crops can also be unavailable.
 
 ## The work log
 

@@ -86,23 +86,20 @@ def test_records_that_cite_nothing_are_not_merged():
     verdict = verify_bundle(bundle, archive=FakeArchive())
 
     assert verdict.verified == 1
-    assert len(verdict.unsupported) == 50
-    assert not verdict.failed
-    assert verdict.accepted                      # the genuine record is genuine
+    assert len(verdict.failed) == 50
+    assert not verdict.unsupported
+    assert not verdict.accepted
     assert len(verdict.supported) == 1           # but only it is evidence
 
-    with tempfile.TemporaryDirectory() as td:
-        out = merge_bundle(bundle, into=Path(td), verdict=verdict)
-        assert out["accepted"] == 1
-        assert out["not_supported"] == 50
-        written = json.loads(next(Path(td).glob("*.json")).read_text(encoding="utf-8"))
-        assert {r["parameter"] for r in written["records"]} == {"BOD"}
+    with tempfile.TemporaryDirectory() as td, pytest.raises(ValueError):
+        merge_bundle(bundle, into=Path(td), verdict=verdict)
 
 
 def test_records_whose_page_cannot_be_fetched_are_not_merged():
     """The same thing happens by accident whenever archive.org is flaky
     mid-bundle. Unfetchable is not the same as true."""
     fabrications = [{"kind": "observation", "parameter": "lead", "value": 8.8,
+                     "unit": "mg/L",
                      "provenance": {"identifier": "nosuchitem", "page": 3,
                                     "source_text": "Lead was 8.8 mg/L."}}
                     for _ in range(20)]
@@ -160,3 +157,29 @@ def test_bundle_id_is_recomputed_not_trusted():
     other = dict(GENUINE, value=99.0, parameter="suspended solids")
     assert bundle_id([GENUINE]) != bundle_id([other])
     assert bundle_id([GENUINE]) == bundle_id([dict(GENUINE)])
+
+
+def test_a_valid_hex_claim_cannot_overwrite_another_bundle(tmp_path):
+    """A plausible-looking id is still sender input, not file authority."""
+    first = make_bundle([GENUINE])
+    first_verdict = verify_bundle(first, archive=FakeArchive())
+    first_result = merge_bundle(first, into=tmp_path, verdict=first_verdict)
+    first_path = Path(first_result["written"])
+    before = first_path.read_bytes()
+
+    other_record = dict(
+        GENUINE,
+        parameter="reporting year",
+        value=1969.0,
+        provenance=dict(
+            GENUINE["provenance"],
+            source_text="The average influent BOD was 104 mg/1 in 1969",
+        ),
+    )
+    second = dict(make_bundle([other_record]), bundle_id=first["bundle_id"])
+    second_verdict = verify_bundle(second, archive=FakeArchive())
+    second_result = merge_bundle(second, into=tmp_path, verdict=second_verdict)
+
+    assert Path(second_result["written"]) != first_path
+    assert first_path.read_bytes() == before
+    assert len(list(tmp_path.glob("contributed-*.json"))) == 2

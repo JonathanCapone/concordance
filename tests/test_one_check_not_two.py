@@ -47,7 +47,7 @@ WRONG = [
 
 def _ledger(value: float, sentence: str) -> bool:
     claim = Claim(record={
-        "parameter": "x", "value": value,
+        "kind": "observation", "parameter": "x", "value": value, "unit": "units",
         "provenance": {"identifier": "doc", "page": 1, "source_text": sentence}})
     return check(claim, pages={"doc": {1: sentence}}).verified
 
@@ -87,7 +87,7 @@ def test_verified_records_say_how_they_were_verified() -> None:
 def test_an_invented_sentence_still_fails() -> None:
     """Nothing above loosens the sentence check, only how digits are read."""
     claim = Claim(record={
-        "parameter": "BOD", "value": 104,
+        "kind": "observation", "parameter": "BOD", "value": 104, "unit": "mg/L",
         "provenance": {"identifier": "doc", "page": 1,
                        "source_text": "The BOD was 104 mg/L."}})
     assert not check(claim, pages={"doc": {1: "A page about something else."}}).verified
@@ -95,36 +95,30 @@ def test_an_invented_sentence_still_fails() -> None:
 
 # -- table readings ---------------------------------------------------------
 
-def test_a_table_reading_verifies_in_a_bundle_as_it_does_in_the_ledger() -> None:
-    """The third instance of two-checks-that-are-meant-to-be-one.
-
-    A table reading cites row and column headings instead of a sentence, and
-    verify_bundle had no path for that -- so "table cell [January - Janvier /
-    Fine vacuum / 2002]" was judged as a sentence, was correctly found not to be
-    one, and was recorded as fabrication. All 535 vision records failed, 100%,
-    while the ledger verified those same records and published them.
-
-    The work being refused was the contribution this project calls its most
-    valuable: a person with a graphics card reading the tables nobody else can,
-    once, for everyone.
-    """
+def test_a_table_reading_abstains_in_bundle_and_ledger_without_cell_proof() -> None:
+    """The bundle and ledger apply one conservative table-evidence rule."""
     from concordance.contribute import CELL_RE, make_bundle, verify_bundle
-    from concordance.disputes import CELL_RE as LEDGER_CELL_RE, load_vision_records
+    from concordance.disputes import CELL_RE as LEDGER_CELL_RE
 
     # One definition, not two that happen to agree today.
     assert CELL_RE is LEDGER_CELL_RE
 
-    claims = load_vision_records()
-    if not claims:
-        import pytest
-        pytest.skip("no vision records on disk")
+    page_text = "January BOD 41.2"
+    record = {
+        "kind": "observation", "parameter": "BOD", "value": 41.2,
+        "unit": "mg/L", "stream": "effluent",
+        "provenance": {
+            "identifier": "doc", "page": 1, "path": "vision",
+            "source_text": "table cell [January / BOD]",
+        },
+    }
 
-    cells = [c for c in claims
-             if CELL_RE.search((c.record.get("provenance") or {}).get("source_text") or "")]
-    assert cells, "vision records should cite table cells"
+    class Archive:
+        def pages(self, identifier):
+            class P:
+                page, text = 1, page_text
+            return [P()]
 
-    from concordance.archive import Archive
-    verdict = verify_bundle(make_bundle([c.record for c in cells[:20]]),
-                            archive=Archive())
-    assert verdict.verified > 0, "table readings must not be refused as fabrication"
-    assert not verdict.failed
+    bundle_ok = verify_bundle(make_bundle([record]), archive=Archive()).verified == 1
+    ledger_ok = check(Claim(record=record), pages={"doc": {1: page_text}}).verified
+    assert bundle_ok is ledger_ok is False

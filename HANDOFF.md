@@ -19,7 +19,7 @@ Fellowship**.
 | **Application deadline** | **21 August 2026** |
 | Review | 22–30 Aug, selection 31 Aug |
 | Build window | 1 Sept – mid-Oct 2026 |
-| Showcase | 28 Oct 2026, Vancouver |
+| Conditional showcase | 28 Oct 2026, Vancouver, if the work is ready |
 | Award | $5,000, six weeks |
 | Judged on | useful · imaginative · open source · achievable |
 
@@ -56,8 +56,9 @@ points at. It is *not* what gets pasted into the form.
 
 ## 3. Where it stands
 
-**5,147 source-linked records across 14 municipalities**, 564 tests, zero required dependencies in
-the core. Every published figure below is reproducible from the repo.
+**5,147 source-linked records across 14 municipalities** at the frozen `f8fbca2`
+application checkpoint, 779 tests, zero required dependencies in the core. Core
+benchmark figures are tied to named snapshots; live estimates must be dated and labelled.
 
 | | |
 |---|---|
@@ -65,8 +66,7 @@ the core. Every published figure below is reproducible from the repo.
 | Kind accuracy (measurement vs design spec vs legal limit) | 98.3%, 60 matched values |
 | Stream accuracy (influent vs effluent) | 88.9%, 18 judged pairs |
 | Source-sentence mismatches in a 286-record audit | 0 |
-| Table measurements recovered by the vision path | 535 from 24 pages, 11 collections |
-| Dispute ledger | 1,445 settled / 129 contested / 88 unsupported |
+| Vision-table trial output | 535 records from 24 pages, 11 collections; no hand-read accuracy score yet |
 
 Re-score without a model: `python scripts/rescore.py`. Full accuracy run needs
 Ollama: `python scripts/run_gold.py --model gemma4:12b`.
@@ -82,20 +82,37 @@ parameter name the model invented rather than one the archive uses**, against
 
 ## 4. In flight right now
 
-- **Town batch** — the pre-fix runner is still actively reading Belleville; do
-  not start a second model job. It predates completion receipts, so it will not
-  create one. The patched runner treats every legacy result as resumable, skips
-  its already-attempted pages, and writes a receipt only after the child reports
-  the exact ordered document selection and the result, selection and extractor
-  fingerprints agree. There are currently no receipts. On a future restart,
-  `--skip-done` skips only receipt-backed results, never a filename by itself.
+- **Town batch** — the pre-fix runner is still active; inspect its child before
+  touching any recently written result or starting another model job. It
+  predates completion receipts, so it will not create one. A receipt is now
+  available only to a fresh managed run whose marker existed before its result;
+  it proves completion of the exact ordered selection and matching result, not
+  that later code reread old pages. A clean legacy incremental pass instead gets
+  a separate result/selection-bound scheduling checkpoint explicitly marked
+  `receipt_backed: false` and `fresh_verification: false`; this prevents it from
+  starving new towns without upgrading its provenance. Result, receipt, marker
+  and legacy paths use one contained Windows-safe slug. There are currently no
+  receipts.
 - **Vocabulary workflow** — a conservative first artifact is built and wired
   into extraction. `data/vocabulary/vocabulary.json` holds 697 source-attested
-  terms from the frozen 5,147-record checkpoint and stratified survey: 229 have
+  terms from the frozen `f8fbca2` 5,147-record checkpoint and stratified survey: 229 have
   one consistent existing identity; 468 deliberately leave identity blank; all
   are `reviewed: false`; matching collisions are zero. Grouping is orthographic
   only, so words such as `design`, `total`, `maximum`, `minimum`, `per capita`
   and `24 hour` cannot be silently erased.
+- **Publication-year recovery** — the deterministic, model-free OCR detector
+  has a fresh 600-item validation at
+  `data/cache/dating/year_recovery.json` (ignored, not for commit). Its stored
+  detector SHA matches `concordance/dating.py`: 142/145 non-bound guesses agreed
+  with held-out catalogue years (97.9%), all 145 were within ±1 year, and a
+  separate 300-item yearless residual sample produced 111 date proposals plus
+  24 explicitly low-confidence lower bounds. Catalogue agreement is a noisy
+  surrogate, not ground-truth publication-date accuracy. The report SHA-256 is
+  `da550865185673de28d7811888e44fa7d88eaab8edbd8e3f7b186c6f979a8bcb`.
+- **Git boundary** — a prior concurrent agent committed and pushed active result
+  snapshots during this handoff. A local pre-push hook now blocks further
+  pushes. Do not remove it or publish another correction without the user's
+  explicit approval, and always exclude the live result owned by the batch.
 
 ---
 
@@ -108,8 +125,9 @@ municipal sewage reports" and "works on the Canadian public record".
 
 1. ~~Build a safe provisional artifact.~~ **Done.** The deterministic builder
    reads committed evidence by default, validates source attestation and matching
-   invariants, and refuses semantic collisions. Reproduce it with
-   `python scripts/build_vocabulary.py --dry-run`; validate the saved file with
+   invariants, and refuses semantic collisions. Reproduce this exact artifact
+   with `python scripts/build_vocabulary.py --git-ref f8fbca2 --dry-run`;
+   validate the saved file with
    `python scripts/build_vocabulary.py --validate data/vocabulary/vocabulary.json`.
 
 2. ~~Wire it into extraction.~~ **Done.** The model chooses from the prompt list
@@ -117,11 +135,12 @@ municipal sewage reports" and "works on the Canadian public record".
    that claim, canonicalizes only an exact canonical/orthographic-alias match,
    and records the naming version and vocabulary size in `Record.raw`.
 
-3. **Improve prompt retrieval before claiming success.** The safe artifact knows
-   235 of the 244 archive-language terms in the stratified survey, but the
-   current 240-term prompt exposes only 39 of those 235 because the artifact has
-   no reviewed domain labels and report titles rarely share words with parameter
-   names. Improve page-aware retrieval without broad semantic aliasing.
+3. ~~Improve prompt retrieval.~~ **Implemented and preflighted.** Selection now
+   ranks exact vocabulary phrases from the same title, publisher and 12,000-page-
+   character slice the model sees, then word overlap and evidence frequency.
+   On 112 survey terms linked to their exact cached source pages, the target was
+   selected 112/112 times even at limit 80; production keeps limit 240. This is
+   a retrieval preflight, not a post-change model-accuracy result.
 
 4. **Then measure the model.** Re-run the same stratified sweep and check
    `model_named_share` falls from the measured 0.7578 baseline. No post-change
@@ -132,22 +151,30 @@ the project's line is that the machine proposes and a human decides what a term
 *means*, and it has been wrong about exactly this before ("BOD removal" vs "BOD
 exceedance frequency" are both percentages and different measurements).
 
-### B. Deploy a public instance (authorised, not started)
+### B. Prepare a public instance (fresh approval required before deployment)
 
-He chose this. Blocked on one thing only he can do: **a DNS A record**.
+The deployment design exists, but publishing remains outward-facing work: get a
+fresh go-ahead before changing DNS or starting it. The remaining external input
+would be a **DNS A record**.
 
 - Droplet `165.227.25.23`, Ubuntu 24.04, nginx + Let's Encrypt. Runbook and
   patterns in `C:/Users/jdcap/Documents/Projects/server-infra` — follow the
   Squishy Store pattern (systemd unit + nginx reverse proxy), not the static
   ones.
 - Suggested host `concordance.jonathancapone.com`.
+- Set `CONCORDANCE_PUBLIC_HOSTS=concordance.jonathancapone.com` in the service
+  environment. POST endpoints trust only loopback hosts by default; the explicit
+  value is required behind nginx to keep DNS-rebinding requests out.
 - **Vendor MapLibre first.** `concordance/portal.py` loads it from unpkg and
   pulls tiles from arcgisonline and an S3 terrain bucket. A CDN failure already
-  took out all nine views once, and the showcase is on conference wifi.
+  took out all nine views once, and any showcase would run on conference wifi.
+- **Size the evidence workers before exposing them.** The wire download is
+  capped, but one permitted 54 MiB page-cache file expands to roughly 1.4 million
+  word entries in memory. Add an item-size/page-count policy or lower concurrency
+  for the droplet. App-level direct-peer quotas also become a shared proxy quota
+  behind nginx; deliberate per-client limits belong at that trusted edge.
 
-### C. Remaining audit findings
-
-An adversarial audit found nine confirmed defects. These are now fixed:
+### C. Adversarial audit findings fixed in this pass
 
 - `library.ask` no longer reports or writes a contribution when it recovered
   zero records.
@@ -155,20 +182,36 @@ An adversarial audit found nine confirmed defects. These are now fixed:
   whole-page archive link separate, rather than feeding HTML to an image tag.
 - A slow MapLibre download degrades only the map after four seconds; all local
   views initialize first, and a late download can still recover the map.
-- `/api/bundle` now admits at most three valid expensive submissions per socket
-  peer per minute and returns an explicit HTTP 429 before archive verification.
+- All model/OCR/external strings are escaped in the portal and external links
+  are limited to HTTP(S), closing the public model-reply injection path.
+- `/api/bundle` now has byte, record, identifier and page caps; rate and global
+  concurrency limits reject excess work before archive verification.
 - `/api/read` no longer launches an hours-long local-model job from a GET. The
   public UI labels the browser-to-local handoff as fellowship work instead of
   claiming it already runs on the visitor's laptop.
+- Every expensive or mutating public route is JSON POST-only with same-origin,
+  size, rate and concurrency guards. Ledger, watershed and frontier first-builds
+  coalesce under locks, and failure results are cached rather than retried by
+  every visitor.
+- Public archive identifiers and collection names have one conservative syntax
+  boundary plus resolved cache containment, including Windows drive, device and
+  traversal cases.
+- Incoming numbers must match complete numeric tokens, not substrings; a value
+  `12` no longer passes against `3120`. Bundle IDs are recomputed, and merge now
+  performs locked deduplication plus create-new atomic publication, so colliding
+  or concurrent submissions cannot overwrite or duplicate accepted data.
+- Accepted individual contributions now join the same deduplicated corpus used
+  by the downloadable library, town views and Jay; reload constructs a new Jay
+  over the new corpus. Cheap flag overlays no longer force archive rechecks.
 
-Still open,
-from `data/results/` and the audit output:
-
-- ~154 records store a facility or a piece of plant equipment where a town
-  belongs ("digesters", "primary", "Site 1", "Lake Ontario"). Two problems
-  mixed: facility strings that contain a town ("Brantford Water Treatment
-  Plant") need splitting into place + facility, and genuine non-places should
-  inherit the town from the file header.
+- Place/facility scoping is now shared by loading, future extraction and bundle
+  deduplication. Against the frozen 5,147-record checkpoint it moves 233 plant,
+  equipment or locality strings (for example "digesters", "Site 1" and
+  "Brantford Water Treatment Plant") under the file's municipality/site scope,
+  preserves the model's wording as facility or `raw.reported_place`, and retains
+  a genuinely different populated place. The corpus, dispute ledger, share
+  export and merge keys all use the same scoping. Existing result JSON is not
+  rewritten.
 
 ### D. Application polish
 
@@ -179,7 +222,7 @@ from `data/results/` and the audit output:
   been approached. The application says so plainly in *"What I have not tested,
   and who has not used it"* — but **the cheapest possible win before the 21st is
   to make that paragraph untrue**: one email to Internet Archive Canada about
-  the 13,429 metadata corrections, and five people from a town in the dataset
+  the 13,429 metadata proposals, and five people from a town in the dataset
   clicking the button. A librarian reviewer named this as the single thing
   standing between "lean yes" and "yes".
 
@@ -192,10 +235,11 @@ think we need to utilize more of the OMEGA code base since the work is mostly
 done and it looks good."* The decision he made was: Concordance stays a separate
 repository, but stops rebuilding what OMEGA already has.
 
-OMEGA-wave lives at `C:/Users/jdcap/Documents/Codex/OMEGA-wave` — ~30,000 lines,
-118 provider definitions. Some of it is already here (`science.py`, `portal.py`,
-`jay.py`, `static/omega-portal.css` all came from it). A survey ran subsystem by
-subsystem and costed each candidate; **its findings were never acted on.** Full
+OMEGA-wave lives at `C:/Users/jdcap/Documents/Codex/OMEGA-wave`. It is a large,
+actively changing system; do not repeat old line or provider counts without
+measuring the current checkout. Some of it is already here (`science.py`,
+`portal.py`, `jay.py`, `static/omega-portal.css` all came from it). A survey ran
+subsystem by subsystem and costed each candidate; **its findings were never acted on.** Full
 output in the session task file `w5gzy32rc.output`; the headline items, all
 stdlib with **zero new dependencies**:
 
@@ -266,8 +310,9 @@ time.
   trusts a signed node; here the sender is irrelevant and the archive decides),
   and the zero-dependency core is what makes "a stranger's laptop can read a
   document" plausible.
-- **No GPU rental in the budget.** $4,251–8,502 was costed specifically to argue
-  against it: a corpus bought in one batch is finished when the money stops.
+- **No GPU rental in the budget.** The old $4,251–8,502 range was withdrawn: its
+  cost model is not reliable enough to quote. A full rented pass is outside the
+  fellowship regardless, and a corpus bought in one batch stops when funding does.
 - **The vocabulary was done before applying**, not proposed as funded work.
 - **Name: Concordance.** Ground Truth was taken. He rejected roughly fifteen
   alternatives before this one — including Verbatim, Gazetteer, Cairn, Portage,
@@ -304,7 +349,7 @@ as JSON. **Read these before re-doing the work.**
 
 | id | what it was | status |
 |---|---|---|
-| `w5qp6221v` | Adversarial audit: verification path, claims-vs-code, abuse surface, data integrity, demo robustness. Nine confirmed defects, six serious. | six fixed; the rest are section 5C |
+| `w5qp6221v` | Initial adversarial audit: nine confirmed defects, six rated serious | current fix inventory is §5C; use it plus the final suite to state closure |
 | `w5gzy32rc` | OMEGA lift survey, subsystem by subsystem, each candidate costed | **never acted on** — section 5E |
 | `w1ume7jp3` | Reader panel 1 on the application — five personas. Verdict: none of five could name the deliverable. | acted on; drove the rewrite |
 | `wl1cwxsvo` | Reader panel 2 on the rewrite. 4 of 5 could explain it from line 7. | acted on |
@@ -317,9 +362,10 @@ re-reading it myself would have.
 ### Commands worth knowing
 
 ```bash
-python -m pytest -q                      # 586 tests, ~6s, no network
+python -m pytest -q                      # 779 tests, ~8s, no network
 python scripts/check_form.py             # application answers vs the form's limits
 python scripts/rescore.py                # accuracy, no model needed
+python scripts/recover_years.py --fresh --sleep 0 --checkpoint-every 50 --out data/cache/dating/year_recovery.json  # warm-cache dating validation
 python -m concordance.server             # the portal, port 8765
 python -u scripts/run_batch.py --towns 12 --model gemma4:12b --timeout 900
 python scripts/run_vocab.py --budget 1400 --per-stratum 1 --pages-per-doc 2 --max-strata 25 --out data/results/vocab_coverage.stratified.json
@@ -342,9 +388,10 @@ checks.** The first accuracy figure was 49% precision and the extractor was
 fine — the *scorer* could not tell that "3.0 million gallons" and "3000000
 gallons" are the same number. A page counted as prose only if its lines held
 eight words, which silently discarded a fifth of the archive. The bundle
-verifier refused all 535 vision records because a table cites headings rather
-than a sentence. The value check refused correct readings of "I5 feet deep",
-because 1960s scanners write 1 as I.
+verifier once disagreed with the ledger about table citations. The shared check
+now fails closed: page/row/column headings are retained, but without localized
+cell proof all current table claims abstain. The value check also once refused
+correct readings of "I5 feet deep", because 1960s scanners write 1 as I.
 
 **An identity missing a field, merging things that are not the same.** Dedup
 compared a live record key against a stale stored one, so an instance re-imported
@@ -373,10 +420,10 @@ concordance/
   models.py       Record, Provenance, record_key
   contribute.py   bundles, verification, merge
   disputes.py     the ledger: settled / contested / unsupported
-  citations.py    IIIF crops of the sentence on the scan
+  citations.py    IIIF crops when available, with explicit full-page fallback
   science.py      series, trends, Series.sources
-  units.py        era-aware conversion, refuses incomparable readings
-  dating.py       document year, and which year a reading belongs to
+  units.py        conversion guards; MGD/Imperial normalization remains unresolved
+  dating.py       deterministic document-date proposals; not wired into record periods
   numerals.py     numbers written as words, English and French
   server.py       the portal and the HTTP API
   portal.py       the page itself

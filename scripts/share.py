@@ -1,10 +1,8 @@
 """Move readings between machines, and re-check them on arrival.
 
-This is the part the distributed model was missing. Everything else was in
-place -- a reading is verified against the scan it cites, and the check never
-asks who is speaking -- but a contribution written to `data/contributions` on
-one laptop reached nobody, so "read it once and it is there for everyone" was
-true of the reading and false of the everyone.
+This is the part the distributed model was missing. Supported prose evidence can
+be checked against the page it cites without asking who is speaking, but a
+contribution written to `data/contributions` on one laptop reached nobody.
 
 The base mechanism is a file.
 
@@ -20,20 +18,17 @@ Handing files to people does not scale, so there is also a shared instance:
     python scripts/share.py push fergus.bundle.json --to https://example.org
     python scripts/share.py pull --frm https://example.org
 
-The instance changes nothing about what is true. It re-verifies everything it is
-sent, hands back everything it holds, and can be replaced by anyone who does not
-like how it is run -- `pull` then `import --verified-only` reconstructs its
-entire library locally, checked from scratch. A server that cannot be audited by
-copying it is a different kind of object than this one.
+The instance changes nothing about what is true. It evaluates the cited evidence,
+keeps only the supported records, hands back everything it holds, and can be
+replaced by anyone who does not like how it is run -- `pull` then
+`import --verified-only` reconstructs its supported library locally. A server
+that cannot be audited by copying it is a different kind of object than this one.
 
-**Trust does not travel with it.** Nothing about the sender is checked, because
-nothing about the sender is relevant -- an imported bundle is re-verified
-against archive.org on the importing machine, record by record, exactly as the
-machine's own output is. A bundle from a stranger and a bundle from the author
-are treated identically, which is the property that makes this safe to accept
-from anyone and the reason there is no signature scheme here. A signature would
-prove who sent it; the archive proves whether it is true, which is the question
-that matters.
+**Trust does not travel with it.** Nothing about the sender is checked: an
+imported bundle's prose evidence is checked against archive.org on the importing
+machine. Locator-only table claims abstain without localized cell proof. A bundle
+from a stranger and one from the author are treated identically. A signature
+would prove who sent it; it would not prove what the cited page supports.
 
 What arrives unverifiable stays out, and is reported rather than dropped
 quietly.
@@ -75,8 +70,9 @@ def do_export(args: argparse.Namespace) -> int:
     print(f"{len(records)} readings from {len(bundle['identifiers'])} documents "
           f"-> {args.out}")
     print(f"bundle id {bundle['bundle_id']}")
-    print("\nWhoever imports this will re-check every record against the scans "
-          "it cites.\nNothing about you travels with it, and nothing needs to.")
+    print("\nWhoever imports this will evaluate each record against the pages "
+          "it cites; unsupported evidence stays out.\nNothing about you travels "
+          "with it, and nothing needs to.")
     return 0
 
 
@@ -89,12 +85,13 @@ def do_import(args: argparse.Namespace) -> int:
     if bundle.get("note"):
         print(f"  note: {bundle['note'][:160]}")
 
-    print("\nchecking every record against the pages it cites...")
+    print("\nchecking each record against the pages it cites...")
     verdict = verify_bundle(bundle, archive=Archive())
     print(f"  verified   {verdict.verified}")
     print(f"  failed     {len(verdict.failed)}")
     print(f"  unchecked  {len(verdict.unchecked)}")
-    for f in verdict.failed[:6]:
+    print(f"  unsupported {len(verdict.unsupported)}")
+    for f in (verdict.failed + verdict.unsupported)[:6]:
         print(f"    {f.get('why','')[:70]}: {str(f.get('quote',''))[:56]!r}")
 
     if not verdict.accepted and not args.verified_only:
@@ -104,26 +101,18 @@ def do_import(args: argparse.Namespace) -> int:
         return 1
 
     if not verdict.accepted:
-        # Taking the verified subset is safe HERE and would not be in a system
-        # that hid the difference. Every record's standing is individually known,
-        # and the dispute ledger has a state for "unsupported", so what is left
-        # behind is a reported absence rather than a quiet loss. Discarding 115
-        # good readings to punish 4 unverifiable ones is the worse trade -- and
-        # one of those four is "Just over three million gallons", a real number
-        # written in words, which is a limit of the check rather than a fault in
-        # the reading.
-        failed = {(f.get("identifier"), f.get("page"), f.get("quote"),
-                   repr(f.get("value"))) for f in verdict.failed}
-        keep = []
-        for r in bundle.get("records") or []:
-            prov = r.get("provenance") or {}
-            key = (prov.get("identifier"), prov.get("page"),
-                   (prov.get("source_text") or "")[:120], repr(r.get("value")))
-            if key not in failed:
-                keep.append(r)
-        bundle = dict(bundle, records=keep, n_records=len(keep))
-        print(f"\ntaking {len(keep)} verified readings; {len(verdict.failed)} left "
-              "out and listed above")
+        # The verifier owns the positive set. Reconstructing it as "everything
+        # not failed" once let unsupported records ride in with one genuine
+        # record. Preserve only what the archive actually supported.
+        keep = list(verdict.supported or [])
+        refused = len(verdict.failed) + len(verdict.unsupported)
+        bundle = make_bundle(
+            keep,
+            contributor=str(bundle.get("contributor") or "anonymous"),
+            note=str(bundle.get("note") or ""),
+        )
+        print(f"\ntaking {len(keep)} supported readings; {refused} left out and "
+              "listed above")
 
         # Re-verify what is actually about to be merged, rather than handing
         # merge_bundle the verdict for the bundle this one was cut down from.
@@ -164,12 +153,12 @@ def do_import(args: argparse.Namespace) -> int:
 
 
 def do_push(args: argparse.Namespace) -> int:
-    """Send readings to a shared instance, which re-checks every one of them.
+    """Send readings to an instance that evaluates each record's evidence.
 
     The instance is a convenience and not an authority. It holds no key anyone
     else lacks; it simply saves each person from being handed a file. Anything
-    it accepts, it accepted by asking archive.org -- so a contributor does not
-    have to trust it, and neither does anyone reading the result.
+    it accepts has supporting archive evidence under the current rules; semantic
+    interpretation remains open to challenge.
     """
     bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
     url = args.to.rstrip("/") + "/api/bundle"
@@ -222,7 +211,7 @@ def do_pull(args: argparse.Namespace) -> int:
     print(f"{bundle.get('n_records', 0)} readings -> {out}")
     print("Nothing has been trusted yet. Run:")
     print(f"  python scripts/share.py import {out} --verified-only")
-    print("which re-checks every record against the scans here, on your machine.")
+    print("which evaluates each record against its cited page here, on your machine.")
     return 0
 
 
@@ -250,7 +239,7 @@ def main() -> int:
     ps = sub.add_parser("push", help="send a bundle to a shared instance")
     ps.add_argument("bundle")
     ps.add_argument("--to", default="http://localhost:8765",
-                    help="instance URL; it re-verifies everything it is sent")
+                    help="instance URL; it checks supported cited evidence")
     ps.add_argument("--timeout", type=float, default=600.0)
     ps.set_defaults(func=do_push)
 

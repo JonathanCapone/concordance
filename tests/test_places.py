@@ -32,6 +32,13 @@ def test_record_location_separates_town_scope_from_facility_wording(
     )
 
 
+def test_nested_place_names_remain_distinct_when_both_resolve():
+    assert scope_record_location("Arthur", "Port Arthur", None, 1969) == (
+        "Arthur",
+        None,
+    )
+
+
 @pytest.mark.parametrize("raw", ["Sault Ste Marie", "Sault Ste. Marie"])
 def test_sault_spelling_variants_resolve_to_one_city(raw):
     place = resolve(raw, 1964)
