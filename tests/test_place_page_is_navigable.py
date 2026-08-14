@@ -32,13 +32,49 @@ def _towns(state: S.State):
             yield e["place"], t
 
 
-def test_one_panel_per_thing_measured(state: S.State) -> None:
+def test_one_panel_per_thing_measured_within_a_system(state: S.State) -> None:
     """"bod" appeared five times on Belleville's page: influent, effluent and
-    raw, times two spellings of one plant."""
+    raw, times two spellings of one plant.
+
+    Uniqueness is per WORKS, not per town. Brantford's sewage plant and its
+    drinking water supply can both measure temperature, and those are two
+    different measurements of two different things -- which is exactly why the
+    page is now sectioned by works.
+    """
     for place, town in _towns(state):
-        labels = [p["label"] for p in town.get("series") or []]
-        assert len(labels) == len(set(labels)), (
-            f"{place} lists {len(labels)-len(set(labels))} duplicate panels")
+        for system in town.get("systems") or []:
+            keys = [(p["label"], p["unit"]) for p in system["panels"]]
+            assert len(keys) == len(set(keys)), (
+                f"{place} / {system['title']} lists a duplicate panel")
+
+
+def test_a_place_page_is_sectioned_by_works(state: S.State) -> None:
+    """A town's sewage plant and its water supply are different subjects, and a
+    reader needs to know which a number is about before it means anything.
+    Brantford interleaved 1961-1972 sewage readings with 1987-1992 drinking
+    water in one flat list."""
+    for place, town in _towns(state):
+        systems = town.get("systems") or []
+        if not (town.get("series") or []):
+            continue
+        assert systems, f"{place} has panels but no system grouping"
+        assert sum(s["n"] for s in systems) == town["n_charted"]
+        for s in systems:
+            assert s["title"], f"{place} has an unnamed system"
+
+
+def test_abbreviations_are_expanded_for_a_reader(state: S.State) -> None:
+    """A page of ml.ss., ss and thms is unreadable to the resident this is for.
+
+    The expansion is on the LABEL only -- the row keeps the document's own
+    wording, which is what somebody checking the scan needs.
+    """
+    from concordance.server import plain_label
+
+    assert plain_label("bod") == "bod (biochemical oxygen demand)"
+    assert plain_label("ml.ss.").endswith("(mixed liquor suspended solids)")
+    assert plain_label("bod removal").startswith("bod removal (")
+    assert plain_label("hardness") == "hardness"
 
 
 def test_streams_are_lines_in_one_panel_not_separate_panels(state: S.State) -> None:

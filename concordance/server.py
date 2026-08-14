@@ -887,6 +887,13 @@ class State:
         # page then showed 103.7% of the town's observations, which is how a
         # duplicate announces itself if you happen to count.
         found: dict[tuple[str, str | None, str], list[Any]] = {}
+        # What the documents themselves called it, per group. resolve() gives a
+        # canonical key for grouping and a label too coarse to show: "operating
+        # cost", "treatment cost" and "cost of replacing the boiler tubes" all
+        # resolve to "cost", and a panel headed "cost" cannot tell a reader what
+        # the cost was FOR. Group by the resolved meaning, display the archive's
+        # own words.
+        said: dict[tuple[str, str | None, str], Counter] = {}
         for r in mine:
             got = resolve_parameter(
                 r.parameter, r.unit,
@@ -897,6 +904,10 @@ class State:
             found.setdefault((label, r.stream,
                               facility_key(r.facility, out.get("place"))
                               or "unclassified"), []).append(r)
+            said.setdefault((label, r.stream,
+                             facility_key(r.facility, out.get("place"))
+                             or "unclassified"), Counter())[
+                (r.parameter or "").strip().lower()] += 1
 
         def rank(item: tuple[tuple[str, str | None, str], list[Any]]) -> tuple[int, int, int]:
             (label, _stream, facility), group = item
@@ -914,6 +925,9 @@ class State:
         # 72 of Belleville's 475 rows.
         seen_rows: set[tuple[Any, ...]] = set()
         for (label, stream, facility), group in sorted(found.items(), key=rank):
+            spoken = said.get((label, stream, facility))
+            shown = spoken.most_common(1)[0][0] if spoken else label
+            label = shown or label
             # Only this group's records, so nothing can be claimed twice.
             s = series_from_records(group, parameter=label, stream=stream)
             # A group that cannot form a comparable series -- mixed units, an
@@ -1000,12 +1014,25 @@ class State:
         # streams belong together, because influent against effluent on one
         # axis IS the question -- how much did the plant take out -- and three
         # separate panels make the reader hold it in their head instead.
-        panels: dict[str, dict[str, Any]] = {}
+        panels: dict[tuple[str, str, str], dict[str, Any]] = {}
         for entry in series:
-            panel = panels.setdefault(entry["label"], {
-                "label": entry["label"], "unit": entry["unit"],
-                "lines": [], "rows": [], "facilities": set(),
-            })
+            # Keyed by unit as well as name. Belleville charted an $1,343
+            # boiler-tube repair, an $82,403 annual operating cost and a $23.09
+            # cost per million gallons on one axis -- three different
+            # quantities, two different units, one meaningless line. Merging
+            # panels by name alone re-created exactly the mixing that
+            # series_from_records refuses to do inside a series.
+            # Facility is part of the key, so a panel belongs to exactly one
+            # system. Brantford's page interleaved its sewage plant (1960-1972)
+            # with its drinking water supply (1987-1992) in one flat list --
+            # "hardness 1987-1992" sitting under "bod 1961-1972" with nothing
+            # saying they are different works measuring opposite things.
+            panel = panels.setdefault(
+                (entry["facility"], entry["label"], entry["unit"] or ""), {
+                    "label": entry["label"], "plain": plain_label(entry["label"]),
+                    "unit": entry["unit"], "facility": entry["facility"],
+                    "lines": [], "rows": [], "facilities": set(),
+                })
             panel["lines"].append({
                 # Named after the pass; what actually distinguishes the lines
                 # is worked out below, once the panel knows what it holds.
@@ -1129,6 +1156,25 @@ class State:
                 "downstream": sorted(set(neighbours["downstream"])),
             }
 
+        # One section per works. A town's sewage plant and its water supply are
+        # different subjects with different questions, and a reader needs to
+        # know which one a number is about before the number means anything.
+        systems: dict[str, dict[str, Any]] = {}
+        for panel in grouped:
+            name = panel.get("facility") or out.get("facility") or ""
+            sysd = systems.setdefault(name, {
+                "facility": name,
+                "title": (name[:1].upper() + name[1:]) if name else "Measured here",
+                "panels": [], "n": 0,
+            })
+            sysd["panels"].append(panel)
+            sysd["n"] += panel["n"]
+        for sysd in systems.values():
+            years = [y for p in sysd["panels"] if p["span"]
+                     for y in p["span"]]
+            sysd["span"] = [min(years), max(years)] if years else None
+        out["systems"] = sorted(systems.values(), key=lambda x: -x["n"])
+
         out["series"] = grouped
         out["singles"] = singles
         out["n_charted"] = sum(p["n"] for p in grouped)
@@ -1171,6 +1217,40 @@ def _bare_group(label: str, stream: str | None, facility: str,
     return {"label": label, "unit": "", "stream": stream or "",
             "facility": "" if facility == main_facility else facility,
             "points": [], "rows": rows, "not_comparable": True}
+
+
+#: Abbreviations the reports use and a reader cannot expand. Shown as
+#: "BOD (biochemical oxygen demand)" the first time, because a page of ml.ss.,
+#: ss and thms is unreadable to the resident this is aimed at -- and expanding
+#: them in the LABEL rather than rewriting the record keeps the document's own
+#: wording on the row, where somebody checking the scan needs it.
+PLAIN_WORDS = {
+    "bod": "biochemical oxygen demand",
+    "ss": "suspended solids",
+    "ml.ss.": "mixed liquor suspended solids",
+    "mlss": "mixed liquor suspended solids",
+    "thms": "trihalomethanes",
+    "total thms": "trihalomethanes",
+    "doc": "dissolved organic carbon",
+    "toc": "total organic carbon",
+    "cod": "chemical oxygen demand",
+    "do": "dissolved oxygen",
+    "tds": "total dissolved solids",
+    "vss": "volatile suspended solids",
+    "wpcp": "water pollution control plant",
+}
+
+
+def plain_label(label: str) -> str:
+    """The label with its abbreviation expanded, when it is one."""
+    key = (label or "").strip().lower()
+    full = PLAIN_WORDS.get(key)
+    if full:
+        return f"{label} ({full})"
+    # "bod removal" -> "BOD removal (biochemical oxygen demand)"
+    head = key.split()[0] if key.split() else ""
+    full = PLAIN_WORDS.get(head)
+    return f"{label} ({full})" if full else label
 
 
 STATE: State | None = None

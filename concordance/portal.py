@@ -178,6 +178,8 @@ details textarea{{resize:vertical}}
 .river{{font-size:12px;padding:7px 9px;margin:2px 0 8px;border-radius:7px;background:rgba(125,211,252,.07);border:1px solid rgba(125,211,252,.16)}}
 .river .more{{display:inline-block;margin-left:6px;font-size:11px;opacity:.7}}
 .river .nm{{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.5;margin-bottom:2px}}
+.system{{display:flex;align-items:baseline;gap:9px;margin:14px 0 3px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.14)}}
+.system .t{{font-size:12px;font-weight:700;letter-spacing:.03em}}
 .shelf{{font-size:10px;letter-spacing:.09em;text-transform:uppercase;opacity:.4;margin:11px 0 1px;padding-top:5px;border-top:1px solid rgba(255,255,255,.06)}}
 .chart.one{{display:flex;align-items:baseline;gap:7px;margin:2px 0 10px}}
 .chart.one .big{{font-size:26px;font-weight:600}}
@@ -650,16 +652,27 @@ function seriesHtml(d){{
      was measured and roughly when, then open the one they care about. Showing
      448 rows at once is the same failure as showing none -- it was all there
      and none of it was usable. */
-  panels.forEach((p, i) => {{
+  /* One section per works, because a town's sewage plant and its drinking
+     water supply are different subjects and a reader needs to know which a
+     number is about before it means anything. */
+  (d.systems || []).forEach(sys => {{
+    const sp = sys.span ? `${{sys.span[0]}}–${{sys.span[1]}}` : "";
+    h += `<div class="system"><span class="t">${{esc(sys.title)}}</span>
+      <span class="sm">${{esc(sp)}} · ${{sys.n}} readings</span></div>`;
+    sys.panels.forEach(p => {{ h += panelHtml(p); }});
+  }});
+  if (!(d.systems || []).length) panels.forEach(p => {{ h += panelHtml(p); }});
+
+  function panelHtml(p){{
     const span = p.span ? `${{p.span[0]}}–${{p.span[1]}}` : "";
     const rng = p.range ? `${{fmtN(p.range[0])}}–${{fmtN(p.range[1])}}` : "";
-    h += `<details class="panel" data-find="${{esc((p.label+" "+(p.unit||"")).toLowerCase())}}"${{i<3?" open":""}}>
-      <summary><span class="nm">${{esc(p.label)}}</span>
+    return `<details class="panel" data-find="${{esc((p.plain||p.label)+" "+(p.unit||"")).toLowerCase()}}">
+      <summary><span class="nm">${{esc(p.plain || p.label)}}</span>
         <span class="sm">${{esc(span)}}</span>
         <span class="sm">${{esc(rng)}} ${{esc(p.unit||"")}}</span>
         <span class="sm n">${{p.n}} reading${{p.n===1?"":"s"}}</span></summary>
       <div class="body">` + chart(p) + rowsHtml(p.rows) + `</div></details>`;
-  }});
+  }}
 
   /* Measured once, or not comparable. One compact line each: these are facts
      without a trend, and a section per group buried the page. */
