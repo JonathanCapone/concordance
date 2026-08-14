@@ -214,24 +214,56 @@ def test_ordinary_navigation_does_not_consult_the_bundle_limiter(monkeypatch) ->
     assert sent == {"body": b"portal", "ctype": "text/html; charset=utf-8"}
 
 
-def test_public_portal_does_not_offer_an_unsafe_server_read_button() -> None:
+def test_the_portal_never_ships_a_read_control_it_has_not_earned() -> None:
+    """Reading a place is hours of local model time, so a shared instance must
+    not offer it -- but the machine in front of you should, because that is the
+    whole design: nobody pre-processes the archive, your machine reads when you
+    ask.
+
+    The earlier version of this asserted "/api/read" never appears in the page,
+    which also forbids the client from ever calling the endpoint and so forbids
+    the feature. The properties that actually matter are below: the markup
+    ships no button, the button is created only after the reader answers, and
+    the server is the authority on whether it will read.
+    """
     html = render(PORTAL_STATE)
 
-    assert "/api/read" not in html
-    assert 'id="read-now"' not in html
-    assert "safe one-click browser-to-local handoff is fellowship work" in html
+    # No control in the shipped markup -- it is added by offerRead() only if
+    # the reader responds, so a public instance renders the explanation.
+    assert 'id="read-btn"' not in html.split("offerRead")[0]
+    assert "offerRead" in html
+    assert "not spend its graphics card" in html
+
+    # And the refusal is enforced server-side, not by hiding a button.
+    assert "/api/read" in server.POST_ONLY_ENDPOINTS
 
 
-def test_server_read_get_is_explicitly_disabled(monkeypatch) -> None:
+def test_a_get_can_never_start_a_read(monkeypatch) -> None:
+    """The invariant that matters: a link, a crawler or a prefetch must not be
+    able to start hours of local model work.
+
+    It used to be enforced by answering 501 "server-side reading is disabled".
+    Reading now genuinely works on a loopback instance -- that is the whole
+    design, your machine reads -- so the honest refusal for a GET is
+    method-not-allowed, and the guard is that /api/read is POST-only.
+    """
+    from concordance.reading import READER
+
+    assert "/api/read" in server.POST_ONLY_ENDPOINTS
+    assert "/api/read/status" in server.POST_ONLY_ENDPOINTS
+
     handler = _bare_handler("/api/read?place=Belleville")
     sent: dict = {}
     handler._send = lambda payload, ctype, **kwargs: sent.update(
         body=json.loads(payload), ctype=ctype, **kwargs,
     )
+    handler.send_response = lambda *a, **k: sent.update(status=a[0] if a else None)
+    handler.send_header = lambda *a, **k: None
+    handler.end_headers = lambda: None
     monkeypatch.setattr(server, "STATE", object())
 
+    before = READER.current
     handler.do_GET()
 
-    assert sent["status"] == 501
-    assert "server-side reading is disabled" in sent["body"]["error"]
-    assert "extract_place.py" in sent["body"]["local_reader"]
+    assert sent.get("status") == 405
+    assert READER.current is before, "a GET started a reading job"

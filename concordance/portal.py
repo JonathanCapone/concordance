@@ -590,6 +590,81 @@ function seriesHtml(d){{
   return h;
 }}
 
+/* Only offer to read if this machine will actually do it. */
+async function offerRead(){{
+  const slot = document.getElementById("read-offer");
+  if (!slot) return;
+  let st;
+  try {{ st = await postJson("/api/read/status", {{}}); }}
+  catch (e) {{ st = null; }}
+  if (!st || st.error) {{
+    slot.innerHTML = `<span class="note">This is a shared instance, so it will
+      not spend its graphics card on a visitor's request. Run the reader on your
+      own machine and it takes an hour or two:</span>
+      <code>python scripts/extract_place.py --place "${{esc(_openPlace ? _openPlace.place : "")}}"</code>`;
+    return;
+  }}
+  slot.innerHTML = `<button type="button" id="read-btn" class="paper-btn">Read it now</button>`;
+  if (st.reading && st.job) {{
+    document.getElementById("read-btn").disabled = true;
+    document.getElementById("read-note").textContent =
+      " already reading " + st.job.place + "…";
+  }}
+}}
+
+/* Reading a place, from the button, on this machine. */
+document.addEventListener("click", async ev => {{
+  const b = ev.target.closest("#read-btn");
+  if (!b) return;
+  const note = document.getElementById("read-note");
+  const log = document.getElementById("read-log");
+  const place = _openPlace ? _openPlace.place : "";
+  b.disabled = true;
+  note.textContent = " starting…";
+  let r;
+  try {{
+    r = await postJson("/api/read", {{place: place, raw: _openPlace ? (_openPlace.raw||"") : ""}});
+  }} catch (e) {{
+    note.textContent = " could not reach the reader.";
+    b.disabled = false;
+    return;
+  }}
+  if (r && r.error) {{
+    /* A public instance. Say so plainly and give the command that works. */
+    note.textContent = "";
+    log.hidden = false;
+    log.textContent = r.error + (r.local_reader ? "
+
+" + r.local_reader : "");
+    b.remove();
+    return;
+  }}
+  note.textContent = r && r.busy ? " already reading " + (r.job ? r.job.place : "") : " reading…";
+  log.hidden = false;
+  const tick = async () => {{
+    let st;
+    try {{ st = await postJson("/api/read/status", {{}}); }} catch (e) {{ return; }}
+    const j = st && st.job;
+    if (!j) return;
+    log.textContent = (j.log || []).join("
+");
+    if (j.state === "running") {{ setTimeout(tick, 4000); return; }}
+    if (j.state === "done") {{
+      note.textContent = ` read ${{j.records}} measurements from ${{j.documents}} documents.`;
+      openTown(_openPlace);            // redraw with what was just read
+    }} else if (j.state === "nothing") {{
+      note.textContent = " read the documents and found no measurements in them.";
+      if (j.note) log.textContent += "
+" + j.note;
+    }} else {{
+      note.textContent = " the read failed.";
+      log.textContent += "
+" + (j.error || "");
+    }}
+  }};
+  setTimeout(tick, 1500);
+}});
+
 /* Show the sentence, on the paper, next to the number.
    Provenance that nobody looks at is most of the way to no provenance, and
    "open a 300-page scan and find the line" is why nobody looks. A crop is a
@@ -644,7 +719,12 @@ const dock = document.getElementById("dock");
 const dockBody = document.getElementById("dock-body");
 document.getElementById("dock-close").onclick = () => dock.classList.remove("open");
 
+/* The place the dock is currently showing, so the reader knows what to read
+   and what to redraw when it finishes. */
+let _openPlace = null;
+
 async function openTown(p){{
+  _openPlace = p;
   dock.classList.add("open");
   dockBody.innerHTML = `<h2>${{esc(p.place)}}</h2><div class="meta">loading…</div>`;
   const d = await (await fetch("/api/town?place=" + encodeURIComponent(p.place)
@@ -653,11 +733,23 @@ async function openTown(p){{
         + (p.silent_since ? ` · <span style="color:var(--gt-hit)">silent since ${{esc(p.silent_since)}}</span>` : "")
         + (d.facility ? ` · ${{esc(d.facility)}}` : "") + `</div>`;
   if(!d.found){{
-    h += `<div class="empty">Nobody has read this one yet.<br><br>
-      ${{esc(p.years)}} scanned reports are waiting. The open-source reader can process
-      them locally and submit a bundle that this instance re-verifies.<br><br>
-      A safe one-click browser-to-local handoff is fellowship work; this public
-      site will not start an hours-long server job from a web request.</div>`;
+    /* The normal state, not an error. Nobody pre-processes this archive:
+       somebody asks, the machine in front of them reads, and the answer is
+       there for everyone afterwards. So this offers to read it. On a public
+       host the server refuses and says why -- reading is hours of local model
+       time and no visitor gets to spend somebody else's graphics card. */
+    h += `<div class="empty" id="unread">
+      <b>Nobody has read ${{esc(p.place)}} yet.</b><br><br>
+      ${{esc(p.years)}} scanned reports are waiting — roughly a minute a page,
+      so an hour or two on this machine. Once it is read it is read for
+      everybody who asks after you.<br><br>
+      <span id="read-offer"></span>
+      <span id="read-note"></span>
+      <pre id="read-log" hidden></pre></div>`;
+    /* Ask the reader whether it exists before offering it. A public instance
+       answers 501 and gets the honest explanation instead of a button that
+       would fail when pressed. */
+    offerRead();
   }} else {{
     h += seriesHtml(d);
     h += `<div class="note">${{esc(d.n_measurements)}} observations from ${{esc((d.sources||[]).length)}} documents.

@@ -44,6 +44,7 @@ from .disputes import (
 from .parameters import resolve as resolve_parameter
 from .jay import Jay
 from .portal import render
+from .reading import READER
 from .science import series_from_records
 from .tools import Corpus, find_my_town, judge_reading, read_me_the_record, what_went_quiet
 
@@ -164,8 +165,8 @@ ARCHIVE_SLOTS = threading.BoundedSemaphore(ARCHIVE_CONCURRENCY)
 
 POST_ONLY_ENDPOINTS = frozenset({
     "/api/ask", "/api/bundle", "/api/citation", "/api/decisions",
-    "/api/flag", "/api/frontier", "/api/ledger", "/api/submit",
-    "/api/watershed",
+    "/api/flag", "/api/frontier", "/api/ledger", "/api/read",
+    "/api/read/status", "/api/submit", "/api/watershed",
 })
 
 PUBLIC_STATIC_ASSETS = frozenset({"omega-portal.css", "portal-maplibre.js"})
@@ -1208,10 +1209,79 @@ class Handler(BaseHTTPRequestHandler):
             "/api/flag": self._post_flag,
             "/api/frontier": self._post_frontier,
             "/api/ledger": self._post_ledger,
+            "/api/read": self._post_read,
+            "/api/read/status": self._post_read_status,
             "/api/submit": self._post_submit,
             "/api/watershed": self._post_watershed,
         }
         dispatch[path](payload)
+
+    # -- reading a place on demand -----------------------------------------
+
+    def _is_local_instance(self) -> bool:
+        """Is this the asker's own machine, rather than somebody's server?
+
+        Reading a town is hours of local model time. Offering that from a
+        public host hands every visitor a lever on somebody else's graphics
+        card, so it is refused there -- but on the machine in front of you, the
+        reader IS your machine, which is the whole design.
+
+        Both halves are required: the peer must be loopback AND no public host
+        may be configured, so a reverse-proxied deployment cannot be talked
+        into enabling it by a forged Host header.
+        """
+        peer = (self._direct_peer() or "").strip()
+        loopback = peer in {"127.0.0.1", "::1", "localhost"}
+        public = os.environ.get("CONCORDANCE_PUBLIC_HOSTS", "").strip()
+        return loopback and not public
+
+    def _post_read(self, payload: dict[str, Any]) -> None:
+        """Read a place nobody has read yet, here, now."""
+        if not self._is_local_instance():
+            self._send_json({
+                "error": REMOTE_READ_DISABLED,
+                "local_reader": (
+                    "python scripts/extract_place.py --place PLACE "
+                    "--title-filter PLACE"
+                ),
+            }, status=501)
+            return
+
+        place = _text_field(payload, "place", 120)
+        raw = _text_field(payload, "raw", 120)
+        if not place:
+            self._send_json({"error": "no place given"}, status=400)
+            return
+
+        from .library import ask as _ask
+
+        started, job = READER.start(
+            place, raw, ask=_ask,
+            after=_mark_publication_pending and (lambda: _mark_publication_pending(STATE)),
+        )
+        self._send_json({
+            "started": started,
+            "busy": not started,
+            "job": job.to_dict(),
+            "note": ("Reading on this machine. It takes roughly a minute a page, "
+                     "so a town is usually an hour or two. You can leave; the "
+                     "result is kept and everybody who asks after you gets it "
+                     "immediately.")
+            if started else
+            ("Already reading %s. There is one graphics card, so this waits "
+             "rather than queues." % job.place),
+        }, status=200 if started else 409)
+
+    def _post_read_status(self, payload: dict[str, Any]) -> None:
+        """Where the current read has got to."""
+        if not self._is_local_instance():
+            self._send_json({"error": REMOTE_READ_DISABLED}, status=501)
+            return
+        job = READER.current
+        self._send_json({
+            "reading": READER.busy(),
+            "job": job.to_dict() if job else None,
+        })
 
     def _post_bundle(self, bundle: dict[str, Any]) -> None:
         """Accept a bundle of readings from somebody else's machine.
@@ -1810,16 +1880,6 @@ class Handler(BaseHTTPRequestHandler):
 
         if url.path in POST_ONLY_ENDPOINTS:
             self._method_not_allowed("POST")
-            return
-
-        if url.path == "/api/read":
-            self._send(json.dumps({
-                "error": REMOTE_READ_DISABLED,
-                "local_reader": (
-                    "python scripts/extract_place.py --place PLACE "
-                    "--title-filter PLACE"
-                ),
-            }).encode(), "application/json", status=501)
             return
 
         if url.path == "/api/library.json":
