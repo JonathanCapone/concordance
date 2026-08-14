@@ -760,9 +760,7 @@ document.addEventListener("click", async ev => {{
     /* A public instance. Say so plainly and give the command that works. */
     note.textContent = "";
     log.hidden = false;
-    log.textContent = r.error + (r.local_reader ? "
-
-" + r.local_reader : "");
+    log.textContent = r.error + (r.local_reader ? "\\n\\n" + r.local_reader : "");
     b.remove();
     return;
   }}
@@ -773,20 +771,17 @@ document.addEventListener("click", async ev => {{
     try {{ st = await postJson("/api/read/status", {{}}); }} catch (e) {{ return; }}
     const j = st && st.job;
     if (!j) return;
-    log.textContent = (j.log || []).join("
-");
+    log.textContent = (j.log || []).join("\\n");
     if (j.state === "running") {{ setTimeout(tick, 4000); return; }}
     if (j.state === "done") {{
       note.textContent = ` read ${{j.records}} measurements from ${{j.documents}} documents.`;
       openTown(_openPlace);            // redraw with what was just read
     }} else if (j.state === "nothing") {{
       note.textContent = " read the documents and found no measurements in them.";
-      if (j.note) log.textContent += "
-" + j.note;
+      if (j.note) log.textContent += "\\n" + j.note;
     }} else {{
       note.textContent = " the read failed.";
-      log.textContent += "
-" + (j.error || "");
+      log.textContent += "\\n" + (j.error || "");
     }}
   }};
   setTimeout(tick, 1500);
