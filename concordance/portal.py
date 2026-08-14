@@ -130,7 +130,11 @@ details input,details textarea{{background:rgba(255,255,255,.05);
 details textarea{{resize:vertical}}
 #sb-out{{font-size:12px}}
 .paper img{{box-shadow:0 2px 10px rgba(0,0,0,.35)}}
-.spark{{width:100%;height:42px;display:block;margin:1px 0 9px}}
+.chart{{width:100%;height:auto;display:block;margin:2px 0 10px;color:var(--ink,#cfd8e0)}}
+.chart.one{{display:flex;align-items:baseline;gap:7px;margin:2px 0 10px}}
+.chart.one .big{{font-size:26px;font-weight:600}}
+.chart.one .u{{font-size:12px;opacity:.6}}
+.chart.one .note{{font-size:11px;opacity:.55;margin-left:4px}}
 .note{{font-size:11.5px;color:#6d7a86;line-height:1.55;margin-top:16px;
   border-left:2px solid rgba(255,255,255,.12);padding-left:11px}}
 .empty{{color:#8b97a4;font-size:13px;line-height:1.6}}
@@ -422,24 +426,87 @@ document.querySelectorAll(".nav-button").forEach(btn => btn.onclick = () => {{
 }});
 
 /* ---- shared ---------------------------------------------------------- */
-function spark(points){{
-  if(!points || points.length < 2) return "";
-  const W=350,H=42,P=4;
-  const xs=points.map(p=>p[0]), ys=points.map(p=>p[1]);
+
+/* A reading chart, adapted from OMEGA's drawLineChart.
+
+   Two things are deliberately NOT copied from the original.
+
+   OMEGA plots by array index, because a sensor reports on a regular cadence.
+   This archive does not: Brantford has 1961, 1962, then 1966. Plotting by index
+   would space those evenly and quietly erase a four-year gap, in a project
+   whose whole argument is that silence is a finding. The x axis here is the
+   real year.
+
+   And the line is DASHED across any gap noticeably longer than this series'
+   usual interval. A solid line between 1962 and 1966 asserts a shape nobody
+   measured. The dash says: two readings, and we do not know what happened
+   between them.
+
+   Series here run to two, three, five points. A chart of two points is not a
+   trend and is not drawn as one -- it gets its dots, its labels and its years,
+   and the table underneath carries the sentence each number was read from,
+   which is the part that actually answers a question. */
+function chart(s){{
+  const pts=(s.points||[]).filter(p=>Number.isFinite(+p[1])).sort((a,b)=>a[0]-b[0]);
+  if(!pts.length) return "";
+  const unit=s.unit?String(s.unit):"";
+  const fmt=v=>(Math.abs(v)>=1e6?(v/1e6).toFixed(2)+"M":Math.abs(v)>=1000?v.toLocaleString():String(+(+v).toFixed(2)));
+
+  if(pts.length===1){{
+    return `<div class="chart one"><span class="big">${{esc(fmt(pts[0][1]))}}</span>
+      <span class="u">${{esc(unit)}}</span>
+      <span class="note">one reading, ${{esc(String(pts[0][0]))}} — not a trend</span></div>`;
+  }}
+
+  const W=640,H=190,L=48,R=16,T=18,B=28;
+  const xs=pts.map(p=>+p[0]), ys=pts.map(p=>+p[1]);
   const x0=Math.min(...xs), x1=Math.max(...xs);
   let y0=Math.min(...ys), y1=Math.max(...ys);
-  if(y1===y0){{y0-=1;y1+=1;}}
-  const px=x=>P+(x-x0)/((x1-x0)||1)*(W-2*P);
-  const py=y=>P+(1-(y-y0)/(y1-y0))*(H-2*P);
-  const d=points.map((p,i)=>(i?"L":"M")+px(p[0]).toFixed(1)+","+py(p[1]).toFixed(1)).join(" ");
-  const dots=points.map(p=>`<circle cx="${{px(p[0]).toFixed(1)}}" cy="${{py(p[1]).toFixed(1)}}" r="2.4" fill="#f0a24a"/>`).join("");
-  return `<svg class="spark" viewBox="0 0 ${{W}} ${{H}}"><path d="${{d}}" fill="none" stroke="#f0a24a" stroke-width="1.4" opacity=".85"/>${{dots}}</svg>`;
+  if(y1===y0){{y0-=Math.abs(y0)*0.1||1; y1+=Math.abs(y1)*0.1||1;}}
+  const px=x=>L+((x-x0)/((x1-x0)||1))*(W-L-R);
+  const py=y=>T+(1-(y-y0)/((y1-y0)||1))*(H-T-B);
+
+  /* These are ANNUAL reports, so a gap of more than one year is a year nobody
+     read -- and that is exactly what the legend claims the dash means.
+
+     The first version of this compared each gap against the series' own median
+     interval, which sounds more sophisticated and is wrong: a series that is
+     irregular throughout has no unusual gap, so Brantford's BOD discharged
+     (1961, 1962, 1966, 1970, 1972) drew as a confident solid line straight
+     across nine missing years. A rule that hides gaps in the gappiest series is
+     the opposite of the one this project wants. */
+  let segs="", broken=false;
+  for(let i=1;i<pts.length;i++){{
+    const wide=(xs[i]-xs[i-1])>1;
+    if(wide) broken=true;
+    segs+=`<path d="M${{px(xs[i-1]).toFixed(1)}},${{py(ys[i-1]).toFixed(1)}} L${{px(xs[i]).toFixed(1)}},${{py(ys[i]).toFixed(1)}}"
+      fill="none" stroke="#f0a24a" stroke-width="2.2" stroke-linecap="round"
+      ${{wide?'stroke-dasharray="5 5" opacity=".45"':'opacity=".9"'}}/>`;
+  }}
+  const dots=pts.map(p=>`<circle cx="${{px(+p[0]).toFixed(1)}}" cy="${{py(+p[1]).toFixed(1)}}" r="3.6"
+      fill="#f0a24a"><title>${{esc(String(p[0]))}}: ${{esc(fmt(p[1]))}} ${{esc(unit)}}</title></circle>`).join("");
+
+  const gridY=[y1,(y0+y1)/2,y0].map(v=>
+    `<line x1="${{L}}" y1="${{py(v).toFixed(1)}}" x2="${{W-R}}" y2="${{py(v).toFixed(1)}}"
+       stroke="currentColor" stroke-width=".5" opacity=".14"/>
+     <text x="${{L-6}}" y="${{(py(v)+3.5).toFixed(1)}}" text-anchor="end"
+       font-size="10" fill="currentColor" opacity=".55">${{esc(fmt(v))}}</text>`).join("");
+
+  return `<svg class="chart" viewBox="0 0 ${{W}} ${{H}}" role="img"
+      aria-label="${{esc(s.label||"readings")}}${{unit?" in "+esc(unit):""}}, ${{pts.length}} readings from ${{x0}} to ${{x1}}">
+    ${{gridY}}
+    <text x="${{L}}" y="${{H-8}}" font-size="10" fill="currentColor" opacity=".55">${{x0}}</text>
+    <text x="${{W-R}}" y="${{H-8}}" text-anchor="end" font-size="10" fill="currentColor" opacity=".55">${{x1}}</text>
+    ${{segs}}${{dots}}
+    ${{broken?`<text x="${{(L+W-R)/2}}" y="${{H-8}}" text-anchor="middle" font-size="10"
+       fill="currentColor" opacity=".5">dashed = years with no reading</text>`:""}}
+  </svg>`;
 }}
 
 function seriesHtml(d){{
   let h = "";
   (d.series||[]).forEach(s => {{
-    h += `<div class="sec"><h3>${{esc(s.label)}}${{esc(s.unit?" · "+s.unit:"")}}</h3>` + spark(s.points);
+    h += `<div class="sec"><h3>${{esc(s.label)}}${{esc(s.unit?" · "+s.unit:"")}}</h3>` + chart(s);
     s.rows.forEach(x => {{
       const cite = x.identifier && x.page
         ? ` <button type="button" class="paper-btn" data-id="${{esc(x.identifier)}}"
