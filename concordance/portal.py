@@ -143,6 +143,26 @@ details textarea{{resize:vertical}}
 .row.charted .y{{font-weight:700}}
 .row .q{{font-size:11px;opacity:.55}}
 .row .pg{{font-size:10px;opacity:.45;margin-left:5px}}
+.legend{{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;opacity:.75;margin:0 0 2px}}
+.legend i{{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px}}
+.findbar{{display:flex;align-items:center;gap:10px;margin:2px 0 10px;position:sticky;top:0;
+  background:var(--dock-bg,rgba(9,13,18,.97));padding:6px 0;z-index:2}}
+.findbar input{{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  border-radius:6px;color:inherit;padding:6px 9px;font:inherit;font-size:12px}}
+.findbar .count{{font-size:11px;opacity:.55;white-space:nowrap}}
+.panel{{border-top:1px solid rgba(255,255,255,.08);padding:0}}
+.panel>summary,.sub>summary{{display:flex;align-items:baseline;gap:10px;cursor:pointer;
+  padding:7px 2px;list-style:none;font-size:13px}}
+.panel>summary::-webkit-details-marker,.sub>summary::-webkit-details-marker{{display:none}}
+.panel>summary::before,.sub>summary::before{{content:"▸";opacity:.4;font-size:10px;width:9px}}
+.panel[open]>summary::before,.sub[open]>summary::before{{content:"▾"}}
+.panel>summary:hover,.sub>summary:hover{{background:rgba(255,255,255,.03)}}
+.panel .nm,.sub .nm{{flex:1;font-weight:600}}
+.panel .sm,.sub .sm{{font-size:11px;opacity:.55;white-space:nowrap}}
+.panel .sm.n{{opacity:.4}}
+.panel>.body,.sub>.body{{padding:2px 0 12px 9px}}
+.sub{{border-top:1px solid rgba(255,255,255,.05)}}
+.sub>summary{{font-size:12px;padding:5px 2px}}
 .chart.one{{display:flex;align-items:baseline;gap:7px;margin:2px 0 10px}}
 .chart.one .big{{font-size:26px;font-weight:600}}
 .chart.one .u{{font-size:12px;opacity:.6}}
@@ -458,13 +478,27 @@ document.querySelectorAll(".nav-button").forEach(btn => btn.onclick = () => {{
    trend and is not drawn as one -- it gets its dots, its labels and its years,
    and the table underneath carries the sentence each number was read from,
    which is the part that actually answers a question. */
+/* Line colours. Influent against effluent on one axis IS the question this
+   archive answers -- how much did the plant take out -- so the streams share a
+   panel and are told apart by colour and a legend, after OMEGA's
+   drawMultiSeriesChart. */
+const LINE_INK = ["#f0a24a", "#7dd3fc", "#9ae6a4", "#f0806e", "#c4a5f0", "#e6d27a"];
+
 function chart(s){{
-  const pts=(s.points||[]).filter(p=>Number.isFinite(+p[1])).sort((a,b)=>a[0]-b[0]);
-  if(!pts.length) return "";
+  /* One panel may hold several lines (influent, effluent, raw). A single
+     series still arrives as s.points, so both shapes are accepted. */
+  const lines = (s.lines && s.lines.length)
+    ? s.lines.map(l => ({{name: l.name || "reported",
+        pts: (l.points||[]).filter(p=>Number.isFinite(+p[1])).sort((a,b)=>a[0]-b[0])}}))
+        .filter(l => l.pts.length)
+    : [{{name:"", pts:(s.points||[]).filter(p=>Number.isFinite(+p[1])).sort((a,b)=>a[0]-b[0])}}]
+        .filter(l => l.pts.length);
+  if(!lines.length) return "";
+  const pts = lines.flatMap(l => l.pts);
   const unit=s.unit?String(s.unit):"";
   const fmt=v=>(Math.abs(v)>=1e6?(v/1e6).toFixed(2)+"M":Math.abs(v)>=1000?v.toLocaleString():String(+(+v).toFixed(2)));
 
-  if(pts.length===1){{
+  if(pts.length===1 && lines.length===1){{
     return `<div class="chart one"><span class="big">${{esc(fmt(pts[0][1]))}}</span>
       <span class="u">${{esc(unit)}}</span>
       <span class="note">one reading, ${{esc(String(pts[0][0]))}} — not a trend</span></div>`;
@@ -487,16 +521,24 @@ function chart(s){{
      (1961, 1962, 1966, 1970, 1972) drew as a confident solid line straight
      across nine missing years. A rule that hides gaps in the gappiest series is
      the opposite of the one this project wants. */
-  let segs="", broken=false;
-  for(let i=1;i<pts.length;i++){{
-    const wide=(xs[i]-xs[i-1])>1;
-    if(wide) broken=true;
-    segs+=`<path d="M${{px(xs[i-1]).toFixed(1)}},${{py(ys[i-1]).toFixed(1)}} L${{px(xs[i]).toFixed(1)}},${{py(ys[i]).toFixed(1)}}"
-      fill="none" stroke="#f0a24a" stroke-width="2.2" stroke-linecap="round"
-      ${{wide?'stroke-dasharray="5 5" opacity=".45"':'opacity=".9"'}}/>`;
-  }}
-  const dots=pts.map(p=>`<circle cx="${{px(+p[0]).toFixed(1)}}" cy="${{py(+p[1]).toFixed(1)}}" r="3.6"
-      fill="#f0a24a"><title>${{esc(String(p[0]))}}: ${{esc(fmt(p[1]))}} ${{esc(unit)}}</title></circle>`).join("");
+  let segs="", dots="", broken=false;
+  lines.forEach((line, li) => {{
+    const ink = LINE_INK[li % LINE_INK.length];
+    const lx = line.pts.map(p=>+p[0]), ly = line.pts.map(p=>+p[1]);
+    for(let i=1;i<line.pts.length;i++){{
+      const wide=(lx[i]-lx[i-1])>1;
+      if(wide) broken=true;
+      segs+=`<path d="M${{px(lx[i-1]).toFixed(1)}},${{py(ly[i-1]).toFixed(1)}} L${{px(lx[i]).toFixed(1)}},${{py(ly[i]).toFixed(1)}}"
+        fill="none" stroke="${{ink}}" stroke-width="2.2" stroke-linecap="round"
+        ${{wide?'stroke-dasharray="5 5" opacity=".45"':'opacity=".9"'}}/>`;
+    }}
+    dots+=line.pts.map(p=>`<circle cx="${{px(+p[0]).toFixed(1)}}" cy="${{py(+p[1]).toFixed(1)}}" r="3.6"
+      fill="${{ink}}"><title>${{esc(line.name||"")}}${{line.name?": ":""}}${{esc(String(p[0]))}}: ${{esc(fmt(p[1]))}} ${{esc(unit)}}</title></circle>`).join("");
+  }});
+  const legend = lines.length>1
+    ? `<div class="legend">` + lines.map((l,i)=>
+        `<span><i style="background:${{LINE_INK[i%LINE_INK.length]}}"></i>${{esc(l.name)}}</span>`).join("") + `</div>`
+    : "";
 
   const gridY=[y1,(y0+y1)/2,y0].map(v=>
     `<line x1="${{L}}" y1="${{py(v).toFixed(1)}}" x2="${{W-R}}" y2="${{py(v).toFixed(1)}}"
@@ -504,7 +546,7 @@ function chart(s){{
      <text x="${{L-6}}" y="${{(py(v)+3.5).toFixed(1)}}" text-anchor="end"
        font-size="10" fill="currentColor" opacity=".55">${{esc(fmt(v))}}</text>`).join("");
 
-  return `<svg class="chart" viewBox="0 0 ${{W}} ${{H}}" role="img"
+  return legend + `<svg class="chart" viewBox="0 0 ${{W}} ${{H}}" role="img"
       aria-label="${{esc(s.label||"readings")}}${{unit?" in "+esc(unit):""}}, ${{pts.length}} readings from ${{x0}} to ${{x1}}">
     ${{gridY}}
     <text x="${{L}}" y="${{H-8}}" font-size="10" fill="currentColor" opacity=".55">${{x0}}</text>
@@ -554,41 +596,84 @@ function rowsHtml(rows){{
    note saying so. Nothing is dropped, and every row carries the sentence it was
    read from. */
 function seriesHtml(d){{
-  let h = "";
-  const inv = d.measured || [];
-  if (inv.length) {{
-    h += `<div class="sec"><h3>What was measured here</h3><div class="inv">`
-       + inv.slice(0, 60).map(kv =>
-           `<span class="chip">${{esc(kv[0])}} <b>${{kv[1]}}</b></span>`).join("")
-       + (inv.length > 60 ? `<span class="chip more">+${{inv.length-60}} more</span>` : "")
-       + `</div></div>`;
-  }}
+  const panels = d.series || [];
+  const singles = d.singles || [];
+  const fmtN = v => (Math.abs(v)>=1e6?(v/1e6).toFixed(2)+"M":Math.abs(v)>=1000?Math.round(v).toLocaleString():String(+(+v).toFixed(2)));
 
-  (d.series||[]).forEach(s => {{
-    const scope = [s.facility, s.stream].filter(Boolean).join(" · ");
-    h += `<div class="sec"><h3>${{esc(s.label)}}${{esc(s.unit?" · "+s.unit:"")}}`
-       + (scope?`<span class="scope">${{esc(scope)}}</span>`:"") + `</h3>`
-       + chart(s) + rowsHtml(s.rows) + `</div>`;
+  let h = `<div class="findbar">
+      <input id="find" type="search" placeholder="filter — try chlorine, flow, cost"
+        autocomplete="off" spellcheck="false">
+      <span class="count">${{panels.length}} charted · ${{singles.length + (d.other||[]).reduce((n,g)=>n+g.rows.length,0)}} more</span></div>`;
+
+  /* Charted measurements. The rows are folded away: a reader wants to see WHAT
+     was measured and roughly when, then open the one they care about. Showing
+     448 rows at once is the same failure as showing none -- it was all there
+     and none of it was usable. */
+  panels.forEach((p, i) => {{
+    const span = p.span ? `${{p.span[0]}}–${{p.span[1]}}` : "";
+    const rng = p.range ? `${{fmtN(p.range[0])}}–${{fmtN(p.range[1])}}` : "";
+    h += `<details class="panel" data-find="${{esc((p.label+" "+(p.unit||"")).toLowerCase())}}"${{i<3?" open":""}}>
+      <summary><span class="nm">${{esc(p.label)}}</span>
+        <span class="sm">${{esc(span)}}</span>
+        <span class="sm">${{esc(rng)}} ${{esc(p.unit||"")}}</span>
+        <span class="sm n">${{p.n}} reading${{p.n===1?"":"s"}}</span></summary>
+      <div class="body">` + chart(p) + rowsHtml(p.rows) + `</div></details>`;
   }});
 
-  const singles = d.singles || [];
+  /* Measured once, or not comparable. One compact line each: these are facts
+     without a trend, and a section per group buried the page. */
   if (singles.length) {{
-    h += `<div class="sec"><h3>Measured once, or not comparable`
-       + `<span class="scope">${{singles.length}} more</span></h3>`
-       + `<p class="lede">A single reading is a fact, not a trend. Readings whose
-          units cannot be reconciled are listed rather than charted — and rather
-          than dropped, which is what used to happen.</p>`;
-    singles.forEach(s => {{
-      const scope = [s.facility, s.stream].filter(Boolean).join(" · ");
-      h += `<div class="grp"><h4>${{esc(s.label)}}`
-         + (scope?`<span class="scope">${{esc(scope)}}</span>`:"")
-         + (s.not_comparable?`<span class="warn">units not comparable</span>`:"")
-         + `</h4>` + rowsHtml(s.rows) + `</div>`;
+    h += `<details class="panel wide" data-find="single once">
+      <summary><span class="nm">Measured once, or not comparable</span>
+        <span class="sm n">${{singles.length}}</span></summary><div class="body">
+      <p class="lede">A single reading is a fact, not a trend. Readings whose units
+        cannot be reconciled are listed rather than charted — and rather than
+        dropped, which is what used to happen.</p>`;
+    singles.forEach(g => {{
+      const r = (g.rows||[])[0] || {{}};
+      const extra = (g.rows||[]).length > 1 ? ` <span class="sm">+${{g.rows.length-1}}</span>` : "";
+      h += `<details class="sub" data-find="${{esc((g.label+" "+(r.unit||"")).toLowerCase())}}">
+        <summary><span class="nm">${{esc(g.label)}}</span>
+          <span class="sm">${{esc(r.period||"")}}</span>
+          <span class="sm">${{esc(r.value||"")}} ${{esc(r.unit||"")}}</span>${{extra}}
+          ${{g.not_comparable?`<span class="warn">units not comparable</span>`:""}}</summary>
+        <div class="body">` + rowsHtml(g.rows) + `</div></details>`;
     }});
-    h += `</div>`;
+    h += `</div></details>`;
   }}
+
+  /* Design figures, regulatory limits and conclusions. Never charted -- a
+     design capacity plotted as a measurement is the fictional trend this
+     project exists to avoid -- but shown, because "what it was built for" and
+     "what it was allowed to discharge" are exactly what a reader wants beside
+     what it actually did. Orangeville has 22 records and not one observation. */
+  (d.other || []).forEach(g => {{
+    h += `<details class="panel wide" data-find="${{esc((g.title+" "+g.kind).toLowerCase())}}">
+      <summary><span class="nm">${{esc(g.title)}}</span>
+        <span class="sm">not a measurement</span>
+        <span class="sm n">${{g.rows.length}}</span></summary>
+      <div class="body">` + rowsHtml(g.rows) + `</div></details>`;
+  }});
   return h;
 }}
+
+/* Filtering hides what does not match, and says so, rather than leaving a
+   reader wondering whether they broke it. */
+document.addEventListener("input", ev => {{
+  if (ev.target.id !== "find") return;
+  const q = ev.target.value.trim().toLowerCase();
+  let shown = 0;
+  document.querySelectorAll(".panel, .sub").forEach(el => {{
+    const hay = el.dataset.find || "";
+    const hit = !q || hay.includes(q);
+    el.hidden = !hit;
+    if (hit && el.classList.contains("panel")) shown++;
+    if (q && hit && el.classList.contains("sub")) el.closest(".panel").hidden = false;
+  }});
+  const c = document.querySelector(".findbar .count");
+  if (c) c.textContent = q ? `${{shown}} matching` : c.dataset.all || c.textContent;
+}});
+
 
 /* Only offer to read if this machine will actually do it. */
 async function offerRead(){{

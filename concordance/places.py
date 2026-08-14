@@ -616,3 +616,42 @@ def scope_record_dict(
 
 
 __all__ = ["Place", "resolve", "scope_record_dict", "scope_record_location"]
+
+
+# --------------------------------------------------------------------------
+# grouping facilities that are the same facility
+# --------------------------------------------------------------------------
+
+def facility_key(facility: str | None, place: str | None = None) -> str:
+    """The form two spellings of one facility have in common.
+
+    Belleville's records name its plant both "water pollution control plant"
+    and "Belleville water pollution control plant", because the extractor takes
+    the wording from whatever the sentence said. Treated as different
+    facilities, that split one measurement into two series: BOD appeared five
+    times on the town page, twice for the same plant under two spellings.
+
+    So the town's own name is removed, along with the words that decorate a
+    facility rather than identify it. This is a GROUPING key and nothing else
+    -- the record keeps the wording the document used, which is what a reader
+    checking the scan needs to see.
+
+    Deliberately not clever. Two genuinely different plants in one town
+    ("Drury Lane", "Elizabeth Gardens") keep their distinguishing words and
+    stay apart, which is the case that matters: a sewage plant and a water
+    works measure opposite things and must never share a chart.
+    """
+    text = " ".join(str(facility or "").split()).lower()
+    if not text:
+        return ""
+    town = " ".join(str(place or "").split()).lower()
+    if town:
+        # Only as a prefix or suffix. "Port Hope water works" in a Cobourg file
+        # is a different town's plant and keeps its name.
+        for form in (f"{town} ", f" {town}"):
+            if text.startswith(form.strip() + " "):
+                text = text[len(form.strip()) + 1:]
+            elif text.endswith(" " + form.strip()):
+                text = text[: -(len(form.strip()) + 1)]
+    text = re.sub(r"\b(the|of|corporation|city|town|township|village)\b", " ", text)
+    return re.sub(r"\s+", " ", text).strip()

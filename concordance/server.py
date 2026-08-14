@@ -43,6 +43,7 @@ from .disputes import (
 )
 from .parameters import resolve as resolve_parameter
 from .jay import Jay
+from .places import facility_key
 from .portal import render
 from .reading import READER
 from .science import series_from_records
@@ -850,8 +851,22 @@ class State:
         # NOT dropped from the records, because the facility split below is what
         # keeps a town's sewage plant off the same panel as its water works.
         want = {p for p in (place.lower(), raw.lower()) if p}
-        mine = [r for r in self.corpus.records
-                if r.kind == "observation" and _same_town((r.place or "").lower(), want)]
+        here = [r for r in self.corpus.records
+                if _same_town((r.place or "").lower(), want)]
+        mine = [r for r in here if r.kind == "observation"]
+
+        # The other three kinds are content, not noise. A design figure is what
+        # the plant was BUILT to handle and a standard is what it was ALLOWED to
+        # discharge, and both are exactly what a reader wants beside what it
+        # actually did. They must never be charted as measurements -- that is
+        # the clean, plausible, entirely fictional trend this project exists to
+        # avoid -- so they are listed, labelled by kind, and never plotted.
+        #
+        # Orangeville has 22 records and not one observation: every reading
+        # about it is a design specification. Filtering to observations gave it
+        # a blank page for a town that had been read, which is the same bug as
+        # the seven-parameter whitelist wearing a different hat.
+        other = [r for r in here if r.kind != "observation"]
         # Effluent and tap water are opposite measurements and must never share
         # a panel -- but the fix for that used to be dropping every facility
         # except the largest, which threw away most of a town's record. Belleville
@@ -879,8 +894,9 @@ class State:
             label = got.label if got else (r.parameter or "").strip()
             if not label:
                 continue
-            found.setdefault((label, r.stream, r.facility or "unclassified"),
-                             []).append(r)
+            found.setdefault((label, r.stream,
+                              facility_key(r.facility, out.get("place"))
+                              or "unclassified"), []).append(r)
 
         def rank(item: tuple[tuple[str, str | None, str], list[Any]]) -> tuple[int, int, int]:
             (label, _stream, facility), group = item
@@ -977,9 +993,88 @@ class State:
             # how most of a town's record became invisible.
             (series if len(s.points) > 1 else singles).append(entry)
 
-        out["series"] = series
+        # One panel per thing measured, with its streams as separate lines.
+        #
+        # Belleville listed "bod" five times: influent, effluent and raw, times
+        # two spellings of one plant. The spellings are merged above; the
+        # streams belong together, because influent against effluent on one
+        # axis IS the question -- how much did the plant take out -- and three
+        # separate panels make the reader hold it in their head instead.
+        panels: dict[str, dict[str, Any]] = {}
+        for entry in series:
+            panel = panels.setdefault(entry["label"], {
+                "label": entry["label"], "unit": entry["unit"],
+                "lines": [], "rows": [], "facilities": set(),
+            })
+            panel["lines"].append({
+                # Named after the pass; what actually distinguishes the lines
+                # is worked out below, once the panel knows what it holds.
+                "stream": "" if entry["stream"] in ("unknown", "") else entry["stream"],
+                "facility": entry["facility"],
+                "points": entry["points"],
+            })
+            panel["rows"].extend(entry["rows"])
+            if entry["facility"]:
+                panel["facilities"].add(entry["facility"])
+
+        grouped = []
+        for panel in panels.values():
+            # A line is labelled by what makes it different from the others in
+            # its own panel, and nothing else. Repeating one plant's name on
+            # every line of a single-plant panel, or printing "unknown" for a
+            # stream nobody recorded, is noise that makes a legend unreadable.
+            streams = {l["stream"] for l in panel["lines"]}
+            facs = {l["facility"] for l in panel["lines"]}
+            for line in panel["lines"]:
+                parts = []
+                if len(streams) > 1 and line["stream"]:
+                    parts.append(line["stream"])
+                if len(facs) > 1 and line["facility"]:
+                    parts.append(line["facility"])
+                line["name"] = " · ".join(parts) or "reported"
+            panel["facilities"] = sorted(panel["facilities"])
+            panel["rows"].sort(key=lambda r: (str(r.get("period") or ""), r.get("page") or 0))
+            panel["n"] = len(panel["rows"])
+            years = [p[0] for line in panel["lines"] for p in line["points"]]
+            panel["span"] = [min(years), max(years)] if years else None
+            values = [p[1] for line in panel["lines"] for p in line["points"]]
+            panel["range"] = [min(values), max(values)] if values else None
+            grouped.append(panel)
+        grouped.sort(key=lambda p: (-len(p["lines"]), -p["n"]))
+
+        # Design figures, regulatory limits and the author's conclusions,
+        # grouped by kind so nothing implies they were measured.
+        by_kind: dict[str, list[dict[str, Any]]] = {}
+        for r in other:
+            prov = r.provenance
+            got = resolve_parameter(
+                r.parameter, r.unit,
+                context=(prov.source_text if prov else None))
+            by_kind.setdefault(r.kind, []).append({
+                "period": str(r.period) if r.period else "",
+                "parameter": (got.label if got else (r.parameter or "")),
+                "value": f"{r.value:.4g}" if isinstance(r.value, (int, float)) else "",
+                "unit": r.unit or "", "qualifier": r.qualifier or "", "charted": False,
+                "read_from": (prov.source_text[:150] if prov else ""),
+                "page_url": (prov.page_url if prov else ""),
+                "identifier": (prov.identifier if prov else ""),
+                "page": (prov.page if prov else 0),
+                "quote": (prov.source_text if prov else ""),
+            })
+        KIND_TITLE = {
+            "design": "What it was built for",
+            "standard": "What it was allowed to discharge",
+            "conclusion": "What the report concluded",
+        }
+        out["other"] = [
+            {"kind": k, "title": KIND_TITLE.get(k, k), "rows": sorted(
+                rows, key=lambda x: (str(x["period"]), x["parameter"]))}
+            for k, rows in sorted(by_kind.items())
+        ]
+
+        out["series"] = grouped
         out["singles"] = singles
-        out["n_charted"] = sum(len(e["points"]) for e in series)
+        out["n_charted"] = sum(p["n"] for p in grouped)
         out["n_listed"] = len(singles)
         return out
 

@@ -31,9 +31,18 @@ def test_the_x_axis_is_the_year_not_the_index(chart_js: str) -> None:
     assert "index" not in chart_js.lower()
 
 
+def test_streams_share_one_panel_with_a_legend(chart_js: str) -> None:
+    """Influent against effluent on one axis IS the question -- how much did
+    the plant take out. Three separate panels made the reader hold it in their
+    head, and listed "bod" five times on Belleville's page."""
+    assert "s.lines" in chart_js
+    assert "legend" in chart_js
+    assert "LINE_INK" in chart_js
+
+
 def test_a_multi_year_gap_is_drawn_differently(chart_js: str) -> None:
     assert "stroke-dasharray" in chart_js
-    assert "xs[i]-xs[i-1])>1" in chart_js.replace(" ", "")
+    assert "lx[i]-lx[i-1])>1" in chart_js.replace(" ", "")
 
 
 def test_the_legend_explains_the_dash(chart_js: str) -> None:
