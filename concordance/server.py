@@ -1072,6 +1072,63 @@ class State:
             for k, rows in sorted(by_kind.items())
         ]
 
+        # Order the long tail so it can be scanned. Readings of one substance
+        # sit together -- "chlorine", "total chlorine", "change chlorine" are
+        # one thing measured three ways -- and everything the parameter table
+        # does not recognise is alphabetical, which is the only honest order
+        # for 91 pesticides and bacteriological counts nobody has curated yet.
+        #
+        # Not pretending to a grouping that does not exist is the point. The
+        # filter box is what makes the unrecognised tail usable; a fabricated
+        # hierarchy over it would just be a second thing to disbelieve.
+        def _shelf(entry: dict[str, Any]) -> tuple[int, str, str]:
+            got = resolve_parameter(entry["label"])
+            substance = (got.substance if got else "") or ""
+            return (0 if substance else 1, substance, entry["label"].lower())
+
+        singles.sort(key=_shelf)
+        last = object()
+        for entry in singles:
+            got = resolve_parameter(entry["label"])
+            substance = (got.substance if got else "") or ""
+            # Only the first entry of a run carries the heading, so the portal
+            # can draw a divider without repeating it on every line.
+            entry["shelf"] = substance if substance != last else ""
+            entry["substance"] = substance
+            last = substance
+
+        # Who was upstream of this place, and who was downstream.
+        #
+        # This used to be a top-level "Rivers" tab, which is a tab because
+        # watershed.py exists rather than because a visitor wants a
+        # cross-country river index. What a person actually asks is "whose
+        # sewage was in my water", and that is a question about THEIR town, so
+        # it belongs here.
+        #
+        # Read from the cache only. Building it needs the Water Survey gauge
+        # list over the network, and a place page must not block on that or go
+        # blank when it fails; the section simply does not appear.
+        neighbours: dict[str, list[str]] = {"upstream": [], "downstream": [], "river": []}
+        cached = getattr(self, "_watershed", None)
+        if isinstance(cached, dict):
+            mine_names = {place.lower(), (raw or "").lower()} - {""}
+            for river in cached.get("rivers") or []:
+                for link in river.get("links") or []:
+                    up = str(link.get("upstream") or "")
+                    down = str(link.get("downstream") or "")
+                    if up.lower() in mine_names and down:
+                        neighbours["downstream"].append(down)
+                        neighbours["river"].append(str(river.get("river") or ""))
+                    elif down.lower() in mine_names and up:
+                        neighbours["upstream"].append(up)
+                        neighbours["river"].append(str(river.get("river") or ""))
+        if neighbours["upstream"] or neighbours["downstream"]:
+            out["river"] = {
+                "name": next((r for r in neighbours["river"] if r), ""),
+                "upstream": sorted(set(neighbours["upstream"])),
+                "downstream": sorted(set(neighbours["downstream"])),
+            }
+
         out["series"] = grouped
         out["singles"] = singles
         out["n_charted"] = sum(p["n"] for p in grouped)

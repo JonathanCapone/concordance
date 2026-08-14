@@ -33,15 +33,27 @@ MAPLIBRE_VERSION = "5.24.0"
 SAT_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
 DEM_TILES = "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/{z}/{x}/{y}.png"
 
+#: The nav, in a visitor's words rather than mine.
+#:
+#: These used to be nine module names in the order the modules were built --
+#: Observe, Record, Silence, Rivers, Verify, Frontier, Decisions, Disputed --
+#: which is a map of my work and not of anything a person arrives wanting. The
+#: complaint that started this was exact: "I didn't really understand what the
+#: tabs were for or how I would actually use any of the information."
+#:
+#: Rivers is gone: "whose sewage was in my water" is a question about YOUR
+#: town, so it lives on the town's page, with a link out to the whole river.
+#: Record and Frontier are gone too -- one was the place panel, which opens
+#: from the map, and the other was a to-read list that belongs beside the map
+#: it ranks.
 NAV = [
-    ("observe", "Observe", "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z"),
-    ("record", "Record", "M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4"),
-    ("silence", "Silence", "M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12"),
-    ("rivers", "Rivers", "M3.5 7.5c3 0 3 3 6 3s3-3 6-3 3 3 5 3M3.5 14c3 0 3 3 6 3s3-3 6-3 3 3 5 3"),
-    ("verify", "Verify", "M5 12.6 9.8 17.4 19 6.6"),
-    ("frontier", "Frontier", "M12 4.5v15M4.5 12h15M7.5 7.5l9 9M16.5 7.5l-9 9"),
-    ("decisions", "Decisions", "M7 4.5h10v15H7Zm2.6 4h4.8m-4.8 3.6h4.8m-4.8 3.6h3"),
-    ("disputed", "Disputed", "M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1"),
+    ("observe", "Find a place", "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z"),
+    ("silence", "What stopped", "M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12"),
+    ("disputed", "Disagreements", "M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1"),
+    ("decisions", "Who decided", "M7 4.5h10v15H7Zm2.6 4h4.8m-4.8 3.6h4.8m-4.8 3.6h3"),
+    ("verify", "Can I trust it", "M5 12.6 9.8 17.4 19 6.6"),
+    ("frontier", "What to read next", "M12 4.5v15M4.5 12h15M7.5 7.5l9 9M16.5 7.5l-9 9"),
+    ("record", "One town, in full", "M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4"),
     ("ask", "Ask Jay", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
 ]
 
@@ -163,6 +175,10 @@ details textarea{{resize:vertical}}
 .panel>.body,.sub>.body{{padding:2px 0 12px 9px}}
 .sub{{border-top:1px solid rgba(255,255,255,.05)}}
 .sub>summary{{font-size:12px;padding:5px 2px}}
+.river{{font-size:12px;padding:7px 9px;margin:2px 0 8px;border-radius:7px;background:rgba(125,211,252,.07);border:1px solid rgba(125,211,252,.16)}}
+.river .more{{display:inline-block;margin-left:6px;font-size:11px;opacity:.7}}
+.river .nm{{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.5;margin-bottom:2px}}
+.shelf{{font-size:10px;letter-spacing:.09em;text-transform:uppercase;opacity:.4;margin:11px 0 1px;padding-top:5px;border-top:1px solid rgba(255,255,255,.06)}}
 .chart.one{{display:flex;align-items:baseline;gap:7px;margin:2px 0 10px}}
 .chart.one .big{{font-size:26px;font-weight:600}}
 .chart.one .u{{font-size:12px;opacity:.6}}
@@ -447,14 +463,24 @@ const postJson = async (path, payload) => {{
 /* ---- view switching ------------------------------------------------ */
 const views = [...document.querySelectorAll(".view")];
 const loaded = {{}};
-document.querySelectorAll(".nav-button").forEach(btn => btn.onclick = () => {{
-  document.querySelectorAll(".nav-button").forEach(b => b.classList.remove("is-active"));
-  btn.classList.add("is-active");
-  const key = btn.dataset.view;
+
+/* Switching by name, so a link inside a place page can reach a view that has
+   no button of its own. The whole-river index is one of those: it is real
+   content and it is not a question anybody arrives with, so it is reached
+   from the town whose river it is. */
+function showView(key){{
+  document.querySelectorAll(".nav-button").forEach(b =>
+    b.classList.toggle("is-active", b.dataset.view === key));
   views.forEach(v => v.classList.toggle("is-active", v.dataset.view === key));
   document.body.dataset.route = key;
   if (!loaded[key] && LOADERS[key]) {{ loaded[key] = true; LOADERS[key](); }}
   if (key === "observe" && window._map) setTimeout(() => window._map.resize(), 60);
+}}
+document.querySelectorAll(".nav-button").forEach(btn =>
+  btn.onclick = () => showView(btn.dataset.view));
+document.addEventListener("click", ev => {{
+  const link = ev.target.closest("[data-goto]");
+  if (link) {{ ev.preventDefault(); showView(link.dataset.goto); }}
 }});
 
 /* ---- shared ---------------------------------------------------------- */
@@ -600,7 +626,22 @@ function seriesHtml(d){{
   const singles = d.singles || [];
   const fmtN = v => (Math.abs(v)>=1e6?(v/1e6).toFixed(2)+"M":Math.abs(v)>=1000?Math.round(v).toLocaleString():String(+(+v).toFixed(2)));
 
-  let h = `<div class="findbar">
+  /* Whose sewage was in your water. The question a person actually asks, on
+     the page about their own town, instead of a cross-country river index. */
+  let h = "";
+  const riv = d.river;
+  if (riv && (riv.upstream.length || riv.downstream.length)) {{
+    const bits = [];
+    if (riv.upstream.length)
+      bits.push(`<b>${{esc(riv.upstream.join(", "))}}</b> discharged upstream of here`);
+    if (riv.downstream.length)
+      bits.push(`this discharged upstream of <b>${{esc(riv.downstream.join(", "))}}</b>`);
+    h += `<div class="river"><span class="nm">${{esc(riv.name || "the river")}}</span>
+      ${{bits.join(" · ")}}
+      <a href="#" data-goto="rivers" class="more">the whole river ↗</a></div>`;
+  }}
+
+  h += `<div class="findbar">
       <input id="find" type="search" placeholder="filter — try chlorine, flow, cost"
         autocomplete="off" spellcheck="false">
       <span class="count">${{panels.length}} charted · ${{singles.length + (d.other||[]).reduce((n,g)=>n+g.rows.length,0)}} more</span></div>`;
@@ -630,9 +671,10 @@ function seriesHtml(d){{
         cannot be reconciled are listed rather than charted — and rather than
         dropped, which is what used to happen.</p>`;
     singles.forEach(g => {{
+      if (g.shelf) h += `<div class="shelf">${{esc(g.shelf)}}</div>`;
       const r = (g.rows||[])[0] || {{}};
       const extra = (g.rows||[]).length > 1 ? ` <span class="sm">+${{g.rows.length-1}}</span>` : "";
-      h += `<details class="sub" data-find="${{esc((g.label+" "+(r.unit||"")).toLowerCase())}}">
+      h += `<details class="sub" data-find="${{esc((g.label+" "+(g.substance||"")+" "+(r.unit||"")).toLowerCase())}}">
         <summary><span class="nm">${{esc(g.label)}}</span>
           <span class="sm">${{esc(r.period||"")}}</span>
           <span class="sm">${{esc(r.value||"")}} ${{esc(r.unit||"")}}</span>${{extra}}
