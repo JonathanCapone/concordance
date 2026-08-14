@@ -342,4 +342,10 @@ def normalize_series(
             if a not in assumptions:
                 assumptions.append(a)
 
-    return sorted(out), assumptions, rejected
+    # Sort on (year, value, confidence) ONLY. The optional fourth element is
+    # the source record, carried so a caption cannot drift from its number, and
+    # Records are not orderable -- so a tuple-wide sort raised TypeError the
+    # moment two readings tied on all three sortable fields. That never happened
+    # while only seven hand-picked parameters were charted; it happens
+    # immediately once a place's whole record is drawn.
+    return sorted(out, key=lambda p: p[:3]), assumptions, rejected

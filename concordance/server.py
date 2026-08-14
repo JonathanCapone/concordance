@@ -813,16 +813,21 @@ class State:
             ],
         }
 
-    #: Charted in this order. Removal percentages first because they are the
-    #: number a non-specialist can actually read: how much the plant took out.
-    SERIES = [
-        ("BOD removal", None, "BOD removal"),
-        ("suspended solids removal", None, "Suspended solids removal"),
-        ("BOD", "effluent", "BOD discharged"),
-        ("suspended solids", "effluent", "Solids discharged"),
-        ("BOD", "influent", "BOD arriving"),
-        ("daily flow", None, "Daily flow"),
-        ("total flow", None, "Total annual flow"),
+    #: Parameters promoted to the top of a place page when they are present.
+    #: NOT a filter -- everything a place measured is shown, discovered from its
+    #: own records. This list only decides what a non-specialist sees first,
+    #: because "how much did the plant take out" reads more easily than
+    #: "mixed liquor suspended solids".
+    #:
+    #: It used to BE the filter, and that was the bug behind "I wondered how
+    #: useful the data actually is being presented this way". Seven water
+    #: parameters decided what existed, so Stratford showed 4 charts out of 66
+    #: distinct measurements and Richmond Hill 4 out of 60. Roughly three
+    #: quarters of everything read was never rendered at all: an archive-wide
+    #: reader with a water-report viewer bolted to the front of it.
+    PREFERRED = [
+        "BOD removal", "suspended solids removal", "BOD",
+        "suspended solids", "daily flow", "total flow", "population",
     ]
 
     def town(self, place: str, raw: str) -> dict[str, Any]:
@@ -846,61 +851,173 @@ class State:
         want = {p for p in (place.lower(), raw.lower()) if p}
         mine = [r for r in self.corpus.records
                 if r.kind == "observation" and _same_town((r.place or "").lower(), want)]
-        # One facility at a time. Effluent and tap water are opposite
-        # measurements and must never share a panel.
+        # Effluent and tap water are opposite measurements and must never share
+        # a panel -- but the fix for that used to be dropping every facility
+        # except the largest, which threw away most of a town's record. Belleville
+        # carries 26 distinct facility strings; keeping only the commonest left
+        # a panel that answered almost nothing.
+        #
+        # So the facility is carried INTO the series identity instead of used to
+        # discard. Nothing is merged that should not be, and nothing is lost.
         facilities = Counter(r.facility or "unclassified" for r in mine)
-        if len(facilities) > 1:
-            main = facilities.most_common(1)[0][0]
-            mine = [r for r in mine if (r.facility or "unclassified") == main]
-            out["facility"] = main
+        out["facility"] = facilities.most_common(1)[0][0] if facilities else ""
+        out["facilities"] = [{"name": f, "n": n} for f, n in facilities.most_common()]
+
+        # What did this place actually measure? Ask the records, do not consult
+        # a list written when the corpus was one town's sewage reports.
+        # A PARTITION: every record lands in exactly one group. Re-filtering by
+        # parameter name inside series_from_records instead put records in more
+        # than one series -- "BOD" matches "BOD removal" by substring -- and the
+        # page then showed 103.7% of the town's observations, which is how a
+        # duplicate announces itself if you happen to count.
+        found: dict[tuple[str, str | None, str], list[Any]] = {}
+        for r in mine:
+            got = resolve_parameter(
+                r.parameter, r.unit,
+                context=(r.provenance.source_text if r.provenance else None))
+            label = got.label if got else (r.parameter or "").strip()
+            if not label:
+                continue
+            found.setdefault((label, r.stream, r.facility or "unclassified"),
+                             []).append(r)
+
+        def rank(item: tuple[tuple[str, str | None, str], list[Any]]) -> tuple[int, int, int]:
+            (label, _stream, facility), group = item
+            n = len(group)
+            pref = next((i for i, w in enumerate(self.PREFERRED)
+                         if w.lower() in label.lower()), len(self.PREFERRED))
+            main = 0 if facility == out["facility"] else 1
+            return (main, pref, -n)
 
         series = []
-        for param, stream, label in self.SERIES:
-            s = series_from_records(mine, parameter=param, stream=stream)
+        singles = []
+        # Deduplicate across the WHOLE place, not per group. A reading can land
+        # in two groups when its stream or facility differs between extractions,
+        # and a per-group set then lets the same page/value/unit through twice --
+        # 72 of Belleville's 475 rows.
+        seen_rows: set[tuple[Any, ...]] = set()
+        for (label, stream, facility), group in sorted(found.items(), key=rank):
+            # Only this group's records, so nothing can be claimed twice.
+            s = series_from_records(group, parameter=label, stream=stream)
+            # A group that cannot form a comparable series -- mixed units, an
+            # unrecognised unit, one unusable period -- still HAPPENED, and its
+            # readings still cite pages. Dropping it was the last place a
+            # town's record silently shrank.
             if not s.points:
+                bare = _bare_group(label, stream, facility, group,
+                                   out.get("facility", ""), seen_rows)
+                if bare["rows"]:
+                    singles.append(bare)
                 continue
+            # EVERY reading in this group, not one per year.
+            #
+            # The chart keeps the most confident reading per year, which is
+            # right for a line and wrong for a table: a parameter measured
+            # monthly showed one point and hid eleven readings, and those
+            # readings are the actual answer to "what was measured here".
+            # Charting one and listing all is the honest split -- and the
+            # charted year is marked, so the table says which number the line
+            # is drawn through.
+            charted = {int(y): (s.sources.get(y), v) for y, v, _c in s.points}
             rows = []
-            for y, v, _c in s.points:
-                # The record that produced this point, carried out of
-                # series_from_records rather than looked up again here.
-                #
-                # The comment that used to sit here said this matched "by year,
-                # parameter and value". It did not -- the loop below it never
-                # compared the value, so a year holding more than one reading
-                # got whichever record came first. Brantford's 1969 BOD-removal
-                # point is charted at 22.7% from page 11, and was captioned with
-                # page 10's sentence "The average BOD removal efficiency was 94%
-                # in 1969", crop and all: a picture of a sentence saying 94%
-                # presented as the source of the number 22.7.
-                #
-                # A comment describing the behaviour somebody meant to write is
-                # worse than no comment, because it stops the next reader from
-                # checking. The association is now carried, not reconstructed,
-                # so there is nothing left here to get wrong.
-                src = s.sources.get(y)
+            for r in sorted(group, key=lambda r: (str(r.period or ""), str(r.parameter))):
+                # The same reading extracted twice from one page is one reading.
+                prov0 = r.provenance
+                # The label matters: "BOD 12 mg/L" and "suspended solids
+                # 12 mg/L" on one page are two readings, and a key without it
+                # silently merged them.
+                dedupe = (label, prov0.identifier if prov0 else "",
+                          prov0.page if prov0 else 0,
+                          r.value, r.unit, str(r.period), r.qualifier)
+                if dedupe in seen_rows:
+                    continue
+                seen_rows.add(dedupe)
+                prov = r.provenance
+                try:
+                    year = int(str(r.period)[:4])
+                except (TypeError, ValueError):
+                    year = None
+                src, cv = charted.get(year, (None, None))
                 rows.append({
-                    "period": int(y),
+                    # The period the page states, not just its year. Three
+                    # monthly readings all rendered "1969" and looked like the
+                    # same row repeated three times with different numbers,
+                    # which reads as a bug and is actually the data.
+                    "period": str(r.period) if r.period else "",
+                    "year": year if year is not None else "",
                     "parameter": label,
-                    "value": f"{v:.4g}",
-                    "unit": s.unit,
-                    "read_from": (src.provenance.source_text[:150] if src and src.provenance else ""),
-                    "page_url": (src.provenance.page_url if src and src.provenance else ""),
+                    "value": f"{r.value:.4g}" if isinstance(r.value, (int, float)) else "",
+                    "unit": r.unit or s.unit,
+                    "qualifier": r.qualifier or "",
+                    # True for the reading the line actually passes through.
+                    "charted": bool(src is not None and src is r),
+                    "read_from": (prov.source_text[:150] if prov else ""),
+                    "page_url": (prov.page_url if prov else ""),
                     # Enough for the portal to ask /api/citation for a picture of
                     # this exact sentence. The quote is sent whole rather than
                     # truncated, because the crop is found by matching its words
                     # against the page's OCR and 150 characters is not always a
                     # sentence.
-                    "identifier": (src.provenance.identifier if src and src.provenance else ""),
-                    "page": (src.provenance.page if src and src.provenance else 0),
-                    "quote": (src.provenance.source_text if src and src.provenance else ""),
+                    "identifier": (prov.identifier if prov else ""),
+                    "page": (prov.page if prov else 0),
+                    "quote": (prov.source_text if prov else ""),
                 })
-            series.append({
+            entry = {
                 "label": label, "unit": s.unit,
+                # Only shown when a town has more than one, so a single-plant
+                # town is not made to look complicated.
+                "facility": "" if facility == out["facility"] else facility,
+                "stream": stream or "",
                 "points": [[int(y), v] for y, v, _ in s.points],
                 "rows": rows,
-            })
+            }
+            # One reading is a fact, not a trend, and belongs in the inventory
+            # rather than on a chart. It used to be dropped entirely, which is
+            # how most of a town's record became invisible.
+            (series if len(s.points) > 1 else singles).append(entry)
+
         out["series"] = series
+        out["singles"] = singles
+        out["n_charted"] = sum(len(e["points"]) for e in series)
+        out["n_listed"] = len(singles)
         return out
+
+
+def _bare_group(label: str, stream: str | None, facility: str,
+                group: list[Any], main_facility: str,
+                seen: set[tuple[Any, ...]]) -> dict[str, Any]:
+    """Readings that cannot be charted, listed rather than lost.
+
+    A series needs comparable units and at least one usable period. When a
+    group has neither, the readings are still real and still cite pages, so
+    they belong on the page with everything else -- flagged, not hidden.
+    """
+    rows = []
+    for r in group:
+        prov = r.provenance
+        key = (label, prov.identifier if prov else "", prov.page if prov else 0,
+               r.value, r.unit, str(r.period), r.qualifier)
+        if key in seen:
+            continue
+        seen.add(key)
+        try:
+            year: Any = int(str(r.period)[:4])
+        except (TypeError, ValueError):
+            year = ""
+        rows.append({
+            "period": str(r.period) if r.period else "", "year": year,
+            "parameter": label,
+            "value": f"{r.value:.4g}" if isinstance(r.value, (int, float)) else "",
+            "unit": r.unit or "", "qualifier": r.qualifier or "", "charted": False,
+            "read_from": (prov.source_text[:150] if prov else ""),
+            "page_url": (prov.page_url if prov else ""),
+            "identifier": (prov.identifier if prov else ""),
+            "page": (prov.page if prov else 0),
+            "quote": (prov.source_text if prov else ""),
+        })
+    return {"label": label, "unit": "", "stream": stream or "",
+            "facility": "" if facility == main_facility else facility,
+            "points": [], "rows": rows, "not_comparable": True}
 
 
 STATE: State | None = None

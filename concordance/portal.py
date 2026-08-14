@@ -131,6 +131,18 @@ details textarea{{resize:vertical}}
 #sb-out{{font-size:12px}}
 .paper img{{box-shadow:0 2px 10px rgba(0,0,0,.35)}}
 .chart{{width:100%;height:auto;display:block;margin:2px 0 10px;color:var(--ink,#cfd8e0)}}
+.inv{{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 4px}}
+.chip{{font-size:11px;padding:3px 7px;border-radius:11px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.09);white-space:nowrap}}
+.chip b{{opacity:.55;font-weight:600;margin-left:3px}}
+.chip.more{{opacity:.6}}
+.scope{{font-size:11px;opacity:.5;font-weight:400;margin-left:8px}}
+.warn{{font-size:11px;margin-left:8px;color:#f0a24a;opacity:.85}}
+.grp{{margin:0 0 12px}}
+.grp h4{{margin:8px 0 3px;font-size:12px;font-weight:600;opacity:.85}}
+.row.charted .y{{font-weight:700}}
+.row .q{{font-size:11px;opacity:.55}}
+.row .pg{{font-size:10px;opacity:.45;margin-left:5px}}
 .chart.one{{display:flex;align-items:baseline;gap:7px;margin:2px 0 10px}}
 .chart.one .big{{font-size:26px;font-weight:600}}
 .chart.one .u{{font-size:12px;opacity:.6}}
@@ -503,11 +515,9 @@ function chart(s){{
   </svg>`;
 }}
 
-function seriesHtml(d){{
+function rowsHtml(rows){{
   let h = "";
-  (d.series||[]).forEach(s => {{
-    h += `<div class="sec"><h3>${{esc(s.label)}}${{esc(s.unit?" · "+s.unit:"")}}</h3>` + chart(s);
-    s.rows.forEach(x => {{
+  (rows||[]).forEach(x => {{
       const cite = x.identifier && x.page
         ? ` <button type="button" class="paper-btn" data-id="${{esc(x.identifier)}}"
              data-page="${{esc(x.page)}}" data-quote="${{esc(encodeURIComponent(x.quote||""))}}"
@@ -515,13 +525,68 @@ function seriesHtml(d){{
       const scanUrl = safeHttpUrl(x.page_url);
       const scanLink = scanUrl
         ? ` <a href="${{scanUrl}}" target="_blank" rel="noopener">scan ↗</a>` : "";
-      h += `<div class="row"><span class="y">${{esc(x.period||"")}}</span>`
-         + `<span>${{esc(x.parameter)}}</span><span class="v">${{esc(x.value)}} ${{esc(x.unit||"")}}</span>`
-         + `<span class="src">“${{esc(x.read_from)}}”${{scanLink}}${{cite}}`
-         + `<span class="paper"></span></span></div>`;
+    /* The page number, beside the period. Two readings of one parameter in one
+       year -- from different pages of the same volume -- rendered as two rows
+       both saying "1965" with different numbers and nothing to tell them
+       apart. The page is what distinguishes them, and it is the thing this
+       project wants in front of a reader anyway. */
+    h += `<div class="row${{x.charted?" charted":""}}">`
+       + `<span class="y">${{esc(x.period||"")}}${{x.page?`<span class="pg">p${{esc(x.page)}}</span>`:""}}</span>`
+       + `<span>${{esc(x.parameter)}}${{x.qualifier?` <span class="q">${{esc(x.qualifier)}}</span>`:""}}</span>`
+       + `<span class="v">${{esc(x.value)}} ${{esc(x.unit||"")}}</span>`
+       + `<span class="src">“${{esc(x.read_from)}}”${{scanLink}}${{cite}}`
+       + `<span class="paper"></span></span></div>`;
+  }});
+  return h;
+}}
+
+/* Everything this place measured -- not a list of seven parameters chosen when
+   the corpus was one town's sewage reports.
+
+   That list used to be the filter, and it reached 25.7% of observations.
+   Stratford drew four charts out of sixty-six distinct measurements; Belleville,
+   the largest town in the corpus, drew none at all. "I wondered how useful the
+   data actually is being presented this way" was a correct bug report: three
+   quarters of what had been read was never rendered.
+
+   Series with more than one year get a chart. A parameter measured once gets
+   its number. A group whose units cannot be reconciled gets its readings and a
+   note saying so. Nothing is dropped, and every row carries the sentence it was
+   read from. */
+function seriesHtml(d){{
+  let h = "";
+  const inv = d.measured || [];
+  if (inv.length) {{
+    h += `<div class="sec"><h3>What was measured here</h3><div class="inv">`
+       + inv.slice(0, 60).map(kv =>
+           `<span class="chip">${{esc(kv[0])}} <b>${{kv[1]}}</b></span>`).join("")
+       + (inv.length > 60 ? `<span class="chip more">+${{inv.length-60}} more</span>` : "")
+       + `</div></div>`;
+  }}
+
+  (d.series||[]).forEach(s => {{
+    const scope = [s.facility, s.stream].filter(Boolean).join(" · ");
+    h += `<div class="sec"><h3>${{esc(s.label)}}${{esc(s.unit?" · "+s.unit:"")}}`
+       + (scope?`<span class="scope">${{esc(scope)}}</span>`:"") + `</h3>`
+       + chart(s) + rowsHtml(s.rows) + `</div>`;
+  }});
+
+  const singles = d.singles || [];
+  if (singles.length) {{
+    h += `<div class="sec"><h3>Measured once, or not comparable`
+       + `<span class="scope">${{singles.length}} more</span></h3>`
+       + `<p class="lede">A single reading is a fact, not a trend. Readings whose
+          units cannot be reconciled are listed rather than charted — and rather
+          than dropped, which is what used to happen.</p>`;
+    singles.forEach(s => {{
+      const scope = [s.facility, s.stream].filter(Boolean).join(" · ");
+      h += `<div class="grp"><h4>${{esc(s.label)}}`
+         + (scope?`<span class="scope">${{esc(scope)}}</span>`:"")
+         + (s.not_comparable?`<span class="warn">units not comparable</span>`:"")
+         + `</h4>` + rowsHtml(s.rows) + `</div>`;
     }});
     h += `</div>`;
-  }});
+  }}
   return h;
 }}
 
