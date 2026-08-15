@@ -43,6 +43,7 @@ from .disputes import (
 )
 from .parameters import resolve as resolve_parameter
 from .jay import Jay
+from .models import Provenance
 from .places import facility_key
 from .portal import render
 from .reading import READER
@@ -65,6 +66,13 @@ FLAG_KEYS: set[tuple[str, str]] = set()
 #: Largest bundle accepted over HTTP. A shared instance takes uploads from
 #: anyone, so both encoded size and verification work need explicit bounds.
 MAX_BUNDLE_BYTES = 8 * 1024 * 1024
+
+#: Contested slots rendered at once. Resolving one fetches the pages it cites,
+#: so the whole ledger is not free to draw; the number shown is reported next
+#: to the total so a reader knows they are looking at a sample.
+CONTESTED_SHOWN = 60
+#: Listings are cheap -- no page fetch -- so more of them fit.
+LISTED_SHOWN = 40
 
 #: Archive verification fetches every cited item before checking its records.
 #: These limits admit the existing municipality-sized exports while preventing
@@ -608,8 +616,26 @@ class State:
             for standing in slot.standings:
                 claim_slots[standing.claim.id] = slot.key
 
+        # Spread the sample across places instead of taking the first 40 in
+        # load order. Those forty were all Belleville, because belleville.json
+        # loads first -- so a page headed "267 contested" showed one town's
+        # disagreements and sixteen other towns were unreachable from it.
+        #
+        # Still a sample: resolving a slot fetches its cited pages, so the whole
+        # ledger is not free to render. The cap is now REPORTED, which is the
+        # part that was missing.
+        all_contested = resolved.contested()
+        by_place: dict[str, list[Any]] = {}
+        for slot in all_contested:
+            by_place.setdefault(str(slot.key).split("|")[0], []).append(slot)
+        spread: list[Any] = []
+        while len(spread) < CONTESTED_SHOWN and any(by_place.values()):
+            for slots in by_place.values():
+                if slots and len(spread) < CONTESTED_SHOWN:
+                    spread.append(slots.pop(0))
+
         contested = []
-        for slot in resolved.contested()[:40]:
+        for slot in spread:
             entries = []
             for standing in slot.surviving:
                 prov = standing.claim.record.get("provenance") or {}
@@ -634,7 +660,39 @@ class State:
                 "readings": entries,
             })
 
+        # The listings, shown as themselves. These used to be counted as
+        # disagreements, which invited a reader to adjudicate between a 33-inch
+        # pipe and a 36-inch one. They are cheap to render -- one page each, and
+        # the quotes are already in hand -- so no crops are fetched here.
+        listed = []
+        for slot in resolved.undistinguished()[:LISTED_SHOWN]:
+            prov = (slot.surviving[0].claim.record.get("provenance") or {})
+            # Built here rather than in the browser: archive.org's leaf index is
+            # zero-based and ours is not, and one definition of that off-by-one
+            # is enough.
+            page_url = Provenance(
+                identifier=str(prov.get("identifier", "")),
+                page=prov.get("page"),
+            ).page_url
+            listed.append({
+                "slot": slot.key,
+                "identifier": prov.get("identifier", ""),
+                "page": prov.get("page"),
+                "page_url": page_url,
+                "readings": [{
+                    "value": s.claim.record.get("value"),
+                    "unit": s.claim.record.get("unit", ""),
+                    "quote": s.claim.quote,
+                } for s in slot.surviving],
+            })
+        report["listed_detail"] = listed
+        report["listed_shown"] = len(listed)
+
         report["contested_detail"] = contested
+        # Reported, not implied. A page headed "267 contested" that renders a
+        # sample without saying so reads as the whole ledger.
+        report["contested_shown"] = len(contested)
+        report["contested_total"] = len(all_contested)
         self._ledger_base = report
         self._ledger_claim_slots = claim_slots
         self._ledger_slot_meta = slot_meta

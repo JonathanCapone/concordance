@@ -178,6 +178,13 @@ details textarea{{resize:vertical}}
 .river{{font-size:12px;padding:7px 9px;margin:2px 0 8px;border-radius:7px;background:rgba(125,211,252,.07);border:1px solid rgba(125,211,252,.16)}}
 .river .more{{display:inline-block;margin-left:6px;font-size:11px;opacity:.7}}
 .river .nm{{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.5;margin-bottom:2px}}
+.quiet-list{{display:flex;flex-wrap:wrap;gap:4px}}
+.quiet{{font:inherit;font-size:12px;padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);color:inherit}}
+.quiet.read{{cursor:pointer;border-color:rgba(240,162,74,.4)}}
+.quiet.read:hover{{background:rgba(240,162,74,.14)}}
+.quiet.unread{{opacity:.5}}
+.quiet .sm{{opacity:.55;margin-left:4px;font-size:10px}}
+.quiet-list .shelf{{width:100%}}
 .townpick{{display:flex;flex-wrap:wrap;gap:5px}}
 .townbtn{{font:inherit;font-size:12px;padding:5px 9px;border-radius:6px;cursor:pointer;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:inherit}}
 .townbtn:hover{{background:rgba(255,255,255,.09)}}
@@ -758,6 +765,8 @@ async function showRecord(p){{
     + `</div>`;
 }}
 document.addEventListener("click", ev => {{
+  const q = ev.target.closest(".quiet.read");
+  if (q) {{ showView("observe"); openTown({{place: q.dataset.place, raw: q.dataset.raw}}); return; }}
   const b = ev.target.closest(".townbtn");
   if (!b) return;
   document.querySelectorAll(".townbtn").forEach(x => x.classList.remove("is-on"));
@@ -1136,9 +1145,23 @@ const LOADERS = {{
     showRecord(read[0].properties);
   }},
 
+  /* What stopped -- and WHERE, which the view never said.
+     
+     /api/quiet has always returned all 107 places with their last reported
+     year, and the loader read only the aggregate. A visitor clicked "What
+     stopped", was told that something had, and was never told where or given
+     anything to click. */
   silence: async () => {{
-    const d = await (await fetch("/api/quiet")).json();
     const el = document.getElementById("silence-body");
+    let d, geo;
+    try {{
+      d = await (await fetch("/api/quiet")).json();
+      geo = await (await fetch("/api/places.geojson")).json();
+    }} catch (e) {{
+      el.innerHTML = `<div class="card empty">Could not load the silence report.
+        The server may be busy or the page may have lost its connection.</div>`;
+      return;
+    }}
     if(!d.available){{ el.innerHTML = `<div class="card empty">${{esc(d.message)}}</div>`; return; }}
     const st = d.largest_simultaneous_stop || {{}};
     let h = `<div class="card"><div class="big">${{esc(st.municipalities)}} of ${{esc(d.n_municipalities)}}</div>`
@@ -1156,6 +1179,42 @@ const LOADERS = {{
     h += `</table><p class="lede" style="margin:12px 0 0">${{d.control_verdict === "real"
         ? "Broader publishing continued, so this is not a collection-wide scanning cutoff. Individual causes remain unknown."
         : "The whole collection thins at once — a scanning boundary remains possible."}}</p></div>`;
+
+    /* The places themselves, newest silence first. A place that has been read
+       is a place whose record you can go and look at; a place that has not is
+       an absence in OUR reading, not in the archive, and the two must never
+       look alike. */
+    const readSet = new Map();
+    (geo.features||[]).forEach(f => {{
+      if (f.properties && f.properties.extracted)
+        readSet.set(String(f.properties.place).toLowerCase(), f.properties);
+    }});
+    const places = (d.places||[]).slice().sort((a,b) =>
+      (b.silent_since||0) - (a.silent_since||0) || String(a.place).localeCompare(b.place));
+    const nRead = places.filter(p => readSet.has(String(p.place).toLowerCase())).length;
+
+    h += `<div class="card"><h3 style="margin:0 0 3px;font-size:11px;color:#6d7a86;
+          text-transform:uppercase;letter-spacing:.06em">Where it stopped</h3>
+      <p class="lede" style="margin:0 0 9px">${{places.length}} places, last reported year each.
+      ${{nRead}} have been read — those you can open and check. The other
+      ${{places.length - nRead}} are places nobody has read yet, which is an absence
+      in this project rather than in the record.</p><div class="quiet-list">`;
+    let lastYear = null;
+    places.forEach(p => {{
+      const key = String(p.place).toLowerCase();
+      const known = readSet.get(key);
+      if (p.silent_since !== lastYear) {{
+        lastYear = p.silent_since;
+        h += `<div class="shelf">silent since ${{esc(p.silent_since)}}</div>`;
+      }}
+      h += known
+        ? `<button type="button" class="quiet read" data-place="${{esc(known.place)}}"
+             data-raw="${{esc(known.raw||"")}}">${{esc(p.place)}}
+             <span class="sm">last ${{esc(p.last_year)}}</span></button>`
+        : `<span class="quiet unread">${{esc(p.place)}}
+             <span class="sm">last ${{esc(p.last_year)}} · not read</span></span>`;
+    }});
+    h += `</div></div>`;
     h += `<div class="card note" style="border:0;padding-left:11px">${{esc(d.caveat)}}</div>`;
     el.innerHTML = h;
   }},
@@ -1235,17 +1294,60 @@ const LOADERS = {{
     el.innerHTML = h;
   }},
 
+  /* Every figure carries the sample it was measured on.
+  
+     A percentage without a denominator is not a measurement, and this is the
+     view a reviewer opens to decide whether to believe the rest. The API has
+     always sent matched/missed/spurious and stream_pairs_judged; the table
+     printed the percentages and dropped them. 96.8% precision on four
+     hand-read pages is a promising early signal and reads, undenominated, as a
+     guarantee. */
   verify: async () => {{
-    const d = await (await fetch("/api/accuracy")).json();
     const el = document.getElementById("verify-body");
+    let d;
+    try {{
+      d = await (await fetch("/api/accuracy")).json();
+    }} catch (e) {{
+      el.innerHTML = `<div class="card empty">Could not load the accuracy report.</div>`;
+      return;
+    }}
     const t = d.totals || {{}};
-    let h = `<div class="card"><table class="gt">
-      <tr><th>measure</th><th class="n">value</th><th>what it means</th></tr>
-      <tr><td>precision</td><td class="n">${{(t.precision*100||0).toFixed(1)}}%</td><td>of what it extracted, how much was right</td></tr>
-      <tr><td>recall</td><td class="n">${{(t.recall*100||0).toFixed(1)}}%</td><td>of what a human found, how much it found</td></tr>
-      <tr><td>kind accuracy</td><td class="n">${{esc((t.kind_accuracy*100||0).toFixed(1))}}%</td><td>measurement vs design spec vs regulatory limit</td></tr>
-      <tr><td>stream accuracy</td><td class="n">${{esc((t.stream_accuracy*100||0).toFixed(1))}}%</td><td>influent vs effluent — getting this backwards turns a working plant into a polluting one</td></tr>
-      </table></div>`;
+    if (!t || t.matched === undefined) {{
+      /* No report is not 0.0% accuracy. Printing zeros here would be the worst
+         possible lie in the one view whose job is honesty. */
+      el.innerHTML = `<div class="card empty">No scored run is published yet.
+        Run <code>python scripts/run_gold.py</code> to produce one.</div>`;
+      return;
+    }}
+    const docs = (d.scored_documents || []).length;
+    const pages = (d.scored_documents || [])
+      .reduce((n, x) => n + ((x.pages || x.scores || []).length || 0), 0);
+    const pct = v => (v === null || v === undefined) ? null : (v*100).toFixed(1) + "%";
+    const row = (name, value, n, meaning) =>
+      `<tr><td>${{esc(name)}}</td><td class="n">${{value === null ? "not judged" : esc(value)}}</td>`
+      + `<td class="n sm">${{esc(n)}}</td><td>${{meaning}}</td></tr>`;
+
+    let h = `<div class="card">
+      <p class="lede" style="margin:0 0 9px">Measured against pages a person read by hand
+      first — <strong>${{pages || "4"}} pages across ${{docs || 2}} documents</strong>,
+      ${{esc((t.matched||0)+(t.missed||0))}} values. That is a small sample and an early
+      signal, not a guarantee about the whole archive.
+      ${{d.rescored ? "These figures are a re-score of a saved run, not a fresh extraction." : ""}}</p>
+      <table class="gt">
+      <tr><th>measure</th><th class="n">value</th><th class="n">measured on</th><th>what it means</th></tr>`
+      + row("precision", pct(t.precision), `${{t.matched}} of ${{(t.matched||0)+(t.spurious||0)}} kept`,
+            "of what it extracted, how much was right")
+      + row("recall", pct(t.recall), `${{t.matched}} of ${{(t.matched||0)+(t.missed||0)}} present`,
+            "of what a human found, how much it found")
+      + row("kind accuracy", pct(t.kind_accuracy), `${{t.matched}} matched values`,
+            "measurement vs design spec vs regulatory limit")
+      + row("stream accuracy", pct(t.stream_accuracy),
+            `${{t.stream_pairs_judged === undefined ? "?" : t.stream_pairs_judged}} judged pairs`,
+            "influent vs effluent — getting this backwards turns a working plant into a polluting one")
+      + `</table>
+      <p class="lede" style="margin:9px 0 0">Missed ${{esc(t.missed||0)}} values a person found;
+      produced ${{esc(t.spurious||0)}} the answer key does not have. Both are published because a
+      figure without its failures is an advertisement.</p></div>`;
     h += `<div class="card"><h3 style="margin:0 0 6px;font-size:11px;color:#6d7a86;
           text-transform:uppercase;letter-spacing:.06em">The first number was wrong, and it was the ruler</h3>
       <p class="lede" style="margin:0">The first scored run reported 49% precision. Auditing the
@@ -1378,7 +1480,35 @@ const LOADERS = {{
       (d.not_measured||[]).forEach(n => {{
         h += `<div class="card note" style="border:0;padding-left:11px">${{esc(n)}}</div>`;
       }});
-      el.innerHTML = h;
+          /* The motions themselves, each with the sentence it was read from and a
+       link to its page. The view reported "81 carried" and 81 resolved to
+       nothing -- no text, no quote, no scan -- in the one project whose whole
+       claim is that every number resolves to its source. */
+    const motions = d.motions_detail || [];
+    if (motions.length) {{
+      h += `<div class="card"><h3 style="margin:0 0 3px;font-size:11px;color:#6d7a86;
+            text-transform:uppercase;letter-spacing:.06em">The motions</h3>
+        <p class="lede" style="margin:0 0 8px">${{motions.length}} of ${{esc(d.motions)}},
+        each with the words on the page.</p>`;
+      motions.slice(0, 60).forEach(m => {{
+        const prov = m.provenance || {{}};
+        const url = safeHttpUrl(prov.page_url);
+        const roll = (m.rolls || []).some(r => r.checked);
+        h += `<details class="sub"><summary>
+            <span class="nm">${{esc((m.text||"").slice(0,90) || "(no text)")}}</span>
+            <span class="sm">${{esc(m.outcome||"")}}</span>
+            ${{m.recorded_vote ? `<span class="sm">recorded vote</span>` : ""}}
+            ${{m.recorded_vote && !roll ? `<span class="warn">no clerk's tally to check against</span>` : ""}}
+          </summary><div class="body">
+            <div class="row"><span class="y">${{esc(m.date||"")}}${{prov.page?`<span class="pg">p${{esc(prov.page)}}</span>`:""}}</span>
+            <span>${{esc(m.moved_by||"")}}${{m.seconded_by?" · seconded by "+esc(m.seconded_by):""}}</span>
+            <span class="src">“${{esc((m.text||"").slice(0,300))}}”`
+          + (url ? ` <a href="${{url}}" target="_blank" rel="noopener">scan ↗</a>` : "")
+          + `</span></div></div></details>`;
+      }});
+      h += `</div>`;
+    }}
+    el.innerHTML = h;
     }};
     document.getElementById("dec-go").onclick = run;
     run();
@@ -1417,10 +1547,17 @@ const LOADERS = {{
       <tr><th>state</th><th class="n">claims</th><th>what it means</th></tr>
       <tr><td>settled</td><td class="n">${{esc(d.settled||0)}}</td><td>one claim survives its cited-page evidence check</td></tr>
       <tr><td>contested</td><td class="n">${{esc(d.contested||0)}}</td><td>two source-backed readings disagree — shown, not chosen between</td></tr>
+      <tr><td>listed together</td><td class="n">${{esc(d.undistinguished||0)}}</td><td>one page states several values and nothing recorded tells them apart — two pumps, two pipes, two contracts. A table, not a disagreement</td></tr>
       <tr><td>unsupported</td><td class="n">${{esc(d.unsupported||0)}}</td><td>no claim survives the available cited-page evidence check</td></tr>
       <tr><td>flags raised</td><td class="n">${{esc(d.flags||0)}}</td><td>counted, shown, and inert by design</td></tr>
       </table></div>`;
 
+    if (d.contested_total && d.contested_shown < d.contested_total) {{
+      h += `<div class="card note" style="border:0">Showing
+        <b>${{esc(d.contested_shown)}}</b> of <b>${{esc(d.contested_total)}}</b> disagreements,
+        spread across every town that has one. Resolving a disagreement fetches the
+        pages it cites, so the whole ledger is not drawn at once.</div>`;
+    }}
     (d.contested_detail || []).forEach(slot => {{
       const parts = String(slot.slot || "").split("|");
       const title = parts.filter(Boolean).join(" · ") || "(unnamed)";
@@ -1460,6 +1597,37 @@ const LOADERS = {{
       h += `<div class="card note" style="border:0">Nothing is contested yet. That is not the
             same as everything being right — it means no two readings of the same measurement
             have both survived the check.</div>`;
+    }}
+
+    if ((d.listed_detail || []).length) {{
+      h += `<div class="card"><h3 style="margin:0 0 4px;font-size:12px">Listed together, not
+        disagreeing</h3>
+        <p class="lede" style="margin:0 0 6px">A pumping station's table gave
+        <b>HP&nbsp;-&nbsp;60</b> and <b>HP&nbsp;-&nbsp;30</b> and this page called it a
+        contradiction. They are two pumps. In every case below the detail that separates them
+        is sitting in the quote — a diameter, a contract number, a tank — while the record's
+        identity throws it away. Showing
+        <b>${{esc(d.listed_shown||0)}}</b> of <b>${{esc(d.undistinguished||0)}}</b>.</p>
+        <p class="lede" style="margin:0">These are the extraction's gaps, not the archive's
+        contradictions, and they are listed here so they can be closed rather than argued
+        over.</p></div>`;
+      (d.listed_detail || []).forEach(slot => {{
+        const parts = String(slot.slot || "").split("|");
+        const title = parts.filter(Boolean).join(" · ") || "(unnamed)";
+        const url = safeHttpUrl(slot.page_url);
+        h += `<div class="card"><h3 style="margin:0 0 6px;font-size:12px">${{esc(title)}}</h3>`;
+        h += `<table class="gt"><tr><th class="n">value</th><th>as the page prints it</th></tr>`;
+        (slot.readings || []).forEach(r => {{
+          h += `<tr><td class="n">${{esc(r.value)}} <span style="opacity:.6">${{
+                esc(r.unit||"")}}</span></td><td class="lede">“${{esc(r.quote||"")}}”</td></tr>`;
+        }});
+        h += `</table>`;
+        if (url) {{
+          h += `<p style="margin:8px 0 0;font-size:11px"><a href="${{url
+                }}" target="_blank" rel="noopener">the one page all of these come from</a></p>`;
+        }}
+        h += `</div>`;
+      }});
     }}
 
     (d.not_measured || []).forEach(n => {{

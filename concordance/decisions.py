@@ -176,11 +176,26 @@ class Roll:
 
     @property
     def agrees(self) -> bool:
+        """Do the names match the tally the clerk wrote?
+
+        True when there is no tally, because nothing has been contradicted --
+        but that is NOT the same as having been checked, and `checked` is what
+        callers must consult before reporting this as verification. Roughly
+        four fifths of rolls in this corpus carry no tally at all, so a control
+        that reports those as agreeing is a control that passes when there is
+        nothing to check. This project has built five of those.
+        """
         return self.stated_count is None or len(self.people) == self.stated_count
+
+    @property
+    def checked(self) -> bool:
+        """Was there a clerk's tally to check the names against?"""
+        return self.stated_count is not None
 
     def to_dict(self) -> dict[str, Any]:
         return {"cast": self.cast, "people": self.people,
-                "stated_count": self.stated_count, "counts_agree": self.agrees}
+                "stated_count": self.stated_count, "counts_agree": self.agrees,
+                "checked": self.checked}
 
 
 @dataclass
@@ -551,6 +566,11 @@ class Ledger:
     def report(self) -> dict[str, Any]:
         recorded = [m for m in self.motions if m.recorded]
         bad = [m for m in recorded if not m.rolls_agree]
+        # How many recorded votes could actually be checked. Without this,
+        # "0 rolls that do not reconcile" reads as verification when most rolls
+        # simply had no tally to reconcile against.
+        checked = [m for m in recorded
+                   if any(getattr(r, "checked", False) for r in m.rolls)]
         outcomes = collections.Counter(m.outcome for m in self.motions)
         return {
             "people": len(self.people),
@@ -558,6 +578,14 @@ class Ledger:
             "outcomes": dict(outcomes),
             "recorded_votes": len(recorded),
             "rolls_that_do_not_reconcile": len(bad),
+            "rolls_checkable": len(checked),
+            "rolls_with_no_tally": len(recorded) - len(checked),
+            # Every motion, with its text, its mover and the page it is on.
+            # report() returned counts only, so "81 carried" resolved to
+            # nothing -- in a project whose entire claim is that every number
+            # resolves to the scan it came from. Motion.to_dict already carried
+            # all of it and was called by nobody.
+            "motions_detail": [m.to_dict() for m in self.motions[:200]],
             "most_active": self.most_active(),
             "partnerships": self.partnerships(),
             "dissenters": self.dissenters(),

@@ -19,17 +19,23 @@ PAGE = (
     "respectively. The average effluent BOD and suspended solids were 37 mg/1 "
     "and 36 mg/1 respectively, giving an average removal of 64% BOD."
 )
-PAGES = {"owensound": {7: PAGE}}
+#: The same figures reprinted in the summary at the back, which is how a real
+#: report disagrees with itself: on two pages, not on one.
+LATER_PAGE = (
+    "In summary, influent BOD averaged 26 mg/1 over the year and the works "
+    "performed to specification throughout."
+)
+PAGES = {"owensound": {7: PAGE, 30: LATER_PAGE}}
 
 
 def _claim(value, quote, *, source="extraction", parameter="BOD",
-           stream="influent", contributor="anonymous", note=""):
+           stream="influent", contributor="anonymous", note="", page=7):
     return Claim(
         record={
             "kind": "observation", "parameter": parameter, "value": value, "unit": "mg/L",
             "place": "Owen Sound", "facility": "sewage", "period": "1969",
             "stream": stream,
-            "provenance": {"identifier": "owensound", "page": 7,
+            "provenance": {"identifier": "owensound", "page": page,
                            "source_text": quote},
         },
         source=source, contributor=contributor, note=note,
@@ -114,11 +120,45 @@ def test_two_readings_of_one_sentence_are_shown_not_chosen_between():
 
 
 def test_a_contested_slot_names_the_disagreement_as_one_sentence_or_two():
+    """A report contradicting itself does it across pages -- the body says one
+    thing and the summary at the back says another."""
     a = _claim(104, "The average influent BOD and suspended solids were 104 mg/1")
-    b = _claim(37, "The average effluent BOD and suspended solids were 37 mg/1")
+    b = _claim(26, "In summary, influent BOD averaged 26 mg/1 over the year", page=30)
     slot = next(iter(resolve([a, b], archive=_FakeArchive()).slots.values()))
     assert slot.state == "contested"
     assert not slot.same_sentence          # two sentences, not one ambiguity
+
+
+def test_two_sentences_on_one_page_are_a_listing_rather_than_a_contradiction():
+    """This test used to assert "contested", and it was wrong in the same way
+    the portal was.
+
+    Influent 104 and effluent 37 are not two answers to one question. They are
+    two rows of one table, and the word that separates them -- influent,
+    effluent -- is right there in the quote while the slot key drops it. Real
+    examples from the corpus: "HP - 60" against "HP - 30" for two pumps in one
+    station, and 300 feet of 33-inch pipe against 1179 feet of 36-inch.
+
+    Calling those contradictions asks a reader to adjudicate between two pipes.
+    """
+    a = _claim(104, "The average influent BOD and suspended solids were 104 mg/1")
+    b = _claim(37, "The average effluent BOD and suspended solids were 37 mg/1")
+    slot = next(iter(resolve([a, b], archive=_FakeArchive()).slots.values()))
+    assert slot.state == "undistinguished"
+    assert slot.undistinguished
+    assert not slot.same_sentence
+    # And it must not be smuggled back into the disagreements.
+    assert slot not in resolve([a, b], archive=_FakeArchive()).contested()
+
+
+def test_one_ambiguous_sentence_read_two_ways_is_still_a_real_disagreement():
+    """The guard on the rule above: identical quotes are not a listing."""
+    quote = ("The average influent BOD and suspended solids were 104 mg/1 and "
+             "224 mg/1 respectively")
+    slot = next(iter(resolve([_claim(104, quote), _claim(224, quote)],
+                             archive=_FakeArchive()).slots.values()))
+    assert slot.state == "contested"
+    assert slot.same_sentence
 
 
 # -- flags never change anything --------------------------------------------

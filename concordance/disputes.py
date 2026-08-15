@@ -349,8 +349,49 @@ class Slot:
         if not self.surviving:
             return "unsupported"
         if len(self.values) > 1:
-            return "contested"
+            return "undistinguished" if self.undistinguished else "contested"
         return "settled"
+
+    @property
+    def undistinguished(self) -> bool:
+        """Several values from ONE page, each quoting different text.
+
+        Not a disagreement. A document does not usually contradict itself on a
+        single page -- it LISTS, and this slot's key is too coarse to tell the
+        entries apart.
+
+        Every instance found in this corpus is a table of several things, and
+        in every one the distinguishing detail is sitting in the quote while
+        the identity throws it away:
+
+            "300 feet of 33 inch concrete pipe"   two pipes, two diameters
+            "1179 feet of 36 inch concrete pipe"
+
+            "HP - 60"                             two pumps in one station
+            "HP - 30"
+
+            "58-S-17 $823,298.00"                 two contracts, numbered
+            "61-S-77 $ 44,158.00"
+
+        Calling those contradictions is worse than useless: it invites a reader
+        to adjudicate between a 33-inch pipe and a 36-inch one, and it inflates
+        the contested count with conflicts nobody has.
+
+        The claim made here is deliberately narrow. Not "these are different
+        things" -- that cannot be proved from the record. Only: the page states
+        several values and nothing captured distinguishes them, which points at
+        the extraction rather than at the archive.
+        """
+        if len(self.values) < 2 or len(self.surviving) < 2:
+            return False
+        pages = set()
+        for standing in self.surviving:
+            prov = standing.claim.record.get("provenance") or {}
+            pages.add((prov.get("identifier"), prov.get("page")))
+        if len(pages) != 1:
+            return False
+        quotes = {_norm(s.claim.quote) for s in self.surviving}
+        return len(quotes) == len(self.surviving)
 
     @property
     def same_sentence(self) -> bool:
@@ -390,6 +431,10 @@ class Ledger:
     def contested(self) -> list[Slot]:
         return [s for s in self.slots.values() if s.state == "contested"]
 
+    def undistinguished(self) -> list[Slot]:
+        """Slots where one page lists several values and the key cannot separate them."""
+        return [s for s in self.slots.values() if s.state == "undistinguished"]
+
     def unsupported(self) -> list[Slot]:
         return [s for s in self.slots.values() if s.state == "unsupported"]
 
@@ -418,6 +463,7 @@ class Ledger:
             "slots": len(self.slots),
             "settled": len(self.settled()),
             "contested": len(self.contested()),
+            "undistinguished": len(self.undistinguished()),
             "unsupported": len(self.unsupported()),
             "surviving_claims_by_source": dict(by_source),
             "flags": sum(len(s.flags) for s in self.slots.values()),

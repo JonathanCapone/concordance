@@ -1,7 +1,7 @@
 {
   "place": "Belleville",
   "model": "ollama:gemma4:12b",
-  "n_records": 844,
+  "n_records": 993,
   "pages_attempted": [
     "bellevillewaterp23805#3",
     "bellevillewaterp23805#10",
@@ -96,7 +96,42 @@
     "bellevillewatert1990ontauoft#29",
     "bellevillewatert1990ontauoft#30",
     "bellevillewatert1990ontauoft#31",
-    "bellevillewatert1990ontauoft#32"
+    "bellevillewatert1990ontauoft#32",
+    "bellevillewatert1990ontauoft#33",
+    "bellevillewatert1990ontauoft#34",
+    "bellevillewatert1990ontauoft#35",
+    "bellevillewatert1990ontauoft#36",
+    "bellevillewatert1990ontauoft#37",
+    "bellevillewatert1990ontauoft#38",
+    "bellevillewatert1990ontauoft#39",
+    "bellevillewatert1990ontauoft#44",
+    "bellevillewatert1990ontauoft#46",
+    "bellevillewatert1990ontauoft#47",
+    "bellevillewatert1990ontauoft#50",
+    "bellevillewatert1990ontauoft#51",
+    "bellevillewatert1990ontauoft#52",
+    "bellevillewatert1990ontauoft#53",
+    "bellevillewatert1990ontauoft#54",
+    "bellevillewatert1990ontauoft#55",
+    "drinkingwatersur899ontauoft#3",
+    "drinkingwatersur899ontauoft#5",
+    "drinkingwatersur899ontauoft#7",
+    "drinkingwatersur899ontauoft#8",
+    "drinkingwatersur899ontauoft#9",
+    "drinkingwatersur899ontauoft#13",
+    "drinkingwatersur899ontauoft#14",
+    "drinkingwatersur899ontauoft#15",
+    "drinkingwatersur899ontauoft#16",
+    "drinkingwatersur899ontauoft#17",
+    "drinkingwatersur899ontauoft#18",
+    "drinkingwatersur899ontauoft#21",
+    "drinkingwatersur899ontauoft#22",
+    "drinkingwatersur899ontauoft#23",
+    "drinkingwatersur899ontauoft#24",
+    "drinkingwatersur899ontauoft#25",
+    "drinkingwatersur899ontauoft#35",
+    "drinkingwatersur899ontauoft#36",
+    "drinkingwatersur899ontauoft#37"
   ],
   "records": [
     {
@@ -22886,6 +22921,4029 @@
         "ocr_confidence": 0.8679
       },
       "key": "ee18fe6bbd3c0f93ce74"
+    },
+    {
+      "kind": "standard",
+      "parameter": "uranium detection limit",
+      "value": 0.05,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "URANIUM (UG/L ) DET'N LIMIT = 0.05",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "0a259aaea62b1ae996cd"
+    },
+    {
+      "kind": "standard",
+      "parameter": "uranium guideline",
+      "value": 100.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "URANIUM (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 100 (A1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "674ec30508903aafc95d"
+    },
+    {
+      "kind": "standard",
+      "parameter": "vanadium detection limit",
+      "value": 0.05,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "VANADIUM (UG/L »&gt; DET'N LIMIT = 0.05 - GUIDELINE = N/A",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "47c46a676c15152c65e5"
+    },
+    {
+      "kind": "standard",
+      "parameter": "zinc detection limit",
+      "value": 0.2,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "ZINC (UG/L ) DET'N LIMIT = 0.20 GUIDELINE = 5000 (A3)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "d50f92b96ad10e7b9b1f"
+    },
+    {
+      "kind": "standard",
+      "parameter": "zinc guideline",
+      "value": 5000.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "ZINC (UG/L ) DET'N LIMIT = 0.20 GUIDELINE = 5000 (A3)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "4a26e57abcadab32281f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.28,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1990-01",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "JAN .280 &lt;T .130 &lt;T .110 &lt;T .110 &lt;T .130 &lt;T .100 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "718e5eeb79567150033d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.13,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1990-01",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "JAN .280 &lt;T .130 &lt;T .110 &lt;T .110 &lt;T .130 &lt;T .100 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "ff8d9faadd9b15b50286"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.11,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-01",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "JAN .280 &lt;T .130 &lt;T .110 &lt;T .110 &lt;T .130 &lt;T .100 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "839cb8e7dfbd473c12cc"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.11,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-01",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "JAN .280 &lt;T .130 &lt;T .110 &lt;T .110 &lt;T .130 &lt;T .100 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "839cb8e7dfbd473c12cc"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.13,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-01",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "JAN .280 &lt;T .130 &lt;T .110 &lt;T .110 &lt;T .130 &lt;T .100 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "61caa705c7243850bc3c"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.1,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-01",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "JAN .280 &lt;T .130 &lt;T .110 &lt;T .110 &lt;T .130 &lt;T .100 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "f9e14d59b7d7cceb9e13"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.22,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1990-03",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAR .220 &lt;T .120 &lt;T .100 &lt;T .080 &lt;T -080 &lt;T .080 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "c9750081319cf6cb1ca7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.12,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1990-03",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAR .220 &lt;T .120 &lt;T .100 &lt;T .080 &lt;T -080 &lt;T .080 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "5593dfc013873204c1a2"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.1,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-03",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAR .220 &lt;T .120 &lt;T .100 &lt;T .080 &lt;T -080 &lt;T .080 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "f5a48ed987b39b7b038d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.08,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-03",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAR .220 &lt;T .120 &lt;T .100 &lt;T .080 &lt;T -080 &lt;T .080 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "679e6a5adaaa9e6e27af"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.13,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-03",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAR .220 &lt;T .120 &lt;T .100 &lt;T .080 &lt;T -080 &lt;T .080 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "f8412727e743d5d6022b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.08,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-03",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAR .220 &lt;T .120 &lt;T .100 &lt;T .080 &lt;T -080 &lt;T .080 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "679e6a5adaaa9e6e27af"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.17,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1990-05",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAY .170 &lt;T .120 &lt;T .060 &lt;T BDL -060 &lt;T ~ .060 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "8d967a6aee5e47fd3e0f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.12,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1990-05",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAY .170 &lt;T .120 &lt;T .060 &lt;T BDL -060 &lt;T ~ .060 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "76b817edd0aa38879d23"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.06,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-05",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAY .170 &lt;T .120 &lt;T .060 &lt;T BDL -060 &lt;T ~ .060 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "b8f17d2d511af2ab2217"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.06,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1990-05",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "MAY .170 &lt;T .120 &lt;T .060 &lt;T BDL -060 &lt;T ~ .060 &lt;T",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "b8f17d2d511af2ab2217"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.15,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1990-07",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "JUL .150 &lt;T -080 &lt;T .070 &lt;T .060 &lt;T BDL BDL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "b5e79c7dc4a0376152bc"
+    },
+    {
+      "kind": "observation",
+      "parameter": "uranium",
+      "value": 0.08,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1990-07",
+      "facility": "Belleville WTP",
+      "confidence": 0.4738,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 33,
+        "source_text": "JUL .150 &lt;T -080 &lt;T .070 &lt;T .060 &lt;T BDL BDL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n32/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8954
+      },
+      "key": "c30c441061c77f97e2d1"
+    },
+    {
+      "kind": "standard",
+      "parameter": "detection limit for 236 TRICHLOROTOLUENE",
+      "value": 5.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4657,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 34,
+        "source_text": "236 TRICHLOROTOLUENE (NG/L ) DET'N LIMIT = 5.000 GUIDELINE = N/A",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n33/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8626
+      },
+      "key": "8c6a63939d53bec72a2d"
+    },
+    {
+      "kind": "standard",
+      "parameter": "detection limit for HEXACHLOROCYCLOPENTADIENE",
+      "value": 5.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4657,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 34,
+        "source_text": "HEXACHLOROCYCLOPENTADIENE (NG/L ) DET'N LIMIT = 5.000 GUIDELINE = 206000 (D4)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n33/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8626
+      },
+      "key": "e90237e599d66134f716"
+    },
+    {
+      "kind": "standard",
+      "parameter": "guideline for HEXACHLOROCYCLOPENTADIENCE",
+      "value": 206000.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4657,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 34,
+        "source_text": "HEXACHLOROCYCLOPENTADIENE (NG/L ) DET'N LIMIT = 5.000 GUIDELINE = 206000 (D4)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n33/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8626
+      },
+      "key": "41adbdd2ebbe9dece587"
+    },
+    {
+      "kind": "standard",
+      "parameter": "DET'N LIMIT",
+      "value": 10.0,
+      "unit": "NG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4506,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 35,
+        "source_text": "PHENANTHRENE (NG/L ) DET'N LIMIT = 10. GUIDELINE = N/A",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n34/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8025
+      },
+      "key": "fcfab2e83bc9e02513de"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ALPHA BHC detection limit",
+      "value": 1.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.462,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 36,
+        "source_text": "ALPHA BHC (NG/L ) DET'N LIMIT = 1.000",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n35/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.848
+      },
+      "key": "868b8523bd2461a0e0de"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ALPHA BHC guideline",
+      "value": 700.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.462,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 36,
+        "source_text": "GUIDELINE = 700 (G)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n35/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.848
+      },
+      "key": "b92135791233dfb58ccb"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ALPHA BHC",
+      "value": 2.0,
+      "unit": "ng/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987 JUL",
+      "facility": "Belleville WTP",
+      "confidence": 0.462,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 36,
+        "source_text": "2",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n35/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.848
+      },
+      "key": "5d8116fcb45704ad6e3a"
+    },
+    {
+      "kind": "standard",
+      "parameter": "DET'N LIMIT",
+      "value": 0.2,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "PHENOLICS (UG/L ) DET'N LIMIT = .200 GUIDELINE = 2 (AS)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "53cf92ce13b1dee3ccfa"
+    },
+    {
+      "kind": "standard",
+      "parameter": "GUIDELINE",
+      "value": 2.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "PHENOLICS (UG/L ) DET'N LIMIT = .200 GUIDELINE = 2 (AS)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "02abb881f38b98ccec4b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "PHENOLICS",
+      "value": 4.4,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1987 JAN",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "JAN 4.400 4.400 . . ° .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "f12560929dd42e265131"
+    },
+    {
+      "kind": "observation",
+      "parameter": "PHENOLICS",
+      "value": 4.4,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1987 JAN",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "JAN 4.400 4.400 . . ° .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "d8ddd533a54ea245e3c1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "PHENOLICS",
+      "value": 1.6,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1987 MAR",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "MAR 1.600 1.000 . ‘ . .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "93d7e36df259fc50310f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "PHENOLICS",
+      "value": 1.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1987 MAR",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "MAR 1.600 1.000 . ‘ . .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "2a14fc100c6fa109c95f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "PHENOLICS",
+      "value": 0.6,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1987 JUL",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "JUL -600 &lt;T BOL . . . .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "9c07502df881ce721e47"
+    },
+    {
+      "kind": "observation",
+      "parameter": "PHENOLICS",
+      "value": 0.6,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1987 JUL",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "JUL -600 &lt;T BOL . . . .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "48d170be8a4476c886c0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "PHENOLICS",
+      "value": 0.6,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1987 SEP",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "SEP -600 &lt;T -600 &lt;T . . . .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "92e92421a2e6ede81343"
+    },
+    {
+      "kind": "observation",
+      "parameter": "PHENOLICS",
+      "value": 0.6,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1987 SEP",
+      "facility": "BELLEVILLE WTP",
+      "confidence": 0.4484,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 37,
+        "source_text": "SEP -600 &lt;T -600 &lt;T . . . .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n36/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7934
+      },
+      "key": "812f2256ff53be7c0d69"
+    },
+    {
+      "kind": "standard",
+      "parameter": "benzene detection limit",
+      "value": 0.05,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "BENZENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 5 (A1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "5ffa4ec9a7a389767119"
+    },
+    {
+      "kind": "standard",
+      "parameter": "benzene guideline",
+      "value": 5.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "BENZENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 5 (A1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "47aa43c1de013e154614"
+    },
+    {
+      "kind": "standard",
+      "parameter": "toluene detection limit",
+      "value": 0.05,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "TOLUENE (UG/L ) ; DET'N LIMIT = 0.05 GUIDELINE = 24 (A3)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "6f2cbbe51a42eaeefb37"
+    },
+    {
+      "kind": "standard",
+      "parameter": "toluene guideline",
+      "value": 24.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "TOLUENE (UG/L ) ; DET'N LIMIT = 0.05 GUIDELINE = 24 (A3)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "190f8d2e5e80de2d1ccd"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ethylbenzene detection limit",
+      "value": 0.05,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "ETHYLBENZENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 2.4 (A3)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "21e29486fa0073542aeb"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ethylbenzene guideline",
+      "value": 2.4,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "ETHYLBENZENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 2.4 (A3)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "33a097ca0e831104a86f"
+    },
+    {
+      "kind": "standard",
+      "parameter": "m-xylene detection limit",
+      "value": 0.1,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "M-XYLENE (UG/L ) DET'N LIMIT = 0.10 GUIDELINE = 300 (A3*)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "bf8089e16b46463f9ce6"
+    },
+    {
+      "kind": "standard",
+      "parameter": "m-xylene guideline",
+      "value": 300.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "M-XYLENE (UG/L ) DET'N LIMIT = 0.10 GUIDELINE = 300 (A3*)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "ad7addb4ee4cc8a227d8"
+    },
+    {
+      "kind": "standard",
+      "parameter": "o-xylene detection limit",
+      "value": 0.05,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "O-XYLENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 300 (A3*)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "f0f06b06360ebdd6b727"
+    },
+    {
+      "kind": "standard",
+      "parameter": "o-xylene guideline",
+      "value": 300.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "O-XYLENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 300 (A3*)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "dacd716530a60ce7012f"
+    },
+    {
+      "kind": "standard",
+      "parameter": "styrene detection limit",
+      "value": 0.05,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "STYRENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 100 (D1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "fbbc5062cadba9ab1da6"
+    },
+    {
+      "kind": "standard",
+      "parameter": "styrene guideline",
+      "value": 100.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "STYRENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 100 (D1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "6ade508c5a7d45c3abd0"
+    },
+    {
+      "kind": "standard",
+      "parameter": "chloroform detection limit",
+      "value": 0.1,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "CHLOROFORM (UG/L ) DET'N LIMIT = 0.10 GUIDELINE = 350 (A1+)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "e3eda3e39dd6d4fe513e"
+    },
+    {
+      "kind": "standard",
+      "parameter": "chloroform guideline",
+      "value": 350.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4475,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 38,
+        "source_text": "CHLOROFORM (UG/L ) DET'N LIMIT = 0.10 GUIDELINE = 350 (A1+)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n37/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.7898
+      },
+      "key": "fcf2b4dca0a41f918dfc"
+    },
+    {
+      "kind": "standard",
+      "parameter": "TRICHLOROETHANE detection limit",
+      "value": 0.02,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "111, TRICHLOROETHANE (UG/L ) DET'N LIMIT = 0.02 GUIDELINE = 200 (D1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "cb6769ee0d35641a5f53"
+    },
+    {
+      "kind": "standard",
+      "parameter": "TRICHLOROETHANE guideline",
+      "value": 200.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "111, TRICHLOROETHANE (UG/L ) DET'N LIMIT = 0.02 GUIDELINE = 200 (D1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "cc9f071f79334ea8e179"
+    },
+    {
+      "kind": "standard",
+      "parameter": "DICHLOROBROMOMETHANE detection limit",
+      "value": 0.05,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "DICHLOROBROMOMETHANE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 350 (A1+)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "21eacf5f26ed5fdbb465"
+    },
+    {
+      "kind": "standard",
+      "parameter": "DICHLOROBROMOMETHANE guideline",
+      "value": 350.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "DICHLOROBROMOMETHANE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 350 (A1+)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "1e963f9fdecc56f36ad1"
+    },
+    {
+      "kind": "standard",
+      "parameter": "CHLORODIBROMOMETHANE detection limit",
+      "value": 0.1,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "CHLORODIBROMOMETHANE (UG/L ) DET'N LIMIT = 0.10 ‘ GUIDELINE = 350 (A1+)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "d5ded4f476d7efb5b420"
+    },
+    {
+      "kind": "standard",
+      "parameter": "CHLORODIBROMOMETHANE guideline",
+      "value": 350.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "CHLORODIBROMOMETHANE (UG/L ) DET'N LIMIT = 0.10 ‘ GUIDELINE = 350 (A1+)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "77ee4c026663395fc366"
+    },
+    {
+      "kind": "standard",
+      "parameter": "T-CHLOROETHYLENE detection limit",
+      "value": 0.05,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "T-CHLOROETHYLENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 5 (D1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "61b777d998d9cf41d909"
+    },
+    {
+      "kind": "standard",
+      "parameter": "T-CHLOROETHYLENE guideline",
+      "value": 5.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "T-CHLOROETHYLENE (UG/L ) DET'N LIMIT = 0.05 GUIDELINE = 5 (D1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "7222f173a8b8e4eb5f00"
+    },
+    {
+      "kind": "standard",
+      "parameter": "TOTAL TRIHALOMETHANES detection limit",
+      "value": 0.5,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "TOTAL TRIHALOMETHANES (UG/L ) DET'N LIMIT = 0.50 GUIDELINE = 350 (A1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "ba47de06ac98fd6a54e9"
+    },
+    {
+      "kind": "standard",
+      "parameter": "TOTAL TRIHALOMETHANES guideline",
+      "value": 350.0,
+      "unit": "UG/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "Belleville WTP",
+      "confidence": 0.4568,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 39,
+        "source_text": "TOTAL TRIHALOMETHANES (UG/L ) DET'N LIMIT = 0.50 GUIDELINE = 350 (A1)",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n38/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.8273
+      },
+      "key": "bee9d5f02073a6e92bf4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "systems monitored",
+      "value": 76.0,
+      "unit": "systems",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4857,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 44,
+        "source_text": "In 1990, 76 systems were being monitored.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n43/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9429
+      },
+      "key": "9233cd4552afc11ebfe5"
+    },
+    {
+      "kind": "standard",
+      "parameter": "benzene guideline",
+      "value": 0.7,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "CALC 85/01 0.700 ug/L AL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "524bbc892740f6ce27cc"
+    },
+    {
+      "kind": "standard",
+      "parameter": "benzene MAC",
+      "value": 5.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "CDWG_C-= 87/01! 5.000 ug/L MAC",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "21e52774d75c58780d4d"
+    },
+    {
+      "kind": "standard",
+      "parameter": "benzene MCL",
+      "value": 5.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "EPA. iC 87/07 5.000 ug/L MCL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "7e1dc4672b8dd5b9d972"
+    },
+    {
+      "kind": "standard",
+      "parameter": "benzene ambient limit",
+      "value": 6.6,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "EPAA C 80/11 6.600 ug/L AMBIENT **",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "f76ad585a1669020a6d7"
+    },
+    {
+      "kind": "standard",
+      "parameter": "benzene MCL",
+      "value": 1.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "FERC C 84/05 1.000 ug/L MCL",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "3c628067a9a81b029670"
+    },
+    {
+      "kind": "standard",
+      "parameter": "benzene GV",
+      "value": 10.0,
+      "unit": "pg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "WHO. C 84/01 10.000 pg/L GV",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "9b149de54c99c1697388"
+    },
+    {
+      "kind": "standard",
+      "parameter": "detection limit",
+      "value": 0.05,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "DETECTION LIMIT: (FOR METHOD POCODO) 0.05 ug/L",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "1f10c6b597c71396e531"
+    },
+    {
+      "kind": "standard",
+      "parameter": "solubility in water",
+      "value": 1780.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "PROPERTIES: SOLUBILITY IN WATER: 1780-1800 mg/L AT 25C (41).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "21e98d3f82a15f47b4fa"
+    },
+    {
+      "kind": "standard",
+      "parameter": "solubility in water",
+      "value": 1800.0,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "PROPERTIES: SOLUBILITY IN WATER: 1780-1800 mg/L AT 25C (41).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "e8a889942ba6c54f58ec"
+    },
+    {
+      "kind": "standard",
+      "parameter": "threshold odour",
+      "value": 0.5,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "THRESHOLD ODOUR: 0.5 - 10 PPM IN WATER",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "c633e1b4b96c7ba98f1c"
+    },
+    {
+      "kind": "standard",
+      "parameter": "threshold odour",
+      "value": 10.0,
+      "unit": "PPM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "THRESHOLD ODOUR: 0.5 - 10 PPM IN WATER",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "38b038850883f5673d44"
+    },
+    {
+      "kind": "standard",
+      "parameter": "threshold taste",
+      "value": 0.5,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4776,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 50,
+        "source_text": "THRESHOLD TASTE: 0.5 mg/L IN WATER (39).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n49/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9102
+      },
+      "key": "1c04820b5e779411425d"
+    },
+    {
+      "kind": "design",
+      "parameter": "MELTING POINT",
+      "value": 5.5,
+      "unit": "°C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4873,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 51,
+        "source_text": "MELTING POINT: 5.5°C (27).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n50/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9492
+      },
+      "key": "ac86aa5cfb30a3829f55"
+    },
+    {
+      "kind": "design",
+      "parameter": "BOILING POINT",
+      "value": 80.1,
+      "unit": "°C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4873,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 51,
+        "source_text": "BOILING POINT: 80.1°C (27).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n50/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9492
+      },
+      "key": "19c4a7999c82d884d26a"
+    },
+    {
+      "kind": "design",
+      "parameter": "VAPOUR PRESSURE",
+      "value": 100.0,
+      "unit": "MM",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4873,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 51,
+        "source_text": "VAPOUR PRESSURE: 100 MM AT 26.1°C (27).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n50/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9492
+      },
+      "key": "8ffdcfd5409a88f6c125"
+    },
+    {
+      "kind": "design",
+      "parameter": "HENRY'S LAW CONSTANT",
+      "value": 0.00555,
+      "unit": "ATM-M3/MOLE",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1987",
+      "facility": "water supply system",
+      "confidence": 0.4873,
+      "provenance": {
+        "identifier": "bellevillewatert1990ontauoft",
+        "page": 51,
+        "source_text": "HENRY'S LAW CONSTANT: 0.00555 ATM-M3/MOLE (41).",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/bellevillewatert1990ontauoft/page/n50/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.9492
+      },
+      "key": "6dab5a9f5bc5c3897c27"
+    },
+    {
+      "kind": "observation",
+      "parameter": "plants being monitored",
+      "value": 52.0,
+      "unit": "plants",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3902,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 5,
+        "source_text": "Currently, 52 plants are being monitored.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.561
+      },
+      "key": "d5cae9be7a238a1fba69"
+    },
+    {
+      "kind": "design",
+      "parameter": "design capacity",
+      "value": 54.0,
+      "unit": "1000 m^3/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3902,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 5,
+        "source_text": "This plant has a design capacity of 54 x 1000 m^/day and serves a population of 37,000.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.561
+      },
+      "key": "1930da9422e362362946"
+    },
+    {
+      "kind": "observation",
+      "parameter": "population served",
+      "value": 37000.0,
+      "unit": "persons",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3902,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 5,
+        "source_text": "This plant has a design capacity of 54 x 1000 m^/day and serves a population of 37,000.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n4/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.561
+      },
+      "key": "0e45b1dedb68f6e467ed"
+    },
+    {
+      "kind": "observation",
+      "parameter": "plants being monitored",
+      "value": 52.0,
+      "unit": "plants",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3684,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 7,
+        "source_text": "Currently, 52 plants are being monitored.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4735
+      },
+      "key": "5170487335b9efe48033"
+    },
+    {
+      "kind": "design",
+      "parameter": "design capacity",
+      "value": 54.0,
+      "unit": "1000 m3/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3684,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 7,
+        "source_text": "The plant has a desig-capacity of 54 x 1000 m'/day and sample day flows ranging from 2",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4735
+      },
+      "key": "e091ec4e56a888d58f90"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sample day flow minimum",
+      "value": 2.0,
+      "unit": "1000 m3/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3684,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 7,
+        "source_text": "The plant has a desig-capacity of 54 x 1000 m'/day and sample day flows ranging from 2 X 1000 m'/day to 48 x 1000 m'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4735
+      },
+      "key": "3d2e87501df8c8753175"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sample day flow maximum",
+      "value": 48.0,
+      "unit": "1000 m3/day",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3684,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 7,
+        "source_text": "The plant has a desig-capacity of 54 x 1000 m'/day and sample day flows ranging from 2 X 1000 m'/day to 48 x 1000 m'/day.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n6/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4735
+      },
+      "key": "300c75c8d153cb8a86a7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "distance to Site 1",
+      "value": 3.1,
+      "unit": "kilometers",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3946,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 8,
+        "source_text": "iii) Distribution System - Site 1 - This house is approximately 3.1\nkilometers from the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5785
+      },
+      "key": "d7b0a61b9a0eb3a1dd74"
+    },
+    {
+      "kind": "observation",
+      "parameter": "distance to Site 2",
+      "value": 8.8,
+      "unit": "kilometers",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3946,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 8,
+        "source_text": "iv) Distribution System - Site 2 - This house is approximately 8.8\nkilometers from the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n7/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5785
+      },
+      "key": "e45976cbc1d9f1999427"
+    },
+    {
+      "kind": "observation",
+      "parameter": "distance from plant",
+      "value": 4.8,
+      "unit": "kilometers",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3763,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 9,
+        "source_text": "Distribution System - Site 3 - This house is approximately 4.8 kilometers from the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5052
+      },
+      "key": "e8b63d29aaaabdf2b256"
+    },
+    {
+      "kind": "observation",
+      "parameter": "distance from plant",
+      "value": 3.4,
+      "unit": "kilometers",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3763,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 9,
+        "source_text": "Distribution System - Site 4 - This house is approximately 3.4 kilometers from the plant.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5052
+      },
+      "key": "cfdb951f25bbb5812ca4"
+    },
+    {
+      "kind": "design",
+      "parameter": "standing sample duration",
+      "value": 6.0,
+      "unit": "hours",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3763,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 9,
+        "source_text": "The standing sample consisted of water that had been in the household plumbing and service connection for a minimum of six hours.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5052
+      },
+      "key": "59af8f1d9b1ad15e0e46"
+    },
+    {
+      "kind": "design",
+      "parameter": "free flow sampling time",
+      "value": 5.0,
+      "unit": "minutes",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3763,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 9,
+        "source_text": "The free flow sample represented fresh water from the distribution main that had been flowing at the sample tap for five minutes before the sample was taken.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n8/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5052
+      },
+      "key": "35fa6e4a0f76cfc641d1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "parameters sampled monthly",
+      "value": 160.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3878,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 13,
+        "source_text": "Water at the Belleville Water Treatment Plant was sampled for\napproximately 160 parameters on a monthly basis 12 times in 1988.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.551
+      },
+      "key": "62d6df5935b079f3c5f1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "sampling frequency",
+      "value": 12.0,
+      "unit": "times",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3878,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 13,
+        "source_text": "Water at the Belleville Water Treatment Plant was sampled for\napproximately 160 parameters on a monthly basis 12 times in 1988.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n12/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.551
+      },
+      "key": "f409cc6730218775ac36"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Bacteriology scan positive results",
+      "value": 7.0,
+      "unit": "times",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3936,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 16,
+        "source_text": "Positive results for the Bacteriology scan were present seven times in the treated water, eight times in the Site 1 water, ten times in the Site 2 water, three times in the Site 3 water and four times in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5744
+      },
+      "key": "61195620c94174fbae8a"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Bacteriology scan positive results",
+      "value": 8.0,
+      "unit": "times",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3936,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 16,
+        "source_text": "Positive results for the Bacteriology scan were present seven times in the treated water, eight times in the Site 1 water, ten times in the Site 2 water, three times in the Site 3 water and four times in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5744
+      },
+      "key": "ec847b9e91ae0debc2e9"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Bacteriology scan positive results",
+      "value": 10.0,
+      "unit": "times",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3936,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 16,
+        "source_text": "Positive results for the Bacteriology scan were present seven times in the treated water, eight times in the Site 1 water, ten times in the Site 2 water, three times in the Site 3 water and four times in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5744
+      },
+      "key": "e66a5c0315a02de029d5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Bacteriology scan positive results",
+      "value": 3.0,
+      "unit": "times",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3936,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 16,
+        "source_text": "Positive results for the Bacteriology scan were present seven times in the treated water, eight times in the Site 1 water, ten times in the Site 2 water, three times in the Site 3 water and four times in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5744
+      },
+      "key": "ba9b3c68bb5e3101e78b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Bacteriology scan positive results",
+      "value": 4.0,
+      "unit": "times",
+      "qualifier": "count",
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3936,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 16,
+        "source_text": "Positive results for the Bacteriology scan were present seven times in the treated water, eight times in the Site 1 water, ten times in the Site 2 water, three times in the Site 3 water and four times in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5744
+      },
+      "key": "df2e5da1ac70f458f1d8"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Standard Plate Count limit",
+      "value": 500.0,
+      "unit": "organisms per mL",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3936,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 16,
+        "source_text": "The limit for Standard Plate Count (at 35°C after 48 hours) in the ODWOs is 500 organisms per mL (based on a geometric mean of 5 or more samples) .",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5744
+      },
+      "key": "d42f5ba3e32ca2a97aed"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Chlorine Residual",
+      "value": 0.05,
+      "unit": "mg/L",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988 November and December",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3936,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 16,
+        "source_text": "A total Chlorine Residual of at least 0.05 mg/L was detected in the Site 3 samples for those months.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n15/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5744
+      },
+      "key": "bd46d216108e8d932148"
+    },
+    {
+      "kind": "standard",
+      "parameter": "aesthetic ODWO for Colour",
+      "value": 5.0,
+      "unit": "TCU",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3893,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 17,
+        "source_text": "Colour was above the aesthetic ODWO of 5.00 True Colour Units (TCU) once in a free flow sample from Site 1.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5571
+      },
+      "key": "bbca43499117faaa7a72"
+    },
+    {
+      "kind": "standard",
+      "parameter": "recommended fluoride concentration",
+      "value": 1.2,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3893,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 17,
+        "source_text": "Where fluoridation is practiced, the fluoride concentration recommended in the ODWO is 1.2 mg/L, plus or minus 0.2 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5571
+      },
+      "key": "26b46c08a723470540bc"
+    },
+    {
+      "kind": "standard",
+      "parameter": "fluoride concentration tolerance",
+      "value": 0.2,
+      "unit": "mg/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3893,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 17,
+        "source_text": "Where fluoridation is practiced, the fluoride concentration recommended in the ODWO is 1.2 mg/L, plus or minus 0.2 mg/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n16/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5571
+      },
+      "key": "b7cc815de58b922ef293"
+    },
+    {
+      "kind": "standard",
+      "parameter": "drinking water temperature",
+      "value": 15.0,
+      "unit": "C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3985,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 18,
+        "source_text": "It is desirable that the Temperature of drinking water be less than IS^C; the palatability of water is enhanced by its coolness.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n17/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.594
+      },
+      "key": "988dcdcd8283bfc2400f"
+    },
+    {
+      "kind": "standard",
+      "parameter": "drinking water temperature",
+      "value": 15.0,
+      "unit": "C",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3985,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 18,
+        "source_text": "A temperature below 15°C will tend to reduce the growth of nuisance organisms and hence minimize associated taste, colour, odour and corrosion problems.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n17/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.594
+      },
+      "key": "988dcdcd8283bfc2400f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "ODWO exceedance frequency",
+      "value": 16.0,
+      "unit": "times",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3985,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 18,
+        "source_text": "The desired ODWO was exceeded sixteen times in the treated water and free flow distributed water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n17/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.594
+      },
+      "key": "2ac7fcb6ce645383d1e7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Alpha BHC detection frequency",
+      "value": 3.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Alpha BHC was detected at trace levels, three times in the raw water, six times in the treated water, four times in the Site 1 and 2 water, three times in the Site 3 water and once in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "e9fc8414bde9067ce277"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Alpha BHC detection frequency",
+      "value": 6.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Alpha BHC was detected at trace levels, three times in the raw water, six times in the treated water, four times in the Site 1 and 2 water, three times in the Site 3 water and once in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "8cd8fcf30b4d387df996"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Alpha BHC detection frequency",
+      "value": 4.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 1 and 2",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Alpha BHC was detected at trace levels, three times in the raw water, six times in the treated water, four times in the Site 1 and 2 water, three times in the Site 3 water and once in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "8ee53ca8a539dc418994"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Alpha BHC detection frequency",
+      "value": 3.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 3",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Alpha BHC was detected at trace levels, three times in the raw water, six times in the treated water, four times in the Site 1 and 2 water, three times in the Site 3 water and once in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "8832bef83844ae3cc6d6"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Alpha BHC detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 4",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Alpha BHC was detected at trace levels, three times in the raw water, six times in the treated water, four times in the Site 1 and 2 water, three times in the Site 3 water and once in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "920cb91e0671a70046e3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Lindane detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Lindane was detected at trace levels, once in the raw water, twice in the treated water, once in each of the Site 1, Site 2 , Site 3 and Site 4 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "913e7df10cef2ae3b6f1"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Lindane detection frequency",
+      "value": 2.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Lindane was detected at trace levels, once in the raw water, twice in the treated water, once in each of the Site 1, Site 2 , Site 3 and Site 4 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "e52662db479bc7aa91ad"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Lindane detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 1",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Lindane was detected at trace levels, once in the raw water, twice in the treated water, once in each of the Site 1, Site 2 , Site 3 and Site 4 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "49dc376d180ccbcd86bc"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Lindane detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 2",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Lindane was detected at trace levels, once in the raw water, twice in the treated water, once in each of the Site 1, Site 2 , Site 3 and Site 4 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "1e2edf55687e8fe0b580"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Lindane detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 3",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Lindane was detected at trace levels, once in the raw water, twice in the treated water, once in each of the Site 1, Site 2 , Site 3 and Site 4 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "4ad5077157f118b0f4f4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Lindane detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 4",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Lindane was detected at trace levels, once in the raw water, twice in the treated water, once in each of the Site 1, Site 2 , Site 3 and Site 4 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "b58760e60c179e2ac9c9"
+    },
+    {
+      "kind": "standard",
+      "parameter": "maximum desirable concentration of phenolic substances",
+      "value": 2.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "The maximum desirable concentration of phenolic substances in drinking water is 2.0 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "c2e4c742db636988c43b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 2.2,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1988 May",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Phenolics were detected at 2 . 2 ug/L and 2.6 ug/L in the May raw and treated waters, 2.8 and 2.2 ug/L in June, 1.6 and 2.0 ug/L in July, 1.6 and 2.8 ug/L in August, 5.0 and 2.6 ug/L in October, 2.8 and 2.4 ug/L in Novemeber and 2,0 and 1.6 ug/L in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "720069a698a9452bef9d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 2.6,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988 May",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Phenolics were detected at 2 . 2 ug/L and 2.6 ug/L in the May raw and treated waters, 2.8 and 2.2 ug/L in June, 1.6 and 2.0 ug/L in July, 1.6 and 2.8 ug/L in August, 5.0 and 2.6 ug/L in October, 2.8 and 2.4 ug/L in Novemeber and 2,0 and 1.6 ug/L in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "73de9c5ab6122b62221f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 2.8,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1988 June",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Phenolics were detected at 2 . 2 ug/L and 2.6 ug/L in the May raw and treated waters, 2.8 and 2.2 ug/L in June, 1.6 and 2.0 ug/L in July, 1.6 and 2.8 ug/L in August, 5.0 and 2.6 ug/L in October, 2.8 and 2.4 ug/L in Novemeber and 2,0 and 1.6 ug/L in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "2f81ed0c3d1d88a53b6d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 2.2,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988 June",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Phenolics were detected at 2 . 2 ug/L and 2.6 ug/L in the May raw and treated waters, 2.8 and 2.2 ug/L in June, 1.6 and 2.0 ug/L in July, 1.6 and 2.8 ug/L in August, 5.0 and 2.6 ug/L in October, 2.8 and 2.4 ug/L in Novemeber and 2,0 and 1.6 ug/L in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "191a88753158efab43f2"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 1.6,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1988 July",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Phenolics were detected at 2 . 2 ug/L and 2.6 ug/L in the May raw and treated waters, 2.8 and 2.2 ug/L in June, 1.6 and 2.0 ug/L in July, 1.6 and 2.8 ug/L in August, 5.0 and 2.6 ug/L in October, 2.8 and 2.4 ug/L in Novemeber and 2,0 and 1.6 ug/L in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "ae0d9d8f70c9bcc498f7"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 2.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988 July",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Phenolics were detected at 2 . 2 ug/L and 2.6 ug/L in the May raw and treated waters, 2.8 and 2.2 ug/L in June, 1.6 and 2.0 ug/L in July, 1.6 and 2.8 ug/L in August, 5.0 and 2.6 ug/L in October, 2.8 and 2.4 ug/L in Novemeber and 2,0 and 1.6 ug/L in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "a585229c05c89adbdcf5"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 1.6,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1988 August",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Phenolics were detected at 2 . 2 ug/L and 2.6 ug/L in the May raw and treated waters, 2.8 and 2.2 ug/L in June, 1.6 and 2.0 ug/L in July, 1.6 and 2.8 ug/L in August, 5.0 and 2.6 ug/L in October, 2.8 and 2.4 ug/L in Novemeber and 2,0 and 1.6 ug/L in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "cecb78122c052939156f"
+    },
+    {
+      "kind": "observation",
+      "parameter": "phenolics",
+      "value": 2.8,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988 August",
+      "facility": "Belleville Water Treatment Plant",
+      "confidence": 0.3746,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 21,
+        "source_text": "Phenolics were detected at 2 . 2 ug/L and 2.6 ug/L in the May raw and treated waters, 2.8 and 2.2 ug/L in June, 1.6 and 2.0 ug/L in July, 1.6 and 2.8 ug/L in August, 5.0 and 2.6 ug/L in October, 2.8 and 2.4 ug/L in Novemeber and 2,0 and 1.6 ug/L in December.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n20/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.4983
+      },
+      "key": "92440c7f931b81166904"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Benzene detection count",
+      "value": 1.0,
+      "unit": null,
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.393,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 22,
+        "source_text": "Benzene was detected at a trace level, in one raw water sample.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n21/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5721
+      },
+      "key": "4c710a33cac126803b30"
+    },
+    {
+      "kind": "observation",
+      "parameter": "instrument blanks",
+      "value": 0.05,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Tenax, a toluene-like polymeric material, tends to decompose sporadically upon heating into toluene and other aromatic componenets (ethylbenzene and xylene) giving instrument blanks in the order of 0.05 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "de0b5d3ff0d6cd5e228e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "background levels from polystyrene shipping containers",
+      "value": 0.05,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "The sporadic background levels from this source are in the order of 0.05 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "d19c6483da5124a8f500"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Styrene",
+      "value": 0.5,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 3 water",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Styrene was also detected at 0.50 ug/L in the October Site 3 water and 0.90 ug/L in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "9251d2b346c3f0cc426b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Styrene",
+      "value": 0.9,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 4 water",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Styrene was also detected at 0.50 ug/L in the October Site 3 water and 0.90 ug/L in the Site 4 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "90df2ae4653036fc8a00"
+    },
+    {
+      "kind": "standard",
+      "parameter": "Maximum Contaminant Level (MCLG) for styrene",
+      "value": 140.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "The United States Environmental Protection Agency's proposed Maximum Contaminant Level (MCLG) for styrene in drinking water is 140 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "0bbbba82cc84aad66b9d"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ethylbenzene detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Ethylbenzene was detected at a trace level, once in the raw water, seven times in the treated water, twice in the Site 1 water and once at each of the other three distributed water sites.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "306ded96f6f639f9d5e3"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ethylbenzene detection frequency",
+      "value": 7.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Ethylbenzene was detected at a trace level, once in the raw water, seven times in the treated water, twice in the Site 1 water and once at each of the other three distributed water sites.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "b3c783f294aa1137d460"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ethylbenzene detection frequency",
+      "value": 2.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 1 water",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Ethylbenzene was detected at a trace level, once in the raw water, seven times in the treated water, twice in the Site 1 water and once at each of the other three distributed water sites.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "4acae97b160fc3be513b"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ethylbenzene detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "other three distributed water sites",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Ethylbenzene was detected at a trace level, once in the raw water, seven times in the treated water, twice in the Site 1 water and once at each of the other three distributed water sites.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "3b0e149a143cc57fb6f4"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Meta-Xylene (M-Xylene) detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Meta-Xylene (M-Xylene) was detected at trace levels, once in the treated water, Site 1 and Site 2 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "6685ba22a3d9e4403375"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Meta-Xylene (M-Xylene) detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 1",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Meta-Xylene (M-Xylene) was detected at trace levels, once in the treated water, Site 1 and Site 2 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "9659b6579bfb2d379eb0"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Meta-Xylene (M-Xylene) detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 2",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Meta-Xylene (M-Xylene) was detected at trace levels, once in the treated water, Site 1 and Site 2 water samples.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "b7d972e15f19b48d8308"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ortho-Xylene detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "raw",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Ortho-Xylene was detected at trace levels, once in the raw water, twice in the treated water and once in the Site 2 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "5682543a55d9ad183dbd"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ortho-Xylene detection frequency",
+      "value": 2.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "treated",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Ortho-Xylene was detected at trace levels, once in the raw water, twice in the treated water and once in the Site 2 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "a7c689558094bccc0bee"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Ortho-Xylene detection frequency",
+      "value": 1.0,
+      "unit": "count",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "Site 2 water",
+      "confidence": 0.3905,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 23,
+        "source_text": "Ortho-Xylene was detected at trace levels, once in the raw water, twice in the treated water and once in the Site 2 water.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n22/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.562
+      },
+      "key": "f3942f77902956fee593"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Total THM",
+      "value": 66.9,
+      "unit": "ug/L",
+      "qualifier": "minimum",
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3951,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 24,
+        "source_text": "All Total THM occurrences, ranging from 66.9 to 173.9 ug/L, were well below the ODWO of 350 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n23/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5805
+      },
+      "key": "447aa32d95c3ff1a684e"
+    },
+    {
+      "kind": "observation",
+      "parameter": "Total THM",
+      "value": 173.9,
+      "unit": "ug/L",
+      "qualifier": "maximum",
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3951,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 24,
+        "source_text": "All Total THM occurrences, ranging from 66.9 to 173.9 ug/L, were well below the ODWO of 350 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n23/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5805
+      },
+      "key": "ebed583c6a032877ac2c"
+    },
+    {
+      "kind": "standard",
+      "parameter": "ODWO",
+      "value": 350.0,
+      "unit": "ug/L",
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3951,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 24,
+        "source_text": "All Total THM occurrences, ranging from 66.9 to 173.9 ug/L, were well below the ODWO of 350 ug/L.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n23/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5805
+      },
+      "key": "d7d031326a5913b0f3bc"
+    },
+    {
+      "kind": "conclusion",
+      "parameter": "water quality",
+      "value": null,
+      "unit": null,
+      "qualifier": null,
+      "stream": "unknown",
+      "place": "Belleville",
+      "period": "1988",
+      "facility": "water supply system",
+      "confidence": 0.3867,
+      "provenance": {
+        "identifier": "drinkingwatersur899ontauoft",
+        "page": 25,
+        "source_text": "The Belleville Water Treatment plant for the sample year of 1988 produced good quality water at the plant and this was maintained in the distribution system.",
+        "extractor": "ollama:gemma4:12b",
+        "path": "prose",
+        "page_url": "https://archive.org/details/drinkingwatersur899ontauoft/page/n24/mode/2up"
+      },
+      "comparability_note": null,
+      "notes": null,
+      "raw": {
+        "model_confidence": 0.5,
+        "ocr_confidence": 0.5468
+      },
+      "key": "b8777169ecedc21517a0"
     }
   ]
 }
