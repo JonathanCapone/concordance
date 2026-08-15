@@ -17,6 +17,7 @@ import json
 import os
 import re
 import unicodedata
+from collections import Counter
 from dataclasses import dataclass, replace
 from functools import lru_cache
 from pathlib import Path
@@ -615,7 +616,78 @@ def scope_record_dict(
     return scoped
 
 
-__all__ = ["Place", "resolve", "scope_record_dict", "scope_record_location"]
+__all__ = ["Place", "attach_subunits", "resolve", "scope_record_dict",
+           "scope_record_location"]
+
+
+# --------------------------------------------------------------------------
+# giving a bare "Unit No. 1" back the plant it belongs to
+# --------------------------------------------------------------------------
+
+#: A facility name that identifies nothing on its own. "Unit No. 1" is a pump
+#: inside a plant, not a plant; "digester" is a tank inside one. The extractor
+#: writes these when the sentence it read was a table row under a heading it
+#: never saw.
+_SUBUNIT = re.compile(
+    r"^(?:unit|pump|tank|cell|bay|well|filter|blower|digester|clarifier|motor"
+    r"|engine|line|stage|train|module|no\.?|number)"
+    r"(?:\s*(?:no\.?|number|#))?\s*\d*[a-z]?$",
+    re.I,
+)
+
+
+def attach_subunits(records: list[dict]) -> list[dict]:
+    """Tell each sub-unit which plant its own document put it in.
+
+    The parent is recorded in ``raw.parent_facility``. The record's own
+    ``facility`` is left exactly as the document worded it, because facility is
+    part of a record's public identity: rewriting it here made the library's own
+    published data re-import as 88 new records, since the same reading now
+    carried a different name depending on which side of the loader you stood on.
+    Derived context belongs beside the record, not inside its identity.
+
+    Belleville's 1964 report gives a pumping station's pumps as "Unit No. 1"
+    and "Unit No. 2", each with its own horsepower. The extractor recorded that
+    faithfully -- the distinguishing detail is right there -- but it recorded it
+    as the *facility*, and "Unit No. 1" is not a facility. The consequences ran
+    in both directions:
+
+    - The town page never showed them. It groups by facility, and no reader
+      goes looking for a plant called "Unit No. 1", so 72 records sat in the
+      corpus and appeared on no page.
+    - Nothing on the page could say what a horsepower figure was the horsepower
+      *of*, which is the whole difficulty: the document is describing a machine,
+      and a reader who is shown "horsepower: 60" without the machine has been
+      given a number instead of a fact.
+
+    The parent is not guessed. It is the facility named most often by the other
+    records read out of the *same document*, so the attribution comes from the
+    same pages a reader would check. Where the document names no such facility,
+    nothing is attached -- an orphan stays an orphan rather than being adopted by
+    whatever was nearest.
+    """
+    by_document: dict[str, Counter[str]] = {}
+    for record in records:
+        facility = " ".join(str(record.get("facility") or "").split())
+        if not facility or _SUBUNIT.match(facility):
+            continue
+        identifier = str((record.get("provenance") or {}).get("identifier") or "")
+        by_document.setdefault(identifier, Counter())[facility] += 1
+
+    out: list[dict] = []
+    for record in records:
+        facility = " ".join(str(record.get("facility") or "").split())
+        identifier = str((record.get("provenance") or {}).get("identifier") or "")
+        parents = by_document.get(identifier)
+        if not facility or not _SUBUNIT.match(facility) or not parents:
+            out.append(record)
+            continue
+        adopted = dict(record)
+        raw = dict(adopted.get("raw") or {})
+        raw.setdefault("parent_facility", parents.most_common(1)[0][0])
+        adopted["raw"] = raw
+        out.append(adopted)
+    return out
 
 
 # --------------------------------------------------------------------------

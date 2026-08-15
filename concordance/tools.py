@@ -20,7 +20,7 @@ from typing import Any
 
 from .models import Provenance, Record
 from .parameters import resolve as resolve_parameter
-from .places import scope_record_dict
+from .places import attach_subunits, scope_record_dict
 from .science import series_from_records, silence, trend
 
 # --------------------------------------------------------------------------
@@ -194,7 +194,7 @@ class Corpus:
             place = payload.get("place")
             if place and place not in places:
                 places.append(place)
-            for source_record in payload.get("records", []):
+            for source_record in attach_subunits(list(payload.get("records", []))):
                 d = scope_record_dict(source_record, place)
                 prov = d.get("provenance") or {}
                 period = d.get("period")

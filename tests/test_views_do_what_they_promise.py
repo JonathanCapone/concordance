@@ -174,3 +174,151 @@ def test_a_listing_links_the_page_the_way_the_archive_numbers_it(state: S.State)
         assert slot["page_url"] == Provenance(
             identifier=slot["identifier"], page=slot["page"]).page_url
         assert slot["page_url"].startswith("https://archive.org/details/")
+
+
+# -- a sub-unit is not a facility -------------------------------------------
+
+def test_a_bare_unit_number_is_reattached_to_the_plant_in_its_own_document() -> None:
+    """"Unit No. 1" is a pump inside a plant. Recorded as the facility, its
+    readings appeared on no page at all -- nobody browses to a plant called
+    Unit No. 1 -- and where two sub-units shared a name their readings collided
+    and the ledger called two pumps a contradiction.
+    """
+    from concordance.places import attach_subunits
+
+    def _rec(facility, value, ident="doc"):
+        return {"parameter": "horsepower", "value": value, "unit": "HP",
+                "facility": facility, "kind": "design",
+                "provenance": {"identifier": ident, "page": 24}}
+
+    out = attach_subunits([
+        _rec("water pollution control plant", 7.5),
+        _rec("water pollution control plant", 25.0),
+        _rec("Unit No. 1", 50.0),
+        _rec("Unit No. 2", 40.0),
+    ])
+    assert out[2]["raw"]["parent_facility"] == "water pollution control plant"
+    assert out[3]["raw"]["parent_facility"] == "water pollution control plant"
+    # The record's own identity is untouched. Rewriting facility here made the
+    # library's published data re-import as 88 new records, because the same
+    # reading carried a different name on either side of the loader.
+    assert out[2]["facility"] == "Unit No. 1"
+    assert out[3]["facility"] == "Unit No. 2"
+
+
+def test_an_orphan_stays_an_orphan_when_its_document_names_no_plant() -> None:
+    """Adoption by whatever was nearest would be an invention."""
+    from concordance.places import attach_subunits
+
+    only = [{"parameter": "horsepower", "value": 50.0, "facility": "Unit No. 1",
+             "provenance": {"identifier": "doc", "page": 3}}]
+    assert attach_subunits(only)[0]["facility"] == "Unit No. 1"
+
+    # Nor from a different document.
+    two = only + [{"parameter": "flow", "value": 1.0, "facility": "sewage plant",
+                   "provenance": {"identifier": "other-doc", "page": 3}}]
+    assert attach_subunits(two)[0]["facility"] == "Unit No. 1"
+
+
+def test_the_place_page_counts_what_the_place_page_shows(state: S.State) -> None:
+    """It read "97 observations from 2 documents" above 448 rows drawn from
+    twelve. The helper it took those from reports one facility on purpose; this
+    page shows them all.
+    """
+    town = state.town("belleville", "Belleville")
+    rows = [r for panel in town["series"] + town["singles"]
+            for r in (panel.get("rows") or [])]
+    observations = [r for r in rows if r.get("kind") == "observation"]
+    assert town["n_measurements"] == len(observations)
+    assert set(town["sources"]) == {r["identifier"] for r in rows if r["identifier"]}
+
+
+def test_a_figure_is_shown_under_the_thing_the_document_describes(state: S.State) -> None:
+    """The general defect, of which the pumps were one instance.
+
+    A spec page describes a machine; a water-quality table describes a sampling
+    site; a tender schedule describes a contract. Filed by parameter, every one
+    of them becomes a number with its subject removed -- "horsepower: 60" and
+    "horsepower: 30" under a heading that cannot say what either belongs to.
+    """
+    town = state.town("belleville", "Belleville")
+    design = next(s for s in town["other"] if s["kind"] == "design")
+
+    plant = next(s for s in design["subjects"]
+                 if s["name"] == "water pollution control plant")
+    unit = next(u for u in plant["units"] if u["name"] == "Unit No. 1")
+    specs = {s["parameter"]: f'{s["value"]} {s["unit"]}' for s in unit["specs"]}
+    # The pump, described -- not four unrelated parameter categories.
+    assert specs["motor horsepower"] == "50 HP"
+    assert specs["motor RPM"] == "1,200 RPM"
+    assert "design capacity" in specs
+
+    sibling = next(u for u in plant["units"] if u["name"] == "Unit No. 2")
+    assert sibling["specs"] != unit["specs"]
+
+
+def test_a_figure_with_no_subject_is_said_to_have_none(state: S.State) -> None:
+    """Grouped under a name that admits it, and counted, rather than filed
+    under a parameter as though the parameter were the subject."""
+    town = state.town("belleville", "Belleville")
+    assert town["without_subject"] + town["with_subject"] > 0
+    for section in town["other"]:
+        for subject in section["subjects"]:
+            assert subject["name"]
+            if subject["name"] == S.UNATTRIBUTED:
+                assert subject["units"]
+
+
+def test_a_measurement_is_readable_without_an_exponent(state: S.State) -> None:
+    """26,200 imperial gallons was rendering as 2.62e+04 on a page whose whole
+    argument is that a resident can read it."""
+    assert S._number(26200) == "26,200"
+    assert S._number(0.5) == "0.5"
+    assert S._number(1179) == "1,179"
+    # An annual sludge volume of 14,760,000 gallons is an ordinary figure here.
+    assert S._number(14760000) == "14,760,000"
+    # Genuinely huge and genuinely tiny keep the exponent.
+    assert "e" in S._number(8e9)
+    assert "e" in S._number(0.0000012)
+
+    town = state.town("belleville", "Belleville")
+    rows = [r for panel in town["series"] + town["singles"]
+            for r in (panel.get("rows") or [])]
+    assert rows
+    assert not [r for r in rows if "e+" in str(r["value"])]
+
+
+def test_a_spec_restated_by_the_next_report_is_one_spec(state: S.State) -> None:
+    """Belleville's grit tank held 26,200 gallons in the 1964 report and in the
+    1965 one. The panel listed it twice, as though the tank kept being rebuilt
+    to the same size.
+
+    Collapsed to one line -- but every restatement keeps its own page, because
+    "the 1970 report still says 26,200" is a checkable claim, and a spec that
+    quietly CHANGES between reports must stay two lines.
+    """
+    town = state.town("belleville", "Belleville")
+    design = next(s for s in town["other"] if s["kind"] == "design")
+    tank = next(s for s in design["subjects"] if s["name"] == "Aerated grit tank")
+    specs = [s for u in tank["units"] for s in u["specs"]]
+
+    volume = next(s for s in specs if s["parameter"] == "Liquid Volume")
+    assert volume["period"] == "1964"
+    assert [r["period"] for r in volume["restatements"]] == ["1965"]
+    assert all(r["page"] and r["page_url"] for r in volume["restatements"])
+
+    # One line per distinct figure, not one per report that mentioned it.
+    assert len([s for s in specs if s["parameter"] == "Liquid Volume"]) == 1
+
+
+def test_a_changed_spec_is_not_collapsed() -> None:
+    """The interesting case: a plant rebuilt between reports."""
+    groups = {("", "pump house"): [
+        {"parameter": "capacity", "value": "2", "unit": "MGD", "period": "1964",
+         "page": 3, "page_url": "u", "identifier": "i", "quote": "q"},
+        {"parameter": "capacity", "value": "5", "unit": "MGD", "period": "1971",
+         "page": 8, "page_url": "u", "identifier": "i", "quote": "q"},
+    ]}
+    specs = S._subjects(groups)[0]["units"][0]["specs"]
+    assert [s["value"] for s in specs] == ["2", "5"]
+    assert all(not s["restatements"] for s in specs)

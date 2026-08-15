@@ -68,7 +68,7 @@ from .contribute import (
     _atomic_create, _has_prose_context, _match_evidence_span, _norm, _value_in_quote,
     public_record_key, record_problems,
 )
-from .places import scope_record_dict
+from .places import attach_subunits, scope_record_dict
 
 #: What two claims have to share to be talking about the same thing.
 #:
@@ -539,7 +539,9 @@ def load_claims(directory: str | Path = "data/results") -> list[Claim]:
         if not isinstance(payload, dict) or "place" not in payload:
             continue
         file_place = payload.get("place")
-        for record in payload.get("records") or []:
+        # Per file, because a sub-unit's parent plant is named by the document
+        # it was read from and nowhere else.
+        for record in attach_subunits(list(payload.get("records") or [])):
             out.append(Claim(record=scope_record_dict(record, file_place), source="extraction",
                              contributor=str(payload.get("model") or "extraction")))
     return out

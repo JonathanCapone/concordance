@@ -125,6 +125,19 @@ html,body{{height:100%;margin:0;background:#04080d;color:#e8edf2;
 .sec{{border-top:1px solid rgba(255,255,255,.09);padding-top:12px;margin-top:14px}}
 .sec h3{{margin:0 0 8px;font-size:11px;font-weight:600;color:#6d7a86;
   text-transform:uppercase;letter-spacing:.07em}}
+/* The subject a figure belongs to, in the heading beside the parameter and in
+   its own row above a group of specifications. Quieter than the parameter but
+   never hidden: "horsepower" alone is a number, "horsepower of Unit No. 1" is
+   a fact. */
+.of{{font-weight:400;color:#8b97a4}}
+.again{{display:block;font-style:normal;margin-top:2px;font-size:11px;opacity:.75}}
+.again a{{color:var(--gt-hit);text-decoration:none;white-space:nowrap}}
+.works{{margin:0 0 14px}}
+.works-nm{{font-size:12px;font-weight:600;letter-spacing:.02em;padding:7px 0 4px;
+  border-bottom:1px solid rgba(255,255,255,.09);margin-bottom:4px}}
+.works.orphaned .works-nm{{color:var(--gt-hit)}}
+.unit-nm{{font-size:11px;color:#8b97a4;font-family:ui-monospace,monospace;
+  padding:7px 0 1px}}
 .row{{display:grid;grid-template-columns:42px 1fr auto;gap:9px;align-items:baseline;
   padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)}}
 .row .y{{font-family:ui-monospace,monospace;font-size:11.5px;color:#8b97a4}}
@@ -612,12 +625,49 @@ function rowsHtml(rows){{
        both saying "1965" with different numbers and nothing to tell them
        apart. The page is what distinguishes them, and it is the thing this
        project wants in front of a reader anyway. */
+    /* A design figure the next year's report restates is one figure, listed
+       once, with every year it was stated in -- and each of those still one
+       click from its own page. */
+    const again = (x.restatements||[]).map(r => {{
+      const u = safeHttpUrl(r.page_url);
+      const label = `${{esc(r.period||"")}}${{r.page?` p${{esc(r.page)}}`:""}}`;
+      return u ? `<a href="${{u}}" target="_blank" rel="noopener">${{label}}</a>` : label;
+    }});
+    const restated = again.length
+      ? ` <span class="again">still stated ${{again.join(", ")}}</span>` : "";
     h += `<div class="row${{x.charted?" charted":""}}">`
        + `<span class="y">${{esc(x.period||"")}}${{x.page?`<span class="pg">p${{esc(x.page)}}</span>`:""}}</span>`
        + `<span>${{esc(x.parameter)}}${{x.qualifier?` <span class="q">${{esc(x.qualifier)}}</span>`:""}}</span>`
        + `<span class="v">${{esc(x.value)}} ${{esc(x.unit||"")}}</span>`
-       + `<span class="src">“${{esc(x.read_from)}}”${{scanLink}}${{cite}}`
+       + `<span class="src">“${{esc(x.read_from)}}”${{scanLink}}${{cite}}${{restated}}`
        + `<span class="paper"></span></span></div>`;
+  }});
+  return h;
+}}
+
+/* A specification page describes a MACHINE, and the extraction takes it apart
+   into parameters. Put back together, "horsepower 60" stops being a number
+   filed under a category and becomes one line of a pump's spec: capacity,
+   head, horsepower, speed, in a station with a name.
+
+   The reassembly is the document's own, not ours -- everything here was read
+   off one page, and the page is one click away on every line. */
+function subjectsHtml(subjects){{
+  let h = "";
+  (subjects||[]).forEach(p => {{
+    const orphaned = p.name === "not attributed to any works";
+    h += `<div class="works${{orphaned?" orphaned":""}}">
+      <div class="works-nm">${{esc(p.name)}}</div>`;
+    if (orphaned) {{
+      h += `<p class="lede" style="margin:0 0 8px;font-size:11px">The document
+        states these, but nothing captured says what they describe. Left here
+        rather than dropped — the gap is in the reading, not the archive.</p>`;
+    }}
+    (p.units||[]).forEach(u => {{
+      if (u.name) h += `<div class="unit-nm">${{esc(u.name)}}</div>`;
+      h += rowsHtml(u.specs);
+    }});
+    h += `</div>`;
   }});
   return h;
 }}
@@ -676,16 +726,29 @@ function seriesHtml(d){{
       <span class="sm">${{esc(sp)}} · ${{sys.n}} readings</span></div>`;
     sys.panels.forEach(p => {{
       if (p.shelf) h += `<div class="shelf">${{esc(p.shelf)}}</div>`;
-      h += panelHtml(p);
+      /* The works is already the heading above these. Repeating it on every
+         panel -- "BOD of water pollution control plant" under a section headed
+         "Water pollution control plant" -- is noise, and noise is what buried
+         the subject in the first place. */
+      h += panelHtml(p, sys.title);
     }});
   }});
   if (!(d.systems || []).length) panels.forEach(p => {{ h += panelHtml(p); }});
 
-  function panelHtml(p){{
+  /* The subject goes in the heading, beside the parameter.
+     A panel headed "horsepower" is a number with its subject removed; the
+     record knew the pump all along and this view was dropping it on the floor.
+     Only 1.4% of the corpus genuinely lacks a subject -- the rest was being
+     thrown away here. */
+  function panelHtml(p, under){{
     const span = p.span ? `${{p.span[0]}}–${{p.span[1]}}` : "";
     const rng = p.range ? `${{fmtN(p.range[0])}}–${{fmtN(p.range[1])}}` : "";
-    return `<details class="panel" data-find="${{esc((p.plain||p.label)+" "+(p.unit||"")).toLowerCase()}}">
-      <summary><span class="nm">${{esc(p.plain || p.label)}}</span>
+    const same = under && p.facility
+      && under.trim().toLowerCase() === p.facility.trim().toLowerCase();
+    const subj = p.facility && !same
+      ? ` <span class="of">of ${{esc(p.facility)}}</span>` : "";
+    return `<details class="panel" data-find="${{esc((p.plain||p.label)+" "+(p.facility||"")+" "+(p.unit||"")).toLowerCase()}}">
+      <summary><span class="nm">${{esc(p.plain || p.label)}}${{subj}}</span>
         <span class="sm">${{esc(span)}}</span>
         <span class="sm">${{esc(rng)}} ${{esc(p.unit||"")}}</span>
         <span class="sm n">${{p.n}} reading${{p.n===1?"":"s"}}</span></summary>
@@ -705,8 +768,9 @@ function seriesHtml(d){{
       if (g.shelf) h += `<div class="shelf">${{esc(g.shelf)}}</div>`;
       const r = (g.rows||[])[0] || {{}};
       const extra = (g.rows||[]).length > 1 ? ` <span class="sm">+${{g.rows.length-1}}</span>` : "";
-      h += `<details class="sub" data-find="${{esc((g.label+" "+(g.substance||"")+" "+(r.unit||"")).toLowerCase())}}">
-        <summary><span class="nm">${{esc(g.label)}}</span>
+      const subj = g.facility ? ` <span class="of">of ${{esc(g.facility)}}</span>` : "";
+      h += `<details class="sub" data-find="${{esc((g.label+" "+(g.facility||"")+" "+(g.substance||"")+" "+(r.unit||"")).toLowerCase())}}">
+        <summary><span class="nm">${{esc(g.label)}}${{subj}}</span>
           <span class="sm">${{esc(r.period||"")}}</span>
           <span class="sm">${{esc(r.value||"")}} ${{esc(r.unit||"")}}</span>${{extra}}
           ${{g.not_comparable?`<span class="warn">units not comparable</span>`:""}}</summary>
@@ -725,7 +789,7 @@ function seriesHtml(d){{
       <summary><span class="nm">${{esc(g.title)}}</span>
         <span class="sm">not a measurement</span>
         <span class="sm n">${{g.rows.length}}</span></summary>
-      <div class="body">` + rowsHtml(g.rows) + `</div></details>`;
+      <div class="body">` + subjectsHtml(g.subjects) + `</div></details>`;
   }});
   return h + `</div>`;
 }}

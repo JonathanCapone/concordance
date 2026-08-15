@@ -70,6 +70,10 @@ MAX_BUNDLE_BYTES = 8 * 1024 * 1024
 #: Contested slots rendered at once. Resolving one fetches the pages it cites,
 #: so the whole ledger is not free to draw; the number shown is reported next
 #: to the total so a reader knows they are looking at a sample.
+#: The heading for figures the extraction could not attach to anything. Named
+#: rather than blank, because a silent group reads as a category.
+UNATTRIBUTED = "not attributed to any works"
+
 CONTESTED_SHOWN = 60
 #: Listings are cheap -- no page fetch -- so more of them fit.
 LISTED_SHOWN = 40
@@ -1035,11 +1039,12 @@ class State:
                     "period": str(r.period) if r.period else "",
                     "year": year if year is not None else "",
                     "parameter": label,
-                    "value": f"{r.value:.4g}" if isinstance(r.value, (int, float)) else "",
+                    "value": _number(r.value),
                     "unit": r.unit or s.unit,
                     "qualifier": r.qualifier or "",
                     # True for the reading the line actually passes through.
                     "charted": bool(src is not None and src is r),
+                    "kind": r.kind,
                     "read_from": (prov.source_text[:150] if prov else ""),
                     "page_url": (prov.page_url if prov else ""),
                     # Enough for the portal to ask /api/citation for a picture of
@@ -1129,30 +1134,50 @@ class State:
 
         # Design figures, regulatory limits and the author's conclusions,
         # grouped by kind so nothing implies they were measured.
+        #
+        # And, within a kind, grouped by the THING the document is describing.
+        # A spec page is not a list of parameters; it is a machine, with a
+        # capacity and a head and a horsepower and a speed. Split into
+        # parameter categories, "horsepower: 60" answers no question a person
+        # has, because the horsepower of what is the question.
         by_kind: dict[str, list[dict[str, Any]]] = {}
+        by_subject: dict[str, dict[tuple[str, str], list[dict[str, Any]]]] = {}
         for r in other:
             prov = r.provenance
             got = resolve_parameter(
                 r.parameter, r.unit,
                 context=(prov.source_text if prov else None))
-            by_kind.setdefault(r.kind, []).append({
+            subject = " ".join(str(r.facility or "").split())
+            parent = " ".join(str((r.raw or {}).get("parent_facility") or "").split())
+            entry = {
                 "period": str(r.period) if r.period else "",
                 "parameter": (got.label if got else (r.parameter or "")),
-                "value": f"{r.value:.4g}" if isinstance(r.value, (int, float)) else "",
+                "value": _number(r.value),
                 "unit": r.unit or "", "qualifier": r.qualifier or "", "charted": False,
+                "kind": r.kind,
                 "read_from": (prov.source_text[:150] if prov else ""),
                 "page_url": (prov.page_url if prov else ""),
                 "identifier": (prov.identifier if prov else ""),
                 "page": (prov.page if prov else 0),
                 "quote": (prov.source_text if prov else ""),
-            })
+            }
+            by_kind.setdefault(r.kind, []).append(entry)
+            # Keyed by ("", "") when the extraction never captured what the
+            # figure describes. Those are not dropped -- they are shown last,
+            # under a heading that says the context is missing, because a
+            # missing subject is the finding here rather than an embarrassment
+            # to hide.
+            by_subject.setdefault(r.kind, {}).setdefault(
+                (parent, subject) if subject else ("", ""), []).append(entry)
         KIND_TITLE = {
             "design": "What it was built for",
             "standard": "What it was allowed to discharge",
             "conclusion": "What the report concluded",
         }
         out["other"] = [
-            {"kind": k, "title": KIND_TITLE.get(k, k), "rows": sorted(
+            {"kind": k, "title": KIND_TITLE.get(k, k),
+             "subjects": _subjects(by_subject.get(k, {})),
+             "rows": sorted(
                 rows, key=lambda x: (str(x["period"]), x["parameter"]))}
             for k, rows in sorted(by_kind.items())
         ]
@@ -1276,7 +1301,142 @@ class State:
         out["singles"] = singles
         out["n_charted"] = sum(p["n"] for p in grouped)
         out["n_listed"] = len(singles)
+
+        # Count what is on the page, not what `find_my_town` scoped to.
+        #
+        # That helper deliberately reports ONE facility, because a town's water
+        # works and its sewage plant measure opposite things. This page does not
+        # -- it shows every facility, grouped into systems. So the footer read
+        # "97 observations from 2 documents" under 434 rows drawn from
+        # twenty-six facilities and nine documents, which is a false statement
+        # sitting directly beneath its own contradiction.
+        # How much of this place's record does not say what it is about.
+        #
+        # Counted and published rather than left to be noticed, because it is
+        # the same defect wearing a different costume in every kind of document
+        # -- a horsepower with no machine, a coliform count with no sampling
+        # site, a dollar figure with no contract. A reader is entitled to know
+        # how much of what they are looking at has been separated from its
+        # subject, and a project asking to be checked cannot be the one that
+        # keeps that number to itself.
+        placed = sum(
+            1 for section in out["other"] for subject in section["subjects"]
+            if subject["name"] != UNATTRIBUTED for unit in subject["units"]
+            for _ in unit["specs"])
+        stranded = sum(
+            1 for section in out["other"] for subject in section["subjects"]
+            if subject["name"] == UNATTRIBUTED for unit in subject["units"]
+            for _ in unit["specs"])
+        out["without_subject"] = stranded
+        out["with_subject"] = placed
+
+        rows = [r for panel in grouped + singles for r in (panel.get("rows") or [])]
+        out["n_measurements"] = sum(
+            1 for r in rows if str(r.get("kind") or "observation") == "observation")
+        out["sources"] = sorted({
+            str(r.get("identifier") or "") for r in rows} - {""})
         return out
+
+
+def _number(value: Any) -> str:
+    """A measurement as a person writes it.
+
+    ``f"{v:.4g}"`` turns 26,200 imperial gallons into ``2.62e+04``. Four
+    significant figures is right; the exponent is not, on a page whose whole
+    argument is that a resident can read it. Genuinely huge and genuinely tiny
+    numbers keep the exponent, because 8,000,000,000 in a table cell is worse.
+
+    The cutoff is a billion rather than ten million because this archive is
+    full of gallons: a plant's annual sludge volume of 14,760,000 is an ordinary
+    figure here and was printing as ``1.476e+07``.
+    """
+    if not isinstance(value, (int, float)) or isinstance(value, bool):
+        return ""
+    magnitude = abs(value)
+    if magnitude and not (1e-4 <= magnitude < 1e9):
+        return f"{value:.4g}"
+    text = f"{value:.4g}"
+    if "e" in text or "E" in text:          # .4g can still choose an exponent
+        text = f"{value:f}".rstrip("0").rstrip(".")
+    if "." in text:
+        whole, _, fraction = text.partition(".")
+        return f"{int(whole):,}.{fraction}"
+    return f"{int(text):,}"
+
+
+def _subjects(groups: dict[tuple[str, str], list[dict[str, Any]]]) -> list[dict[str, Any]]:
+    """Group figures under the thing the document was describing.
+
+    A document is *about* something at every point, and the extraction files
+    away the number while dropping the subject. Pumps are only the clearest
+    case. Belleville's 1964 report gives, on one page:
+
+        PUMPING STATION - PLATS SITE
+          Unit No. 1   Capacity 0.5 MGD @ 40 foot head   HP 60   RPM 1800
+          Unit No. 2   Capacity 1.5 MGD @ 40 foot head   HP 30   RPM 1200
+
+    Filed by parameter that becomes a "horsepower" category holding 60 and 30
+    with nothing to say what either belongs to -- and, briefly, a page calling
+    the pair a contradiction. Filed by subject it stays what it was: two pumps,
+    each with four specifications, in a station with a name.
+
+    The same shape recurs with a different subject in every kind of document
+    here: sampling sites in a water-quality table, contracts in a tender
+    schedule, tanks in a plant description, a motion in a set of minutes.
+    Whatever the document is about, the figure belongs under it, and this
+    function does not need to know which sort of thing it is -- only that the
+    record names one.
+
+    So this is a REPORTING layer, not an inference. The subject is whatever the
+    extraction recorded as the facility; sub-units sit under the plant their own
+    document put them in; and where no subject was captured the figures are
+    grouped under ``UNATTRIBUTED`` and said to be missing one, because that gap
+    is the thing worth fixing and hiding it would fix nothing.
+    """
+    plants: dict[str, dict[str, Any]] = {}
+    for (parent, subject), specs in groups.items():
+        head = parent or subject or UNATTRIBUTED
+        plant = plants.setdefault(head, {"name": head, "units": [], "n": 0})
+        # A design figure restated by the next year's report is not a second
+        # design figure. Belleville's grit tank held 26,200 gallons in the 1964
+        # report and in the 1965, 1969 and 1970 ones, and the panel listed it
+        # four times as though the tank kept being rebuilt to the same size.
+        #
+        # So identical specifications collapse to one line carrying every year
+        # it was stated in. Nothing is discarded -- each restatement keeps its
+        # own page, because "the 1970 report still says 26,200" is exactly the
+        # kind of thing a reader may want to check, and a spec that quietly
+        # CHANGES between reports stays two lines, which is the interesting case.
+        first: dict[tuple[str, str, str], dict[str, Any]] = {}
+        unique = []
+        for spec in specs:
+            key = (spec["parameter"], spec["value"], spec["unit"])
+            held = first.get(key)
+            if held is None:
+                spec = dict(spec, restatements=[])
+                first[key] = spec
+                unique.append(spec)
+                continue
+            held["restatements"].append({
+                "period": spec["period"], "page": spec["page"],
+                "page_url": spec["page_url"], "identifier": spec["identifier"],
+                "quote": spec["quote"],
+            })
+        plant["units"].append({
+            # A sub-unit is named by itself under its plant's heading; a plant
+            # with no sub-units would otherwise print its own name twice.
+            "name": subject if parent else "",
+            "specs": sorted(unique, key=lambda s: (str(s["period"]), s["parameter"])),
+            "n": len(unique),
+        })
+        plant["n"] += len(unique)
+    for plant in plants.values():
+        plant["units"].sort(key=lambda u: (u["name"] == "", u["name"]))
+    # Densest first: the machine the report says most about is the one a reader
+    # is most likely to have come for. The figures with no subject go last
+    # whatever their number, since they are the least usable thing here.
+    return sorted(plants.values(),
+                  key=lambda p: (p["name"] == UNATTRIBUTED, -p["n"], p["name"]))
 
 
 def _bare_group(label: str, stream: str | None, facility: str,
@@ -1303,8 +1463,9 @@ def _bare_group(label: str, stream: str | None, facility: str,
         rows.append({
             "period": str(r.period) if r.period else "", "year": year,
             "parameter": label,
-            "value": f"{r.value:.4g}" if isinstance(r.value, (int, float)) else "",
+            "value": _number(r.value),
             "unit": r.unit or "", "qualifier": r.qualifier or "", "charted": False,
+            "kind": r.kind,
             "read_from": (prov.source_text[:150] if prov else ""),
             "page_url": (prov.page_url if prov else ""),
             "identifier": (prov.identifier if prov else ""),
