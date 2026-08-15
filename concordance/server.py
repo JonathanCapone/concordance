@@ -1173,6 +1173,45 @@ class State:
             years = [y for p in sysd["panels"] if p["span"]
                      for y in p["span"]]
             sysd["span"] = [min(years), max(years)] if years else None
+
+            # Panels of one substance sit together under its name. Brantford
+            # showed "average daily flow", "daily flow" and "total flow" as
+            # three unrelated entries in a list, and "ss" nowhere near
+            # "effluent suspended solids" -- which is the same disjointedness
+            # the singles already fixed, one level up.
+            #
+            # They stay SEPARATE panels. Mixed liquor suspended solids runs
+            # 1,500-4,000 mg/L inside an aeration tank and effluent suspended
+            # solids is what leaves the plant; a shared heading says they are
+            # both suspended solids, and a shared axis would be a lie.
+            def _shelf_of(panel: dict[str, Any]) -> tuple[int, str, int]:
+                got = resolve_parameter(panel["label"], panel.get("unit"))
+                substance = (got.substance if got else "") or ""
+                return (0 if substance else 1, substance, -panel["n"])
+
+            sysd["panels"].sort(key=_shelf_of)
+            last = object()
+            for panel in sysd["panels"]:
+                got = resolve_parameter(panel["label"], panel.get("unit"))
+                substance = (got.substance if got else "") or ""
+                # Only when the substance actually gathers more than one panel;
+                # a heading above a single panel repeating its own name is
+                # noise, which is what the earlier "unknown" line names were.
+                same = sum(1 for q in sysd["panels"]
+                           if ((resolve_parameter(q["label"], q.get("unit")).substance
+                                if resolve_parameter(q["label"], q.get("unit")) else "") or "")
+                           == substance)
+                if substance and substance != last and same > 1:
+                    panel["shelf"] = substance
+                elif not substance and last is not None and last != "":
+                    # The first panel the parameter table does not recognise.
+                    # Without a divider these sat directly under the previous
+                    # substance's heading and read as though they belonged to
+                    # it -- "operating costs" filed under "suspended solids".
+                    panel["shelf"] = "everything else"
+                else:
+                    panel["shelf"] = ""
+                last = substance
         out["systems"] = sorted(systems.values(), key=lambda x: -x["n"])
 
         out["series"] = grouped

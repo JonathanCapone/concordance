@@ -659,7 +659,10 @@ function seriesHtml(d){{
     const sp = sys.span ? `${{sys.span[0]}}–${{sys.span[1]}}` : "";
     h += `<div class="system"><span class="t">${{esc(sys.title)}}</span>
       <span class="sm">${{esc(sp)}} · ${{sys.n}} readings</span></div>`;
-    sys.panels.forEach(p => {{ h += panelHtml(p); }});
+    sys.panels.forEach(p => {{
+      if (p.shelf) h += `<div class="shelf">${{esc(p.shelf)}}</div>`;
+      h += panelHtml(p);
+    }});
   }});
   if (!(d.systems || []).length) panels.forEach(p => {{ h += panelHtml(p); }});
 

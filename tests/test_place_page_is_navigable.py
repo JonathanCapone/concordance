@@ -156,3 +156,75 @@ def test_two_plants_in_one_town_stay_apart(state: S.State) -> None:
     # ...while two spellings of one plant merge.
     assert (facility_key("Belleville water pollution control plant", "Belleville")
             == facility_key("water pollution control plant", "Belleville"))
+
+
+# -- shelving panels by substance -------------------------------------------
+
+def test_panels_of_one_substance_sit_together(state: S.State) -> None:
+    """Brantford listed "average daily flow", "daily flow" and "total flow" as
+    three unrelated entries, and "ss" nowhere near "effluent suspended
+    solids"."""
+    from concordance.parameters import resolve
+
+    for place, town in _towns(state):
+        for system in town.get("systems") or []:
+            runs: list[str] = []
+            for panel in system["panels"]:
+                got = resolve(panel["label"], panel.get("unit"))
+                substance = (got.substance if got else "") or ""
+                if not runs or runs[-1] != substance:
+                    runs.append(substance)
+            assert len(runs) == len(set(runs)), (
+                f"{place} / {system['title']} splits a substance into "
+                f"non-adjacent runs: {runs}")
+
+
+def test_a_heading_only_appears_when_it_gathers_more_than_one(state: S.State) -> None:
+    """A heading above a single panel repeating its own name is noise."""
+    from concordance.parameters import resolve
+
+    for _place, town in _towns(state):
+        for system in town.get("systems") or []:
+            for panel in system["panels"]:
+                shelf = panel.get("shelf") or ""
+                if not shelf or shelf == "everything else":
+                    continue
+                same = [q for q in system["panels"]
+                        if ((resolve(q["label"], q.get("unit")).substance
+                             if resolve(q["label"], q.get("unit")) else "") or "") == shelf]
+                assert len(same) > 1, f"{shelf!r} heads only one panel"
+
+
+def test_unrecognised_panels_get_their_own_divider(state: S.State) -> None:
+    """Without one they sat under the previous substance's heading and read as
+    though they belonged to it -- "operating costs" filed under "suspended
+    solids"."""
+    from concordance.parameters import resolve
+
+    for _place, town in _towns(state):
+        for system in town.get("systems") or []:
+            panels = system["panels"]
+            for i, panel in enumerate(panels):
+                got = resolve(panel["label"], panel.get("unit"))
+                if (got.substance if got else "") or "":
+                    continue
+                prev = panels[i - 1] if i else None
+                if prev is None:
+                    continue
+                prev_got = resolve(prev["label"], prev.get("unit"))
+                if (prev_got.substance if prev_got else "") or "":
+                    assert panel.get("shelf") == "everything else", (
+                        f"{panel['label']!r} follows a substance run with no divider")
+
+
+def test_mixed_liquor_never_shares_an_axis_with_effluent(state: S.State) -> None:
+    """They share a heading because both are suspended solids. They must not
+    share a chart: MLSS runs 1,500-4,000 mg/L inside an aeration tank and
+    effluent suspended solids is what leaves the plant."""
+    for _place, town in _towns(state):
+        for system in town.get("systems") or []:
+            for panel in system["panels"]:
+                label = panel["label"].lower()
+                if "ml.ss" in label or "mlss" in label:
+                    assert "effluent" not in label
+                    assert len(panel["lines"]) >= 1
