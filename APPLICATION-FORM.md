@@ -23,8 +23,7 @@ designed to grow beyond the pilot communities.
 
 My August 11 catalogue snapshot holds 104,241 scanned government publications
 and 22.1 million pages; this project scopes its historical run from 1841 to
-2013. Inside are measurements of the country, town by town, year by year. The
-median document has been downloaded 90 times.
+2013. Inside are measurements of the country, town by town, year by year.
 
 The fellowship brief puts the collection at roughly 48 TB. For prose, the reader
 works first from the separate OCR text layer and requests images only as needed.
@@ -49,6 +48,8 @@ At frozen application checkpoint `f8fbca2`: 5,147 source-linked records across
 14 municipalities, including 2,384 observations, and 96.8% precision on four
 hand-read pages. A source-sentence audit of the then-complete 286-record
 corpus found no mismatches.
+
+Code and data: github.com/JonathanCapone/concordance
 
 ---
 

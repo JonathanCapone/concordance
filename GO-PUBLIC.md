@@ -23,45 +23,45 @@ Three facts interact badly:
    GitHub-facing steps, and the SHA references are updated as part of it —
    not before, not after.
 
-## The simpler path: rename the account instead of migrating repos
+## DONE: the account is renamed
 
-GitHub supports renaming a user account. Repos, issues and stars come along;
-git and web URLs for the old name redirect until someone claims it; profile
-links, @mentions and gists do not redirect, but nothing public has ever
-pointed at `aminalnam/concordance`, so nothing breaks. This removes steps 5
-and 9 below: no second account, no repo transfer, no old repo to retire.
+The account is now `JonathanCapone` (2026-08-15). All 26 local clones point at
+the new name, the repo-local git config uses
+`29108860+JonathanCapone@users.noreply.github.com` (the ID-based noreply --
+robust against any future rename, and it attributes to the right profile,
+which `jdcap@users.noreply.github.com` never did: that address belongs to
+whoever holds the username `jdcap`). No GitHub Pages site was live under the
+old name; the portfolio serves from the droplet.
 
-The username and the rewrite email must be decided TOGETHER:
-`jdcap@users.noreply.github.com` links commits to a profile only if the
-username is actually `jdcap`. Pick the final username first (check it is
-free), rename, then rewrite history to
-`29108860+<finalname>@users.noreply.github.com` -- the ID-based form is
-robust against any future rename, because the ID never changes.
-
-Renamed sequence: rename account -> steps 1-4 (rewriting to the new name's
-noreply) -> force-push to the SAME repo -> step 6 (watch CI) -> step 7 (flip
-public) -> step 8 (URL into the form, now `github.com/<finalname>/concordance`).
-
-One nuance the fresh-repo path avoided: a repo that flips private-to-public
-can leave pre-rewrite objects fetchable by SHA until GitHub garbage-collects.
-Since the pre-rewrite history was never public, the practical exposure is nil;
-if you want zero residue, delete and recreate the repo under the renamed
-account instead -- that is the only remnant of the old step 5.
+Because the repo came along with the rename, there is no second account and
+no repo transfer: rewrite -> force-push to the SAME repo -> watch CI -> flip
+public -> URL into the form. One nuance: a repo that flips private-to-public
+can leave pre-rewrite objects fetchable by SHA until GitHub garbage-collects;
+the pre-rewrite history was never public, so practical exposure is nil -- for
+zero residue, delete and recreate the repo instead.
 
 ## The sequence
 
 1. **Stop minting wrong-email commits.** In the repo:
 
-   ```bash
-   git config user.email jdcap@users.noreply.github.com
-   git config user.name "Jonathan Capone"
-   ```
+   DONE (2026-08-15): repo-local config is
+   `29108860+JonathanCapone@users.noreply.github.com` / "Jonathan Capone".
 
 2. **Rewrite the history** (local clone, then verify before any push):
 
+   Both old addresses map to the ID-based noreply -- the aminalnam one for
+   the obvious reason, and `jdcap@...` because it attributes to whoever holds
+   the username `jdcap`, which is not Jonathan:
+
    ```bash
    pip install git-filter-repo
-   git filter-repo --email-callback "return b'jdcap@users.noreply.github.com' if email == b'29108860+aminalnam@users.noreply.github.com' else email" --force
+   git filter-repo --email-callback "return b'29108860+JonathanCapone@users.noreply.github.com' if email in (b'29108860+aminalnam@users.noreply.github.com', b'jdcap@users.noreply.github.com') else email" --force
+   ```
+
+   filter-repo removes the origin remote as a safety measure; re-add it:
+
+   ```bash
+   git remote add origin https://github.com/JonathanCapone/concordance.git
    ```
 
    Then verify: `git log --format=%ae%n%ce | sort -u` must print exactly one
@@ -94,11 +94,10 @@ account instead -- that is the only remnant of the old step 5.
    Commit that (with the corrected git config — it is the first new commit,
    and its email is the proof step 1 worked).
 
-5. **Create the new repo under the right account** (name: `concordance`),
-   private for the moment. Push the rewritten history:
+5. **Force-push the rewritten history to the same repo** (it moved with the
+   account rename; the remote is already `JonathanCapone/concordance`):
 
    ```bash
-   git remote set-url origin git@github.com:<right-account>/concordance.git
    git push origin main --force
    git push origin --tags
    ```
@@ -114,16 +113,14 @@ account instead -- that is the only remnant of the old step 5.
 7. **Flip the new repo public.** Verify while logged out: the repo loads, the
    tag resolves, `git log` shows one email, HANDOFF.md shows no local paths.
 
-8. **Put the URL in the application.** The form currently contains no
-   repository link anywhere — the review rated this a blocker on an
-   application judged partly on "open source". Add it to the Project summary
-   (there is ~6 characters of headroom; "github.com/<account>/concordance"
-   fits if the summary loses one clause — re-run `scripts/check_form.py`).
+8. **The URL is in the application** (done 2026-08-15):
+   `github.com/JonathanCapone/concordance` in the Project summary. It resolves
+   the moment step 7 flips the repo public — submit after that, not before.
 
-9. **Retire the old repo.** Delete `aminalnam/concordance` (or make it a
-   private archive). Do not leave a public fork relationship pointing at the
-   wrong identity. GitHub retains old commits by SHA on forks and caches —
-   which is exactly why the rewrite happens before anything was ever public.
+9. **Optionally park the old name.** `aminalnam` is now free for anyone to
+   claim; whoever takes it inherits the redirect traffic from any stale links.
+   Nothing public ever pointed at it, so this is cheap insurance, not a
+   requirement: register it with a placeholder account, or let it go.
 
 ## What this plan deliberately does not do
 
