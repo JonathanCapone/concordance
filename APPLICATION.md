@@ -434,7 +434,8 @@ That is not a hypothetical caution. The first accuracy figure this project
 produced was 49% precision — and it was wrong. The scorer could not tell that
 "3.0 million gallons" and "3000000 gallons" are the same number, and the
 hand-written answer key was incomplete. Fixing the *measurement*, with no change
-at all to the extraction, moved it to 96.8%. Publishing the first number would
+at all to the extraction, moved it to 88.7%; widening the extraction prompt then
+took it to the published 96.8%. Publishing the first number would
 have narrowed the project for no reason. Everything here is built to catch that
 class of error, because it is the one that looks like success.
 

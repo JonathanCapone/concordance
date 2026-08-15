@@ -1243,8 +1243,9 @@ const LOADERS = {{
     if(!d.available){{ el.innerHTML = `<div class="card empty">${{esc(d.message)}}</div>`; return; }}
     const st = d.largest_simultaneous_stop || {{}};
     let h = `<div class="card"><div class="big">${{esc(st.municipalities)}} of ${{esc(d.n_municipalities)}}</div>`
-          + `<p class="lede" style="margin:4px 0 0">title-derived report series have no dated entry after
-             <strong style="color:var(--gt-hit)">${{esc(Number(st.year)-1)}}</strong>.</p></div>`;
+          + `<p class="lede" style="margin:4px 0 0">title-derived report series end in exactly
+             <strong style="color:var(--gt-hit)">${{esc(Number(st.year)-1)}}</strong> — and every
+             one of the ${{esc(d.n_municipalities)}} ends by then.</p></div>`;
     h += `<div class="card"><h3 style="margin:0 0 8px;font-size:11px;color:#6d7a86;
           text-transform:uppercase;letter-spacing:.06em">Did the collection itself stop?</h3>
           <table class="gt"><tr><th>series</th><th class="n">before</th><th class="n">after</th><th></th></tr>`;

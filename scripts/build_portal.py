@@ -103,7 +103,7 @@ TEMPLATE = """<!doctype html>
   <h2>The cliff</h2>
   <div class="panel">
     <div class="big">__CLIFFN__ of __NMUNI__</div>
-    <div>series have no dated entry after <strong>__PRECLIFFY__</strong>.</div>
+    <div>series end in exactly <strong>__PRECLIFFY__</strong> — and every one of the __NMUNI__ ends by then.</div>
   </div>
 
   <h2>Is that real, or did the scanning just stop?</h2>

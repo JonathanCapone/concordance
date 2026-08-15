@@ -51,9 +51,10 @@ def main() -> int:
             "silence.html",
             "Where Ontario's indexed record goes quiet",
             f"{stop.get('municipalities','?')} of {silence.get('n_municipalities','?')} "
-            f"title-derived report series have no dated entry after "
-            f"{stop.get('year', 1975) - 1 if isinstance(stop.get('year'), int) else '?'}; "
-            "broader ministry publishing continues, but individual gaps remain unexplained.",
+            f"title-derived report series end in exactly "
+            f"{stop.get('year', 1975) - 1 if isinstance(stop.get('year'), int) else '?'} "
+            "— and every one ends by then; broader ministry publishing continues, "
+            "but individual gaps remain unexplained.",
         ))
 
     cards.append((
