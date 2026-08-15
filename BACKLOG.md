@@ -327,3 +327,31 @@ One sentence per forecast: "In 1974 the Government of Canada projected X for 200
 ## PRE-SPEND GATE
 
 Do not start the funded run until every **$** item above is green. In dependency order: **S1** (which pages get paid for) → **S2, S3, S4** (the run survives and does not get blocked) → **S6, S7, S8, S9, S13, S23-router, S28** (prompt, schema and unit changes — every one of these after the run means paying again) → **S5, S29** (it finishes inside the calendar) → **B3, S14** (the number that grades the run means something) → **B12, B13** (the budget and page count are the corrected ones).
+## From the pre-submission review (2026-08-15)
+
+Confirmed by the full review or the identity blast-radius map, deliberately not
+fixed in the pre-submission push. Each is small enough to lose and real enough
+to matter.
+
+- **Decimal commas are unreadable, not just unverifiable.** "8,5 millions de
+  gallons" no longer verifies 85 (fixed), but no path can read it AS 8.5
+  either -- the correct value fails its own evidence check. A third of the
+  collection is French. Fixing this is a deliberate numerals decision, not a
+  regex.
+- **A condition-aware re-read adds parallel records.** Records that gain a
+  `condition` key differently from their stored condition-less twins; nothing
+  merges or retires the old ones. Fine while re-reads replace whole place
+  files; wrong the day two instances exchange partial bundles.
+- **No bundle-version gate.** An old-code instance importing a condition-
+  bearing bundle collapses same-value condition twins and silently drops one.
+  BUNDLE_VERSION exists and nothing checks it.
+- **rescore.py rebuilds records without facility/notes/raw** (pre-existing);
+  Corpus.load silently drops comparability_note and notes. Harmless today,
+  and exactly the loader-asymmetry shape that has bitten twice.
+- **"Find a place" still has no search box** -- the map plus a filter input on
+  town pages, but no way to type "Belleville" on the landing view.
+- **/api/ask runs the local model for any visitor on a public host** -- unlike
+  /api/read it is not gated by _is_local_instance. Gate it the same way
+  before the droplet deploy.
+- **Vocabulary entries are all reviewed:false**, and reconcile_notes.json
+  holds 15 judgement calls nobody has judged.
