@@ -65,8 +65,9 @@ from typing import Any, Iterable
 
 from .archive import Archive
 from .contribute import (
-    _atomic_create, _has_prose_context, _match_evidence_span, _norm, _value_in_quote,
-    ground_condition, public_record_key, record_problems,
+    _atomic_create, _has_prose_context, _match_evidence_span, _norm,
+    _quote_is_distinctive, _value_in_quote, ground_condition,
+    public_record_key, record_problems,
 )
 from .places import attach_subunits, scope_record_dict
 
@@ -315,7 +316,15 @@ def check(claim: Claim, *, archive: Archive | None = None,
         return Standing(claim, True, f"{note} {why}".strip() if why else note)
     if state == "unchecked":
         # A record with no number -- a conclusion, or a name. The sentence is
-        # real, which is all that can be asked of it.
+        # real, which is all that can be asked of it -- so the sentence must be
+        # capable of bearing that weight. "the" is on every page in the
+        # archive; verifying a claim by finding it verifies nothing, and this
+        # is the same floor verify_bundle applies (the two checks are supposed
+        # to be the same check).
+        if not _quote_is_distinctive(claim.quote):
+            return Standing(claim, False, (
+                "with no value to check, the sentence is the entire evidence, "
+                "and one this short could be found anywhere"))
         return Standing(claim, True, f"sentence is on the page ({why})")
 
     # No damaged-quote fallback here any more: _value_in_quote undoes the

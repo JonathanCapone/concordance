@@ -1745,10 +1745,18 @@ class Handler(BaseHTTPRequestHandler):
 
         from .library import ask as _ask
 
-        started, job = READER.start(
-            place, raw, ask=_ask,
-            after=_mark_publication_pending and (lambda: _mark_publication_pending(STATE)),
-        )
+        def _publish_read() -> None:
+            # Publish INTO THE RUNNING INSTANCE, not merely onto disk. Marking
+            # the write pending was not enough: nothing on the poll-and-redraw
+            # path ever reloads, so the person who spent two hours reading a
+            # town watched the portal redraw "Nobody has read X yet" from the
+            # pre-read corpus, and the result only appeared after a server
+            # restart or an unrelated bundle push. The promise printed below
+            # -- "everybody who asks after you gets it immediately" -- is made
+            # true here, by the same refresh path the bundle endpoint uses.
+            _refresh_publication(STATE, wrote=True)
+
+        started, job = READER.start(place, raw, ask=_ask, after=_publish_read)
         self._send_json({
             "started": started,
             "busy": not started,

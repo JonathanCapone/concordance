@@ -28,7 +28,9 @@ def _ask_ok(place, **kw):
     say = kw.get("on_progress") or (lambda _m: None)
     say(f"Nobody has read {place} yet. 3 documents to work through.")
     say("[1/3] 1969: 4 pages worth reading")
-    return _Answer(records=[{"v": 1}, {"v": 2}], documents=3, note="")
+    # Both survived verification and were written -- the case "done" is for.
+    return _Answer(records=[{"v": 1}, {"v": 2}], documents=3, note="",
+                   published=2, contributed=True)
 
 
 def _ask_empty(place, **kw):
@@ -126,3 +128,94 @@ def test_the_read_endpoints_are_post_only() -> None:
 
     assert "/api/read" in server.POST_ONLY_ENDPOINTS
     assert "/api/read/status" in server.POST_ONLY_ENDPOINTS
+
+
+# -- what "done" means ------------------------------------------------------
+
+def test_done_counts_what_was_published_not_what_was_extracted() -> None:
+    """A read that recovered 40 readings and published none reported "done --
+    read 40 measurements", and the publication callback fired for a library
+    that had not changed."""
+    from types import SimpleNamespace
+
+    from concordance.reading import Reader
+
+    fired = []
+
+    def _ask_nothing_published(place, **kw):
+        return SimpleNamespace(records=[{}] * 40, documents=3, note="",
+                               published=0, contributed=False)
+
+    reader = Reader()
+    _, job = reader.start("brantford", ask=_ask_nothing_published,
+                          after=lambda: fired.append(True))
+    assert reader.current is job
+    for _ in range(200):
+        if job.state != "running":
+            break
+        import time
+        time.sleep(0.01)
+    assert job.state == "nothing"
+    assert job.records == 0
+    assert not fired, "publication callback fired for an unchanged library"
+    assert "none survived" in job.note
+
+
+def test_done_reports_the_published_subset() -> None:
+    from types import SimpleNamespace
+
+    from concordance.reading import Reader
+
+    fired = []
+
+    def _ask_partial(place, **kw):
+        return SimpleNamespace(records=[{}] * 40, documents=3, note="",
+                               published=37, contributed=True)
+
+    reader = Reader()
+    _, job = reader.start("brantford", ask=_ask_partial,
+                          after=lambda: fired.append(True))
+    for _ in range(200):
+        if job.state != "running":
+            break
+        import time
+        time.sleep(0.01)
+    assert job.state == "done"
+    assert job.records == 37
+    assert fired == [True]
+
+
+def test_the_library_publishes_only_what_the_archive_stood_behind(tmp_path, monkeypatch) -> None:
+    """The write used to store the raw extraction, not verdict.supported --
+    the one write that still published everything on a bundle-level pass. And
+    it gated on verdict.accepted, so one hallucinated value discarded an
+    hours-long read that /api/bundle would have partially merged."""
+    import json
+
+    import concordance.library as lib
+
+    monkeypatch.setattr(lib, "LIBRARY", tmp_path)
+
+    good = {"kind": "observation", "parameter": "BOD", "value": 104.0}
+    verdict = SimpleNamespace(
+        supported=[good], verified=1, total=2,
+        failed=[{"why": "the value 999 does not appear in the sentence"}])
+    said = []
+    published = lib.publish_supported(
+        "Testville / One", "ollama:test", [good, dict(good, value=999.0)],
+        verdict, say=said.append)
+
+    assert published == 1, "one failed reading discarded the whole read"
+    written = json.loads((tmp_path / "testville-one.json").read_text(encoding="utf-8"))
+    assert [r["value"] for r in written["records"]] == [104.0]
+    assert written["n_records"] == 1
+    assert any("1 are in the library now, 1 failed" in m for m in said)
+
+    # Nothing supported -> nothing written, and the message says so.
+    said.clear()
+    empty = SimpleNamespace(supported=[], verified=0, total=1,
+                            failed=[{"why": "not on the page"}])
+    assert lib.publish_supported("Elsewhere", "ollama:test",
+                                 [dict(good)], empty, say=said.append) == 0
+    assert not (tmp_path / "elsewhere.json").exists()
+    assert any("NOT added" in m for m in said)

@@ -183,3 +183,56 @@ def test_a_valid_hex_claim_cannot_overwrite_another_bundle(tmp_path):
     assert Path(second_result["written"]) != first_path
     assert first_path.read_bytes() == before
     assert len(list(tmp_path.glob("contributed-*.json"))) == 2
+
+
+# -- the value=None door ----------------------------------------------------
+
+def test_a_common_word_cannot_verify_a_conclusion():
+    """For a record with no number, sentence-on-page is the ENTIRE check --
+    and "the" is on every page in the archive. One genuine record plus N
+    invented conclusions each quoting a common word used to ride into the
+    library verified: the documented merge-poisoning catastrophe, returned
+    through the value=None door because the check passed when there was
+    nothing to check."""
+    fabrications = [{"kind": "conclusion", "value": None,
+                     "parameter": f"arbitrary assertion number {i} about the town",
+                     "provenance": {"identifier": "item1", "page": 11,
+                                    "source_text": "the"}}
+                    for i in range(5)]
+    bundle = _bundle_with(fabrications)
+    verdict = verify_bundle(bundle, archive=FakeArchive())
+
+    assert verdict.verified == 1
+    assert len(verdict.supported) == 1, "a one-word quote carried a conclusion in"
+    assert len(verdict.unsupported) == 5
+    # And the genuine record still rides: insufficiency is not failure.
+    assert verdict.accepted
+
+
+def test_a_real_sentence_still_verifies_a_conclusion():
+    """The floor must reject "the", not honest conclusions -- "No guideline
+    was exceeded." is a real four-word sentence a report prints, and it set
+    the floor."""
+    honest = [{"kind": "conclusion", "value": None,
+               "parameter": "plant placed in service",
+               "provenance": {"identifier": "item1", "page": 11,
+                              "source_text": "the plant was placed in service in 1913"}}]
+    verdict = verify_bundle(_bundle_with(honest), archive=FakeArchive())
+    assert len(verdict.supported) == 2
+    assert not verdict.unsupported
+
+
+# -- decimal commas are not thousands separators ----------------------------
+
+def test_a_french_decimal_comma_does_not_verify_a_tenfold_value():
+    """'8,5 millions de gallons' is eight and a half, not eighty-five. The
+    direct check stripped ANY digit-comma-digit, so 85 verified at the
+    STRONGEST evidence tier against a sentence stating 8.5 -- in a corpus a
+    third of which is French."""
+    state, why = _value_in_quote(
+        85, "un debit moyen de 8,5 millions de gallons par jour")
+    assert state == "failed"
+
+    # Genuine thousands formatting still verifies outright.
+    state, why = _value_in_quote(14700, "Weir; 14,700 gal/ft/day")
+    assert state == "ok" and why == ""

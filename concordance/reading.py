@@ -110,9 +110,21 @@ class Reader:
             try:
                 answer = ask(place, read_if_missing=True, model=model,
                              on_progress=job.say)
-                job.records = len(getattr(answer, "records", []) or [])
+                # What the LIBRARY now holds, not what the extractor produced.
+                # These differed silently: a read that recovered 40 readings
+                # and published none (verification failed, nothing written)
+                # reported "done -- read 40 measurements", and the publication
+                # callback fired for a library that had not changed.
+                published = int(getattr(answer, "published", 0) or 0)
+                contributed = bool(getattr(answer, "contributed", False))
+                job.records = published if contributed else 0
                 job.documents = int(getattr(answer, "documents", 0) or 0)
                 job.note = str(getattr(answer, "note", "") or "")
+                extracted = len(getattr(answer, "records", []) or [])
+                if extracted and not contributed:
+                    job.note = (job.note + " " if job.note else "") + (
+                        f"{extracted} readings were recovered but none survived "
+                        "the evidence check; the library is unchanged.")
                 # "Read it and found nothing" is a real outcome and must not be
                 # dressed as success: it means the documents exist and hold no
                 # measurement this reader could recover, which is worth knowing

@@ -900,10 +900,15 @@ document.addEventListener("click", async ev => {{
     log.textContent = (j.log || []).join("\\n");
     if (j.state === "running") {{ setTimeout(tick, 4000); return; }}
     if (j.state === "done") {{
-      note.textContent = ` read ${{j.records}} measurements from ${{j.documents}} documents.`;
+      /* j.records counts what the library now HOLDS -- what survived the
+         evidence check and was published -- not what the extractor produced.
+         Saying "read N" over a library holding fewer would be the lie this
+         project exists to refuse. */
+      note.textContent = ` read ${{j.documents}} documents; ${{j.records}} readings`
+        + ` survived their evidence check and are in the library now.`;
       openTown(_openPlace);            // redraw with what was just read
     }} else if (j.state === "nothing") {{
-      note.textContent = " read the documents and found no measurements in them.";
+      note.textContent = " read the documents; nothing survived into the library.";
       if (j.note) log.textContent += "\\n" + j.note;
     }} else {{
       note.textContent = " the read failed.";
@@ -994,10 +999,6 @@ async function openTown(p){{
       <span id="read-offer"></span>
       <span id="read-note"></span>
       <pre id="read-log" hidden></pre></div>`;
-    /* Ask the reader whether it exists before offering it. A public instance
-       answers 501 and gets the honest explanation instead of a button that
-       would fail when pressed. */
-    offerRead();
   }} else {{
     h += seriesHtml(d);
     h += `<div class="note">${{esc(d.n_measurements)}} observations from ${{esc((d.sources||[]).length)}} documents.
@@ -1006,7 +1007,17 @@ async function openTown(p){{
       Nothing here should be believed without checking it.</div>`;
   }}
   dockBody.innerHTML = h;
-
+  if (!d.found) {{
+    /* AFTER the innerHTML above lands, because offerRead()'s first line looks
+       up #read-offer and returns if it is missing. Called before the dock was
+       filled, the lookup ran against "loading…", found nothing, and exited --
+       so the button this whole project is named for could never appear, on
+       any instance, and the flagship loop was unreachable from the page.
+       Ask the reader whether it exists before offering it: a public instance
+       answers 501 and gets the honest explanation instead of a button that
+       would fail when pressed. */
+    offerRead();
+  }}
 }}
 
 /* The map is the only part of this page that needs a CDN. It is loaded

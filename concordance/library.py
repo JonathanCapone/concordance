@@ -22,6 +22,8 @@ in an hour.
 from __future__ import annotations
 
 import json
+import os
+import re
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -45,6 +47,11 @@ class Answer:
     documents: int = 0
     seconds: float = 0.0
     verified: int = 0
+    #: How many records the archive stood behind and the library now holds.
+    #: Distinct from len(records): a read can recover 40 readings, publish 37,
+    #: and have 3 fail their own evidence check -- and the caller must be able
+    #: to say that rather than "read 40" over a library holding 37.
+    published: int = 0
     contributed: bool = False
     unknown_parameters: list[str] = field(default_factory=list)
     note: str = ""
@@ -201,24 +208,64 @@ def ask(
     bundle = make_bundle(records, contributor="local", note=query)
     verdict = verify_bundle(bundle, archive=archive)
 
-    contributed = False
-    if verdict.accepted:
-        LIBRARY.mkdir(parents=True, exist_ok=True)
-        slug = query.lower().replace(" ", "-")
-        (LIBRARY / f"{slug}.json").write_text(json.dumps({
-            "place": query, "model": client.name, "n_records": len(records),
-            "verified": verdict.verified, "records": records,
-        }, indent=2, ensure_ascii=False), encoding="utf-8")
-        contributed = True
-        say(f"Verified {verdict.verified}/{verdict.total} readings against the scans "
-            "and added them to the library.")
-    elif records:
-        say(f"Verification failed on {len(verdict.failed)} readings; NOT added to the "
-            "library. The readings are returned to you but not shared.")
+    published = publish_supported(query, client.name, records, verdict, say=say)
 
     return Answer(
         query=query, records=records, source="read now",
         documents=len(items), seconds=time.time() - t0,
-        verified=verdict.verified, contributed=contributed,
+        verified=verdict.verified, published=published,
+        contributed=published > 0,
         unknown_parameters=sorted(unknown),
     )
+
+
+def publish_supported(
+    query: str,
+    model_name: str,
+    records: list[dict[str, Any]],
+    verdict: Any,
+    *,
+    say: Callable[[str], None] = lambda _m: None,
+) -> int:
+    """Write what the archive stood behind into the library. Returns how many.
+
+    Publishes verdict.supported -- and ONLY that. Two defects lived on this
+    write when it was inline in ask():
+
+    * It stored `records`, the raw extraction, so readings whose page could
+      not be retrieved at verify time ("nothing here is evidence") entered the
+      library beside the verified ones. merge_bundle was explicitly fixed to
+      merge only the supported set; this was the one write that still
+      published everything on a bundle-level pass.
+    * It gated on verdict.accepted, which one failed reading falsifies. The
+      gold benchmark itself shows ~3% spurious extractions, so an hours-long
+      read of a whole town was discarded for one hallucinated value -- while a
+      stranger pushing the same records through /api/bundle would have had the
+      good subset merged. The machine's own reads now get the same deal.
+    """
+    supported = list(getattr(verdict, "supported", None) or [])
+    if not supported:
+        if records:
+            say(f"Verification failed on {len(verdict.failed)} readings and "
+                "nothing survived; NOT added to the library. The readings are "
+                "returned to you but not shared.")
+        return 0
+
+    LIBRARY.mkdir(parents=True, exist_ok=True)
+    slug = re.sub(r"[^a-z0-9]+", "-", query.lower()).strip("-") or "place"
+    payload = json.dumps({
+        "place": query, "model": model_name, "n_records": len(supported),
+        "verified": verdict.verified, "records": supported,
+    }, indent=2, ensure_ascii=False)
+    # Atomic against a reader mid-write; overwrite is intended -- a re-read
+    # of the same place replaces its file.
+    target = LIBRARY / f"{slug}.json"
+    temporary = target.with_suffix(".json.tmp")
+    temporary.write_text(payload, encoding="utf-8")
+    os.replace(temporary, target)
+    dropped = len(records) - len(supported)
+    say(f"Verified {verdict.verified}/{verdict.total} readings against the "
+        f"scans; {len(supported)} are in the library now"
+        + (f", {dropped} failed their own evidence check and were not."
+           if dropped else "."))
+    return len(supported)

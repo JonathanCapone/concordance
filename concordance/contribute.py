@@ -184,6 +184,29 @@ def ground_condition(record: dict[str, Any]) -> dict[str, Any]:
     return cleaned
 
 
+#: The least words a quote may carry when the quote is the ENTIRE evidence
+#: (value=None, so nothing numeric can be cross-checked). "No guideline was
+#: exceeded." is an honest four-word conclusion a real report prints, so four
+#: is the floor the world allows; "the", which is on every page in the
+#: archive, is what it exists to refuse. Zero of the 6,142 stored records
+#: fall anywhere near it.
+_DISTINCTIVE_QUOTE_TOKENS = 4
+
+
+def _quote_is_distinctive(quote: str) -> bool:
+    """Could finding this sentence on the page mean anything?
+
+    A floor, not a proof: someone quoting a real full sentence and varying the
+    free-text fields can still mint technically-verifiable variants, which is
+    the known limitation the disputes module names openly ("no mechanical
+    defence against a thousand technically-verifiable misreadings"). What the
+    floor removes is the qualitatively worse case -- claims whose entire
+    evidence could be found on ANY page, so that verification passed while
+    checking nothing at all.
+    """
+    return len(_evidence_tokens(quote)) >= _DISTINCTIVE_QUOTE_TOKENS
+
+
 def condition_in_quote(condition: str, quote: str) -> bool:
     """Are the condition's words inside the sentence, in order?
 
@@ -616,6 +639,21 @@ def verify_bundle(
             # The SENTENCE is confirmed on the page; only the value could not be
             # judged. That is a real, if partial, piece of evidence, so it may be
             # kept -- unlike a record that cited nothing checkable at all.
+            #
+            # PROVIDED the sentence could not be found everywhere. For a record
+            # with no number, sentence-on-page is the ONLY check -- and a quote
+            # of "the" is on every page in the archive, so one genuine record
+            # plus N invented conclusions each quoting a common word used to
+            # ride into the library verified. That is the documented
+            # merge-poisoning catastrophe returning through the value=None
+            # door: the check passed because there was nothing to check.
+            # Measured over all 6,142 stored records, no honest reading quotes
+            # fewer than five words, so the floor rejects nothing real.
+            if not _quote_is_distinctive(quote):
+                verdict.unsupported.append({**tag, "why": (
+                    "with no value to check, the sentence is the entire "
+                    "evidence, and one this short could be found anywhere")})
+                continue
             verdict.unchecked.append({**tag, "why": why})
             supported.append(verified_record)
         else:
@@ -738,7 +776,15 @@ def _value_in_quote(value: Any, quote: str) -> tuple[str, str]:
         canonical = repr(numeric_value)
         if canonical.endswith(".0"):
             canonical = canonical[:-2]
-        direct = re.sub(r"(?<=\d),(?=\d)", "", quote)
+        # Strip a comma ONLY where it formats thousands -- three digits then a
+        # boundary -- matching the shape the token check uses. Stripping ANY
+        # digit-comma-digit accepted "8,5 millions de gallons" as evidence for
+        # 85 at this, the strongest tier: a French decimal comma read as ten
+        # times its value, in a corpus a third of which is French. (Reading
+        # "8,5" AS 8.5 is a separate, deliberate decision this check does not
+        # take; today the decimal-comma value stays unverifiable rather than
+        # wrong.)
+        direct = re.sub(r"(?<=\d),(?=\d{3}(?!\d))", "", quote)
         if re.search(rf"(?<![\d.+-]){re.escape(canonical)}(?![\d.])", direct):
             return "ok", ""
         if numeric_value in _numbers_in(quote, repair_ocr=False):
