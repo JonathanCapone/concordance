@@ -58,8 +58,15 @@ def test_two_readings_of_the_same_thing_still_share_a_slot() -> None:
 
 def test_the_slot_carries_the_fields_that_change_what_is_claimed() -> None:
     for field in ("place", "facility", "parameter", "unit", "period", "stream",
-                  "kind", "qualifier"):
+                  "kind", "qualifier", "condition"):
         assert field in SLOT_FIELDS
+
+
+def test_condition_is_the_last_slot_field() -> None:
+    """server.py and the portal parse a slot key's place as split("|")[0] and
+    render segments in order. Appending keeps every parser working; inserting
+    mid-tuple would silently mis-group every slot."""
+    assert SLOT_FIELDS[-1] == "condition"
 
 
 def test_no_published_slot_mixes_kinds() -> None:

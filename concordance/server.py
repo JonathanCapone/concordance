@@ -1041,7 +1041,7 @@ class State:
                     "parameter": label,
                     "value": _number(r.value),
                     "unit": r.unit or s.unit,
-                    "qualifier": r.qualifier or "",
+                    "qualifier": r.qualifier or "", "condition": r.condition or "",
                     # True for the reading the line actually passes through.
                     "charted": bool(src is not None and src is r),
                     "kind": r.kind,
@@ -1153,7 +1153,7 @@ class State:
                 "period": str(r.period) if r.period else "",
                 "parameter": (got.label if got else (r.parameter or "")),
                 "value": _number(r.value),
-                "unit": r.unit or "", "qualifier": r.qualifier or "", "charted": False,
+                "unit": r.unit or "", "qualifier": r.qualifier or "", "condition": r.condition or "", "charted": False,
                 "kind": r.kind,
                 "read_from": (prov.source_text[:150] if prov else ""),
                 "page_url": (prov.page_url if prov else ""),
@@ -1464,7 +1464,7 @@ def _bare_group(label: str, stream: str | None, facility: str,
             "period": str(r.period) if r.period else "", "year": year,
             "parameter": label,
             "value": _number(r.value),
-            "unit": r.unit or "", "qualifier": r.qualifier or "", "charted": False,
+            "unit": r.unit or "", "qualifier": r.qualifier or "", "condition": r.condition or "", "charted": False,
             "kind": r.kind,
             "read_from": (prov.source_text[:150] if prov else ""),
             "page_url": (prov.page_url if prov else ""),
@@ -2181,6 +2181,7 @@ class Handler(BaseHTTPRequestHandler):
             unit = _text_field(payload, "unit", MAX_SUBMIT_TEXT_CHARS)
             place = _text_field(payload, "place", MAX_SUBMIT_TEXT_CHARS)
             facility = _text_field(payload, "facility", MAX_SUBMIT_TEXT_CHARS)
+            condition = _text_field(payload, "condition", 200)
             period = _text_field(payload, "period", MAX_SUBMIT_TEXT_CHARS)
             stream = _text_field(payload, "stream", MAX_SUBMIT_TEXT_CHARS) or "unknown"
             who = _text_field(payload, "who", 60) or "anonymous"
@@ -2250,6 +2251,10 @@ class Handler(BaseHTTPRequestHandler):
             "unit": unit or None,
             "place": place or None,
             "facility": facility or None,
+            # Grounded inside disputes.submit(): a circumstance whose words
+            # are not in the quoted sentence is stripped before the claim's
+            # identity exists, exactly as the machine's own extractions are.
+            "condition": condition or None,
             "period": period or None,
             "stream": stream,
             "kind": "observation",

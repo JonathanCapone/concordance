@@ -425,6 +425,8 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
               <input id="sb-place" maxlength="400" placeholder="place">
               <input id="sb-facility" maxlength="400" placeholder="which plant / hospital / board (optional)">
               <input id="sb-period" maxlength="400" placeholder="year">
+              <input id="sb-condition" maxlength="200" style="grid-column:1/3"
+                placeholder="circumstance stated in the sentence, e.g. @ 40 foot head (optional)">
             </div>
             <textarea id="sb-quote" rows="2" maxlength="4000" placeholder="the exact sentence, copied from the page"
               style="width:100%;margin-top:8px"></textarea>
@@ -637,7 +639,8 @@ function rowsHtml(rows){{
       ? ` <span class="again">still stated ${{again.join(", ")}}</span>` : "";
     h += `<div class="row${{x.charted?" charted":""}}">`
        + `<span class="y">${{esc(x.period||"")}}${{x.page?`<span class="pg">p${{esc(x.page)}}</span>`:""}}</span>`
-       + `<span>${{esc(x.parameter)}}${{x.qualifier?` <span class="q">${{esc(x.qualifier)}}</span>`:""}}</span>`
+       + `<span>${{esc(x.parameter)}}${{x.qualifier?` <span class="q">${{esc(x.qualifier)}}</span>`:""}}${{
+           x.condition?` <span class="q">${{esc(x.condition)}}</span>`:""}}</span>`
        + `<span class="v">${{esc(x.value)}} ${{esc(x.unit||"")}}</span>`
        + `<span class="src">“${{esc(x.read_from)}}”${{scanLink}}${{cite}}${{restated}}`
        + `<span class="paper"></span></span></div>`;
@@ -1592,7 +1595,8 @@ const LOADERS = {{
       const submission = {{
         identifier: v("sb-id"), page: v("sb-page"), parameter: v("sb-param"),
         value: v("sb-value"), unit: v("sb-unit"), place: v("sb-place"),
-        facility: v("sb-facility"), period: v("sb-period"), quote: v("sb-quote"),
+        facility: v("sb-facility"), period: v("sb-period"),
+        condition: v("sb-condition"), quote: v("sb-quote"),
       }};
       const d = await postJson("/api/submit", submission);
       out.innerHTML = (d.accepted

@@ -32,7 +32,10 @@ from dataclasses import dataclass
 from typing import Any, Protocol
 
 from . import vocabulary
-from .contribute import _has_prose_context, _match_evidence_span, _norm, _value_in_quote
+from .contribute import (
+    _has_prose_context, _match_evidence_span, _norm, _value_in_quote,
+    condition_in_quote,
+)
 from .models import PageText, Provenance, Record
 
 DEFAULT_OLLAMA_MODEL = "gemma4:12b"
@@ -199,6 +202,30 @@ different things a paragraph apart. A page describing a city's hospitals gives
 what is being measured; without it those four readings collapse into one and are
 reported as a disagreement.
 
+In specification tables the sentence usually does NOT name the thing -- the
+heading above it does. A block headed "PUMPING STATION - PLATS SITE, Unit No. 1"
+followed by lines "HP - 60" and "RPM - 1800" is describing that pump: every line
+under a heading belongs to the thing the heading names, until the next heading.
+
+    PUMPING STATION - PLATS SITE
+    Unit No. 1
+    HP - 60        -> parameter "horsepower", value 60, unit "HP",
+                      facility "PUMPING STATION - PLATS SITE Unit No. 1"
+    Unit No. 2
+    HP - 30        -> facility "PUMPING STATION - PLATS SITE Unit No. 2"
+
+A bare "HP - 60" with facility null is a number that belongs to nothing; carried
+under its heading it is a pump, described.
+
+When the sentence itself states the circumstance under which the value holds,
+put those exact words in "condition": "Capacity - 0.5 MGD @ 40 foot head" ->
+condition "@ 40 foot head"; "flows exceeded 7.2 mgd 10 percent of the time" ->
+condition "10 percent of the time"; "610 scfm each" -> condition "each". The
+words MUST appear inside "source_text" -- a condition is checked against the
+sentence exactly like the value, and one that is not there is discarded. Leave
+it null when the sentence states no circumstance; do not repeat the facility or
+the qualifier in it.
+
 A sentence that names a year other than the report's year may be comparing two
 years. Put each value under the year the sentence gives it, not automatically
 under the report's year:
@@ -219,9 +246,13 @@ Return ONLY a JSON array. No prose, no markdown fence. Each element:
   "qualifier":  "average"|"mean"|"median"|"maximum"|"minimum"|"total"|"percent"|"count"|"point"|null,
   "stream":     "influent"|"effluent"|"ambient"|"raw"|"treated"|"unknown",
   "place":      the place it refers to, or null,
-  "facility":   the specific thing measured, when the sentence names one, e.g.
-                "Hamilton General Hospital", "Hamilton Board of Education",
-                "water pollution control plant", or null,
+  "facility":   the specific thing measured, when the sentence OR the heading
+                above it names one, e.g. "Hamilton General Hospital",
+                "water pollution control plant", "PUMPING STATION Unit No. 1",
+                or null,
+  "condition":  the circumstance the sentence attaches to the value, in the
+                sentence's own words, e.g. "@ 40 foot head", "10 percent of
+                the time", "each", or null,
   "period":     the time it refers to, e.g. "1969", "1969-11", or null,
   "confidence": 0.0 to 1.0 -- how sure you are you read this correctly,
   "source_text": the EXACT sentence or line from the text that this came from
@@ -579,6 +610,14 @@ def extract_prose(
         confidence = round(model_conf * (0.5 + 0.5 * scan_conf), 4)
 
         qualifier = c.get("qualifier")
+        # The circumstance is checked against the sentence like the value is.
+        # Dropped rather than rejected: a wrong condition is an annotation
+        # failure, not a fabricated measurement -- but dropped AUDITABLY, so a
+        # run where the model keeps inventing circumstances is visible.
+        condition = str(c.get("condition") or "").strip() or None
+        condition_dropped = ""
+        if condition and not condition_in_quote(condition, matched_source):
+            condition_dropped, condition = condition, None
         stream = str(c.get("stream") or "unknown").strip().lower()
         model_parameter_status = str(c.get("parameter_status") or "").strip().lower()
         raw_metadata: dict[str, Any] = {
@@ -598,6 +637,8 @@ def extract_prose(
         }
         if model_parameter_status in ("controlled", "proposed"):
             raw_metadata["model_parameter_status"] = model_parameter_status
+        if condition_dropped:
+            raw_metadata["condition_dropped"] = condition_dropped[:200]
 
         record = Record(
             kind=kind,  # type: ignore[arg-type]
@@ -613,6 +654,7 @@ def extract_prose(
             # empty, because a page describing four hospitals knows which is
             # which and the title does not.
             facility=(str(c["facility"]).strip() if c.get("facility") else None),
+            condition=condition,
             period=_period_of(c),
             confidence=confidence,
             provenance=Provenance(

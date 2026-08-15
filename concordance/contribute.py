@@ -152,6 +152,51 @@ def _norm(text: str) -> str:
     return "\x1f".join(token.value for token in _evidence_tokens(text))
 
 
+def ground_condition(record: dict[str, Any]) -> dict[str, Any]:
+    """Keep a record's `condition` only if its words are in the quoted sentence.
+
+    The condition is the one field that changes a record's identity without
+    being a fact about the measurement itself -- it is the circumstance the
+    sentence attaches ("@ 55 ft head", "10 percent of the time"). If it could
+    say anything, one true sentence resubmitted with N invented conditions
+    would mint N distinct verified claims, because every other evidence check
+    would still pass. So it is held to the same standard as the value: the
+    words must be in the quote, in order, or they are removed.
+
+    The RECORD survives either way. A wrong condition is an annotation failure,
+    not a fabricated measurement, and stripping it collapses the identity back
+    to the unconditioned record -- where dedup treats a poisoned twin as the
+    duplicate it is. Fail closed on the annotation, never on the fact.
+
+    Applied at every write boundary (extraction output, bundle merge, person
+    submission), so stored data is grounded by construction and loaders never
+    need to repeat the check.
+    """
+    condition = record.get("condition")
+    if condition is None:
+        return record
+    text = str(condition) if isinstance(condition, str) else ""
+    quote = str((record.get("provenance") or {}).get("source_text") or "")
+    if condition_in_quote(text, quote):
+        return record
+    cleaned = dict(record)
+    cleaned.pop("condition", None)
+    return cleaned
+
+
+def condition_in_quote(condition: str, quote: str) -> bool:
+    """Are the condition's words inside the sentence, in order?
+
+    Contiguous TOKEN containment, not substring: "each" must not pass on a
+    sentence containing "beaches", which a join-then-substring check allows.
+    """
+    wanted = [t.value for t in _evidence_tokens(condition)]
+    have = [t.value for t in _evidence_tokens(quote)]
+    return bool(wanted) and any(
+        have[i:i + len(wanted)] == wanted
+        for i in range(len(have) - len(wanted) + 1))
+
+
 def _match_evidence_span(quote: str, page_text: str) -> str | None:
     """Return the exact page span corresponding to ``quote``, if one exists.
 
@@ -243,11 +288,15 @@ def record_problems(record: Any) -> list[str]:
     if kind != "conclusion" and value is None:
         problems.append("only a conclusion may omit its numeric value")
 
-    for field_name in ("unit", "place", "facility",
+    for field_name in ("unit", "place", "facility", "condition",
                        "comparability_note", "notes", "key"):
         field_value = record.get(field_name)
         if field_value is not None and not isinstance(field_value, str):
             problems.append(f"{field_name} must be text or null")
+    condition = record.get("condition")
+    if isinstance(condition, str) and len(condition) > 200:
+        # It names a circumstance inside one sentence; a novel is an attack.
+        problems.append("condition must be 200 characters or fewer")
     period = record.get("period")
     if (period is not None and
             (isinstance(period, bool) or not isinstance(period, (str, int)))):
@@ -310,6 +359,7 @@ def record_problems(record: Any) -> list[str]:
             place=record.get("place"),
             period=(str(period) if isinstance(period, int) else period),
             facility=record.get("facility"),
+            condition=record.get("condition"),
             confidence=float(confidence),
             provenance=Provenance(
                 identifier=identifier,
@@ -879,7 +929,12 @@ def _merge_bundle_transaction(
         # A bundle exported from a result file has already passed through the
         # same helper in ``load_claims``. Applying it again is idempotent and
         # also keeps direct bundle callers on the canonical identity path.
-        r = scope_record_dict(raw_record, None)
+        #
+        # Grounding comes FIRST, before identity: a condition the quote does
+        # not contain is stripped here, so the poisoned twin's key collapses
+        # to the true record's key and the dedup below treats it as the
+        # duplicate it is.
+        r = scope_record_dict(ground_condition(raw_record), None)
         k = public_record_key(r)
         # Also dedup WITHIN the bundle. A sender who concatenated two exports
         # would otherwise land the same reading twice in one file, where the

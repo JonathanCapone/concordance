@@ -38,6 +38,7 @@ def records_from_report(path: Path) -> list[Record]:
                 stream=d.get("stream", "unknown"),
                 place=d.get("place"),
                 period=d.get("period"),
+                condition=d.get("condition"),
                 confidence=d.get("confidence", 0.0),
                 provenance=Provenance(
                     identifier=p.get("identifier", ""),

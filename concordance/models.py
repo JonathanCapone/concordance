@@ -149,6 +149,14 @@ def record_key(d: dict[str, Any]) -> str:
         str(prov.get("identifier") or ""),
         str(page) if page else "",
     ]
+    # Appended ONLY when present. An unconditional twelfth segment would give
+    # every existing identity a trailing "|" -- all 6,000+ stored records would
+    # re-key at once and re-import as new, which is the 88-record loader bug at
+    # full scale. Absent, null and "" must all hash exactly as they did before
+    # the field existed.
+    condition = str(d.get("condition") or "").strip()
+    if condition:
+        parts.append(_slug(condition))
     return hashlib.sha256("|".join(parts).encode()).hexdigest()[:20]
 
 
@@ -180,6 +188,20 @@ class Record:
     #: 1974 and Drinking Water Surveillance reports from 1990 -- and merging them
     #: under one place name would put effluent and tap water on the same chart.
     facility: str | None = None
+
+    #: The qualifying circumstance the sentence itself attaches to the value:
+    #: "@ 55 ft head", "10 percent of the time", "each", "standby". Not the
+    #: thing measured (that is `facility`) and not min/max/average (that is
+    #: `qualifier`) -- the condition under which the number holds. Without it,
+    #: "flows exceeded 7.2 mgd 10 percent of the time" and "5.6 mgd 50 percent
+    #: of the time" collapse into one slot and are reported as the archive
+    #: disagreeing with itself.
+    #:
+    #: Constrained to words that appear INSIDE the quoted sentence, and stripped
+    #: when they do not (contribute.ground_condition) -- so the same evidence
+    #: check that pins the value pins the circumstance, and a fabricated
+    #: condition cannot mint a new identity from one true sentence.
+    condition: str | None = None
 
     confidence: float = 0.0                 # 0..1, reading confidence
     provenance: Provenance | None = None

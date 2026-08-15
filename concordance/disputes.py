@@ -66,7 +66,7 @@ from typing import Any, Iterable
 from .archive import Archive
 from .contribute import (
     _atomic_create, _has_prose_context, _match_evidence_span, _norm, _value_in_quote,
-    public_record_key, record_problems,
+    ground_condition, public_record_key, record_problems,
 )
 from .places import attach_subunits, scope_record_dict
 
@@ -101,8 +101,17 @@ from .places import attach_subunits, scope_record_dict
 #:   * One sentence -- "ranging from a minimum reduction in BOD of 4.5 to a
 #:     maximum of 99, averaging 91.6" -- became three claims fighting over one
 #:     slot, when it plainly states three different quantities.
+#: `condition` is the fifth field this identity gained, and the first added
+#: BEFORE its bug shipped rather than after: "flows exceeded 7.2 mgd 10 percent
+#: of the time" and "5.6 mgd 50 percent of the time" are not two answers to one
+#: question, they are one distribution read at two points. 84 slots were
+#: manufactured disagreements of this shape.
+#:
+#: It is appended LAST and must stay last: server.py and the portal parse a
+#: slot key's place as split("|")[0], and the portal renders the segments in
+#: order. Inserting mid-tuple would silently mis-group every slot.
 SLOT_FIELDS = ("place", "facility", "parameter", "unit", "period", "stream",
-               "kind", "qualifier")
+               "kind", "qualifier", "condition")
 
 
 def slot_of(record: dict[str, Any]) -> str:
@@ -608,6 +617,12 @@ def submit(
     as a contested measurement, which is the honest state for two claims the
     paper supports equally well.
     """
+    # BEFORE the claim exists, because the claim's identity includes the
+    # condition. Ungrounded, one true sentence resubmitted with N invented
+    # conditions would mint N distinct verified claims; grounded, the invention
+    # is stripped, the identity collapses back, and the replay guard below
+    # sees the same claim it already stored.
+    record = ground_condition(record)
     claim = Claim(record=record, source="correction" if disputes else "person",
                   contributor=contributor or "anonymous", note=note, disputes=disputes)
     standing = check(claim, archive=archive)

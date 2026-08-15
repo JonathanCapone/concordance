@@ -211,6 +211,11 @@ class Corpus:
                         # to 1992, when that is a drinking-water report that merely
                         # shares the town's name.
                         facility=d.get("facility"),
+                        # Dropping this here while record_key includes it would
+                        # give the same reading two identities, one on either
+                        # side of the loader -- the exact asymmetry that once
+                        # re-imported the library's own data as 88 new records.
+                        condition=d.get("condition"),
                         confidence=d.get("confidence", 0.0),
                         provenance=Provenance(
                             identifier=prov.get("identifier", ""),
