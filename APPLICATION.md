@@ -112,7 +112,7 @@ it came from, because a percentage without a denominator is not a measurement:
 | Source-sentence mismatches in a 286-record audit | **0** |
 | Vision-table trial output | **535 records** from 24 pages across 11 collections, 1879–2003; no hand-read accuracy score yet |
 | Deterministic OCR date recovery | **142/145** non-bound held-out guesses agreed with catalogue years; **111/300** yearless residual items received date proposals |
-| Frozen application checkpoint (`f8fbca2`) | **5,147 source-linked records** across 14 municipalities, including 2,384 observations |
+| Frozen application checkpoint (`763d4c0`) | **5,147 source-linked records** across 14 municipalities, including 2,384 observations |
 
 *Precision* is how much of what it produced was correct; *recall* is how much of
 what was there it found. Both are measured against a set of pages a human read

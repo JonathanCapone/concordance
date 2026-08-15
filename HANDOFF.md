@@ -56,7 +56,7 @@ points at. It is *not* what gets pasted into the form.
 
 ## 3. Where it stands
 
-**5,147 source-linked records across 14 municipalities** at the frozen `f8fbca2`
+**5,147 source-linked records across 14 municipalities** at the frozen `763d4c0`
 application checkpoint, 850+ tests, zero required dependencies in the core. Core
 benchmark figures are tied to named snapshots; live estimates must be dated and labelled.
 
@@ -95,7 +95,7 @@ parameter name the model invented rather than one the archive uses**, against
   receipts.
 - **Vocabulary workflow** — a conservative first artifact is built and wired
   into extraction. `data/vocabulary/vocabulary.json` holds 697 source-attested
-  terms from the frozen `f8fbca2` 5,147-record checkpoint and stratified survey: 229 have
+  terms from the frozen `763d4c0` 5,147-record checkpoint and stratified survey: 229 have
   one consistent existing identity; 468 deliberately leave identity blank; all
   are `reviewed: false`; matching collisions are zero. Grouping is orthographic
   only, so words such as `design`, `total`, `maximum`, `minimum`, `per capita`
@@ -126,7 +126,7 @@ municipal sewage reports" and "works on the Canadian public record".
 1. ~~Build a safe provisional artifact.~~ **Done.** The deterministic builder
    reads committed evidence by default, validates source attestation and matching
    invariants, and refuses semantic collisions. Reproduce this exact artifact
-   with `python scripts/build_vocabulary.py --git-ref f8fbca2 --dry-run`;
+   with `python scripts/build_vocabulary.py --git-ref 763d4c0 --dry-run`;
    validate the saved file with
    `python scripts/build_vocabulary.py --validate data/vocabulary/vocabulary.json`.
 

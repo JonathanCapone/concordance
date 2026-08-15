@@ -332,7 +332,7 @@ small numbers that fall when a plant improves, so it looked entirely reasonable.
 
 ## Status
 
-**A note on numbers.** The fellowship application cites the frozen checkpoint `f8fbca2` —
+**A note on numbers.** The fellowship application cites the frozen checkpoint `763d4c0` —
 5,147 records across 14 municipalities — because an application should cite figures that can be
 checked out and recomputed. The repository has kept growing since, so counts at HEAD are higher;
 where this README states a number, it states which corpus it comes from.

@@ -13,7 +13,7 @@ Three facts interact badly:
    The standing rule is that commits use `jdcap@users.noreply.github.com`, so
    history must be rewritten — and the hosting account itself is the wrong
    public identity for a portfolio project.
-2. Rewriting history **changes every SHA**, including `f8fbca2`, the frozen
+2. Rewriting history **changes every SHA**, including `763d4c0`, the frozen
    checkpoint cited in two submitted form answers, APPLICATION.md, HANDOFF.md
    and the vocabulary artifact. A "check my work" application whose one
    verifiable anchor does not exist in the public repo is worse than no
@@ -47,7 +47,7 @@ zero residue, delete and recreate the repo instead.
    DONE (2026-08-15): repo-local config is
    `29108860+JonathanCapone@users.noreply.github.com` / "Jonathan Capone".
 
-2. **Rewrite the history** (local clone, then verify before any push):
+2. **DONE (2026-08-15). Rewrite the history** (verified: one email across all commits, zero AI trailers, pre-push hook intact):
 
    Both old addresses map to the ID-based noreply -- the aminalnam one for
    the obvious reason, and `jdcap@...` because it attributes to whoever holds
@@ -69,7 +69,7 @@ zero residue, delete and recreate the repo instead.
    `git log --format=%B | grep -iE "co-authored|generated with|noreply@anthropic"`
    must print nothing.
 
-3. **Find the rewritten checkpoint.** The commit that was `f8fbca2` keeps its
+3. **DONE (2026-08-15): tagged `application-checkpoint` = `763d4c0`. Find the rewritten checkpoint.** The commit that was `763d4c0` keeps its
    tree, message and date; only the SHA changes:
 
    ```bash
@@ -82,7 +82,7 @@ zero residue, delete and recreate the repo instead.
    git tag application-checkpoint <new-sha>
    ```
 
-4. **Update every SHA reference** to the new short SHA (and prefer citing the
+4. **DONE (2026-08-15). Update every SHA reference** to the new short SHA (and prefer citing the
    tag beside it). Known sites — re-grep before trusting this list:
    - `APPLICATION-FORM.md` (two answers: Project summary, Relevant experience)
    - `APPLICATION.md`
@@ -98,9 +98,11 @@ zero residue, delete and recreate the repo instead.
    account rename; the remote is already `JonathanCapone/concordance`):
 
    ```bash
-   git push origin main --force
+   git push origin master --force
    git push origin --tags
    ```
+
+   (The branch is `master`, not `main`.)
 
    The local pre-push hook blocks pushes by design; Jonathan runs the push, or
    explicitly authorizes bypassing the hook for this one operation.

@@ -44,7 +44,7 @@ process left running.
 That is the path to growth without a permanent central compute bill. It is a
 deliverable, not something I am claiming is already deployed.
 
-At frozen application checkpoint `f8fbca2`: 5,147 source-linked records across
+At frozen application checkpoint `763d4c0`: 5,147 source-linked records across
 14 municipalities, including 2,384 observations, and 96.8% precision on four
 hand-read pages. A source-sentence audit of the then-complete 286-record
 corpus found no mismatches.
@@ -253,7 +253,7 @@ remains unknown. National coverage is a stretch goal.
 ## Relevant experience — *What prepares you to do this work* (2000)
 
 **I have built the hard half already, and you can check it rather than take my
-word.** At checkpoint `f8fbca2`: 5,147 source-linked records across 14
+word.** At checkpoint `763d4c0`: 5,147 source-linked records across 14
 municipalities and 96.8% precision on four hand-read pages. The full test suite
 passes; no core package dependencies are required.
 
