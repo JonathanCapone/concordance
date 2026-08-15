@@ -8,7 +8,7 @@ Everything a person or agent picking this up needs, in the order they need it.
 
 **Concordance** reads measurements out of ~104,000 scanned Canadian government
 publications and publishes each one with a link to the scanned page it came
-from. Repo lives at `C:/Users/jdcap/Documents/Projects/ground-truth` (directory
+from. The repo directory is named `ground-truth` (directory
 still has the old name; everything inside is renamed).
 
 It is being submitted to the **BC + AI / Internet Archive Canada AI Builders
@@ -40,8 +40,8 @@ points at. It is *not* what gets pasted into the form.
    `jdcap@users.noreply.github.com`. This has been checked and holds; re-check
    before making the repo public.
 2. **Never add AI attribution to a commit message.** No `Co-Authored-By`, no
-   "Generated with", no robot emoji. This is in the user's global CLAUDE.md and
-   it overrides the default. The reasoning: these repos are his portfolio
+   "Generated with", no robot emoji. This is a standing rule from Jonathan and
+   it overrides any tool default. The reasoning: these repos are his portfolio
    surface, a trailer is baked into the commit SHA, and removing it later means
    rewriting history.
 3. **The repo is PRIVATE and must be made public before submitting.**
@@ -57,7 +57,7 @@ points at. It is *not* what gets pasted into the form.
 ## 3. Where it stands
 
 **5,147 source-linked records across 14 municipalities** at the frozen `f8fbca2`
-application checkpoint, 779 tests, zero required dependencies in the core. Core
+application checkpoint, 850+ tests, zero required dependencies in the core. Core
 benchmark figures are tied to named snapshots; live estimates must be dated and labelled.
 
 | | |
@@ -157,10 +157,9 @@ The deployment design exists, but publishing remains outward-facing work: get a
 fresh go-ahead before changing DNS or starting it. The remaining external input
 would be a **DNS A record**.
 
-- Droplet `165.227.25.23`, Ubuntu 24.04, nginx + Let's Encrypt. Runbook and
-  patterns in `C:/Users/jdcap/Documents/Projects/server-infra` — follow the
-  Squishy Store pattern (systemd unit + nginx reverse proxy), not the static
-  ones.
+- A DigitalOcean droplet, Ubuntu 24.04, nginx + Let's Encrypt (address and
+  runbook in Jonathan's separate infra notes) — follow the systemd unit +
+  nginx reverse-proxy pattern there, not the static-site ones.
 - Suggested host `concordance.jonathancapone.com`.
 - Set `CONCORDANCE_PUBLIC_HOSTS=concordance.jonathancapone.com` in the service
   environment. POST endpoints trust only loopback hosts by default; the explicit
@@ -235,7 +234,7 @@ think we need to utilize more of the OMEGA code base since the work is mostly
 done and it looks good."* The decision he made was: Concordance stays a separate
 repository, but stops rebuilding what OMEGA already has.
 
-OMEGA-wave lives at `C:/Users/jdcap/Documents/Codex/OMEGA-wave`. It is a large,
+OMEGA-wave is a sibling repo of Jonathan's. It is a large,
 actively changing system; do not repeat old line or provider counts without
 measuring the current checkout. Some of it is already here (`science.py`,
 `portal.py`, `jay.py`, `static/omega-portal.css` all came from it). A survey ran
@@ -283,7 +282,7 @@ at startup, so **any code or data change needs a restart** — this has caused
 
 ### The trap
 
-**A `` written into a regex through a shell heredoc becomes a literal
+**A `\b` written into a regex through a shell heredoc becomes a literal
 backspace byte (0x08).** The file then reads back correctly in every editor and
 the pattern silently matches nothing.
 
@@ -295,7 +294,7 @@ why.
 
 `tests/test_vision.py::test_no_source_file_carries_a_control_byte` catches it
 and caught the third occurrence. Two habits avoid it entirely: write regexes
-with `(?<![a-z])` / `(?![a-z])` instead of ``, and prefer the Write/Edit tools
+with `(?<![a-z])` / `(?![a-z])` instead of `\b`, and prefer the Write/Edit tools
 over heredocs when authoring patterns.
 
 ---
@@ -342,18 +341,16 @@ time.
 
 ## 8b. Prior investigations, and where their output lives
 
-A lot of analysis was run that is not in the code. The raw results are in the
-session task directory
-`C:/Users/jdcap/AppData/Local/Temp/claude/.../2b3847e7-.../tasks/<id>.output`
-as JSON. **Read these before re-doing the work.**
+A lot of analysis was run whose raw output lived in session-local scratch
+files that do not travel with the repo. What each one established:
 
-| id | what it was | status |
-|---|---|---|
-| `w5qp6221v` | Initial adversarial audit: nine confirmed defects, six rated serious | current fix inventory is §5C; use it plus the final suite to state closure |
-| `w5gzy32rc` | OMEGA lift survey, subsystem by subsystem, each candidate costed | **never acted on** — section 5E |
-| `w1ume7jp3` | Reader panel 1 on the application — five personas. Verdict: none of five could name the deliverable. | acted on; drove the rewrite |
-| `wl1cwxsvo` | Reader panel 2 on the rewrite. 4 of 5 could explain it from line 7. | acted on |
-| `wbz5lcp9y` | Vocabulary clustering, 8 domains + reconcile | collected into `data/vocabulary/` |
+| what it was | where its conclusions live now |
+|---|---|
+| Initial adversarial audit: nine confirmed defects, six rated serious | fix inventory in §5C; regressions in the test suite |
+| OMEGA lift survey, subsystem by subsystem, each candidate costed | **never acted on** — section 5E |
+| Reader panel 1 on the application — five personas; none could name the deliverable | acted on; drove the rewrite |
+| Reader panel 2 on the rewrite — 4 of 5 could explain it from line 7 | acted on |
+| Vocabulary clustering, 8 domains + reconcile | collected into `data/vocabulary/` |
 
 The reader panels are re-runnable and cheap. If you materially change
 `APPLICATION-FORM.md`, run one — both rounds found things no amount of
@@ -362,7 +359,7 @@ re-reading it myself would have.
 ### Commands worth knowing
 
 ```bash
-python -m pytest -q                      # 779 tests, ~8s, no network
+python -m pytest -q                      # 850+ tests, ~2 minutes, no network
 python scripts/check_form.py             # application answers vs the form's limits
 python scripts/rescore.py                # accuracy, no model needed
 python scripts/recover_years.py --fresh --sleep 0 --checkpoint-every 50 --out data/cache/dating/year_recovery.json  # warm-cache dating validation

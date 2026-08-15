@@ -6801,9 +6801,8 @@ body[data-page="inspect"] .data-browser-panel > .panel-head.is-empty {
 .activity-feed-button {
   /* Observe-page cleanup: the floating 🕒 recent-activity button was
      visual noise — the same history is reachable via Cmd+K's command
-     palette and indirectly via Honu (which sees recent_recipes in the
-     portal_state). Hidden in CSS so the JS that injects + tracks
-     activity keeps running for those other consumers. */
+     palette. Hidden in CSS so the JS that injects + tracks activity
+     keeps running for those other consumers. */
   display: none;
   position: fixed;
   top: 24px;
@@ -11282,7 +11281,6 @@ body[data-route="observe"] .ocean-layer-dock {
   backdrop-filter: blur(16px);
 }
 
-
 .rail-icon {
   position: relative;
   display: grid;
@@ -11830,18 +11828,6 @@ body.map-immersive .immersive-fish-swim {
   50% {
     transform: rotate(3.5deg);
   }
-}
-
-/* Immersive mode Ã¢â‚¬â€ hide all observe chrome so only the map (and fish) remain. */
-body.map-immersive .app-header,
-body.map-immersive #ocean-layer-dock,
-body.map-immersive #observe-time-bar,
-body.map-immersive #map-status,
-body.map-immersive #context-panel,
-body.map-immersive .context-drawer,
-body.map-immersive #copilot-launcher,
-body.map-immersive #copilot-panel {
-  display: none !important;
 }
 
 body.map-immersive .map-plane .map-stage {
@@ -12736,8 +12722,6 @@ g.hovertext tspan,
 .pcs-label { color: rgba(218,234,240,0.4); font-weight: 600; }
 .pcs-val { color: #dff8ff; font-weight: 700; font-variant-numeric: tabular-nums; }
 
-
-
 /* Area Analysis (Region Report) */
 .area-report { display: flex; flex-direction: column; gap: 10px; }
 
@@ -12784,7 +12768,6 @@ g.hovertext tspan,
 
 /* Box select crosshair */
 body.is-area-selecting { cursor: crosshair; }
-
 
 /* === Status readout Ã¢â‚¬â€ translucent pill centered below the header === */
 body[data-route="observe"] #map-status {
@@ -13088,7 +13071,6 @@ body:not([data-depth-active="true"]) .time-bar-depth { display: none; }
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-
 
 .observe-panel-sections {
   display: flex;
@@ -13572,38 +13554,11 @@ body[data-route="observe"] .map-stage.is-globe .leaflet-control-container {
 }
 
 @media (max-width: 760px) {
-  /* Observe header on phones/tablets: wrap into two tidy rows instead of a
-     50px horizontal-scroll strip that hides half the nav behind a sideways
-     swipe. Row 1: brand + alerts + Copilot. Row 2: the destination nav as
-     a 4-column grid. The
-     secondary data controls (metric / scope / layers / basemap) are hidden
-     here Ã¢â‚¬â€ the ocean layer dock below already drives layer selection Ã¢â‚¬â€ to
-     keep the header compact. The ocean dock is offset to clear the header. */
-  body[data-route="observe"] .app-header {
-    left: 8px;
-    right: 8px;
-    top: 8px;
-    width: auto;
-    max-width: none;
-    flex-wrap: wrap !important;
-    max-height: none;
-    height: auto;
-    min-height: 0;
-    overflow: visible;
-    gap: 8px 6px;
-    padding: 8px 10px;
-  }
 
   body[data-route="observe"] .brand-block {
     order: 1;
     flex: 1 1 auto;
     min-width: 0;
-  }
-
-  body[data-route="observe"] #alerts-badge,
-  body[data-route="observe"] #copilot-launcher {
-    order: 1;
-    flex: 0 0 auto;
   }
 
   body[data-route="observe"] .primary-nav {
@@ -13958,24 +13913,6 @@ body[data-route="observe"] .map-stage.is-globe .leaflet-control-container {
   font-family: var(--mono, ui-monospace, SFMono-Regular, monospace);
   font-size: 11px;
 }
-
-/* --- Notifications bell + dropdown panel ---------------------------- */
-/* Lives in the header next to alerts-badge / copilot-launcher.
-   Backed by /v1/notifications; polls unread-count every 30s. */
-.notifications-bell {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--accent, #32d0bd);
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease;
-}
 .notifications-bell:hover {
   background: rgba(50, 208, 189, 0.08);
   border-color: rgba(50, 208, 189, 0.32);
@@ -14125,23 +14062,6 @@ body[data-route="observe"] .map-stage.is-globe .leaflet-control-container {
   background: rgba(50, 208, 189, 0.25);
   color: #ffffff;
   border-color: rgba(50, 208, 189, 0.85);
-}
-
-/* Header current-user chip + dropdown. Sits between the
-   notifications bell and the Honu launcher. Hidden in
-   owner_auth_disabled / demo mode where there's no user to show. */
-.user-display {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  background: rgba(7, 16, 20, 0.92);
-  border: 1px solid var(--line, rgba(123, 224, 166, 0.22));
-  border-radius: 999px;
-  color: var(--text, #eafff0);
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: background 0.14s ease, border-color 0.14s ease;
 }
 .user-display:hover {
   background: rgba(50, 208, 189, 0.12);
@@ -14800,482 +14720,7 @@ body[data-route="observe"] .map-stage.is-globe .leaflet-control-container {
   color: #aef5e8;
 }
 
-/* --- OMEGA Copilot ---------------------------------------------- */
-/* The Copilot launcher lives inline in the header controls Ã¢â‚¬â€ no longer a
-   floating button cluttering the Observe map. */
-/* Honu daily-briefing badge: a small dot on the launcher when a fresh
-   briefing hasn't been opened yet (replaces the removed Briefings page). */
-.copilot-briefing-badge {
-  position: absolute;
-  top: 4px;
-  right: 6px;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #f59e0b;
-  box-shadow: 0 0 0 2px rgba(7, 16, 20, 0.92), 0 0 8px rgba(245, 158, 11, 0.7);
-  pointer-events: none;
-}
-/* Today's-briefing card that leads the Honu thread on open. */
-.copilot-briefing-card { border-left: 2px solid rgba(245, 158, 11, 0.55); }
-.copilot-briefing-eyebrow { margin: 0 0 2px; font-size: 11px; color: rgba(245, 158, 11, 0.95); font-weight: 600; }
-.copilot-briefing-title { margin: 0 0 4px; font-size: var(--fs-md); }
-.copilot-briefing-body { font-size: 0.78rem; line-height: 1.45; }
-.copilot-briefing-body ul { margin: 4px 0; padding-left: 16px; }
-.copilot-briefing-body li { margin-bottom: 6px; }
-.copilot-briefing-body a { color: rgba(125, 211, 252, 0.95); }
-
-.copilot-launcher {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  /* Slightly larger than the other header buttons so Honu reads as the
-     primary AI affordance. */
-  padding: 8px 16px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: rgba(7, 16, 20, 0.92);
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 0.88rem;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-.copilot-launcher:hover {
-  border-color: var(--accent);
-  background: rgba(50, 208, 189, 0.08);
-}
-
-/* Icon-only mode: round button slightly larger than nav buttons so
-   Honu still reads as the primary AI affordance, but not by enough
-   to look oversized next to the alerts badge + nav rail. */
-.copilot-launcher.is-icon-only {
-  padding: 4px;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  justify-content: center;
-  background: rgba(7, 16, 20, 0.85);
-  box-shadow: 0 0 0 0 rgba(50, 208, 189, 0.55);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-}
-.copilot-launcher.is-icon-only:hover {
-  box-shadow: 0 0 0 4px rgba(50, 208, 189, 0.2);
-  border-color: rgba(50, 208, 189, 0.7);
-  background: rgba(50, 208, 189, 0.1);
-}
-.copilot-launcher.is-icon-only .copilot-dot,
-.copilot-launcher.is-icon-only .copilot-launcher-label {
-  display: none;
-}
-.copilot-launcher.is-icon-only .copilot-launcher-icon {
-  width: 32px;
-  height: 32px;
-}
-
-.copilot-launcher-icon {
-  width: 26px;
-  height: 26px;
-  color: var(--accent, #32d0bd);
-  flex: none;
-  transition: color 0.4s ease;
-}
-.copilot-launcher:hover .copilot-launcher-icon { color: #67e8f9; }
-.copilot-launcher:has(#copilot-launcher-dot.is-down) .copilot-launcher-icon { color: #fb7185; }
-.copilot-launcher:has(#copilot-launcher-dot.is-ready) .copilot-launcher-icon { color: #67e8f9; }
-
-/* Body bobs gently up + down — no rotation, since rotating the whole
-   body shifts the rotation pivot of nested elements and makes the
-   globe-shell drift away from the turtle. */
-.honu-body {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: honu-bob 4s ease-in-out infinite;
-}
-@keyframes honu-bob {
-  0%, 100% { transform: translateY(-0.6px); }
-  50%      { transform: translateY(0.6px); }
-}
-
-/* Each animated sub-element rotates around its OWN bounding-box
-   center via fill-box + center. Keeps the globe locked to the shell. */
-.honu-shell {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: honu-shell-spin 16s linear infinite;
-}
-@keyframes honu-shell-spin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.honu-flippers-front {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: honu-paddle-front 2.2s ease-in-out infinite;
-}
-.honu-flippers-back {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: honu-paddle-back 2.2s ease-in-out infinite;
-}
-@keyframes honu-paddle-front {
-  0%, 100% { transform: rotate(-5deg); }
-  50%      { transform: rotate(5deg); }
-}
-@keyframes honu-paddle-back {
-  0%, 100% { transform: rotate(5deg); }
-  50%      { transform: rotate(-5deg); }
-}
-
-.honu-head {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: honu-head-look 5s ease-in-out infinite;
-}
-@keyframes honu-head-look {
-  0%, 100% { transform: rotate(-3deg); }
-  50%      { transform: rotate(3deg); }
-}
-
-.copilot-launcher:hover .honu-flippers-front,
-.copilot-launcher:hover .honu-flippers-back { animation-duration: 0.9s; }
-.copilot-launcher:hover .honu-shell { animation-duration: 6s; }
-.copilot-launcher:hover .honu-body { animation-duration: 2.4s; }
-
-.copilot-launcher-label {
-  letter-spacing: 0.05em;
-}
-
-.copilot-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--muted);
-}
-
-.copilot-dot.is-ready {
-  background: var(--ok);
-  box-shadow: 0 0 10px rgba(85, 211, 138, 0.7);
-}
-
-.copilot-dot.is-down {
-  background: var(--bad);
-}
-
-.copilot-panel {
-  position: fixed;
-  right: 16px;
-  top: 16px;
-  bottom: 16px;
-  z-index: 1101;
-  width: min(430px, calc(100vw - 32px));
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--panel);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(22px);
-}
-
-.copilot-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  /* The eyebrow + h2 stack was 86h. Compact eyebrow → 11px above a
-     1rem h2 = ~50h header. Action icons align center now. */
-  margin-bottom: 4px;
-}
-.copilot-head .eyebrow {
-  margin: 0;
-  font-size: 10px;
-}
-
-.copilot-head h2 {
-  margin: 1px 0 0;
-  font-size: 1rem;
-  line-height: 1.2;
-}
-
-.copilot-starters {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 6px 0 8px;
-  margin-bottom: 6px;
-  border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
-}
-.copilot-starters-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-.copilot-starters-label {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: rgba(207, 232, 216, 0.55);
-}
-.copilot-starters-toggle {
-  font-size: 11px;
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  color: rgba(207, 232, 216, 0.7);
-  border-radius: 10px;
-  padding: 1px 8px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-.copilot-starters-toggle:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--ink);
-}
-/* Category rows so chips don't all blur together. Each category
-   has a tiny inline label + horizontally-wrapping chip cluster. */
-.copilot-starters-body {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.copilot-starters-category {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 6px;
-}
-.copilot-starters-category-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: rgba(207, 232, 216, 0.45);
-  margin-right: 2px;
-  min-width: 56px;
-}
-.copilot-starter-chip {
-  font-size: 12px;
-  padding: 3px 9px;
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--ink);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.12s, border-color 0.12s, transform 0.06s;
-}
-.copilot-starter-chip:hover {
-  background: rgba(108, 183, 255, 0.13);
-  border-color: var(--accent, #6cb7ff);
-}
-.copilot-starter-chip:active {
-  background: rgba(108, 183, 255, 0.2);
-  transform: scale(0.97);
-}
-.copilot-starter-chip[data-cat="discover"] { border-color: rgba(108, 183, 255, 0.30); }
-.copilot-starter-chip[data-cat="analyze"]  { border-color: rgba(255, 196, 87, 0.30); }
-.copilot-starter-chip[data-cat="plan"]     { border-color: rgba(180, 140, 255, 0.30); }
-.copilot-starter-chip[data-cat="act"]      { border-color: rgba(110, 231, 168, 0.30); }
-/* Collapsed state: hide the body but keep the head + toggle. */
-.copilot-starters.is-collapsed .copilot-starters-body { display: none; }
-
-.copilot-status-action,
-.copilot-status-help {
-  display: inline-flex;
-  align-items: center;
-  margin-left: 6px;
-  padding: 2px 8px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--ink);
-  cursor: pointer;
-  font-size: 11px;
-}
-.copilot-status-action:hover,
-.copilot-status-help:hover {
-  background: rgba(108, 183, 255, 0.13);
-  border-color: var(--accent, #6cb7ff);
-}
-.copilot-statusline.is-error {
-  color: rgb(249, 115, 115);
-  background: rgba(249, 115, 115, 0.08);
-  padding: 6px 10px;
-  border-radius: 8px;
-  border-left: 3px solid rgba(249, 115, 115, 0.6);
-}
-
-.copilot-statusline {
-  margin: 0;
-  font-size: var(--fs-sm);
-  line-height: 1.3;
-  padding: 2px 0;
-  color: rgba(180, 200, 210, 0.55);
-}
-/* Hide the statusline when it just says "Ready" — there's no signal
-   for the operator. Error states (with .is-error class) still show
-   prominently with the red border + retry buttons. */
-.copilot-statusline.is-ready { display: none; }
-
-.copilot-thread {
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-right: 4px;
-}
-
-.copilot-msg {
-  padding: 10px 13px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  font-size: 0.9rem;
-  line-height: 1.45;
-}
-
-.copilot-msg p {
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-
-.copilot-msg-user {
-  align-self: flex-end;
-  max-width: 86%;
-  background: rgba(50, 208, 189, 0.14);
-  border-color: rgba(50, 208, 189, 0.4);
-}
-
-.copilot-msg-assistant {
-  align-self: flex-start;
-  max-width: 92%;
-  background: var(--panel-soft);
-}
-
-.copilot-msg-error {
-  align-self: stretch;
-  background: rgba(251, 113, 133, 0.12);
-  border-color: rgba(251, 113, 133, 0.45);
-}
-
-.copilot-trace {
-  margin-top: 7px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.copilot-trace-item {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: var(--fs-xs);
-  padding: 2px 7px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  color: var(--muted);
-}
-
-.copilot-trace-item.is-bad {
-  color: var(--bad);
-  border-color: rgba(251, 113, 133, 0.45);
-}
-
-.copilot-meta {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.66rem;
-  color: var(--muted);
-  margin: 4px 0 0;
-}
-
-.copilot-pending {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 38%;
-  overflow-y: auto;
-}
-
-.copilot-action {
-  padding: 11px 13px;
-  border-radius: 14px;
-  border: 1px solid rgba(246, 177, 94, 0.5);
-  background: rgba(246, 177, 94, 0.1);
-}
-
-.copilot-action.is-resolved {
-  border-color: var(--line);
-  background: var(--panel-soft);
-}
-
-.copilot-action h3 {
-  margin: 0 0 4px;
-  font-size: 0.9rem;
-}
-
-.copilot-action p {
-  margin: 0 0 6px;
-  font-size: 0.83rem;
-}
-
-.copilot-action-endpoint {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: var(--fs-xs);
-  color: var(--muted);
-}
-
-.copilot-action-buttons {
-  display: flex;
-  gap: 8px;
-  margin-top: 9px;
-}
-
-.copilot-form {
-  display: flex;
-  gap: 8px;
-  align-items: flex-end;
-}
-
-.copilot-input {
-  flex: 1;
-  resize: none;
-  padding: 9px 11px;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  background: rgba(7, 16, 20, 0.7);
-  color: var(--ink);
-  /* Override the global textarea min-height: 120px — chat inputs should
-     start short and grow with content. ~52px = 2 lines + padding. */
-  min-height: 52px;
-  max-height: 240px;
-  line-height: 1.4;
-}
-
-.copilot-input:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-
-.copilot-panel.is-busy .copilot-input,
-.copilot-panel.is-busy #copilot-send {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
 @media (max-width: 560px) {
-  .copilot-panel {
-    right: 8px;
-    left: 8px;
-    top: 8px;
-    bottom: 8px;
-    width: auto;
-  }
 }
 
 /* Map key Ã¢â‚¬â€ content styles for the rail popup opened by the animated Key
@@ -15497,50 +14942,6 @@ body[data-route="observe"] .map-stage.is-globe .leaflet-control-container {
   .rail-popup-key {
     max-height: 64vh;
   }
-}
-
-/* --- Copilot header actions + AI-narrated tour overlay ---------------- */
-
-.copilot-head-actions {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-/* Icon buttons in Honu header */
-.copilot-icon-btn {
-  font: inherit;
-  font-size: 0.85rem;
-  width: 28px;
-  height: 28px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-
-.copilot-icon-btn:hover {
-  background: rgba(108, 199, 255, 0.12);
-  border-color: rgba(108, 199, 255, 0.5);
-  color: var(--ink);
-}
-
-/* Expanded (full-width) panel mode */
-.copilot-panel.is-expanded {
-  width: min(800px, calc(100vw - 32px));
-}
-
-#copilot-tour {
-  font-size: 0.8rem;
-  padding: 6px 10px;
 }
 
 .tour-overlay {
@@ -15781,280 +15182,6 @@ body[data-route="observe"] .map-stage.is-globe .leaflet-control-container {
 .tour-menu-card.tour-menu-card-ai:hover {
   border-color: #ffd66a;
   background: rgba(60, 45, 15, 0.5);
-}
-
-/* --- Copilot starter-prompt chips ------------------------------------- */
-
-.copilot-chips-host {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.copilot-chips-lead {
-  margin: 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  color: var(--muted, #6e7d8a);
-  text-transform: uppercase;
-}
-
-.copilot-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.copilot-chip {
-  font: inherit;
-  font-size: var(--fs-base);
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(108, 199, 255, 0.08);
-  color: var(--ink, #102031);
-  cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-  text-align: left;
-}
-
-.copilot-chip:hover {
-  background: rgba(108, 199, 255, 0.18);
-  border-color: rgba(108, 199, 255, 0.6);
-}
-
-.copilot-chip:active {
-  transform: scale(0.98);
-}
-
-.copilot-panel.is-busy .copilot-chip {
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-/* Follow-up chip variant â€” slightly different color to distinguish from starters */
-.copilot-chip-followup {
-  background: rgba(50, 208, 189, 0.08);
-  border-color: rgba(50, 208, 189, 0.3);
-}
-
-.copilot-chip-followup:hover {
-  background: rgba(50, 208, 189, 0.18);
-  border-color: rgba(50, 208, 189, 0.6);
-}
-
-.copilot-follow-ups .copilot-chips-lead {
-  font-size: 0.72rem;
-  color: rgba(50, 208, 189, 0.7);
-}
-
-/* Markdown rendering in assistant messages */
-.copilot-body {
-  word-break: break-word;
-}
-
-.copilot-body b {
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.copilot-h1 {
-  display: block;
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin: 6px 0 4px;
-  color: var(--ink);
-}
-
-.copilot-h2 {
-  display: block;
-  font-size: var(--fs-md);
-  font-weight: 700;
-  margin: 5px 0 3px;
-  color: var(--ink);
-}
-
-.copilot-h3 {
-  display: block;
-  font-size: 0.88rem;
-  font-weight: 600;
-  margin: 4px 0 2px;
-  color: var(--ink);
-}
-
-.copilot-code {
-  display: block;
-  margin: 6px 0;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: rgba(7, 16, 20, 0.6);
-  border: 1px solid var(--line);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  overflow-x: auto;
-}
-
-.copilot-inline-code {
-  padding: 1px 5px;
-  border-radius: 4px;
-  background: rgba(7, 16, 20, 0.5);
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.82em;
-}
-
-.copilot-li {
-  display: block;
-  padding-left: 6px;
-  margin: 1px 0;
-}
-
-/* Copy response button */
-.copilot-copy {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  font: inherit;
-  font-size: 0.72rem;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--muted);
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.15s ease, background 0.15s ease;
-}
-
-.copilot-msg:hover .copilot-copy {
-  opacity: 0.7;
-}
-
-.copilot-copy:hover {
-  opacity: 1 !important;
-  background: rgba(108, 199, 255, 0.12);
-  border-color: var(--line);
-}
-
-.copilot-msg-assistant {
-  position: relative;
-}
-
-/* Timestamps */
-.copilot-timestamp {
-  display: block;
-  font-size: 0.65rem;
-  color: var(--muted);
-  opacity: 0.5;
-  margin-top: 4px;
-  text-align: right;
-}
-
-.copilot-msg-user .copilot-timestamp {
-  text-align: left;
-}
-
-/* LaTeX math rendering */
-.copilot-math {
-  font-family: "Georgia", serif;
-  font-style: italic;
-  color: var(--ink);
-}
-
-/* Chat tables */
-.copilot-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 8px 0;
-  font-size: var(--fs-base);
-}
-
-.copilot-table th,
-.copilot-table td {
-  padding: 4px 8px;
-  border: 1px solid var(--line);
-  text-align: left;
-}
-
-.copilot-table th {
-  background: rgba(108, 199, 255, 0.08);
-  font-weight: 600;
-}
-
-.copilot-table tr:nth-child(even) td {
-  background: rgba(255, 255, 255, 0.02);
-}
-
-/* Horizontal rules in chat */
-.copilot-hr {
-  border: none;
-  border-top: 1px solid var(--line);
-  margin: 8px 0;
-  opacity: 0.4;
-}
-
-/* --- Honu thinking indicator animation ---------------------------------- */
-
-.copilot-thinking {
-  border-color: rgba(108, 199, 255, 0.3);
-  background: rgba(108, 199, 255, 0.04);
-}
-
-.copilot-thinking-content {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.copilot-thinking-text {
-  font-style: italic;
-}
-
-.copilot-dots span {
-  display: inline-block;
-  animation: copilot-bounce 1.4s infinite ease-in-out both;
-  font-weight: 700;
-  font-size: 1.1em;
-}
-
-.copilot-dots span:nth-child(1) { animation-delay: 0s; }
-.copilot-dots span:nth-child(2) { animation-delay: 0.2s; }
-.copilot-dots span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes copilot-bounce {
-  0%, 80%, 100% {
-    opacity: 0.3;
-    transform: translateY(0);
-  }
-  40% {
-    opacity: 1;
-    transform: translateY(-3px);
-  }
-}
-
-/* --- Honu AI pulse highlight animation ---------------------------------- */
-
-.ai-pulse {
-  position: relative;
-  z-index: 100;
-  animation: honu-pulse 0.65s ease-in-out 3;
-}
-
-@keyframes honu-pulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(108, 199, 255, 0);
-  }
-  50% {
-    box-shadow: 0 0 18px 6px rgba(108, 199, 255, 0.6);
-  }
 }
 
 .tour-card-counter {
@@ -18829,18 +17956,6 @@ body[data-page="graphs"] [data-workspace-section].is-collapsed > *:not(.section-
   0%   { left: -25%; }
   100% { left: 110%; }
 }
-
-/* Honu (sea turtle) cameo — drifts left-to-right very slowly */
-.bbs-aq-turtle {
-  position: absolute;
-  top: 38%;
-  width: 78px;
-  height: 50px;
-  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
-  opacity: 0.9;
-  animation: aq-turtle 60s linear infinite;
-  pointer-events: none;
-}
 @keyframes aq-turtle {
   0%   { left: -22%; top: 38%; transform: scaleX(1); }
   48%  { left: 95%;  top: 30%; transform: scaleX(1); }
@@ -19240,12 +18355,6 @@ body[data-page="graphs"] [data-workspace-section].is-collapsed > *:not(.section-
   50%, 99% { transform: scaleX(-1); }
   100% { transform: scaleX(1); }
 }
-
-/* Honu — slow, wide, low swim */
-.bbs-aq-fish.is-swim-honu { animation: aq-swim 22s ease-in-out infinite; }
-.bbs-aq-fish.is-swim-honu .bbs-aq-fish-flip { animation: aq-flip 22s steps(1, end) infinite; }
-.bbs-aq-fish.is-swim-honu .bbs-aq-fish-tail { animation: none; }
-.bbs-aq-fish.is-swim-honu { width: 130px; height: 56px; }
 
 /* Seahorse — vertical drift in one spot */
 .bbs-aq-fish.is-swim-seahorse {
@@ -20576,8 +19685,6 @@ body[data-page="graphs"] [data-workspace-section].is-collapsed > *:not(.section-
   .bbs-whoson-row > .bbs-wc-from, .bbs-whoson-row > .bbs-wc-node, .bbs-whoson-row > .bbs-wc-action { display: none; }
   .bbs-poll-opt { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
 }
-
-
 
 /* ── BBS SysOp moderation (admin-only powers) ───────────────────────
    Mod bar + per-post delete + composer note only render when the
