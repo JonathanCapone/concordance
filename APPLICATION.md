@@ -135,8 +135,8 @@ earns authority by being easy to check.
 
 Each with the check that makes it a finding rather than an artefact:
 
-**72 of 107 title-derived Ontario municipal report series have no entry after
-1974.** Broader Ministry of the Environment publishing in the same collection
+**All 107 title-derived Ontario municipal report series end by 1974 — 72 of
+them in that exact year.** Broader Ministry of the Environment publishing in the same collection
 continues: 1,449 indexed items before 1975 and 3,800 afterward. That argues
 against a collection-wide scanning cutoff. It does **not** distinguish municipal
 non-reporting from missing holdings for any individual place, so this is a

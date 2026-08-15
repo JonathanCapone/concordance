@@ -332,6 +332,11 @@ small numbers that fall when a plant improves, so it looked entirely reasonable.
 
 ## Status
 
+**A note on numbers.** The fellowship application cites the frozen checkpoint `f8fbca2` —
+5,147 records across 14 municipalities — because an application should cite figures that can be
+checked out and recomputed. The repository has kept growing since, so counts at HEAD are higher;
+where this README states a number, it states which corpus it comes from.
+
 Early, but measured. The repository contains reading, routing, prose and table extraction,
 accuracy scoring, unit and parameter resolution, place resolution, science, watershed, provider,
 decision, citation, dispute and assistant components. They run on real documents and the full test
@@ -340,13 +345,14 @@ has zero required package dependencies.
 
 **What has actually been found, each with its own control attached:**
 
-- **72 of 107 parsed municipal report series have no dated entry after 1974.** Broader Ministry
+- **All 107 parsed municipal report series end by 1974; 72 end in that exact year.** Broader Ministry
   publishing continues — 1,449 indexed items before 1975 and 3,800 afterward — arguing against a
   collection-wide scanning stop. The artifact does not explain any individual series gap.
 - A live ECCC query suggested that about **48%** of returned Ontario gauge records were marked
   discontinued. Its exact response was not preserved, so it is not a frozen benchmark.
-- **Owen Sound, 1963–1972**: 120 source-linked records from 12 scanned reports, including 69
-  observations; the extracted BOD-removal series rises from 46.4% to 64%.
+- **Owen Sound**: 120 source-linked records from 10 scanned reports, including 69 observations —
+  the sewage series runs 1963–1972 and the drinking-water reports 1990–1992, kept apart because
+  they measure opposite things; the extracted BOD-removal series rises from 46.4% to 64%.
 - **13,429 language/year metadata proposals** across all 104,241 items, offered for review.
 
 **The first trend the project produced was a refusal, and that is the point.** Owen Sound's daily

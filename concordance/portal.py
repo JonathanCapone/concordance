@@ -266,7 +266,7 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
       <div class="hstat"><b>{s['located']}</b><span>located</span></div>
       <div class="hstat"><b>{s['read']}</b><span>read</span></div>
       <div class="hstat"><b>{s['records']}</b><span>source-linked records</span></div>
-      <div class="hstat"><b>{s['precision']:.0%}</b><span>precision</span></div>
+      <div class="hstat"><b>{s['precision']:.1%}</b><span>precision, on hand-read pages</span></div>
       <div class="hstat"><b>{s['silent_n']}</b><span>silent {s['silent_year']}</span></div>
     </div>
   </header>
@@ -443,7 +443,7 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
 </div>
 
 <script>
-const PRECISION = "{s['precision']:.0%}";
+const PRECISION = "{s['precision']:.1%}";
 
 /* Everything drawn into innerHTML that came from a RECORD goes through this.
    Records are not ours: /api/bundle and /api/submit take readings from anyone,

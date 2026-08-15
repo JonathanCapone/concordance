@@ -101,7 +101,7 @@ def main() -> int:
     stats = "".join([
         stat("104,241", "documents in the collection"),
         stat("22.1M", "scanned pages"),
-        stat(f"{totals.get('precision', 0):.0%}" if totals else "—", "extraction precision"),
+        stat(f"{totals.get('precision', 0):.1%}" if totals else "—", "extraction precision"),
         stat(f"{msum.get('proposals', 0):,}" if msum else "—", "catalogue-field proposals"),
         stat("90", "median downloads per document"),
     ])

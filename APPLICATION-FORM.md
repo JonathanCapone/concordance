@@ -46,8 +46,9 @@ That is the path to growth without a permanent central compute bill. It is a
 deliverable, not something I am claiming is already deployed.
 
 At frozen application checkpoint `f8fbca2`: 5,147 source-linked records across
-14 municipalities, including 2,384 observations; 96.8% precision on four
-hand-read pages; and no mismatches found in a 286-record source-sentence audit.
+14 municipalities, including 2,384 observations, and 96.8% precision on four
+hand-read pages. A source-sentence audit of the then-complete 286-record
+corpus found no mismatches.
 
 ---
 
@@ -58,9 +59,10 @@ the plant upstream was putting in it. That person cannot use an archive; they
 can use a search box and a chart, and this is aimed at them.
 
 **Journalists and local historians**, who currently need to know a report exists
-before they can find it. The negative record matters too: 72 of 107 title-derived
-Ontario municipal report series have no entry after 1974. That is an archival
-gap to investigate, not proof that measurement itself stopped.
+before they can find it. The negative record matters too: every one of 107
+title-derived Ontario municipal report series ends by 1974, and 72 of them end
+in that exact year. That is an archival gap to investigate, not proof that
+measurement itself stopped.
 
 **Scientists**, who get a machine-readable series with the source page attached
 to every value — and, just as importantly, explicit refusals where two numbers
@@ -267,7 +269,8 @@ project evidence prepared for publication:
 The first accuracy figure I produced was 49% precision — and it was wrong. My
 scorer could not tell that "3.0 million gallons" and "3000000 gallons" are the
 same number. Fixing the *measurement*, with no change to the extraction, moved
-it to 96.8%. Publishing the first number would have narrowed the project for no
+it to 88.7%; improving the extraction prompt then took it to the published
+96.8%. Publishing the first number would have narrowed the project for no
 reason.
 
 My page router was silently discarding narrow-column prose because it required
