@@ -23,6 +23,31 @@ Three facts interact badly:
    GitHub-facing steps, and the SHA references are updated as part of it —
    not before, not after.
 
+## The simpler path: rename the account instead of migrating repos
+
+GitHub supports renaming a user account. Repos, issues and stars come along;
+git and web URLs for the old name redirect until someone claims it; profile
+links, @mentions and gists do not redirect, but nothing public has ever
+pointed at `aminalnam/concordance`, so nothing breaks. This removes steps 5
+and 9 below: no second account, no repo transfer, no old repo to retire.
+
+The username and the rewrite email must be decided TOGETHER:
+`jdcap@users.noreply.github.com` links commits to a profile only if the
+username is actually `jdcap`. Pick the final username first (check it is
+free), rename, then rewrite history to
+`29108860+<finalname>@users.noreply.github.com` -- the ID-based form is
+robust against any future rename, because the ID never changes.
+
+Renamed sequence: rename account -> steps 1-4 (rewriting to the new name's
+noreply) -> force-push to the SAME repo -> step 6 (watch CI) -> step 7 (flip
+public) -> step 8 (URL into the form, now `github.com/<finalname>/concordance`).
+
+One nuance the fresh-repo path avoided: a repo that flips private-to-public
+can leave pre-rewrite objects fetchable by SHA until GitHub garbage-collects.
+Since the pre-rewrite history was never public, the practical exposure is nil;
+if you want zero residue, delete and recreate the repo under the renamed
+account instead -- that is the only remnant of the old step 5.
+
 ## The sequence
 
 1. **Stop minting wrong-email commits.** In the repo:
