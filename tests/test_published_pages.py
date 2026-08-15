@@ -32,9 +32,12 @@ def test_the_landing_page_quotes_the_measured_precision():
     # Match the value immediately preceding its own label, whatever markup
     # wraps it, so a change of template does not silently disable the check.
     published = re.search(
-        r"(\d+)%<[^>]*>(?:<[^>]*>)*\s*extraction precision", html)
+        r"([\d.]+)%<[^>]*>(?:<[^>]*>)*\s*extraction precision", html)
     assert published, "the landing page no longer states an extraction precision"
-    assert int(published.group(1)) == round(_totals()["precision"] * 100), (
+    # One decimal, matching the application form's 96.8% -- the site printing
+    # a differently-rounded number than the form is how a reviewer comparing
+    # the two concludes one of them is wrong.
+    assert float(published.group(1)) == round(_totals()["precision"] * 100, 1), (
         "the committed landing page disagrees with data/results/gold_report.json "
         "-- rebuild it with scripts/build_index.py"
     )
