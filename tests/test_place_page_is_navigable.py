@@ -102,7 +102,10 @@ def test_a_line_is_named_only_by_what_distinguishes_it(state: S.State) -> None:
 def test_the_page_collapses_instead_of_dumping(state: S.State) -> None:
     page = state.html()
     assert '<details class="panel' in page
-    assert "findbar" in page and 'id="find"' in page
+    # class, not id -- the dock and the whole-record view both render this and
+    # an id can only bind the first on the page.
+    assert "findbar" in page and 'class="find"' in page
+    assert "record-root" in page
 
 
 def test_a_panel_carries_enough_to_scan_without_opening(state: S.State) -> None:

@@ -178,6 +178,11 @@ details textarea{{resize:vertical}}
 .river{{font-size:12px;padding:7px 9px;margin:2px 0 8px;border-radius:7px;background:rgba(125,211,252,.07);border:1px solid rgba(125,211,252,.16)}}
 .river .more{{display:inline-block;margin-left:6px;font-size:11px;opacity:.7}}
 .river .nm{{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.5;margin-bottom:2px}}
+.townpick{{display:flex;flex-wrap:wrap;gap:5px}}
+.townbtn{{font:inherit;font-size:12px;padding:5px 9px;border-radius:6px;cursor:pointer;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:inherit}}
+.townbtn:hover{{background:rgba(255,255,255,.09)}}
+.townbtn.is-on{{background:rgba(240,162,74,.16);border-color:rgba(240,162,74,.5)}}
+.townbtn .sm{{opacity:.5;margin-left:4px}}
 .system{{display:flex;align-items:baseline;gap:9px;margin:14px 0 3px;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.14)}}
 .system .t{{font-size:12px;font-weight:700;letter-spacing:.03em}}
 .shelf{{font-size:10px;letter-spacing:.09em;text-transform:uppercase;opacity:.4;margin:11px 0 1px;padding-top:5px;border-top:1px solid rgba(255,255,255,.06)}}
@@ -628,9 +633,12 @@ function seriesHtml(d){{
   const singles = d.singles || [];
   const fmtN = v => (Math.abs(v)>=1e6?(v/1e6).toFixed(2)+"M":Math.abs(v)>=1000?Math.round(v).toLocaleString():String(+(+v).toFixed(2)));
 
+  /* One wrapper per record, so a page holding two records gives each its own
+     filter. The dock and the whole-record view both render this. */
+  let h = `<div class="record-root">`;
+
   /* Whose sewage was in your water. The question a person actually asks, on
      the page about their own town, instead of a cross-country river index. */
-  let h = "";
   const riv = d.river;
   if (riv && (riv.upstream.length || riv.downstream.length)) {{
     const bits = [];
@@ -644,7 +652,7 @@ function seriesHtml(d){{
   }}
 
   h += `<div class="findbar">
-      <input id="find" type="search" placeholder="filter — try chlorine, flow, cost"
+      <input class="find" type="search" placeholder="filter — try chlorine, flow, cost"
         autocomplete="off" spellcheck="false">
       <span class="count">${{panels.length}} charted · ${{singles.length + (d.other||[]).reduce((n,g)=>n+g.rows.length,0)}} more</span></div>`;
 
@@ -712,26 +720,52 @@ function seriesHtml(d){{
         <span class="sm n">${{g.rows.length}}</span></summary>
       <div class="body">` + rowsHtml(g.rows) + `</div></details>`;
   }});
-  return h;
+  return h + `</div>`;
 }}
 
 /* Filtering hides what does not match, and says so, rather than leaving a
    reader wondering whether they broke it. */
 document.addEventListener("input", ev => {{
-  if (ev.target.id !== "find") return;
+  if (!ev.target.classList.contains("find")) return;
   const q = ev.target.value.trim().toLowerCase();
+  /* Only this record's panels. Two records on one page each own their filter;
+     an id could only ever bind the first, and the record view renders many. */
+  const root = ev.target.closest(".record-root") || document;
   let shown = 0;
-  document.querySelectorAll(".panel, .sub").forEach(el => {{
+  root.querySelectorAll(".panel, .sub").forEach(el => {{
     const hay = el.dataset.find || "";
     const hit = !q || hay.includes(q);
     el.hidden = !hit;
     if (hit && el.classList.contains("panel")) shown++;
     if (q && hit && el.classList.contains("sub")) el.closest(".panel").hidden = false;
   }});
-  const c = document.querySelector(".findbar .count");
+  const c = root.querySelector(".findbar .count");
   if (c) c.textContent = q ? `${{shown}} matching` : c.dataset.all || c.textContent;
 }});
 
+
+/* Draw one town's whole record, for the picker above it. */
+async function showRecord(p){{
+  const box = document.getElementById("record-one");
+  if (!box) return;
+  box.innerHTML = `<div class="card empty">Reading ${{esc(p.place)}}…</div>`;
+  const d = await (await fetch("/api/town?place=" + encodeURIComponent(p.place)
+                   + "&raw=" + encodeURIComponent(p.raw || ""))).json();
+  box.innerHTML = `<div class="card"><h2 style="font-size:18px">${{esc(p.place)}}</h2>`
+    + `<p class="lede" style="margin-bottom:10px">${{esc(p.years)}} reports · `
+    + `${{esc(p.first)}}–${{esc(p.last)}}</p>`
+    + (d.found ? seriesHtml(d) : `<div class="empty">Nobody has read this one yet.</div>`)
+    + `</div>`;
+}}
+document.addEventListener("click", ev => {{
+  const b = ev.target.closest(".townbtn");
+  if (!b) return;
+  document.querySelectorAll(".townbtn").forEach(x => x.classList.remove("is-on"));
+  b.classList.add("is-on");
+  showRecord({{place: b.dataset.place, raw: b.dataset.raw,
+              years: b.querySelector(".sm") ? b.querySelector(".sm").textContent : "",
+              first: "", last: ""}});
+}});
 
 /* Only offer to read if this machine will actually do it. */
 async function offerRead(){{
@@ -1078,20 +1112,28 @@ function loadMapLibrary() {{
 
 /* ---- every view that is not the map ---------------------------------- */
 const LOADERS = {{
+  /* One town, in full -- which is what the label says and what this now does.
+     It used to fetch EVERY read place in sequence and render all of them on one
+     page: 20 towns, 20 requests, about 44 seconds, and twenty copies of the
+     filter box. The label was the only honest part of it. */
   record: async () => {{
     const el = document.getElementById("record-list");
     const geo = await (await fetch("/api/places.geojson")).json();
-    const read = geo.features.filter(f=>f.properties.extracted);
-    let h = "";
-    for (const f of read) {{
-      const p = f.properties;
-      const d = await (await fetch("/api/town?place="+encodeURIComponent(p.place)
-                       +"&raw="+encodeURIComponent(p.raw||""))).json();
-      h += `<div class="card"><h2 style="font-size:18px">${{esc(p.place)}}</h2>`
-         + `<p class="lede" style="margin-bottom:10px">${{esc(p.years)}} reports · ${{esc(p.first)}}–${{esc(p.last)}}`
-         + (d.facility?` · ${{esc(d.facility)}}`:"") + `</p>` + seriesHtml(d) + `</div>`;
+    const read = geo.features.filter(f => f.properties.extracted)
+      .sort((a, b) => (b.properties.years || 0) - (a.properties.years || 0));
+    if (!read.length) {{
+      el.innerHTML = `<div class="card empty">Nothing has been read yet.</div>`;
+      return;
     }}
-    el.innerHTML = h || `<div class="card empty">Nothing read yet.</div>`;
+    el.innerHTML = `<div class="card"><div class="townpick">`
+      + read.map((f, i) => {{
+          const p = f.properties;
+          return `<button type="button" class="townbtn${{i ? "" : " is-on"}}"
+            data-place="${{esc(p.place)}}" data-raw="${{esc(p.raw || "")}}">
+            ${{esc(p.place)}} <span class="sm">${{esc(p.years)}}</span></button>`;
+        }}).join("")
+      + `</div></div><div id="record-one"></div>`;
+    showRecord(read[0].properties);
   }},
 
   silence: async () => {{

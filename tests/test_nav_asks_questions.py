@@ -58,4 +58,6 @@ def test_the_place_page_answers_before_the_nav_does(page: str) -> None:
     """A visitor should reach something useful by clicking a dot, without
     choosing a tab first."""
     assert "findbar" in page
-    assert 'id="find"' in page
+    # A CLASS, not an id: the dock and the whole-record view both render this,
+    # and an id can only ever bind the first one on the page.
+    assert 'class="find"' in page
