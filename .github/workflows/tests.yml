@@ -1,0 +1,31 @@
+# The application's claim is "the full test suite passes", and until this file
+# existed that was a one-Windows-machine claim. The deploy target is Ubuntu, so
+# both operating systems run the whole suite -- including the served-JavaScript
+# parse check, which uses the node preinstalled on every GitHub runner.
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  pytest:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install (zero runtime dependencies; pytest only)
+        run: python -m pip install -e ".[dev]"
+      - name: Run the suite
+        run: python -m pytest -q
+      - name: Re-score the published accuracy run against the answer key
+        run: python scripts/rescore.py
+      - name: The committed report must be exactly what re-scoring reproduces
+        run: git diff --exit-code data/results/gold_report.json

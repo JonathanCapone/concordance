@@ -20,8 +20,12 @@ dependencies = []
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
 
-[project.scripts]
-concordance-gold = "scripts.run_gold:main"
+# No console-script entry points, deliberately. The previous
+# `concordance-gold = "scripts.run_gold:main"` pointed at a module the
+# install never ships ([tool.setuptools.packages.find] includes only
+# concordance*, and scripts/ is not a package), so the documented
+# `pip install -e .` produced a command that failed on first use. The
+# scripts are run the way the README shows: `python scripts/run_gold.py`.
 
 [tool.setuptools.packages.find]
 include = ["concordance*"]
