@@ -682,3 +682,30 @@ output. The publisher's own validation was "the France/Paris case"; now we
 know why. The bridging task is now exact: recompile and republish the e2b
 browser build with document-sized KV memory. The demo page states all of
 this on its face; its committed form points at the public copy.
+
+**2026-08-17, small hours. The browser wall is in the kernels, not the
+packaging -- measured three ways.** Yesterday's conclusion ("republish the
+e2b browser build with document-sized memory") died tonight, killed by
+better evidence. A wider search found not one but three published browser
+builds of gemma-4-E2B, from two independent toolchains: the April
+gemma4-webllm-fork build already probed, a June rebuild of the same fork
+whose config advertises an 8192-token context its own wasm refuses to
+allocate, and a May build compiled against the real upstream support PR
+(mlc-llm #3485, still open), full 131072-token declaration, by a publisher
+careful enough to document their own broken variant. Every one of them,
+in every window configuration, answers a short question correctly and
+falls silent past roughly 512 prompt tokens -- an eighth of a page. The
+May build adds a hardware lesson: its 8192-token prefill chunk is one GPU
+dispatch, which loses the whole GPU device on a laptop card until capped
+to 1024. A four-day-old public demo app runs the same April artifact with
+a pinned current engine and only a context override; replicating its exact
+recipe changes nothing. Two compile lineages, one failure: the defect is
+in the shared TVM WebGPU kernels for this hybrid-attention architecture
+(512-token sliding layers interleaved with full-attention layers), and no
+recompile we could run tonight escapes it -- our own build would inherit
+the same kernels. The model itself is fine; the identical weights read
+whole pages locally at benchmark accuracy. So the demo page now carries
+the full finding, the public build reads with catalogue models whose
+verbatim-quote failures the checks refuse on screen, and the e2b record
+sits one flag away (--local-model) for the day the upstream PR lands.
+The three builds stay enumerated in the builder for that retest.

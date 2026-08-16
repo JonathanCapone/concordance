@@ -80,14 +80,17 @@ catalogue, and the models that ARE (a generation older, or reasoning-tuned)
 currently fail the one rule everything hinges on: quote your sentence
 verbatim. This page shows that failure honestly — records the models produce
 arrive unproven, and the checks refuse them, which is the system working.
-The one published browser build of that
-model was probed on this page: it loads, runs on the GPU, and answers
-correctly — and its conversation memory was compiled at 512 tokens, one
-short exchange, so it structurally cannot hold a document page. What stands
-between this demo and the benchmark numbers is one precisely-specified task:
-republish the edge model for browsers with document-sized memory. The
-fallback models shown here meanwhile demonstrate the other half of the
-system — every unproven record they produce is refused on screen.</p>
+All three published browser builds of
+that model — from two independent compile toolchains — were probed on this
+page: each loads, runs on the GPU, and answers a short question correctly,
+and each falls silent once a prompt exceeds roughly 512 tokens, about an
+eighth of this page. The model is proven good (the same weights read whole
+pages locally); the defect is in the browser GPU kernels every existing
+build compiles in, and official support for this architecture is still an
+open pull request upstream. No repackaging fixes that, so this demo tells
+the truth instead: the models that DO run here fail the quote-verbatim rule,
+every unproven record is refused on screen, and that refusal — the system
+working — is what the button below actually demonstrates.</p>
 
 <script type="module">
 const SYSTEM_SMALL = "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\").\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"Relocating the injection point would reduce the free\nchlorine residual required to 0.46 mg/L during the summer.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"free chlorine residual required\",\n  \"value\": 0.46, \"unit\": \"mg/L\", \"source_text\": \"Relocating the injection\npoint would reduce the free chlorine residual required to 0.46 mg/L during\nthe summer.\"}]\n";
@@ -157,7 +160,7 @@ async function boot() {
     return;
   }
   status("Loading the model list…");
-  const webllm = await import("https://esm.run/@mlc-ai/web-llm");
+  const webllm = await import("https://esm.run/@mlc-ai/web-llm@0.2.84");
   // The benchmarked model itself, published for browsers by a third party
   // (validated by its publisher 2026-04-13). This is gemma4:e2b -- 100%
   // precision, 44% recall on the gold pages via Ollama the same day this
@@ -168,14 +171,23 @@ async function boot() {
   const E2B_REPO = new URL("https://huggingface.co/welcoma/gemma-4-E2B-it-q4f16_1-MLC", location.href).href.replace(/\/$/, "");
   const E2B = {
     model: E2B_REPO,
-    model_id: "gemma-4-E2B-it-q4f16_1-MLC",
+    // Suffixed per packaging so the browser's model cache can never hand
+    // one build's files to another.
+    model_id: "gemma-4-E2B-it-q4f16_1-MLC-welcoma",
     model_lib: E2B_REPO + "/resolve/main/libs/gemma-4-E2B-it-q4f16_1-MLC-webgpu.wasm",
     required_features: ["shader-f16"],
-    // Its config declares both window modes and omits the attention-sink
-    // setting; the current engine insists on exactly one mode plus the sink.
-    // Set in the record's overrides -- the one place the engine reads them
-    // that the browser's config cache cannot stale.
-    overrides: { context_window_size: -1, attention_sink_size: 4 },
+    // gemma4 is a hybrid: 512-token sliding layers interleaved with
+    // full-attention layers. The engine handles that natively (it does for
+    // gemma3) -- so override ONLY the context size and leave the model's
+    // dual window declaration alone. Forcing a single mode breaks half the
+    // layers: all-sliding caps the cache at 512 (crash on a page),
+    // all-context corrupts the sliding layers (silence past 512). Both
+    // were measured here before this line existed.
+    overrides: { context_window_size: 4096,
+                 // A chunk is one GPU dispatch; this model's 262k-token
+                 // vocabulary makes big chunks lose the GPU device on
+                 // laptop cards (observed at 8192). 1024 is the proven size.
+                 prefill_chunk_size: 1024 },
   };
   const list = webllm.prebuiltAppConfig.model_list;
   // The measured class is 2-4B: gemma4's edge editions hit 100%/44% and
@@ -193,9 +205,13 @@ async function boot() {
   // Preference runs over the FULL list: Qwen3-era models dropped the word
   // "Instruct" from their names (instruction-tuned is their default), so an
   // instruct-word filter would hide exactly the models preferred most.
-  // First choice is always the benchmarked model itself; the catalogue
-  // preference order is the fallback for browsers that cannot carry it.
-  let chosen = E2B;
+  // The benchmarked model leads only in local test builds: its published
+  // browser builds all fall silent past ~512 prompt tokens (the kernel
+  // defect described above), so the public page must not spend a
+  // visitor's 2.7 GB download proving a silence this page already
+  // documents. The catalogue models read instead, and their failures are
+  // refused in the open.
+  let chosen = null;
   if (!chosen) {
     for (const rx of prefer) {
       chosen = list.find(m => rx.test(m.model_id));
@@ -222,10 +238,14 @@ async function boot() {
   try {
     // The e2b build's config declares BOTH window modes (its publisher's
     // engine tolerated that; the current engine insists on exactly one).
-    // Keep its validated sliding window and disable the plain context mode;
-    // catalogue models get the opposite arrangement.
+    // Its sliding mode caps the cache at 512 tokens -- one short exchange,
+    // no room for a page -- so ask for full-context mode at the size this
+    // build was compiled for; catalogue models get the same arrangement at
+    // their own sizes.
+    // The e2b record carries its own overrides; chat options here would
+    // shadow them, so only catalogue models get sized from this side.
     engine = await webllm.CreateMLCEngine(modelId, engineConfig,
-      isE2B ? { context_window_size: -1 }
+      isE2B ? undefined
             : { context_window_size: 8192, sliding_window_size: -1 });
   } catch (e) {
     if (isE2B) {

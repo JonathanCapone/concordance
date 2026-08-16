@@ -152,14 +152,17 @@ catalogue, and the models that ARE (a generation older, or reasoning-tuned)
 currently fail the one rule everything hinges on: quote your sentence
 verbatim. This page shows that failure honestly — records the models produce
 arrive unproven, and the checks refuse them, which is the system working.
-The one published browser build of that
-model was probed on this page: it loads, runs on the GPU, and answers
-correctly — and its conversation memory was compiled at 512 tokens, one
-short exchange, so it structurally cannot hold a document page. What stands
-between this demo and the benchmark numbers is one precisely-specified task:
-republish the edge model for browsers with document-sized memory. The
-fallback models shown here meanwhile demonstrate the other half of the
-system — every unproven record they produce is refused on screen.</p>
+All three published browser builds of
+that model — from two independent compile toolchains — were probed on this
+page: each loads, runs on the GPU, and answers a short question correctly,
+and each falls silent once a prompt exceeds roughly 512 tokens, about an
+eighth of this page. The model is proven good (the same weights read whole
+pages locally); the defect is in the browser GPU kernels every existing
+build compiles in, and official support for this architecture is still an
+open pull request upstream. No repackaging fixes that, so this demo tells
+the truth instead: the models that DO run here fail the quote-verbatim rule,
+every unproven record is refused on screen, and that refusal — the system
+working — is what the button below actually demonstrates.</p>
 
 <script type="module">
 const SYSTEM_SMALL = {system_json};
@@ -229,7 +232,7 @@ async function boot() {{
     return;
   }}
   status("Loading the model list…");
-  const webllm = await import("https://esm.run/@mlc-ai/web-llm");
+  const webllm = await import("https://esm.run/@mlc-ai/web-llm@0.2.84");
   // The benchmarked model itself, published for browsers by a third party
   // (validated by its publisher 2026-04-13). This is gemma4:e2b -- 100%
   // precision, 44% recall on the gold pages via Ollama the same day this
@@ -240,14 +243,23 @@ async function boot() {{
   const E2B_REPO = new URL("{e2b_base}", location.href).href.replace(/\\/$/, "");
   const E2B = {{
     model: E2B_REPO,
-    model_id: "gemma-4-E2B-it-q4f16_1-MLC",
+    // Suffixed per packaging so the browser's model cache can never hand
+    // one build's files to another.
+    model_id: "{e2b_id}",
     model_lib: E2B_REPO + "{e2b_lib_path}",
     required_features: ["shader-f16"],
-    // Its config declares both window modes and omits the attention-sink
-    // setting; the current engine insists on exactly one mode plus the sink.
-    // Set in the record's overrides -- the one place the engine reads them
-    // that the browser's config cache cannot stale.
-    overrides: {{ context_window_size: -1, attention_sink_size: 4 }},
+    // gemma4 is a hybrid: 512-token sliding layers interleaved with
+    // full-attention layers. The engine handles that natively (it does for
+    // gemma3) -- so override ONLY the context size and leave the model's
+    // dual window declaration alone. Forcing a single mode breaks half the
+    // layers: all-sliding caps the cache at 512 (crash on a page),
+    // all-context corrupts the sliding layers (silence past 512). Both
+    // were measured here before this line existed.
+    overrides: {{ context_window_size: {e2b_ctx},
+                 // A chunk is one GPU dispatch; this model's 262k-token
+                 // vocabulary makes big chunks lose the GPU device on
+                 // laptop cards (observed at 8192). 1024 is the proven size.
+                 prefill_chunk_size: 1024 }},
   }};
   const list = webllm.prebuiltAppConfig.model_list;
   // The measured class is 2-4B: gemma4's edge editions hit 100%/44% and
@@ -265,9 +277,13 @@ async function boot() {{
   // Preference runs over the FULL list: Qwen3-era models dropped the word
   // "Instruct" from their names (instruction-tuned is their default), so an
   // instruct-word filter would hide exactly the models preferred most.
-  // First choice is always the benchmarked model itself; the catalogue
-  // preference order is the fallback for browsers that cannot carry it.
-  let chosen = E2B;
+  // The benchmarked model leads only in local test builds: its published
+  // browser builds all fall silent past ~512 prompt tokens (the kernel
+  // defect described above), so the public page must not spend a
+  // visitor's 2.7 GB download proving a silence this page already
+  // documents. The catalogue models read instead, and their failures are
+  // refused in the open.
+  let chosen = {e2b_pick};
   if (!chosen) {{
     for (const rx of prefer) {{
       chosen = list.find(m => rx.test(m.model_id));
@@ -294,10 +310,14 @@ async function boot() {{
   try {{
     // The e2b build's config declares BOTH window modes (its publisher's
     // engine tolerated that; the current engine insists on exactly one).
-    // Keep its validated sliding window and disable the plain context mode;
-    // catalogue models get the opposite arrangement.
+    // Its sliding mode caps the cache at 512 tokens -- one short exchange,
+    // no room for a page -- so ask for full-context mode at the size this
+    // build was compiled for; catalogue models get the same arrangement at
+    // their own sizes.
+    // The e2b record carries its own overrides; chat options here would
+    // shadow them, so only catalogue models get sized from this side.
     engine = await webllm.CreateMLCEngine(modelId, engineConfig,
-      isE2B ? {{ context_window_size: -1 }}
+      isE2B ? undefined
             : {{ context_window_size: 8192, sliding_window_size: -1 }});
   }} catch (e) {{
     if (isE2B) {{
@@ -399,24 +419,66 @@ boot();
 """
 
 
+# The three published browser packagings of gemma-4-E2B-it, oldest first,
+# all probed on this page 2026-08-16 and all failing the same way: correct
+# answers while the whole prompt fits in ~512 tokens, silence (or a KV-cache
+# crash) beyond. Two independent compile lineages -- welcoma/kirbyz's
+# gemma4-webllm fork and maelstrome's build against upstream PR #3485 --
+# share the failure, which places the defect in the TVM WebGPU kernels for
+# this hybrid-attention architecture, not in any packaging choice. kirbyz's
+# wasm additionally refuses to allocate the 8192-token cache its own config
+# advertises; maelstrome's loses the GPU device if its 8192-token prefill
+# chunk is not capped to 1024. Kept enumerable for retesting the day the
+# upstream kernels are fixed. Local mirrors live under portal/models/
+# behind HF-shaped junction aliases because the engine appends
+# /resolve/main/... to every model URL.
+BUILDS = {
+    "welcoma": {
+        "public": "https://huggingface.co/welcoma/gemma-4-E2B-it-q4f16_1-MLC",
+        "local": "/models/e2b-hf",
+        "lib": "/resolve/main/libs/gemma-4-E2B-it-q4f16_1-MLC-webgpu.wasm",
+        "ctx": 4096,
+    },
+    "kirbyz": {
+        "public": "https://huggingface.co/KirbyzDaShizNit/gemma-4-E2B-it-q4f16_1-MLC",
+        "local": "/models/kirbyz-hf",
+        "lib": "/resolve/main/libs/gemma-4-E2B-it-q4f16_1-MLC-webgpu.wasm",
+        "ctx": 4096,
+    },
+    "maelstrome": {
+        # Weights sit in the repo's google-it/ subfolder; the local alias
+        # flattens that. A public URL for this build needs a root-shaped
+        # copy (republished) rather than the subfolder repo. Compiled for
+        # the model's full 131072-token window; the KV cache is allocated
+        # at the runtime size, so ask for a laptop-sized 8192.
+        "public": "https://huggingface.co/Maelstrome/wave-gemma4-E2B-q4f16_1-MLC",
+        "local": "/models/mael-hf",
+        "lib": "/resolve/main/gemma-4-E2B-it-q4f16_1-webgpu.wasm",
+        "ctx": 8192,
+    },
+}
+
+
 def main() -> int:
     import argparse
 
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--local-model", action="store_true",
-                    help="point the page at portal/models/... served beside "
-                         "it (for testing without the Hugging Face CDN); the "
-                         "committed page uses the public copy")
+    ap.add_argument("--local-model", nargs="?", const="welcoma", default=None,
+                    choices=sorted(BUILDS),
+                    help="point the page at a mirror under portal/models/... "
+                         "served beside it (for testing without the Hugging "
+                         "Face CDN); the committed page uses the public copy")
     args = ap.parse_args()
-    # The page joins model_lib as E2B_REPO + this path, so both are relative
-    # to the base.
-    # Both mirrors present the HuggingFace URL shape, because the engine
-    # appends /resolve/main/... to every model URL regardless of host.
-    e2b_lib = "/resolve/main/libs/gemma-4-E2B-it-q4f16_1-MLC-webgpu.wasm"
+    # Three published browser packagings of the same model exist; each mirror
+    # presents the HuggingFace URL shape because the engine appends
+    # /resolve/main/... to every model URL regardless of host. The page joins
+    # model_lib as E2B_REPO + the lib path, so both are relative to the base.
+    build = BUILDS[args.local_model or "welcoma"]
+    e2b_lib = build["lib"]
     if args.local_model:
-        e2b_base = "/models/e2b-hf"
+        e2b_base = build["local"]
     else:
-        e2b_base = "https://huggingface.co/welcoma/gemma-4-E2B-it-q4f16_1-MLC"
+        e2b_base = build["public"]
 
     pages = {p.page: p for p in Archive().pages(IDENTIFIER)}
     text = pages[PAGE_NO].text
@@ -427,7 +489,9 @@ def main() -> int:
         title=TITLE, page_no=PAGE_NO, identifier=IDENTIFIER, leaf=PAGE_NO - 1,
         system_json=json.dumps(SMALL_SYSTEM),
         full_system_json=json.dumps(SYSTEM), page_json=json.dumps(text),
-        e2b_base=e2b_base, e2b_lib_path=e2b_lib,
+        e2b_base=e2b_base, e2b_lib_path=e2b_lib, e2b_ctx=build["ctx"],
+        e2b_pick="E2B" if args.local_model else "null",
+        e2b_id=f"gemma-4-E2B-it-q4f16_1-MLC-{args.local_model or 'welcoma'}",
         user_json=json.dumps(user))
     OUT.write_text(html, encoding="utf-8")
     print(f"wrote {OUT} ({len(html) // 1024} KB; page text {len(text)} chars, "
