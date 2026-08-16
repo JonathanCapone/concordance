@@ -62,15 +62,16 @@ an archival gap to investigate, not proof that measurement itself stopped —
 and exactly the kind of finding this dataset exists to surface.
 
 **Scientists**, who get a machine-readable series with the source page attached
-to every value — and, just as importantly, explicit refusals where two numbers
-are not comparable, rather than a tidy line that hides a change of method.
+to every value — and explicit refusals where two numbers are not comparable,
+rather than a tidy line that hides a change of method.
 
 **A British Columbia pilot community**, chosen before tuning — and the
-shortlist comes from the collection itself: its BC holdings span 582 items, 31
-about water, from the 1915 BC Hydrometric Survey to a 27-community series on
-First Nations water rights. The pilot tests whether the method transfers
-beyond Ontario and whether residents can follow the source trail without
-archive expertise.
+transfer test has begun: overnight before submission, this reader published
+366 quote-verified readings from eight Lower Mainland documents —
+budgets, population, dwellings on sewers, by municipality — and met, on BC
+paper, the table-column limit Week 4 measures. The collection's 582 BC items
+run from the 1915 Hydrometric Survey to a 27-community First Nations
+water-rights series.
 
 **And anyone who wants to question it** — which is the part I care most about.
 Every prose number carries its source sentence; a table number carries its cell
