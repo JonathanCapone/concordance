@@ -2511,4 +2511,12 @@ def main(port: int = 8765, open_browser: bool = True) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Serve the Concordance portal.")
+    parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--no-browser", action="store_true",
+                        help="do not open a browser window on start (for "
+                             "running as a service)")
+    args = parser.parse_args()
+    raise SystemExit(main(port=args.port, open_browser=not args.no_browser))
