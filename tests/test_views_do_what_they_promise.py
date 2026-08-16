@@ -322,3 +322,32 @@ def test_a_changed_spec_is_not_collapsed() -> None:
     specs = S._subjects(groups)[0]["units"][0]["specs"]
     assert [s["value"] for s in specs] == ["2", "5"]
     assert all(not s["restatements"] for s in specs)
+
+
+# -- Find a place can find a place ------------------------------------------
+
+def test_the_find_a_place_view_has_a_way_to_find_a_place(state: S.State) -> None:
+    """The view is CALLED "Find a place" and offered only a map of dots: a
+    reader either knew where their town sat on a map of Canada or browsed.
+    The search must also survive a dead map CDN, so it lives outside the
+    maplibre init."""
+    page = state.html()
+    assert 'id="place-find"' in page
+    assert "place-hits" in page
+    assert "initPlaceSearch" in page
+
+
+def test_places_the_gazetteer_cannot_locate_are_still_findable(state: S.State) -> None:
+    """The first British Columbia read was invisible: the map draws the
+    Ontario title-census, and the Ontario-only gazetteer resolves "Kent" to
+    Kent, Ontario -- so BC places get no dot rather than a wrong one, and the
+    search carries them instead."""
+    geo = state.geojson()
+    names = {u["place"].lower() for u in geo["unlocated"]}
+    assert any("lower mainland" in n or "chilliwack" in n or "langley" in n
+               for n in names), f"no BC place in unlocated: {sorted(names)[:10]}"
+    for u in geo["unlocated"]:
+        assert u["place"] and u["raw"] and u["n_records"] >= 2
+    # And none of them duplicates a located dot.
+    located = {p["place"].lower() for p in state.places}
+    assert not (names & located)

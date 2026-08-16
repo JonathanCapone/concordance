@@ -856,8 +856,36 @@ class State:
         return out
 
     def geojson(self) -> dict[str, Any]:
+        # Places the corpus holds that the gazetteer cannot locate. The first
+        # British Columbia read exposed this: the map draws the Ontario
+        # title-census, so a place the reader ADDS -- the entire point of the
+        # loop -- was invisible and unsearchable. These are listed WITHOUT
+        # coordinates rather than geocoded by guess, because the Ontario-only
+        # gazetteer resolves "Kent" to Kent, Ontario, and a BC municipality
+        # rendered into the wrong province is worse than a dot that says
+        # "not on the map yet". The BC gazetteer is Week 1 work, and the plan
+        # says so.
+        located = {p["place"].lower() for p in self.places} | {
+            p["raw"].lower() for p in self.places}
+        by_place: dict[str, list[Any]] = {}
+        for r in self.corpus.records:
+            name = " ".join(str(r.place or "").split())
+            if len(name) > 2 and name.lower() not in located:
+                by_place.setdefault(name, []).append(r)
+        unlocated = []
+        for name, records in sorted(by_place.items()):
+            if len(records) < 2:
+                continue
+            years = sorted({int(str(r.period)[:4]) for r in records
+                            if r.period and str(r.period)[:4].isdigit()})
+            unlocated.append({
+                "place": name, "raw": name, "n_records": len(records),
+                "first": years[0] if years else "", "last": years[-1] if years else "",
+            })
+
         return {
             "type": "FeatureCollection",
+            "unlocated": unlocated,
             "features": [
                 {
                     "type": "Feature",
@@ -1935,6 +1963,19 @@ class Handler(BaseHTTPRequestHandler):
 
     def _post_ask(self, payload: dict[str, Any]) -> None:
         assert STATE is not None
+        # The same gate as /api/read, for the same reason: Jay answers by
+        # running the local model, and a public instance that did that on
+        # request would hand every visitor a lever on somebody else's GPU.
+        # Rate limits bound the damage; they do not change whose card it is.
+        # On your own machine, Jay is your machine, and the button works.
+        if not self._is_local_instance():
+            self._send_json({
+                "error": "This shared instance does not run its model for "
+                         "visitors. Every other view works from local data.",
+                "local_reader": "Run `python -m concordance.server` on your "
+                                "own machine to ask Jay there.",
+            }, status=501)
+            return
         try:
             question = _text_field(payload, "question", MAX_QUESTION_CHARS)
         except _ApiInputError as exc:

@@ -170,6 +170,24 @@ details textarea{{resize:vertical}}
 .row .pg{{font-size:10px;opacity:.45;margin-left:5px}}
 .legend{{display:flex;flex-wrap:wrap;gap:10px;font-size:11px;opacity:.75;margin:0 0 2px}}
 .legend i{{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px}}
+/* The view is CALLED "Find a place"; this is the finding. Overlaid on the map
+   because the map is where the answer appears, and a search that lives in
+   another view is a promise the label breaks. */
+.place-search{{position:absolute;top:14px;left:14px;z-index:30;width:min(320px,70vw)}}
+.place-search input{{width:100%;background:rgba(10,14,18,.92);border:1px solid
+  rgba(255,255,255,.16);border-radius:9px;color:#e8edf2;padding:8px 12px;
+  font:inherit;font-size:13px}}
+.place-search input:focus{{outline:none;border-color:var(--gt-hit)}}
+#place-hits{{margin-top:6px;background:rgba(10,14,18,.95);border:1px solid
+  rgba(255,255,255,.12);border-radius:9px;overflow:hidden}}
+#place-hits button{{display:flex;justify-content:space-between;gap:10px;width:100%;
+  background:none;border:0;border-bottom:1px solid rgba(255,255,255,.06);
+  color:#e8edf2;padding:8px 12px;font:inherit;font-size:12.5px;cursor:pointer;
+  text-align:left}}
+#place-hits button:last-child{{border-bottom:0}}
+#place-hits button:hover,#place-hits button.is-hot{{background:rgba(255,255,255,.07)}}
+#place-hits .st{{font-size:11px;opacity:.6;white-space:nowrap}}
+#place-hits .none{{padding:8px 12px;font-size:12px;color:#8b97a4}}
 .findbar{{display:flex;align-items:center;gap:10px;margin:2px 0 10px;position:sticky;top:0;
   background:var(--dock-bg,rgba(9,13,18,.97));padding:6px 0;z-index:2}}
 .findbar input{{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
@@ -275,6 +293,12 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
 
     <section class="view is-active" data-view="observe">
       <div id="map"></div>
+      <div class="place-search">
+        <input id="place-find" type="search" autocomplete="off" spellcheck="false"
+          placeholder="find a place — try Belleville, or Lower Mainland"
+          aria-label="Find a place by name">
+        <div id="place-hits" hidden></div>
+      </div>
       <div class="legend">
         <b>Municipal sewage reports</b>
         <div class="key"><span class="sw" style="background:var(--gt-hit)"></span> read from the scans</div>
@@ -1071,6 +1095,7 @@ map.addControl(new maplibregl.ScaleControl({{maxWidth:110,unit:"metric"}}),"bott
 
 map.on("load", async () => {{
   const geo = await (await fetch("/api/places.geojson")).json();
+  window._placesGeo = geo;
   map.addSource("towns",{{type:"geojson",data:geo}});
   map.addLayer({{id:"halo",type:"circle",source:"towns",
     filter:["==",["get","extracted"],true],
@@ -1197,6 +1222,110 @@ function loadMapLibrary() {{
   document.head.appendChild(script);
 }}
 
+/* ---- finding a place by its name ------------------------------------- */
+/* The view is called "Find a place" and, until this, offered no way to type
+   one -- a reader either knew where their town sat on a map of Canada or they
+   browsed dots. Deliberately independent of the map: it fetches the same
+   local endpoint itself, so when the map CDN is slow or blocked the search
+   still answers, which is most of what the view promised in the first place. */
+(function initPlaceSearch() {{
+  const input = document.getElementById("place-find");
+  const hits = document.getElementById("place-hits");
+  if (!input || !hits) return;
+  let features = null, hot = -1;
+
+  const load = async () => {{
+    if (features) return features;
+    let geo = window._placesGeo;
+    if (!geo) {{
+      try {{
+        geo = await (await fetch("/api/places.geojson")).json();
+        window._placesGeo = geo;
+      }} catch (e) {{ geo = {{features: [], unlocated: []}}; }}
+    }}
+    /* One searchable list: located dots, then the places the corpus holds
+       that no gazetteer can pin yet -- the first BC read lives here until the
+       Week-1 gazetteer lands. They open the same dock; they just cannot fly
+       the map anywhere. */
+    features = (geo.features || []).concat((geo.unlocated || []).map(u => ({{
+      properties: {{...u, extracted: true, unlocated: true}},
+    }})));
+    return features;
+  }};
+
+  const show = list => {{
+    hot = -1;
+    if (!list.length) {{
+      hits.innerHTML = `<div class="none">No place by that name is located yet.
+        Reading brings new ones in.</div>`;
+      hits.hidden = false;
+      return;
+    }}
+    hits.innerHTML = list.map(f => {{
+      const p = f.properties || {{}};
+      const state = p.unlocated ? "in the record — not on the map yet"
+                  : p.extracted ? "read" : "located, not read";
+      const span = (p.first && p.last) ? ` · ${{esc(p.first)}}–${{esc(p.last)}}` : "";
+      return `<button type="button" data-place="${{esc(p.place || "")}}">
+        <span>${{esc(p.place || "?")}}</span>
+        <span class="st">${{esc(state)}}${{span}}</span></button>`;
+    }}).join("");
+    hits.hidden = false;
+  }};
+
+  const search = async () => {{
+    const q = input.value.trim().toLowerCase();
+    if (q.length < 2) {{ hits.hidden = true; hits.innerHTML = ""; return; }}
+    const all = await load();
+    const scored = all
+      .filter(f => String((f.properties || {{}}).place || "").toLowerCase().includes(q))
+      .sort((a, b) => {{
+        const pa = a.properties, pb = b.properties;
+        const sa = String(pa.place).toLowerCase().startsWith(q) ? 0 : 1;
+        const sb = String(pb.place).toLowerCase().startsWith(q) ? 0 : 1;
+        return sa - sb || (pb.extracted === true) - (pa.extracted === true)
+               || String(pa.place).localeCompare(String(pb.place));
+      }})
+      .slice(0, 8);
+    show(scored);
+  }};
+
+  const open = btn => {{
+    const all = features || [];
+    const f = all.find(x => (x.properties || {{}}).place === btn.dataset.place);
+    if (!f) return;
+    hits.hidden = true; input.value = f.properties.place;
+    openTown(f.properties);
+    if (window._map && f.geometry) {{
+      window._map.flyTo({{center: f.geometry.coordinates, zoom: 7.5}});
+    }}
+  }};
+
+  input.addEventListener("input", search);
+  input.addEventListener("keydown", ev => {{
+    const buttons = [...hits.querySelectorAll("button")];
+    if (ev.key === "Escape") {{ hits.hidden = true; return; }}
+    if (ev.key === "ArrowDown" || ev.key === "ArrowUp") {{
+      ev.preventDefault();
+      if (!buttons.length) return;
+      hot = (hot + (ev.key === "ArrowDown" ? 1 : -1) + buttons.length) % buttons.length;
+      buttons.forEach((b, i) => b.classList.toggle("is-hot", i === hot));
+      return;
+    }}
+    if (ev.key === "Enter" && buttons.length) {{
+      ev.preventDefault();
+      open(buttons[hot >= 0 ? hot : 0]);
+    }}
+  }});
+  hits.addEventListener("click", ev => {{
+    const b = ev.target.closest("button");
+    if (b) open(b);
+  }});
+  document.addEventListener("click", ev => {{
+    if (!ev.target.closest(".place-search")) hits.hidden = true;
+  }});
+}})();
+
 /* ---- every view that is not the map ---------------------------------- */
 const LOADERS = {{
   /* One town, in full -- which is what the label says and what this now does.
@@ -1312,8 +1441,13 @@ const LOADERS = {{
         let h = `<div class="card"><p class="lede" style="color:#e8edf2;margin:0 0 10px">`
               + `<strong style="color:var(--gt-hit)">Q</strong> ${{esc(question)}}</p>`;
         if(d.error){{
-          h += `<p class="empty">No answer: ${{esc(d.error)}}<br><br>Jay needs its configured
-                local Ollama service running (<code>ollama serve</code>).</p>`;
+          /* A shared instance refuses to run its model for visitors, and says
+             so with the command that works instead -- the same honesty as the
+             read button. Only the generic failure suggests ollama serve. */
+          h += `<p class="empty">No answer: ${{esc(d.error)}}`
+             + (d.local_reader ? `<br><br>${{esc(d.local_reader)}}`
+                : `<br><br>Jay needs its configured local Ollama service running
+                   (<code>ollama serve</code>).`) + `</p>`;
         }} else {{
           h += `<p style="margin:0;white-space:pre-wrap">${{esc(d.reply)}}</p>`;
           if(d.tools && d.tools.length){{

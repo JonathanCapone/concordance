@@ -219,3 +219,22 @@ def test_the_library_publishes_only_what_the_archive_stood_behind(tmp_path, monk
                                  [dict(good)], empty, say=said.append) == 0
     assert not (tmp_path / "elsewhere.json").exists()
     assert any("NOT added" in m for m in said)
+
+
+def test_a_shared_instance_will_not_run_jay_for_visitors(monkeypatch) -> None:
+    """Jay answers by running the local model. /api/read refuses on a public
+    host for exactly this reason, and /api/ask ran unguarded beside it -- the
+    same GPU, a different door."""
+    import concordance.server as server
+
+    handler = server.Handler.__new__(server.Handler)
+    sent = {}
+    handler._send_json = lambda payload, status=200, headers=None: sent.update(
+        payload=payload, status=status)
+    handler._direct_peer = lambda: "203.0.113.7"
+    monkeypatch.delenv("CONCORDANCE_PUBLIC_HOSTS", raising=False)
+
+    server.STATE = server.STATE or object()
+    handler._post_ask({"question": "what did Owen Sound discharge?"})
+    assert sent["status"] == 501
+    assert "local" in str(sent["payload"]).lower()

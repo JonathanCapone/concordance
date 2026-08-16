@@ -69,7 +69,11 @@ class _WorkMustNotRun:
 
 class _Allow:
     def check(self, peer: str) -> tuple[bool, int]:
-        assert peer == "192.0.2.44"
+        # The property defended: limits key on the DIRECT peer. The /api/ask
+        # tests run as loopback (the endpoint refuses non-local machines);
+        # every other endpoint's tests use the public fixture address. What
+        # must never appear here is the forged X-Forwarded-For.
+        assert peer in ("192.0.2.44", "127.0.0.1")
         return True, 0
 
 
@@ -79,7 +83,7 @@ class _Deny:
 
     def check(self, peer: str) -> tuple[bool, int]:
         # Forwarded headers above deliberately name a different address.
-        assert peer == "192.0.2.44"
+        assert peer in ("192.0.2.44", "127.0.0.1")
         return False, self.retry_after
 
 
@@ -183,6 +187,7 @@ def test_simple_text_plain_posts_are_rejected(
 
 def test_oversized_request_is_413_without_reading_or_running_work(monkeypatch) -> None:
     handler, sent = _handler("/api/ask", {"question": "small"})
+    handler.client_address = ("127.0.0.1", 4567)  # the gate: local machines only
     handler.headers["Content-Length"] = str(server.MAX_API_JSON_BYTES + 1)
 
     class _Unreadable:
@@ -233,6 +238,10 @@ def test_oversized_fields_are_413_before_rate_or_work(
     monkeypatch, path: str, payload: dict[str, Any], limiter_name: str,
 ) -> None:
     handler, sent = _handler(path, payload)
+    if path == "/api/ask":
+        # The mechanics contract applies where the endpoint operates: /api/ask
+        # serves only the local machine, so its size cap is tested from one.
+        handler.client_address = ("127.0.0.1", 4567)
     monkeypatch.setattr(server, "STATE", _WorkMustNotRun())
     monkeypatch.setattr(server, limiter_name, _WorkMustNotRun())
     monkeypatch.setattr(server, "FLAGS", [])
@@ -245,6 +254,7 @@ def test_oversized_fields_are_413_before_rate_or_work(
 
 def test_model_rate_limit_is_per_direct_peer_and_skips_model(monkeypatch) -> None:
     handler, sent = _handler("/api/ask", {"question": "What happened?"})
+    handler.client_address = ("127.0.0.1", 4567)  # the gate: local machines only
     monkeypatch.setattr(server, "STATE", SimpleNamespace(jay=_WorkMustNotRun()))
     monkeypatch.setattr(server, "MODEL_RATE_LIMITER", _Deny(19))
 
@@ -257,6 +267,7 @@ def test_model_rate_limit_is_per_direct_peer_and_skips_model(monkeypatch) -> Non
 
 def test_model_busy_is_nonblocking_and_skips_model(monkeypatch) -> None:
     handler, sent = _handler("/api/ask", {"question": "What happened?"})
+    handler.client_address = ("127.0.0.1", 4567)  # the gate: local machines only
     monkeypatch.setattr(server, "STATE", SimpleNamespace(jay=_WorkMustNotRun()))
     monkeypatch.setattr(server, "MODEL_RATE_LIMITER", _Allow())
     monkeypatch.setattr(server, "MODEL_SLOTS", _Busy())
@@ -533,7 +544,12 @@ def test_explicit_public_host_can_be_configured(monkeypatch) -> None:
 
     handler.do_POST()
 
-    assert sent["status"] == 200
+    # The configured public host passes the same-origin check -- and is then
+    # refused anyway, because Jay runs the local model and a shared instance
+    # does not spend its card for visitors. The refusal names the command
+    # that works instead.
+    assert sent["status"] == 501
+    assert "local" in json.dumps(sent["body"]).lower()
 
 
 @pytest.mark.parametrize(
@@ -1030,6 +1046,7 @@ def test_model_slot_releases_when_model_raises(monkeypatch) -> None:
 
     slot = _Slot()
     handler, sent = _handler("/api/ask", {"question": "What happened?"})
+    handler.client_address = ("127.0.0.1", 4567)  # the gate: local machines only
     monkeypatch.setattr(server, "STATE", SimpleNamespace(jay=_Jay()))
     monkeypatch.setattr(server, "MODEL_RATE_LIMITER", _Allow())
     monkeypatch.setattr(server, "MODEL_SLOTS", slot)
@@ -1065,6 +1082,7 @@ def test_nonbrowser_json_without_origin_is_allowed(monkeypatch) -> None:
             return SimpleNamespace(reply="answer", tool_calls=[], error=None)
 
     handler, sent = _handler("/api/ask", {"question": "What happened?"})
+    handler.client_address = ("127.0.0.1", 4567)  # the gate: local machines only
     monkeypatch.setattr(server, "STATE", SimpleNamespace(jay=_Jay()))
     monkeypatch.setattr(server, "MODEL_RATE_LIMITER", _Allow())
     monkeypatch.setattr(server, "MODEL_SLOTS", _Slot())
@@ -1086,6 +1104,7 @@ def test_same_origin_uses_real_host_not_forwarded_host(monkeypatch) -> None:
         origin="http://localhost:8765",
         host="localhost:8765",
     )
+    handler.client_address = ("127.0.0.1", 4567)  # the gate: local machines only
     monkeypatch.setattr(server, "STATE", SimpleNamespace(jay=_Jay()))
     monkeypatch.setattr(server, "MODEL_RATE_LIMITER", _Allow())
     monkeypatch.setattr(server, "MODEL_SLOTS", _Slot())
