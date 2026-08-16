@@ -70,6 +70,17 @@ def _nav() -> str:
             f'stroke-linecap="round" stroke-linejoin="round"/></svg>'
             f'<span class="nav-tip">{label}</span></button>'
         )
+    # The in-browser reader is its own page, not a view -- a real link, in
+    # the same clothes as the buttons. It was reachable only by knowing the
+    # address before this line, which made it a secret rather than a feature.
+    out.append(
+        '<a class="nav-button" href="/browser" aria-label="Watch it read">'
+        '<svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true">'
+        '<path d="M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z" '
+        'fill="none" stroke="currentColor" stroke-width="1.6" '
+        'stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        '<span class="nav-tip">Watch it read</span></a>'
+    )
     return "".join(out)
 
 
@@ -93,7 +104,8 @@ html,body{{height:100%;margin:0;background:#04080d;color:#e8edf2;
 .brand-sub{{margin:0;font-size:11px;color:#7d8996}}
 .primary-nav{{display:flex;gap:4px}}
 .nav-button{{background:none;border:1px solid transparent;border-radius:9px;
-  color:#8b97a4;padding:7px 9px;cursor:pointer;display:flex;align-items:center;gap:7px}}
+  color:#8b97a4;padding:7px 9px;cursor:pointer;display:flex;align-items:center;
+  gap:7px;text-decoration:none}}
 .nav-button:hover{{color:#e8edf2;border-color:rgba(255,255,255,.12)}}
 .nav-button.is-active{{color:#04080d;background:var(--gt-hit);border-color:var(--gt-hit)}}
 .nav-glyph{{width:17px;height:17px}}

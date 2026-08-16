@@ -61,3 +61,23 @@ def test_the_place_page_answers_before_the_nav_does(page: str) -> None:
     # A CLASS, not an id: the dock and the whole-record view both render this,
     # and an id can only ever bind the first one on the page.
     assert 'class="find"' in page
+
+
+def test_the_browser_reader_is_linked_from_the_front_page() -> None:
+    """The in-browser reader is the project's proof that no install is
+    needed; a demo reachable only by typing its address is a secret, not a
+    feature. The front page must link it."""
+    import concordance.server as server
+
+    html = server.State().html()
+    assert 'href="/browser"' in html
+
+
+def test_the_browser_reader_is_linked_from_the_front_page() -> None:
+    """The in-browser reader is the project's proof that no install is
+    needed; a demo reachable only by typing its address is a secret, not a
+    feature. The front page must link it."""
+    import concordance.server as server
+
+    html = server.State().html()
+    assert 'href="/browser"' in html
