@@ -3,13 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Concordance — the reader, in your browser</title>
+<title>Concordance — read a town in your browser</title>
 <style>
   :root { color-scheme: dark; }
   * { box-sizing: border-box; margin: 0; }
   body { background:#0b1016; color:#e8edf2; font:14px/1.55 system-ui,sans-serif;
-         max-width: 880px; margin: 0 auto; padding: 28px 18px 80px; }
+         max-width: 920px; margin: 0 auto; padding: 28px 18px 80px; }
   h1 { font-size: 20px; margin: 0 0 4px; }
+  h2 { font-size: 15px; margin: 0 0 6px; }
   .sub { color:#8b97a4; margin-bottom: 18px; }
   .card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
           border-radius: 12px; padding: 14px 16px; margin: 12px 0; }
@@ -17,6 +18,8 @@
   button { background:#f0a24a; color:#0b1016; border:0; border-radius:9px;
            padding:9px 18px; font:inherit; font-weight:600; cursor:pointer }
   button:disabled { opacity:.45; cursor:default }
+  button.quiet { background:transparent; color:#8b97a4;
+                 border:1px solid rgba(255,255,255,.2) }
   #status { font-family: ui-monospace,monospace; font-size:12px; color:#8b97a4;
             white-space: pre-wrap; }
   progress { width:100%; height:6px; accent-color:#f0a24a }
@@ -31,76 +34,108 @@
   details { margin-top: 8px } summary { cursor:pointer; color:#8b97a4 }
   pre { white-space:pre-wrap; font-size:11.5px; color:#8b97a4; max-height:260px;
         overflow:auto; margin-top:6px }
+  select,input[type=text] { background:#0b1016; color:#e8edf2; font:inherit;
+        border:1px solid rgba(255,255,255,.2); border-radius:8px; padding:8px 10px;
+        max-width:100%; }
+  .doc { padding:5px 0; border-bottom:1px dashed rgba(255,255,255,.08); font-size:13px }
+  .doc:last-child { border-bottom:0 }
+  .verdict { margin:6px 0; font-size:13px }
 </style>
 </head>
 <body>
 <h1>The reader, in your browser</h1>
-<p class="sub">A working proof: one real page from a 1997 Ontario government
-report, read by an AI model running <b>inside this browser tab</b> on your own
-graphics card. Nothing is installed; no server does any reading.</p>
+<p class="sub">Pick a town nobody has read. An AI model runs <b>inside this
+browser tab</b> on your own graphics card, reads that town's scanned
+government reports page by page, and sends what survives its checks to this
+site — where every quoted sentence is re-verified against the archive before
+anything is published. Nothing is installed; no server does any reading.</p>
 
-<div class="card">
-  <b>The Optimization of the Ear Falls Water Treatment Plant</b> — page 9
-  <span class="note">(<a href="https://archive.org/details/optimizationofea00ontauoft/page/n8/mode/2up"
-  target="_blank" rel="noopener">the scanned page ↗</a>, Internet Archive)</span>
-  <details><summary>the page text being read (from the archive's OCR layer)</summary>
-  <pre id="page-text"></pre></details>
+<div class="card" id="pick-card" hidden>
+  <h2>Pick a town nobody has read yet</h2>
+  <p class="note" style="margin-bottom:8px">These are municipalities in the
+  silence index with no readings yet. More surviving reports means a longer
+  read and a richer record.</p>
+  <p><select id="town-select"></select></p>
+  <p style="margin-top:8px"><input type="text" id="town-free"
+     placeholder="or any place name in the collection…" size="30">
+  </p>
+  <p style="margin-top:10px"><button id="town-go">Plan the read</button></p>
+  <p class="note" id="pick-note"></p>
 </div>
 
-<div class="card">
+<div class="card" id="town-card" hidden>
+  <h2 id="town-name"></h2>
+  <div id="town-docs"></div>
+  <p class="note" id="town-note" style="margin-top:8px"></p>
+</div>
+
+<div class="card" id="run-card">
   <div id="status">Checking whether this browser can run a model…</div>
   <progress id="bar" value="0" max="1" hidden></progress>
   <p style="margin-top:10px">
-    <button id="go" disabled>Read this page in the browser</button>
+    <button id="go" disabled></button>
+    <button id="stop" class="quiet" hidden>stop after this page</button>
   </p>
   <p class="note" id="model-note"></p>
 </div>
 
 <div class="card" id="results" hidden>
   <b id="headline"></b>
+  <div id="verdicts"></div>
   <table id="tbl">
     <thead><tr><th>kind</th><th>parameter</th><th>value</th>
-    <th>sentence it was read from</th><th>checks</th></tr></thead>
+    <th>sentence it was read from</th><th>page</th><th>checks</th></tr></thead>
     <tbody></tbody>
   </table>
-  <details><summary class="note">the model's raw output — check the reader's
-  work the way the reader checks the archive's</summary>
+  <details><summary class="note">the model's raw output for the last page —
+  check the reader's work the way the reader checks the archive's</summary>
   <pre id="raw-out"></pre></details>
-  <p class="note" style="margin-top:10px">Checks shown here are the browser's
-  own; if these records were submitted to a Concordance site, it would
-  re-verify every sentence and number against the archive before publishing
-  anything — the same rule applied to every reader, human or machine.</p>
+  <p class="note" style="margin-top:10px" id="results-note"></p>
 </div>
 
-<p class="note">Honest scope, measured 2026-08-17 on this page. Qwen3.5-4B —
-a current catalogue model, no fork, no install — read this page in the
-browser in 42 seconds: 12 records, 9 verified against the scan by the checks
-you see, 3 refused in the open. Every verified value matches the
-archive-verified reference for this page. Two findings made that possible:
-reasoning-tuned models need their thinking switched off on the user turn
-(in the system prompt the switch is ignored), and the instructions' worked
-example must come from a different document than the one being read, or it
-seeds its own answer. The benchmarked gemma4:e2b family (100% precision,
-44% recall on the four gold pages, run locally) still cannot join in-browser:
-all three of its published browser builds, from two independent toolchains,
-fall silent past roughly 512 prompt tokens — a defect in the shared GPU
-kernels, whose official support is still an open pull request upstream. The
-day that lands, it takes one flag to retest. Until then the button below is
-not a promise; it is the working thing.</p>
+<div class="card" id="demo-card" hidden>
+  <h2>Or try it on one page first</h2>
+  <p class="note"><b id="demo-title"></b> — one real page
+  (<a id="demo-link" target="_blank" rel="noopener">the scan ↗</a>,
+  Internet Archive). Reads in under a minute; publishes nothing.</p>
+  <details><summary class="note">the page text being read (from the archive's
+  OCR layer)</summary><pre id="page-text"></pre></details>
+  <p style="margin-top:10px"><button id="demo-go" disabled>Read this page in the browser</button></p>
+</div>
+
+<p class="note" id="honesty">Honest scope. The model this page runs
+(Qwen3.5-4B from the official WebLLM catalogue) is a <b>partial</b> reader:
+measured on this project's gold pages, models of its size find roughly half
+of what a page states and invent nothing that survives the checks — on the
+embedded proof page it read 12 records in 42 seconds, 9 verified, 3 refused
+in the open. What your browser sends is only what passed both checks here,
+and this site then re-verifies every sentence and number against the scanned
+page on archive.org before publishing — the same rule applied to every
+reader, human or machine. A stronger model (gemma4:e2b — 100% precision,
+44% recall on the gold pages) still cannot run in any browser: all three of
+its published browser builds fall silent past ~512 prompt tokens, a defect
+in the shared WebGPU kernels for its architecture, documented in this
+project's worklog; the day the upstream fix lands, it takes one flag to
+retest. Until then: an honest partial read a stranger can start with one
+press, or the installed reader for the rest.</p>
 
 <script type="module">
 const SYSTEM_SMALL = "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\").\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n";
-const SYSTEM_FULL = "You read scanned Canadian government reports and recover the measurements in them.\n\nThey come from every part of government: water and sewage, but also education,\nagriculture, forestry, mining, energy, health, housing, transport, justice,\ntrade and the census. A measurement is any quantity the page states about the\nworld. Do not restrict yourself to scientific or environmental quantities.\n\nVery often the unit IS the thing being counted, and there is no unit symbol at\nall. These are all measurements:\n\n    \"75 elementary schools under the aegis of the Hamilton Board of Education\"\n        -> parameter \"elementary schools\", value 75, unit \"schools\"\n    \"Total mileage was 334.15 miles\"\n        -> parameter \"mileage\", value 334.15, unit \"miles\"\n    \"The incubation period lasted from 20 to 30 days\"\n        -> parameter \"incubation period\", values 20 and 30, unit \"days\"\n    \"the average rent now paid, namely $357.00 per month\"\n        -> parameter \"monthly rent\", value 357, unit \"$/month\"\n    \"a yield of 32 bushels to the acre\"\n        -> parameter \"wheat yield\", value 32, unit \"bushels/acre\"\n    \"the population of the town was 55,201 at the 1961 census\"\n        -> parameter \"population\", value 55201, unit \"persons\"\n\nThe text comes from OCR of a document that may be sixty years old. It will\ncontain scanning errors. \"mg/1\" almost always means \"mg/L\". Numbers may have\nstray spaces, e.g. \"8. 8 million gallons\" means 8.8. Letters often stand where\ndigits were: \"I5\" is 15, \"3I per cent\" is 31 per cent, \"SOfo\" is 50%.\n\nOne document routinely covers many facilities, and the same parameter then means\ndifferent things a paragraph apart. A page describing a city's hospitals gives\n430 beds, 640 beds, 620 beds and 420 beds -- four hospitals, not a contradiction\n-- and each sentence names which. Always fill \"facility\" when the sentence names\nwhat is being measured; without it those four readings collapse into one and are\nreported as a disagreement.\n\nIn specification tables the sentence usually does NOT name the thing -- the\nheading above it does. A block headed \"PUMPING STATION - PLATS SITE, Unit No. 1\"\nfollowed by lines \"HP - 60\" and \"RPM - 1800\" is describing that pump: every line\nunder a heading belongs to the thing the heading names, until the next heading.\n\n    PUMPING STATION - PLATS SITE\n    Unit No. 1\n    HP - 60        -> parameter \"horsepower\", value 60, unit \"HP\",\n                      facility \"PUMPING STATION - PLATS SITE Unit No. 1\"\n    Unit No. 2\n    HP - 30        -> facility \"PUMPING STATION - PLATS SITE Unit No. 2\"\n\nA bare \"HP - 60\" with facility null is a number that belongs to nothing; carried\nunder its heading it is a pump, described.\n\nWhen the sentence itself states the circumstance under which the value holds,\nput those exact words in \"condition\": \"Capacity - 0.5 MGD @ 40 foot head\" ->\ncondition \"@ 40 foot head\"; \"flows exceeded 7.2 mgd 10 percent of the time\" ->\ncondition \"10 percent of the time\"; \"610 scfm each\" -> condition \"each\". The\nwords MUST appear inside \"source_text\" -- a condition is checked against the\nsentence exactly like the value, and one that is not there is discarded. Leave\nit null when the sentence states no circumstance; do not repeat the facility or\nthe qualifier in it.\n\nA sentence that names a year other than the report's year may be comparing two\nyears. Put each value under the year the sentence gives it, not automatically\nunder the report's year:\n\n    (in a 1969 report) \"The average solids concentration of 5.1% was less than\n    the 1968 average of 5.3%\"\n        -> 5.1 belongs to 1969, and 5.3 belongs to 1968\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n\n{\n  \"kind\":       \"observation\" | \"standard\" | \"design\" | \"conclusion\",\n  \"parameter\":  what was measured, e.g. \"BOD\", \"suspended solids\", \"chlorine dosage\",\n  \"parameter_status\": \"controlled\" if parameter is copied from the supplied\n                vocabulary, otherwise \"proposed\",\n  \"value\":      the number, or null,\n  \"unit\":       e.g. \"mg/L\", \"%\", \"million gallons\", \"cu ft\",\n  \"qualifier\":  \"average\"|\"mean\"|\"median\"|\"maximum\"|\"minimum\"|\"total\"|\"percent\"|\"count\"|\"point\"|null,\n  \"stream\":     \"influent\"|\"effluent\"|\"ambient\"|\"raw\"|\"treated\"|\"unknown\",\n  \"place\":      the place it refers to, or null,\n  \"facility\":   the specific thing measured, when the sentence OR the heading\n                above it names one, e.g. \"Hamilton General Hospital\",\n                \"water pollution control plant\", \"PUMPING STATION Unit No. 1\",\n                or null,\n  \"condition\":  the circumstance the sentence attaches to the value, in the\n                sentence's own words, e.g. \"@ 40 foot head\", \"10 percent of\n                the time\", \"each\", or null,\n  \"period\":     the time it refers to, e.g. \"1969\", \"1969-11\", or null,\n  \"confidence\": 0.0 to 1.0 -- how sure you are you read this correctly,\n  \"source_text\": the EXACT sentence or line from the text that this came from\n}\n\nDistinguishing the four kinds is the most important thing you do:\n\n- \"observation\" is what was actually MEASURED.\n    \"The average influent BOD ... were 104 mg/1\"  -> observation\n- \"standard\" is a REGULATORY LIMIT or objective, not a measurement.\n    \"The Maximum Acceptable Concentration of nitrate is 10 mg/L\"  -> standard\n- \"design\" is what equipment was BUILT to handle -- a specification.\n    A \"DESIGN DATA\" section reading \"BOD - Raw Sewage 180 mg/1\"  -> design\n- \"conclusion\" is the author's judgement, often with no number.\n    \"The plant operated above capacity 85% of the time\"  -> conclusion\n\nA percentage is NOT automatically a removal efficiency. Read what it counts:\n    \"an average removal of 64% BOD\"                  -> observation, BOD removal\n    \"the objective was exceeded 20 per cent of the time\"\n        -> observation, parameter \"BOD exceedance frequency\" -- this counts HOW\n           OFTEN a limit was breached, not how much was taken out. Filing it as\n           removal inverts its meaning: 20% exceedance is good, 20% removal is bad.\n    \"80% of the time the plant operated above design capacity\"\n        -> observation, parameter \"capacity exceedance frequency\"\nUse the word \"frequency\" in the parameter whenever the number counts occasions\nrather than quantity.\n\nA design value and an observation can be the same parameter, same unit, same\nplant, in the same document. Confusing them corrupts the record. When a value\nappears under a heading like DESIGN DATA, DESIGN FLOW, or in an equipment\nspecification list, it is \"design\".\n\nRules:\n- source_text MUST be copied exactly from the input. Do not paraphrase it.\n- If you cannot find a real sentence for a value, do not emit that value.\n- Emit one element per measured value. \"104 mg/1 and 224 mg/1 respectively\"\n  is TWO observations, not one.\n- Do not invent. An empty array is a correct answer for a page with no measurements.\n- OMIT any field that would be null. Only \"kind\", \"parameter\",\n  \"parameter_status\" and \"source_text\" are always required. Shorter output is\n  better.\n- When several values share one sentence, repeat that same sentence as the\n  source_text for each. Do not shorten it.\n- Output the array and nothing else. Stop immediately after the closing bracket.\n";
-const PAGE_TEXT = "If the soda ash injection point for post pH adjustment is relocated to the high lift end of the\nclearwell and the plant is operated 1 8 hours per day instead of 1 2 hours during the winter, the free\nchlorine residual required would be lower (0.7 mg/L). It is therefore recommended to implement\nthese changes. Relocating the soda ash injection point while maintaining 12 hours of operation\nwould reduce the free chlorine residual required to inactivate cysts to 0.46 mg/L during the\nsummer, reducing fiirther the formation of THM. Higher chlorine levels at the plant may be\nrequired to maintain a minimum residual in the distribution system.\n\nThe average colour measured during the summer sampling is 36 TCU for the raw water and 4 TCU for\nthe treated water, which is below the ODWO of 5 TCU for the treated water.\n\nThe summer sampling showed an average turbidity in the raw water of 6.7 NTU, and an average\nturbidity in the treated water of 0.32 NTU. The turbidity in the treated water meets the ODWO of 1\nNTU. Disease outbreaks caused by giardia and Cryptosporidium have been reported with increased\nfrequency over the last decade in Canada. These protozoan parasites (especially Cryptosporidium) are\nmore diflScult to kill with disinfectants, and therefore their removal by physical processes is vital.\nCurrent US research and experience now indicates that a turbidity of 0. 1 NTU in filter effluent is\nneeded to provide protection from Cryptosporidium. It is expected that the utilization of PACL as\nprimary coagulant which started in the fall 1996, will help improve the turbidity in the treated water.\n\nThe average aluminum residual in the treated water for 1994 and 1995 is 94 \\xg/L, which is below the\nOntario Drinking Water Objective (ODWO) operational guideline of 100 \\xe/L. The result for April\n1995 (221 |ig/L), shows that the level of aluminum in the treated water can exceed the ODWO\nguideline at times. The switch to PACL from alum should result in a lower aluminum residual.\n\nThe Ear Falls Water Treatment Plant is a well operated plant. However, from historical records\nand testing carried out during this optimization study it appeared the plant was subject to periodic\nexcursions in treated water quality. This indicated a loss of process control. In mid-November\n1996, OCWA replaced alum with PACL. The results show that the quality of the treated water\ngreatly improved. The turbidity observed in the treated water is less than 0. 1 NTU, the colour is\nclose to 0 TCU for a raw water colour between 43 to 80 TCU, and the residual aluminum\nconcentration in the treated water is also reduced PACL works better under cold water\nconditions and also provides a wider range of optimum dosage than alum.\n\nRECOMMENDATIONS FOR PLANT SCALE MODIFICATIONS\n\nThe Ear Falls Water Treatment Plant is well operated and maintained. The only process modifications\nrecommended are to relocate the soda ash injection point at the high lift end of the clearwell and to\nextend the operation of the plant to 18 hours per day during the winter, to lower the required free\nchlorine residual for inactivation of giardia cysts and viruses.";
-const USER_PROMPT = "Document: The Optimization of the Ear Falls Water Treatment Plant\nPublisher: Ontario Ministry of Environment and Energy\nYear: 1997\nPage: 9\n\n--- BEGIN PAGE TEXT ---\nIf the soda ash injection point for post pH adjustment is relocated to the high lift end of the\nclearwell and the plant is operated 1 8 hours per day instead of 1 2 hours during the winter, the free\nchlorine residual required would be lower (0.7 mg/L). It is therefore recommended to implement\nthese changes. Relocating the soda ash injection point while maintaining 12 hours of operation\nwould reduce the free chlorine residual required to inactivate cysts to 0.46 mg/L during the\nsummer, reducing fiirther the formation of THM. Higher chlorine levels at the plant may be\nrequired to maintain a minimum residual in the distribution system.\n\nThe average colour measured during the summer sampling is 36 TCU for the raw water and 4 TCU for\nthe treated water, which is below the ODWO of 5 TCU for the treated water.\n\nThe summer sampling showed an average turbidity in the raw water of 6.7 NTU, and an average\nturbidity in the treated water of 0.32 NTU. The turbidity in the treated water meets the ODWO of 1\nNTU. Disease outbreaks caused by giardia and Cryptosporidium have been reported with increased\nfrequency over the last decade in Canada. These protozoan parasites (especially Cryptosporidium) are\nmore diflScult to kill with disinfectants, and therefore their removal by physical processes is vital.\nCurrent US research and experience now indicates that a turbidity of 0. 1 NTU in filter effluent is\nneeded to provide protection from Cryptosporidium. It is expected that the utilization of PACL as\nprimary coagulant which started in the fall 1996, will help improve the turbidity in the treated water.\n\nThe average aluminum residual in the treated water for 1994 and 1995 is 94 \\xg/L, which is below the\nOntario Drinking Water Objective (ODWO) operational guideline of 100 \\xe/L. The result for April\n1995 (221 |ig/L), shows that the level of aluminum in the treated water can exceed the ODWO\nguideline at times. The switch to PACL from alum should result in a lower aluminum residual.\n\nThe Ear Falls Water Treatment Plant is a well operated plant. However, from historical records\nand testing carried out during this optimization study it appeared the plant was subject to periodic\nexcursions in treated water quality. This indicated a loss of process control. In mid-November\n1996, OCWA replaced alum with PACL. The results show that the quality of the treated water\ngreatly improved. The turbidity observed in the treated water is less than 0. 1 NTU, the colour is\nclose to 0 TCU for a raw water colour between 43 to 80 TCU, and the residual aluminum\nconcentration in the treated water is also reduced PACL works better under cold water\nconditions and also provides a wider range of optimum dosage than alum.\n\nRECOMMENDATIONS FOR PLANT SCALE MODIFICATIONS\n\nThe Ear Falls Water Treatment Plant is well operated and maintained. The only process modifications\nrecommended are to relocate the soda ash injection point at the high lift end of the clearwell and to\nextend the operation of the plant to 18 hours per day during the winter, to lower the required free\nchlorine residual for inactivation of giardia cysts and viruses.\n--- END PAGE TEXT ---\n\nReturn the JSON array.";
+const USER_TMPL = "Document: {title}\nPublisher: {publisher}\nYear: {year}\nPage: {page}\n\n--- BEGIN PAGE TEXT ---\n{text}\n--- END PAGE TEXT ---\n\nReturn the JSON array.";
+const DEMO = {"identifier": "optimizationofea00ontauoft", "page": 9, "title": "The Optimization of the Ear Falls Water Treatment Plant", "year": "1997", "publisher": "Ontario Ministry of Environment and Energy", "text": "If the soda ash injection point for post pH adjustment is relocated to the high lift end of the\nclearwell and the plant is operated 1 8 hours per day instead of 1 2 hours during the winter, the free\nchlorine residual required would be lower (0.7 mg/L). It is therefore recommended to implement\nthese changes. Relocating the soda ash injection point while maintaining 12 hours of operation\nwould reduce the free chlorine residual required to inactivate cysts to 0.46 mg/L during the\nsummer, reducing fiirther the formation of THM. Higher chlorine levels at the plant may be\nrequired to maintain a minimum residual in the distribution system.\n\nThe average colour measured during the summer sampling is 36 TCU for the raw water and 4 TCU for\nthe treated water, which is below the ODWO of 5 TCU for the treated water.\n\nThe summer sampling showed an average turbidity in the raw water of 6.7 NTU, and an average\nturbidity in the treated water of 0.32 NTU. The turbidity in the treated water meets the ODWO of 1\nNTU. Disease outbreaks caused by giardia and Cryptosporidium have been reported with increased\nfrequency over the last decade in Canada. These protozoan parasites (especially Cryptosporidium) are\nmore diflScult to kill with disinfectants, and therefore their removal by physical processes is vital.\nCurrent US research and experience now indicates that a turbidity of 0. 1 NTU in filter effluent is\nneeded to provide protection from Cryptosporidium. It is expected that the utilization of PACL as\nprimary coagulant which started in the fall 1996, will help improve the turbidity in the treated water.\n\nThe average aluminum residual in the treated water for 1994 and 1995 is 94 \\xg/L, which is below the\nOntario Drinking Water Objective (ODWO) operational guideline of 100 \\xe/L. The result for April\n1995 (221 |ig/L), shows that the level of aluminum in the treated water can exceed the ODWO\nguideline at times. The switch to PACL from alum should result in a lower aluminum residual.\n\nThe Ear Falls Water Treatment Plant is a well operated plant. However, from historical records\nand testing carried out during this optimization study it appeared the plant was subject to periodic\nexcursions in treated water quality. This indicated a loss of process control. In mid-November\n1996, OCWA replaced alum with PACL. The results show that the quality of the treated water\ngreatly improved. The turbidity observed in the treated water is less than 0. 1 NTU, the colour is\nclose to 0 TCU for a raw water colour between 43 to 80 TCU, and the residual aluminum\nconcentration in the treated water is also reduced PACL works better under cold water\nconditions and also provides a wider range of optimum dosage than alum.\n\nRECOMMENDATIONS FOR PLANT SCALE MODIFICATIONS\n\nThe Ear Falls Water Treatment Plant is well operated and maintained. The only process modifications\nrecommended are to relocate the soda ash injection point at the high lift end of the clearwell and to\nextend the operation of the plant to 18 hours per day during the winter, to lower the required free\nchlorine residual for inactivation of giardia cysts and viruses.", "user": "Document: The Optimization of the Ear Falls Water Treatment Plant\nPublisher: Ontario Ministry of Environment and Energy\nYear: 1997\nPage: 9\n\n--- BEGIN PAGE TEXT ---\nIf the soda ash injection point for post pH adjustment is relocated to the high lift end of the\nclearwell and the plant is operated 1 8 hours per day instead of 1 2 hours during the winter, the free\nchlorine residual required would be lower (0.7 mg/L). It is therefore recommended to implement\nthese changes. Relocating the soda ash injection point while maintaining 12 hours of operation\nwould reduce the free chlorine residual required to inactivate cysts to 0.46 mg/L during the\nsummer, reducing fiirther the formation of THM. Higher chlorine levels at the plant may be\nrequired to maintain a minimum residual in the distribution system.\n\nThe average colour measured during the summer sampling is 36 TCU for the raw water and 4 TCU for\nthe treated water, which is below the ODWO of 5 TCU for the treated water.\n\nThe summer sampling showed an average turbidity in the raw water of 6.7 NTU, and an average\nturbidity in the treated water of 0.32 NTU. The turbidity in the treated water meets the ODWO of 1\nNTU. Disease outbreaks caused by giardia and Cryptosporidium have been reported with increased\nfrequency over the last decade in Canada. These protozoan parasites (especially Cryptosporidium) are\nmore diflScult to kill with disinfectants, and therefore their removal by physical processes is vital.\nCurrent US research and experience now indicates that a turbidity of 0. 1 NTU in filter effluent is\nneeded to provide protection from Cryptosporidium. It is expected that the utilization of PACL as\nprimary coagulant which started in the fall 1996, will help improve the turbidity in the treated water.\n\nThe average aluminum residual in the treated water for 1994 and 1995 is 94 \\xg/L, which is below the\nOntario Drinking Water Objective (ODWO) operational guideline of 100 \\xe/L. The result for April\n1995 (221 |ig/L), shows that the level of aluminum in the treated water can exceed the ODWO\nguideline at times. The switch to PACL from alum should result in a lower aluminum residual.\n\nThe Ear Falls Water Treatment Plant is a well operated plant. However, from historical records\nand testing carried out during this optimization study it appeared the plant was subject to periodic\nexcursions in treated water quality. This indicated a loss of process control. In mid-November\n1996, OCWA replaced alum with PACL. The results show that the quality of the treated water\ngreatly improved. The turbidity observed in the treated water is less than 0. 1 NTU, the colour is\nclose to 0 TCU for a raw water colour between 43 to 80 TCU, and the residual aluminum\nconcentration in the treated water is also reduced PACL works better under cold water\nconditions and also provides a wider range of optimum dosage than alum.\n\nRECOMMENDATIONS FOR PLANT SCALE MODIFICATIONS\n\nThe Ear Falls Water Treatment Plant is well operated and maintained. The only process modifications\nrecommended are to relocate the soda ash injection point at the high lift end of the clearwell and to\nextend the operation of the plant to 18 hours per day during the winter, to lower the required free\nchlorine residual for inactivation of giardia cysts and viruses.\n--- END PAGE TEXT ---\n\nReturn the JSON array."};
+const PLACE = (new URLSearchParams(location.search).get("place") || "").trim();
 
-document.getElementById("page-text").textContent = PAGE_TEXT;
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g,
+  c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const status = m => { $("status").textContent = m; };
+const bar = $("bar"), go = $("go"), stopBtn = $("stop");
 
-const status = m => { document.getElementById("status").textContent = m; };
-const bar = document.getElementById("bar");
-const go = document.getElementById("go");
+let STOP = false;
+let engine = null, modelId = null;
+let TOWN = null;          // {place, documents:[...]} once planned
 
-// ---- the same salvage parser the real extractor uses, ported ------------
+/* ---- the same salvage parser the real extractor uses, ported ------------ */
 function parseRecords(raw) {
   // Reasoning models deliberate in <think> blocks before answering, and the
   // deliberation can contain example braces. Extraction is transcription,
@@ -115,10 +150,10 @@ function parseRecords(raw) {
     try { const v = JSON.parse(raw.slice(a, b + 1)); if (Array.isArray(v)) return v; }
     catch (e) {}
   }
-  const out = []; let depth = 0, start = -1, inStr = false, esc = false;
+  const out = []; let depth = 0, start = -1, inStr = false, escd = false;
   for (let i = 0; i < raw.length; i++) {
     const ch = raw[i];
-    if (inStr) { if (esc) esc = false; else if (ch === "\\") esc = true;
+    if (inStr) { if (escd) escd = false; else if (ch === "\\") escd = true;
                  else if (ch === '"') inStr = false; continue; }
     if (ch === '"') inStr = true;
     else if (ch === "{") { if (!depth) start = i; depth++; }
@@ -130,10 +165,13 @@ function parseRecords(raw) {
   return out;
 }
 
-// ---- demo-grade ports of the evidence checks ----------------------------
+/* ---- demo-grade ports of the evidence checks ---------------------------
+   The browser's checks are a pre-filter so junk never leaves the tab; the
+   server's verification against archive.org is the authority, and its
+   verdict is shown when records are sent. */
 const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").trim();
-function quoteOnPage(quote) {
-  const q = norm(quote), p = norm(PAGE_TEXT);
+function quoteOnPage(quote, pageText) {
+  const q = norm(quote), p = norm(pageText);
   return q.length > 8 && p.includes(q.slice(0, 160));
 }
 function valueInQuote(value, quote) {
@@ -147,21 +185,86 @@ function valueInQuote(value, quote) {
   return rx.test(direct);
 }
 
-// ---- the model, in this tab ---------------------------------------------
-let engine = null, modelId = null;
-// Opening the page costs nothing: boot only checks capability and arms the
-// button. The multi-GB model fetch is behind an explicit press -- a page a
-// social link lands on must not start a 2.4 GB download uninvited.
+/* ---- one model record -> one bundle record, or a reason it cannot be --- */
+const KINDS = ["observation", "standard", "design", "conclusion"];
+function toBundleRecord(r, doc, pageNo, pageText) {
+  const quote = String(r.source_text || "").trim();
+  const kind = String(r.kind || "").trim().toLowerCase();
+  const parameter = String(r.parameter || "").trim();
+  if (!KINDS.includes(kind)) return { why: "unrecognised kind" };
+  if (!parameter) return { why: "no parameter named" };
+  if (!quote) return { why: "no sentence quoted — unprovable" };
+  let value = r.value;
+  if (value === undefined) value = null;
+  if (typeof value === "string" && value.trim() !== "" && isFinite(Number(value)))
+    value = Number(value);
+  if (value !== null && (typeof value !== "number" || !isFinite(value)))
+    return { why: "value is not a number" };
+  if (value === null && kind !== "conclusion")
+    return { why: "no value stated" };
+  if (!quoteOnPage(quote, pageText)) return { why: "sentence not found on the page" };
+  const inQuote = valueInQuote(value, quote);
+  if (inQuote === false) return { why: "value not in its sentence" };
+  if (value === null && norm(quote).split(" ").length < 4)
+    return { why: "quote too short to be evidence on its own" };
+  return { record: {
+    kind, parameter,
+    value,
+    unit: String(r.unit || "").trim() || null,
+    place: TOWN ? TOWN.place : null,
+    facility: (doc.facility || null),
+    period: (doc.year || null),
+    stream: "unknown",
+    provenance: {
+      identifier: doc.identifier,
+      page: pageNo,
+      source_text: quote,
+      extractor: "browser " + (modelId || "webllm"),
+      path: "prose",
+    },
+  } };
+}
+
+/* ---- server API with polite retry -------------------------------------- */
+async function api(path, body, tries) {
+  tries = tries || 6;
+  for (let attempt = 0; attempt < tries; attempt++) {
+    let res;
+    try {
+      res = await fetch(path, { method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body) });
+    } catch (e) { throw new Error("could not reach the site (" + e + ")"); }
+    let data = null;
+    try { data = await res.json(); } catch (e) { data = null; }
+    if (res.status === 429 || res.status === 503) {
+      const wait = Math.min(30, Number((data && data.retry_after) ||
+                    res.headers.get("Retry-After") || 5) || 5);
+      status("The site is busy; waiting " + wait + "s before retrying…");
+      await new Promise(r => setTimeout(r, wait * 1000));
+      continue;
+    }
+    if (!res.ok || (data && data.error))
+      throw new Error((data && (data.error || data.why)) || (path + " failed: " + res.status));
+    return data;
+  }
+  throw new Error("the site stayed busy; try again in a minute");
+}
+
+/* ---- the model, in this tab --------------------------------------------
+   Opening the page costs nothing: boot only checks capability and arms the
+   buttons. The multi-GB model fetch is behind an explicit press -- a page a
+   social link lands on must not start a 2.4 GB download uninvited. */
 function boot() {
   if (!("gpu" in navigator)) {
     status("This browser has no WebGPU — the in-browser reader needs it. "
          + "Recent Chrome, Edge and Firefox on a machine with a GPU all work.");
-    return;
+    return false;
   }
   status("Ready. The first press downloads the model into browser cache "
-       + "(about 2.4 GB, once — it stays for next time), then reads the "
-       + "page right here on your graphics card.");
-  go.disabled = false;
+       + "(about 2.4 GB, once — it stays for next time), then reads "
+       + "right here on your graphics card.");
+  return true;
 }
 
 async function loadEngine() {
@@ -170,10 +273,11 @@ async function loadEngine() {
   // The benchmarked model itself, published for browsers by a third party
   // (validated by its publisher 2026-04-13). This is gemma4:e2b -- 100%
   // precision, 44% recall on the gold pages via Ollama the same day this
-  // page was built -- so when this entry loads, the demo runs the SAME model
-  // the benchmark measured, with the SAME full reading instructions.
-  // The engine requires absolute URLs; a local mirror path is resolved
-  // against wherever this page is being served from.
+  // page was built -- so when this entry loads, the page runs the SAME model
+  // the benchmark measured. Its published builds cannot hold a page (the
+  // kernel defect the note below the fold documents), so the committed page
+  // never picks it -- but the record stays enumerable for the day the
+  // upstream fix lands, selected by rebuilding with --local-model.
   const E2B_REPO = new URL("https://huggingface.co/welcoma/gemma-4-E2B-it-q4f16_1-MLC", location.href).href.replace(/\/$/, "");
   const E2B = {
     model: E2B_REPO,
@@ -198,7 +302,7 @@ async function loadEngine() {
   const list = webllm.prebuiltAppConfig.model_list;
   // The measured class is 2-4B: gemma4's edge editions hit 100%/44% and
   // 95%/56% on the gold pages. A 1B model collapses into repetition under
-  // these instructions -- observed on this very page, not assumed -- so the
+  // these instructions -- observed on the proof page, not assumed -- so the
   // picker holds the class rather than taking the smallest thing available.
   const inClass = list.filter(m =>
       /instruct|it\b|-it-/i.test(m.model_id) &&
@@ -211,12 +315,6 @@ async function loadEngine() {
   // Preference runs over the FULL list: Qwen3-era models dropped the word
   // "Instruct" from their names (instruction-tuned is their default), so an
   // instruct-word filter would hide exactly the models preferred most.
-  // The benchmarked model leads only in local test builds: its published
-  // browser builds all fall silent past ~512 prompt tokens (the kernel
-  // defect described above), so the public page must not spend a
-  // visitor's 2.7 GB download proving a silence this page already
-  // documents. The catalogue models read instead, and their failures are
-  // refused in the open.
   let chosen = null;
   if (!chosen) {
     for (const rx of prefer) {
@@ -229,7 +327,7 @@ async function loadEngine() {
   if (!chosen) chosen = pick(inClass) || pick(list.slice());
   if (!chosen) { status("No browser model available from the model index."); return; }
   modelId = chosen.model_id;
-  document.getElementById("model-note").textContent =
+  $("model-note").textContent =
       "Model: " + modelId + " — downloads once into browser cache, then stays.";
   status("Fetching " + modelId + " into browser cache…");
   bar.hidden = false;
@@ -242,12 +340,6 @@ async function loadEngine() {
   };
   if (isE2B) engineConfig.appConfig = { model_list: [E2B, ...list] };
   try {
-    // The e2b build's config declares BOTH window modes (its publisher's
-    // engine tolerated that; the current engine insists on exactly one).
-    // Its sliding mode caps the cache at 512 tokens -- one short exchange,
-    // no room for a page -- so ask for full-context mode at the size this
-    // build was compiled for; catalogue models get the same arrangement at
-    // their own sizes.
     // The e2b record carries its own overrides; chat options here would
     // shadow them, so only catalogue models get sized from this side.
     engine = await webllm.CreateMLCEngine(modelId, engineConfig,
@@ -269,7 +361,7 @@ async function loadEngine() {
       }
       if (!chosen) chosen = pick(inClass) || pick(list.slice());
       modelId = chosen.model_id;
-      document.getElementById("model-note").textContent =
+      $("model-note").textContent =
           "Model: " + modelId + " (fallback) — downloads once into browser cache.";
       engine = await webllm.CreateMLCEngine(modelId, engineConfig,
         { context_window_size: 8192, sliding_window_size: -1 });
@@ -280,19 +372,27 @@ async function loadEngine() {
   status("Model ready on your GPU. Nothing was installed.");
 }
 
-go.addEventListener("click", async () => {
-  go.disabled = true;
-  if (!engine) {
-    try {
-      await loadEngine();
-    } catch (e) {
-      status("The model could not load here: " + String(e).slice(0, 120));
-    }
-    if (!engine) { go.disabled = false; return; }
-  }
-  const t0 = performance.now();
-  status("Reading the page in this tab…");
-  let raw = "";
+async function ensureEngine() {
+  if (engine) return true;
+  try { await loadEngine(); }
+  catch (e) { status("The model could not load here: " + String(e).slice(0, 120)); }
+  return !!engine;
+}
+
+/* ---- reading one page --------------------------------------------------- */
+function fillTemplate(doc, pageNo, text) {
+  let out = USER_TMPL;
+  const clean = v => String(v ?? "").replace(/[{}]/g, " ");
+  const fill = { title: clean(doc.title) || "(unknown)",
+                 publisher: clean(doc.publisher) || "(unknown)",
+                 year: clean(doc.year) || "(unknown)",
+                 page: String(pageNo) };
+  for (const key of ["title", "publisher", "year", "page"])
+    out = out.replace("{" + key + "}", () => fill[key]);
+  return out.replace("{text}", () => text);
+}
+
+async function readPage(userPrompt, label) {
   // Reasoning-mode models (Qwen3 era) burn the whole token budget thinking
   // before they transcribe a single record. Their off switch must ride on
   // the USER message -- in the system prompt it is ignored, which cost a
@@ -301,61 +401,314 @@ go.addEventListener("click", async () => {
   // the same question from 59 tokens of reasoning to 2 of answer.
   const isThinker = /qwen3/i.test(modelId);
   const noThink = isThinker ? "\n/no_think" : "";
-  const chunks = await engine.chat.completions.create({
+  const req = {
     messages: [
       // Every browser model gets the compact instructions: small models
       // drown in the full production prompt, and the compact set is the
       // one being iterated toward verified in-browser records.
       { role: "system", content: SYSTEM_SMALL },
-      { role: "user", content: USER_PROMPT + noThink },
+      { role: "user", content: userPrompt + noThink },
     ],
     temperature: 0,
     // A guard against degenerate repetition in small quantized models.
     frequency_penalty: 0.3,
     max_tokens: 4000,
     stream: true,
-    ...(isThinker ? { extra_body: { enable_thinking: false } } : {}),
-  });
+  };
+  if (isThinker) req.extra_body = { enable_thinking: false };
+  const chunks = await engine.chat.completions.create(req);
+  let raw = "";
   for await (const c of chunks) {
     raw += c.choices?.[0]?.delta?.content || "";
-    status("Reading… " + raw.length + " characters produced");
+    status(label + " — " + raw.length + " characters produced");
   }
-  const secs = ((performance.now() - t0) / 1000).toFixed(0);
   window._raw = raw;
-  document.getElementById("raw-out").textContent = raw;
-  const records = parseRecords(raw);
-  const tbody = document.querySelector("#tbl tbody");
-  tbody.innerHTML = "";
-  let shown = 0;
-  for (const r of records) {
-    const quote = String(r.source_text || "");
-    const onPage = quoteOnPage(quote);
-    const inQuote = valueInQuote(r.value, quote);
-    const checks =
-      (!quote ? '<span class="bad">✗ no sentence quoted — unprovable</span>'
-       : onPage ? '<span class="ok">✓ sentence on page</span>'
-                : '<span class="bad">✗ sentence not found</span>') + "<br>" +
-      (inQuote === null ? '<span class="note">no value to check</span>'
-       : inQuote ? '<span class="ok">✓ value in sentence</span>'
-                 : '<span class="bad">✗ value not in sentence</span>');
-    const row = document.createElement("tr");
-    row.innerHTML =
-      "<td>" + (r.kind || "") + "</td>" +
-      "<td>" + (r.parameter || "") + "</td>" +
-      '<td class="v">' + (r.value ?? "") + " " + (r.unit || "") + "</td>" +
-      '<td class="q">“' + quote.slice(0, 160) + "”</td>" +
-      "<td>" + checks + "</td>";
-    tbody.appendChild(row);
-    shown++;
+  $("raw-out").textContent = raw;
+  return raw;
+}
+
+/* ---- rendering ---------------------------------------------------------- */
+let nPassed = 0, nRefused = 0, nPagesRead = 0;
+function addRow(r, doc, pageNo, passed, why) {
+  const quote = String(r.source_text || "");
+  const leaf = "https://archive.org/details/" + encodeURIComponent(doc.identifier)
+             + "/page/n" + (pageNo - 1) + "/mode/2up";
+  const checks = passed
+    ? '<span class="ok">✓ sentence on page</span><br><span class="ok">✓ '
+      + (r.value === null || r.value === undefined ? "conclusion, no value to check"
+                                                   : "value in sentence") + "</span>"
+    : '<span class="bad">✗ ' + esc(why) + "</span>";
+  const row = document.createElement("tr");
+  row.innerHTML =
+    "<td>" + esc(r.kind || "") + "</td>" +
+    "<td>" + esc(r.parameter || "") + "</td>" +
+    '<td class="v">' + esc(r.value ?? "") + " " + esc(r.unit || "") + "</td>" +
+    '<td class="q">“' + esc(quote.slice(0, 160)) + "”</td>" +
+    '<td><a href="' + leaf + '" target="_blank" rel="noopener">p.' + pageNo + "</a></td>" +
+    "<td>" + checks + "</td>";
+  document.querySelector("#tbl tbody").appendChild(row);
+}
+function headline() {
+  $("results").hidden = false;
+  $("headline").textContent =
+    nPagesRead + (nPagesRead === 1 ? " page" : " pages") + " read in this tab — "
+    + nPassed + " records passed both checks here, " + nRefused + " refused in the open.";
+}
+function addVerdict(html) {
+  const div = document.createElement("div");
+  div.className = "verdict";
+  div.innerHTML = html;
+  $("verdicts").appendChild(div);
+}
+
+/* ---- publishing one document's survivors -------------------------------- */
+async function publishDoc(doc, records) {
+  if (!records.length) {
+    addVerdict("<b>" + esc(doc.title) + "</b>: nothing survived the checks here; "
+             + "nothing was sent.");
+    return;
   }
-  document.getElementById("headline").textContent =
-    shown + " records read in " + secs + "s, inside this browser tab, by " + modelId + ".";
-  document.getElementById("results").hidden = false;
-  status("Done. The model ran entirely on your graphics card.");
+  status("Sending " + records.length + " records to the site for re-verification…");
+  let v;
+  try {
+    v = await api("/api/bundle", {
+      bundle_version: 1,
+      contributor: "a browser (" + (modelId || "webllm") + ")",
+      note: "read in a browser tab: " + TOWN.place,
+      n_records: records.length,
+      identifiers: [...new Set(records.map(r => r.provenance.identifier))],
+      records,
+    });
+  } catch (e) {
+    addVerdict("<b>" + esc(doc.title) + "</b>: <span class='bad'>could not send — "
+             + esc(String(e).slice(0, 140)) + "</span>. The records are still in "
+             + "this tab (window._passing).");
+    return;
+  }
+  window._verdicts = (window._verdicts || []).concat([v]);
+  const bits = [];
+  bits.push("<b>" + (v.merged || 0) + " published</b>");
+  if (v.already_here) bits.push(v.already_here + " already here");
+  if (v.refused) bits.push('<span class="bad">' + v.refused +
+                           " refused by the archive check</span>");
+  let h = "<b>" + esc(doc.title) + "</b>: sent " + records.length + " → " + bits.join(", ") + ".";
+  if (v.why_refused && v.why_refused.length) {
+    h += "<details><summary class='note'>why the archive refused some</summary><pre>"
+       + esc(v.why_refused.join("\n")) + "</pre></details>";
+  }
+  addVerdict(h);
+}
+
+/* ---- the whole read ----------------------------------------------------- */
+async function readTown() {
+  go.disabled = true;
+  stopBtn.hidden = false;
+  stopBtn.disabled = false;
+  STOP = false;
+  if (!(await ensureEngine())) { go.disabled = false; stopBtn.hidden = true; return; }
+  window._passing = [];
+  const t0 = performance.now();
+  let totalPublished = 0, totalAlready = 0, totalRefusedByArchive = 0;
+  const docs = TOWN.documents;
+  for (let d = 0; d < docs.length && !STOP; d++) {
+    const doc = docs[d];
+    const tag = "document " + (d + 1) + "/" + docs.length;
+    status(tag + " — fetching its readable pages…");
+    let got;
+    try { got = await api("/api/browser/pages", { identifier: doc.identifier }); }
+    catch (e) {
+      addVerdict("<b>" + esc(doc.title) + "</b>: <span class='bad'>could not fetch "
+               + "its pages — " + esc(String(e).slice(0, 120)) + "</span>");
+      continue;
+    }
+    const pages = got.pages || [];
+    if (!pages.length) {
+      addVerdict("<b>" + esc(doc.title) + "</b>: no prose pages to read "
+               + "(" + (got.n_pages || 0) + " pages, none routed to prose).");
+      continue;
+    }
+    const docRecords = [];
+    for (let i = 0; i < pages.length; i++) {
+      if (STOP) break;
+      const page = pages[i];
+      const label = tag + " · page " + (i + 1) + "/" + pages.length
+                  + " (p." + page.page + ") · " + nPassed + " passed so far";
+      let raw;
+      try { raw = await readPage(fillTemplate(doc, page.page, page.text), label); }
+      catch (e) {
+        status(label + " — the model failed on this page: " + String(e).slice(0, 80));
+        continue;
+      }
+      nPagesRead++;
+      for (const r of parseRecords(raw)) {
+        if (!r || typeof r !== "object") continue;
+        const out = toBundleRecord(r, doc, page.page, page.text);
+        if (out.record) {
+          nPassed++; docRecords.push(out.record); window._passing.push(out.record);
+          addRow(r, doc, page.page, true);
+        } else {
+          nRefused++;
+          addRow(r, doc, page.page, false, out.why);
+        }
+      }
+      headline();
+    }
+    if (got.omitted) {
+      addVerdict("<b>" + esc(doc.title) + "</b>: this document has " + got.omitted
+               + " more prose pages than one sitting hands out; the installed "
+               + "reader covers the rest.");
+    }
+    // Publish after every document rather than once at the end: a read is
+    // slow and a browser tab is mortal, and what has already survived should
+    // not die with it. Re-sends deduplicate on the server, so stopping and
+    // starting again costs nothing.
+    const v0 = window._verdicts ? window._verdicts.length : 0;
+    await publishDoc(doc, docRecords);
+    const v = (window._verdicts || [])[v0];
+    if (v) { totalPublished += v.merged || 0; totalAlready += v.already_here || 0;
+             totalRefusedByArchive += v.refused || 0; }
+  }
+  const mins = ((performance.now() - t0) / 60000).toFixed(1);
+  stopBtn.hidden = true;
   go.disabled = false;
+  go.textContent = "Read it again";
+  const town = "/#place=" + encodeURIComponent(TOWN.place);
+  $("results-note").innerHTML =
+    (STOP ? "Stopped. " : "Done. ") + "This tab read " + nPagesRead + " pages in "
+    + mins + " min; the site verified every sent sentence against archive.org and "
+    + "published <b>" + totalPublished + "</b> new readings"
+    + (totalAlready ? " (" + totalAlready + " were already here)" : "")
+    + (totalRefusedByArchive ? "; it refused " + totalRefusedByArchive : "") + ". "
+    + (totalPublished || totalAlready
+       ? '<a href="' + town + '">See ' + esc(TOWN.place) + "’s page — your read is on it.</a>"
+       : "Nothing new was published this time.");
+  status(STOP ? "Stopped, politely. Press the button to continue where it left off."
+              : "Done. The model ran entirely on your graphics card.");
+}
+
+/* ---- the one-page proof ------------------------------------------------- */
+async function readDemo() {
+  $("demo-go").disabled = true;
+  if (!(await ensureEngine())) { $("demo-go").disabled = false; return; }
+  const t0 = performance.now();
+  let raw;
+  try { raw = await readPage(DEMO.user, "reading the proof page"); }
+  catch (e) { status("The model failed: " + String(e).slice(0, 120));
+              $("demo-go").disabled = false; return; }
+  const secs = ((performance.now() - t0) / 1000).toFixed(0);
+  const doc = { identifier: DEMO.identifier, title: DEMO.title,
+                publisher: DEMO.publisher, year: DEMO.year, facility: "" };
+  let passed = 0, refused = 0, shown = 0;
+  for (const r of parseRecords(raw)) {
+    if (!r || typeof r !== "object") continue;
+    shown++;
+    const out = toBundleRecord(r, doc, DEMO.page, DEMO.text);
+    if (out.record) { passed++; addRow(r, doc, DEMO.page, true); }
+    else { refused++; addRow(r, doc, DEMO.page, false, out.why); }
+  }
+  $("results").hidden = false;
+  $("headline").textContent = shown + " records read in " + secs
+    + "s, inside this browser tab, by " + modelId + " — " + passed
+    + " passed both checks, " + refused + " refused in the open.";
+  $("results-note").textContent =
+    "This was the one-page proof; nothing is sent anywhere from it. Pick a town "
+    + "above to read pages nobody has read and publish what survives.";
+  status("Done. The model ran entirely on your graphics card.");
+  $("demo-go").disabled = false;
+}
+
+/* ---- town selection ----------------------------------------------------- */
+async function loadPlan(place) {
+  $("town-card").hidden = false;
+  $("town-name").textContent = place;
+  $("town-docs").innerHTML = '<span class="note">asking the site which documents '
+    + "this is…</span>";
+  let plan;
+  try { plan = await api("/api/browser/plan", { place }); }
+  catch (e) {
+    $("town-docs").innerHTML = '<span class="bad">' + esc(String(e).slice(0, 160))
+      + "</span>";
+    return;
+  }
+  TOWN = plan;
+  const docs = plan.documents || [];
+  if (!docs.length) {
+    $("town-docs").innerHTML = "The collection's catalogue titles never mention “"
+      + esc(place) + "”. It may still appear inside documents filed under other "
+      + "names — that search needs the installed reader.";
+    return;
+  }
+  const leaves = docs.reduce((a, x) => a + (x.leaves || 0), 0);
+  $("town-docs").innerHTML = docs.map(x =>
+    '<div class="doc">' + esc(x.title) + (x.year ? " — " + esc(x.year) : "")
+    + (x.leaves ? ' <span class="note">(' + x.leaves + " leaves)</span>" : "")
+    + "</div>").join("");
+  $("town-note").textContent = docs.length + " document" + (docs.length === 1 ? "" : "s")
+    + (leaves ? ", about " + leaves + " scanned leaves in all" : "")
+    + ". Only the pages that read as prose are read here, at very roughly a "
+    + "minute a page; you can stop at any point and keep what survived. "
+    + (docs.length === plan.max_documents
+       ? "This is the reader's " + plan.max_documents + "-document budget; a "
+         + "town with more waits for the installed reader. " : "");
+  go.textContent = "Read " + place + " in this browser & publish what survives";
+  go.disabled = !("gpu" in navigator);
+}
+
+async function loadPicker() {
+  let geo;
+  try { geo = await (await fetch("/api/places.geojson")).json(); }
+  catch (e) { return false; }
+  const unread = (geo.features || [])
+    .map(f => f.properties || {})
+    .filter(p => p.place && !p.extracted)
+    .sort((a, b) => (b.years || 0) - (a.years || 0));
+  if (!unread.length) return false;
+  $("pick-card").hidden = false;
+  $("town-select").innerHTML = unread.map(p =>
+    '<option value="' + esc(p.place) + '">' + esc(p.place) + " — "
+    + (p.years || "?") + " reports, " + esc(p.first || "?") + "–"
+    + esc(p.last || "?") + "</option>").join("");
+  $("pick-note").textContent = unread.length
+    + " municipalities are on the map with nothing read yet.";
+  $("town-go").onclick = () => {
+    const free = $("town-free").value.trim();
+    const chosen = free || $("town-select").value;
+    if (chosen) location.search = "?place=" + encodeURIComponent(chosen);
+  };
+  return true;
+}
+
+/* ---- boot --------------------------------------------------------------- */
+$("page-text").textContent = DEMO.text;
+$("demo-title").textContent = DEMO.title + " — page " + DEMO.page;
+$("demo-link").href = "https://archive.org/details/" + encodeURIComponent(DEMO.identifier)
+                    + "/page/n" + (DEMO.page - 1) + "/mode/2up";
+go.addEventListener("click", readTown);
+$("demo-go").addEventListener("click", readDemo);
+stopBtn.addEventListener("click", () => {
+  STOP = true;
+  stopBtn.disabled = true;
+  status("Finishing this page, then stopping…");
 });
 
-boot();
+(async () => {
+  const capable = boot();
+  $("demo-go").disabled = !capable;
+  if (PLACE) {
+    go.textContent = "Read " + PLACE + " in this browser & publish what survives";
+    $("demo-card").hidden = false;
+    await loadPlan(PLACE);
+  } else {
+    go.textContent = "Pick a town above first";
+    $("demo-card").hidden = false;
+    const picked = await loadPicker();
+    if (!picked) {
+      // No site behind this page (opened as a file, or served statically):
+      // the one-page proof still works entirely in the tab.
+      $("run-card").hidden = true;
+    }
+  }
+})();
 </script>
 </body>
 </html>

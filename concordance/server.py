@@ -227,10 +227,21 @@ MODEL_SLOTS = threading.BoundedSemaphore(MODEL_CONCURRENCY)
 ARCHIVE_SLOTS = threading.BoundedSemaphore(ARCHIVE_CONCURRENCY)
 
 POST_ONLY_ENDPOINTS = frozenset({
-    "/api/ask", "/api/bundle", "/api/citation", "/api/decisions",
-    "/api/flag", "/api/frontier", "/api/ledger", "/api/read",
-    "/api/read/status", "/api/request", "/api/submit", "/api/watershed",
+    "/api/ask", "/api/browser/pages", "/api/browser/plan", "/api/bundle",
+    "/api/citation", "/api/decisions", "/api/flag", "/api/frontier",
+    "/api/ledger", "/api/read", "/api/read/status", "/api/request",
+    "/api/submit", "/api/watershed",
 })
+
+#: What the in-browser reader may be handed per request. The document budget
+#: is the installed reader's own (`library.ask` reads at most this many), and
+#: the per-page text cap is exactly the slice `extract_prose` prompts with --
+#: the browser reads what the installed reader would read, no more. The page
+#: budget bounds one response; a document with more prose than this reports
+#: how much was left off rather than silently shrinking.
+MAX_BROWSER_DOCUMENTS = 20
+MAX_BROWSER_PROSE_PAGES = 120
+MAX_BROWSER_PAGE_CHARS = 12_000
 
 PUBLIC_STATIC_ASSETS = frozenset({"omega-portal.css", "portal-maplibre.js",
                                   "browser-reader.html"})
@@ -1772,6 +1783,8 @@ class Handler(BaseHTTPRequestHandler):
 
         dispatch = {
             "/api/ask": self._post_ask,
+            "/api/browser/pages": self._post_browser_pages,
+            "/api/browser/plan": self._post_browser_plan,
             "/api/bundle": self._post_bundle,
             "/api/citation": self._post_citation,
             "/api/decisions": self._post_decisions,
@@ -2063,6 +2076,136 @@ class Handler(BaseHTTPRequestHandler):
             )
         finally:
             BUNDLE_VERIFY_SLOTS.release()
+
+    # -- handing a visitor's browser the work of reading a town ------------
+
+    def _post_browser_plan(self, payload: dict[str, Any]) -> None:
+        """The documents a read of this place would work through.
+
+        The selection is `library.plan_documents` -- the same one the
+        installed reader uses -- served so a visitor's browser tab can be the
+        machine that reads. This is index work only: nothing is fetched from
+        archive.org here, but the index is a 40 MB file parsed per request,
+        so it sits behind the same slots as other heavy work.
+        """
+        assert STATE is not None
+        try:
+            place = _text_field(payload, "place", 120)
+        except _ApiInputError as exc:
+            self._send_json({"error": str(exc)}, status=exc.status)
+            return
+        if not place:
+            self._send_json({"error": "no place given"}, status=400)
+            return
+        if not self._rate_allowed(ARCHIVE_RATE_LIMITER, "archive"):
+            return
+        if not ARCHIVE_SLOTS.acquire(blocking=False):
+            self._send_json(
+                {
+                    "error": "archive work is busy; try again later",
+                    "retry_after": ARCHIVE_BUSY_RETRY_SECONDS,
+                },
+                status=503,
+                headers={"Retry-After": str(ARCHIVE_BUSY_RETRY_SECONDS)},
+            )
+            return
+        try:
+            from .library import plan_documents
+            from .parameters import facility_of
+
+            items = plan_documents(place, archive=STATE.archive,
+                                   max_documents=MAX_BROWSER_DOCUMENTS)
+            documents = []
+            for item in items:
+                title = str(item.get("title") or "")
+                publisher = item.get("publisher") or ""
+                if isinstance(publisher, list):
+                    publisher = str(publisher[0]) if publisher else ""
+                raw_leaves = item.get("imagecount")
+                try:
+                    leaves = max(0, int(raw_leaves))  # type: ignore[arg-type]
+                except (TypeError, ValueError):
+                    leaves = 0
+                documents.append({
+                    "identifier": str(item.get("identifier") or ""),
+                    "title": title,
+                    "year": str(item.get("year") or ""),
+                    "publisher": str(publisher),
+                    # The same title-derived works name the installed reader
+                    # stamps, so a browser read and a local read of one town
+                    # cannot file the same reading under different plants.
+                    "facility": facility_of(title) or "",
+                    "leaves": leaves,
+                })
+            self._send_json({
+                "place": place,
+                "documents": documents,
+                "max_documents": MAX_BROWSER_DOCUMENTS,
+            })
+        except Exception as exc:  # noqa: BLE001
+            self._send_json(
+                {"error": f"could not plan the read: {exc}"[:160]}, status=502,
+            )
+        finally:
+            ARCHIVE_SLOTS.release()
+
+    def _post_browser_pages(self, payload: dict[str, Any]) -> None:
+        """One document's prose pages, for the browser that is reading it.
+
+        Hands out exactly what the installed reader would prompt with: the
+        pages the router sends down the prose path, each capped at the same
+        length `extract_prose` uses. Everything else about the document stays
+        on archive.org, where it already is.
+        """
+        assert STATE is not None
+        try:
+            ident = _text_field(payload, "identifier", MAX_IDENTIFIER_CHARS)
+        except _ApiInputError as exc:
+            self._send_json({"error": str(exc)}, status=exc.status)
+            return
+        if not ident:
+            self._send_json({"error": "no identifier given"}, status=400)
+            return
+        if not self._archive_identifier_allowed(ident):
+            self._send_json(
+                {"error": "identifier is outside the configured collection"},
+                status=400,
+            )
+            return
+        if not self._rate_allowed(ARCHIVE_RATE_LIMITER, "archive"):
+            return
+        if not ARCHIVE_SLOTS.acquire(blocking=False):
+            self._send_json(
+                {
+                    "error": "archive work is busy; try again later",
+                    "retry_after": ARCHIVE_BUSY_RETRY_SECONDS,
+                },
+                status=503,
+                headers={"Retry-After": str(ARCHIVE_BUSY_RETRY_SECONDS)},
+            )
+            return
+        try:
+            from .router import Path as RPath, route
+
+            pages = STATE.archive.pages(ident)
+            prose = [p for p in pages if RPath.PROSE in route(p).paths]
+            sent = [{"page": p.page, "text": p.text[:MAX_BROWSER_PAGE_CHARS]}
+                    for p in prose[:MAX_BROWSER_PROSE_PAGES]]
+            self._send_json({
+                "identifier": ident,
+                "n_pages": len(pages),
+                "n_prose": len(prose),
+                # Reported, not implied: a document with more prose than one
+                # response may carry says how much a browser read would miss.
+                "omitted": max(0, len(prose) - len(sent)),
+                "pages": sent,
+            })
+        except Exception as exc:  # noqa: BLE001
+            self._send_json(
+                {"error": f"document not retrievable: {exc}"[:160]}, status=502,
+            )
+        finally:
+            ARCHIVE_SLOTS.release()
 
     def _post_ask(self, payload: dict[str, Any]) -> None:
         assert STATE is not None

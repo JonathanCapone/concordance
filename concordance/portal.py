@@ -896,8 +896,17 @@ function handoffHtml(r, place){{
   const asked = Number(r.asked || 0);
   let h = `<div class="handoff">
     <p class="note" style="margin:0 0 8px">This shared site does not read for
-      visitors — reading a town is an hour or more of computer time. But your
-      computer can read it, and then it appears here for everyone. One-time
+      visitors — reading a town is computer time, and it should be yours to
+      give. The quickest way is already open: <b>this browser can read it</b>,
+      right now, nothing installed. A model runs in the tab on your graphics
+      card, and what survives its checks is re-verified here against the
+      archive before anything is published.</p>
+    <a class="paper-btn" style="display:inline-block;text-decoration:none"
+       href="/browser?place=${{encodeURIComponent(place)}}">Read ${{esc(place)}} in this browser</a>
+    <p class="note" style="margin:12px 0 8px">Browser models are honest but
+      partial — they find roughly half of what a page states and invent
+      nothing that survives verification. The installed reader, on a machine
+      with a bigger graphics card, reads with the full model. One-time
       setup:</p>`;
   (rec.setup || []).forEach(line => {{
     h += `<code class="cmd">${{esc(line)}}</code>`;
@@ -1409,6 +1418,31 @@ function loadMapLibrary() {{
   document.addEventListener("click", ev => {{
     if (!ev.target.closest(".place-search")) hits.hidden = true;
   }});
+}})();
+
+/* ---- arriving with a town's name in hand ----------------------------- */
+/* #place=Fergus opens that town's panel directly. This is the way back from
+   the in-browser reader ("see the town's page — your read is on it"), and it
+   deliberately does not depend on the map: the dock answers from local data
+   even when the map CDN never does. */
+(async function openFromHash() {{
+  const m = (location.hash || "").match(/^#place=(.+)$/);
+  if (!m) return;
+  let name = "";
+  try {{ name = decodeURIComponent(m[1]).trim(); }} catch (e) {{ name = m[1].trim(); }}
+  if (!name) return;
+  showView("observe");
+  let geo = window._placesGeo;
+  if (!geo) {{
+    try {{
+      geo = await (await fetch("/api/places.geojson")).json();
+      window._placesGeo = geo;
+    }} catch (e) {{ geo = {{features: []}}; }}
+  }}
+  const want = name.toLowerCase();
+  const f = (geo.features || []).find(
+    x => String((x.properties || {{}}).place || "").toLowerCase() === want);
+  openTown(f ? f.properties : {{place: name, raw: name}});
 }})();
 
 /* ---- every view that is not the map ---------------------------------- */

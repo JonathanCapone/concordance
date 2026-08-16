@@ -100,6 +100,41 @@ def _held(query: str, records: Iterable[dict[str, Any]]) -> list[dict[str, Any]]
     return [r for r in records if want in str(r.get("place") or "").lower()]
 
 
+def plan_documents(
+    query: str,
+    *,
+    archive: Archive | None = None,
+    max_documents: int = 20,
+) -> list[dict[str, Any]]:
+    """The documents a read of this place would work through, in reading order.
+
+    One definition, shared by the installed reader (`ask`, below) and the
+    in-browser reader's endpoints, so the two readers can never disagree about
+    which documents a town's record is.
+
+    Every document about this place, not just its water reports. This used to
+    keep only titles containing "annual report" or "sewage treatment plant",
+    which decided in advance that a place's record IS its sewage plant. The
+    archive holds school board returns, hospital reports, assessment rolls and
+    council minutes for the same towns, and a reader that filters them out can
+    never surface them.
+
+    Ordered so the densest sources are read first within the budget, because
+    `max_documents` is a real limit and what it spends matters: recurring
+    serials give comparable years; one-off documents give a single reading.
+    Neither is excluded.
+    """
+    archive = archive or Archive()
+
+    def _weight(item: dict[str, Any]) -> tuple[int, str]:
+        title = str(item.get("title", "")).lower()
+        recurring = 0 if ("annual report" in title or "report" in title) else 1
+        return (recurring, title)
+
+    return sorted(archive.iter_items(title_contains=query.lower()),
+                  key=_weight)[:max_documents]
+
+
 def ask(
     query: str,
     *,
@@ -128,26 +163,7 @@ def ask(
                       note="Not in the library yet, and reading was not requested.")
 
     archive = Archive()
-    # Every document about this place, not just its water reports.
-    #
-    # This used to keep only titles containing "annual report" or "sewage
-    # treatment plant", which is the same water bias that put a river tab in
-    # the navigation: it decided in advance that a place's record IS its
-    # sewage plant. The archive holds school board returns, hospital reports,
-    # assessment rolls and council minutes for the same towns, and a reader
-    # that filters them out can never surface them.
-    #
-    # Ordered so the densest sources are read first within the budget, because
-    # `max_documents` is a real limit and what it spends matters.
-    def _weight(item: dict[str, Any]) -> tuple[int, str]:
-        title = str(item.get("title", "")).lower()
-        # Recurring serials give comparable years; one-off documents give a
-        # single reading. Neither is excluded.
-        recurring = 0 if ("annual report" in title or "report" in title) else 1
-        return (recurring, title)
-
-    items = sorted(archive.iter_items(title_contains=query.lower()),
-                   key=_weight)[:max_documents]
+    items = plan_documents(query, archive=archive, max_documents=max_documents)
 
     if not items:
         return Answer(query=query, source="empty",
