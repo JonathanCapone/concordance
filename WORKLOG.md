@@ -596,3 +596,33 @@ One practical thing came out of all this. The trial had been recording *how
 many* records the verifier discarded and not *what they were*, so when the rules
 turned out to be wrong the damage could not be replayed and seven pages had to
 be read again. Keep the rejects, not the count.
+
+---
+
+## 2026-08-16 — the browser gate, measured the day it was named
+
+The endgame was written into the Work plan today: models small enough to run
+inside a browser, gating "read this town" as a button with nothing installed.
+Measured the same afternoon, on the existing four hand-read gold pages
+(68 values; small sample, stated with every figure):
+
+| model | size | browser-viable | precision | recall | matched |
+|---|---|---|---|---|---|
+| llama3.2 3B | 2.0 GB | any WebGPU browser | 61.5% | 23.5% | 16 |
+| qwen2.5 7B | 4.7 GB | good GPU only | 100% (20/20) | 29.4% | 20 |
+| gemma4 12B | 7.6 GB | no (installed) | 96.8% | 88.2% | 60 |
+
+Read: the 2 GB class is both unreliable and blind — not viable. The ~5 GB
+class is BLIND BUT TRUTHFUL: nothing it produced was wrong, and it found less
+than a third of what is there. That shape fits this project: an in-browser
+reader that underreports without fabricating is publishable as a partial
+read; one that fabricates is not publishable at all.
+
+The known lever: the extraction prompt was tuned on gemma4 (that tuning moved
+gemma4 itself from 88.7% to 96.8%). No prompt work has been done for small
+models. Recall-tuning the small-model prompt is now a defined task with a
+measured baseline, and the honest expectation is set BEFORE the fellowship
+rather than during it.
+
+Reports preserved in session scratch; not added to data/results, which stays
+frozen at the application checkpoint.
