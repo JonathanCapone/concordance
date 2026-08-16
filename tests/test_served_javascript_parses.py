@@ -64,3 +64,28 @@ def test_the_parse_check_is_actually_running() -> None:
         "node is not installed, so the JavaScript is NOT being parse-checked. "
         "813 tests once passed against a portal where nothing loaded at all."
     )
+
+
+@pytest.mark.skipif(not shutil.which("node"), reason="node is not installed")
+def test_the_browser_reader_script_parses() -> None:
+    """The /browser page is generated, and its script is a module -- so the
+    inline-script check above never sees it. A generator bug is a page where
+    the read button does nothing, on the exact page whose argument is that a
+    stranger can press one button."""
+    page = (Path(__file__).parent.parent / "concordance" / "static"
+            / "browser-reader.html").read_text(encoding="utf-8")
+    blocks = re.findall(r'<script type="module">(.*?)</script>', page, re.S)
+    assert blocks, "the browser reader lost its module script"
+    for i, js in enumerate(blocks):
+        with tempfile.NamedTemporaryFile("w", suffix=".mjs", delete=False,
+                                         encoding="utf-8") as fh:
+            fh.write(js)
+            path = fh.name
+        try:
+            result = subprocess.run(["node", "--check", path],
+                                    capture_output=True, text=True, timeout=60)
+        finally:
+            Path(path).unlink(missing_ok=True)
+        assert result.returncode == 0, (
+            f"browser reader module script {i} does not parse:\n"
+            f"{result.stderr[:600]}")
