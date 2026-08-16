@@ -232,7 +232,10 @@ def test_the_portal_never_ships_a_read_control_it_has_not_earned() -> None:
     # the reader responds, so a public instance renders the explanation.
     assert 'id="read-btn"' not in html.split("offerRead")[0]
     assert "offerRead" in html
-    assert "not spend its graphics card" in html
+    # The refusal is no longer a dead end: a shared instance draws the
+    # handoff -- setup, the per-town command, and the ask counter.
+    assert "handoffHtml" in html
+    assert "does not read for" in html
 
     # And the refusal is enforced server-side, not by hiding a button.
     assert "/api/read" in server.POST_ONLY_ENDPOINTS

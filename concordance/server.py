@@ -74,6 +74,56 @@ MAX_BUNDLE_BYTES = 8 * 1024 * 1024
 #: rather than blank, because a silent group reads as a category.
 UNATTRIBUTED = "not attributed to any works"
 
+#: Where "somebody asked for this town" is recorded, one JSON line per ask.
+#: This is the demand half of the volunteer loop: a visitor asks, the count is
+#: shown to the next visitor, and a volunteer picking a town to read can pick
+#: one somebody already wanted. Nothing about the asker is stored beyond a
+#: salted hash used to count each visitor once per town.
+REQUESTS_FILE = Path("data/requests.jsonl")
+_REQUESTS_LOCK = threading.Lock()
+
+
+def _peer_tag(peer: str) -> str:
+    """A stable, non-reversible tag for one visitor, for counting once."""
+    import hashlib
+
+    return hashlib.sha256(f"concordance-ask|{peer}".encode()).hexdigest()[:12]
+
+
+def _load_requests() -> dict[str, set[str]]:
+    """place (lowercased) -> the set of visitor tags that asked for it."""
+    out: dict[str, set[str]] = {}
+    if not REQUESTS_FILE.exists():
+        return out
+    for line in REQUESTS_FILE.read_text(encoding="utf-8").splitlines():
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        place = str(row.get("place") or "").strip().lower()
+        if place:
+            out.setdefault(place, set()).add(str(row.get("who") or ""))
+    return out
+
+
+def _request_count(place: str) -> int:
+    with _REQUESTS_LOCK:
+        return len(_load_requests().get(place.strip().lower(), set()))
+
+
+def _record_request(place: str, peer: str) -> int:
+    """Count one visitor's ask for one town, once. Returns the new count."""
+    tag = _peer_tag(peer)
+    key = place.strip().lower()
+    with _REQUESTS_LOCK:
+        existing = _load_requests()
+        if tag not in existing.get(key, set()):
+            REQUESTS_FILE.parent.mkdir(parents=True, exist_ok=True)
+            with REQUESTS_FILE.open("a", encoding="utf-8") as f:
+                f.write(json.dumps({"place": place.strip(), "who": tag}) + "\n")
+            existing.setdefault(key, set()).add(tag)
+        return len(existing[key])
+
 CONTESTED_SHOWN = 60
 #: Listings are cheap -- no page fetch -- so more of them fit.
 LISTED_SHOWN = 40
@@ -179,7 +229,7 @@ ARCHIVE_SLOTS = threading.BoundedSemaphore(ARCHIVE_CONCURRENCY)
 POST_ONLY_ENDPOINTS = frozenset({
     "/api/ask", "/api/bundle", "/api/citation", "/api/decisions",
     "/api/flag", "/api/frontier", "/api/ledger", "/api/read",
-    "/api/read/status", "/api/submit", "/api/watershed",
+    "/api/read/status", "/api/request", "/api/submit", "/api/watershed",
 })
 
 PUBLIC_STATIC_ASSETS = frozenset({"omega-portal.css", "portal-maplibre.js"})
@@ -1729,6 +1779,7 @@ class Handler(BaseHTTPRequestHandler):
             "/api/ledger": self._post_ledger,
             "/api/read": self._post_read,
             "/api/read/status": self._post_read_status,
+            "/api/request": self._post_request,
             "/api/submit": self._post_submit,
             "/api/watershed": self._post_watershed,
         }
@@ -1755,20 +1806,45 @@ class Handler(BaseHTTPRequestHandler):
 
     def _post_read(self, payload: dict[str, Any]) -> None:
         """Read a place nobody has read yet, here, now."""
-        if not self._is_local_instance():
-            self._send_json({
-                "error": REMOTE_READ_DISABLED,
-                "local_reader": (
-                    "python scripts/extract_place.py --place PLACE "
-                    "--title-filter PLACE"
-                ),
-            }, status=501)
+        try:
+            place = _text_field(payload, "place", 120)
+            raw = _text_field(payload, "raw", 120)
+        except _ApiInputError as exc:
+            self._send_json({"error": str(exc)}, status=exc.status)
             return
-
-        place = _text_field(payload, "place", 120)
-        raw = _text_field(payload, "raw", 120)
         if not place:
             self._send_json({"error": "no place given"}, status=400)
+            return
+
+        if not self._is_local_instance():
+            # The handoff. A shared instance will not spend its own processor
+            # reading, but it CAN hand the visitor everything needed to be the
+            # machine that reads: the exact command for this exact town,
+            # pointed back at this exact site. Their machine reads and
+            # verifies; this site re-checks every cited sentence on arrival
+            # and publishes for everyone after them. That loop is the project.
+            scheme = self.headers.get("X-Forwarded-Proto") or "https"
+            host = (self.headers.get("Host") or "").split(",")[0].strip()
+            site = f"{scheme}://{host}" if host else ""
+            self._send_json({
+                "error": REMOTE_READ_DISABLED,
+                "asked": _request_count(place),
+                "recipe": {
+                    "setup": [
+                        "git clone https://github.com/JonathanCapone/concordance.git && cd concordance",
+                        "ollama pull gemma4:12b",
+                    ],
+                    "setup_note": ("One-time setup. Needs Python 3.11+ and "
+                                   "Ollama (ollama.com); the model download "
+                                   "is about 8 GB."),
+                    "command": (f'python scripts/share.py read '
+                                f'--place "{place}"'
+                                + (f" --to {site}" if site else "")),
+                },
+                "local_reader": (
+                    f'python scripts/share.py read --place "{place}"'
+                ),
+            }, status=501)
             return
 
         from .library import ask as _ask
@@ -1797,6 +1873,32 @@ class Handler(BaseHTTPRequestHandler):
             ("Already reading %s. There is one graphics card, so this waits "
              "rather than queues." % job.place),
         }, status=200 if started else 409)
+
+    def _post_request(self, payload: dict[str, Any]) -> None:
+        """Somebody wants this town read. Count it, once per visitor.
+
+        Deliberately weaker than everything else here: an ask changes no data
+        and needs no evidence. It exists so demand is visible -- the next
+        visitor sees they are not alone, and a volunteer choosing a town to
+        read can choose one somebody already wanted, which is the whole
+        ordering principle of the read-next view applied to people.
+        """
+        try:
+            place = _text_field(payload, "place", 120)
+        except _ApiInputError as exc:
+            self._send_json({"error": str(exc)}, status=exc.status)
+            return
+        if not place:
+            self._send_json({"error": "no place given"}, status=400)
+            return
+        if not self._rate_allowed(MUTATION_RATE_LIMITER, "mutation"):
+            return
+        count = _record_request(place, self._direct_peer())
+        self._send_json({
+            "asked": count,
+            "note": ("Counted. When somebody runs the reader for this town, "
+                     "it appears here for everyone."),
+        })
 
     def _post_read_status(self, payload: dict[str, Any]) -> None:
         """Where the current read has got to."""

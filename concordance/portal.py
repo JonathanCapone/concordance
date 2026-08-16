@@ -130,6 +130,11 @@ html,body{{height:100%;margin:0;background:#04080d;color:#e8edf2;
    never hidden: "horsepower" alone is a number, "horsepower of Unit No. 1" is
    a fact. */
 .of{{font-weight:400;color:#8b97a4}}
+.handoff .cmd{{display:block;background:rgba(255,255,255,.05);border:1px solid
+  rgba(255,255,255,.12);border-radius:8px;padding:8px 11px;margin:4px 0;
+  font-family:ui-monospace,monospace;font-size:12px;user-select:all;
+  overflow-x:auto;white-space:pre}}
+.handoff .paper-btn{{margin:6px 8px 0 0}}
 .again{{display:block;font-style:normal;margin-top:2px;font-size:11px;opacity:.75}}
 .again a{{color:var(--gt-hit);text-decoration:none;white-space:nowrap}}
 .works{{margin:0 0 14px}}
@@ -868,17 +873,78 @@ document.addEventListener("click", ev => {{
 }});
 
 /* Only offer to read if this machine will actually do it. */
+/* The handoff, rendered. A shared instance cannot read for a visitor, but it
+   can hand them everything needed to BE the machine that reads: the one-time
+   setup, the exact command for this exact town pointed back at this exact
+   site, and the count of everyone else who has asked. Their machine reads and
+   verifies; this site re-checks every cited sentence on arrival and publishes
+   the town for everyone after them. This block IS the project's loop, drawn. */
+function handoffHtml(r, place){{
+  const rec = r.recipe || {{}};
+  const asked = Number(r.asked || 0);
+  let h = `<div class="handoff">
+    <p class="note" style="margin:0 0 8px">This shared site does not read for
+      visitors — reading a town is an hour or more of computer time. But your
+      computer can read it, and then it appears here for everyone. One-time
+      setup:</p>`;
+  (rec.setup || []).forEach(line => {{
+    h += `<code class="cmd">${{esc(line)}}</code>`;
+  }});
+  if (rec.setup_note) h += `<p class="note" style="margin:6px 0 8px">${{esc(rec.setup_note)}}</p>`;
+  if (rec.command) {{
+    h += `<p class="note" style="margin:6px 0 4px">Then this one command reads
+      ${{esc(place)}} and publishes it back here:</p>
+      <code class="cmd" id="handoff-cmd">${{esc(rec.command)}}</code>
+      <button type="button" class="paper-btn" id="copy-cmd">copy the command</button>`;
+  }}
+  h += `<p class="note" style="margin:10px 0 4px" id="ask-line">${{
+      asked ? `<b>${{esc(asked)}}</b> ${{asked === 1 ? "person has" : "people have"}} asked for this town.`
+            : "Nobody has asked for this town yet."}}</p>
+    <button type="button" class="paper-btn" id="ask-btn">I want this town read</button>
+  </div>`;
+  return h;
+}}
+
+function wireHandoff(place){{
+  const copy = document.getElementById("copy-cmd");
+  if (copy) copy.onclick = async () => {{
+    const cmd = document.getElementById("handoff-cmd");
+    try {{
+      await navigator.clipboard.writeText(cmd.textContent);
+      copy.textContent = "copied";
+      setTimeout(() => {{ copy.textContent = "copy the command"; }}, 1600);
+    }} catch (e) {{ /* clipboard blocked: the text is selectable */ }}
+  }};
+  const ask = document.getElementById("ask-btn");
+  if (ask) ask.onclick = async () => {{
+    ask.disabled = true;
+    let d;
+    try {{ d = await postJson("/api/request", {{place}}); }}
+    catch (e) {{ ask.disabled = false; return; }}
+    if (d && !d.error) {{
+      const n = Number(d.asked || 1);
+      document.getElementById("ask-line").innerHTML =
+        `<b>${{esc(n)}}</b> ${{n === 1 ? "person has" : "people have"}} asked for this town — you are counted.`;
+      ask.remove();
+    }} else {{ ask.disabled = false; }}
+  }};
+}}
+
 async function offerRead(){{
   const slot = document.getElementById("read-offer");
   if (!slot) return;
+  const place = _openPlace ? _openPlace.place : "";
   let st;
   try {{ st = await postJson("/api/read/status", {{}}); }}
   catch (e) {{ st = null; }}
   if (!st || st.error) {{
-    slot.innerHTML = `<span class="note">This is a shared instance, so it will
-      not spend its graphics card on a visitor's request. Run the reader on your
-      own machine and it takes an hour or two:</span>
-      <code>python scripts/extract_place.py --place "${{esc(_openPlace ? _openPlace.place : "")}}"</code>`;
+    /* A shared instance: fetch the per-town recipe (the refusal carries it)
+       and draw the handoff instead of a button that would not work. */
+    let r = null;
+    try {{ r = await postJson("/api/read", {{place, raw: _openPlace ? (_openPlace.raw||"") : ""}}); }}
+    catch (e) {{ r = null; }}
+    slot.innerHTML = handoffHtml(r || {{}}, place);
+    wireHandoff(place);
     return;
   }}
   slot.innerHTML = `<button type="button" id="read-btn" class="paper-btn">Read it now</button>`;
@@ -907,10 +973,17 @@ document.addEventListener("click", async ev => {{
     return;
   }}
   if (r && r.error) {{
-    /* A public instance. Say so plainly and give the command that works. */
+    /* A shared instance answered (a race with offerRead's own probe):
+       draw the same handoff the probe would have drawn. */
     note.textContent = "";
-    log.hidden = false;
-    log.textContent = r.error + (r.local_reader ? "\\n\\n" + r.local_reader : "");
+    const slot = document.getElementById("read-offer");
+    if (slot && r.recipe) {{
+      slot.innerHTML = handoffHtml(r, place);
+      wireHandoff(place);
+    }} else {{
+      log.hidden = false;
+      log.textContent = r.error + (r.local_reader ? "\\n\\n" + r.local_reader : "");
+    }}
     b.remove();
     return;
   }}

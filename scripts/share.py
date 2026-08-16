@@ -152,16 +152,9 @@ def do_import(args: argparse.Namespace) -> int:
     return 0
 
 
-def do_push(args: argparse.Namespace) -> int:
-    """Send readings to an instance that evaluates each record's evidence.
-
-    The instance is a convenience and not an authority. It holds no key anyone
-    else lacks; it simply saves each person from being handed a file. Anything
-    it accepts has supporting archive evidence under the current rules; semantic
-    interpretation remains open to challenge.
-    """
-    bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
-    url = args.to.rstrip("/") + "/api/bundle"
+def push_bundle(bundle: dict, to: str, timeout: float = 600.0) -> int:
+    """POST a bundle to an instance and report what it decided. Returns exit code."""
+    url = to.rstrip("/") + "/api/bundle"
     body = json.dumps(bundle).encode()
     print(f"sending {bundle.get('n_records', 0)} readings to {url}")
 
@@ -171,7 +164,7 @@ def do_push(args: argparse.Namespace) -> int:
                  "User-Agent": "concordance/0.1"},
         method="POST")
     try:
-        with urllib.request.urlopen(request, timeout=args.timeout) as response:
+        with urllib.request.urlopen(request, timeout=timeout) as response:
             out = json.loads(response.read().decode())
     except urllib.error.HTTPError as exc:
         print(f"the instance refused it: HTTP {exc.code} {exc.read()[:200]!r}")
@@ -191,6 +184,63 @@ def do_push(args: argparse.Namespace) -> int:
     print()
     print(out.get("note", ""))
     return 0 if out.get("accepted") or out.get("already_here") else 1
+
+
+def do_push(args: argparse.Namespace) -> int:
+    """Send readings to an instance that evaluates each record's evidence.
+
+    The instance is a convenience and not an authority. It holds no key anyone
+    else lacks; it simply saves each person from being handed a file. Anything
+    it accepts has supporting archive evidence under the current rules; semantic
+    interpretation remains open to challenge.
+    """
+    bundle = json.loads(Path(args.bundle).read_text(encoding="utf-8"))
+    return push_bundle(bundle, args.to, args.timeout)
+
+
+def do_read(args: argparse.Namespace) -> int:
+    """The whole volunteer loop in one command: read a town HERE, publish THERE.
+
+    This is the sentence the project is built on, made executable: nobody
+    pre-processes the archive -- somebody asks about a place, the machine in
+    front of them reads the documents, and everyone who asks afterward gets
+    the answer. The shared instance re-checks every cited sentence and number
+    against the archive on arrival, so it takes nothing on trust, including
+    from this command.
+    """
+    from concordance.library import ask
+
+    print(f"Reading {args.place!r} on this machine. A town is usually an hour "
+          "or more on a local model; every page is kept as it completes, so "
+          "interrupting loses at most the page in progress.")
+    answer = ask(args.place, read_if_missing=True, model=args.model,
+                 on_progress=print)
+
+    if not answer.records:
+        print(answer.note or "No readings were recovered; nothing to send.")
+        return 1
+    if answer.source == "library":
+        print(f"{args.place!r} was already in the local library "
+              f"({len(answer.records)} readings); sending those.")
+    elif not answer.contributed:
+        print("Nothing survived the local evidence check, so there is nothing "
+              "worth sending. The raw readings stay on this machine.")
+        return 1
+
+    if not args.to:
+        print(f"\nDone: {answer.published or len(answer.records)} readings are "
+              "in the local library. Add --to https://... to publish them to "
+              "a shared instance.")
+        return 0
+
+    bundle = make_bundle(
+        answer.records, contributor=args.who,
+        note=f"volunteer read of {args.place}")
+    code = push_bundle(bundle, args.to, args.timeout)
+    if code == 0:
+        print(f"\n{args.place} is now on {args.to} for everyone who asks "
+              "after you.")
+    return code
 
 
 def do_pull(args: argparse.Namespace) -> int:
@@ -242,6 +292,18 @@ def main() -> int:
                     help="instance URL; it checks supported cited evidence")
     ps.add_argument("--timeout", type=float, default=600.0)
     ps.set_defaults(func=do_push)
+
+    rd = sub.add_parser(
+        "read", help="read a town on this machine and publish it to an instance")
+    rd.add_argument("--place", required=True, help='e.g. "Fergus"')
+    rd.add_argument("--to", default="",
+                    help="instance URL to publish to (it re-checks everything); "
+                         "empty keeps the result local")
+    rd.add_argument("--model", default="gemma4:12b",
+                    help="local Ollama model that does the reading")
+    rd.add_argument("--who", default="anonymous", help="a label, not a credential")
+    rd.add_argument("--timeout", type=float, default=600.0)
+    rd.set_defaults(func=do_read)
 
     pl = sub.add_parser("pull", help="fetch a shared instance's readings")
     pl.add_argument("--frm", default="http://localhost:8765", metavar="URL")
