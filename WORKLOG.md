@@ -626,3 +626,20 @@ rather than during it.
 
 Reports preserved in session scratch; not added to data/results, which stays
 frozen at the application checkpoint.
+
+**Same evening, corrected.** Jonathan asked whether the newest models had been
+considered. They had not: the first ladder compared year-old small models to a
+current-generation large one. The gemma4 family's own edge editions, measured
+on the same pages:
+
+| model | size class | browser-viable | precision | recall | spurious |
+|---|---|---|---|---|---|
+| gemma4:e2b | ~2B | any WebGPU browser | 100% (30/30) | 44.1% | 0 |
+| gemma4:e4b | ~4B | good GPU | 95.0% | 55.9% | 2 |
+
+A year of small-model progress roughly doubled recall while fixing
+reliability, and the prompt is still the 12b-tuned one. Verdict revised: the
+in-browser reader is buildable now as an honest partial reader -- finds about
+half, invents nothing, same verification on arrival -- with prompt tuning and
+the next model generation as the recall levers. The corrected question was
+better than the first answer.
