@@ -666,3 +666,19 @@ edge model is published in the browser catalogue yet. Two bounded tasks
 bridge it: publish a gemma4:e2b browser build, and tune small-model reading
 instructions (compact v1 written today, unbenchmarked). The demo page states
 all of this on its face.
+
+**Later. The published e2b browser build, probed to its exact wall.** A
+third-party MLC/WebLLM packaging of gemma-4-E2B-it exists on Hugging Face
+(published April 2026). Mirrored locally and loaded successfully after four
+compatibility fixes (URL absolutization, the HF path shape, a renamed tensor
+cache, window-mode and attention-sink settings its older toolkit omitted).
+In the tab it answers a short question correctly ("Paris") -- the deepest
+single step of the browser goal, achieved: the RIGHT model executing in a
+browser. Then the wall, measured by binary search: prompts fail between 250
+and 300 filler words. Its KV cache was compiled at exactly its 512-token
+sliding window -- memory for one short exchange. A document page cannot fit
+at any prompt arrangement, since the 512 includes instructions, page and
+output. The publisher's own validation was "the France/Paris case"; now we
+know why. The bridging task is now exact: recompile and republish the e2b
+browser build with document-sized KV memory. The demo page states all of
+this on its face; its committed form points at the public copy.

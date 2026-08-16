@@ -152,12 +152,18 @@ catalogue, and the models that ARE (a generation older, or reasoning-tuned)
 currently fail the one rule everything hinges on: quote your sentence
 verbatim. This page shows that failure honestly — records the models produce
 arrive unproven, and the checks refuse them, which is the system working.
-What stands between this demo and the benchmark numbers is publishing a
-current edge model for browsers, plus reading instructions tuned for small
-models — both bounded, named tasks.</p>
+The one published browser build of that
+model was probed on this page: it loads, runs on the GPU, and answers
+correctly — and its conversation memory was compiled at 512 tokens, one
+short exchange, so it structurally cannot hold a document page. What stands
+between this demo and the benchmark numbers is one precisely-specified task:
+republish the edge model for browsers with document-sized memory. The
+fallback models shown here meanwhile demonstrate the other half of the
+system — every unproven record they produce is refused on screen.</p>
 
 <script type="module">
-const SYSTEM_PROMPT = {system_json};
+const SYSTEM_SMALL = {system_json};
+const SYSTEM_FULL = {full_system_json};
 const PAGE_TEXT = {page_json};
 const USER_PROMPT = {user_json};
 
@@ -224,6 +230,25 @@ async function boot() {{
   }}
   status("Loading the model list…");
   const webllm = await import("https://esm.run/@mlc-ai/web-llm");
+  // The benchmarked model itself, published for browsers by a third party
+  // (validated by its publisher 2026-04-13). This is gemma4:e2b -- 100%
+  // precision, 44% recall on the gold pages via Ollama the same day this
+  // page was built -- so when this entry loads, the demo runs the SAME model
+  // the benchmark measured, with the SAME full reading instructions.
+  // The engine requires absolute URLs; a local mirror path is resolved
+  // against wherever this page is being served from.
+  const E2B_REPO = new URL("{e2b_base}", location.href).href.replace(/\\/$/, "");
+  const E2B = {{
+    model: E2B_REPO,
+    model_id: "gemma-4-E2B-it-q4f16_1-MLC",
+    model_lib: E2B_REPO + "{e2b_lib_path}",
+    required_features: ["shader-f16"],
+    // Its config declares both window modes and omits the attention-sink
+    // setting; the current engine insists on exactly one mode plus the sink.
+    // Set in the record's overrides -- the one place the engine reads them
+    // that the browser's config cache cannot stale.
+    overrides: {{ context_window_size: -1, attention_sink_size: 4 }},
+  }};
   const list = webllm.prebuiltAppConfig.model_list;
   // The measured class is 2-4B: gemma4's edge editions hit 100%/44% and
   // 95%/56% on the gold pages. A 1B model collapses into repetition under
@@ -240,10 +265,14 @@ async function boot() {{
   // Preference runs over the FULL list: Qwen3-era models dropped the word
   // "Instruct" from their names (instruction-tuned is their default), so an
   // instruct-word filter would hide exactly the models preferred most.
-  let chosen = null;
-  for (const rx of prefer) {{
-    chosen = list.find(m => rx.test(m.model_id));
-    if (chosen) break;
+  // First choice is always the benchmarked model itself; the catalogue
+  // preference order is the fallback for browsers that cannot carry it.
+  let chosen = E2B;
+  if (!chosen) {{
+    for (const rx of prefer) {{
+      chosen = list.find(m => rx.test(m.model_id));
+      if (chosen) break;
+    }}
   }}
   const pick = arr => arr.slice().sort((x, y) =>
       (y.vram_required_MB || 0) - (x.vram_required_MB || 0))[0];
@@ -254,19 +283,46 @@ async function boot() {{
       "Model: " + modelId + " — downloads once into browser cache, then stays.";
   status("Fetching " + modelId + " into browser cache…");
   bar.hidden = false;
-  engine = await webllm.CreateMLCEngine(modelId, {{
+  const isE2B = chosen === E2B;
+  const engineConfig = {{
     initProgressCallback: r => {{
       bar.value = r.progress || 0;
       status(r.text || "loading…");
     }},
-  }}, {{
-    // Some browser builds ship with a sliding attention window; the engine
-    // insists exactly one window mode is set. A plain 8k context fits this
-    // page and its prompt with room to spare.
-    context_window_size: 8192,
-    sliding_window_size: -1,
-  }});
+  }};
+  if (isE2B) engineConfig.appConfig = {{ model_list: [E2B, ...list] }};
+  try {{
+    // The e2b build's config declares BOTH window modes (its publisher's
+    // engine tolerated that; the current engine insists on exactly one).
+    // Keep its validated sliding window and disable the plain context mode;
+    // catalogue models get the opposite arrangement.
+    engine = await webllm.CreateMLCEngine(modelId, engineConfig,
+      isE2B ? {{ context_window_size: -1 }}
+            : {{ context_window_size: 8192, sliding_window_size: -1 }});
+  }} catch (e) {{
+    if (isE2B) {{
+      // This browser cannot carry the benchmarked model (no f16 shaders, or
+      // the download failed). Fall back to the catalogue and say so -- and
+      // keep the reason inspectable, because a status line scrolls away.
+      window._e2bError = String(e && e.stack || e);
+      console.error("e2b load failed:", e);
+      status("The benchmarked model would not load here (" +
+             String(e).slice(0, 80) + "); falling back to a catalogue model.");
+      chosen = null;
+      for (const rx of prefer) {{
+        chosen = list.find(m => rx.test(m.model_id));
+        if (chosen) break;
+      }}
+      if (!chosen) chosen = pick(inClass) || pick(list.slice());
+      modelId = chosen.model_id;
+      document.getElementById("model-note").textContent =
+          "Model: " + modelId + " (fallback) — downloads once into browser cache.";
+      engine = await webllm.CreateMLCEngine(modelId, engineConfig,
+        {{ context_window_size: 8192, sliding_window_size: -1 }});
+    }} else {{ throw e; }}
+  }}
   bar.hidden = true;
+  window._engine = engine;   // inspectable: the reader checks its own reader
   status("Model ready on your GPU. Nothing was installed.");
   go.disabled = false;
 }}
@@ -282,7 +338,13 @@ go.addEventListener("click", async () => {{
   const noThink = /qwen3/i.test(modelId) ? "\\n/no_think" : "";
   const chunks = await engine.chat.completions.create({{
     messages: [
-      {{ role: "system", content: SYSTEM_PROMPT + noThink }},
+      // Every browser model gets the compact instructions: the published
+      // e2b build's compiled memory cannot hold the full production prompt
+      // (its KV cache overflows and the runtime exits), so full-prompt
+      // parity with the Ollama benchmark is not reachable in this build.
+      // Same model, compact instructions v1 -- benchmarking that exact
+      // combination is the named next measurement.
+      {{ role: "system", content: SYSTEM_SMALL + noThink }},
       {{ role: "user", content: USER_PROMPT }},
     ],
     temperature: 0,
@@ -338,6 +400,24 @@ boot();
 
 
 def main() -> int:
+    import argparse
+
+    ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
+    ap.add_argument("--local-model", action="store_true",
+                    help="point the page at portal/models/... served beside "
+                         "it (for testing without the Hugging Face CDN); the "
+                         "committed page uses the public copy")
+    args = ap.parse_args()
+    # The page joins model_lib as E2B_REPO + this path, so both are relative
+    # to the base.
+    # Both mirrors present the HuggingFace URL shape, because the engine
+    # appends /resolve/main/... to every model URL regardless of host.
+    e2b_lib = "/resolve/main/libs/gemma-4-E2B-it-q4f16_1-MLC-webgpu.wasm"
+    if args.local_model:
+        e2b_base = "/models/e2b-hf"
+    else:
+        e2b_base = "https://huggingface.co/welcoma/gemma-4-E2B-it-q4f16_1-MLC"
+
     pages = {p.page: p for p in Archive().pages(IDENTIFIER)}
     text = pages[PAGE_NO].text
     user = USER_TEMPLATE.format(
@@ -345,7 +425,9 @@ def main() -> int:
         year=YEAR, page=PAGE_NO, text=text)
     html = TEMPLATE.format(
         title=TITLE, page_no=PAGE_NO, identifier=IDENTIFIER, leaf=PAGE_NO - 1,
-        system_json=json.dumps(SMALL_SYSTEM), page_json=json.dumps(text),
+        system_json=json.dumps(SMALL_SYSTEM),
+        full_system_json=json.dumps(SYSTEM), page_json=json.dumps(text),
+        e2b_base=e2b_base, e2b_lib_path=e2b_lib,
         user_json=json.dumps(user))
     OUT.write_text(html, encoding="utf-8")
     print(f"wrote {OUT} ({len(html) // 1024} KB; page text {len(text)} chars, "
