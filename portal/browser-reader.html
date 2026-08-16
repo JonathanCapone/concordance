@@ -182,7 +182,18 @@ function valueInQuote(value, quote) {
   const direct = String(quote || "").replace(/(?<=\d),(?=\d{3}(?!\d))/g, "");
   const rx = new RegExp("(?<![\\d.+-])" + canon.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
                         + "(?![\\d.])");
-  return rx.test(direct);
+  if (rx.test(direct)) return true;
+  // The page writes "0.20" and the model reads 0.2; "13.0" and 13. Same
+  // number, different spelling. The server's referee compares NUMBERS
+  // (contribute._value_in_quote), so this pre-filter must not be stricter
+  // than the check it fronts for -- measured on the first live run, the
+  // digit-string test alone refused two honest readings per page.
+  const n = Number(value);
+  if (isFinite(n)) {
+    const tokens = direct.match(/(?<![\d.+-])(?:\d+(?:\.\d+)?|\.\d+)(?![\d.])/g) || [];
+    if (tokens.some(t => Number(t) === n)) return true;
+  }
+  return false;
 }
 
 /* ---- one model record -> one bundle record, or a reason it cannot be --- */
