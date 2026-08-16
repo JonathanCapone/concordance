@@ -338,10 +338,15 @@ async function api(path, body, tries) {
     } catch (e) { throw new Error("could not reach the site (" + e + ")"); }
     let data = null;
     try { data = await res.json(); } catch (e) { data = null; }
-    if (res.status === 429 || res.status === 503) {
+    // 429/503 are the app saying "later" (with a Retry-After); 502/504 are
+    // the proxy timing out a cold archive fetch or catching a restart. All
+    // four mean "again in a moment", not "never".
+    if (res.status === 429 || res.status === 502 ||
+        res.status === 503 || res.status === 504) {
       const wait = Math.min(30, Number((data && data.retry_after) ||
-                    res.headers.get("Retry-After") || 5) || 5);
-      status("The site is busy; waiting " + wait + "s before retrying…");
+                    res.headers.get("Retry-After") || 8) || 8);
+      status("The site is busy (" + res.status + "); waiting " + wait
+           + "s before retrying…");
       await new Promise(r => setTimeout(r, wait * 1000));
       continue;
     }
