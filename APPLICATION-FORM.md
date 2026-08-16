@@ -15,39 +15,36 @@ Concordance
 ## Project summary — *What do you want to build or create?* (2000)
 
 Concordance turns a century and a half of scanned public records into a free
-neighbourhood instrument panel: ask what was measured where you live —
-sewage discharged into the river, what was in the drinking water, what came out
-of the smelter — then challenge any published number on the exact government
-page it came from. The fellowship will also publish an open, source-linked seed dataset
-designed to grow beyond the pilot communities.
+neighbourhood instrument panel: ask what was measured where you live — sewage
+in the river, what was in the drinking water, what came out of the smelter —
+then challenge any published number on the exact government page it came from.
 
-My August 11 catalogue snapshot holds 104,241 scanned government publications
-and 22.1 million pages; this project scopes its historical run from 1841 to
-2013. Inside are measurements of the country, town by town, year by year.
+Open Owen Sound, 1969. The town's water pollution control plant reported that
+the treated sewage it released averaged 37 mg/L BOD. That number asks for no
+trust: it links to the scanned page in this collection and quotes the sentence
+it was read from — "The average effluent BOD and suspended solids were 37 mg/1
+and 36 mg/1 respectively" — with, where the image service permits, a cropped
+photograph of that sentence. It is one of 5,147 source-linked records across
+14 Ontario municipalities at frozen checkpoint `763d4c0`.
 
-The fellowship brief puts the collection at roughly 48 TB. For prose, the reader
-works first from the separate OCR text layer and requests images only as needed.
+I found no usable national database of these numbers. My August 11 catalogue
+snapshot holds 104,241 scanned government publications and 22.1 million pages;
+the project scopes 1841 to 2013. To learn what your town's plant discharged in
+1969, you would have to know the report exists, find it, read it. The
+fellowship brief puts the collection at roughly 48 TB; for prose, the reader
+works from the separate OCR text layer and requests page images only as
+needed.
 
-I found no usable national database of those numbers. To learn what your town's
-plant discharged in 1969 you would have to know the report exists, find it,
-read it.
+The fellowship build is the missing bridge. Today a volunteer's computer can
+read pages locally and send results to a Concordance site, where every cited
+sentence and number is checked again. What the site cannot yet do is hand a
+requested town to a volunteer's machine. I will build and test that handoff so
+a volunteer can contribute without an account, an API key, or a process left
+running — the path to growth without a permanent central compute bill. It is a
+deliverable, not something I claim is already deployed.
 
-**The site and the reader already work, but the bridge between them is the
-fellowship build.** Today, the reader runs locally and can send prose results
-to a Concordance instance, where each cited sentence and
-number are checked again. Current table locators are preserved but fail closed
-without localized cell proof. The browser can show existing results, but it does
-not yet hand a requested place to a visitor's local reader. I will build and test
-that handoff so a volunteer can contribute without an account, an API key, or a
-process left running.
-
-That is the path to growth without a permanent central compute bill. It is a
-deliverable, not something I am claiming is already deployed.
-
-At frozen application checkpoint `763d4c0`: 5,147 source-linked records across
-14 municipalities, including 2,384 observations, and 96.8% precision on four
-hand-read pages. A source-sentence audit of the then-complete 286-record
-corpus found no mismatches.
+The fellowship also publishes an open, source-linked seed dataset designed to
+grow beyond the pilot communities.
 
 Code and data: github.com/JonathanCapone/concordance
 
@@ -59,20 +56,21 @@ Code and data: github.com/JonathanCapone/concordance
 the plant upstream was putting in it. That person cannot use an archive; they
 can use a search box and a chart, and this is aimed at them.
 
-**Journalists and local historians**, who currently need to know a report exists
-before they can find it. The negative record matters too: every one of 107
-title-derived Ontario municipal report series ends by 1974, and 72 of them end
-in that exact year. That is an archival gap to investigate, not proof that
-measurement itself stopped.
+**Journalists and local historians.** Every one of 107 title-derived Ontario
+municipal report series ends by 1974 — 72 of them in that exact year. That is
+an archival gap to investigate, not proof that measurement itself stopped —
+and exactly the kind of finding this dataset exists to surface.
 
 **Scientists**, who get a machine-readable series with the source page attached
 to every value — and, just as importantly, explicit refusals where two numbers
 are not comparable, rather than a tidy line that hides a change of method.
 
-**A British Columbia pilot community**, chosen before tuning, can test whether
-the method transfers beyond Ontario and whether residents can follow the source
-trail without archive expertise. I can also offer Internet Archive Canada
-13,429 language/year metadata proposals for review.
+**A British Columbia pilot community**, chosen before tuning — and the
+shortlist comes from the collection itself: its BC holdings span 582 items, 31
+about water, from the 1915 BC Hydrometric Survey to a 27-community series on
+First Nations water rights. The pilot tests whether the method transfers
+beyond Ontario and whether residents can follow the source trail without
+archive expertise.
 
 **And anyone who wants to question it** — which is the part I care most about.
 Every prose number carries its source sentence; a table number carries its cell
@@ -175,7 +173,10 @@ precision and recall by era and parameter, not only one flattering average.
 against hand-read pages. *Ends with:* a distributable path, or a measured limit.
 
 **Week 5 — Complete the contribution loop.** Build the browser-to-local handoff,
-then test request, preview, source-check and sharing with first-time users.
+then test request, preview, source-check and sharing with first-time users. If
+the handoff is not safely testable in time, the user test runs on the
+already-built share-by-file path and the handoff is published as a measured
+limit, like the tables.
 
 **Week 6 — Publish.** Release the seed dataset, accuracy report, methodology and
 failures; offer the metadata proposals for review; write up and, if ready,
@@ -219,10 +220,9 @@ the methodology and a script anyone can re-run to re-score my own output against
 my own answer key. If the number is bad in places, those places are named.
 
 **4. A metadata diff offered back to Internet Archive Canada** — 13,429
-catalogue-field proposals so far: 11,151 deterministic language-code
-normalizations and 2,278 year proposals, all for review. Deterministic OCR dating
-also proposed 111 dates in a 300-item yearless sample; 142/145 non-bound held-out
-guesses agreed with catalogue years, a noisy surrogate rather than ground truth.
+catalogue-field proposals so far, language-code normalizations and year
+proposals, offered for the Archive's review rather than applied. The
+validation evidence, including its limits, is in the repository.
 
 Plus the pipeline itself, documented so it can be pointed at any other scanned
 archive. The document-reading method is reusable; place resolution and validation
