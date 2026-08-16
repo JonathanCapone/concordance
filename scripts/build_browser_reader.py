@@ -1,11 +1,13 @@
 """Build the in-browser reader proof: portal/browser-reader.html.
 
 One real archive page, read entirely inside a web browser on the visitor's own
-graphics card -- no install, no server compute. This is the measured endgame
-of the volunteer loop: gemma4:e2b (the any-browser size class) read the gold
-pages at 100% precision (30/30) and 44.1% recall on 2026-08-16, so the honest
-framing is a PARTIAL reader that invents nothing, with the installed reader as
-the "read the rest" path.
+graphics card -- no install, no server compute. WORKING as of 2026-08-17:
+Qwen3.5-4B (official catalogue, mainline engine) read this page in-tab in
+42s -- 12 records, 9 verified by the page's own checks, all 9 matching the
+archive-verified reference, refusals shown for the rest. The honest framing
+stays a PARTIAL reader that invents nothing, with the installed reader as
+the "read the rest" path; the gold-page benchmark of this exact browser
+combination is the next measurement.
 
 Generated, not hand-written, so it cannot drift: the compact small-model instructions live beside the full concordance.extract.SYSTEM they distill, and the page text is
 taken from the same local cache the real reader used. Regenerate after any
@@ -28,7 +30,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from concordance.archive import Archive                     # noqa: E402
 from concordance.extract import SYSTEM, USER_TEMPLATE       # noqa: E402
 
-#: Compact reading instructions for browser-size models, v1. The full SYSTEM
+#: Compact reading instructions for browser-size models, v2 (v1's worked
+#: example was a sentence from the demo page itself -- it seeded an answer;
+#: v2's example is from a different document and shows the one-sentence,
+#: many-records rule at the same time). The full SYSTEM
 #: prompt was tuned on a 12B model and drowns 2-4B models -- observed in this
 #: very page: a 1B collapsed into repetition, a 2B found values but quoted no
 #: sentences, a current 3B produced two fragments. This distillation keeps
@@ -56,12 +61,14 @@ Rules, in order of importance:
 4. One record per measurement. A sentence with three numbers gives three
    records, each quoting that same sentence.
 
-Example: the text "Relocating the injection point would reduce the free
-chlorine residual required to 0.46 mg/L during the summer." gives:
-[{"kind": "observation", "parameter": "free chlorine residual required",
-  "value": 0.46, "unit": "mg/L", "source_text": "Relocating the injection
-point would reduce the free chlorine residual required to 0.46 mg/L during
-the summer."}]
+Example: the text "The average influent BOD and suspended solids were 104
+mg/1 and 224 mg/1 respectively." gives:
+[{"kind": "observation", "parameter": "influent BOD", "value": 104,
+  "unit": "mg/L", "source_text": "The average influent BOD and suspended
+solids were 104 mg/1 and 224 mg/1 respectively."},
+ {"kind": "observation", "parameter": "influent suspended solids",
+  "value": 224, "unit": "mg/L", "source_text": "The average influent BOD
+and suspended solids were 104 mg/1 and 224 mg/1 respectively."}]
 """
 
 IDENTIFIER = "optimizationofea00ontauoft"
@@ -144,25 +151,21 @@ graphics card. Nothing is installed; no server does any reading.</p>
   anything — the same rule applied to every reader, human or machine.</p>
 </div>
 
-<p class="note">Honest scope, measured 2026-08-16. The model SIZE is proven:
-gemma4:e2b — small enough for any modern browser — read four hand-checked
-benchmark pages at 100% precision (30 of 30, small sample) and 44% recall,
-inventing nothing. But that model is not yet published in the browser model
-catalogue, and the models that ARE (a generation older, or reasoning-tuned)
-currently fail the one rule everything hinges on: quote your sentence
-verbatim. This page shows that failure honestly — records the models produce
-arrive unproven, and the checks refuse them, which is the system working.
-All three published browser builds of
-that model — from two independent compile toolchains — were probed on this
-page: each loads, runs on the GPU, and answers a short question correctly,
-and each falls silent once a prompt exceeds roughly 512 tokens, about an
-eighth of this page. The model is proven good (the same weights read whole
-pages locally); the defect is in the browser GPU kernels every existing
-build compiles in, and official support for this architecture is still an
-open pull request upstream. No repackaging fixes that, so this demo tells
-the truth instead: the models that DO run here fail the quote-verbatim rule,
-every unproven record is refused on screen, and that refusal — the system
-working — is what the button below actually demonstrates.</p>
+<p class="note">Honest scope, measured 2026-08-17 on this page. Qwen3.5-4B —
+a current catalogue model, no fork, no install — read this page in the
+browser in 42 seconds: 12 records, 9 verified against the scan by the checks
+you see, 3 refused in the open. Every verified value matches the
+archive-verified reference for this page. Two findings made that possible:
+reasoning-tuned models need their thinking switched off on the user turn
+(in the system prompt the switch is ignored), and the instructions' worked
+example must come from a different document than the one being read, or it
+seeds its own answer. The benchmarked gemma4:e2b family (100% precision,
+44% recall on the four gold pages, run locally) still cannot join in-browser:
+all three of its published browser builds, from two independent toolchains,
+fall silent past roughly 512 prompt tokens — a defect in the shared GPU
+kernels, whose official support is still an open pull request upstream. The
+day that lands, it takes one flag to retest. Until then the button below is
+not a promise; it is the working thing.</p>
 
 <script type="module">
 const SYSTEM_SMALL = {system_json};
@@ -353,25 +356,27 @@ go.addEventListener("click", async () => {{
   status("Reading the page in this tab…");
   let raw = "";
   // Reasoning-mode models (Qwen3 era) burn the whole token budget thinking
-  // before they transcribe a single record; /no_think is their off switch.
-  // This task is transcription -- the answer is in the sentence being read.
-  const noThink = /qwen3/i.test(modelId) ? "\\n/no_think" : "";
+  // before they transcribe a single record. Their off switch must ride on
+  // the USER message -- in the system prompt it is ignored, which cost a
+  // 20,000-character thought spiral before this line moved. The engine's
+  // native enable_thinking switch is set too; measured together they cut
+  // the same question from 59 tokens of reasoning to 2 of answer.
+  const isThinker = /qwen3/i.test(modelId);
+  const noThink = isThinker ? "\\n/no_think" : "";
   const chunks = await engine.chat.completions.create({{
     messages: [
-      // Every browser model gets the compact instructions: the published
-      // e2b build's compiled memory cannot hold the full production prompt
-      // (its KV cache overflows and the runtime exits), so full-prompt
-      // parity with the Ollama benchmark is not reachable in this build.
-      // Same model, compact instructions v1 -- benchmarking that exact
-      // combination is the named next measurement.
-      {{ role: "system", content: SYSTEM_SMALL + noThink }},
-      {{ role: "user", content: USER_PROMPT }},
+      // Every browser model gets the compact instructions: small models
+      // drown in the full production prompt, and the compact set is the
+      // one being iterated toward verified in-browser records.
+      {{ role: "system", content: SYSTEM_SMALL }},
+      {{ role: "user", content: USER_PROMPT + noThink }},
     ],
     temperature: 0,
     // A guard against degenerate repetition in small quantized models.
     frequency_penalty: 0.3,
     max_tokens: 4000,
     stream: true,
+    ...(isThinker ? {{ extra_body: {{ enable_thinking: false }} }} : {{}}),
   }});
   for await (const c of chunks) {{
     raw += c.choices?.[0]?.delta?.content || "";

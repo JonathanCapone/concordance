@@ -709,3 +709,25 @@ the full finding, the public build reads with catalogue models whose
 verbatim-quote failures the checks refuse on screen, and the e2b record
 sits one flag away (--local-model) for the day the upstream PR lands.
 The three builds stay enumerated in the builder for that retest.
+
+**2026-08-17, later. The button works.** Two bugs stood between "the
+catalogue models fail the verbatim rule" and a working browser reader, and
+neither was the models' fault. First: Qwen3.5-4B's reasoning off-switch
+belongs on the USER turn -- in the system prompt it is ignored, and the
+model burned 20,000 characters of thinking past the token cap (measured:
+the same arithmetic question costs 59 thinking tokens by default, 2 with
+the switch placed right; the engine's enable_thinking flag is set too).
+Second: the compact instructions' worked example was a sentence from the
+demo page itself, seeding an answer -- integrity bug, replaced with an
+Owen Sound sentence that also teaches the one-sentence-many-records rule.
+With both fixed, the official-catalogue Qwen3.5-4B read the Ear Falls page
+inside the browser tab in 42 seconds: 12 records, 9 passing both on-page
+checks (sentence verbatim on page, value inside the sentence), and all 9
+matching the archive-verified reference for this page -- 0.7 and 0.46
+mg/L chlorine residual, 36 and 4 TCU colour, 6.7 and 0.32 NTU turbidity,
+the ODWO limits of 5 TCU and 1 NTU, 94 ug/L aluminum. The three failures
+were refused on screen, which is the system working. No fork, no local
+mirror, no install: current mainline engine (pinned 0.2.84), official
+catalogue weights. The gemma4 kernel finding stands unchanged as the
+reason e2b itself waits; the page now documents both truths. Next
+measurement: this exact browser combination against all four gold pages.
