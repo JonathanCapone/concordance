@@ -149,12 +149,22 @@ function valueInQuote(value, quote) {
 
 // ---- the model, in this tab ---------------------------------------------
 let engine = null, modelId = null;
-async function boot() {
+// Opening the page costs nothing: boot only checks capability and arms the
+// button. The multi-GB model fetch is behind an explicit press -- a page a
+// social link lands on must not start a 2.4 GB download uninvited.
+function boot() {
   if (!("gpu" in navigator)) {
     status("This browser has no WebGPU — the in-browser reader needs it. "
          + "Recent Chrome, Edge and Firefox on a machine with a GPU all work.");
     return;
   }
+  status("Ready. The first press downloads the model into browser cache "
+       + "(about 2.4 GB, once — it stays for next time), then reads the "
+       + "page right here on your graphics card.");
+  go.disabled = false;
+}
+
+async function loadEngine() {
   status("Loading the model list…");
   const webllm = await import("https://esm.run/@mlc-ai/web-llm@0.2.84");
   // The benchmarked model itself, published for browsers by a third party
@@ -268,11 +278,18 @@ async function boot() {
   bar.hidden = true;
   window._engine = engine;   // inspectable: the reader checks its own reader
   status("Model ready on your GPU. Nothing was installed.");
-  go.disabled = false;
 }
 
 go.addEventListener("click", async () => {
   go.disabled = true;
+  if (!engine) {
+    try {
+      await loadEngine();
+    } catch (e) {
+      status("The model could not load here: " + String(e).slice(0, 120));
+    }
+    if (!engine) { go.disabled = false; return; }
+  }
   const t0 = performance.now();
   status("Reading the page in this tab…");
   let raw = "";
