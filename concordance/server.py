@@ -232,7 +232,8 @@ POST_ONLY_ENDPOINTS = frozenset({
     "/api/read/status", "/api/request", "/api/submit", "/api/watershed",
 })
 
-PUBLIC_STATIC_ASSETS = frozenset({"omega-portal.css", "portal-maplibre.js"})
+PUBLIC_STATIC_ASSETS = frozenset({"omega-portal.css", "portal-maplibre.js",
+                                  "browser-reader.html"})
 
 
 def _bundle_resource_error(records: list[Any]) -> str | None:
@@ -2496,6 +2497,12 @@ class Handler(BaseHTTPRequestHandler):
             self._send(STATE.html().encode(), "text/html; charset=utf-8")
             return
 
+        if url.path == "/browser":
+            # The in-browser reader demo, at an address a person can say out
+            # loud. Same bytes and same allowlist discipline as /static/.
+            self.path = "/static/browser-reader.html"
+            url = urlparse(self.path)
+
         if url.path.startswith("/static/"):
             name = url.path.split("/static/", 1)[1]
             # The public asset set is intentionally tiny. Reject everything
@@ -2520,6 +2527,7 @@ class Handler(BaseHTTPRequestHandler):
                 return
             ctype = ("text/css" if name.endswith(".css")
                      else "application/javascript" if name.endswith(".js")
+                     else "text/html" if name.endswith(".html")
                      else "application/octet-stream")
             self._send(f.read_bytes(), ctype + "; charset=utf-8")
             return

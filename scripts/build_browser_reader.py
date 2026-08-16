@@ -76,6 +76,9 @@ PAGE_NO = 9
 TITLE = "The Optimization of the Ear Falls Water Treatment Plant"
 YEAR = "1997"
 OUT = Path("portal/browser-reader.html")
+#: The copy the live server serves at /browser -- written by the same
+#: build so the two can never drift.
+SERVED = Path("concordance/static/browser-reader.html")
 
 TEMPLATE = """<!doctype html>
 <html lang="en">
@@ -499,8 +502,9 @@ def main() -> int:
         e2b_id=f"gemma-4-E2B-it-q4f16_1-MLC-{args.local_model or 'welcoma'}",
         user_json=json.dumps(user))
     OUT.write_text(html, encoding="utf-8")
-    print(f"wrote {OUT} ({len(html) // 1024} KB; page text {len(text)} chars, "
-          "prompt imported from concordance.extract)")
+    SERVED.write_text(html, encoding="utf-8")
+    print(f"wrote {OUT} and {SERVED} ({len(html) // 1024} KB; page text "
+          f"{len(text)} chars, prompt imported from concordance.extract)")
     return 0
 
 

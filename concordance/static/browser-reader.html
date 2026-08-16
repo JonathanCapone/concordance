@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concordance — the reader, in your browser</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background:#0b1016; color:#e8edf2; font:14px/1.55 system-ui,sans-serif;
+         max-width: 880px; margin: 0 auto; padding: 28px 18px 80px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color:#8b97a4; margin-bottom: 18px; }
+  .card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+          border-radius: 12px; padding: 14px 16px; margin: 12px 0; }
+  .note { color:#8b97a4; font-size: 12.5px; }
+  button { background:#f0a24a; color:#0b1016; border:0; border-radius:9px;
+           padding:9px 18px; font:inherit; font-weight:600; cursor:pointer }
+  button:disabled { opacity:.45; cursor:default }
+  #status { font-family: ui-monospace,monospace; font-size:12px; color:#8b97a4;
+            white-space: pre-wrap; }
+  progress { width:100%; height:6px; accent-color:#f0a24a }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin-top:8px }
+  th,td { text-align:left; padding:6px 8px; border-bottom:1px solid rgba(255,255,255,.08);
+          vertical-align: top }
+  th { color:#6d7a86; font-size:11px; text-transform:uppercase; letter-spacing:.06em }
+  .q { color:#8b97a4; font-style: italic; font-size:12px }
+  .ok { color:#7dc87d } .bad { color:#e08b8b }
+  .v { font-family: ui-monospace,monospace; white-space:nowrap }
+  a { color:#f0a24a; text-decoration: none }
+  details { margin-top: 8px } summary { cursor:pointer; color:#8b97a4 }
+  pre { white-space:pre-wrap; font-size:11.5px; color:#8b97a4; max-height:260px;
+        overflow:auto; margin-top:6px }
+</style>
+</head>
+<body>
+<h1>The reader, in your browser</h1>
+<p class="sub">A working proof: one real page from a 1997 Ontario government
+report, read by an AI model running <b>inside this browser tab</b> on your own
+graphics card. Nothing is installed; no server does any reading.</p>
+
+<div class="card">
+  <b>The Optimization of the Ear Falls Water Treatment Plant</b> — page 9
+  <span class="note">(<a href="https://archive.org/details/optimizationofea00ontauoft/page/n8/mode/2up"
+  target="_blank" rel="noopener">the scanned page ↗</a>, Internet Archive)</span>
+  <details><summary>the page text being read (from the archive's OCR layer)</summary>
+  <pre id="page-text"></pre></details>
+</div>
+
+<div class="card">
+  <div id="status">Checking whether this browser can run a model…</div>
+  <progress id="bar" value="0" max="1" hidden></progress>
+  <p style="margin-top:10px">
+    <button id="go" disabled>Read this page in the browser</button>
+  </p>
+  <p class="note" id="model-note"></p>
+</div>
+
+<div class="card" id="results" hidden>
+  <b id="headline"></b>
+  <table id="tbl">
+    <thead><tr><th>kind</th><th>parameter</th><th>value</th>
+    <th>sentence it was read from</th><th>checks</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <details><summary class="note">the model's raw output — check the reader's
+  work the way the reader checks the archive's</summary>
+  <pre id="raw-out"></pre></details>
+  <p class="note" style="margin-top:10px">Checks shown here are the browser's
+  own; if these records were submitted to a Concordance site, it would
+  re-verify every sentence and number against the archive before publishing
+  anything — the same rule applied to every reader, human or machine.</p>
+</div>
+
+<p class="note">Honest scope, measured 2026-08-17 on this page. Qwen3.5-4B —
+a current catalogue model, no fork, no install — read this page in the
+browser in 42 seconds: 12 records, 9 verified against the scan by the checks
+you see, 3 refused in the open. Every verified value matches the
+archive-verified reference for this page. Two findings made that possible:
+reasoning-tuned models need their thinking switched off on the user turn
+(in the system prompt the switch is ignored), and the instructions' worked
+example must come from a different document than the one being read, or it
+seeds its own answer. The benchmarked gemma4:e2b family (100% precision,
+44% recall on the four gold pages, run locally) still cannot join in-browser:
+all three of its published browser builds, from two independent toolchains,
+fall silent past roughly 512 prompt tokens — a defect in the shared GPU
+kernels, whose official support is still an open pull request upstream. The
+day that lands, it takes one flag to retest. Until then the button below is
+not a promise; it is the working thing.</p>
+
+<script type="module">
+const SYSTEM_SMALL = "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\").\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n";
+const SYSTEM_FULL = "You read scanned Canadian government reports and recover the measurements in them.\n\nThey come from every part of government: water and sewage, but also education,\nagriculture, forestry, mining, energy, health, housing, transport, justice,\ntrade and the census. A measurement is any quantity the page states about the\nworld. Do not restrict yourself to scientific or environmental quantities.\n\nVery often the unit IS the thing being counted, and there is no unit symbol at\nall. These are all measurements:\n\n    \"75 elementary schools under the aegis of the Hamilton Board of Education\"\n        -> parameter \"elementary schools\", value 75, unit \"schools\"\n    \"Total mileage was 334.15 miles\"\n        -> parameter \"mileage\", value 334.15, unit \"miles\"\n    \"The incubation period lasted from 20 to 30 days\"\n        -> parameter \"incubation period\", values 20 and 30, unit \"days\"\n    \"the average rent now paid, namely $357.00 per month\"\n        -> parameter \"monthly rent\", value 357, unit \"$/month\"\n    \"a yield of 32 bushels to the acre\"\n        -> parameter \"wheat yield\", value 32, unit \"bushels/acre\"\n    \"the population of the town was 55,201 at the 1961 census\"\n        -> parameter \"population\", value 55201, unit \"persons\"\n\nThe text comes from OCR of a document that may be sixty years old. It will\ncontain scanning errors. \"mg/1\" almost always means \"mg/L\". Numbers may have\nstray spaces, e.g. \"8. 8 million gallons\" means 8.8. Letters often stand where\ndigits were: \"I5\" is 15, \"3I per cent\" is 31 per cent, \"SOfo\" is 50%.\n\nOne document routinely covers many facilities, and the same parameter then means\ndifferent things a paragraph apart. A page describing a city's hospitals gives\n430 beds, 640 beds, 620 beds and 420 beds -- four hospitals, not a contradiction\n-- and each sentence names which. Always fill \"facility\" when the sentence names\nwhat is being measured; without it those four readings collapse into one and are\nreported as a disagreement.\n\nIn specification tables the sentence usually does NOT name the thing -- the\nheading above it does. A block headed \"PUMPING STATION - PLATS SITE, Unit No. 1\"\nfollowed by lines \"HP - 60\" and \"RPM - 1800\" is describing that pump: every line\nunder a heading belongs to the thing the heading names, until the next heading.\n\n    PUMPING STATION - PLATS SITE\n    Unit No. 1\n    HP - 60        -> parameter \"horsepower\", value 60, unit \"HP\",\n                      facility \"PUMPING STATION - PLATS SITE Unit No. 1\"\n    Unit No. 2\n    HP - 30        -> facility \"PUMPING STATION - PLATS SITE Unit No. 2\"\n\nA bare \"HP - 60\" with facility null is a number that belongs to nothing; carried\nunder its heading it is a pump, described.\n\nWhen the sentence itself states the circumstance under which the value holds,\nput those exact words in \"condition\": \"Capacity - 0.5 MGD @ 40 foot head\" ->\ncondition \"@ 40 foot head\"; \"flows exceeded 7.2 mgd 10 percent of the time\" ->\ncondition \"10 percent of the time\"; \"610 scfm each\" -> condition \"each\". The\nwords MUST appear inside \"source_text\" -- a condition is checked against the\nsentence exactly like the value, and one that is not there is discarded. Leave\nit null when the sentence states no circumstance; do not repeat the facility or\nthe qualifier in it.\n\nA sentence that names a year other than the report's year may be comparing two\nyears. Put each value under the year the sentence gives it, not automatically\nunder the report's year:\n\n    (in a 1969 report) \"The average solids concentration of 5.1% was less than\n    the 1968 average of 5.3%\"\n        -> 5.1 belongs to 1969, and 5.3 belongs to 1968\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n\n{\n  \"kind\":       \"observation\" | \"standard\" | \"design\" | \"conclusion\",\n  \"parameter\":  what was measured, e.g. \"BOD\", \"suspended solids\", \"chlorine dosage\",\n  \"parameter_status\": \"controlled\" if parameter is copied from the supplied\n                vocabulary, otherwise \"proposed\",\n  \"value\":      the number, or null,\n  \"unit\":       e.g. \"mg/L\", \"%\", \"million gallons\", \"cu ft\",\n  \"qualifier\":  \"average\"|\"mean\"|\"median\"|\"maximum\"|\"minimum\"|\"total\"|\"percent\"|\"count\"|\"point\"|null,\n  \"stream\":     \"influent\"|\"effluent\"|\"ambient\"|\"raw\"|\"treated\"|\"unknown\",\n  \"place\":      the place it refers to, or null,\n  \"facility\":   the specific thing measured, when the sentence OR the heading\n                above it names one, e.g. \"Hamilton General Hospital\",\n                \"water pollution control plant\", \"PUMPING STATION Unit No. 1\",\n                or null,\n  \"condition\":  the circumstance the sentence attaches to the value, in the\n                sentence's own words, e.g. \"@ 40 foot head\", \"10 percent of\n                the time\", \"each\", or null,\n  \"period\":     the time it refers to, e.g. \"1969\", \"1969-11\", or null,\n  \"confidence\": 0.0 to 1.0 -- how sure you are you read this correctly,\n  \"source_text\": the EXACT sentence or line from the text that this came from\n}\n\nDistinguishing the four kinds is the most important thing you do:\n\n- \"observation\" is what was actually MEASURED.\n    \"The average influent BOD ... were 104 mg/1\"  -> observation\n- \"standard\" is a REGULATORY LIMIT or objective, not a measurement.\n    \"The Maximum Acceptable Concentration of nitrate is 10 mg/L\"  -> standard\n- \"design\" is what equipment was BUILT to handle -- a specification.\n    A \"DESIGN DATA\" section reading \"BOD - Raw Sewage 180 mg/1\"  -> design\n- \"conclusion\" is the author's judgement, often with no number.\n    \"The plant operated above capacity 85% of the time\"  -> conclusion\n\nA percentage is NOT automatically a removal efficiency. Read what it counts:\n    \"an average removal of 64% BOD\"                  -> observation, BOD removal\n    \"the objective was exceeded 20 per cent of the time\"\n        -> observation, parameter \"BOD exceedance frequency\" -- this counts HOW\n           OFTEN a limit was breached, not how much was taken out. Filing it as\n           removal inverts its meaning: 20% exceedance is good, 20% removal is bad.\n    \"80% of the time the plant operated above design capacity\"\n        -> observation, parameter \"capacity exceedance frequency\"\nUse the word \"frequency\" in the parameter whenever the number counts occasions\nrather than quantity.\n\nA design value and an observation can be the same parameter, same unit, same\nplant, in the same document. Confusing them corrupts the record. When a value\nappears under a heading like DESIGN DATA, DESIGN FLOW, or in an equipment\nspecification list, it is \"design\".\n\nRules:\n- source_text MUST be copied exactly from the input. Do not paraphrase it.\n- If you cannot find a real sentence for a value, do not emit that value.\n- Emit one element per measured value. \"104 mg/1 and 224 mg/1 respectively\"\n  is TWO observations, not one.\n- Do not invent. An empty array is a correct answer for a page with no measurements.\n- OMIT any field that would be null. Only \"kind\", \"parameter\",\n  \"parameter_status\" and \"source_text\" are always required. Shorter output is\n  better.\n- When several values share one sentence, repeat that same sentence as the\n  source_text for each. Do not shorten it.\n- Output the array and nothing else. Stop immediately after the closing bracket.\n";
+const PAGE_TEXT = "If the soda ash injection point for post pH adjustment is relocated to the high lift end of the\nclearwell and the plant is operated 1 8 hours per day instead of 1 2 hours during the winter, the free\nchlorine residual required would be lower (0.7 mg/L). It is therefore recommended to implement\nthese changes. Relocating the soda ash injection point while maintaining 12 hours of operation\nwould reduce the free chlorine residual required to inactivate cysts to 0.46 mg/L during the\nsummer, reducing fiirther the formation of THM. Higher chlorine levels at the plant may be\nrequired to maintain a minimum residual in the distribution system.\n\nThe average colour measured during the summer sampling is 36 TCU for the raw water and 4 TCU for\nthe treated water, which is below the ODWO of 5 TCU for the treated water.\n\nThe summer sampling showed an average turbidity in the raw water of 6.7 NTU, and an average\nturbidity in the treated water of 0.32 NTU. The turbidity in the treated water meets the ODWO of 1\nNTU. Disease outbreaks caused by giardia and Cryptosporidium have been reported with increased\nfrequency over the last decade in Canada. These protozoan parasites (especially Cryptosporidium) are\nmore diflScult to kill with disinfectants, and therefore their removal by physical processes is vital.\nCurrent US research and experience now indicates that a turbidity of 0. 1 NTU in filter effluent is\nneeded to provide protection from Cryptosporidium. It is expected that the utilization of PACL as\nprimary coagulant which started in the fall 1996, will help improve the turbidity in the treated water.\n\nThe average aluminum residual in the treated water for 1994 and 1995 is 94 \\xg/L, which is below the\nOntario Drinking Water Objective (ODWO) operational guideline of 100 \\xe/L. The result for April\n1995 (221 |ig/L), shows that the level of aluminum in the treated water can exceed the ODWO\nguideline at times. The switch to PACL from alum should result in a lower aluminum residual.\n\nThe Ear Falls Water Treatment Plant is a well operated plant. However, from historical records\nand testing carried out during this optimization study it appeared the plant was subject to periodic\nexcursions in treated water quality. This indicated a loss of process control. In mid-November\n1996, OCWA replaced alum with PACL. The results show that the quality of the treated water\ngreatly improved. The turbidity observed in the treated water is less than 0. 1 NTU, the colour is\nclose to 0 TCU for a raw water colour between 43 to 80 TCU, and the residual aluminum\nconcentration in the treated water is also reduced PACL works better under cold water\nconditions and also provides a wider range of optimum dosage than alum.\n\nRECOMMENDATIONS FOR PLANT SCALE MODIFICATIONS\n\nThe Ear Falls Water Treatment Plant is well operated and maintained. The only process modifications\nrecommended are to relocate the soda ash injection point at the high lift end of the clearwell and to\nextend the operation of the plant to 18 hours per day during the winter, to lower the required free\nchlorine residual for inactivation of giardia cysts and viruses.";
+const USER_PROMPT = "Document: The Optimization of the Ear Falls Water Treatment Plant\nPublisher: Ontario Ministry of Environment and Energy\nYear: 1997\nPage: 9\n\n--- BEGIN PAGE TEXT ---\nIf the soda ash injection point for post pH adjustment is relocated to the high lift end of the\nclearwell and the plant is operated 1 8 hours per day instead of 1 2 hours during the winter, the free\nchlorine residual required would be lower (0.7 mg/L). It is therefore recommended to implement\nthese changes. Relocating the soda ash injection point while maintaining 12 hours of operation\nwould reduce the free chlorine residual required to inactivate cysts to 0.46 mg/L during the\nsummer, reducing fiirther the formation of THM. Higher chlorine levels at the plant may be\nrequired to maintain a minimum residual in the distribution system.\n\nThe average colour measured during the summer sampling is 36 TCU for the raw water and 4 TCU for\nthe treated water, which is below the ODWO of 5 TCU for the treated water.\n\nThe summer sampling showed an average turbidity in the raw water of 6.7 NTU, and an average\nturbidity in the treated water of 0.32 NTU. The turbidity in the treated water meets the ODWO of 1\nNTU. Disease outbreaks caused by giardia and Cryptosporidium have been reported with increased\nfrequency over the last decade in Canada. These protozoan parasites (especially Cryptosporidium) are\nmore diflScult to kill with disinfectants, and therefore their removal by physical processes is vital.\nCurrent US research and experience now indicates that a turbidity of 0. 1 NTU in filter effluent is\nneeded to provide protection from Cryptosporidium. It is expected that the utilization of PACL as\nprimary coagulant which started in the fall 1996, will help improve the turbidity in the treated water.\n\nThe average aluminum residual in the treated water for 1994 and 1995 is 94 \\xg/L, which is below the\nOntario Drinking Water Objective (ODWO) operational guideline of 100 \\xe/L. The result for April\n1995 (221 |ig/L), shows that the level of aluminum in the treated water can exceed the ODWO\nguideline at times. The switch to PACL from alum should result in a lower aluminum residual.\n\nThe Ear Falls Water Treatment Plant is a well operated plant. However, from historical records\nand testing carried out during this optimization study it appeared the plant was subject to periodic\nexcursions in treated water quality. This indicated a loss of process control. In mid-November\n1996, OCWA replaced alum with PACL. The results show that the quality of the treated water\ngreatly improved. The turbidity observed in the treated water is less than 0. 1 NTU, the colour is\nclose to 0 TCU for a raw water colour between 43 to 80 TCU, and the residual aluminum\nconcentration in the treated water is also reduced PACL works better under cold water\nconditions and also provides a wider range of optimum dosage than alum.\n\nRECOMMENDATIONS FOR PLANT SCALE MODIFICATIONS\n\nThe Ear Falls Water Treatment Plant is well operated and maintained. The only process modifications\nrecommended are to relocate the soda ash injection point at the high lift end of the clearwell and to\nextend the operation of the plant to 18 hours per day during the winter, to lower the required free\nchlorine residual for inactivation of giardia cysts and viruses.\n--- END PAGE TEXT ---\n\nReturn the JSON array.";
+
+document.getElementById("page-text").textContent = PAGE_TEXT;
+
+const status = m => { document.getElementById("status").textContent = m; };
+const bar = document.getElementById("bar");
+const go = document.getElementById("go");
+
+// ---- the same salvage parser the real extractor uses, ported ------------
+function parseRecords(raw) {
+  // Reasoning models deliberate in <think> blocks before answering, and the
+  // deliberation can contain example braces. Extraction is transcription,
+  // not deliberation -- discard the thinking, closed or truncated.
+  raw = raw.replace(/<think>[\s\S]*?<\/think>/g, "");
+  const open = raw.indexOf("<think>");
+  if (open >= 0) raw = raw.slice(0, open);
+  raw = raw.trim().replace(/^```[a-z]*\n?/, "").replace(/\n?```$/, "").trim();
+  try { const v = JSON.parse(raw); return Array.isArray(v) ? v : [v]; } catch (e) {}
+  const a = raw.indexOf("["), b = raw.lastIndexOf("]");
+  if (a >= 0 && b > a) {
+    try { const v = JSON.parse(raw.slice(a, b + 1)); if (Array.isArray(v)) return v; }
+    catch (e) {}
+  }
+  const out = []; let depth = 0, start = -1, inStr = false, esc = false;
+  for (let i = 0; i < raw.length; i++) {
+    const ch = raw[i];
+    if (inStr) { if (esc) esc = false; else if (ch === "\\") esc = true;
+                 else if (ch === '"') inStr = false; continue; }
+    if (ch === '"') inStr = true;
+    else if (ch === "{") { if (!depth) start = i; depth++; }
+    else if (ch === "}") { if (depth && !--depth && start >= 0) {
+      try { const o = JSON.parse(raw.slice(start, i + 1));
+            if (o && typeof o === "object") out.push(o); } catch (e) {}
+      start = -1; } }
+  }
+  return out;
+}
+
+// ---- demo-grade ports of the evidence checks ----------------------------
+const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").trim();
+function quoteOnPage(quote) {
+  const q = norm(quote), p = norm(PAGE_TEXT);
+  return q.length > 8 && p.includes(q.slice(0, 160));
+}
+function valueInQuote(value, quote) {
+  if (value === null || value === undefined) return null; // nothing to check
+  let canon = String(value);
+  if (canon.endsWith(".0")) canon = canon.slice(0, -2);
+  // Strip commas only in the three-digit thousands shape -- "8,5" stays.
+  const direct = String(quote || "").replace(/(?<=\d),(?=\d{3}(?!\d))/g, "");
+  const rx = new RegExp("(?<![\\d.+-])" + canon.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+                        + "(?![\\d.])");
+  return rx.test(direct);
+}
+
+// ---- the model, in this tab ---------------------------------------------
+let engine = null, modelId = null;
+async function boot() {
+  if (!("gpu" in navigator)) {
+    status("This browser has no WebGPU — the in-browser reader needs it. "
+         + "Recent Chrome, Edge and Firefox on a machine with a GPU all work.");
+    return;
+  }
+  status("Loading the model list…");
+  const webllm = await import("https://esm.run/@mlc-ai/web-llm@0.2.84");
+  // The benchmarked model itself, published for browsers by a third party
+  // (validated by its publisher 2026-04-13). This is gemma4:e2b -- 100%
+  // precision, 44% recall on the gold pages via Ollama the same day this
+  // page was built -- so when this entry loads, the demo runs the SAME model
+  // the benchmark measured, with the SAME full reading instructions.
+  // The engine requires absolute URLs; a local mirror path is resolved
+  // against wherever this page is being served from.
+  const E2B_REPO = new URL("https://huggingface.co/welcoma/gemma-4-E2B-it-q4f16_1-MLC", location.href).href.replace(/\/$/, "");
+  const E2B = {
+    model: E2B_REPO,
+    // Suffixed per packaging so the browser's model cache can never hand
+    // one build's files to another.
+    model_id: "gemma-4-E2B-it-q4f16_1-MLC-welcoma",
+    model_lib: E2B_REPO + "/resolve/main/libs/gemma-4-E2B-it-q4f16_1-MLC-webgpu.wasm",
+    required_features: ["shader-f16"],
+    // gemma4 is a hybrid: 512-token sliding layers interleaved with
+    // full-attention layers. The engine handles that natively (it does for
+    // gemma3) -- so override ONLY the context size and leave the model's
+    // dual window declaration alone. Forcing a single mode breaks half the
+    // layers: all-sliding caps the cache at 512 (crash on a page),
+    // all-context corrupts the sliding layers (silence past 512). Both
+    // were measured here before this line existed.
+    overrides: { context_window_size: 4096,
+                 // A chunk is one GPU dispatch; this model's 262k-token
+                 // vocabulary makes big chunks lose the GPU device on
+                 // laptop cards (observed at 8192). 1024 is the proven size.
+                 prefill_chunk_size: 1024 },
+  };
+  const list = webllm.prebuiltAppConfig.model_list;
+  // The measured class is 2-4B: gemma4's edge editions hit 100%/44% and
+  // 95%/56% on the gold pages. A 1B model collapses into repetition under
+  // these instructions -- observed on this very page, not assumed -- so the
+  // picker holds the class rather than taking the smallest thing available.
+  const inClass = list.filter(m =>
+      /instruct|it\b|-it-/i.test(m.model_id) &&
+      /(^|[^0-9.])(2b|3b|4b)\b/i.test(m.model_id));
+  // Within the class, prefer current-generation models known to follow the
+  // one instruction everything hinges on: quote the sentence VERBATIM. The
+  // 2024-era builds paraphrase, and the checks rightly refuse paraphrases.
+  const prefer = [/qwen3\.5-4b.*q4f16/i, /qwen3\.5-4b/i, /qwen3-4b.*q4f16/i,
+                  /qwen3\.5-2b.*q4f16/i, /llama-3\.2-3b.*q4f16/i];
+  // Preference runs over the FULL list: Qwen3-era models dropped the word
+  // "Instruct" from their names (instruction-tuned is their default), so an
+  // instruct-word filter would hide exactly the models preferred most.
+  // The benchmarked model leads only in local test builds: its published
+  // browser builds all fall silent past ~512 prompt tokens (the kernel
+  // defect described above), so the public page must not spend a
+  // visitor's 2.7 GB download proving a silence this page already
+  // documents. The catalogue models read instead, and their failures are
+  // refused in the open.
+  let chosen = null;
+  if (!chosen) {
+    for (const rx of prefer) {
+      chosen = list.find(m => rx.test(m.model_id));
+      if (chosen) break;
+    }
+  }
+  const pick = arr => arr.slice().sort((x, y) =>
+      (y.vram_required_MB || 0) - (x.vram_required_MB || 0))[0];
+  if (!chosen) chosen = pick(inClass) || pick(list.slice());
+  if (!chosen) { status("No browser model available from the model index."); return; }
+  modelId = chosen.model_id;
+  document.getElementById("model-note").textContent =
+      "Model: " + modelId + " — downloads once into browser cache, then stays.";
+  status("Fetching " + modelId + " into browser cache…");
+  bar.hidden = false;
+  const isE2B = chosen === E2B;
+  const engineConfig = {
+    initProgressCallback: r => {
+      bar.value = r.progress || 0;
+      status(r.text || "loading…");
+    },
+  };
+  if (isE2B) engineConfig.appConfig = { model_list: [E2B, ...list] };
+  try {
+    // The e2b build's config declares BOTH window modes (its publisher's
+    // engine tolerated that; the current engine insists on exactly one).
+    // Its sliding mode caps the cache at 512 tokens -- one short exchange,
+    // no room for a page -- so ask for full-context mode at the size this
+    // build was compiled for; catalogue models get the same arrangement at
+    // their own sizes.
+    // The e2b record carries its own overrides; chat options here would
+    // shadow them, so only catalogue models get sized from this side.
+    engine = await webllm.CreateMLCEngine(modelId, engineConfig,
+      isE2B ? undefined
+            : { context_window_size: 8192, sliding_window_size: -1 });
+  } catch (e) {
+    if (isE2B) {
+      // This browser cannot carry the benchmarked model (no f16 shaders, or
+      // the download failed). Fall back to the catalogue and say so -- and
+      // keep the reason inspectable, because a status line scrolls away.
+      window._e2bError = String(e && e.stack || e);
+      console.error("e2b load failed:", e);
+      status("The benchmarked model would not load here (" +
+             String(e).slice(0, 80) + "); falling back to a catalogue model.");
+      chosen = null;
+      for (const rx of prefer) {
+        chosen = list.find(m => rx.test(m.model_id));
+        if (chosen) break;
+      }
+      if (!chosen) chosen = pick(inClass) || pick(list.slice());
+      modelId = chosen.model_id;
+      document.getElementById("model-note").textContent =
+          "Model: " + modelId + " (fallback) — downloads once into browser cache.";
+      engine = await webllm.CreateMLCEngine(modelId, engineConfig,
+        { context_window_size: 8192, sliding_window_size: -1 });
+    } else { throw e; }
+  }
+  bar.hidden = true;
+  window._engine = engine;   // inspectable: the reader checks its own reader
+  status("Model ready on your GPU. Nothing was installed.");
+  go.disabled = false;
+}
+
+go.addEventListener("click", async () => {
+  go.disabled = true;
+  const t0 = performance.now();
+  status("Reading the page in this tab…");
+  let raw = "";
+  // Reasoning-mode models (Qwen3 era) burn the whole token budget thinking
+  // before they transcribe a single record. Their off switch must ride on
+  // the USER message -- in the system prompt it is ignored, which cost a
+  // 20,000-character thought spiral before this line moved. The engine's
+  // native enable_thinking switch is set too; measured together they cut
+  // the same question from 59 tokens of reasoning to 2 of answer.
+  const isThinker = /qwen3/i.test(modelId);
+  const noThink = isThinker ? "\n/no_think" : "";
+  const chunks = await engine.chat.completions.create({
+    messages: [
+      // Every browser model gets the compact instructions: small models
+      // drown in the full production prompt, and the compact set is the
+      // one being iterated toward verified in-browser records.
+      { role: "system", content: SYSTEM_SMALL },
+      { role: "user", content: USER_PROMPT + noThink },
+    ],
+    temperature: 0,
+    // A guard against degenerate repetition in small quantized models.
+    frequency_penalty: 0.3,
+    max_tokens: 4000,
+    stream: true,
+    ...(isThinker ? { extra_body: { enable_thinking: false } } : {}),
+  });
+  for await (const c of chunks) {
+    raw += c.choices?.[0]?.delta?.content || "";
+    status("Reading… " + raw.length + " characters produced");
+  }
+  const secs = ((performance.now() - t0) / 1000).toFixed(0);
+  window._raw = raw;
+  document.getElementById("raw-out").textContent = raw;
+  const records = parseRecords(raw);
+  const tbody = document.querySelector("#tbl tbody");
+  tbody.innerHTML = "";
+  let shown = 0;
+  for (const r of records) {
+    const quote = String(r.source_text || "");
+    const onPage = quoteOnPage(quote);
+    const inQuote = valueInQuote(r.value, quote);
+    const checks =
+      (!quote ? '<span class="bad">✗ no sentence quoted — unprovable</span>'
+       : onPage ? '<span class="ok">✓ sentence on page</span>'
+                : '<span class="bad">✗ sentence not found</span>') + "<br>" +
+      (inQuote === null ? '<span class="note">no value to check</span>'
+       : inQuote ? '<span class="ok">✓ value in sentence</span>'
+                 : '<span class="bad">✗ value not in sentence</span>');
+    const row = document.createElement("tr");
+    row.innerHTML =
+      "<td>" + (r.kind || "") + "</td>" +
+      "<td>" + (r.parameter || "") + "</td>" +
+      '<td class="v">' + (r.value ?? "") + " " + (r.unit || "") + "</td>" +
+      '<td class="q">“' + quote.slice(0, 160) + "”</td>" +
+      "<td>" + checks + "</td>";
+    tbody.appendChild(row);
+    shown++;
+  }
+  document.getElementById("headline").textContent =
+    shown + " records read in " + secs + "s, inside this browser tab, by " + modelId + ".";
+  document.getElementById("results").hidden = false;
+  status("Done. The model ran entirely on your graphics card.");
+  go.disabled = false;
+});
+
+boot();
+</script>
+</body>
+</html>

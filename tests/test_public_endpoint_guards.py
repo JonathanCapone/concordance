@@ -1258,3 +1258,28 @@ def test_allowed_static_name_cannot_follow_a_symlink_outside(
     handler.do_GET()
 
     assert handler.sent_status == 404
+
+
+def test_the_browser_reader_is_served_at_an_address_a_person_can_say(
+    monkeypatch,
+) -> None:
+    """/browser serves the in-browser reader demo as HTML -- the address a
+    social post or a conversation can hand to someone. It is the same file
+    the /static/ allowlist serves; a route that private-cased its own file
+    handling would fork the containment discipline."""
+    handler = object.__new__(server.Handler)
+    handler.path = "/browser"
+    sent = {}
+
+    def _send(body, ctype, *a, **kw):
+        sent.update(body=body, ctype=ctype)
+
+    handler._send = _send
+    handler.send_error = lambda status: sent.update(status=status)
+    monkeypatch.setattr(server, "STATE", object())
+
+    handler.do_GET()
+
+    assert "status" not in sent, f"/browser returned {sent.get('status')}"
+    assert sent["ctype"].startswith("text/html")
+    assert b"Read this page in the browser" in sent["body"]
