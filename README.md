@@ -88,10 +88,13 @@ model must therefore be re-measured together before any corpus-wide budget or yi
 
 That uncertainty changes the plan rather than decorating it. A corpus bought in one batch is
 finished the day the money runs out; it never extends, and the next person who wants an unread
-document has no way to get one. The local reader and sharing path are built: `scripts/share.py` moves a
-result between machines — as a file, or pushed to a shared instance — and its cited page evidence is
-rechecked on arrival. The safe one-click handoff from the public website to that local reader is
-not built yet; the site does not start an hours-long model job from a web request.
+document has no way to get one. So the loop is the design, and it works end to end: ask a shared
+site for an unread town and it hands you the one command for that town
+(`python scripts/share.py read --place "..." --to https://...`); your machine reads it, the site
+re-checks every cited sentence on arrival, and the town appears for everyone after you. The site
+itself never starts a model job from a web request — the reading always happens on a volunteer's
+own machine, which is why there is no central compute bill. Asks are counted and shown, so
+volunteers can read the towns people are waiting for.
 
 **The honest hole in that** is the vision path. Its corpus-wide share is not currently measured
 reliably, and trial pages take about eight minutes each on an RTX 2080 because only 18% of a 29.6 GB

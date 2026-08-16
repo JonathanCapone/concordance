@@ -32,6 +32,7 @@ from typing import Any, Callable, Iterable
 from .archive import Archive
 from .contribute import make_bundle, verify_bundle
 from .parameters import facility_of, resolve as resolve_parameter
+from .places import scope_record_dict
 from .router import Path as RPath, route
 
 LIBRARY = Path("data/results")
@@ -81,7 +82,16 @@ def _load_library() -> list[dict[str, Any]]:
             payload = json.loads(path.read_text(encoding="utf-8"))
         except Exception:  # noqa: BLE001
             continue
-        out.extend(payload.get("records") or [])
+        # The same scoping every other loader applies: a record with no place
+        # of its own belongs to the place its file was read for. Flattening
+        # without it made most of a town invisible to the very query that
+        # wrote it -- the first live volunteer re-share of Ear Falls found 35
+        # of its own 190 records, because 155 spec lines and plant readings
+        # carry no place field of their own. Third appearance of the
+        # loader-asymmetry family; same cure as the first two.
+        file_place = payload.get("place")
+        for record in payload.get("records") or []:
+            out.append(scope_record_dict(record, file_place))
     return out
 
 
@@ -171,7 +181,16 @@ def ask(
                 continue
             for rec in result.records:
                 d = rec.to_dict()
-                d.setdefault("place", query)
+                # setdefault never fired here: to_dict always emits the place
+                # key, so a record whose sentence named no place carried
+                # place=None out of the reader. Loaders repair that from the
+                # file header -- but a bundle pushed to another instance is
+                # not a file with a header, so 151 of Ear Falls' 190 records
+                # arrived at the live site nameless and invisible. Records
+                # whose sentence names a DIFFERENT place (a Winnipeg
+                # comparison figure in a Vancouver report) keep it.
+                if not d.get("place"):
+                    d["place"] = query
                 # Only when the sentence did not name one. A page covering
                 # four hospitals knows which is which; the title does not.
                 d.setdefault("facility", None)

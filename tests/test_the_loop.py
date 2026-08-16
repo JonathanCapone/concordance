@@ -76,8 +76,12 @@ def test_share_read_reads_then_pushes_to_the_instance(monkeypatch, tmp_path) -> 
 
     def fake_ask(place, **kw):
         read_calls.append(place)
+        # place=None on purpose: the record whose sentence named no town.
+        # The bundle must stamp it before it travels, or it arrives at the
+        # instance nameless -- how 151 of Ear Falls' 190 records vanished.
         return SimpleNamespace(
-            records=[{"kind": "observation", "parameter": "BOD", "value": 1.0}],
+            records=[{"kind": "observation", "parameter": "BOD", "value": 1.0,
+                      "place": None}],
             source="read now", published=1, contributed=True, note="")
 
     pushed = {}
@@ -97,6 +101,8 @@ def test_share_read_reads_then_pushes_to_the_instance(monkeypatch, tmp_path) -> 
     assert pushed["to"] == "https://concordance.example"
     assert pushed["bundle"]["n_records"] == 1
     assert "Fergus" in pushed["bundle"]["note"]
+    assert pushed["bundle"]["records"][0]["place"] == "Fergus", (
+        "a nameless record travelled nameless")
 
 
 def test_share_read_sends_nothing_when_nothing_survived(monkeypatch) -> None:
@@ -180,3 +186,27 @@ def test_the_unread_town_page_renders_the_handoff() -> None:
     assert "I want this town read" in page
     assert "/api/request" in page
     assert 'share.py read' in page or "handoff-cmd" in page
+
+
+def test_the_library_answers_for_records_that_inherit_their_files_place(
+        tmp_path, monkeypatch) -> None:
+    """A record with no place of its own belongs to the place its file was
+    read for -- every loader applies that rule, and the library query did
+    not. The first live re-share of Ear Falls found 35 of its own 190
+    records; the 155 spec lines with no place field were invisible to the
+    very query that wrote them."""
+    import concordance.library as lib
+
+    monkeypatch.setattr(lib, "LIBRARY", tmp_path)
+    (tmp_path / "ear-falls.json").write_text(json.dumps({
+        "place": "Ear Falls",
+        "records": [
+            {"kind": "observation", "parameter": "BOD", "value": 1.0,
+             "place": "Ear Falls"},
+            {"kind": "design", "parameter": "capacity", "value": 2.0,
+             "place": None},
+        ]}), encoding="utf-8")
+
+    answer = lib.ask("Ear Falls", read_if_missing=False)
+    assert len(answer.records) == 2, \
+        f"the placeless record is invisible again ({len(answer.records)})"

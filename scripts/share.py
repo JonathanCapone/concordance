@@ -233,8 +233,15 @@ def do_read(args: argparse.Namespace) -> int:
               "a shared instance.")
         return 0
 
+    # Scope every record before it travels. On this machine, loaders repair a
+    # missing place from the file it sits in; a bundle on the wire has no
+    # file, so each record must carry its own town name or arrive nameless --
+    # which is exactly how most of the first live push became invisible.
+    from concordance.places import scope_record_dict
+
+    travelling = [scope_record_dict(r, args.place) for r in answer.records]
     bundle = make_bundle(
-        answer.records, contributor=args.who,
+        travelling, contributor=args.who,
         note=f"volunteer read of {args.place}")
     code = push_bundle(bundle, args.to, args.timeout)
     if code == 0:

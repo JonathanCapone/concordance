@@ -34,16 +34,14 @@ the project scopes 1841 to 2013. To learn what your town's plant discharged in
 fellowship brief puts the collection at roughly 48 TB; the reader works from
 the OCR text layer and fetches page images only as needed.
 
-The fellowship build is the missing bridge. Today a volunteer's computer can
-read pages locally and send results to a Concordance site, where every cited
-sentence and number is checked again. What the site cannot yet do is hand a
-requested town to a volunteer's machine. I will build and test that handoff so
-a volunteer can contribute without an account, an API key, or a process left
-running — the path to growth without a permanent central compute bill. It is a
-deliverable, not something I claim is already deployed.
-
-The fellowship also publishes an open, source-linked seed dataset designed to
-grow beyond the pilot communities.
+The loop is live. Ask the site for an unread town and it hands you one
+command; your computer reads the town and publishes it back, re-checked
+sentence by sentence before anything appears — no account, no API key, no
+central compute bill. Ear Falls travelled that whole path the day before
+submission: asked for, read by a volunteer's machine, re-verified, published.
+The fellowship makes that loop survive strangers — first-time-user testing is
+the success metric — plus the accuracy and tables work below, and an open
+seed dataset built to grow beyond the pilot communities.
 
 Live: concordance.jonathancapone.com · Code: github.com/JonathanCapone/concordance
 
@@ -172,11 +170,11 @@ precision and recall by era and parameter, not only one flattering average.
 **Week 4 — Test tables.** Compare smaller vision models on ordinary hardware
 against hand-read pages. *Ends with:* a distributable path, or a measured limit.
 
-**Week 5 — Complete the contribution loop.** Build the browser-to-local handoff,
-then test request, preview, source-check and sharing with first-time users. If
-the handoff is not safely testable in time, the user test runs on the
-already-built share-by-file path and the handoff is published as a measured
-limit, like the tables.
+**Week 5 — Make the contribution loop survive strangers.** The handoff exists
+and has carried one town end to end (Ear Falls, pre-application); this week
+tests request, preview, source-check and sharing with first-time users and
+fixes what they break. If the one-command path fails them, the test runs on
+the share-by-file fallback and the gap is published as a measured limit.
 
 **Week 6 — Publish.** Release the seed dataset, accuracy report, methodology and
 failures; offer the metadata proposals for review; write up and, if ready,
