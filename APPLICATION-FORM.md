@@ -161,38 +161,39 @@ while preserving each source item's rights.
 agencies and document types; choose a British Columbia pilot before tuning.
 
 **Week 2 — Keep unlike records unlike.** Apply the 697-term source-attested
-vocabulary already built; test units, methods and reporting changes; publish the
-refusal rules for comparisons that are not defensible.
+vocabulary already built; test units, methods and reporting changes; publish
+the refusal rules for indefensible comparisons.
 
 **Week 3 — Measure prose.** Run the benchmark, inspect failures, and publish
-precision and recall by era and parameter, not only one flattering average.
+precision and recall by era and parameter, not one flattering average.
 
-**Week 4 — Test tables.** Compare smaller vision models on ordinary hardware
-against hand-read pages. *Ends with:* a distributable path, or a measured limit.
+**Week 4 — Test small models.** Compare smaller vision and prose models on
+ordinary hardware against hand-read pages. This gates the endgame: models this
+size now run inside a browser, so if accuracy holds, "read this town" becomes
+a button, nothing installed. *Ends with:* a path, or a limit.
 
-**Week 5 — Make the contribution loop survive strangers.** The handoff exists
-and has carried one town end to end (Ear Falls, pre-application); this week
-tests request, preview, source-check and sharing with first-time users and
-fixes what they break. If the one-command path fails them, the test runs on
-the share-by-file fallback and the gap is published as a measured limit.
+**Week 5 — Make the loop survive strangers.** The handoff exists and has
+carried one town end to end (Ear Falls, pre-application); this week tests it
+with first-time users and fixes what they break. If the one-command path
+fails them, the test runs on the share-by-file fallback and the gap is
+published as a measured limit.
 
-**Week 6 — Publish.** Release the seed dataset, accuracy report, methodology and
-failures; offer the metadata proposals for review; write up and, if ready,
-prepare for the conditional showcase.
+**Week 6 — Publish.** Release the seed dataset, accuracy report, methodology
+and failures; offer the metadata proposals for review; write up; prepare for
+the conditional showcase if ready.
 
 **Where I expect to change course:**
 
-1. **The tables may not distribute.** A smaller vision model may or may not be
-   good enough for a contributor's laptop. I have not measured it. If it is not,
-   the answer is a plain statement of what fraction of this archive needs
-   hardware most people do not own — which is worth publishing too.
-2. **The wider benchmark may come in materially lower.** All my evidence is
-   Ontario water reports. If accuracy drops on other agencies and eras, I will
-   publish that and narrow the scope rather than ship a confident dataset nobody
-   has checked.
+1. **The tables may not distribute.** A smaller vision model may or may not
+   be good enough for a contributor's laptop; unmeasured. If not, the answer
+   is a plain statement of what fraction of this archive needs hardware most
+   people do not own — itself worth publishing.
+2. **The wider benchmark may come in lower.** Nearly all my evidence is
+   Ontario water reports. If accuracy drops on other agencies and eras, I
+   publish that and narrow the scope rather than ship an unchecked dataset.
 3. **Comparability may bite harder than expected.** If methods changes are
-   pervasive, more of this becomes a finding aid and less a dataset. That is a
-   real outcome, not a failure.
+   pervasive, more of this becomes a finding aid and less a dataset — a real
+   outcome, not a failure.
 
 ---
 
@@ -255,11 +256,11 @@ word.** At checkpoint `763d4c0`: 5,147 source-linked records across 14
 municipalities and 96.8% precision on four hand-read pages. The full test suite
 passes; no core package dependencies are required.
 
-Before this I built OMEGA-wave, an open ocean-sensing system with its own
-protocol, gateway, statistics and map portal. Concordance reuses its
-standard-library statistics and provider patterns: Mann-Kendall, Theil-Sen,
-Pettitt changepoints and keyless Environment Canada/Statistics Canada access.
-Six weeks here is not six weeks from zero.
+And it is not a prototype on my desk: the website is live, the volunteer loop
+has carried a real town end to end, and every push runs the full test suite on
+fresh Ubuntu and Windows machines — including re-scoring the accuracy
+benchmark, which must reproduce byte-for-byte or the build fails. Six weeks
+here starts from a working system, not from zero.
 
 **What I think actually qualifies me is how I handle being wrong**, because that
 is the whole risk in this kind of project. Three examples are documented in the
