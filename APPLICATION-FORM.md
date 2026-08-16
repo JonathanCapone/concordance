@@ -31,9 +31,8 @@ I found no usable national database of these numbers. My August 11 catalogue
 snapshot holds 104,241 scanned government publications and 22.1 million pages;
 the project scopes 1841 to 2013. To learn what your town's plant discharged in
 1969, you would have to know the report exists, find it, read it. The
-fellowship brief puts the collection at roughly 48 TB; for prose, the reader
-works from the separate OCR text layer and requests page images only as
-needed.
+fellowship brief puts the collection at roughly 48 TB; the reader works from
+the OCR text layer and fetches page images only as needed.
 
 The fellowship build is the missing bridge. Today a volunteer's computer can
 read pages locally and send results to a Concordance site, where every cited
@@ -46,7 +45,7 @@ deliverable, not something I claim is already deployed.
 The fellowship also publishes an open, source-linked seed dataset designed to
 grow beyond the pilot communities.
 
-Code and data: github.com/JonathanCapone/concordance
+Live: concordance.jonathancapone.com · Code: github.com/JonathanCapone/concordance
 
 ---
 
