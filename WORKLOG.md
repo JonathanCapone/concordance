@@ -822,3 +822,23 @@ their content -- whose minimum is the widest unbreakable line, here a
 inside a 410px dock. Inherited chrome carries inherited assumptions; in
 the dock the class is now a plain block and the command chips scroll
 themselves.
+
+**Then the structure itself, because the clothes and the menu were never
+the real complaint.** "I'm not sure the workflow of concordance is the
+best and it feels like not a lot of thought went into the layout of the
+menu and how it all works together." Right -- the nine entries were the
+modules in build order, renamed into questions a year ago but never
+restructured. Two answered the same question two ways ("Find a place" and
+"One town, in full" -- two renderers of the same record), one errored for
+every visitor of the shared site (Ask Jay needs a local model), and the
+reading queue sat four slots from the reader it serves. The menu is now
+the loop the site actually is: <b>Find a place</b> (the search browses
+the read towns when clicked empty -- the duplicate view, one click
+earlier, minus its second renderer), <b>Read a town</b> (the reader,
+with the frontier's ranked towns as its pick list), <b>What it found</b>
+(what stopped, who decided, disagreements, within reach -- four tabs,
+one entry, nothing deleted), <b>Can I trust it</b> (precision and
+refusals, with Ask Jay beside them, appearing where a model exists to
+answer). Old #view= addresses map into the new structure, tab and all.
+Nine doors became four stages, and the tests now pin the property that
+mattered all along: consolidating deleted nothing.
