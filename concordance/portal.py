@@ -33,31 +33,12 @@ MAPLIBRE_VERSION = "5.24.0"
 SAT_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
 DEM_TILES = "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/{z}/{x}/{y}.png"
 
-#: One menu, one source: the list lives in chrome.py so this page's buttons
-#: and every other page's links can never disagree about what the site is.
-from .chrome import MENU
-
-
-def _nav() -> str:
-    """The menu: views as buttons, the reader as a link in the same clothes."""
-    out = []
-    for key, label, path in MENU:
-        glyph = (
-            f'<svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true">'
-            f'<path d="{path}" fill="none" stroke="currentColor" stroke-width="1.6" '
-            f'stroke-linecap="round" stroke-linejoin="round"/></svg>'
-            f'<span class="nav-tip">{label}</span>'
-        )
-        if key == "browser":
-            out.append(f'<a class="nav-button" href="/browser" '
-                       f'aria-label="{label}">{glyph}</a>')
-        else:
-            active = " is-active" if key == "observe" else ""
-            out.append(
-                f'<button type="button" class="nav-button{active}" '
-                f'data-view="{key}" aria-label="{label}">{glyph}</button>'
-            )
-    return "".join(out)
+#: One menu, one HEADER: chrome.py renders the masthead for this page exactly
+#: as it renders it for the reader and the standalone artifacts. This page
+#: used to build its own -- a fixed-width brand block and a nav wearing the
+#: inherited `icon-nav` class -- so the menu changed size and shifted 46px
+#: sideways the moment a visitor left the map.
+from .chrome import HEAD_CSS, masthead
 
 
 def render(s: dict) -> str:
@@ -72,32 +53,23 @@ def render(s: dict) -> str:
 html,body{{height:100%;margin:0;background:#04080d;color:#e8edf2;
   font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}}
 *{{box-sizing:border-box}}
-.app-shell{{display:flex;flex-direction:column;height:100vh;overflow:hidden}}
-.app-header{{display:flex;align-items:center;gap:22px;padding:9px 18px;
-  border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94);z-index:20}}
-.brand-block{{display:flex;align-items:baseline;gap:10px;min-width:210px}}
-.brand-wordmark{{margin:0;font-size:15px;font-weight:600;letter-spacing:.02em}}
-.brand-sub{{margin:0;font-size:11px;color:#7d8996}}
-.primary-nav{{display:flex;gap:4px}}
-.nav-button{{background:none;border:1px solid transparent;border-radius:9px;
-  color:#8b97a4;padding:7px 9px;cursor:pointer;display:flex;align-items:center;
-  gap:7px;text-decoration:none}}
-.nav-button:hover{{color:#e8edf2;border-color:rgba(255,255,255,.12)}}
-.nav-button.is-active{{color:#04080d;background:var(--gt-hit);border-color:var(--gt-hit)}}
+/* Full-bleed on EVERY route. The inherited stylesheet pads .app-shell by
+   14px and only unpads it for `observe`, so switching from the map to any
+   other section slid the whole chrome -- header and menu included -- 14px
+   down and right. That diagonal nudge is what "the pages jump around when
+   you select a page" was: not the menu drifting, the shell under it. */
+.app-shell{{display:flex;flex-direction:column;height:100vh;overflow:hidden;
+  width:100%;max-width:none;margin:0;padding:0}}
+/* The header is chrome.py's, verbatim -- the same rules the reader page and
+   the standalone artifacts load, so the menu cannot drift between them. It
+   comes AFTER the inherited stylesheet's link, which is what lets it win. */
+{HEAD_CSS}
+.site-head{{z-index:20}}
 .findings-tabs{{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 18px}}
 .ftab{{background:none;border:1px solid rgba(255,255,255,.14);border-radius:9px;
   color:#8b97a4;padding:7px 13px;cursor:pointer;font:inherit;font-size:13px}}
 .ftab:hover{{color:#e8edf2;border-color:rgba(255,255,255,.25)}}
 .ftab.is-on{{color:#04080d;background:var(--gt-hit);border-color:var(--gt-hit);font-weight:600}}
-.nav-glyph{{width:17px;height:17px}}
-.nav-tip{{font-size:12.5px;font-weight:500}}
-.header-stats{{margin-left:auto;display:flex;gap:0;border:1px solid rgba(255,255,255,.10);
-  border-radius:9px;overflow:hidden}}
-.hstat{{padding:5px 13px;border-right:1px solid rgba(255,255,255,.10)}}
-.hstat:last-child{{border-right:0}}
-.hstat b{{display:block;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;
-  line-height:1.2}}
-.hstat span{{font-size:9.5px;color:#6d7a86;text-transform:uppercase;letter-spacing:.06em}}
 
 .app-body{{flex:1;position:relative;overflow:hidden}}
 .view{{position:absolute;inset:0;display:none;overflow:auto}}
@@ -281,20 +253,13 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
 <body data-route="observe">
 <div class="app-shell">
 
-  <header class="app-header">
-    <div class="brand-block">
-      <p class="brand-wordmark">CONCORDANCE</p>
-      <p class="brand-sub">Canada's public record, read</p>
-    </div>
-    <nav class="primary-nav icon-nav" aria-label="Views">{_nav()}</nav>
-    <div class="header-stats">
-      <div class="hstat"><b>{s['located']}</b><span>located</span></div>
-      <div class="hstat"><b>{s['read']}</b><span>read</span></div>
-      <div class="hstat"><b>{s['records']}</b><span>source-linked records</span></div>
-      <div class="hstat"><b>{s['precision']:.1%}</b><span>precision, on hand-read pages</span></div>
-      <div class="hstat"><b>{s['silent_n']}</b><span>silent {s['silent_year']}</span></div>
-    </div>
-  </header>
+  {masthead(home="/", stats=[
+      (s['located'], "located"),
+      (s['read'], "read"),
+      (s['records'], "source-linked records"),
+      (f"{s['precision']:.1%}", "precision, on hand-read pages"),
+      (s['silent_n'], f"silent {s['silent_year']}"),
+  ])}
 
   <div class="app-body">
 
@@ -547,15 +512,24 @@ document.addEventListener("click", ev => {{
   const t = ev.target.closest(".ftab");
   if (t) showFindingsTab(t.dataset.ftab);
 }});
-document.querySelectorAll(".nav-button").forEach(btn =>
-  btn.onclick = () => {{
-    if (!btn.dataset.view) return;           /* the reader entry is a link */
-    showView(btn.dataset.view);
-    /* The address keeps up with the view, so every other page's menu can
-       link straight to one -- and a view someone is looking at is a view
-       they can send to someone else. */
-    history.replaceState(null, "", "#view=" + btn.dataset.view);
-  }});
+/* The menu is the same links on every page. Here they are intercepted and
+   switch the view in place; elsewhere they are ordinary navigation to this
+   page's views. One markup, two honest behaviours -- and no reload, so the
+   header cannot flash or shift as a visitor moves around it.
+   The reader entry keeps its default behaviour: it really is another page. */
+document.addEventListener("click", ev => {{
+  const link = ev.target.closest(".site-nav .nav-button");
+  if (!link) return;
+  const key = link.dataset.view;
+  if (!key || key === "browser") return;
+  if (!document.querySelector('.view[data-view="' + key + '"]')) return;
+  ev.preventDefault();
+  showView(key);
+  /* The address keeps up with the view, so every other page's menu can link
+     straight to one -- and a view someone is looking at is a view they can
+     send to someone else. */
+  history.replaceState(null, "", "#view=" + key);
+}});
 document.addEventListener("click", ev => {{
   const link = ev.target.closest("[data-goto]");
   if (link) {{ ev.preventDefault(); showView(link.dataset.goto); }}

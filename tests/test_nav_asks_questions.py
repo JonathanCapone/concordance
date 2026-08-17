@@ -104,3 +104,35 @@ def test_the_browser_reader_is_linked_from_the_front_page(page: str) -> None:
     """The reader is the loop's second step; a page reachable only by typing
     its address is a secret, not a feature."""
     assert 'href="/browser"' in page
+
+
+def test_every_page_renders_the_same_header(page: str) -> None:
+    """One header component, not two lookalikes.
+
+    The front page used to build its own -- a fixed 210px brand block and a
+    nav wearing the inherited `icon-nav` class -- while every other page used
+    chrome.masthead(). Measured, the first menu item sat at x=252 here and
+    x=298 everywhere else, 48px tall against 35px, labels hidden here and
+    shown there. So the menu jumped sideways and changed size the moment a
+    visitor left the map.
+    """
+    from concordance.chrome import masthead
+
+    assert 'class="site-head"' in page, "the front page is not using the shared header"
+    for stale in ("app-header", "brand-block", "icon-nav", "primary-nav"):
+        assert stale not in page, f"the second header survives: {stale}"
+    # The brand and nav markup are chrome's, character for character.
+    shared = masthead(home="/")
+    brand = shared.split('<nav class="site-nav"')[0]
+    assert brand in page, "the front page's brand block diverges from chrome's"
+    assert '<nav class="site-nav" aria-label="Sections">' in page
+
+
+def test_the_shell_does_not_move_between_sections(page: str) -> None:
+    """The inherited stylesheet pads .app-shell by 14px and unpads it only
+    for the map route, so selecting any other section slid the whole chrome
+    -- header and menu included -- 14px down and right. The padding is
+    pinned for every route; without it the menu moves on every click."""
+    shell = page.split(".app-shell{")[1].split("}")[0]
+    assert "padding:0" in shell.replace(" ", ""), (
+        "the shell can be padded by the inherited route rules again")

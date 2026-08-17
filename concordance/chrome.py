@@ -63,40 +63,81 @@ MENU = [
     ("ask", "Ask Jay", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
 ]
 
-#: The masthead's own styles, shared verbatim by every page that shows it.
-#: The nav classes match the front page's values exactly -- same paddings,
-#: same active state -- because "the same menu" has to mean the same menu.
+#: The masthead's own styles -- the ONE header, used by every page including
+#: the front one. It used to be two: the map page rendered its own
+#: `app-header` (a fixed 210px brand block and a nav carrying the inherited
+#: `icon-nav` class, which restyles buttons into tall icon-over-tiny-label
+#: form) while everything else rendered this. Measured, the first menu item
+#: sat at x=252 on the front page and x=298 everywhere else, 48px tall
+#: against 35px -- so the menu jumped sideways and changed size the moment
+#: you left the map. Selectors here are deliberately specific enough to win
+#: against the inherited stylesheet without needing !important.
 HEAD_CSS = """
-.site-head{display:flex;align-items:center;flex-wrap:wrap;gap:4px 18px;
-  padding:9px 18px;border-bottom:1px solid rgba(255,255,255,.09);
-  background:rgba(8,12,17,.94)}
-.site-head>a{display:flex;align-items:baseline;gap:10px;text-decoration:none;
-  color:inherit}
+.site-head{display:flex;align-items:center;align-content:flex-start;
+  flex-wrap:wrap;gap:4px 18px;padding:9px 18px;
+  border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94)}
+.site-head>a.site-brand{display:flex;align-items:baseline;gap:10px;
+  text-decoration:none;color:inherit;flex:0 0 auto}
 .site-word{font-size:15px;font-weight:600;letter-spacing:.02em}
 .site-sub{font-size:11px;color:#7d8996}
-.site-nav{display:flex;flex-wrap:wrap;gap:4px}
-.site-nav .nav-button{background:none;border:1px solid transparent;
+.site-head .site-nav{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.site-head .site-nav .nav-button{background:none;border:1px solid transparent;
   border-radius:9px;color:var(--muted);padding:7px 9px;cursor:pointer;
-  display:flex;align-items:center;gap:7px;text-decoration:none;font:inherit}
-.site-nav .nav-button:hover{color:var(--ink);border-color:rgba(255,255,255,.12)}
-.site-nav .nav-button.is-active{color:var(--bg);background:var(--hit);
+  display:flex;align-items:center;gap:7px;text-decoration:none;font:inherit;
+  font-size:15px;line-height:1.55;width:auto;height:auto;min-height:0;
+  min-width:0;flex-direction:row;transform:none;transition:none}
+.site-head .site-nav .nav-button:hover{color:var(--ink);
+  border-color:rgba(255,255,255,.12);transform:none}
+/* The inherited sheet lifts a nav button and scales its icon on hover. In a
+   header this size that reads as the menu twitching, so both are stilled. */
+.site-head .site-nav .nav-button:hover .nav-glyph{transform:none}
+.site-head .site-nav .nav-button.is-active{color:var(--bg);background:var(--hit);
   border-color:var(--hit)}
-.site-nav .nav-glyph{width:17px;height:17px}
-.site-nav .nav-tip{font-size:12.5px;font-weight:500}
+.site-head .site-nav .nav-glyph{width:17px;height:17px;flex:0 0 auto}
+/* `.nav-tip` is a hover TOOLTIP in the inherited stylesheet -- absolutely
+   positioned, transparent, with its own background and border. Left partly
+   overridden it made the front page's menu icon-only while every other page
+   showed icon and label. Every tooltip property is undone here, so the label
+   is an ordinary word beside its icon on every page. */
+.site-head .site-nav .nav-tip{position:static;top:auto;left:auto;
+  transform:none;opacity:1;padding:0;border:0;background:none;color:inherit;
+  font-size:12.5px;font-weight:500;letter-spacing:normal;text-transform:none;
+  white-space:nowrap;pointer-events:auto;transition:none;display:inline}
 .site-page{margin-left:auto;font-size:12.5px;color:var(--muted)}
+.site-stats{margin-left:auto;display:flex;gap:0;
+  border:1px solid rgba(255,255,255,.10);border-radius:9px;overflow:hidden}
+.site-stats .hstat{padding:5px 13px;border-right:1px solid rgba(255,255,255,.10)}
+.site-stats .hstat:last-child{border-right:0}
+.site-stats .hstat b{display:block;font-size:15px;font-weight:600;
+  font-variant-numeric:tabular-nums;line-height:1.2}
+.site-stats .hstat span{font-size:9.5px;color:var(--faint);
+  text-transform:uppercase;letter-spacing:.06em}
+/* The counts are the only thing that differs between this header and every
+   other one, so they are the only thing allowed to disappear. Below this
+   width they would wrap to a second row and push the menu off the line it
+   sits on everywhere else -- which is the jump this whole change removes. */
+@media(max-width:1500px){.site-stats{display:none}}
 """
 
 
 def nav_links(active: str = "", base: str = "") -> str:
-    """The site's menu as links, one entry per front-page view plus the
-    reader. `base` prefixes every address for pages hosted off-site (the
-    standalone artifacts); `active` names the entry this page is."""
-    out = ['<nav class="site-nav">']
+    """The site's menu, identical on every page: the same elements, in the
+    same order, at the same size.
+
+    Links rather than buttons even on the front page, where the click is
+    intercepted and switches the view in place -- so one markup serves both
+    "go to the site's map view" and "show that view now". `data-view` lets
+    the front page's own highlighting keep working unchanged; `base`
+    prefixes addresses for pages hosted off-site (the standalone artifacts);
+    `active` names the entry this page IS.
+    """
+    out = ['<nav class="site-nav" aria-label="Sections">']
     for key, label, path in MENU:
         href = f"{base}/browser" if key == "browser" else f"{base}/#view={key}"
         cls = " is-active" if key == active else ""
         out.append(
-            f'<a class="nav-button{cls}" href="{href}" aria-label="{label}">'
+            f'<a class="nav-button{cls}" href="{href}" data-view="{key}" '
+            f'aria-label="{label}">'
             f'<svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true">'
             f'<path d="{path}" fill="none" stroke="currentColor" '
             f'stroke-width="1.6" stroke-linecap="round" '
@@ -125,19 +166,29 @@ def masthead(
     *,
     active: str = "",
     base: str = "",
+    stats: list[tuple[str, str]] | None = None,
 ) -> str:
-    """The site's name and its one menu, on every page.
+    """The site's name and its one menu -- the same header on every page.
 
     `home` and `base` differ by context: pages the live server serves use
     relative addresses; the standalone artifacts pass ``SITE`` for both, so
     their menu still reaches the site when the file is opened from disk.
-    `active` marks the menu entry this page is, exactly as the front page
-    highlights its current view.
+    `active` marks the menu entry this page is. `stats` is the front page's
+    headline count row; it renders inside this same header rather than in a
+    second one, which is how the two headers became one.
     """
-    page = f'<span class="site-page">{page_label}</span>' if page_label else ""
+    tail = ""
+    if stats:
+        cells = "".join(
+            f"<div class='hstat'><b>{value}</b><span>{label}</span></div>"
+            for value, label in stats
+        )
+        tail = f'<div class="site-stats">{cells}</div>'
+    elif page_label:
+        tail = f'<span class="site-page">{page_label}</span>'
     return (
-        f'<header class="site-head"><a href="{home}">'
+        f'<header class="site-head"><a class="site-brand" href="{home}">'
         f'<span class="site-word">CONCORDANCE</span>'
         f'<span class="site-sub">Canada’s public record, read</span>'
-        f"</a>{nav_links(active=active, base=base)}{page}</header>"
+        f"</a>{nav_links(active=active, base=base)}{tail}</header>"
     )

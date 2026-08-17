@@ -6,23 +6,50 @@
 <title>Where Ontario's indexed record goes quiet</title>
 <style>
 :root{--bg:#04080d;--panel:rgba(255,255,255,.04);--ink:#e8edf2;--muted:#8b97a4;--faint:#6d7a86;--line:rgba(255,255,255,.10);--hit:#f0a24a;--cold:#5b7285;--warn:#d99a5b;--bad:#e0736e;--accent:#f0a24a;--mark:#e8edf2;--gap:#e0736e;color-scheme:dark}
-.site-head{display:flex;align-items:center;flex-wrap:wrap;gap:4px 18px;
-  padding:9px 18px;border-bottom:1px solid rgba(255,255,255,.09);
-  background:rgba(8,12,17,.94)}
-.site-head>a{display:flex;align-items:baseline;gap:10px;text-decoration:none;
-  color:inherit}
+.site-head{display:flex;align-items:center;align-content:flex-start;
+  flex-wrap:wrap;gap:4px 18px;padding:9px 18px;
+  border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94)}
+.site-head>a.site-brand{display:flex;align-items:baseline;gap:10px;
+  text-decoration:none;color:inherit;flex:0 0 auto}
 .site-word{font-size:15px;font-weight:600;letter-spacing:.02em}
 .site-sub{font-size:11px;color:#7d8996}
-.site-nav{display:flex;flex-wrap:wrap;gap:4px}
-.site-nav .nav-button{background:none;border:1px solid transparent;
+.site-head .site-nav{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.site-head .site-nav .nav-button{background:none;border:1px solid transparent;
   border-radius:9px;color:var(--muted);padding:7px 9px;cursor:pointer;
-  display:flex;align-items:center;gap:7px;text-decoration:none;font:inherit}
-.site-nav .nav-button:hover{color:var(--ink);border-color:rgba(255,255,255,.12)}
-.site-nav .nav-button.is-active{color:var(--bg);background:var(--hit);
+  display:flex;align-items:center;gap:7px;text-decoration:none;font:inherit;
+  font-size:15px;line-height:1.55;width:auto;height:auto;min-height:0;
+  min-width:0;flex-direction:row;transform:none;transition:none}
+.site-head .site-nav .nav-button:hover{color:var(--ink);
+  border-color:rgba(255,255,255,.12);transform:none}
+/* The inherited sheet lifts a nav button and scales its icon on hover. In a
+   header this size that reads as the menu twitching, so both are stilled. */
+.site-head .site-nav .nav-button:hover .nav-glyph{transform:none}
+.site-head .site-nav .nav-button.is-active{color:var(--bg);background:var(--hit);
   border-color:var(--hit)}
-.site-nav .nav-glyph{width:17px;height:17px}
-.site-nav .nav-tip{font-size:12.5px;font-weight:500}
+.site-head .site-nav .nav-glyph{width:17px;height:17px;flex:0 0 auto}
+/* `.nav-tip` is a hover TOOLTIP in the inherited stylesheet -- absolutely
+   positioned, transparent, with its own background and border. Left partly
+   overridden it made the front page's menu icon-only while every other page
+   showed icon and label. Every tooltip property is undone here, so the label
+   is an ordinary word beside its icon on every page. */
+.site-head .site-nav .nav-tip{position:static;top:auto;left:auto;
+  transform:none;opacity:1;padding:0;border:0;background:none;color:inherit;
+  font-size:12.5px;font-weight:500;letter-spacing:normal;text-transform:none;
+  white-space:nowrap;pointer-events:auto;transition:none;display:inline}
 .site-page{margin-left:auto;font-size:12.5px;color:var(--muted)}
+.site-stats{margin-left:auto;display:flex;gap:0;
+  border:1px solid rgba(255,255,255,.10);border-radius:9px;overflow:hidden}
+.site-stats .hstat{padding:5px 13px;border-right:1px solid rgba(255,255,255,.10)}
+.site-stats .hstat:last-child{border-right:0}
+.site-stats .hstat b{display:block;font-size:15px;font-weight:600;
+  font-variant-numeric:tabular-nums;line-height:1.2}
+.site-stats .hstat span{font-size:9.5px;color:var(--faint);
+  text-transform:uppercase;letter-spacing:.06em}
+/* The counts are the only thing that differs between this header and every
+   other one, so they are the only thing allowed to disappear. Below this
+   width they would wrap to a second row and push the menu off the line it
+   sits on everywhere else -- which is the jump this whole change removes. */
+@media(max-width:1500px){.site-stats{display:none}}
 
   * { box-sizing: border-box; }
   body {
@@ -74,7 +101,7 @@
 </style>
 </head>
 <body>
-<header class="site-head"><a href="https://concordance.jonathancapone.com/"><span class="site-word">CONCORDANCE</span><span class="site-sub">Canada’s public record, read</span></a><nav class="site-nav"><a class="nav-button" href="https://concordance.jonathancapone.com/#view=observe" aria-label="Find a place"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Find a place</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/browser" aria-label="Read a town"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Read a town</span></a><a class="nav-button is-active" href="https://concordance.jonathancapone.com/#view=findings" aria-label="What it found"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">What it found</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=verify" aria-label="Can I trust it"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.6 9.8 17.4 19 6.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Can I trust it</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=ask" aria-label="Ask Jay"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Ask Jay</span></a></nav></header>
+<header class="site-head"><a class="site-brand" href="https://concordance.jonathancapone.com/"><span class="site-word">CONCORDANCE</span><span class="site-sub">Canada’s public record, read</span></a><nav class="site-nav" aria-label="Sections"><a class="nav-button" href="https://concordance.jonathancapone.com/#view=observe" data-view="observe" aria-label="Find a place"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Find a place</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/browser" data-view="browser" aria-label="Read a town"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Read a town</span></a><a class="nav-button is-active" href="https://concordance.jonathancapone.com/#view=findings" data-view="findings" aria-label="What it found"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">What it found</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=verify" data-view="verify" aria-label="Can I trust it"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.6 9.8 17.4 19 6.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Can I trust it</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=ask" data-view="ask" aria-label="Ask Jay"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Ask Jay</span></a></nav></header>
 <main>
   <h1>Where Ontario's indexed record goes quiet</h1>
   <p class="sub">
