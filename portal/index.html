@@ -4,6 +4,13 @@
 <title>Concordance — reading Canada's public record</title>
 <style>
 :root{--bg:#04080d;--panel:rgba(255,255,255,.04);--ink:#e8edf2;--muted:#8b97a4;--faint:#6d7a86;--line:rgba(255,255,255,.10);--hit:#f0a24a;--cold:#5b7285;--warn:#d99a5b;--bad:#e0736e;--accent:#f0a24a;--mark:#e8edf2;--gap:#e0736e;color-scheme:dark}
+/* Reserve the scrollbar's width on every page, whether or not that page
+   happens to need one. The map view is a fixed shell that never scrolls and
+   the reader is a long document that always does, so moving between them
+   used to add or remove a scrollbar and slide the whole layout 15px
+   sideways -- the last of the jumping, and the half that was never the
+   header's fault. */
+html,body{scrollbar-gutter:stable}
 .site-head{display:flex;align-items:center;align-content:flex-start;
   flex-wrap:wrap;gap:4px 18px;padding:9px 18px;
   border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94)}
@@ -34,20 +41,27 @@
   transform:none;opacity:1;padding:0;border:0;background:none;color:inherit;
   font-size:12.5px;font-weight:500;letter-spacing:normal;text-transform:none;
   white-space:nowrap;pointer-events:auto;transition:none;display:inline}
-.site-page{margin-left:auto;font-size:12.5px;color:var(--muted)}
-.site-stats{margin-left:auto;display:flex;gap:0;
-  border:1px solid rgba(255,255,255,.10);border-radius:9px;overflow:hidden}
-.site-stats .hstat{padding:5px 13px;border-right:1px solid rgba(255,255,255,.10)}
+.site-page{margin-left:auto;font-size:12.5px;color:var(--muted);
+  height:35px;display:flex;align-items:center}
+/* The counts are the only content this header carries that the others do
+   not, so they are held to the menu's own height -- 35px, the same as a
+   menu item. Left at their natural size they were 53px tall, which made
+   the front page's header 71px against everyone else's 54 and dropped the
+   menu 9px down the moment a visitor was on the map. A header must not
+   change size because of what sits at its far end. */
+.site-stats{margin-left:auto;display:flex;gap:0;height:34px;
+  align-items:stretch;flex:0 1 auto;overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);border-radius:9px}
+.site-stats .hstat{padding:0 12px;display:flex;flex-direction:column;
+  justify-content:center;border-right:1px solid rgba(255,255,255,.10)}
 .site-stats .hstat:last-child{border-right:0}
-.site-stats .hstat b{display:block;font-size:15px;font-weight:600;
-  font-variant-numeric:tabular-nums;line-height:1.2}
-.site-stats .hstat span{font-size:9.5px;color:var(--faint);
-  text-transform:uppercase;letter-spacing:.06em}
-/* The counts are the only thing that differs between this header and every
-   other one, so they are the only thing allowed to disappear. Below this
-   width they would wrap to a second row and push the menu off the line it
-   sits on everywhere else -- which is the jump this whole change removes. */
-@media(max-width:1500px){.site-stats{display:none}}
+.site-stats .hstat b{display:block;font-size:13px;font-weight:600;
+  font-variant-numeric:tabular-nums;line-height:1.15}
+.site-stats .hstat span{font-size:9px;color:var(--faint);line-height:1.1;
+  text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+/* And when they cannot fit beside the menu they go, rather than wrapping
+   to a second row and moving the menu off the line it holds everywhere. */
+@media(max-width:1400px){.site-stats{display:none}}
 
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);

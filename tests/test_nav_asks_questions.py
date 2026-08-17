@@ -128,6 +128,29 @@ def test_every_page_renders_the_same_header(page: str) -> None:
     assert '<nav class="site-nav" aria-label="Sections">' in page
 
 
+def test_nothing_in_the_header_can_change_its_height(page: str) -> None:
+    """The front page's headline counts are the only content this header
+    carries that the reader's does not. At their natural size they were 53px
+    tall against a 35px menu row, so the front page's header stood 71px
+    against everyone else's 54 and the menu sat 9px lower -- invisible at
+    1280px, where the counts are hidden, and obvious on a wide screen. They
+    are now held to the menu's own height."""
+    from concordance.chrome import HEAD_CSS
+
+    stats = HEAD_CSS.split(".site-stats{")[1].split("}")[0]
+    assert "height:34px" in stats.replace(" ", ""), (
+        "the counts can grow the header again")
+
+
+def test_the_scrollbar_gutter_is_reserved_everywhere(page: str) -> None:
+    """The map view never scrolls and the reader always does, so moving
+    between them added or removed a scrollbar and slid the layout 15px
+    sideways. Both elements are named because the two pages put their scroll
+    container in different places."""
+    assert "scrollbar-gutter:stable" in page.replace(" ", "")
+    assert "html,body{scrollbar-gutter:stable}" in page.replace(" ", "")
+
+
 def test_the_shell_does_not_move_between_sections(page: str) -> None:
     """The inherited stylesheet pads .app-shell by 14px and unpads it only
     for the map route, so selecting any other section slid the whole chrome
