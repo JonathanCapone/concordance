@@ -50,13 +50,17 @@ SITE = "https://concordance.jonathancapone.com"
 #:                   pick list ("browser" is the reader page's address)
 #:   What it found   the findings: what stopped, who decided, disagreements,
 #:                   and what is within reach of one more document
-#:   Can I trust it  precision, verification, refusals -- and Ask Jay, which
-#:                   only appears where a local model exists to answer
+#:   Can I trust it  precision, verification, refusals
+#:   Ask Jay         the agent over the whole record -- a name, not a module,
+#:                   and not buried inside another page; its view says up
+#:                   front where it answers (a local machine) instead of
+#:                   erroring after the question is typed
 MENU = [
     ("observe", "Find a place", "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z"),
     ("browser", "Read a town", "M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z"),
     ("findings", "What it found", "M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4"),
     ("verify", "Can I trust it", "M5 12.6 9.8 17.4 19 6.6"),
+    ("ask", "Ask Jay", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
 ]
 
 #: The masthead's own styles, shared verbatim by every page that shows it.

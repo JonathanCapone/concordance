@@ -440,13 +440,16 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         Published including the failures — an archive misread at scale is worse than one never
         read, because the errors look like findings.</p>
         <div id="verify-body"></div>
+      </div>
+    </section>
 
-        <h2 style="margin-top:26px">Interrogate it — Ask Jay</h2>
+    <section class="view" data-view="ask">
+      <div class="pane">
+        <h2>Ask Jay</h2>
         <p class="lede">Jay answers only from the extracted record. It cannot answer from
         memory, every number it reports carries the page it was read from, and it will not
-        describe a title-series gap without the collection-wide control and its limits.
-        It runs a local model, so on this shared site it politely refuses; on your own
-        machine the same button answers.</p>
+        describe a title-series gap without the collection-wide control and its limits.</p>
+        <div id="ask-where"></div>
         <div class="card">
           <div style="display:flex;gap:9px">
             <input id="ask-input" maxlength="1000" placeholder="What did Owen Sound discharge?"
@@ -1443,7 +1446,7 @@ function loadMapLibrary() {{
          four-entry structure that replaced it. #view=frontier goes to the
          findings tab that holds its content; the ranked reading list itself
          now lives on the reader page. */
-      const LEGACY = {{record: "observe", ask: "verify", silence: "findings",
+      const LEGACY = {{record: "observe", silence: "findings",
                       decisions: "findings", disputed: "findings",
                       frontier: "findings"}};
       let key = view[1];
@@ -1560,6 +1563,26 @@ const LOADERS = {{
     const input = document.getElementById("ask-input");
     const go = document.getElementById("ask-go");
     const out = document.getElementById("ask-out");
+    /* Say WHERE Jay answers before a question is typed, not after. A shared
+       instance will not run its model for visitors, and a page that takes
+       your question and then refuses it is a worse page than one that says
+       so first. The probe is the same cheap status call the read button
+       uses; on a local instance the notice never appears. */
+    (async () => {{
+      const where = document.getElementById("ask-where");
+      if (!where) return;
+      try {{
+        const st = await postJson("/api/read/status", {{}});
+        if (st && st.error) {{
+          where.innerHTML = `<div class="card note" style="border:0;padding-left:11px">
+            This shared site does not run its model for visitors, so the box
+            below answers only on your own machine — clone the repository and
+            run <code>python -m concordance.server</code>, and this same page
+            answers from the same public record. Everything else here works
+            without it.</div>`;
+        }}
+      }} catch (e) {{ /* unreachable status is not proof of anything */ }}
+    }})();
     const run = async () => {{
       const question = input.value.trim();
       if(!question) return;
@@ -1699,9 +1722,6 @@ const LOADERS = {{
       to ${{(t.precision*100||0).toFixed(1)}}%. Publishing the first figure would have narrowed
       the project for no reason.</p></div>`;
     el.innerHTML = h;
-    /* Ask Jay lives here now: interrogating the record is part of deciding
-       whether to trust it. The wiring is the old ask view's, unchanged. */
-    LOADERS.ask();
   }},
 
   frontier: async () => {{

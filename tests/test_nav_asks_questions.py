@@ -28,9 +28,11 @@ def page() -> str:
 
 
 def test_the_menu_is_the_loop() -> None:
-    """Four entries, in the order a visitor's involvement deepens."""
+    """The loop in the order a visitor's involvement deepens, then Jay --
+    the agent over the whole record, a name rather than a module, and not
+    buried inside another page."""
     assert [key for key, _label, _icon in MENU] == [
-        "observe", "browser", "findings", "verify"]
+        "observe", "browser", "findings", "verify", "ask"]
 
 
 def test_no_label_is_just_its_view_key() -> None:
@@ -62,25 +64,31 @@ def test_the_river_relationship_still_exists_somewhere(page: str) -> None:
 
 
 def test_consolidating_the_menu_deleted_nothing(page: str) -> None:
-    """Nine entries became four by MOVING content, not by removing it: the
-    findings live as tabs under one entry, Ask Jay lives with the trust story,
-    and the read-towns list became the search box's browse mode."""
+    """Nine entries became five by MOVING content, not by removing it: the
+    findings live as tabs under one entry, and the read-towns list became
+    the search box's browse mode."""
     for pane in ("silence", "decisions", "disputed", "frontier"):
         assert f'data-fpane="{pane}"' in page, f"the {pane} finding was lost"
         assert f'id="{pane}-body"' in page or pane == "disputed", pane
-    assert 'id="ask-input"' in page, "Ask Jay was deleted, not relocated"
-    assert 'data-view="ask"' not in page, (
-        "Ask Jay still has its own menu-level view; on the shared site that "
-        "entry errored for every visitor")
     assert 'data-view="record"' not in page, (
         "the duplicate town view is back; one town renderer, not two")
+
+
+def test_jay_is_not_buried_and_not_a_dead_button(page: str) -> None:
+    """Jay has its own view -- "Jay shouldn't be buried on a page" -- and the
+    view says up front WHERE it answers. A shared instance will not run its
+    model for visitors, and a page that takes your question and then refuses
+    it is a worse page than one that says so first."""
+    assert 'data-view="ask"' in page
+    assert 'id="ask-where"' in page, "the view lost its up-front instance notice"
+    assert 'id="ask-input"' in page
 
 
 def test_old_addresses_still_work(page: str) -> None:
     """#view=silence and friends predate the four-entry menu; a bookmark or a
     published link must land on the content, not a blank page."""
     assert "LEGACY" in page
-    for old in ("record", "ask", "silence", "decisions", "disputed", "frontier"):
+    for old in ("record", "silence", "decisions", "disputed", "frontier"):
         assert f"{old}:" in page, f"legacy key {old} lost its mapping"
 
 
