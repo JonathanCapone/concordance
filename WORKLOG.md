@@ -852,3 +852,25 @@ where Jay answers. A shared instance shows the local-machine handoff; a
 local instance shows nothing but the box, which simply works. A page that
 takes your question and then refuses it was the thing to remove -- not
 the page.
+
+**And the menu still jumped, because unifying the CSS was not the same as
+unifying the header.** "Make one consistent menu, so that every page
+doesn't jump around when you select a page." Two causes, both measured
+rather than guessed. First: the front page was still building its own
+header -- a fixed 210px brand block, a nav wearing the inherited
+`icon-nav` class -- while every other page rendered chrome.masthead().
+The first menu item sat at x=252 there and x=298 everywhere else, 48px
+tall against 35px, and its labels were invisible because `.nav-tip` is a
+hover TOOLTIP in the inherited stylesheet, which the earlier pass had
+only partly overridden. Second, and worse: the inherited sheet pads
+`.app-shell` by 14px and unpads it only for the map route, so choosing
+any other section slid the entire chrome 14px down and right. Neither was
+the menu drifting; both were the things under and around it. One header
+component now, counts included, with every tooltip and hover-lift rule
+undone and the shell pinned flush on every route -- walking all five
+sections reports one position, 298,9, and the reader page reports the
+same. The menu is links everywhere, intercepted on the front page so a
+view still opens in place: one markup, no reload, nothing to flash.
+Third time this project has learned that inherited chrome carries
+inherited assumptions, and the first time it has a test that measures
+them.
