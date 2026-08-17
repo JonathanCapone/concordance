@@ -128,6 +128,10 @@ __CHROME_CSS__
   select,input[type=text] { background:rgba(255,255,255,.05); color:var(--ink); font:inherit;
         border:1px solid rgba(255,255,255,.2); border-radius:8px; padding:8px 10px;
         max-width:100%; }
+  /* The dropdown's popup takes the select's colors on Windows, where the
+     popup itself is white -- near-white text on white, every town invisible
+     until hovered. Options get their own explicit dark ground. */
+  select option { background:var(--bg); color:var(--ink); }
   .doc { padding:5px 0; border-bottom:1px dashed rgba(255,255,255,.08); font-size:13px }
   .doc:last-child { border-bottom:0 }
   .verdict { margin:6px 0; font-size:13px }
@@ -159,6 +163,7 @@ anything is published. Nothing is installed; no server does any reading.</p>
 
 <div class="card" id="town-card" hidden>
   <h2 id="town-name"></h2>
+  <p class="note" id="town-read" hidden style="margin:0 0 8px"></p>
   <div id="town-docs"></div>
   <p class="note" id="town-note" style="margin-top:8px"></p>
 </div>
@@ -736,6 +741,24 @@ async function loadPlan(place) {
   $("town-name").textContent = place;
   $("town-docs").innerHTML = '<span class="note">asking the site which documents '
     + "this is…</span>";
+  /* If this town has already been read, say so before anything else --
+     "I read Chatham and now it's gone from the list" is what happens when
+     a finished read changes where a town lives and nobody says where. */
+  (async () => {
+    try {
+      const geo = await (await fetch("/api/places.geojson")).json();
+      const hit = (geo.features || []).find(f =>
+        String((f.properties || {}).place || "").toLowerCase() === place.toLowerCase());
+      if (hit && hit.properties.extracted) {
+        const town = "/#place=" + encodeURIComponent(hit.properties.place);
+        $("town-read").innerHTML = 'This town has been read — '
+          + '<a href="' + town + '">its records are on its page</a>. '
+          + "Reading it again is safe and only adds what earlier passes "
+          + "missed; nothing is published twice.";
+        $("town-read").hidden = false;
+      }
+    } catch (e) { /* the plan still answers */ }
+  })();
   let plan;
   try { plan = await api("/api/browser/plan", { place }); }
   catch (e) {
@@ -782,7 +805,9 @@ async function loadPicker() {
     + (p.years || "?") + " reports, " + esc(p.first || "?") + "–"
     + esc(p.last || "?") + "</option>").join("");
   $("pick-note").textContent = unread.length
-    + " municipalities are on the map with nothing read yet.";
+    + " municipalities are on the map with nothing read yet. A town leaves "
+    + "this list the moment its first records publish — from then on it is "
+    + "on the map as a read town, under Find a place.";
   $("town-go").onclick = () => {
     const free = $("town-free").value.trim();
     const chosen = free || $("town-select").value;
