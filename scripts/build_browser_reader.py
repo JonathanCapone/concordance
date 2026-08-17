@@ -154,6 +154,7 @@ anything is published. Nothing is installed; no server does any reading.</p>
   </p>
   <p style="margin-top:10px"><button id="town-go">Plan the read</button></p>
   <p class="note" id="pick-note"></p>
+  <p class="note" id="read-next" hidden style="margin-top:10px"></p>
 </div>
 
 <div class="card" id="town-card" hidden>
@@ -787,7 +788,39 @@ async function loadPicker() {
     const chosen = free || $("town-select").value;
     if (chosen) location.search = "?place=" + encodeURIComponent(chosen);
   };
+  loadReadNext(unread);
   return true;
+}
+
+/* What to read next, where the reading happens: the frontier ranks unread
+   towns by how many waiting questions they would unlock, and those belong
+   beside the button that reads them. One quiet attempt -- the ranking is a
+   server-built cache that may answer busy while cold, and the picker works
+   fine without it. */
+async function loadReadNext(unread) {
+  let d;
+  try {
+    const res = await fetch("/api/frontier", { method: "POST",
+      headers: { "Content-Type": "application/json" }, body: "{}" });
+    if (!res.ok) return;
+    d = await res.json();
+  } catch (e) { return; }
+  const names = new Set(unread.map(p => String(p.place).toLowerCase()));
+  const picks = (d.places || [])
+    .filter(p => p.place && names.has(String(p.place).toLowerCase()))
+    .slice(0, 5);
+  if (!picks.length) return;
+  const el = $("read-next");
+  el.innerHTML = "<b>Read next?</b> These towns sit on the most waiting "
+    + "questions: " + picks.map(p =>
+      '<button type="button" class="quiet next-town" data-place="' + esc(p.place)
+      + '">' + esc(p.place)
+      + (p.unlocks_now ? " · answers " + p.unlocks_now + " now" : "")
+      + "</button>").join(" ");
+  el.hidden = false;
+  el.querySelectorAll(".next-town").forEach(b => {
+    b.onclick = () => { location.search = "?place=" + encodeURIComponent(b.dataset.place); };
+  });
 }
 
 /* ---- boot --------------------------------------------------------------- */

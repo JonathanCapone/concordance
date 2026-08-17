@@ -34,36 +34,30 @@ TOKENS_CSS = (
 #: "/#view=..." resolves to nothing; their menu points home instead.
 SITE = "https://concordance.jonathancapone.com"
 
-#: The nav, in a visitor's words rather than mine. Moved here from portal.py
-#: so every page draws the SAME menu from the same list -- the front page as
-#: view-switching buttons, every other page as links back to those views.
+#: The menu, and the argument for its shape. It used to be nine parallel
+#: entries -- a map of the modules in the order they were built, twice over:
+#: first as module names, then renamed into questions but never restructured.
+#: "Find a place" and "One town, in full" answered the same question two
+#: ways; "Ask Jay" errored for every visitor of the shared site; "What to
+#: read next" ranked reading four slots away from the reader it serves.
 #:
-#: These used to be nine module names in the order the modules were built --
-#: Observe, Record, Silence, Rivers, Verify, Frontier, Decisions, Disputed --
-#: which is a map of my work and not of anything a person arrives wanting. The
-#: complaint that started this was exact: "I didn't really understand what the
-#: tabs were for or how I would actually use any of the information."
+#: The site's own story is a loop -- look up a place; if nobody has read it,
+#: your browser reads it; the archive verifies; it is there for everyone --
+#: so the menu IS the loop, plus the trust that makes the loop safe:
 #:
-#: Rivers is gone: "whose sewage was in my water" is a question about YOUR
-#: town, so it lives on the town's page, with a link out to the whole river.
-#: Record and Frontier are gone too -- one was the place panel, which opens
-#: from the map, and the other was a to-read list that belongs beside the map
-#: it ranks.
-NAV = [
+#:   Find a place    the map, the search, and every town's record
+#:   Read a town     the in-browser reader, with what-to-read-next as its
+#:                   pick list ("browser" is the reader page's address)
+#:   What it found   the findings: what stopped, who decided, disagreements,
+#:                   and what is within reach of one more document
+#:   Can I trust it  precision, verification, refusals -- and Ask Jay, which
+#:                   only appears where a local model exists to answer
+MENU = [
     ("observe", "Find a place", "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z"),
-    ("silence", "What stopped", "M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12"),
-    ("disputed", "Disagreements", "M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1"),
-    ("decisions", "Who decided", "M7 4.5h10v15H7Zm2.6 4h4.8m-4.8 3.6h4.8m-4.8 3.6h3"),
+    ("browser", "Read a town", "M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z"),
+    ("findings", "What it found", "M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4"),
     ("verify", "Can I trust it", "M5 12.6 9.8 17.4 19 6.6"),
-    ("frontier", "What to read next", "M12 4.5v15M4.5 12h15M7.5 7.5l9 9M16.5 7.5l-9 9"),
-    ("record", "One town, in full", "M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4"),
-    ("ask", "Ask Jay", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
 ]
-
-#: The in-browser reader is its own page rather than a view, so its menu
-#: entry is an address. It sits at the end of the same menu everywhere.
-BROWSER_ITEM = ("browser", "Watch it read",
-                "M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z")
 
 #: The masthead's own styles, shared verbatim by every page that shows it.
 #: The nav classes match the front page's values exactly -- same paddings,
@@ -94,7 +88,7 @@ def nav_links(active: str = "", base: str = "") -> str:
     reader. `base` prefixes every address for pages hosted off-site (the
     standalone artifacts); `active` names the entry this page is."""
     out = ['<nav class="site-nav">']
-    for key, label, path in [*NAV, BROWSER_ITEM]:
+    for key, label, path in MENU:
         href = f"{base}/browser" if key == "browser" else f"{base}/#view={key}"
         cls = " is-active" if key == active else ""
         out.append(

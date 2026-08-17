@@ -205,7 +205,7 @@ def main() -> int:
     accuracy_text = accuracy_sentence()
     chrome_css = ARTIFACT_CSS
     head = masthead(html.escape(place), home=SITE + "/",
-                    active="record", base=SITE)
+                    active="observe", base=SITE)
     html_doc = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

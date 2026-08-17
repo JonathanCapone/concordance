@@ -35,33 +35,28 @@ DEM_TILES = "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/{z}/{x}/{y}
 
 #: One menu, one source: the list lives in chrome.py so this page's buttons
 #: and every other page's links can never disagree about what the site is.
-from .chrome import BROWSER_ITEM, NAV
+from .chrome import MENU
 
 
 def _nav() -> str:
+    """The menu: views as buttons, the reader as a link in the same clothes."""
     out = []
-    for i, (key, label, path) in enumerate(NAV):
-        active = " is-active" if i == 0 else ""
-        out.append(
-            f'<button type="button" class="nav-button{active}" data-view="{key}" '
-            f'aria-label="{label}">'
+    for key, label, path in MENU:
+        glyph = (
             f'<svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true">'
             f'<path d="{path}" fill="none" stroke="currentColor" stroke-width="1.6" '
             f'stroke-linecap="round" stroke-linejoin="round"/></svg>'
-            f'<span class="nav-tip">{label}</span></button>'
+            f'<span class="nav-tip">{label}</span>'
         )
-    # The in-browser reader is its own page, not a view -- a real link, in
-    # the same clothes as the buttons. It was reachable only by knowing the
-    # address before this line, which made it a secret rather than a feature.
-    browser_key, browser_label, browser_path = BROWSER_ITEM
-    out.append(
-        f'<a class="nav-button" href="/{browser_key}" aria-label="{browser_label}">'
-        f'<svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true">'
-        f'<path d="{browser_path}" '
-        'fill="none" stroke="currentColor" stroke-width="1.6" '
-        'stroke-linecap="round" stroke-linejoin="round"/></svg>'
-        f'<span class="nav-tip">{browser_label}</span></a>'
-    )
+        if key == "browser":
+            out.append(f'<a class="nav-button" href="/browser" '
+                       f'aria-label="{label}">{glyph}</a>')
+        else:
+            active = " is-active" if key == "observe" else ""
+            out.append(
+                f'<button type="button" class="nav-button{active}" '
+                f'data-view="{key}" aria-label="{label}">{glyph}</button>'
+            )
     return "".join(out)
 
 
@@ -89,6 +84,11 @@ html,body{{height:100%;margin:0;background:#04080d;color:#e8edf2;
   gap:7px;text-decoration:none}}
 .nav-button:hover{{color:#e8edf2;border-color:rgba(255,255,255,.12)}}
 .nav-button.is-active{{color:#04080d;background:var(--gt-hit);border-color:var(--gt-hit)}}
+.findings-tabs{{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 18px}}
+.ftab{{background:none;border:1px solid rgba(255,255,255,.14);border-radius:9px;
+  color:#8b97a4;padding:7px 13px;cursor:pointer;font:inherit;font-size:13px}}
+.ftab:hover{{color:#e8edf2;border-color:rgba(255,255,255,.25)}}
+.ftab.is-on{{color:#04080d;background:var(--gt-hit);border-color:var(--gt-hit);font-weight:600}}
 .nav-glyph{{width:17px;height:17px}}
 .nav-tip{{font-size:12.5px;font-weight:500}}
 .header-stats{{margin-left:auto;display:flex;gap:0;border:1px solid rgba(255,255,255,.10);
@@ -302,7 +302,7 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
       <div id="map"></div>
       <div class="place-search">
         <input id="place-find" type="search" autocomplete="off" spellcheck="false"
-          placeholder="find a place — try Belleville, or Lower Mainland"
+          placeholder="find a place — or click to browse what has been read"
           aria-label="Find a place by name">
         <div id="place-hits" hidden></div>
       </div>
@@ -328,44 +328,98 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
       </aside>
     </section>
 
-    <section class="view" data-view="record">
-      <div class="pane" id="record-pane">
-        <h2>The record</h2>
-        <p class="lede">Every place that has been read out of the scans. Each number links
-        back to the page it came from.</p>
-        <div id="record-list"></div>
-      </div>
-    </section>
-
-    <section class="view" data-view="silence">
-      <div class="pane" id="silence-pane">
-        <h2>Where the indexed record goes quiet</h2>
-        <p class="lede">A missing catalogue entry does not establish that reporting stopped.
-        These title-derived gaps are checked against broader collection activity to test for a
-        collection-wide scanning cutoff; each individual cause remains unknown.</p>
-        <div id="silence-body"></div>
-      </div>
-    </section>
-
-    <section class="view" data-view="ask">
-      <div class="pane">
-        <h2>Ask Jay</h2>
-        <p class="lede">Jay answers only from the extracted record. It cannot answer from
-        memory, every number it reports carries the page it was read from, and it will not
-        describe a title-series gap without the collection-wide control and its limits.</p>
-        <div class="card">
-          <div style="display:flex;gap:9px">
-            <input id="ask-input" maxlength="1000" placeholder="What did Owen Sound discharge?"
-              style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
-              border-radius:8px;color:#e8edf2;padding:10px 12px;font:inherit;font-size:14px">
-            <button id="ask-go" style="background:var(--gt-hit);border:0;border-radius:8px;
-              color:#04080d;font-weight:600;padding:10px 18px;cursor:pointer;font:inherit">Ask</button>
-          </div>
-          <div id="ask-hint" style="margin-top:9px;font-size:11.5px;color:#6d7a86">
-            Runs a local model. First answer takes a minute or two.
-          </div>
+    <section class="view" data-view="findings">
+      <div class="pane" id="findings-pane">
+        <h2>What the reading found</h2>
+        <p class="lede">Four findings, one standard: every claim keeps the page it was read
+        from, and what the method refused is shown beside what it accepted.</p>
+        <div class="findings-tabs" role="tablist">
+          <button type="button" class="ftab is-on" data-ftab="silence">What stopped</button>
+          <button type="button" class="ftab" data-ftab="decisions">Who decided</button>
+          <button type="button" class="ftab" data-ftab="disputed">Disagreements</button>
+          <button type="button" class="ftab" data-ftab="frontier">Within reach</button>
         </div>
-        <div id="ask-out"></div>
+
+        <div class="fpane" data-fpane="silence">
+          <h2>Where the indexed record goes quiet</h2>
+          <p class="lede">A missing catalogue entry does not establish that reporting stopped.
+          These title-derived gaps are checked against broader collection activity to test for a
+          collection-wide scanning cutoff; each individual cause remains unknown.</p>
+          <div id="silence-body"></div>
+        </div>
+        <div class="fpane" data-fpane="decisions" hidden>
+          <h2>Who decided, and who voted against</h2>
+          <p class="lede">A title-keyword census found roughly 13,600 minutes, agendas, hansard
+          and commission-hearing items. The civic parser is promising, but it does not yet have
+          the measurement path's hand-read benchmark. Such records can still be cheap to read: "It was
+          moved by X and seconded by Y that Z. CARRIED." is a form that has barely changed in a
+          century, so a pattern finds it. No model, no GPU, and a person can check it.</p>
+          <p class="lede" style="opacity:.72">The control is the clerk's own tally. That "-16."
+          at the end of a roll was written by someone in the room; if the names don't add up to
+          it, the roll was misread and it says so rather than publishing a division quietly
+          missing two people.</p>
+          <div style="display:flex;gap:8px;margin:0 0 12px">
+            <input id="dec-id" maxlength="256" placeholder="archive.org identifier" value="32022213341486"
+              style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+                     border-radius:8px;padding:8px 11px;color:inherit;font:inherit">
+            <button id="dec-go" style="background:var(--gt-hit);border:0;border-radius:8px;
+              padding:8px 15px;font:inherit;cursor:pointer">Read</button>
+          </div>
+          <div id="decisions-body"></div>
+        </div>
+        <div class="fpane" data-fpane="disputed" hidden>
+          <h2>Where the readings disagree</h2>
+          <p class="lede">Every claim here keeps its cited archive page. Prose uses sentence
+          evidence; experimental table records retain cell locators but abstain without localized
+          cell proof. When two source-backed readings still disagree, nobody decides between them
+          — both remain visible with page links and crops when available. The evidence check
+          establishes what the cited page says, not which interpretation is correct.</p>
+          <p class="lede" style="opacity:.72">Flagging one tells us people think it is wrong. It
+          does not change the record: an objection with no evidence cannot outrank a sentence on a
+          page, because then somebody would have to judge the objection. To change what is shown,
+          bring a page and a sentence.</p>
+          <details style="margin:0 0 14px">
+            <summary style="cursor:pointer;font-size:12px;color:var(--gt-hit)">Add a reading
+              yourself</summary>
+            <div class="card" style="margin-top:10px">
+              <p class="lede" style="margin:0 0 10px">Cite a page and quote a sentence from it.
+              Nobody reviews this — the archive is asked whether that sentence is on that page
+              and whether your number is in the sentence. If it is, your reading is in the record
+              on exactly the same footing as everything the machine read. If it isn't, nothing is
+              deleted and nobody has rejected you; the page did.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+                <input id="sb-id" maxlength="256" placeholder="archive.org identifier">
+                <input id="sb-page" maxlength="7" placeholder="page number" inputmode="numeric">
+                <input id="sb-param" maxlength="400" placeholder="what was measured, e.g. BOD">
+                <input id="sb-value" maxlength="100" placeholder="the number">
+                <input id="sb-unit" maxlength="400" placeholder="unit, e.g. mg/L">
+                <input id="sb-place" maxlength="400" placeholder="place">
+                <input id="sb-facility" maxlength="400" placeholder="which plant / hospital / board (optional)">
+                <input id="sb-period" maxlength="400" placeholder="year">
+                <input id="sb-condition" maxlength="200" style="grid-column:1/3"
+                  placeholder="circumstance stated in the sentence, e.g. @ 40 foot head (optional)">
+              </div>
+              <textarea id="sb-quote" rows="2" maxlength="4000" placeholder="the exact sentence, copied from the page"
+                style="width:100%;margin-top:8px"></textarea>
+              <button id="sb-go" style="margin-top:8px;background:var(--gt-hit);border:0;
+                border-radius:8px;padding:8px 15px;font:inherit;cursor:pointer">Offer it</button>
+              <div id="sb-out" class="lede" style="margin-top:9px"></div>
+            </div>
+          </details>
+          <div id="disputed-body"></div>
+        </div>
+        <div class="fpane" data-fpane="frontier" hidden>
+          <h2>What one more document would answer</h2>
+          <p class="lede">Eleven million pages cannot be read alphabetically, and reading by
+          subject only serves whoever picked the subject. This orders them by <strong>what
+          reading them would unlock</strong> — because a question one document away is a
+          question somebody already wanted. The ranked towns also appear where the action is:
+          the <a href="/browser">reader's</a> own pick list.</p>
+          <p class="lede" style="opacity:.72">It is also the honest replacement for a progress
+          bar. "You processed 40 documents" is a fact about you. "You made the Grand River
+          answerable, and it had been waiting on one town since 1961" is a fact about the world.</p>
+          <div id="frontier-body"></div>
+        </div>
       </div>
     </section>
 
@@ -386,87 +440,26 @@ table.gt td.n{{text-align:right;font-family:ui-monospace,monospace}}
         Published including the failures — an archive misread at scale is worse than one never
         read, because the errors look like findings.</p>
         <div id="verify-body"></div>
-      </div>
-    </section>
 
-    <section class="view" data-view="frontier">
-      <div class="pane">
-        <h2>What one more document would answer</h2>
-        <p class="lede">Eleven million pages cannot be read alphabetically, and reading by
-        subject only serves whoever picked the subject. This orders them by <strong>what
-        reading them would unlock</strong> — because a question one document away is a
-        question somebody already wanted.</p>
-        <p class="lede" style="opacity:.72">It is also the honest replacement for a progress
-        bar. "You processed 40 documents" is a fact about you. "You made the Grand River
-        answerable, and it had been waiting on one town since 1961" is a fact about the world.</p>
-        <div id="frontier-body"></div>
-      </div>
-    </section>
-
-    <section class="view" data-view="decisions">
-      <div class="pane">
-        <h2>Who decided, and who voted against</h2>
-        <p class="lede">A title-keyword census found roughly 13,600 minutes, agendas, hansard
-        and commission-hearing items. The civic parser is promising, but it does not yet have
-        the measurement path's hand-read benchmark. Such records can still be cheap to read: "It was
-        moved by X and seconded by Y that Z. CARRIED." is a form that has barely changed in a
-        century, so a pattern finds it. No model, no GPU, and a person can check it.</p>
-        <p class="lede" style="opacity:.72">The control is the clerk's own tally. That "-16."
-        at the end of a roll was written by someone in the room; if the names don't add up to
-        it, the roll was misread and it says so rather than publishing a division quietly
-        missing two people.</p>
-        <div style="display:flex;gap:8px;margin:0 0 12px">
-          <input id="dec-id" maxlength="256" placeholder="archive.org identifier" value="32022213341486"
-            style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
-                   border-radius:8px;padding:8px 11px;color:inherit;font:inherit">
-          <button id="dec-go" style="background:var(--gt-hit);border:0;border-radius:8px;
-            padding:8px 15px;font:inherit;cursor:pointer">Read</button>
-        </div>
-        <div id="decisions-body"></div>
-      </div>
-    </section>
-
-    <section class="view" data-view="disputed">
-      <div class="pane">
-        <h2>Where the readings disagree</h2>
-        <p class="lede">Every claim here keeps its cited archive page. Prose uses sentence
-        evidence; experimental table records retain cell locators but abstain without localized
-        cell proof. When two source-backed readings still disagree, nobody decides between them
-        — both remain visible with page links and crops when available. The evidence check
-        establishes what the cited page says, not which interpretation is correct.</p>
-        <p class="lede" style="opacity:.72">Flagging one tells us people think it is wrong. It
-        does not change the record: an objection with no evidence cannot outrank a sentence on a
-        page, because then somebody would have to judge the objection. To change what is shown,
-        bring a page and a sentence.</p>
-        <details style="margin:0 0 14px">
-          <summary style="cursor:pointer;font-size:12px;color:var(--gt-hit)">Add a reading
-            yourself</summary>
-          <div class="card" style="margin-top:10px">
-            <p class="lede" style="margin:0 0 10px">Cite a page and quote a sentence from it.
-            Nobody reviews this — the archive is asked whether that sentence is on that page
-            and whether your number is in the sentence. If it is, your reading is in the record
-            on exactly the same footing as everything the machine read. If it isn't, nothing is
-            deleted and nobody has rejected you; the page did.</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-              <input id="sb-id" maxlength="256" placeholder="archive.org identifier">
-              <input id="sb-page" maxlength="7" placeholder="page number" inputmode="numeric">
-              <input id="sb-param" maxlength="400" placeholder="what was measured, e.g. BOD">
-              <input id="sb-value" maxlength="100" placeholder="the number">
-              <input id="sb-unit" maxlength="400" placeholder="unit, e.g. mg/L">
-              <input id="sb-place" maxlength="400" placeholder="place">
-              <input id="sb-facility" maxlength="400" placeholder="which plant / hospital / board (optional)">
-              <input id="sb-period" maxlength="400" placeholder="year">
-              <input id="sb-condition" maxlength="200" style="grid-column:1/3"
-                placeholder="circumstance stated in the sentence, e.g. @ 40 foot head (optional)">
-            </div>
-            <textarea id="sb-quote" rows="2" maxlength="4000" placeholder="the exact sentence, copied from the page"
-              style="width:100%;margin-top:8px"></textarea>
-            <button id="sb-go" style="margin-top:8px;background:var(--gt-hit);border:0;
-              border-radius:8px;padding:8px 15px;font:inherit;cursor:pointer">Offer it</button>
-            <div id="sb-out" class="lede" style="margin-top:9px"></div>
+        <h2 style="margin-top:26px">Interrogate it — Ask Jay</h2>
+        <p class="lede">Jay answers only from the extracted record. It cannot answer from
+        memory, every number it reports carries the page it was read from, and it will not
+        describe a title-series gap without the collection-wide control and its limits.
+        It runs a local model, so on this shared site it politely refuses; on your own
+        machine the same button answers.</p>
+        <div class="card">
+          <div style="display:flex;gap:9px">
+            <input id="ask-input" maxlength="1000" placeholder="What did Owen Sound discharge?"
+              style="flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);
+              border-radius:8px;color:#e8edf2;padding:10px 12px;font:inherit;font-size:14px">
+            <button id="ask-go" style="background:var(--gt-hit);border:0;border-radius:8px;
+              color:#04080d;font-weight:600;padding:10px 18px;cursor:pointer;font:inherit">Ask</button>
           </div>
-        </details>
-        <div id="disputed-body"></div>
+          <div id="ask-hint" style="margin-top:9px;font-size:11.5px;color:#6d7a86">
+            Runs a local model. First answer takes a minute or two.
+          </div>
+        </div>
+        <div id="ask-out"></div>
       </div>
     </section>
 
@@ -536,6 +529,21 @@ function showView(key){{
   if (!loaded[key] && LOADERS[key]) {{ loaded[key] = true; LOADERS[key](); }}
   if (key === "observe" && window._map) setTimeout(() => window._map.resize(), 60);
 }}
+
+/* What it found: four findings under one roof. Each tab loads on first look,
+   so opening the view costs one fetch rather than four. */
+const loadedTabs = {{}};
+function showFindingsTab(key){{
+  document.querySelectorAll(".ftab").forEach(b =>
+    b.classList.toggle("is-on", b.dataset.ftab === key));
+  document.querySelectorAll(".fpane").forEach(p =>
+    p.hidden = p.dataset.fpane !== key);
+  if (!loadedTabs[key] && LOADERS[key]) {{ loadedTabs[key] = true; LOADERS[key](); }}
+}}
+document.addEventListener("click", ev => {{
+  const t = ev.target.closest(".ftab");
+  if (t) showFindingsTab(t.dataset.ftab);
+}});
 document.querySelectorAll(".nav-button").forEach(btn =>
   btn.onclick = () => {{
     if (!btn.dataset.view) return;           /* the reader entry is a link */
@@ -856,29 +864,13 @@ document.addEventListener("input", ev => {{
 }});
 
 
-/* Draw one town's whole record, for the picker above it. */
-async function showRecord(p){{
-  const box = document.getElementById("record-one");
-  if (!box) return;
-  box.innerHTML = `<div class="card empty">Reading ${{esc(p.place)}}…</div>`;
-  const d = await (await fetch("/api/town?place=" + encodeURIComponent(p.place)
-                   + "&raw=" + encodeURIComponent(p.raw || ""))).json();
-  box.innerHTML = `<div class="card"><h2 style="font-size:18px">${{esc(p.place)}}</h2>`
-    + `<p class="lede" style="margin-bottom:10px">${{esc(p.years)}} reports · `
-    + `${{esc(p.first)}}–${{esc(p.last)}}</p>`
-    + (d.found ? seriesHtml(d) : `<div class="empty">Nobody has read this one yet.</div>`)
-    + `</div>`;
-}}
+/* A town named anywhere -- the silence list, a findings pane -- opens on the
+   map view's panel, which is the one place a town's record lives now. The
+   old "One town, in full" view drew the same record a second way; one
+   renderer means one thing to keep honest. */
 document.addEventListener("click", ev => {{
   const q = ev.target.closest(".quiet.read");
   if (q) {{ showView("observe"); openTown({{place: q.dataset.place, raw: q.dataset.raw}}); return; }}
-  const b = ev.target.closest(".townbtn");
-  if (!b) return;
-  document.querySelectorAll(".townbtn").forEach(x => x.classList.remove("is-on"));
-  b.classList.add("is-on");
-  showRecord({{place: b.dataset.place, raw: b.dataset.raw,
-              years: b.querySelector(".sm") ? b.querySelector(".sm").textContent : "",
-              first: "", last: ""}});
 }});
 
 /* Only offer to read if this machine will actually do it. */
@@ -1366,6 +1358,18 @@ function loadMapLibrary() {{
 
   const search = async () => {{
     const q = input.value.trim().toLowerCase();
+    /* An empty, focused box browses instead of hiding: the places already
+       read, fullest record first. This is where "One town, in full" went --
+       the list it was, one click earlier, without a second copy of the town
+       renderer behind it. */
+    if (q.length === 0 && document.activeElement === input) {{
+      const all = await load();
+      const read = all
+        .filter(f => (f.properties || {{}}).extracted)
+        .sort((a, b) => (b.properties.years || 0) - (a.properties.years || 0))
+        .slice(0, 12);
+      if (read.length) {{ show(read); return; }}
+    }}
     if (q.length < 2) {{ hits.hidden = true; hits.innerHTML = ""; return; }}
     const all = await load();
     const scored = all
@@ -1393,6 +1397,7 @@ function loadMapLibrary() {{
   }};
 
   input.addEventListener("input", search);
+  input.addEventListener("focus", search);
   input.addEventListener("keydown", ev => {{
     const buttons = [...hits.querySelectorAll("button")];
     if (ev.key === "Escape") {{ hits.hidden = true; return; }}
@@ -1434,9 +1439,22 @@ function loadMapLibrary() {{
      reader page promises ("your read is on it") opened an empty panel. */
   setTimeout(async () => {{
     if (view) {{
+      /* Old addresses keep working: the nine-entry menu's keys map into the
+         four-entry structure that replaced it. #view=frontier goes to the
+         findings tab that holds its content; the ranked reading list itself
+         now lives on the reader page. */
+      const LEGACY = {{record: "observe", ask: "verify", silence: "findings",
+                      decisions: "findings", disputed: "findings",
+                      frontier: "findings"}};
+      let key = view[1];
+      const tab = {{silence: "silence", decisions: "decisions",
+                   disputed: "disputed", frontier: "frontier"}}[key] || "";
+      key = LEGACY[key] || key;
       /* Only a view that exists; an unknown key must not blank the page. */
-      if (document.querySelector('.view[data-view="' + view[1] + '"]'))
-        showView(view[1]);
+      if (document.querySelector('.view[data-view="' + key + '"]')) {{
+        showView(key);
+        if (key === "findings" && tab) showFindingsTab(tab);
+      }}
       return;
     }}
     let name = "";
@@ -1459,29 +1477,9 @@ function loadMapLibrary() {{
 
 /* ---- every view that is not the map ---------------------------------- */
 const LOADERS = {{
-  /* One town, in full -- which is what the label says and what this now does.
-     It used to fetch EVERY read place in sequence and render all of them on one
-     page: 20 towns, 20 requests, about 44 seconds, and twenty copies of the
-     filter box. The label was the only honest part of it. */
-  record: async () => {{
-    const el = document.getElementById("record-list");
-    const geo = await (await fetch("/api/places.geojson")).json();
-    const read = geo.features.filter(f => f.properties.extracted)
-      .sort((a, b) => (b.properties.years || 0) - (a.properties.years || 0));
-    if (!read.length) {{
-      el.innerHTML = `<div class="card empty">Nothing has been read yet.</div>`;
-      return;
-    }}
-    el.innerHTML = `<div class="card"><div class="townpick">`
-      + read.map((f, i) => {{
-          const p = f.properties;
-          return `<button type="button" class="townbtn${{i ? "" : " is-on"}}"
-            data-place="${{esc(p.place)}}" data-raw="${{esc(p.raw || "")}}">
-            ${{esc(p.place)}} <span class="sm">${{esc(p.years)}}</span></button>`;
-        }}).join("")
-      + `</div></div><div id="record-one"></div>`;
-    showRecord(read[0].properties);
-  }},
+  /* The findings live behind one menu entry with four tabs; opening the view
+     loads only the tab being looked at. */
+  findings: () => showFindingsTab("silence"),
 
   /* What stopped -- and WHERE, which the view never said.
      
@@ -1701,6 +1699,9 @@ const LOADERS = {{
       to ${{(t.precision*100||0).toFixed(1)}}%. Publishing the first figure would have narrowed
       the project for no reason.</p></div>`;
     el.innerHTML = h;
+    /* Ask Jay lives here now: interrogating the record is part of deciding
+       whether to trust it. The wiring is the old ask view's, unchanged. */
+    LOADERS.ask();
   }},
 
   frontier: async () => {{
