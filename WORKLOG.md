@@ -771,3 +771,31 @@ browser tab against the public site -- waits on one thing nobody here
 controls: archive.org went temporarily offline mid-evening, and both the
 pages endpoint (cold fetch) and bundle verification need it. The tool is
 live; the archive is the referee, and the referee is out of the room.
+
+**Same night, the referee returned. Ingersoll is read.** The whole loop,
+walked on the public site with nothing installed: picked Ingersoll (on the
+map since the beginning -- located, two catalogued reports, silent since
+1975, nothing read), pressed the one button, and the tab read the town's
+four documents -- a 1966 water pollution survey, the 1973 and 1974 plant
+summaries, a 1989 gas-plant study. Sixteen prose pages; 25 records passed
+the page's checks, 22 refused in the open, and the live server re-verified
+every sent sentence against archive.org and published 23: twelve from
+1966, five from 1973, six from 1974 (two more refused by the archive's
+stricter tokenizer -- the two-tier design working), and the 1989 study
+honestly skipped, no prose pages. Ingersoll's dot turned orange. Its page
+answers. Design flow 2.25 MGD, raw sewage BOD 200 mg/L, the digester
+diameters, the drying beds -- a town's water history, on the record,
+because one browser tab asked. This is the loop the project promised, with
+the entry cost reduced to a link.
+
+**And the site put on one set of clothes.** Jonathan, mid-walk: "can you
+fix the pages so they don't all seem like different websites." They were
+three websites -- the live map in dark OMEGA chrome, the reader page in a
+similar-but-different dark, the built artifact pages in cream paper.
+concordance/chrome.py is now the single source: the live portal's palette
+and a masthead naming the site, inlined by the reader page and all four
+artifact builders (the artifacts stay self-contained on purpose; they are
+opened from disk where no stylesheet is served). Every page now opens
+under the same CONCORDANCE masthead on the same dark, with the same
+orange doing the same job -- and the town-page charts draw their lines in
+it.
