@@ -731,3 +731,43 @@ mirror, no install: current mainline engine (pinned 0.2.84), official
 catalogue weights. The gemma4 kernel finding stands unchanged as the
 reason e2b itself waits; the page now documents both truths. Next
 measurement: this exact browser combination against all four gold pages.
+
+**2026-08-17, night. The demo became the tool, and walking it found three
+bugs.** The /browser page now reads whole towns, not one hardcoded page.
+The server grew two endpoints that hand a visitor's tab the work:
+/api/browser/plan serves the document selection -- library.ask's own,
+factored into plan_documents() so the installed reader and the browser
+reader can never disagree about what a town's record is -- and
+/api/browser/pages serves one document's prose-routed pages, capped at the
+exact slice extract_prose prompts with. The page reads page by page,
+refuses failures in the open, and sends each document's survivors to the
+existing /api/bundle door, where the server re-verifies every quoted
+sentence against archive.org before publishing. Per document, not per
+town, because a read is slow and a browser tab is mortal: what has
+survived should not die with it. Re-sends deduplicate, so stopping and
+pressing again costs nothing. The unread-town handoff now leads with the
+browser ("read it in this browser, nothing installed") and keeps the
+installed reader as the bigger-machine path.
+
+Walked end to end locally -- Ear Falls, all three documents, in the tab --
+before touching the droplet, and the walk earned its keep. Three bugs,
+none visible in 888 passing tests: the page's value check refused "0.20"
+read as 0.2 and "13.0" read as 13, honest readings the server's own
+referee accepts, so the pre-filter was stricter than the check it fronts
+for (this project's oldest bug family, in a browser costume); proxy
+502/504s were treated as final when they mean "again in a moment"; and
+the #place= deep link -- the way back from the reader to the town it just
+filled -- called into a const still in its temporal dead zone and died,
+which node --check cannot see and clicking the link found in one second.
+The walk's numbers: 31 prose pages read in the tab in 9.3 minutes, 75
+records past the page's checks, 40 refused on screen, 68 published after
+the server re-verified everything sent -- and 6 refused by the archive
+check the page's own checks had passed, which is the two-tier design doing
+exactly what it is for. The 1973 summary yielded nothing ("10 pages, none
+routed to prose") and the page says so instead of pretending it read them.
+
+Deployed. The live walk -- an unread town, Ingersoll, read entirely in a
+browser tab against the public site -- waits on one thing nobody here
+controls: archive.org went temporarily offline mid-evening, and both the
+pages endpoint (cold fetch) and bundle verification need it. The tool is
+live; the archive is the referee, and the referee is out of the room.
