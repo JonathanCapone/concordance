@@ -813,3 +813,12 @@ absolute address, since a file opened from disk has no "/" to point at.
 Where you are is marked the same way everywhere: the reader page lights
 "Watch it read", the silence exhibit lights "What stopped", a town page
 lights "One town, in full".
+
+One more, reported from the same walk-through: selecting an unread town
+popped a card with its text cut off at the panel's edge. OMEGA's .empty is
+a centered grid for one-line hints, and centered grid items shrink to
+their content -- whose minimum is the widest unbreakable line, here a
+90-character install command, so the whole handoff rendered 610px wide
+inside a 410px dock. Inherited chrome carries inherited assumptions; in
+the dock the class is now a plain block and the command chips scroll
+themselves.
