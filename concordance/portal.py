@@ -1425,24 +1425,30 @@ function loadMapLibrary() {{
    the in-browser reader ("see the town's page — your read is on it"), and it
    deliberately does not depend on the map: the dock answers from local data
    even when the map CDN never does. */
-(async function openFromHash() {{
+(function openFromHash() {{
   const m = (location.hash || "").match(/^#place=(.+)$/);
   if (!m) return;
   let name = "";
   try {{ name = decodeURIComponent(m[1]).trim(); }} catch (e) {{ name = m[1].trim(); }}
   if (!name) return;
-  showView("observe");
-  let geo = window._placesGeo;
-  if (!geo) {{
-    try {{
-      geo = await (await fetch("/api/places.geojson")).json();
-      window._placesGeo = geo;
-    }} catch (e) {{ geo = {{features: []}}; }}
-  }}
-  const want = name.toLowerCase();
-  const f = (geo.features || []).find(
-    x => String((x.properties || {{}}).place || "").toLowerCase() === want);
-  openTown(f ? f.properties : {{place: name, raw: name}});
+  /* Deferred one tick: this runs mid-script, and showView reaches consts
+     declared further down the file -- calling it synchronously here is a
+     ReferenceError that kills the whole handler, found because the link the
+     reader page promises ("your read is on it") opened an empty panel. */
+  setTimeout(async () => {{
+    showView("observe");
+    let geo = window._placesGeo;
+    if (!geo) {{
+      try {{
+        geo = await (await fetch("/api/places.geojson")).json();
+        window._placesGeo = geo;
+      }} catch (e) {{ geo = {{features: []}}; }}
+    }}
+    const want = name.toLowerCase();
+    const f = (geo.features || []).find(
+      x => String((x.properties || {{}}).place || "").toLowerCase() === want);
+    openTown(f ? f.properties : {{place: name, raw: name}});
+  }}, 0);
 }})();
 
 /* ---- every view that is not the map ---------------------------------- */

@@ -592,8 +592,10 @@ async function readTown() {
   $("results-note").innerHTML =
     (STOP ? "Stopped. " : "Done. ") + "This tab read " + nPagesRead + " pages in "
     + mins + " min; the site verified every sent sentence against archive.org and "
-    + "published <b>" + totalPublished + "</b> new readings"
-    + (totalAlready ? " (" + totalAlready + " were already here)" : "")
+    + "published <b>" + totalPublished + "</b> new reading"
+    + (totalPublished === 1 ? "" : "s")
+    + (totalAlready ? " (" + totalAlready
+       + (totalAlready === 1 ? " was" : " were") + " already here)" : "")
     + (totalRefusedByArchive ? "; it refused " + totalRefusedByArchive : "") + ". "
     + (totalPublished || totalAlready
        ? '<a href="' + town + '">See ' + esc(TOWN.place) + "’s page — your read is on it.</a>"
