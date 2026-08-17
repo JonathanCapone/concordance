@@ -103,6 +103,7 @@ html,body{scrollbar-gutter:stable}
      popup itself is white -- near-white text on white, every town invisible
      until hovered. Options get their own explicit dark ground. */
   select option { background:var(--bg); color:var(--ink); }
+  select optgroup { background:var(--bg); color:var(--muted); font-style:normal; }
   .doc { padding:5px 0; border-bottom:1px dashed rgba(255,255,255,.08); font-size:13px }
   .doc:last-child { border-bottom:0 }
   .verdict { margin:6px 0; font-size:13px }
@@ -119,10 +120,10 @@ site — where every quoted sentence is re-verified against the archive before
 anything is published. Nothing is installed; no server does any reading.</p>
 
 <div class="card" id="pick-card" hidden>
-  <h2>Pick a town nobody has read yet</h2>
-  <p class="note" style="margin-bottom:8px">These are municipalities in the
-  silence index with no readings yet. More surviving reports means a longer
-  read and a richer record.</p>
+  <h2>Pick a town</h2>
+  <p class="note" style="margin-bottom:8px">Every municipality on the map,
+  the unread ones first. More surviving reports means a longer read and a
+  richer record.</p>
   <p><select id="town-select"></select></p>
   <p style="margin-top:8px"><input type="text" id="town-free"
      placeholder="or any place name in the collection…" size="30">
@@ -765,20 +766,34 @@ async function loadPicker() {
   let geo;
   try { geo = await (await fetch("/api/places.geojson")).json(); }
   catch (e) { return false; }
-  const unread = (geo.features || [])
+  /* Every town, one list. Read towns used to vanish from here the moment
+     their first records published, which read as the town disappearing --
+     and was the wrong design, not just the wrong wording: a partial read is
+     the NORMAL outcome (a session covers what it covers), so a read town is
+     still worth picking. Unread first, because they are the gift a reader
+     can give; read towns follow, labelled, and reading one again is safe
+     and additive. */
+  const all = (geo.features || [])
     .map(f => f.properties || {})
-    .filter(p => p.place && !p.extracted)
+    .filter(p => p.place)
     .sort((a, b) => (b.years || 0) - (a.years || 0));
-  if (!unread.length) return false;
-  $("pick-card").hidden = false;
-  $("town-select").innerHTML = unread.map(p =>
+  const unread = all.filter(p => !p.extracted);
+  const read = all.filter(p => p.extracted);
+  if (!all.length) return false;
+  const opt = p =>
     '<option value="' + esc(p.place) + '">' + esc(p.place) + " — "
     + (p.years || "?") + " reports, " + esc(p.first || "?") + "–"
-    + esc(p.last || "?") + "</option>").join("");
+    + esc(p.last || "?") + "</option>";
+  $("pick-card").hidden = false;
+  $("town-select").innerHTML =
+    '<optgroup label="Nobody has read these yet">'
+    + unread.map(opt).join("") + "</optgroup>"
+    + '<optgroup label="Already read — reading again adds what was missed">'
+    + read.map(opt).join("") + "</optgroup>";
   $("pick-note").textContent = unread.length
-    + " municipalities are on the map with nothing read yet. A town leaves "
-    + "this list the moment its first records publish — from then on it is "
-    + "on the map as a read town, under Find a place.";
+    + " towns are waiting for their first read; " + read.length
+    + " have been read and stay in the list, because a read is rarely "
+    + "finished — reading one again only adds what earlier passes missed.";
   $("town-go").onclick = () => {
     const free = $("town-free").value.trim();
     const chosen = free || $("town-select").value;
