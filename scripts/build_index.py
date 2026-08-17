@@ -17,7 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from concordance.chrome import ARTIFACT_CSS, masthead  # noqa: E402
+from concordance.chrome import ARTIFACT_CSS, SITE, masthead  # noqa: E402
 
 RESULTS = Path("data/results")
 
@@ -110,7 +110,7 @@ def main() -> int:
     ])
 
     chrome_css = ARTIFACT_CSS
-    head = masthead(home="index.html")
+    head = masthead(home=SITE + "/", base=SITE)
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

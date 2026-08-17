@@ -22,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from concordance.chrome import ARTIFACT_CSS, masthead  # noqa: E402
+from concordance.chrome import ARTIFACT_CSS, SITE, masthead  # noqa: E402
 from concordance.models import Provenance, Record   # noqa: E402
 from concordance.science import series_from_records, trend  # noqa: E402
 
@@ -204,7 +204,8 @@ def main() -> int:
 
     accuracy_text = accuracy_sentence()
     chrome_css = ARTIFACT_CSS
-    head = masthead(html.escape(place), home="index.html")
+    head = masthead(html.escape(place), home=SITE + "/",
+                    active="record", base=SITE)
     html_doc = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

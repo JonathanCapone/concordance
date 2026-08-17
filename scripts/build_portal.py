@@ -187,12 +187,13 @@ def main() -> int:
         "<strong>This is probably a digitisation boundary, not history.</strong>"
     )
 
-    from concordance.chrome import ARTIFACT_CSS, masthead
+    from concordance.chrome import ARTIFACT_CSS, SITE, masthead
 
     html = (
         TEMPLATE.replace("__DATA__", json.dumps(payload))
         .replace("__CHROME_CSS__", ARTIFACT_CSS)
-        .replace("__SITE_HEAD__", masthead("What stopped", home="index.html"))
+        .replace("__SITE_HEAD__",
+                 masthead(home=SITE + "/", active="silence", base=SITE))
         .replace("__NMUNI__", str(payload["n_municipalities"]))
         .replace("__CLIFFN__", str(stop["municipalities"]))
         .replace("__CLIFFY__", str(stop["year"]))

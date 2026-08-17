@@ -33,29 +33,9 @@ MAPLIBRE_VERSION = "5.24.0"
 SAT_TILES = "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
 DEM_TILES = "https://elevation-tiles-prod.s3.amazonaws.com/terrarium/{z}/{x}/{y}.png"
 
-#: The nav, in a visitor's words rather than mine.
-#:
-#: These used to be nine module names in the order the modules were built --
-#: Observe, Record, Silence, Rivers, Verify, Frontier, Decisions, Disputed --
-#: which is a map of my work and not of anything a person arrives wanting. The
-#: complaint that started this was exact: "I didn't really understand what the
-#: tabs were for or how I would actually use any of the information."
-#:
-#: Rivers is gone: "whose sewage was in my water" is a question about YOUR
-#: town, so it lives on the town's page, with a link out to the whole river.
-#: Record and Frontier are gone too -- one was the place panel, which opens
-#: from the map, and the other was a to-read list that belongs beside the map
-#: it ranks.
-NAV = [
-    ("observe", "Find a place", "M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z"),
-    ("silence", "What stopped", "M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12"),
-    ("disputed", "Disagreements", "M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1"),
-    ("decisions", "Who decided", "M7 4.5h10v15H7Zm2.6 4h4.8m-4.8 3.6h4.8m-4.8 3.6h3"),
-    ("verify", "Can I trust it", "M5 12.6 9.8 17.4 19 6.6"),
-    ("frontier", "What to read next", "M12 4.5v15M4.5 12h15M7.5 7.5l9 9M16.5 7.5l-9 9"),
-    ("record", "One town, in full", "M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4"),
-    ("ask", "Ask Jay", "M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z"),
-]
+#: One menu, one source: the list lives in chrome.py so this page's buttons
+#: and every other page's links can never disagree about what the site is.
+from .chrome import BROWSER_ITEM, NAV
 
 
 def _nav() -> str:
@@ -73,13 +53,14 @@ def _nav() -> str:
     # The in-browser reader is its own page, not a view -- a real link, in
     # the same clothes as the buttons. It was reachable only by knowing the
     # address before this line, which made it a secret rather than a feature.
+    browser_key, browser_label, browser_path = BROWSER_ITEM
     out.append(
-        '<a class="nav-button" href="/browser" aria-label="Watch it read">'
-        '<svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true">'
-        '<path d="M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z" '
+        f'<a class="nav-button" href="/{browser_key}" aria-label="{browser_label}">'
+        f'<svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true">'
+        f'<path d="{browser_path}" '
         'fill="none" stroke="currentColor" stroke-width="1.6" '
         'stroke-linecap="round" stroke-linejoin="round"/></svg>'
-        '<span class="nav-tip">Watch it read</span></a>'
+        f'<span class="nav-tip">{browser_label}</span></a>'
     )
     return "".join(out)
 
@@ -547,7 +528,14 @@ function showView(key){{
   if (key === "observe" && window._map) setTimeout(() => window._map.resize(), 60);
 }}
 document.querySelectorAll(".nav-button").forEach(btn =>
-  btn.onclick = () => showView(btn.dataset.view));
+  btn.onclick = () => {{
+    if (!btn.dataset.view) return;           /* the reader entry is a link */
+    showView(btn.dataset.view);
+    /* The address keeps up with the view, so every other page's menu can
+       link straight to one -- and a view someone is looking at is a view
+       they can send to someone else. */
+    history.replaceState(null, "", "#view=" + btn.dataset.view);
+  }});
 document.addEventListener("click", ev => {{
   const link = ev.target.closest("[data-goto]");
   if (link) {{ ev.preventDefault(); showView(link.dataset.goto); }}
@@ -1420,22 +1408,31 @@ function loadMapLibrary() {{
   }});
 }})();
 
-/* ---- arriving with a town's name in hand ----------------------------- */
-/* #place=Fergus opens that town's panel directly. This is the way back from
-   the in-browser reader ("see the town's page — your read is on it"), and it
-   deliberately does not depend on the map: the dock answers from local data
-   even when the map CDN never does. */
+/* ---- arriving with a destination in hand ----------------------------- */
+/* #view=silence opens that view; #place=Fergus opens that town's panel.
+   The first is what makes every other page's menu real -- its entries are
+   links here -- and the second is the way back from the in-browser reader
+   ("see the town's page — your read is on it"). Neither depends on the map:
+   the views and the dock answer from local data even when the map CDN never
+   does. */
 (function openFromHash() {{
+  const view = (location.hash || "").match(/^#view=([a-z]+)$/);
   const m = (location.hash || "").match(/^#place=(.+)$/);
-  if (!m) return;
-  let name = "";
-  try {{ name = decodeURIComponent(m[1]).trim(); }} catch (e) {{ name = m[1].trim(); }}
-  if (!name) return;
+  if (!view && !m) return;
   /* Deferred one tick: this runs mid-script, and showView reaches consts
      declared further down the file -- calling it synchronously here is a
      ReferenceError that kills the whole handler, found because the link the
      reader page promises ("your read is on it") opened an empty panel. */
   setTimeout(async () => {{
+    if (view) {{
+      /* Only a view that exists; an unknown key must not blank the page. */
+      if (document.querySelector('.view[data-view="' + view[1] + '"]'))
+        showView(view[1]);
+      return;
+    }}
+    let name = "";
+    try {{ name = decodeURIComponent(m[1]).trim(); }} catch (e) {{ name = m[1].trim(); }}
+    if (!name) return;
     showView("observe");
     let geo = window._placesGeo;
     if (!geo) {{

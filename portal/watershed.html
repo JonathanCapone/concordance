@@ -4,12 +4,22 @@
 <title>Whose effluent was in your water</title>
 <style>
 :root{--bg:#04080d;--panel:rgba(255,255,255,.04);--ink:#e8edf2;--muted:#8b97a4;--faint:#6d7a86;--line:rgba(255,255,255,.10);--hit:#f0a24a;--cold:#5b7285;--warn:#d99a5b;--bad:#e0736e;--accent:#f0a24a;--mark:#e8edf2;--gap:#e0736e;color-scheme:dark}
-.site-head{display:flex;align-items:baseline;gap:10px;padding:9px 18px;
-  border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94)}
-.site-head a{display:flex;align-items:baseline;gap:10px;text-decoration:none;
+.site-head{display:flex;align-items:center;flex-wrap:wrap;gap:4px 18px;
+  padding:9px 18px;border-bottom:1px solid rgba(255,255,255,.09);
+  background:rgba(8,12,17,.94)}
+.site-head>a{display:flex;align-items:baseline;gap:10px;text-decoration:none;
   color:inherit}
 .site-word{font-size:15px;font-weight:600;letter-spacing:.02em}
 .site-sub{font-size:11px;color:#7d8996}
+.site-nav{display:flex;flex-wrap:wrap;gap:4px}
+.site-nav .nav-button{background:none;border:1px solid transparent;
+  border-radius:9px;color:var(--muted);padding:7px 9px;cursor:pointer;
+  display:flex;align-items:center;gap:7px;text-decoration:none;font:inherit}
+.site-nav .nav-button:hover{color:var(--ink);border-color:rgba(255,255,255,.12)}
+.site-nav .nav-button.is-active{color:var(--bg);background:var(--hit);
+  border-color:var(--hit)}
+.site-nav .nav-glyph{width:17px;height:17px}
+.site-nav .nav-tip{font-size:12.5px;font-weight:500}
 .site-page{margin-left:auto;font-size:12.5px;color:var(--muted)}
 
 *{box-sizing:border-box}
@@ -33,7 +43,7 @@ li{margin-bottom:6px}
 .caveat{border-left:3px solid var(--line);padding-left:16px;color:var(--muted);
  font-size:14px;margin-top:28px;max-width:74ch}
 </style></head><body>
-<header class="site-head"><a href="index.html"><span class="site-word">CONCORDANCE</span><span class="site-sub">Canada’s public record, read</span></a><span class="site-page">Whose effluent was in your water</span></header>
+<header class="site-head"><a href="https://concordance.jonathancapone.com/"><span class="site-word">CONCORDANCE</span><span class="site-sub">Canada’s public record, read</span></a><nav class="site-nav"><a class="nav-button" href="https://concordance.jonathancapone.com/#view=observe" aria-label="Find a place"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Find a place</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=silence" aria-label="What stopped"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h4l3.2-5.4v10.8L8 12H4Zm12.4-3.4a6 6 0 0 1 0 6.8M19 6a9.4 9.4 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">What stopped</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=disputed" aria-label="Disagreements"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5 3.5 19.5h17L12 4.5Zm0 5.4v4.4m0 2.6v.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Disagreements</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=decisions" aria-label="Who decided"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5h10v15H7Zm2.6 4h4.8m-4.8 3.6h4.8m-4.8 3.6h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Who decided</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=verify" aria-label="Can I trust it"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.6 9.8 17.4 19 6.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Can I trust it</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=frontier" aria-label="What to read next"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5v15M4.5 12h15M7.5 7.5l9 9M16.5 7.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">What to read next</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=record" aria-label="One town, in full"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">One town, in full</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/#view=ask" aria-label="Ask Jay"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Ask Jay</span></a><a class="nav-button" href="https://concordance.jonathancapone.com/browser" aria-label="Watch it read"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Watch it read</span></a></nav><span class="site-page">Whose effluent was in your water</span></header>
 <main>
 <h1>Whose effluent was in your water</h1>
 <p class="sub">

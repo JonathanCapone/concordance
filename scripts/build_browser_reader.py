@@ -903,7 +903,7 @@ def main() -> int:
     html = TEMPLATE
     for sentinel, value in {
         "__CHROME_CSS__": BASE_CSS,
-        "__MASTHEAD__": masthead("Watch it read", home="/"),
+        "__MASTHEAD__": masthead(home="/", active="browser"),
         "__SYSTEM_JSON__": json.dumps(SMALL_SYSTEM),
         "__USER_TMPL_JSON__": json.dumps(USER_TEMPLATE),
         "__DEMO_JSON__": json.dumps(demo),

@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from concordance.chrome import ARTIFACT_CSS, masthead          # noqa: E402
+from concordance.chrome import ARTIFACT_CSS, SITE, masthead    # noqa: E402
 from concordance.providers import Fetcher, Registry            # noqa: E402
 from concordance.watershed import (                            # noqa: E402
     downstream_links,
@@ -129,7 +129,8 @@ def render(d: dict) -> str:
     )
 
     chrome_css = ARTIFACT_CSS
-    head = masthead("Whose effluent was in your water", home="index.html")
+    head = masthead("Whose effluent was in your water",
+                    home=SITE + "/", base=SITE)
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
