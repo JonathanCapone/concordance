@@ -229,6 +229,15 @@ details textarea{{resize:vertical}}
 .note{{font-size:11.5px;color:#6d7a86;line-height:1.55;margin-top:16px;
   border-left:2px solid rgba(255,255,255,.12);padding-left:11px}}
 .empty{{color:#8b97a4;font-size:13px;line-height:1.6}}
+/* OMEGA's .empty is a centered grid for one-line "appears here" hints, and
+   centered grid items shrink to their content -- whose minimum is the widest
+   UNBREAKABLE line inside. The dock reuses the class for a real prose card,
+   the unread-town handoff, where a 90-character install command made every
+   line render 610px wide inside a 410px panel, cut off at the edge. In the
+   dock it is a plain left-aligned block; the command chips then scroll
+   themselves, which their overflow-x was always meant to do. */
+.dock .empty{{display:block;text-align:left}}
+#read-log{{white-space:pre-wrap}}
 
 .pane{{max-width:1080px;margin:0 auto;padding:26px 28px 60px}}
 .pane h2{{font-size:22px;font-weight:600;margin:0 0 4px;letter-spacing:-.015em}}
