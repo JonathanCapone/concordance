@@ -842,3 +842,13 @@ refusals, with Ask Jay beside them, appearing where a model exists to
 answer). Old #view= addresses map into the new structure, tab and all.
 Nine doors became four stages, and the tests now pin the property that
 mattered all along: consolidating deleted nothing.
+
+**Then Jay came back out. "Jay shouldn't be buried on a page" -- right:**
+folding the agent into the trust view solved the dead-button problem by
+hiding the feature, which is the wrong trade for the project's own agent.
+Ask Jay is the menu's fifth entry again, everywhere, and the real problem
+got the real fix: the view says up front, before a question is typed,
+where Jay answers. A shared instance shows the local-machine handoff; a
+local instance shows nothing but the box, which simply works. A page that
+takes your question and then refuses it was the thing to remove -- not
+the page.
