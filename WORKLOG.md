@@ -799,3 +799,17 @@ opened from disk where no stylesheet is served). Every page now opens
 under the same CONCORDANCE masthead on the same dark, with the same
 orange doing the same job -- and the town-page charts draw their lines in
 it.
+
+**And then the same menu, because the same clothes were not enough.**
+"Fix the websites menus, it is not consistent across the pages" -- right:
+the front page had the nav rail and every other page had only a wordmark,
+so leaving the map meant losing the site. The nav list moved into
+chrome.py as the one source; the front page builds its view-switching
+buttons from it and every other page renders the same nine entries as
+links back -- possible because the front page now honors #view= the way
+it honors #place=, and switching views writes the hash, so a view you are
+looking at is a view you can send. The standalone artifacts link home by
+absolute address, since a file opened from disk has no "/" to point at.
+Where you are is marked the same way everywhere: the reader page lights
+"Watch it read", the silence exhibit lights "What stopped", a town page
+lights "One town, in full".
