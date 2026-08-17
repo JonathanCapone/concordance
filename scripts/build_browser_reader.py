@@ -35,6 +35,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from concordance.archive import Archive                     # noqa: E402
+from concordance.chrome import BASE_CSS, masthead           # noqa: E402
 from concordance.extract import USER_TEMPLATE               # noqa: E402
 
 #: Compact reading instructions for browser-size models, v2 (v1's worked
@@ -95,36 +96,36 @@ TEMPLATE = """<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Concordance — read a town in your browser</title>
 <style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; margin: 0; }
-  body { background:#0b1016; color:#e8edf2; font:14px/1.55 system-ui,sans-serif;
-         max-width: 920px; margin: 0 auto; padding: 28px 18px 80px; }
+__CHROME_CSS__
+  * { box-sizing: border-box }
+  main { max-width: 920px; margin: 0 auto; padding: 26px 18px 80px }
   h1 { font-size: 20px; margin: 0 0 4px; }
   h2 { font-size: 15px; margin: 0 0 6px; }
-  .sub { color:#8b97a4; margin-bottom: 18px; }
-  .card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+  p { margin: 0 }
+  .sub { color:var(--muted); margin-bottom: 18px; }
+  .card { background:var(--panel); border:1px solid var(--line);
           border-radius: 12px; padding: 14px 16px; margin: 12px 0; }
-  .note { color:#8b97a4; font-size: 12.5px; }
-  button { background:#f0a24a; color:#0b1016; border:0; border-radius:9px;
+  .note { color:var(--muted); font-size: 12.5px; }
+  button { background:var(--hit); color:var(--bg); border:0; border-radius:9px;
            padding:9px 18px; font:inherit; font-weight:600; cursor:pointer }
   button:disabled { opacity:.45; cursor:default }
-  button.quiet { background:transparent; color:#8b97a4;
+  button.quiet { background:transparent; color:var(--muted);
                  border:1px solid rgba(255,255,255,.2) }
-  #status { font-family: ui-monospace,monospace; font-size:12px; color:#8b97a4;
+  #status { font-family: ui-monospace,monospace; font-size:12px; color:var(--muted);
             white-space: pre-wrap; }
-  progress { width:100%; height:6px; accent-color:#f0a24a }
+  progress { width:100%; height:6px; accent-color:var(--hit) }
   table { width:100%; border-collapse:collapse; font-size:13px; margin-top:8px }
   th,td { text-align:left; padding:6px 8px; border-bottom:1px solid rgba(255,255,255,.08);
           vertical-align: top }
-  th { color:#6d7a86; font-size:11px; text-transform:uppercase; letter-spacing:.06em }
-  .q { color:#8b97a4; font-style: italic; font-size:12px }
-  .ok { color:#7dc87d } .bad { color:#e08b8b }
+  th { color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.06em }
+  .q { color:var(--muted); font-style: italic; font-size:12px }
+  .ok { color:#7dc87d } .bad { color:var(--bad) }
   .v { font-family: ui-monospace,monospace; white-space:nowrap }
-  a { color:#f0a24a; text-decoration: none }
-  details { margin-top: 8px } summary { cursor:pointer; color:#8b97a4 }
-  pre { white-space:pre-wrap; font-size:11.5px; color:#8b97a4; max-height:260px;
+  a { color:var(--hit); text-decoration: none }
+  details { margin-top: 8px } summary { cursor:pointer; color:var(--muted) }
+  pre { white-space:pre-wrap; font-size:11.5px; color:var(--muted); max-height:260px;
         overflow:auto; margin-top:6px }
-  select,input[type=text] { background:#0b1016; color:#e8edf2; font:inherit;
+  select,input[type=text] { background:rgba(255,255,255,.05); color:var(--ink); font:inherit;
         border:1px solid rgba(255,255,255,.2); border-radius:8px; padding:8px 10px;
         max-width:100%; }
   .doc { padding:5px 0; border-bottom:1px dashed rgba(255,255,255,.08); font-size:13px }
@@ -133,6 +134,8 @@ TEMPLATE = """<!doctype html>
 </style>
 </head>
 <body>
+__MASTHEAD__
+<main>
 <h1>The reader, in your browser</h1>
 <p class="sub">Pick a town nobody has read. An AI model runs <b>inside this
 browser tab</b> on your own graphics card, reads that town's scanned
@@ -208,6 +211,7 @@ in the shared WebGPU kernels for its architecture, documented in this
 project's worklog; the day the upstream fix lands, it takes one flag to
 retest. Until then: an honest partial read a stranger can start with one
 press, or the installed reader for the rest.</p>
+</main>
 
 <script type="module">
 const SYSTEM_SMALL = __SYSTEM_JSON__;
@@ -898,6 +902,8 @@ def main() -> int:
 
     html = TEMPLATE
     for sentinel, value in {
+        "__CHROME_CSS__": BASE_CSS,
+        "__MASTHEAD__": masthead("Watch it read", home="/"),
         "__SYSTEM_JSON__": json.dumps(SMALL_SYSTEM),
         "__USER_TMPL_JSON__": json.dumps(USER_TEMPLATE),
         "__DEMO_JSON__": json.dumps(demo),

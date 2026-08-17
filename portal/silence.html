@@ -5,22 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Where Ontario's indexed record goes quiet</title>
 <style>
-  :root {
-    --bg: #fbfaf8; --panel: #fff; --ink: #17150f; --muted: #6b6559;
-    --line: #e2ded5; --mark: #17150f; --gap: #d9534f;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14130f; --panel: #1c1a16; --ink: #f2efe8; --muted: #9b948a;
-      --line: #2e2b25; --mark: #f2efe8; --gap: #e0736e;
-    }
-  }
+:root{--bg:#04080d;--panel:rgba(255,255,255,.04);--ink:#e8edf2;--muted:#8b97a4;--faint:#6d7a86;--line:rgba(255,255,255,.10);--hit:#f0a24a;--cold:#5b7285;--warn:#d99a5b;--bad:#e0736e;--accent:#f0a24a;--mark:#e8edf2;--gap:#e0736e;color-scheme:dark}
+.site-head{display:flex;align-items:baseline;gap:10px;padding:9px 18px;
+  border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94)}
+.site-head a{display:flex;align-items:baseline;gap:10px;text-decoration:none;
+  color:inherit}
+.site-word{font-size:15px;font-weight:600;letter-spacing:.02em}
+.site-sub{font-size:11px;color:#7d8996}
+.site-page{margin-left:auto;font-size:12.5px;color:var(--muted)}
+
   * { box-sizing: border-box; }
   body {
-    margin: 0; padding: 40px 24px 80px; background: var(--bg); color: var(--ink);
+    margin: 0; background: var(--bg); color: var(--ink);
     font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-  main { max-width: 1080px; margin: 0 auto; }
+  main { max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }
   h1 { font-size: 30px; font-weight: 500; margin: 0 0 6px; letter-spacing: -.02em; }
   .sub { color: var(--muted); max-width: 68ch; margin: 0 0 34px; }
   h2 { font-size: 17px; font-weight: 500; margin: 40px 0 12px; }
@@ -65,6 +64,7 @@
 </style>
 </head>
 <body>
+<header class="site-head"><a href="index.html"><span class="site-word">CONCORDANCE</span><span class="site-sub">Canada’s public record, read</span></a><span class="site-page">What stopped</span></header>
 <main>
   <h1>Where Ontario's indexed record goes quiet</h1>
   <p class="sub">

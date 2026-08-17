@@ -3,13 +3,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Whose effluent was in your water</title>
 <style>
-:root{--bg:#fbfaf8;--panel:#fff;--ink:#17150f;--muted:#6b6559;--line:#e2ded5;--warn:#b5651d}
-@media (prefers-color-scheme:dark){
- :root{--bg:#14130f;--panel:#1c1a16;--ink:#f2efe8;--muted:#9b948a;--line:#2e2b25;--warn:#d99a5b}}
+:root{--bg:#04080d;--panel:rgba(255,255,255,.04);--ink:#e8edf2;--muted:#8b97a4;--faint:#6d7a86;--line:rgba(255,255,255,.10);--hit:#f0a24a;--cold:#5b7285;--warn:#d99a5b;--bad:#e0736e;--accent:#f0a24a;--mark:#e8edf2;--gap:#e0736e;color-scheme:dark}
+.site-head{display:flex;align-items:baseline;gap:10px;padding:9px 18px;
+  border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94)}
+.site-head a{display:flex;align-items:baseline;gap:10px;text-decoration:none;
+  color:inherit}
+.site-word{font-size:15px;font-weight:600;letter-spacing:.02em}
+.site-sub{font-size:11px;color:#7d8996}
+.site-page{margin-left:auto;font-size:12.5px;color:var(--muted)}
+
 *{box-sizing:border-box}
-body{margin:0;padding:40px 24px 90px;background:var(--bg);color:var(--ink);
+body{margin:0;background:var(--bg);color:var(--ink);
  font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:760px;margin:0 auto}
+main{max-width:760px;margin:0 auto;padding:40px 24px 90px}
 h1{font-size:30px;font-weight:500;margin:0 0 6px;letter-spacing:-.02em}
 .sub{color:var(--muted);max-width:64ch;margin:0 0 26px}
 section{background:var(--panel);border:1px solid var(--line);border-radius:10px;
@@ -26,7 +32,9 @@ li{margin-bottom:6px}
 .warn li{color:var(--warn)}
 .caveat{border-left:3px solid var(--line);padding-left:16px;color:var(--muted);
  font-size:14px;margin-top:28px;max-width:74ch}
-</style></head><body><main>
+</style></head><body>
+<header class="site-head"><a href="index.html"><span class="site-word">CONCORDANCE</span><span class="site-sub">Canada’s public record, read</span></a><span class="site-page">Whose effluent was in your water</span></header>
+<main>
 <h1>Whose effluent was in your water</h1>
 <p class="sub">
   86 of 87 Ontario municipal treatment plants placed on a named

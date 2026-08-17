@@ -17,6 +17,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from concordance.chrome import ARTIFACT_CSS, masthead  # noqa: E402
+
 RESULTS = Path("data/results")
 
 
@@ -107,18 +109,18 @@ def main() -> int:
         stat("90", "median downloads per document"),
     ])
 
+    chrome_css = ARTIFACT_CSS
+    head = masthead(home="index.html")
     html = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Concordance — reading Canada's public record</title>
 <style>
-:root{{--bg:#fbfaf8;--panel:#fff;--ink:#17150f;--muted:#6b6559;--line:#e2ded5}}
-@media (prefers-color-scheme:dark){{
- :root{{--bg:#14130f;--panel:#1c1a16;--ink:#f2efe8;--muted:#9b948a;--line:#2e2b25}}}}
+{chrome_css}
 *{{box-sizing:border-box}}
-body{{margin:0;padding:56px 24px 90px;background:var(--bg);color:var(--ink);
+body{{margin:0;background:var(--bg);color:var(--ink);
  font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}}
-main{{max-width:800px;margin:0 auto}}
+main{{max-width:800px;margin:0 auto;padding:56px 24px 90px}}
 h1{{font-size:36px;font-weight:500;margin:0 0 10px;letter-spacing:-.025em}}
 .lede{{font-size:18px;color:var(--muted);max-width:62ch;margin:0 0 8px}}
 .quiet{{color:var(--muted);max-width:62ch;margin:0 0 34px}}
@@ -134,7 +136,9 @@ h1{{font-size:36px;font-weight:500;margin:0 0 10px;letter-spacing:-.025em}}
 .note{{border-left:3px solid var(--line);padding-left:16px;color:var(--muted);
  font-size:14px;margin-top:34px;max-width:74ch}}
 a.plain{{color:inherit}}
-</style></head><body><main>
+</style></head><body>
+{head}
+<main>
 <h1>Concordance</h1>
 <p class="lede">Reading Canada's public record as a hundred-year instrument.</p>
 <p class="quiet">

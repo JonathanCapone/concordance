@@ -18,6 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from concordance.chrome import ARTIFACT_CSS, masthead          # noqa: E402
 from concordance.providers import Fetcher, Registry            # noqa: E402
 from concordance.watershed import (                            # noqa: E402
     downstream_links,
@@ -127,18 +128,18 @@ def render(d: dict) -> str:
         for t, u in d["examples"].items() if u
     )
 
+    chrome_css = ARTIFACT_CSS
+    head = masthead("Whose effluent was in your water", home="index.html")
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Whose effluent was in your water</title>
 <style>
-:root{{--bg:#fbfaf8;--panel:#fff;--ink:#17150f;--muted:#6b6559;--line:#e2ded5;--warn:#b5651d}}
-@media (prefers-color-scheme:dark){{
- :root{{--bg:#14130f;--panel:#1c1a16;--ink:#f2efe8;--muted:#9b948a;--line:#2e2b25;--warn:#d99a5b}}}}
+{chrome_css}
 *{{box-sizing:border-box}}
-body{{margin:0;padding:40px 24px 90px;background:var(--bg);color:var(--ink);
+body{{margin:0;background:var(--bg);color:var(--ink);
  font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}}
-main{{max-width:760px;margin:0 auto}}
+main{{max-width:760px;margin:0 auto;padding:40px 24px 90px}}
 h1{{font-size:30px;font-weight:500;margin:0 0 6px;letter-spacing:-.02em}}
 .sub{{color:var(--muted);max-width:64ch;margin:0 0 26px}}
 section{{background:var(--panel);border:1px solid var(--line);border-radius:10px;
@@ -155,7 +156,9 @@ li{{margin-bottom:6px}}
 .warn li{{color:var(--warn)}}
 .caveat{{border-left:3px solid var(--line);padding-left:16px;color:var(--muted);
  font-size:14px;margin-top:28px;max-width:74ch}}
-</style></head><body><main>
+</style></head><body>
+{head}
+<main>
 <h1>Whose effluent was in your water</h1>
 <p class="sub">
   {d['n_on_river']} of {d['n_plants']} Ontario municipal treatment plants placed on a named

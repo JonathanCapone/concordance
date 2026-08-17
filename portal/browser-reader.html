@@ -5,36 +5,46 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Concordance — read a town in your browser</title>
 <style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; margin: 0; }
-  body { background:#0b1016; color:#e8edf2; font:14px/1.55 system-ui,sans-serif;
-         max-width: 920px; margin: 0 auto; padding: 28px 18px 80px; }
+:root{--bg:#04080d;--panel:rgba(255,255,255,.04);--ink:#e8edf2;--muted:#8b97a4;--faint:#6d7a86;--line:rgba(255,255,255,.10);--hit:#f0a24a;--cold:#5b7285;--warn:#d99a5b;--bad:#e0736e;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.site-head{display:flex;align-items:baseline;gap:10px;padding:9px 18px;
+  border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94)}
+.site-head a{display:flex;align-items:baseline;gap:10px;text-decoration:none;
+  color:inherit}
+.site-word{font-size:15px;font-weight:600;letter-spacing:.02em}
+.site-sub{font-size:11px;color:#7d8996}
+.site-page{margin-left:auto;font-size:12.5px;color:var(--muted)}
+
+  * { box-sizing: border-box }
+  main { max-width: 920px; margin: 0 auto; padding: 26px 18px 80px }
   h1 { font-size: 20px; margin: 0 0 4px; }
   h2 { font-size: 15px; margin: 0 0 6px; }
-  .sub { color:#8b97a4; margin-bottom: 18px; }
-  .card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+  p { margin: 0 }
+  .sub { color:var(--muted); margin-bottom: 18px; }
+  .card { background:var(--panel); border:1px solid var(--line);
           border-radius: 12px; padding: 14px 16px; margin: 12px 0; }
-  .note { color:#8b97a4; font-size: 12.5px; }
-  button { background:#f0a24a; color:#0b1016; border:0; border-radius:9px;
+  .note { color:var(--muted); font-size: 12.5px; }
+  button { background:var(--hit); color:var(--bg); border:0; border-radius:9px;
            padding:9px 18px; font:inherit; font-weight:600; cursor:pointer }
   button:disabled { opacity:.45; cursor:default }
-  button.quiet { background:transparent; color:#8b97a4;
+  button.quiet { background:transparent; color:var(--muted);
                  border:1px solid rgba(255,255,255,.2) }
-  #status { font-family: ui-monospace,monospace; font-size:12px; color:#8b97a4;
+  #status { font-family: ui-monospace,monospace; font-size:12px; color:var(--muted);
             white-space: pre-wrap; }
-  progress { width:100%; height:6px; accent-color:#f0a24a }
+  progress { width:100%; height:6px; accent-color:var(--hit) }
   table { width:100%; border-collapse:collapse; font-size:13px; margin-top:8px }
   th,td { text-align:left; padding:6px 8px; border-bottom:1px solid rgba(255,255,255,.08);
           vertical-align: top }
-  th { color:#6d7a86; font-size:11px; text-transform:uppercase; letter-spacing:.06em }
-  .q { color:#8b97a4; font-style: italic; font-size:12px }
-  .ok { color:#7dc87d } .bad { color:#e08b8b }
+  th { color:var(--faint); font-size:11px; text-transform:uppercase; letter-spacing:.06em }
+  .q { color:var(--muted); font-style: italic; font-size:12px }
+  .ok { color:#7dc87d } .bad { color:var(--bad) }
   .v { font-family: ui-monospace,monospace; white-space:nowrap }
-  a { color:#f0a24a; text-decoration: none }
-  details { margin-top: 8px } summary { cursor:pointer; color:#8b97a4 }
-  pre { white-space:pre-wrap; font-size:11.5px; color:#8b97a4; max-height:260px;
+  a { color:var(--hit); text-decoration: none }
+  details { margin-top: 8px } summary { cursor:pointer; color:var(--muted) }
+  pre { white-space:pre-wrap; font-size:11.5px; color:var(--muted); max-height:260px;
         overflow:auto; margin-top:6px }
-  select,input[type=text] { background:#0b1016; color:#e8edf2; font:inherit;
+  select,input[type=text] { background:rgba(255,255,255,.05); color:var(--ink); font:inherit;
         border:1px solid rgba(255,255,255,.2); border-radius:8px; padding:8px 10px;
         max-width:100%; }
   .doc { padding:5px 0; border-bottom:1px dashed rgba(255,255,255,.08); font-size:13px }
@@ -43,6 +53,8 @@
 </style>
 </head>
 <body>
+<header class="site-head"><a href="/"><span class="site-word">CONCORDANCE</span><span class="site-sub">Canada’s public record, read</span></a><span class="site-page">Watch it read</span></header>
+<main>
 <h1>The reader, in your browser</h1>
 <p class="sub">Pick a town nobody has read. An AI model runs <b>inside this
 browser tab</b> on your own graphics card, reads that town's scanned
@@ -118,6 +130,7 @@ in the shared WebGPU kernels for its architecture, documented in this
 project's worklog; the day the upstream fix lands, it takes one flag to
 retest. Until then: an honest partial read a stranger can start with one
 press, or the installed reader for the rest.</p>
+</main>
 
 <script type="module">
 const SYSTEM_SMALL = "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\").\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n";

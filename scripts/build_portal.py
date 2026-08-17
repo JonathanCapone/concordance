@@ -23,22 +23,13 @@ TEMPLATE = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Where Ontario's indexed record goes quiet</title>
 <style>
-  :root {
-    --bg: #fbfaf8; --panel: #fff; --ink: #17150f; --muted: #6b6559;
-    --line: #e2ded5; --mark: #17150f; --gap: #d9534f;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14130f; --panel: #1c1a16; --ink: #f2efe8; --muted: #9b948a;
-      --line: #2e2b25; --mark: #f2efe8; --gap: #e0736e;
-    }
-  }
+__CHROME_CSS__
   * { box-sizing: border-box; }
   body {
-    margin: 0; padding: 40px 24px 80px; background: var(--bg); color: var(--ink);
+    margin: 0; background: var(--bg); color: var(--ink);
     font: 16px/1.65 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   }
-  main { max-width: 1080px; margin: 0 auto; }
+  main { max-width: 1080px; margin: 0 auto; padding: 40px 24px 80px; }
   h1 { font-size: 30px; font-weight: 500; margin: 0 0 6px; letter-spacing: -.02em; }
   .sub { color: var(--muted); max-width: 68ch; margin: 0 0 34px; }
   h2 { font-size: 17px; font-weight: 500; margin: 40px 0 12px; }
@@ -83,6 +74,7 @@ TEMPLATE = """<!doctype html>
 </style>
 </head>
 <body>
+__SITE_HEAD__
 <main>
   <h1>Where Ontario's indexed record goes quiet</h1>
   <p class="sub">
@@ -195,8 +187,12 @@ def main() -> int:
         "<strong>This is probably a digitisation boundary, not history.</strong>"
     )
 
+    from concordance.chrome import ARTIFACT_CSS, masthead
+
     html = (
         TEMPLATE.replace("__DATA__", json.dumps(payload))
+        .replace("__CHROME_CSS__", ARTIFACT_CSS)
+        .replace("__SITE_HEAD__", masthead("What stopped", home="index.html"))
         .replace("__NMUNI__", str(payload["n_municipalities"]))
         .replace("__CLIFFN__", str(stop["municipalities"]))
         .replace("__CLIFFY__", str(stop["year"]))

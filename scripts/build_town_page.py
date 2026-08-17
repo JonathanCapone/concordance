@@ -22,6 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from concordance.chrome import ARTIFACT_CSS, masthead  # noqa: E402
 from concordance.models import Provenance, Record   # noqa: E402
 from concordance.science import series_from_records, trend  # noqa: E402
 
@@ -202,20 +203,18 @@ def main() -> int:
     )
 
     accuracy_text = accuracy_sentence()
+    chrome_css = ARTIFACT_CSS
+    head = masthead(html.escape(place), home="index.html")
     html_doc = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{html.escape(place)} &mdash; what the record says</title>
 <style>
-:root {{ --bg:#fbfaf8; --panel:#fff; --ink:#17150f; --muted:#6b6559; --line:#e2ded5;
-        --accent:#17150f; --warn:#b5651d; --bad:#c0392b; }}
-@media (prefers-color-scheme:dark) {{
-  :root {{ --bg:#14130f; --panel:#1c1a16; --ink:#f2efe8; --muted:#9b948a; --line:#2e2b25;
-          --accent:#f2efe8; --warn:#d99a5b; --bad:#e0736e; }} }}
+{chrome_css}
 *{{box-sizing:border-box}}
-body{{margin:0;padding:40px 24px 90px;background:var(--bg);color:var(--ink);
+body{{margin:0;background:var(--bg);color:var(--ink);
      font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}}
-main{{max-width:820px;margin:0 auto}}
+main{{max-width:820px;margin:0 auto;padding:40px 24px 90px}}
 h1{{font-size:30px;font-weight:500;margin:0 0 6px;letter-spacing:-.02em}}
 .sub{{color:var(--muted);margin:0 0 8px;max-width:66ch}}
 section{{background:var(--panel);border:1px solid var(--line);border-radius:10px;
@@ -238,7 +237,9 @@ td.q{{color:var(--muted);font-style:italic}}
 a{{color:inherit}}
 .caveat{{border-left:3px solid var(--line);padding-left:16px;color:var(--muted);
         font-size:14px;margin-top:30px;max-width:74ch}}
-</style></head><body><main>
+</style></head><body>
+{head}
+<main>
 <h1>{html.escape(place)}</h1>
 <p class="sub">
   {html.escape(str(main or "")).replace("_", " ")}.
