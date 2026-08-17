@@ -874,3 +874,29 @@ view still opens in place: one markup, no reload, nothing to flash.
 Third time this project has learned that inherited chrome carries
 inherited assumptions, and the first time it has a test that measures
 them.
+
+**It still jumped, and my verification was the reason I thought it
+didn't.** I measured at one viewport width -- 1280 -- and reported
+"identical to the pixel". At 1280 the front page's headline counts are
+hidden by a media query, so I had measured the one width where the
+difference could not appear. On a wide screen the counts were visible and
+53px tall against a 35px menu row, which made the front page's header
+71px against every other page's 54 and dropped the menu 9px. The counts
+are now held to the menu's own height: nothing at the far end of a header
+may decide where the menu sits.
+
+The other half was never the header at all. The map view is a fixed shell
+that never scrolls; the reader is a long document that always does. So
+every move between them added or removed a scrollbar and slid the whole
+layout 15px sideways. The gutter is now reserved on `html` AND `body`,
+because the two pages put their scroll container in different places --
+the first attempt named only `html` and did nothing on the front page,
+where `body` scrolls.
+
+Measured after, on the live site, across 1920/1440/1280 and every
+section: one menu position (297.8, 9.0), one header height (54.4), one
+right edge. The lesson is not about CSS. A single-width measurement
+reported a property that only holds at that width, and I published it as
+though it held everywhere -- the same shape as every ruler this project
+has already been burned by, in the one place I had just written a test to
+prevent it.
