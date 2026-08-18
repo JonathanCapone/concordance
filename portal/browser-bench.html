@@ -124,10 +124,12 @@ offline.</p>
 </div>
 
 <script type="module">
-const SYSTEM_SMALL = "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\").\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n";
+const SYSTEM_SMALL = "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\").\n2b. A COUNT is a measurement: \"75 elementary schools\" is value 75, unit\n   \"schools\". So is \"14 pumping stations\".\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n";
 const USER_TMPL = "Document: {title}\nPublisher: {publisher}\nYear: {year}\nPage: {page}\n\n--- BEGIN PAGE TEXT ---\n{text}\n--- END PAGE TEXT ---\n\nReturn the JSON array.";
 const PAGES = [{"identifier": "hamiltonadventur00unse", "title": "Hamilton : An Adventure in Good Living", "publisher": "unstated", "year": "1983", "page": 20, "text": "OEE\n\nWhen young Johnny and young\nKatie toddle off for their first day\nat school in Hamilton, chances\nare they'll be going just around\nthe corner.\n\nWith 75 elementary schools\nunder the aegis of the Hamilton\nBoard of Education, and 42\noperated by the Hamilton-\nWentworth Roman Catholic\nSeparate School Board, the city is\nwell served in every district. In\naddition, the Hamilton board\noperates 14 composite secondary\nschools, seven vocational schools,\nand four schools for the trainable\nretarded.\n\nThe separate school board,\nwhich functions throughout the\nentire region, has seven sec-\nondary schools in the city. On\nthe Mountain, Hillfield-\nStrathallan College is a private,\nnondenominational, coeduca-\ntional school offering a cur-\nriculum from kindergarten\nthrough grade 13.\n\nOn the regional level, the\nWentworth County Board of\nEducation is responsible for all\npublic schools outside the city\nlimits.\n\nThe three boards of education\nall operate within a framework\nprovided and supervised by the\nOntario Ministry of education.\nTrustees are voted in by the elec-\ntorate in the same year as the\nmunicipal elections.\n\nThrough the years Hamilton\nhas been in the forefront with\ninnovative ideas and was among\nthe first in the province to\nexperiment with team teaching,\nopen classrooms, and oppor-\ntunity classes for slow learners.\nAbout 4,000 pupils with excep-\ntional needs are in special schools\nor Classes, in some cases in insti-\ntutions operated by social-service\nagencies.\n\nOne 1971 innovation, which\ninitially had Doubting Thomases\nin the city predicting disaster,\nwas the opening of two schools\n\u2014 Sir Wilfrid Laurier Secondary\nand Elizabeth Bagshaw Elemen-\n\n18\n\ntary \u2014 under one roof. Far from\nbeing a failure, the scheme has\nproven to be remarkably success-\nful. Senior students help juniors\novercome reading weaknesses,\nand members of the Laurier foot-\nball team hold clinics for pupils\nin grades five and six. The lower\ngrades also receive guidance from\nmembers of the Laurier student\norchestra. It is an educational\napproach that benefits the\njuniors and provides a worth-\nwhile teaching experience for\nseniors.\n\nIn keeping with Canada\u2019s two-\nlanguage policy, all schools in the\nregion have compulsory French\nclasses. In the case of schools\nunder the Hamilton Board of\nEducation, instruction in French\nbegins in grade seven and con-\ntinues through secondary school.\nThere are also two \u201cFrench\nimmersion\u201d schools where\ninstruction begins at the kinder-\ngarten level, and for French-\nspeaking students at the high-\nschool level, George P. Vanier\nsecondary school offers credits\nfor the graduation diploma.\n\nVocational schools in the\nHamilton public-school system\nprovide instruction in various\nareas \u2014 such as hairdressing,\ntailoring, and restaurant service\n\u2014 to students over 14 years of\nage who have difficulty adjusting\nto the traditional academic cur-\nriculum.\n\nSchools that come under the\nHamilton- Wentworth Roman\nCatholic Separate School Board\nare structured very much like\nthose operated by the other two\nboards \u2014 that is, under cur-\nriculum guidelines laid down by\nthe provincial ministry of educa-\ntion. However, there are a few\ndifferences. Daily instruction in\nFrench starts in grade five, and\none school gives instruction\nexclusively in French from\nkindergarten to grade eight.\n\nAs is the case with other\nboards, separate schools are\nfinanced by provincial grants and\n\nWHT\n\n\u201cat\n\nmunicipal taxes, with one excep-\ntion. Public funding continues\nonly as far as grade 10; the high-\ner grades come under the juris-\ndiction of the Board of Gover-\nnors of the Roman Catholic\nHigh Schools, which is supported\nneither by provincial dollars nor\nby municipal taxes.\n\nThe Wentworth County\nBoard of Education covers an\narea that takes in the municipal-\nities of Ancaster, Dundas, Flam-\nborough, Glanbrook, and Stoney\nCreek. Because of the rural\n\nnature of the area, many students\n\nhave to travel more than a mile\n\nMe THTTTINHHTTISUHETT\nWHAT UATHHATD\nUOTE\n\nHTT\n\nAbove: The Education\nCentre houses\nHamilton\u2019s Board of\nEducation\n\nOpposite page: Leaves\nbegin to turn on the\nMcMaster University\ncampus\n\nBelow: Westdale\nSecondary School"}, {"identifier": "owensoundwaterpo24477", "title": "Owen Sound : water pollution control plant, annual report 1969", "publisher": "Ontario Water Resources Commission", "year": "1969", "page": 9, "text": "DESIGN DATA\n\nPROJECT NO.\n\n2-0069-60\n\nTREATMENT Primary\n\nDESIGN FLOW\n\n3.0 mgd\n\nDESIGN POPULATION\n\n25,000\n\nBOD - Raw Sewage\n- Removal\n\n180 mg/1\n40%\n\nSS - Raw Sewage\n- Removal\n\n200 mg/1\n65%\n\nSEWAGE PUMPING STATION\nScreening\n\n13/4&quot; spacing\n\nPumps\n\nType: Worthington\nSize: Three 3150 gpm @ 33' tdh\n(One diesel standby)\n\nPRIMARY TREATMENT\n\nComminution\n\nType: Barminutor\nSize: One Model C (36&quot;)\n\nGrit Removal\n\nType: Aerated\n\nSize: One 18^ X 13 X 12' (18,000 gal)\nRetention: 8.6 min\n\nPre-aeration Tank\n\nSize: One 23' 9&quot; X 13 X 12'\n\n(23,400 gal)\nRetention : 11.2 min\n\nAir Supply\n\nType: Sutorbilt\n\nSize: Two 408 scfm (o&gt; 6 psi\n\nPrimary Sedimentation\n\nType: Rex Linkbelt\n\nSize: Two 78 X 32 X 12^' (388,000 gal)\n\nRetention: 3. 11 hr\nLoading: Surface, 600 gal/ft2 /day\nWeir, 8,260 gal/ft/day\n\nCHLORINATION\n\nType: W &amp; T\n\nSize: One 2000 lb /day\n\nChlorine Contact Chamber\n\nSize: One 31 X 14 X 8' (21,700 gal)\nRetention: 11.2 min\n\nOUTFALL\n\n828' to Owen Sound\n\nSLUDGE HANDLING\n\nDigestion System - Two- stage\n\nPrimary \u2014\n\nType: PFT with one Sutorbilt\n\ncompressor\nSize: One 40' dia x 25' swd (31,400\n\ncu ft or 0. 196 mil gal)\nLoading: 2.75 lb/cu ft/mo\n\nSecondary \u2014\n\nSize: One 40' dia x 24^' swd (30, 800\n\ncu ft or 0. 192 mil gal)\nTotal Loading: 1.88 lb/cu ft/mo\n\nWEST SIDE PUMPING STATION\n\nOne - 3916 gpm Chicago Pump\nTwo - 1000 gpm Smart- Turner\nStandby - Diesel generator\n\n3"}, {"identifier": "owensoundwaterpo24477", "title": "Owen Sound : water pollution control plant, annual report 1969", "publisher": "Ontario Water Resources Commission", "year": "1969", "page": 10, "text": "REVIEW\n\nDuring 1969, modifications to the West Side pumping station included an\nadditional pump with a capacity of more than 3800 gallons per minute, and\na generator which will operate the station in the event of power failures .\nWith these modifications, the pumping station is expected to handle the\nheavy flows more easily.\n\nNo additions to enlarge capacity were made at the plant. As a result ,\nplant staff still had problems with hydraulic overloading.\n\nFrom the graphs, it can be seen that 80% of the time the plant is most\nlikely operating above the design capacity. The average flow has remain-\ned constant for the last year.\n\nEXPENDITURES\n\nThe total operating cost for treating 1475 million gallons of sewage in 1969\nwas $53, 549. 66. Unit costs were $36. 30 per million gallons treated and\nfive cents per pound of BOD removed.\n\nPLANT FLOWS and CHLORI NATION\n\nThe total flow for the year was 1475.2 million gallons, with an average\ndaily flow of four million gallons. The maximum and minimum daily flows\nwere 8. 8 million gallons in November and 2.1 million gallons in July.\n\nAn average of 2696 pounds of chlorine was used per month. The opera-\ntion used 21.9 pounds of chlorine per million gallons of flow at an average\ndosage of 2.2 mg/1. This maintained an average residual of 0.5 mg/1 in\nthe final effluent."}, {"identifier": "owensoundwaterpo24477", "title": "Owen Sound : water pollution control plant, annual report 1969", "publisher": "Ontario Water Resources Commission", "year": "1969", "page": 11, "text": "PLANT EFFICIENCY\n\nThe average influent BOD and suspended solids were 104 mg/1 and 224 mg/1\nrespectively. The average effluent BOD and suspended solids were 37 mg/1\nand 36 mg/1 respectively, giving an average removal of 64% BOD and 84%\nsuspended solids. A total of 1243 cu. ft. of grit was removed during the\nyear, for an average of 104 cu. ft. of grit removed for each one million\ngallons of sewage treated.\n\nSLUDGE DIGESTION\n\nJust over three million gallons of raw sludge were pumped to the digesters\nduring 1969. The average monthly volume of 258,000 gallons contained\n7.3% total solids and 47% volatile solids.\n\nSludge totalling 1,495,000 gallons was removed from the digesters and\nhauled away. The average monthly volume of 125,000 gallons contained\n8. 5% total solids and 28% volatile solids.\n\nCONCLUSIONS\n\n1. The plant operated above the hydraulic design capacity 85% of the time ,\nand increasing the pumping capacity of the West Side pumping station ag-\ngravated this problem. If a combined sewer separation program is financ-\nially impossible, immediate consideration should be given to expanding the\nplant's capacity.\n\n2. Due to the high flows throughout the year, grit facilities did not op-\nerate effectively. As a result, large amounts of grit were passed on to\nthe primary clarifiers and subsequently pumped to the digester. This\ncontinues to be a problem.\n\n3 . The influent and effluent BOD and suspended solids were similar to the\nprevious year's values. As a result, the plant operated at the same ef-\nficiency as in 1968."}];
-const PROMPTS = [{"name": "v5 (counts + units)", "system": "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\"). A COUNT is a measurement: \"75 elementary schools\"\n   is value 75, unit \"schools\". So is \"14 pumping stations\".\n   NEVER leave \"unit\" empty. If the page gives no symbol, name what is being\n   counted (\"people\", \"schools\", \"hours\"). 1960s scans print mg/L as \"mg/1\";\n   record that as \"mg/L\".\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n"}];
+const PROMPTS = [{"name": "shipped", "system": "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\").\n2b. A COUNT is a measurement: \"75 elementary schools\" is value 75, unit\n   \"schools\". So is \"14 pumping stations\".\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n"}];
+const TWO_PASS = false;
+const CHUNKED = true;
 
 const $ = id => document.getElementById(id);
 const status = m => { $("status").textContent = m; };
@@ -168,8 +170,26 @@ function parseRecords(raw) {
    server's verification against archive.org is the authority, and its
    verdict is shown when records are sent. */
 const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").trim();
+/* A period survives normalisation because decimals need it, which means a
+   quote the model marks with an ellipsis ("...the total flow was 1475.2
+   million...") cannot match the page. Drop dots that are not between two
+   digits: the ellipsis goes, 1475.2 stays whole, and 1475.2 still cannot
+   match 14752. The server's verifier tokenises and is tolerant of exactly
+   this -- a pre-filter must never be stricter than the check it fronts for. */
+const joinSplitNumbers = s => String(s || "")
+  .replace(/(\d),\s+(?=\d)/g, "$1,")
+  .replace(/(\d)\.\s+(?=\d)/g, "$1.");
+/* Scanning splits numbers -- a page can read "8. 8 million gallons" where the
+   model sensibly writes 8.8 -- so the join has to happen on BOTH sides before
+   the quote is looked for. A period also survives normalisation because
+   decimals need it, which would otherwise let an ellipsis the model used to
+   mark a join stop the sentence matching. Drop dots that are not between two
+   digits, after joining. The server's verifier tokenises and tolerates all of
+   this; a pre-filter must never be stricter than the check it fronts for. */
+const forMatch = s => norm(joinSplitNumbers(s)).replace(/(?<!\d)\.(?!\d)/g, " ")
+                             .replace(/\s+/g, " ").trim();
 function quoteOnPage(quote, pageText) {
-  const q = norm(quote), p = norm(pageText);
+  const q = forMatch(quote), p = forMatch(pageText);
   return q.length > 8 && p.includes(q.slice(0, 160));
 }
 function valueInQuote(value, quote) {
@@ -190,10 +210,146 @@ function valueInQuote(value, quote) {
   if (isFinite(n)) {
     const tokens = direct.match(/(?<![\d.+-])(?:\d+(?:\.\d+)?|\.\d+)(?![\d.])/g) || [];
     if (tokens.some(t => Number(t) === n)) return true;
+    /* 1960s scanning splits a figure with spaces: "$53, 549. 66" is one
+       number and "36. 30" is 36.3. The server joins those before judging
+       (contribute._NUMBER_TEXT allows the spaces), so this must too. */
+    const joined = String(quote || "")
+      .replace(/(\d),\s+(?=\d)/g, "$1,")
+      .replace(/(\d)\.\s+(?=\d)/g, "$1.")
+      .replace(/(?<=\d),(?=\d{3}(?!\d))/g, "");
+    const joinedTokens = joined.match(/(?<![\d.+-])(?:\d+(?:\.\d+)?|\.\d+)(?![\d.])/g) || [];
+    if (joinedTokens.some(t => Number(t) === n)) return true;
+    /* And a page may spell the number out -- "seven vocational schools". The
+       server reads those through numerals.states_value; this covers the small
+       integers that actually occur in these documents. */
+    const WORDS = { zero:0, one:1, two:2, three:3, four:4, five:5, six:6,
+                    seven:7, eight:8, nine:9, ten:10, eleven:11, twelve:12,
+                    thirteen:13, fourteen:14, fifteen:15, sixteen:16,
+                    seventeen:17, eighteen:18, nineteen:19, twenty:20,
+                    thirty:30, forty:40, fifty:50, sixty:60, seventy:70,
+                    eighty:80, ninety:90, hundred:100, thousand:1000 };
+    if (norm(quote).split(" ").some(w => WORDS[w] === n)) return true;
   }
   return false;
 }
 
+/* ---- a unit is a name, not a measurement -------------------------------
+   A specification sheet writes "Size: Two 408 scfm", and a small model reads
+   the count: value 2, unit "408 scfm". The reading is in the record, but in
+   the wrong field, and it publishes as though the plant had two of something
+   unnamed. Every such record on the gold pages has the same signature -- a
+   digit in the unit that is not welded to a letter. Real units keep theirs
+   welded: gal/ft2/day, m3, ft2. This rule was written after reading those
+   errors, so it is fitted to what they look like; it removed six wrong
+   records and no right ones there, and nothing at all from the run before
+   the page split, which is the only evidence it has so far. */
+const unitIsAUnit = u => !/(?<![A-Za-z])\d/.test(String(u || ""));
+
+/* ---- reading a dense page in parts -------------------------------------
+   Measured cause, not a guess. On a design sheet the model returns about six
+   records whatever the page holds -- six of twenty-six -- and the six are the
+   six at the top. It is not failing to READ "Retention: 8.6 min"; it stops
+   before reaching it. Three attempts to instruct it out of that habit were
+   each measured and each made the reader worse, so this changes the question
+   instead: hand it less text at a time. Blocks separated by blank lines are
+   the atoms -- a paragraph, or one labelled block of a sheet -- packed into
+   parts of at most MAX_PART_NUMBERS numeric tokens. A page with few numbers
+   comes back whole and is read exactly as it was before. */
+const NL = String.fromCharCode(10);
+const NUM_RE = /(?<![\d.+-])(?:\d[\d,]*(?:\.\s*\d+)?|\.\d+)(?![\d.])/g;
+const MAX_PART_NUMBERS = 6;
+const MAX_PART_CHARS = 2200;
+const OVERLAP_BLOCKS = 2;
+
+function splitPage(text) {
+  const blocks = String(text || "").split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+  if (!blocks.length) return [String(text || "")];
+
+  const starts = [0];
+  let nums = 0, chars = 0;
+  for (let i = 0; i < blocks.length; i++) {
+    const n = (blocks[i].match(NUM_RE) || []).length;
+    if (i > starts[starts.length - 1] &&
+        (nums + n > MAX_PART_NUMBERS || chars + blocks[i].length > MAX_PART_CHARS)) {
+      starts.push(i); nums = 0; chars = 0;
+    }
+    nums += n; chars += blocks[i].length + 2;
+  }
+  if (starts.length < 2) return [String(text || "")];
+
+  /* Each part carries the blocks just before it, because a sheet puts the
+     name on one line and the number on the next: "Grit Removal" / "Type:
+     Aerated" / "Size: One 18^ X 13 X 12' (18,000 gal)". Split between them
+     and the reading survives with no idea what it measured. Parts also carry
+     the page's opening line, because that is where the sheet says "DESIGN
+     DATA" -- the word deciding whether these are design values or things
+     somebody measured. */
+  const heading = blocks[0].split(NL)[0].trim();
+  const parts = [];
+  for (let k = 0; k < starts.length; k++) {
+    const from = Math.max(0, starts[k] - (k ? OVERLAP_BLOCKS : 0));
+    const to = k + 1 < starts.length ? starts[k + 1] : blocks.length;
+    const own = blocks.slice(starts[k], to).join(NL + NL);
+    if (!(own.match(NUM_RE) || []).length) continue;   // no digits, nothing to read
+    let body = blocks.slice(from, to).join(NL + NL);
+    if (heading && body.indexOf(heading) !== 0) body = heading + NL + NL + body;
+    parts.push(body);
+  }
+  return parts.length ? parts : [String(text || "")];
+}
+
+/* The overlap means two parts can hand back the same reading. A duplicate is
+   not a second observation. */
+function dedupeRecords(records) {
+  const seen = new Set(), out = [];
+  for (const r of records) {
+    const key = [r.kind, r.value, norm(r.unit), norm(r.source_text).slice(0, 60)].join("|");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(r);
+  }
+  return out;
+}
+
+
+
+/* ---- second pass: the numbers the first answer did not account for ----
+   Telling a small model to "extract EVERY measurement" was measured and made
+   things worse -- it read PROJECT NO. 2-0069-60 as the value 2. So this does
+   not exhort; it computes. Every numeric token on the page that no produced
+   record quotes is listed back to the model, which decides one at a time
+   whether it is a measurement. The page, not the instruction, supplies the
+   completeness. */
+function unaccountedNumbers(pageText, records) {
+  const claimed = new Set();
+  for (const r of records) {
+    for (const t of String(r.source_text || "").match(NUM_RE) || []) {
+      claimed.add(t.replace(/[,\s]/g, ""));
+    }
+  }
+  const left = [];
+  for (const t of joinSplitNumbers(pageText).match(NUM_RE) || []) {
+    const key = t.replace(/[,\s]/g, "");
+    if (!claimed.has(key) && left.indexOf(t) === -1) left.push(t);
+  }
+  return left;
+}
+
+async function sweepPage(doc, pageNo, text, first) {
+  const left = unaccountedNumbers(text, first);
+  if (left.length < 3) return [];
+  const ask = fillTemplate(doc, pageNo, text) + NL + NL
+    + "You already reported these values: "
+    + (first.map(r => r.value).join(", ") || "(none)") + "." + NL
+    + "The page also contains these numbers, which you did not report: "
+    + left.slice(0, 40).join(", ") + "." + NL
+    + "For each one that is a MEASUREMENT you missed, output a record in the "
+    + "same JSON format, quoting the exact line it sits on. Skip any number "
+    + "that is a project number, a model number, a date, a page number, or "
+    + "part of a name. Return only the JSON array.";
+  const raw = await readPage(ask, "sweep for missed numbers", SYSTEM_SMALL);
+  return parseRecords(raw).filter(r => r && typeof r === "object");
+}
 
 /* The reader's own prompt assembly, so the model sees what it sees there. */
 function fillTemplate(doc, pageNo, text) {
@@ -271,26 +427,41 @@ go.addEventListener("click", async () => {
     const p = PAGES[i];
     const label = prompt.name + " — page " + (i + 1) + "/" + PAGES.length + " — " + p.identifier + " p." + p.page;
     const t0 = performance.now();
-    let raw = "";
-    try { raw = await readPage(fillTemplate(p, p.page, p.text), label, prompt.system); }
-    catch (e) { status(label + " failed: " + String(e).slice(0, 120)); }
+    const parts = CHUNKED ? splitPage(p.text) : [p.text];
+    let raw = "", firstRecords = [];
+    for (let k = 0; k < parts.length; k++) {
+      const partLabel = parts.length > 1
+        ? label + " (part " + (k + 1) + "/" + parts.length + ")" : label;
+      let chunkRaw = "";
+      try { chunkRaw = await readPage(fillTemplate(p, p.page, parts[k]), partLabel, prompt.system); }
+      catch (e) { status(partLabel + " failed: " + String(e).slice(0, 120)); }
+      raw += chunkRaw;
+      firstRecords = firstRecords.concat(
+        parseRecords(chunkRaw).filter(r => r && typeof r === "object"));
+    }
+    firstRecords = dedupeRecords(firstRecords);
+    let extra = [];
+    if (TWO_PASS) {
+      try { extra = await sweepPage(p, p.page, p.text, firstRecords); }
+      catch (e) { status(label + " sweep failed: " + String(e).slice(0, 90)); }
+    }
     const secs = (performance.now() - t0) / 1000;
 
     const produced = [], passed = [];
-    for (const r of parseRecords(raw)) {
+    for (const r of firstRecords.concat(extra)) {
       if (!r || typeof r !== "object") continue;
       const quote = String(r.source_text || "");
       const onPage = quoteOnPage(quote, p.text);
       const inQuote = valueInQuote(r.value, quote);
       /* The reader sends a record only when the sentence is on the page and
          the value is in it (or there is no value to check). Same rule here. */
-      const ok = !!quote && onPage && inQuote !== false;
+      const ok = !!quote && onPage && inQuote !== false && unitIsAUnit(r.unit);
       const rec = { kind: r.kind, parameter: r.parameter, value: r.value,
                     unit: r.unit, source_text: quote, passed: ok };
       produced.push(rec);
       if (ok) passed.push(rec);
     }
-    run.pages.push({ identifier: p.identifier, page: p.page, seconds: +secs.toFixed(1),
+    run.pages.push({ identifier: p.identifier, page: p.page, seconds: +secs.toFixed(1), parts: parts.length,
                      raw_chars: raw.length, raw: raw.slice(0, 600), records: produced });
 
     const row = document.createElement("tr");

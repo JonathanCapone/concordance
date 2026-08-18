@@ -999,3 +999,77 @@ reported a property that only holds at that width, and I published it as
 though it held everywhere -- the same shape as every ruler this project
 has already been burned by, in the one place I had just written a test to
 prevent it.
+
+## 2026-08-18 — the model was not the problem; the question was
+
+**32.4% recall to 57.4%, by handing it less text.** On the Owen Sound design
+sheet the reader produced six records out of twenty-six and stopped. The six
+were the six at the top of the page. It is not that the model cannot read
+`Retention: 8.6 min` — hand it that block alone and it reads it correctly.
+It stops because it has already written about six records, and about six
+records is how many it writes.
+
+Three attempts to instruct it out of that habit are now in the file, each
+measured, each rejected. "Extract EVERY measurement" made it read
+`PROJECT NO. 2-0069-60` as the value 2. Telling it a specification sheet is a
+list of measurements did the same. The third was cleverer and no better: an
+evidence-led second pass that *computed* every number on the page no record
+had quoted and listed them back, so the page rather than the instruction
+supplied the completeness. It returned the first pass restated — twelve
+records on the design sheet, all six top values twice — cost twenty points of
+precision, and ran two to five times longer. Recall did not move at all:
+32.4% before, 32.4% after.
+
+So stop arguing with it. The page is now split on blank lines into parts of at
+most six numeric tokens, and each part is a separate question. The design
+sheet becomes eleven parts; a prose page with few numbers stays whole and is
+read exactly as before. Two properties had to be built in and are now tested:
+each part carries the two blocks before it, because a sheet puts the name on
+one line and the number on the next and a split between them publishes
+`Size = 18,000 gallons` with no idea what was 18,000 gallons; and every part
+carries the page's opening line, because `DESIGN DATA` is the word that
+decides whether these are design values or things somebody measured.
+
+That page went from 6 records to 26, and from 15% recall to 62%. Across all
+four gold pages: **57.4% recall, 81.2% precision, 67.2% F1**, against 32.4%
+/ 84.6% / 46.8%. Kind accuracy went up too, 95.5% to 97.4%.
+
+**What it costs.** Twenty model calls where there were four. A dense page is
+now several minutes rather than one, and a town read is correspondingly
+longer. That is the price of the twenty-five points and it is paid by the
+visitor, so the reader names the part it is on while it works.
+
+**One new failure mode, caught and filtered.** Split into parts, the model
+started reading the *count*: `Size: Two 408 scfm` came back as value 2, unit
+"408 scfm". The measurement is in the record but in the wrong field, and it
+publishes as two of something unnamed. Every instance has the same signature —
+a digit in the unit not welded to a letter, where real units keep theirs
+welded (`gal/ft2/day`, `m3`). The rule removed six wrong records and no right
+ones, and removes nothing at all from the run before the split. It was written
+after reading those errors, so it is fitted to what they look like; that is
+said plainly in the code, because a rule invented from the answer key is worth
+less than one that was not.
+
+**A fix that looked free and was not.** Nine spurious records survive, and
+eight are real readings the answer key does not list on their own. The ninth
+is a genuine misreading: the page prints `0. 196 mil gal` and the reader
+returned 196, out by a factor of a thousand. The evidence check already joins
+numbers a scan has split — that is why `8. 8 million gallons` matches 8.8 — but
+it tests the *unjoined* text first and accepts a match there, which is how a
+fragment gets through. Preferring the joined form fixes 196 and lifts
+precision to 84.8%. It also refuses `$53, 549. 66` read as 53549.66, which is
+exactly right. Rejected: a pre-filter must never be stricter than the referee
+it fronts for, and this project has already published a subset of two towns by
+forgetting that.
+
+**Two hypotheses killed on the way, both by measurement.** The benchmark ran
+at a tenth of normal speed and I blamed Chrome's background-tab timer clamp,
+then wrote a MessageChannel workaround that appeared to give an eightfold
+speed-up. A five-second probe said `setTimeout(fn, 0)` still fires 215 times a
+second in a hidden tab — far more than one token needs — so the clamp was
+never the cause and the eightfold reading was GPU contention moving underneath
+me. The workaround was deleted before it reached the reader. The actual cause
+was a browser pane that is not compositing frames, plus 7.5 GB of 8 GB of
+video memory held by everything else open on the machine. Nothing in this
+repository could have fixed it, and a fix shipped on that belief would have
+been permanent.

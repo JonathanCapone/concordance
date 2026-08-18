@@ -37,10 +37,12 @@ Ingersoll was read this way — sixteen pages of prose, twenty-three records
 published, refusals shown on screen as they happened.
 
 The browser reader is deliberately partial, and now measured: against the four
-pages a person read by hand it finds **32.4%** of the values they found, and
-**84.6%** of what it publishes matches one of them. It invented nothing on any
-of the four — every record that missed the answer key was a real value whose
-unit it left blank or worded differently. For the rest of a town's record there is the installed
+pages a person read by hand it finds **57.4%** of the values they found, and
+**81.2%** of what it publishes matches one of them. It fabricated nothing —
+every number it published appears in the sentence it quoted. Of the nine
+records that missed the answer key, eight are real readings the key does not
+list on their own, and one is a real misreading: where the page prints
+"0. 196 mil gal" it returned 196. For the rest of a town's record there is the installed
 reader below, which uses a larger model and scores 96.8% precision on the same
 pages. Method and full report: [`data/results/browser_gold_report.json`](data/results/browser_gold_report.json).
 

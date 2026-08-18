@@ -121,6 +121,29 @@ SMALL_SYSTEM_V5 = SMALL_SYSTEM_V4.replace(
 
 PROMPTS = [("shipped", SMALL_SYSTEM)]
 
+#: Read a dense page in parts rather than in one question. See splitPage()
+#: in the template for why. Measured before it ships anywhere.
+CHUNKED = True
+
+#: A second, evidence-led pass over the numbers the first answer left
+#: unaccounted for. Rather than exhorting the model ("extract EVERY
+#: measurement" was measured on v4 and made it worse), sweepPage() computes
+#: the numeric tokens on the page that no record quotes and lists them back.
+#:
+#: MEASURED 2026-08-18 AND REJECTED. Against the same four gold pages:
+#: recall 32.4% -> 32.4%, precision 84.6% -> 64.7%, 40s/page -> 53-201s.
+#: It found nothing new and cost twenty points of precision. What the second
+#: pass actually returns is the FIRST pass restated: on Owen Sound p.9 all
+#: twelve records were the same six top-block values a second time, while the
+#: twenty equipment specifications below them ("Retention: 8.6 min") stayed
+#: unread. Two of the new records were wrong in the way that matters most --
+#: "average residual = 1" citing a sentence that says 0.5.
+#:
+#: The numbers this leaves on the page are not numbers the model overlooked.
+#: They are numbers it cannot read in that layout, and naming them does not
+#: change that. Left False; flip to re-run.
+TWO_PASS = False
+
 #: Kept, not deleted: both were measured and both made the reader worse.
 #: Re-runnable by putting them back in PROMPTS.
 REJECTED = [("+ spec-sheet rule", SMALL_SYSTEM_V3),
@@ -197,12 +220,53 @@ const SYSTEM_SMALL = __SYSTEM_JSON__;
 const USER_TMPL = __USER_TMPL_JSON__;
 const PAGES = __PAGES_JSON__;
 const PROMPTS = __PROMPTS_JSON__;
+const TWO_PASS = __TWO_PASS__;
+const CHUNKED = __CHUNKED__;
 
 const $ = id => document.getElementById(id);
 const status = m => { $("status").textContent = m; };
 const bar = $("bar"), go = $("go");
 
 __CHECKS_JS__
+
+
+/* ---- second pass: the numbers the first answer did not account for ----
+   Telling a small model to "extract EVERY measurement" was measured and made
+   things worse -- it read PROJECT NO. 2-0069-60 as the value 2. So this does
+   not exhort; it computes. Every numeric token on the page that no produced
+   record quotes is listed back to the model, which decides one at a time
+   whether it is a measurement. The page, not the instruction, supplies the
+   completeness. */
+function unaccountedNumbers(pageText, records) {
+  const claimed = new Set();
+  for (const r of records) {
+    for (const t of String(r.source_text || "").match(NUM_RE) || []) {
+      claimed.add(t.replace(/[,\\s]/g, ""));
+    }
+  }
+  const left = [];
+  for (const t of joinSplitNumbers(pageText).match(NUM_RE) || []) {
+    const key = t.replace(/[,\\s]/g, "");
+    if (!claimed.has(key) && left.indexOf(t) === -1) left.push(t);
+  }
+  return left;
+}
+
+async function sweepPage(doc, pageNo, text, first) {
+  const left = unaccountedNumbers(text, first);
+  if (left.length < 3) return [];
+  const ask = fillTemplate(doc, pageNo, text) + NL + NL
+    + "You already reported these values: "
+    + (first.map(r => r.value).join(", ") || "(none)") + "." + NL
+    + "The page also contains these numbers, which you did not report: "
+    + left.slice(0, 40).join(", ") + "." + NL
+    + "For each one that is a MEASUREMENT you missed, output a record in the "
+    + "same JSON format, quoting the exact line it sits on. Skip any number "
+    + "that is a project number, a model number, a date, a page number, or "
+    + "part of a name. Return only the JSON array.";
+  const raw = await readPage(ask, "sweep for missed numbers", SYSTEM_SMALL);
+  return parseRecords(raw).filter(r => r && typeof r === "object");
+}
 
 /* The reader's own prompt assembly, so the model sees what it sees there. */
 function fillTemplate(doc, pageNo, text) {
@@ -280,26 +344,41 @@ go.addEventListener("click", async () => {
     const p = PAGES[i];
     const label = prompt.name + " — page " + (i + 1) + "/" + PAGES.length + " — " + p.identifier + " p." + p.page;
     const t0 = performance.now();
-    let raw = "";
-    try { raw = await readPage(fillTemplate(p, p.page, p.text), label, prompt.system); }
-    catch (e) { status(label + " failed: " + String(e).slice(0, 120)); }
+    const parts = CHUNKED ? splitPage(p.text) : [p.text];
+    let raw = "", firstRecords = [];
+    for (let k = 0; k < parts.length; k++) {
+      const partLabel = parts.length > 1
+        ? label + " (part " + (k + 1) + "/" + parts.length + ")" : label;
+      let chunkRaw = "";
+      try { chunkRaw = await readPage(fillTemplate(p, p.page, parts[k]), partLabel, prompt.system); }
+      catch (e) { status(partLabel + " failed: " + String(e).slice(0, 120)); }
+      raw += chunkRaw;
+      firstRecords = firstRecords.concat(
+        parseRecords(chunkRaw).filter(r => r && typeof r === "object"));
+    }
+    firstRecords = dedupeRecords(firstRecords);
+    let extra = [];
+    if (TWO_PASS) {
+      try { extra = await sweepPage(p, p.page, p.text, firstRecords); }
+      catch (e) { status(label + " sweep failed: " + String(e).slice(0, 90)); }
+    }
     const secs = (performance.now() - t0) / 1000;
 
     const produced = [], passed = [];
-    for (const r of parseRecords(raw)) {
+    for (const r of firstRecords.concat(extra)) {
       if (!r || typeof r !== "object") continue;
       const quote = String(r.source_text || "");
       const onPage = quoteOnPage(quote, p.text);
       const inQuote = valueInQuote(r.value, quote);
       /* The reader sends a record only when the sentence is on the page and
          the value is in it (or there is no value to check). Same rule here. */
-      const ok = !!quote && onPage && inQuote !== false;
+      const ok = !!quote && onPage && inQuote !== false && unitIsAUnit(r.unit);
       const rec = { kind: r.kind, parameter: r.parameter, value: r.value,
                     unit: r.unit, source_text: quote, passed: ok };
       produced.push(rec);
       if (ok) passed.push(rec);
     }
-    run.pages.push({ identifier: p.identifier, page: p.page, seconds: +secs.toFixed(1),
+    run.pages.push({ identifier: p.identifier, page: p.page, seconds: +secs.toFixed(1), parts: parts.length,
                      raw_chars: raw.length, raw: raw.slice(0, 600), records: produced });
 
     const row = document.createElement("tr");
@@ -367,6 +446,8 @@ def main() -> int:
         "__CHECKS_JS__": CHECKS_JS,
         "__SYSTEM_JSON__": json.dumps(SMALL_SYSTEM),
         "__PROMPTS_JSON__": json.dumps([{"name": n, "system": t} for n, t in PROMPTS]),
+        "__TWO_PASS__": "true" if TWO_PASS else "false",
+        "__CHUNKED__": "true" if CHUNKED else "false",
         "__USER_TMPL_JSON__": json.dumps(USER_TEMPLATE),
         "__PAGES_JSON__": json.dumps(pages),
     }.items():

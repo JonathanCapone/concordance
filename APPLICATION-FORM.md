@@ -7,9 +7,13 @@ are checked by `scripts/check_form.py`; the limits are the form's own.
 > **Correction after submission.** The Proposed approach answer as sent said
 > the browser reader "finds roughly half of the relevant statements on a
 > page". That figure had never been measured for the combination visitors
-> run. Measured on 2026-08-18 against the same four gold pages it reads 32.4%
-> recall at 84.6% precision -- 17.6% before two repairs made the same day. The text below carries the measured figure; the
-> submitted text carried the estimate.
+> run. Measured on 2026-08-18 against the same four gold pages it read 32.4%
+> recall at 84.6% precision -- 17.6% before two repairs made the same day.
+> Later the same day, reading each page in parts instead of whole took it to
+> **57.4% recall at 81.2% precision**, which is what the text below carries.
+> The submitted text carried an estimate that happened to land near the
+> figure the tool reached afterwards; it was not a measurement when it was
+> written, and that is the part worth correcting.
 
 ---
 
@@ -58,7 +62,7 @@ Historical OCR often preserves prose more reliably than tables. In these reports
 
 The pipeline begins with a low-cost local classifier that sorts pages into prose, table, figure, or skip. A language model running on the contributor's computer converts selected prose pages into structured records. Each statement must be classified as an observed measurement, design specification, legal limit, or author's conclusion. This prevents a plant's rated capacity, for example, from being mistaken for the amount that actually flowed through it.
 
-Every proposed record must include supporting text. The verifier confirms that the quotation and number appear in the page's OCR layer, and the page link lets a person compare that evidence with the scan. These checks prevent a large class of fabricated records, while the benchmark measures the errors that remain. Measured against four hand-read pages, the browser reader finds 32.4% of the values a person found, publishes at 84.6% precision, and invented nothing on any of them.
+Every proposed record must include supporting text. The verifier confirms that the quotation and number appear in the page's OCR layer, and the page link lets a person compare that evidence with the scan. These checks prevent a large class of fabricated records, while the benchmark measures the errors that remain. Measured against four hand-read pages, the browser reader finds 57.4% of the values a person found, publishes at 81.2% precision, and fabricated nothing: every number it published appears in the sentence it quoted.
 
 The fellowship would begin by freezing an approximately 200-page, hand-labelled benchmark before further tuning. It would cover different eras, agencies, document types, and measurement classes, with precision and recall reported for each category. Only classes reaching 95% precision would enter the dataset; lower-performing classes would remain labelled finding aids.
 

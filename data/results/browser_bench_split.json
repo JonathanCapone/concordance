@@ -1,0 +1,628 @@
+{
+ "model": "Qwen3.5-4B-q4f16_1-MLC",
+ "engine": "web-llm@0.2.84",
+ "prompt": "shipped (counted nouns) + page read in parts",
+ "pages": [
+  {
+   "identifier": "hamiltonadventur00unse",
+   "page": 20,
+   "seconds": 283.2,
+   "parts": 2,
+   "records": [
+    {
+     "kind": "observation",
+     "parameter": "elementary schools",
+     "value": 75,
+     "unit": "schools",
+     "source_text": "With 75 elementary schools under the aegis of the Hamilton Board of Education, and 42 operated by the Hamilton-Wentworth Roman Catholic Separate School Board, the city is well served in every district.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "secondary schools (Hamilton board)",
+     "value": 14,
+     "unit": "schools",
+     "source_text": "In addition, the Hamilton board operates 14 composite secondary schools, seven vocational schools, and four schools for the trainable retarded.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "vocational schools (Hamilton board)",
+     "value": 7,
+     "unit": "schools",
+     "source_text": "In addition, the Hamilton board operates 14 composite secondary schools, seven vocational schools, and four schools for the trainable retarded.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "schools for trainable retarded (Hamilton board)",
+     "value": 4,
+     "unit": "schools",
+     "source_text": "In addition, the Hamilton board operates 14 composite secondary schools, seven vocational schools, and four schools for the trainable retarded.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "secondary schools (separate school board)",
+     "value": 7,
+     "unit": "schools",
+     "source_text": "",
+     "passed": false
+    }
+   ]
+  },
+  {
+   "identifier": "owensoundwaterpo24477",
+   "page": 9,
+   "seconds": 295.8,
+   "parts": 11,
+   "records": [
+    {
+     "kind": "design",
+     "parameter": "flow",
+     "value": 3,
+     "unit": "mgd",
+     "source_text": "DESIGN FLOW\n3.0 mgd",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "population",
+     "value": 25000,
+     "unit": "",
+     "source_text": "DESIGN POPULATION\n25,000",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "BOD removal",
+     "value": 180,
+     "unit": "mg/L",
+     "source_text": "- Removal\n180 mg/1",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "% BOD removal",
+     "value": 40,
+     "unit": "%",
+     "source_text": "- Removal\n180 mg/1\n40%",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "SS - Raw Sewage Removal",
+     "value": 180,
+     "unit": "mg/L",
+     "source_text": "180 mg/1",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "SS - Raw Sewage Removal",
+     "value": 40,
+     "unit": "%",
+     "source_text": "40%",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "SS - Raw Sewage Removal",
+     "value": 200,
+     "unit": "mg/L",
+     "source_text": "200 mg/1",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "SS - Raw Sewage Removal",
+     "value": 65,
+     "unit": "%",
+     "source_text": "65%",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "Screening Spacing",
+     "value": 3.25,
+     "unit": "\" (inches)",
+     "source_text": "\"13/4\" spacing",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "pump spacing",
+     "value": 3.25,
+     "unit": "feet",
+     "source_text": "13/4&quot; spacing",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "pump type",
+     "value": 0,
+     "unit": "",
+     "source_text": "Type: Worthington",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "pump size",
+     "value": 3,
+     "unit": "",
+     "source_text": "(One diesel standby)",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "pump flow rate",
+     "value": 3150,
+     "unit": "gpm",
+     "source_text": "(One diesel standby)",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "pump head",
+     "value": 33,
+     "unit": "'tdh",
+     "source_text": "(One diesel standby)",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "# of pumps",
+     "value": 3,
+     "unit": "",
+     "source_text": "Size: Three 3150 gpm @ 33' tdh",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Grit Removal Size",
+     "value": 18000,
+     "unit": "gal",
+     "source_text": "Size: One 18^ X 13 X 12' (18,000 gal)",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Grit Removal Retention",
+     "value": 8.6,
+     "unit": "min",
+     "source_text": "Retention: 8.6 min",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Pre-aeration Tank Size",
+     "value": 23400,
+     "unit": "gal",
+     "source_text": "(23,400 gal)",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Pre-aeration Tank Retention",
+     "value": 11.2,
+     "unit": "min",
+     "source_text": "Retention : 11.2 min",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Air Supply Size",
+     "value": 2,
+     "unit": "408 scfm",
+     "source_text": "Size: Two 408 scfm (o&gt; 6 psi",
+     "passed": false,
+     "refused_because": "the unit holds a measurement, not a unit"
+    },
+    {
+     "kind": "design",
+     "parameter": "Primary Sedimentation Size",
+     "value": 2,
+     "unit": "78 X 32 X 12^'",
+     "source_text": "Size: Two 78 X 32 X 12^' (388,000 gal)",
+     "passed": false,
+     "refused_because": "the unit holds a measurement, not a unit"
+    },
+    {
+     "kind": "design",
+     "parameter": "Retention",
+     "value": 3.11,
+     "unit": "hr",
+     "source_text": "Retention: 3. 11 hr",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Loading (Surface)",
+     "value": 600,
+     "unit": "gal/ft2 /day",
+     "source_text": "Loading: Surface, 600 gal/ft2 /day",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Loading (Weir)",
+     "value": 8260,
+     "unit": "gal/ft/day",
+     "source_text": "Loading: Surface, 600 gal/ft2 /day\nWeir, 8,260 gal/ft/day",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Chlorination Size",
+     "value": 2000,
+     "unit": "lb /day",
+     "source_text": "Size: One 2000 lb /day",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Size",
+     "value": 1,
+     "unit": "2000 lb/day",
+     "source_text": "Size: One 2000 lb /day",
+     "passed": false,
+     "refused_because": "the unit holds a measurement, not a unit"
+    },
+    {
+     "kind": "design",
+     "parameter": "Size",
+     "value": 1,
+     "unit": "31 X 14 X 8'",
+     "source_text": "Size: One 31 X 14 X 8' (21,700 gal)",
+     "passed": false,
+     "refused_because": "the unit holds a measurement, not a unit"
+    },
+    {
+     "kind": "design",
+     "parameter": "Primary filter Type",
+     "value": 1,
+     "unit": "Sutorbilt compressors",
+     "source_text": "Type: PFT with one Sutorbilt compressor",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Primary filter Size",
+     "value": 40,
+     "unit": "' dia x 25' swd",
+     "source_text": "Size: One 40' dia x 25' swd (31,400 cu ft or 0. 196 mil gal)",
+     "passed": false,
+     "refused_because": "the unit holds a measurement, not a unit"
+    },
+    {
+     "kind": "design",
+     "parameter": "Primary filter Size (volume)",
+     "value": 31400,
+     "unit": "cu ft",
+     "source_text": "Size: One 40' dia x 25' swd (31,400 cu ft or 0. 196 mil gal)",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Primary filter Size (volume)",
+     "value": 196,
+     "unit": "' mil gal",
+     "source_text": "Size: One 40' dia x 25' swd (31,400 cu ft or 0. 196 mil gal)",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Primary filter Loading",
+     "value": 2.75,
+     "unit": "' lb/cu ft/mo",
+     "source_text": "",
+     "passed": false
+    },
+    {
+     "kind": "design",
+     "parameter": "Loading",
+     "value": 2.75,
+     "unit": "lb/cu ft/mo",
+     "source_text": "Loading: 2.75 lb/cu ft/mo",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Size",
+     "value": 1,
+     "unit": "",
+     "source_text": "Size: One 40' dia x 24^' swd (30, 800",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "Total Loading",
+     "value": 1.88,
+     "unit": "lb/cu ft/mo",
+     "source_text": "Total Loading: 1.88 lb/cu ft/mo",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "West Side Pumping Station - Pump 1",
+     "value": 3916,
+     "unit": "gpm",
+     "source_text": "One - 3916 gpm Chicago Pump",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "West Side Pumping Station - Pump 2",
+     "value": 1000,
+     "unit": "gpm",
+     "source_text": "Two - 1000 gpm Smart- Turner",
+     "passed": true
+    }
+   ]
+  },
+  {
+   "identifier": "owensoundwaterpo24477",
+   "page": 10,
+   "seconds": 161.5,
+   "parts": 4,
+   "records": [
+    {
+     "kind": "design",
+     "parameter": "pump capacity",
+     "value": 3800,
+     "unit": "gallons per minute",
+     "source_text": "During 1969, modifications to the West Side pumping station included an additional pump with a capacity of more than 3800 gallons per minute",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "operating time above design capacity",
+     "value": 80,
+     "unit": "%",
+     "source_text": "From the graphs, it can be seen that 80% of the time the plant is most likely operating above the design capacity.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "total operating cost",
+     "value": 53549.66,
+     "unit": "$",
+     "source_text": "The total operating cost for treating 1475 million gallons of sewage in 1969 was $53, 549. 66.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "sewage treated",
+     "value": 1475,
+     "unit": "million gallons",
+     "source_text": "The total operating cost for treating 1475 million gallons of sewage in 1969 was $53, 549. 66.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "unit cost per million gallons treated",
+     "value": 36.3,
+     "unit": "$ per million gallons treated",
+     "source_text": "Unit costs were $36. 30 per million gallons treated",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "cost per pound of BOD removed",
+     "value": 0.05,
+     "unit": "$ per pound of BOD removed",
+     "source_text": "...and five cents per pound of BOD removed.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "unit cost per million gallons treated",
+     "value": 36.3,
+     "unit": "$/million gallons",
+     "source_text": "Unit costs were $36. 30 per million gallons treated",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "unit cost per pound of BOD removed",
+     "value": 0.05,
+     "unit": "$/pound",
+     "source_text": "and five cents per pound of BOD removed.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "total flow",
+     "value": 1475.2,
+     "unit": "million gallons",
+     "source_text": "The total flow for the year was 1475.2 million gallons",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "average daily flow",
+     "value": 4,
+     "unit": "million gallons",
+     "source_text": ", with an average daily flow of four million gallons.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "maximum daily flow (November)",
+     "value": 8.8,
+     "unit": "$/million gallons in November and 2.1 million gallons in July.",
+     "source_text": "The maximum and minimum daily flows were 8. 8 million gallons in November and 2.1 million gallons in July.",
+     "passed": false,
+     "refused_because": "the unit holds a measurement, not a unit"
+    },
+    {
+     "kind": "observation",
+     "parameter": "minimum daily flow (July)",
+     "value": "2.1",
+     "unit": "million gallons",
+     "source_text": "The maximum and minimum daily flows were 8. 8 million gallons in November and 2.1 million gallons in July.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "average daily flow",
+     "value": 4,
+     "unit": "million gallons",
+     "source_text": "with an average daily flow of four million gallons",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "maximum daily flow",
+     "value": 8.8,
+     "unit": "million gallons",
+     "source_text": "The maximum and minimum daily flows were 8.8 million gallons in November",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "minimum daily flow",
+     "value": 2.1,
+     "unit": "million gallons",
+     "source_text": "and 2.1 million gallons in July",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "chlorine used per month",
+     "value": 2696,
+     "unit": "pounds",
+     "source_text": "An average of 2696 pounds of chlorine was used per month",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "$chlorine per million gallons of flow$ (operation)",
+     "value": 21.9,
+     "unit": "$pounds/million gallons$ ",
+     "source_text": "$The operation used 21.9 pounds of chlorine per million gallons of flow$",
+     "passed": false
+    },
+    {
+     "kind": "$observation$",
+     "parameter": "$average dosage$",
+     "value": 2.2,
+     "unit": "$mg/L$, ",
+     "source_text": "$at an average dosage of 2.2 mg/L$",
+     "passed": false
+    },
+    {
+     "kind": "$observation$",
+     "parameter": "$average residual$",
+     "value": 0.5,
+     "unit": "$mg/L$, ",
+     "source_text": "$This maintained an average residual of 0.5 mg/L in the final effluent$",
+     "passed": false
+    }
+   ]
+  },
+  {
+   "identifier": "owensoundwaterpo24477",
+   "page": 11,
+   "seconds": 110.8,
+   "parts": 3,
+   "records": [
+    {
+     "kind": "observation",
+     "parameter": "influent BOD",
+     "value": 104,
+     "unit": "mg/L",
+     "source_text": "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "influent suspended solids",
+     "value": 224,
+     "unit": "mg/L",
+     "source_text": "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "effluent BOD",
+     "value": 37,
+     "unit": "mg/L",
+     "source_text": "The average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively,",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "effluent suspended solids",
+     "value": 36,
+     "unit": "mg/L",
+     "source_text": "The average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively,",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "% removal of BOD",
+     "value": 64,
+     "unit": "%",
+     "source_text": "...giving an average removal of 64% BOD and 84% suspended solids.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "raw sludge pumped",
+     "value": 3000000,
+     "unit": "gallons",
+     "source_text": "Just over three million gallons of raw sludge were pumped to the digesters during 1969.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "average monthly volume of raw sludge",
+     "value": 258000,
+     "unit": "gallons",
+     "source_text": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "total solids in raw sludge",
+     "value": 7.3,
+     "unit": "%",
+     "source_text": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "volatile solids in raw sludge",
+     "value": 47,
+     "unit": "%",
+     "source_text": "The average monthly volume of 258,000 gallons contained 7.3% total solids and 47% volatile solids.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "sludge removed from digesters",
+     "value": 1495000,
+     "unit": "gallons",
+     "source_text": "Sludge totalling 1,495,000 gallons was removed from the digesters and hauled away.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "average monthly volume of removed sludge",
+     "value": 125000,
+     "unit": "gallons",
+     "source_text": ". The average monthly volume of 125,000 gallons contained",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "% total solids in removed sludge",
+     "source_text": "The average monthly volume of 125,000 gallons contained",
+     "passed": true
+    }
+   ]
+  }
+ ],
+ "note": "Recorded 2026-08-18. The reader now hands the model one page in parts of at most six numeric tokens instead of whole. The unit rule was added after this run and applied to it as a filter; no model output was changed."
+}

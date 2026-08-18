@@ -177,12 +177,16 @@ anything is published. Nothing is installed; no server does any reading.</p>
 <p class="note" id="honesty">Honest scope. The model this page runs
 (Qwen3.5-4B from the official WebLLM catalogue) is a <b>partial</b> reader:
 measured against the four pages a person read by hand, it finds
-<b>32.4%</b> of the values they found, and <b>84.6%</b> of what it publishes
-matches one of them. It invented nothing on any of the four pages: every
-record that missed the answer key was a real value whose unit it left blank
-or worded differently. That figure replaces an earlier estimate of &ldquo;roughly half&rdquo;,
-which was never measured for this combination and was two and a half times
-too generous. What your browser sends is only what passed both checks here,
+<b>57.4%</b> of the values they found, and <b>81.2%</b> of what it publishes
+matches one of them. It fabricated nothing: every number it published appears
+in the sentence it quoted. Nine records still missed the answer key &mdash;
+eight are real readings the key does not list on their own (a count of pumps,
+the same value sent twice, a value whose unit it left blank), and one is a
+real misreading: where the page prints &ldquo;0. 196 mil gal&rdquo; it
+returned 196. That is the kind of error the checks here cannot catch and a
+person can. An earlier version of this page estimated &ldquo;roughly
+half&rdquo; before anything had been measured; the first measurement came
+back at 32.4%. What your browser sends is only what passed both checks here,
 and this site then re-verifies every sentence and number against the scanned
 page on archive.org before publishing — the same rule applied to every
 reader, human or machine. A stronger model (gemma4:e2b — 100% precision,
@@ -308,6 +312,84 @@ function valueInQuote(value, quote) {
   return false;
 }
 
+/* ---- a unit is a name, not a measurement -------------------------------
+   A specification sheet writes "Size: Two 408 scfm", and a small model reads
+   the count: value 2, unit "408 scfm". The reading is in the record, but in
+   the wrong field, and it publishes as though the plant had two of something
+   unnamed. Every such record on the gold pages has the same signature -- a
+   digit in the unit that is not welded to a letter. Real units keep theirs
+   welded: gal/ft2/day, m3, ft2. This rule was written after reading those
+   errors, so it is fitted to what they look like; it removed six wrong
+   records and no right ones there, and nothing at all from the run before
+   the page split, which is the only evidence it has so far. */
+const unitIsAUnit = u => !/(?<![A-Za-z])\d/.test(String(u || ""));
+
+/* ---- reading a dense page in parts -------------------------------------
+   Measured cause, not a guess. On a design sheet the model returns about six
+   records whatever the page holds -- six of twenty-six -- and the six are the
+   six at the top. It is not failing to READ "Retention: 8.6 min"; it stops
+   before reaching it. Three attempts to instruct it out of that habit were
+   each measured and each made the reader worse, so this changes the question
+   instead: hand it less text at a time. Blocks separated by blank lines are
+   the atoms -- a paragraph, or one labelled block of a sheet -- packed into
+   parts of at most MAX_PART_NUMBERS numeric tokens. A page with few numbers
+   comes back whole and is read exactly as it was before. */
+const NL = String.fromCharCode(10);
+const NUM_RE = /(?<![\d.+-])(?:\d[\d,]*(?:\.\s*\d+)?|\.\d+)(?![\d.])/g;
+const MAX_PART_NUMBERS = 6;
+const MAX_PART_CHARS = 2200;
+const OVERLAP_BLOCKS = 2;
+
+function splitPage(text) {
+  const blocks = String(text || "").split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+  if (!blocks.length) return [String(text || "")];
+
+  const starts = [0];
+  let nums = 0, chars = 0;
+  for (let i = 0; i < blocks.length; i++) {
+    const n = (blocks[i].match(NUM_RE) || []).length;
+    if (i > starts[starts.length - 1] &&
+        (nums + n > MAX_PART_NUMBERS || chars + blocks[i].length > MAX_PART_CHARS)) {
+      starts.push(i); nums = 0; chars = 0;
+    }
+    nums += n; chars += blocks[i].length + 2;
+  }
+  if (starts.length < 2) return [String(text || "")];
+
+  /* Each part carries the blocks just before it, because a sheet puts the
+     name on one line and the number on the next: "Grit Removal" / "Type:
+     Aerated" / "Size: One 18^ X 13 X 12' (18,000 gal)". Split between them
+     and the reading survives with no idea what it measured. Parts also carry
+     the page's opening line, because that is where the sheet says "DESIGN
+     DATA" -- the word deciding whether these are design values or things
+     somebody measured. */
+  const heading = blocks[0].split(NL)[0].trim();
+  const parts = [];
+  for (let k = 0; k < starts.length; k++) {
+    const from = Math.max(0, starts[k] - (k ? OVERLAP_BLOCKS : 0));
+    const to = k + 1 < starts.length ? starts[k + 1] : blocks.length;
+    const own = blocks.slice(starts[k], to).join(NL + NL);
+    if (!(own.match(NUM_RE) || []).length) continue;   // no digits, nothing to read
+    let body = blocks.slice(from, to).join(NL + NL);
+    if (heading && body.indexOf(heading) !== 0) body = heading + NL + NL + body;
+    parts.push(body);
+  }
+  return parts.length ? parts : [String(text || "")];
+}
+
+/* The overlap means two parts can hand back the same reading. A duplicate is
+   not a second observation. */
+function dedupeRecords(records) {
+  const seen = new Set(), out = [];
+  for (const r of records) {
+    const key = [r.kind, r.value, norm(r.unit), norm(r.source_text).slice(0, 60)].join("|");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(r);
+  }
+  return out;
+}
+
 /* ---- one model record -> one bundle record, or a reason it cannot be --- */
 const KINDS = ["observation", "standard", "design", "conclusion"];
 function toBundleRecord(r, doc, pageNo, pageText) {
@@ -330,6 +412,8 @@ function toBundleRecord(r, doc, pageNo, pageText) {
   if (inQuote === false) return { why: "value not in its sentence" };
   if (value === null && norm(quote).split(" ").length < 4)
     return { why: "quote too short to be evidence on its own" };
+  if (!unitIsAUnit(r.unit))
+    return { why: "the unit holds a measurement, not a unit" };
   return { record: {
     kind, parameter,
     value,
@@ -661,14 +745,23 @@ async function readTown() {
       const page = pages[i];
       const label = tag + " · page " + (i + 1) + "/" + pages.length
                   + " (p." + page.page + ") · " + nPassed + " passed so far";
-      let raw;
-      try { raw = await readPage(fillTemplate(doc, page.page, page.text), label); }
-      catch (e) {
-        status(label + " — the model failed on this page: " + String(e).slice(0, 80));
-        continue;
+      const parts = splitPage(page.text);
+      let proposed = [], failed = 0;
+      for (let k = 0; k < parts.length; k++) {
+        if (STOP) break;
+        const partLabel = parts.length > 1
+          ? label + " · part " + (k + 1) + "/" + parts.length : label;
+        try {
+          const raw = await readPage(fillTemplate(doc, page.page, parts[k]), partLabel);
+          proposed = proposed.concat(parseRecords(raw));
+        } catch (e) {
+          failed++;
+          status(partLabel + " — the model failed here: " + String(e).slice(0, 80));
+        }
       }
+      if (failed === parts.length) continue;
       nPagesRead++;
-      for (const r of parseRecords(raw)) {
+      for (const r of dedupeRecords(proposed.filter(r => r && typeof r === "object"))) {
         if (!r || typeof r !== "object") continue;
         const out = toBundleRecord(r, doc, page.page, page.text);
         if (out.record) {
@@ -721,16 +814,26 @@ async function readDemo() {
   $("demo-go").disabled = true;
   if (!(await ensureEngine())) { $("demo-go").disabled = false; return; }
   const t0 = performance.now();
-  let raw;
-  try { raw = await readPage(DEMO.user, "reading the proof page"); }
+  const doc = { identifier: DEMO.identifier, title: DEMO.title,
+                publisher: DEMO.publisher, year: DEMO.year, facility: "" };
+  /* Read in parts, the same way a town is read. A proof that behaves unlike
+     the thing it is proving is not a proof. */
+  const parts = splitPage(DEMO.text);
+  let proposed = [];
+  try {
+    for (let k = 0; k < parts.length; k++) {
+      const label = parts.length > 1
+        ? "reading the proof page · part " + (k + 1) + "/" + parts.length
+        : "reading the proof page";
+      const raw = await readPage(fillTemplate(doc, DEMO.page, parts[k]), label);
+      proposed = proposed.concat(parseRecords(raw));
+    }
+  }
   catch (e) { status("The model failed: " + String(e).slice(0, 120));
               $("demo-go").disabled = false; return; }
   const secs = ((performance.now() - t0) / 1000).toFixed(0);
-  const doc = { identifier: DEMO.identifier, title: DEMO.title,
-                publisher: DEMO.publisher, year: DEMO.year, facility: "" };
   let passed = 0, refused = 0, shown = 0;
-  for (const r of parseRecords(raw)) {
-    if (!r || typeof r !== "object") continue;
+  for (const r of dedupeRecords(proposed.filter(r => r && typeof r === "object"))) {
     shown++;
     const out = toBundleRecord(r, doc, DEMO.page, DEMO.text);
     if (out.record) { passed++; addRow(r, doc, DEMO.page, true); }

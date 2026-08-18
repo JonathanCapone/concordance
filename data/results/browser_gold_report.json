@@ -4,107 +4,107 @@
   "note": "The in-browser reader measured against the same hand-read gold pages as the installed reader, scored by the same scorer. 'as_published' is what a browser sends after its own evidence checks; 'model_output' is everything the model produced. The compact browser instructions do not ask for stream, so stream accuracy is not attempted.",
   "stream_attempted": false,
   "as_published": {
-    "precision": 0.8462,
-    "recall": 0.3235,
-    "kind_accuracy": 0.9545,
-    "matched": 22,
-    "missed": 46,
-    "spurious": 4
+    "precision": 0.8125,
+    "recall": 0.5735,
+    "kind_accuracy": 0.9744,
+    "matched": 39,
+    "missed": 29,
+    "spurious": 9
   },
   "model_output": {
-    "precision": 0.7931,
-    "recall": 0.3382,
-    "matched": 23,
-    "missed": 45,
-    "spurious": 6
+    "precision": 0.6164,
+    "recall": 0.6618,
+    "matched": 45,
+    "missed": 23,
+    "spurious": 28
   },
   "pages": [
     {
       "identifier": "hamiltonadventur00unse",
       "page": 20,
       "gold_values": 11,
-      "produced": 7,
-      "published": 6,
-      "seconds": 25.8,
+      "produced": 5,
+      "published": 4,
+      "seconds": 283.2,
       "as_published": {
-        "precision": 0.8333333333333334,
-        "recall": 0.45454545454545453,
+        "precision": 1.0,
+        "recall": 0.36363636363636365,
         "kind_accuracy": 1.0,
-        "matched": 5,
-        "missed": 6,
-        "spurious": 1
+        "matched": 4,
+        "missed": 7,
+        "spurious": 0
       },
       "model_output": {
-        "precision": 0.8571428571428571,
-        "recall": 0.5454545454545454,
-        "matched": 6,
-        "spurious": 1
+        "precision": 1.0,
+        "recall": 0.45454545454545453,
+        "matched": 5,
+        "spurious": 0
       }
     },
     {
       "identifier": "owensoundwaterpo24477",
       "page": 9,
       "gold_values": 26,
-      "produced": 6,
-      "published": 6,
-      "seconds": 53.9,
+      "produced": 37,
+      "published": 21,
+      "seconds": 295.8,
       "as_published": {
-        "precision": 0.6666666666666666,
-        "recall": 0.15384615384615385,
+        "precision": 0.7619047619047619,
+        "recall": 0.6153846153846154,
         "kind_accuracy": 1.0,
-        "matched": 4,
-        "missed": 22,
-        "spurious": 2
+        "matched": 16,
+        "missed": 10,
+        "spurious": 5
       },
       "model_output": {
-        "precision": 0.6666666666666666,
-        "recall": 0.15384615384615385,
-        "matched": 4,
-        "spurious": 2
+        "precision": 0.5135135135135135,
+        "recall": 0.7307692307692307,
+        "matched": 19,
+        "spurious": 18
       }
     },
     {
       "identifier": "owensoundwaterpo24477",
       "page": 10,
       "gold_values": 14,
-      "produced": 11,
-      "published": 9,
-      "seconds": 116.5,
+      "produced": 19,
+      "published": 12,
+      "seconds": 161.5,
       "as_published": {
-        "precision": 0.8888888888888888,
-        "recall": 0.5714285714285714,
-        "kind_accuracy": 0.875,
-        "matched": 8,
-        "missed": 6,
-        "spurious": 1
+        "precision": 0.75,
+        "recall": 0.6428571428571429,
+        "kind_accuracy": 0.8888888888888888,
+        "matched": 9,
+        "missed": 5,
+        "spurious": 3
       },
       "model_output": {
-        "precision": 0.7272727272727273,
-        "recall": 0.5714285714285714,
-        "matched": 8,
-        "spurious": 3
+        "precision": 0.5263157894736842,
+        "recall": 0.7142857142857143,
+        "matched": 10,
+        "spurious": 9
       }
     },
     {
       "identifier": "owensoundwaterpo24477",
       "page": 11,
       "gold_values": 17,
-      "produced": 5,
-      "published": 5,
-      "seconds": 116.7,
+      "produced": 12,
+      "published": 11,
+      "seconds": 110.8,
       "as_published": {
-        "precision": 1.0,
-        "recall": 0.29411764705882354,
+        "precision": 0.9090909090909091,
+        "recall": 0.5882352941176471,
         "kind_accuracy": 1.0,
-        "matched": 5,
-        "missed": 12,
-        "spurious": 0
+        "matched": 10,
+        "missed": 7,
+        "spurious": 1
       },
       "model_output": {
-        "precision": 1.0,
-        "recall": 0.29411764705882354,
-        "matched": 5,
-        "spurious": 0
+        "precision": 0.9166666666666666,
+        "recall": 0.6470588235294118,
+        "matched": 11,
+        "spurious": 1
       }
     }
   ]
