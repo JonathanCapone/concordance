@@ -129,7 +129,7 @@ Concordance's first accuracy result was 49% precision. The extraction was not th
 
 A human tester later found that the page router was rejecting narrow-column prose because I had required eight words per line. A typographic shortcut was silently determining which parts of the public record the system could see. I corrected the rule and added regression tests.
 
-Days before submitting, I conducted an adversarial audit of the repository. It identified nine defects, six serious, including a verifier that accepted a number when only its first digit was present. Each correction now has a regression test.
+Days before submitting, I conducted an adversarial audit of the repository. It identified seven defects, six serious, including a verifier that accepted a number when only its first digit was present. Each correction now has a regression test.
 
 My work as an artist and educator is also relevant. Concordance must make provenance, uncertainty, incompatible methods, and technical failure understandable to people who are not data specialists. Its central promise is that the work can be checked. My experience has taught me to build that check into the system, invite challenges, and explain clearly what happened when it was wrong.
 
