@@ -49,6 +49,26 @@ from concordance.extract import USER_TEMPLATE               # noqa: E402
 #: only) and drops the vocabulary apparatus. UNBENCHMARKED as of 2026-08-16:
 #: its accuracy against the gold pages is the next measurement, and the page
 #: says so. The full prompt stays the production standard.
+#: Third version of these instructions, and the first with a measured
+#: score. Against the four hand-read gold pages it reads 23.5% recall at
+#: 88.9% precision, where the previous version read 17.6% at 80.0%, and
+#: the whole gain is the counted-noun rule below. The
+#: magazine page -- the one page in the gold set that is NOT a water report --
+#: went from 0% recall to 36% at 100% precision. A prompt that silently
+#: abandons every document outside its home subject is worse than a partial
+#: one, and v2 was doing exactly that.
+#:
+#: Two other clauses were measured and REJECTED, which is why they are not
+#: here. Telling the model that a specification sheet is a list of
+#: measurements one per line made it read "PROJECT NO. 2-0069-60" as the value
+#: 2. Telling it never to leave a unit empty made it label 200 mg/L of
+#: suspended solids as "200 %" -- a blank unit is honest ignorance, a wrong
+#: unit is the concentration-plotted-as-percentage bug this project already
+#: shipped once.
+#:
+#: Chosen against four hand-read pages, so this figure is tuned-on and not
+#: independent; the frozen benchmark re-measures it. See
+#: data/results/browser_gold_report.json and scripts/bench_browser_reader.py.
 SMALL_SYSTEM = """You read scanned Canadian government reports and pull out every measurement.
 
 Return ONLY a JSON array. No prose, no markdown fence. Each element:
@@ -61,6 +81,8 @@ Rules, in order of importance:
    sentence will be rejected.
 2. "value" is the number as stated. "unit" is its unit ("mg/L", "%",
    "hours", "persons").
+2b. A COUNT is a measurement: "75 elementary schools" is value 75, unit
+   "schools". So is "14 pumping stations".
 3. "kind" is one of:
    "observation" - something actually measured ("the residual was 0.7 mg/L")
    "design"      - what equipment was built for ("design flow 0.20 MGD")
@@ -78,6 +100,72 @@ solids were 104 mg/1 and 224 mg/1 respectively."},
   "value": 224, "unit": "mg/L", "source_text": "The average influent BOD
 and suspended solids were 104 mg/1 and 224 mg/1 respectively."}]
 """
+
+#: The salvage parser and the two evidence checks, shared verbatim by the
+#: reader page and the benchmark page. Written once because a benchmark
+#: that measures a COPY of the reader measures nothing: the number it
+#: produces would be true of code no visitor runs.
+CHECKS_JS = '''/* ---- the same salvage parser the real extractor uses, ported ------------ */
+function parseRecords(raw) {
+  // Reasoning models deliberate in <think> blocks before answering, and the
+  // deliberation can contain example braces. Extraction is transcription,
+  // not deliberation -- discard the thinking, closed or truncated.
+  raw = raw.replace(/<think>[\\s\\S]*?<\\/think>/g, "");
+  const open = raw.indexOf("<think>");
+  if (open >= 0) raw = raw.slice(0, open);
+  raw = raw.trim().replace(/^```[a-z]*\\n?/, "").replace(/\\n?```$/, "").trim();
+  try { const v = JSON.parse(raw); return Array.isArray(v) ? v : [v]; } catch (e) {}
+  const a = raw.indexOf("["), b = raw.lastIndexOf("]");
+  if (a >= 0 && b > a) {
+    try { const v = JSON.parse(raw.slice(a, b + 1)); if (Array.isArray(v)) return v; }
+    catch (e) {}
+  }
+  const out = []; let depth = 0, start = -1, inStr = false, escd = false;
+  for (let i = 0; i < raw.length; i++) {
+    const ch = raw[i];
+    if (inStr) { if (escd) escd = false; else if (ch === "\\\\") escd = true;
+                 else if (ch === '"') inStr = false; continue; }
+    if (ch === '"') inStr = true;
+    else if (ch === "{") { if (!depth) start = i; depth++; }
+    else if (ch === "}") { if (depth && !--depth && start >= 0) {
+      try { const o = JSON.parse(raw.slice(start, i + 1));
+            if (o && typeof o === "object") out.push(o); } catch (e) {}
+      start = -1; } }
+  }
+  return out;
+}
+
+/* ---- demo-grade ports of the evidence checks ---------------------------
+   The browser's checks are a pre-filter so junk never leaves the tab; the
+   server's verification against archive.org is the authority, and its
+   verdict is shown when records are sent. */
+const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").trim();
+function quoteOnPage(quote, pageText) {
+  const q = norm(quote), p = norm(pageText);
+  return q.length > 8 && p.includes(q.slice(0, 160));
+}
+function valueInQuote(value, quote) {
+  if (value === null || value === undefined) return null; // nothing to check
+  let canon = String(value);
+  if (canon.endsWith(".0")) canon = canon.slice(0, -2);
+  // Strip commas only in the three-digit thousands shape -- "8,5" stays.
+  const direct = String(quote || "").replace(/(?<=\\d),(?=\\d{3}(?!\\d))/g, "");
+  const rx = new RegExp("(?<![\\\\d.+-])" + canon.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&")
+                        + "(?![\\\\d.])");
+  if (rx.test(direct)) return true;
+  // The page writes "0.20" and the model reads 0.2; "13.0" and 13. Same
+  // number, different spelling. The server's referee compares NUMBERS
+  // (contribute._value_in_quote), so this pre-filter must not be stricter
+  // than the check it fronts for -- measured on the first live run, the
+  // digit-string test alone refused two honest readings per page.
+  const n = Number(value);
+  if (isFinite(n)) {
+    const tokens = direct.match(/(?<![\\d.+-])(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?![\\d.])/g) || [];
+    if (tokens.some(t => Number(t) === n)) return true;
+  }
+  return false;
+}
+'''
 
 IDENTIFIER = "optimizationofea00ontauoft"
 PAGE_NO = 9
@@ -205,10 +293,13 @@ anything is published. Nothing is installed; no server does any reading.</p>
 
 <p class="note" id="honesty">Honest scope. The model this page runs
 (Qwen3.5-4B from the official WebLLM catalogue) is a <b>partial</b> reader:
-measured on this project's gold pages, models of its size find roughly half
-of what a page states and invent nothing that survives the checks — on the
-embedded proof page it read 12 records in 42 seconds, 9 verified, 3 refused
-in the open. What your browser sends is only what passed both checks here,
+measured against the four pages a person read by hand, it finds
+<b>23.5%</b> of the values they found, and <b>88.9%</b> of what it publishes
+matches one of them. It invented nothing on any of the four pages: both
+records that missed the answer key were real values whose unit it left
+blank. That figure replaces an earlier estimate of &ldquo;roughly half&rdquo;,
+which was never measured for this combination and was two and a half times
+too generous. What your browser sends is only what passed both checks here,
 and this site then re-verifies every sentence and number against the scanned
 page on archive.org before publishing — the same rule applied to every
 reader, human or machine. A stronger model (gemma4:e2b — 100% precision,
@@ -236,67 +327,7 @@ let STOP = false;
 let engine = null, modelId = null;
 let TOWN = null;          // {place, documents:[...]} once planned
 
-/* ---- the same salvage parser the real extractor uses, ported ------------ */
-function parseRecords(raw) {
-  // Reasoning models deliberate in <think> blocks before answering, and the
-  // deliberation can contain example braces. Extraction is transcription,
-  // not deliberation -- discard the thinking, closed or truncated.
-  raw = raw.replace(/<think>[\\s\\S]*?<\\/think>/g, "");
-  const open = raw.indexOf("<think>");
-  if (open >= 0) raw = raw.slice(0, open);
-  raw = raw.trim().replace(/^```[a-z]*\\n?/, "").replace(/\\n?```$/, "").trim();
-  try { const v = JSON.parse(raw); return Array.isArray(v) ? v : [v]; } catch (e) {}
-  const a = raw.indexOf("["), b = raw.lastIndexOf("]");
-  if (a >= 0 && b > a) {
-    try { const v = JSON.parse(raw.slice(a, b + 1)); if (Array.isArray(v)) return v; }
-    catch (e) {}
-  }
-  const out = []; let depth = 0, start = -1, inStr = false, escd = false;
-  for (let i = 0; i < raw.length; i++) {
-    const ch = raw[i];
-    if (inStr) { if (escd) escd = false; else if (ch === "\\\\") escd = true;
-                 else if (ch === '"') inStr = false; continue; }
-    if (ch === '"') inStr = true;
-    else if (ch === "{") { if (!depth) start = i; depth++; }
-    else if (ch === "}") { if (depth && !--depth && start >= 0) {
-      try { const o = JSON.parse(raw.slice(start, i + 1));
-            if (o && typeof o === "object") out.push(o); } catch (e) {}
-      start = -1; } }
-  }
-  return out;
-}
-
-/* ---- demo-grade ports of the evidence checks ---------------------------
-   The browser's checks are a pre-filter so junk never leaves the tab; the
-   server's verification against archive.org is the authority, and its
-   verdict is shown when records are sent. */
-const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").trim();
-function quoteOnPage(quote, pageText) {
-  const q = norm(quote), p = norm(pageText);
-  return q.length > 8 && p.includes(q.slice(0, 160));
-}
-function valueInQuote(value, quote) {
-  if (value === null || value === undefined) return null; // nothing to check
-  let canon = String(value);
-  if (canon.endsWith(".0")) canon = canon.slice(0, -2);
-  // Strip commas only in the three-digit thousands shape -- "8,5" stays.
-  const direct = String(quote || "").replace(/(?<=\\d),(?=\\d{3}(?!\\d))/g, "");
-  const rx = new RegExp("(?<![\\\\d.+-])" + canon.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&")
-                        + "(?![\\\\d.])");
-  if (rx.test(direct)) return true;
-  // The page writes "0.20" and the model reads 0.2; "13.0" and 13. Same
-  // number, different spelling. The server's referee compares NUMBERS
-  // (contribute._value_in_quote), so this pre-filter must not be stricter
-  // than the check it fronts for -- measured on the first live run, the
-  // digit-string test alone refused two honest readings per page.
-  const n = Number(value);
-  if (isFinite(n)) {
-    const tokens = direct.match(/(?<![\\d.+-])(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?![\\d.])/g) || [];
-    if (tokens.some(t => Number(t) === n)) return true;
-  }
-  return false;
-}
-
+__CHECKS_JS__
 /* ---- one model record -> one bundle record, or a reason it cannot be --- */
 const KINDS = ["observation", "standard", "design", "conclusion"];
 function toBundleRecord(r, doc, pageNo, pageText) {
@@ -975,6 +1006,7 @@ def main() -> int:
 
     html = TEMPLATE
     for sentinel, value in {
+        "__CHECKS_JS__": CHECKS_JS,
         "__CHROME_CSS__": BASE_CSS,
         "__MASTHEAD__": masthead(home="/", active="browser"),
         "__SYSTEM_JSON__": json.dumps(SMALL_SYSTEM),

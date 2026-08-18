@@ -732,6 +732,63 @@ catalogue weights. The gemma4 kernel finding stands unchanged as the
 reason e2b itself waits; the page now documents both truths. Next
 measurement: this exact browser combination against all four gold pages.
 
+**2026-08-18. The browser reader, measured -- and it was not half.**
+The reader page has said since the day it worked that browser-size models
+"find roughly half of what a page states". That number was never measured for
+the combination a visitor actually runs; it was carried over from an Ollama
+run of a different model on the same pages. Measured properly -- same model,
+same instructions, same parser, same checks, driven from a page that imports
+them from the reader rather than copying them -- it is **17.6%**. Not half.
+Two and a half times less than the site claimed, in the one direction that
+matters.
+
+The worst of it was a page the reader abandoned completely. On the Hamilton
+magazine page -- the one page in the gold set that is deliberately NOT a water
+report, included so a method could not be measured only where it was designed
+to work -- it produced twenty-one characters of output and zero records
+against eleven hand-read values. Every one of those values is a counted noun:
+"75 elementary schools", "42 operated by the ... Separate School Board". The
+compact instructions gave mg/L, %, hours and persons as the examples of a
+unit, so a count did not look like a measurement.
+
+One clause fixed it. "A COUNT is a measurement: 75 elementary schools is
+value 75, unit schools" took the whole set from 17.6% to **23.5% recall at
+88.9% precision**, and that page from 0% to 36% at 100%. Kind accuracy went
+83.3% to 93.8%.
+
+Two other clauses were tried and are now recorded as failures, because both
+are the kind of fix that looks obviously right:
+
+* *A specification sheet is a list of measurements, one per line.* Aimed at
+  the design page, which yields 6 of 26 values. The model dutifully read
+  "PROJECT NO. 2-0069-60" as the value 2 and "TREATMENT Primary" as the value
+  3, and found FEWER real specifications. Tell a 4B model every line is data
+  and it will believe you about the lines that are not.
+* *Never leave the unit empty.* Aimed at a real defect: every record that
+  missed the answer key was a correct value with a blank unit, charged twice
+  by the scorer -- once as a value missed, once as a record invented. Forcing
+  the field turned "200 mg/L of suspended solids" into "200 %". A blank unit
+  is honest ignorance; a wrong unit is the concentration-plotted-as-a-
+  percentage bug this project already shipped once. Recall fell, precision
+  rose, and the trade is not worth taking.
+
+So the reader now carries one new rule and the site carries a measured
+number. Two things worth keeping from the exercise. First: the estimate was
+wrong in the flattering direction for a month, on a public page, and nothing
+but running it would have caught that -- the checks were all working, the
+page was honest about everything it could see, and the one number nobody had
+measured was the one on the poster. Second: I nearly did not run the unit
+experiment at all, on the argument that tuning against four pages before the
+frozen benchmark exists contradicts the method. Jonathan pushed back, and he
+was right -- the freeze rule exists to stop a tuned score being reported as
+independent, not to stop defects being fixed. Running it is what proved the
+obvious fix was wrong.
+
+The figure is tuned-on and says so: chosen against four pages, to be
+re-measured on the frozen 200-page benchmark. Raw output and report are in
+data/results/, re-runnable with scripts/bench_browser_reader.py.
+
+
 **2026-08-17, night. The demo became the tool, and walking it found three
 bugs.** The /browser page now reads whole towns, not one hardcoded page.
 The server grew two endpoints that hand a visitor's tab the work:

@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concordance — benchmarking the browser reader</title>
+<style>
+:root{--bg:#04080d;--panel:rgba(255,255,255,.04);--ink:#e8edf2;--muted:#8b97a4;--faint:#6d7a86;--line:rgba(255,255,255,.10);--hit:#f0a24a;--cold:#5b7285;--warn:#d99a5b;--bad:#e0736e;--accent:#f0a24a;--mark:#e8edf2;--gap:#e0736e;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+
+/* Reserve the scrollbar's width on every page, whether or not that page
+   happens to need one. The map view is a fixed shell that never scrolls and
+   the reader is a long document that always does, so moving between them
+   used to add or remove a scrollbar and slide the whole layout 15px
+   sideways -- the last of the jumping, and the half that was never the
+   header's fault. */
+html,body{scrollbar-gutter:stable}
+.site-head{display:flex;align-items:center;align-content:flex-start;
+  flex-wrap:wrap;gap:4px 18px;padding:9px 18px;
+  border-bottom:1px solid rgba(255,255,255,.09);background:rgba(8,12,17,.94)}
+.site-head>a.site-brand{display:flex;align-items:baseline;gap:10px;
+  text-decoration:none;color:inherit;flex:0 0 auto}
+.site-word{font-size:15px;font-weight:600;letter-spacing:.02em}
+.site-sub{font-size:11px;color:#7d8996}
+.site-head .site-nav{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.site-head .site-nav .nav-button{background:none;border:1px solid transparent;
+  border-radius:9px;color:var(--muted);padding:7px 9px;cursor:pointer;
+  display:flex;align-items:center;gap:7px;text-decoration:none;font:inherit;
+  font-size:15px;line-height:1.55;width:auto;height:auto;min-height:0;
+  min-width:0;flex-direction:row;transform:none;transition:none}
+.site-head .site-nav .nav-button:hover{color:var(--ink);
+  border-color:rgba(255,255,255,.12);transform:none}
+/* The inherited sheet lifts a nav button and scales its icon on hover. In a
+   header this size that reads as the menu twitching, so both are stilled. */
+.site-head .site-nav .nav-button:hover .nav-glyph{transform:none}
+.site-head .site-nav .nav-button.is-active{color:var(--bg);background:var(--hit);
+  border-color:var(--hit)}
+.site-head .site-nav .nav-glyph{width:17px;height:17px;flex:0 0 auto}
+/* `.nav-tip` is a hover TOOLTIP in the inherited stylesheet -- absolutely
+   positioned, transparent, with its own background and border. Left partly
+   overridden it made the front page's menu icon-only while every other page
+   showed icon and label. Every tooltip property is undone here, so the label
+   is an ordinary word beside its icon on every page. */
+.site-head .site-nav .nav-tip{position:static;top:auto;left:auto;
+  transform:none;opacity:1;padding:0;border:0;background:none;color:inherit;
+  font-size:12.5px;font-weight:500;letter-spacing:normal;text-transform:none;
+  white-space:nowrap;pointer-events:auto;transition:none;display:inline}
+.site-page{margin-left:auto;font-size:12.5px;color:var(--muted);
+  height:35px;display:flex;align-items:center}
+/* The counts are the only content this header carries that the others do
+   not, so they are held to the menu's own height -- 35px, the same as a
+   menu item. Left at their natural size they were 53px tall, which made
+   the front page's header 71px against everyone else's 54 and dropped the
+   menu 9px down the moment a visitor was on the map. A header must not
+   change size because of what sits at its far end. */
+.site-stats{margin-left:auto;display:flex;gap:0;height:34px;
+  align-items:stretch;flex:0 1 auto;overflow:hidden;
+  border:1px solid rgba(255,255,255,.10);border-radius:9px}
+.site-stats .hstat{padding:0 12px;display:flex;flex-direction:column;
+  justify-content:center;border-right:1px solid rgba(255,255,255,.10)}
+.site-stats .hstat:last-child{border-right:0}
+.site-stats .hstat b{display:block;font-size:13px;font-weight:600;
+  font-variant-numeric:tabular-nums;line-height:1.15}
+.site-stats .hstat span{font-size:9px;color:var(--faint);line-height:1.1;
+  text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+/* And when they cannot fit beside the menu they go, rather than wrapping
+   to a second row and moving the menu off the line it holds everywhere. */
+@media(max-width:1400px){.site-stats{display:none}}
+
+  * { box-sizing: border-box }
+  main { max-width: 920px; margin: 0 auto; padding: 26px 18px 80px }
+  h1 { font-size: 20px; margin: 0 0 4px }
+  p { margin: 0 0 10px }
+  .sub { color: var(--muted); margin-bottom: 18px }
+  .card { background:var(--panel); border:1px solid var(--line);
+          border-radius:12px; padding:14px 16px; margin:12px 0 }
+  .note { color:var(--muted); font-size:12.5px }
+  button { background:var(--hit); color:var(--bg); border:0; border-radius:9px;
+           padding:9px 18px; font:inherit; font-weight:600; cursor:pointer }
+  button:disabled { opacity:.45; cursor:default }
+  #status { font-family:ui-monospace,monospace; font-size:12px;
+            color:var(--muted); white-space:pre-wrap }
+  progress { width:100%; height:6px; accent-color:var(--hit) }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin-top:8px }
+  th,td { text-align:left; padding:6px 8px;
+          border-bottom:1px solid rgba(255,255,255,.08) }
+  th { color:var(--faint); font-size:11px; text-transform:uppercase;
+       letter-spacing:.06em }
+  td.n { text-align:right; font-family:ui-monospace,monospace }
+  pre { white-space:pre-wrap; font-size:11px; color:var(--muted);
+        max-height:320px; overflow:auto; background:rgba(0,0,0,.25);
+        padding:10px; border-radius:8px }
+  a { color:var(--hit) }
+</style>
+</head>
+<body>
+<header class="site-head"><a class="site-brand" href="/"><span class="site-word">CONCORDANCE</span><span class="site-sub">Canada’s public record, read</span></a><nav class="site-nav" aria-label="Sections"><a class="nav-button" href="/#view=observe" data-view="observe" aria-label="Find a place"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17Zm0 4.6a3.9 3.9 0 1 1 0 7.8 3.9 3.9 0 0 1 0-7.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Find a place</span></a><a class="nav-button" href="/browser" data-view="browser" aria-label="Read a town"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v13H4Zm0 3.6h16M10.6 12.2l3.8 2.3-3.8 2.3Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Read a town</span></a><a class="nav-button" href="/#view=findings" data-view="findings" aria-label="What it found"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.2V4.8h9.6l6.4 6.4v8H4Zm9.2-13.4v5.4h5.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">What it found</span></a><a class="nav-button" href="/#view=verify" data-view="verify" aria-label="Can I trust it"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.6 9.8 17.4 19 6.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Can I trust it</span></a><a class="nav-button" href="/#view=ask" data-view="ask" aria-label="Ask Jay"><svg class="nav-glyph" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h15v9h-8.4L6.6 19v-3.5H4.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="nav-tip">Ask Jay</span></a></nav><span class="site-page">Benchmark</span></header>
+<main>
+<h1>Benchmarking the browser reader</h1>
+<p class="sub">The same model, instructions, parser and checks the
+<a href="/browser">reader</a> runs, over the four pages a person read by hand.
+Nothing here is published anywhere; the output is a JSON blob to score
+offline.</p>
+
+<div class="card">
+  <div id="status">Checking whether this browser can run a model…</div>
+  <progress id="bar" value="0" max="1" hidden></progress>
+  <p style="margin-top:10px"><button id="go" disabled>Read all four gold pages</button></p>
+  <p class="note" id="model-note"></p>
+</div>
+
+<div class="card" id="results" hidden>
+  <b id="headline"></b>
+  <table id="tbl">
+    <thead><tr><th>document</th><th>page</th><th class="n">produced</th>
+    <th class="n">passed checks</th><th class="n">refused</th><th class="n">seconds</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <p class="note" style="margin-top:12px">Copy the JSON below to
+  <code>records.json</code>, then score it:
+  <code>python scripts/score_browser_bench.py records.json</code></p>
+  <pre id="out"></pre>
+</div>
+
+<script type="module">
+const SYSTEM_SMALL = "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\").\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n";
+const USER_TMPL = "Document: {title}\nPublisher: {publisher}\nYear: {year}\nPage: {page}\n\n--- BEGIN PAGE TEXT ---\n{text}\n--- END PAGE TEXT ---\n\nReturn the JSON array.";
+const PAGES = [{"identifier": "hamiltonadventur00unse", "title": "Hamilton : An Adventure in Good Living", "publisher": "unstated", "year": "1983", "page": 20, "text": "OEE\n\nWhen young Johnny and young\nKatie toddle off for their first day\nat school in Hamilton, chances\nare they'll be going just around\nthe corner.\n\nWith 75 elementary schools\nunder the aegis of the Hamilton\nBoard of Education, and 42\noperated by the Hamilton-\nWentworth Roman Catholic\nSeparate School Board, the city is\nwell served in every district. In\naddition, the Hamilton board\noperates 14 composite secondary\nschools, seven vocational schools,\nand four schools for the trainable\nretarded.\n\nThe separate school board,\nwhich functions throughout the\nentire region, has seven sec-\nondary schools in the city. On\nthe Mountain, Hillfield-\nStrathallan College is a private,\nnondenominational, coeduca-\ntional school offering a cur-\nriculum from kindergarten\nthrough grade 13.\n\nOn the regional level, the\nWentworth County Board of\nEducation is responsible for all\npublic schools outside the city\nlimits.\n\nThe three boards of education\nall operate within a framework\nprovided and supervised by the\nOntario Ministry of education.\nTrustees are voted in by the elec-\ntorate in the same year as the\nmunicipal elections.\n\nThrough the years Hamilton\nhas been in the forefront with\ninnovative ideas and was among\nthe first in the province to\nexperiment with team teaching,\nopen classrooms, and oppor-\ntunity classes for slow learners.\nAbout 4,000 pupils with excep-\ntional needs are in special schools\nor Classes, in some cases in insti-\ntutions operated by social-service\nagencies.\n\nOne 1971 innovation, which\ninitially had Doubting Thomases\nin the city predicting disaster,\nwas the opening of two schools\n\u2014 Sir Wilfrid Laurier Secondary\nand Elizabeth Bagshaw Elemen-\n\n18\n\ntary \u2014 under one roof. Far from\nbeing a failure, the scheme has\nproven to be remarkably success-\nful. Senior students help juniors\novercome reading weaknesses,\nand members of the Laurier foot-\nball team hold clinics for pupils\nin grades five and six. The lower\ngrades also receive guidance from\nmembers of the Laurier student\norchestra. It is an educational\napproach that benefits the\njuniors and provides a worth-\nwhile teaching experience for\nseniors.\n\nIn keeping with Canada\u2019s two-\nlanguage policy, all schools in the\nregion have compulsory French\nclasses. In the case of schools\nunder the Hamilton Board of\nEducation, instruction in French\nbegins in grade seven and con-\ntinues through secondary school.\nThere are also two \u201cFrench\nimmersion\u201d schools where\ninstruction begins at the kinder-\ngarten level, and for French-\nspeaking students at the high-\nschool level, George P. Vanier\nsecondary school offers credits\nfor the graduation diploma.\n\nVocational schools in the\nHamilton public-school system\nprovide instruction in various\nareas \u2014 such as hairdressing,\ntailoring, and restaurant service\n\u2014 to students over 14 years of\nage who have difficulty adjusting\nto the traditional academic cur-\nriculum.\n\nSchools that come under the\nHamilton- Wentworth Roman\nCatholic Separate School Board\nare structured very much like\nthose operated by the other two\nboards \u2014 that is, under cur-\nriculum guidelines laid down by\nthe provincial ministry of educa-\ntion. However, there are a few\ndifferences. Daily instruction in\nFrench starts in grade five, and\none school gives instruction\nexclusively in French from\nkindergarten to grade eight.\n\nAs is the case with other\nboards, separate schools are\nfinanced by provincial grants and\n\nWHT\n\n\u201cat\n\nmunicipal taxes, with one excep-\ntion. Public funding continues\nonly as far as grade 10; the high-\ner grades come under the juris-\ndiction of the Board of Gover-\nnors of the Roman Catholic\nHigh Schools, which is supported\nneither by provincial dollars nor\nby municipal taxes.\n\nThe Wentworth County\nBoard of Education covers an\narea that takes in the municipal-\nities of Ancaster, Dundas, Flam-\nborough, Glanbrook, and Stoney\nCreek. Because of the rural\n\nnature of the area, many students\n\nhave to travel more than a mile\n\nMe THTTTINHHTTISUHETT\nWHAT UATHHATD\nUOTE\n\nHTT\n\nAbove: The Education\nCentre houses\nHamilton\u2019s Board of\nEducation\n\nOpposite page: Leaves\nbegin to turn on the\nMcMaster University\ncampus\n\nBelow: Westdale\nSecondary School"}, {"identifier": "owensoundwaterpo24477", "title": "Owen Sound : water pollution control plant, annual report 1969", "publisher": "Ontario Water Resources Commission", "year": "1969", "page": 9, "text": "DESIGN DATA\n\nPROJECT NO.\n\n2-0069-60\n\nTREATMENT Primary\n\nDESIGN FLOW\n\n3.0 mgd\n\nDESIGN POPULATION\n\n25,000\n\nBOD - Raw Sewage\n- Removal\n\n180 mg/1\n40%\n\nSS - Raw Sewage\n- Removal\n\n200 mg/1\n65%\n\nSEWAGE PUMPING STATION\nScreening\n\n13/4&quot; spacing\n\nPumps\n\nType: Worthington\nSize: Three 3150 gpm @ 33' tdh\n(One diesel standby)\n\nPRIMARY TREATMENT\n\nComminution\n\nType: Barminutor\nSize: One Model C (36&quot;)\n\nGrit Removal\n\nType: Aerated\n\nSize: One 18^ X 13 X 12' (18,000 gal)\nRetention: 8.6 min\n\nPre-aeration Tank\n\nSize: One 23' 9&quot; X 13 X 12'\n\n(23,400 gal)\nRetention : 11.2 min\n\nAir Supply\n\nType: Sutorbilt\n\nSize: Two 408 scfm (o&gt; 6 psi\n\nPrimary Sedimentation\n\nType: Rex Linkbelt\n\nSize: Two 78 X 32 X 12^' (388,000 gal)\n\nRetention: 3. 11 hr\nLoading: Surface, 600 gal/ft2 /day\nWeir, 8,260 gal/ft/day\n\nCHLORINATION\n\nType: W &amp; T\n\nSize: One 2000 lb /day\n\nChlorine Contact Chamber\n\nSize: One 31 X 14 X 8' (21,700 gal)\nRetention: 11.2 min\n\nOUTFALL\n\n828' to Owen Sound\n\nSLUDGE HANDLING\n\nDigestion System - Two- stage\n\nPrimary \u2014\n\nType: PFT with one Sutorbilt\n\ncompressor\nSize: One 40' dia x 25' swd (31,400\n\ncu ft or 0. 196 mil gal)\nLoading: 2.75 lb/cu ft/mo\n\nSecondary \u2014\n\nSize: One 40' dia x 24^' swd (30, 800\n\ncu ft or 0. 192 mil gal)\nTotal Loading: 1.88 lb/cu ft/mo\n\nWEST SIDE PUMPING STATION\n\nOne - 3916 gpm Chicago Pump\nTwo - 1000 gpm Smart- Turner\nStandby - Diesel generator\n\n3"}, {"identifier": "owensoundwaterpo24477", "title": "Owen Sound : water pollution control plant, annual report 1969", "publisher": "Ontario Water Resources Commission", "year": "1969", "page": 10, "text": "REVIEW\n\nDuring 1969, modifications to the West Side pumping station included an\nadditional pump with a capacity of more than 3800 gallons per minute, and\na generator which will operate the station in the event of power failures .\nWith these modifications, the pumping station is expected to handle the\nheavy flows more easily.\n\nNo additions to enlarge capacity were made at the plant. As a result ,\nplant staff still had problems with hydraulic overloading.\n\nFrom the graphs, it can be seen that 80% of the time the plant is most\nlikely operating above the design capacity. The average flow has remain-\ned constant for the last year.\n\nEXPENDITURES\n\nThe total operating cost for treating 1475 million gallons of sewage in 1969\nwas $53, 549. 66. Unit costs were $36. 30 per million gallons treated and\nfive cents per pound of BOD removed.\n\nPLANT FLOWS and CHLORI NATION\n\nThe total flow for the year was 1475.2 million gallons, with an average\ndaily flow of four million gallons. The maximum and minimum daily flows\nwere 8. 8 million gallons in November and 2.1 million gallons in July.\n\nAn average of 2696 pounds of chlorine was used per month. The opera-\ntion used 21.9 pounds of chlorine per million gallons of flow at an average\ndosage of 2.2 mg/1. This maintained an average residual of 0.5 mg/1 in\nthe final effluent."}, {"identifier": "owensoundwaterpo24477", "title": "Owen Sound : water pollution control plant, annual report 1969", "publisher": "Ontario Water Resources Commission", "year": "1969", "page": 11, "text": "PLANT EFFICIENCY\n\nThe average influent BOD and suspended solids were 104 mg/1 and 224 mg/1\nrespectively. The average effluent BOD and suspended solids were 37 mg/1\nand 36 mg/1 respectively, giving an average removal of 64% BOD and 84%\nsuspended solids. A total of 1243 cu. ft. of grit was removed during the\nyear, for an average of 104 cu. ft. of grit removed for each one million\ngallons of sewage treated.\n\nSLUDGE DIGESTION\n\nJust over three million gallons of raw sludge were pumped to the digesters\nduring 1969. The average monthly volume of 258,000 gallons contained\n7.3% total solids and 47% volatile solids.\n\nSludge totalling 1,495,000 gallons was removed from the digesters and\nhauled away. The average monthly volume of 125,000 gallons contained\n8. 5% total solids and 28% volatile solids.\n\nCONCLUSIONS\n\n1. The plant operated above the hydraulic design capacity 85% of the time ,\nand increasing the pumping capacity of the West Side pumping station ag-\ngravated this problem. If a combined sewer separation program is financ-\nially impossible, immediate consideration should be given to expanding the\nplant's capacity.\n\n2. Due to the high flows throughout the year, grit facilities did not op-\nerate effectively. As a result, large amounts of grit were passed on to\nthe primary clarifiers and subsequently pumped to the digester. This\ncontinues to be a problem.\n\n3 . The influent and effluent BOD and suspended solids were similar to the\nprevious year's values. As a result, the plant operated at the same ef-\nficiency as in 1968."}];
+const PROMPTS = [{"name": "v5 (counts + units)", "system": "You read scanned Canadian government reports and pull out every measurement.\n\nReturn ONLY a JSON array. No prose, no markdown fence. Each element:\n{\"kind\": \"...\", \"parameter\": \"...\", \"value\": 1.23, \"unit\": \"...\",\n \"source_text\": \"...\"}\n\nRules, in order of importance:\n1. \"source_text\" is the EXACT sentence from the text, copied verbatim,\n   containing the value. Never paraphrase it. A record without its exact\n   sentence will be rejected.\n2. \"value\" is the number as stated. \"unit\" is its unit (\"mg/L\", \"%\",\n   \"hours\", \"persons\"). A COUNT is a measurement: \"75 elementary schools\"\n   is value 75, unit \"schools\". So is \"14 pumping stations\".\n   NEVER leave \"unit\" empty. If the page gives no symbol, name what is being\n   counted (\"people\", \"schools\", \"hours\"). 1960s scans print mg/L as \"mg/1\";\n   record that as \"mg/L\".\n3. \"kind\" is one of:\n   \"observation\" - something actually measured (\"the residual was 0.7 mg/L\")\n   \"design\"      - what equipment was built for (\"design flow 0.20 MGD\")\n   \"standard\"    - a regulatory limit or objective (\"must not exceed 1 mg/L\")\n   \"conclusion\"  - the author's judgement, may have no number\n4. One record per measurement. A sentence with three numbers gives three\n   records, each quoting that same sentence.\n\nExample: the text \"The average influent BOD and suspended solids were 104\nmg/1 and 224 mg/1 respectively.\" gives:\n[{\"kind\": \"observation\", \"parameter\": \"influent BOD\", \"value\": 104,\n  \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD and suspended\nsolids were 104 mg/1 and 224 mg/1 respectively.\"},\n {\"kind\": \"observation\", \"parameter\": \"influent suspended solids\",\n  \"value\": 224, \"unit\": \"mg/L\", \"source_text\": \"The average influent BOD\nand suspended solids were 104 mg/1 and 224 mg/1 respectively.\"}]\n"}];
+
+const $ = id => document.getElementById(id);
+const status = m => { $("status").textContent = m; };
+const bar = $("bar"), go = $("go");
+
+/* ---- the same salvage parser the real extractor uses, ported ------------ */
+function parseRecords(raw) {
+  // Reasoning models deliberate in <think> blocks before answering, and the
+  // deliberation can contain example braces. Extraction is transcription,
+  // not deliberation -- discard the thinking, closed or truncated.
+  raw = raw.replace(/<think>[\s\S]*?<\/think>/g, "");
+  const open = raw.indexOf("<think>");
+  if (open >= 0) raw = raw.slice(0, open);
+  raw = raw.trim().replace(/^```[a-z]*\n?/, "").replace(/\n?```$/, "").trim();
+  try { const v = JSON.parse(raw); return Array.isArray(v) ? v : [v]; } catch (e) {}
+  const a = raw.indexOf("["), b = raw.lastIndexOf("]");
+  if (a >= 0 && b > a) {
+    try { const v = JSON.parse(raw.slice(a, b + 1)); if (Array.isArray(v)) return v; }
+    catch (e) {}
+  }
+  const out = []; let depth = 0, start = -1, inStr = false, escd = false;
+  for (let i = 0; i < raw.length; i++) {
+    const ch = raw[i];
+    if (inStr) { if (escd) escd = false; else if (ch === "\\") escd = true;
+                 else if (ch === '"') inStr = false; continue; }
+    if (ch === '"') inStr = true;
+    else if (ch === "{") { if (!depth) start = i; depth++; }
+    else if (ch === "}") { if (depth && !--depth && start >= 0) {
+      try { const o = JSON.parse(raw.slice(start, i + 1));
+            if (o && typeof o === "object") out.push(o); } catch (e) {}
+      start = -1; } }
+  }
+  return out;
+}
+
+/* ---- demo-grade ports of the evidence checks ---------------------------
+   The browser's checks are a pre-filter so junk never leaves the tab; the
+   server's verification against archive.org is the authority, and its
+   verdict is shown when records are sent. */
+const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").trim();
+function quoteOnPage(quote, pageText) {
+  const q = norm(quote), p = norm(pageText);
+  return q.length > 8 && p.includes(q.slice(0, 160));
+}
+function valueInQuote(value, quote) {
+  if (value === null || value === undefined) return null; // nothing to check
+  let canon = String(value);
+  if (canon.endsWith(".0")) canon = canon.slice(0, -2);
+  // Strip commas only in the three-digit thousands shape -- "8,5" stays.
+  const direct = String(quote || "").replace(/(?<=\d),(?=\d{3}(?!\d))/g, "");
+  const rx = new RegExp("(?<![\\d.+-])" + canon.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+                        + "(?![\\d.])");
+  if (rx.test(direct)) return true;
+  // The page writes "0.20" and the model reads 0.2; "13.0" and 13. Same
+  // number, different spelling. The server's referee compares NUMBERS
+  // (contribute._value_in_quote), so this pre-filter must not be stricter
+  // than the check it fronts for -- measured on the first live run, the
+  // digit-string test alone refused two honest readings per page.
+  const n = Number(value);
+  if (isFinite(n)) {
+    const tokens = direct.match(/(?<![\d.+-])(?:\d+(?:\.\d+)?|\.\d+)(?![\d.])/g) || [];
+    if (tokens.some(t => Number(t) === n)) return true;
+  }
+  return false;
+}
+
+
+/* The reader's own prompt assembly, so the model sees what it sees there. */
+function fillTemplate(doc, pageNo, text) {
+  let out = USER_TMPL;
+  const clean = v => String(v ?? "").replace(/[{}]/g, " ");
+  const fill = { title: clean(doc.title) || "(unknown)",
+                 publisher: clean(doc.publisher) || "(unknown)",
+                 year: clean(doc.year) || "(unknown)",
+                 page: String(pageNo) };
+  for (const key of ["title", "publisher", "year", "page"])
+    out = out.replace("{" + key + "}", () => fill[key]);
+  return out.replace("{text}", () => text);
+}
+
+let engine = null, modelId = null;
+
+async function loadEngine() {
+  status("Loading the model list…");
+  const webllm = await import("https://esm.run/@mlc-ai/web-llm@0.2.84");
+  const list = webllm.prebuiltAppConfig.model_list;
+  const prefer = [/qwen3\.5-4b.*q4f16/i, /qwen3\.5-4b/i, /qwen3-4b.*q4f16/i,
+                  /qwen3\.5-2b.*q4f16/i, /llama-3\.2-3b.*q4f16/i];
+  let chosen = null;
+  for (const rx of prefer) { chosen = list.find(m => rx.test(m.model_id)); if (chosen) break; }
+  if (!chosen) { status("No suitable browser model in the catalogue."); return; }
+  modelId = chosen.model_id;
+  $("model-note").textContent = "Model: " + modelId;
+  status("Fetching " + modelId + " into browser cache…");
+  bar.hidden = false;
+  engine = await webllm.CreateMLCEngine(modelId, {
+    initProgressCallback: r => { bar.value = r.progress || 0; status(r.text || "loading…"); },
+  }, { context_window_size: 8192, sliding_window_size: -1 });
+  bar.hidden = true;
+  status("Model ready.");
+}
+
+async function readPage(userPrompt, label, systemPrompt) {
+  const isThinker = /qwen3/i.test(modelId);
+  const req = {
+    messages: [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: userPrompt + (isThinker ? "\n/no_think" : "") },
+    ],
+    temperature: 0,
+    frequency_penalty: 0.3,
+    max_tokens: 4000,
+    stream: true,
+  };
+  if (isThinker) req.extra_body = { enable_thinking: false };
+  const chunks = await engine.chat.completions.create(req);
+  let raw = "";
+  for await (const c of chunks) {
+    raw += c.choices?.[0]?.delta?.content || "";
+    status(label + " — " + raw.length + " characters");
+  }
+  return raw;
+}
+
+go.addEventListener("click", async () => {
+  go.disabled = true;
+  if (!engine) {
+    try { await loadEngine(); }
+    catch (e) { status("Could not load the model: " + String(e).slice(0, 140)); }
+    if (!engine) { go.disabled = false; return; }
+  }
+  const out = { model: modelId, engine: "web-llm@0.2.84", runs: [] };
+  const tbody = document.querySelector("#tbl tbody");
+  tbody.innerHTML = "";
+  $("results").hidden = false;
+
+ for (const prompt of PROMPTS) {
+  const run = { prompt: prompt.name, pages: [] };
+  out.runs.push(run);
+  for (let i = 0; i < PAGES.length; i++) {
+    const p = PAGES[i];
+    const label = prompt.name + " — page " + (i + 1) + "/" + PAGES.length + " — " + p.identifier + " p." + p.page;
+    const t0 = performance.now();
+    let raw = "";
+    try { raw = await readPage(fillTemplate(p, p.page, p.text), label, prompt.system); }
+    catch (e) { status(label + " failed: " + String(e).slice(0, 120)); }
+    const secs = (performance.now() - t0) / 1000;
+
+    const produced = [], passed = [];
+    for (const r of parseRecords(raw)) {
+      if (!r || typeof r !== "object") continue;
+      const quote = String(r.source_text || "");
+      const onPage = quoteOnPage(quote, p.text);
+      const inQuote = valueInQuote(r.value, quote);
+      /* The reader sends a record only when the sentence is on the page and
+         the value is in it (or there is no value to check). Same rule here. */
+      const ok = !!quote && onPage && inQuote !== false;
+      const rec = { kind: r.kind, parameter: r.parameter, value: r.value,
+                    unit: r.unit, source_text: quote, passed: ok };
+      produced.push(rec);
+      if (ok) passed.push(rec);
+    }
+    run.pages.push({ identifier: p.identifier, page: p.page, seconds: +secs.toFixed(1),
+                     raw_chars: raw.length, raw: raw.slice(0, 600), records: produced });
+
+    const row = document.createElement("tr");
+    row.innerHTML = "<td>" + prompt.name + " · " + p.identifier + "</td><td class='n'>" + p.page +
+      "</td><td class='n'>" + produced.length + "</td><td class='n'>" + passed.length +
+      "</td><td class='n'>" + (produced.length - passed.length) +
+      "</td><td class='n'>" + secs.toFixed(0) + "</td>";
+    tbody.appendChild(row);
+
+    window._bench = out;
+    $("out").textContent = JSON.stringify(out, null, 1);
+  }
+ }
+
+  const tot = out.runs.reduce((n, r) => n + r.pages.reduce((m, p) => m + p.records.length, 0), 0);
+  $("headline").textContent =
+    tot + " records across " + out.runs.length + " prompts x " + PAGES.length +
+    " pages. Score them offline against the gold set.";
+  status("Done. window._bench holds the JSON.");
+  go.disabled = false;
+});
+
+if (!("gpu" in navigator)) {
+  status("This browser has no WebGPU; the reader needs it.");
+} else {
+  status("Ready. Press the button — the model downloads once into browser cache.");
+  go.disabled = false;
+}
+</script>
+</main>
+</body>
+</html>

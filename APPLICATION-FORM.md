@@ -4,6 +4,13 @@ Each answer is written to stand alone, because they are read as separate fields
 in a review database and a reviewer may not read them in order. Character counts
 are checked by `scripts/check_form.py`; the limits are the form's own.
 
+> **Correction after submission.** The Proposed approach answer as sent said
+> the browser reader "finds roughly half of the relevant statements on a
+> page". That figure had never been measured for the combination visitors
+> run. It was measured on 2026-08-18 against the same four gold pages: 23.5%
+> recall at 88.9% precision. The text below carries the measured figure; the
+> submitted text carried the estimate.
+
 ---
 
 ## Project title
@@ -51,7 +58,7 @@ Historical OCR often preserves prose more reliably than tables. In these reports
 
 The pipeline begins with a low-cost local classifier that sorts pages into prose, table, figure, or skip. A language model running on the contributor's computer converts selected prose pages into structured records. Each statement must be classified as an observed measurement, design specification, legal limit, or author's conclusion. This prevents a plant's rated capacity, for example, from being mistaken for the amount that actually flowed through it.
 
-Every proposed record must include supporting text. The verifier confirms that the quotation and number appear in the page's OCR layer, and the page link lets a person compare that evidence with the scan. These checks prevent a large class of fabricated records, while the benchmark measures the errors that remain. In current tests, the browser reader finds roughly half of the relevant statements on a page, and no invented statement has survived verification.
+Every proposed record must include supporting text. The verifier confirms that the quotation and number appear in the page's OCR layer, and the page link lets a person compare that evidence with the scan. These checks prevent a large class of fabricated records, while the benchmark measures the errors that remain. Measured against four hand-read pages, the browser reader finds 23.5% of the values a person found, publishes at 88.9% precision, and invented nothing on any of them.
 
 The fellowship would begin by freezing an approximately 200-page, hand-labelled benchmark before further tuning. It would cover different eras, agencies, document types, and measurement classes, with precision and recall reported for each category. Only classes reaching 95% precision would enter the dataset; lower-performing classes would remain labelled finding aids.
 

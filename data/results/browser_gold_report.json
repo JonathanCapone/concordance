@@ -1,0 +1,111 @@
+{
+  "model": "Qwen3.5-4B-q4f16_1-MLC",
+  "engine": "web-llm@0.2.84",
+  "note": "The in-browser reader measured against the same hand-read gold pages as the installed reader, scored by the same scorer. 'as_published' is what a browser sends after its own evidence checks; 'model_output' is everything the model produced. The compact browser instructions do not ask for stream, so stream accuracy is not attempted.",
+  "stream_attempted": false,
+  "as_published": {
+    "precision": 0.8889,
+    "recall": 0.2353,
+    "kind_accuracy": 0.9375,
+    "matched": 16,
+    "missed": 52,
+    "spurious": 2
+  },
+  "model_output": {
+    "precision": 0.7931,
+    "recall": 0.3382,
+    "matched": 23,
+    "missed": 45,
+    "spurious": 6
+  },
+  "pages": [
+    {
+      "identifier": "hamiltonadventur00unse",
+      "page": 20,
+      "gold_values": 11,
+      "produced": 7,
+      "published": 4,
+      "seconds": 25.8,
+      "as_published": {
+        "precision": 1.0,
+        "recall": 0.36363636363636365,
+        "kind_accuracy": 1.0,
+        "matched": 4,
+        "missed": 7,
+        "spurious": 0
+      },
+      "model_output": {
+        "precision": 0.8571428571428571,
+        "recall": 0.5454545454545454,
+        "matched": 6,
+        "spurious": 1
+      }
+    },
+    {
+      "identifier": "owensoundwaterpo24477",
+      "page": 9,
+      "gold_values": 26,
+      "produced": 6,
+      "published": 6,
+      "seconds": 53.9,
+      "as_published": {
+        "precision": 0.6666666666666666,
+        "recall": 0.15384615384615385,
+        "kind_accuracy": 1.0,
+        "matched": 4,
+        "missed": 22,
+        "spurious": 2
+      },
+      "model_output": {
+        "precision": 0.6666666666666666,
+        "recall": 0.15384615384615385,
+        "matched": 4,
+        "spurious": 2
+      }
+    },
+    {
+      "identifier": "owensoundwaterpo24477",
+      "page": 10,
+      "gold_values": 14,
+      "produced": 11,
+      "published": 4,
+      "seconds": 116.5,
+      "as_published": {
+        "precision": 1.0,
+        "recall": 0.2857142857142857,
+        "kind_accuracy": 0.75,
+        "matched": 4,
+        "missed": 10,
+        "spurious": 0
+      },
+      "model_output": {
+        "precision": 0.7272727272727273,
+        "recall": 0.5714285714285714,
+        "matched": 8,
+        "spurious": 3
+      }
+    },
+    {
+      "identifier": "owensoundwaterpo24477",
+      "page": 11,
+      "gold_values": 17,
+      "produced": 5,
+      "published": 4,
+      "seconds": 116.7,
+      "as_published": {
+        "precision": 1.0,
+        "recall": 0.23529411764705882,
+        "kind_accuracy": 1.0,
+        "matched": 4,
+        "missed": 13,
+        "spurious": 0
+      },
+      "model_output": {
+        "precision": 1.0,
+        "recall": 0.29411764705882354,
+        "matched": 5,
+        "spurious": 0
+      }
+    }
+  ]
+}

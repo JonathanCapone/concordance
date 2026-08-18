@@ -1,0 +1,272 @@
+{
+ "model": "Qwen3.5-4B-q4f16_1-MLC",
+ "engine": "web-llm@0.2.84",
+ "prompt": "shipped (counted nouns)",
+ "pages": [
+  {
+   "identifier": "hamiltonadventur00unse",
+   "page": 20,
+   "seconds": 25.8,
+   "raw_chars": 1472,
+   "records": [
+    {
+     "kind": "observation",
+     "parameter": "elementary schools (Hamilton Board of Education)",
+     "value": 75,
+     "unit": "schools",
+     "source_text": "With 75 elementary schools under the aegis of the Hamilton Board of Education",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "elementary schools (Hamilton-Wentworth Roman Catholic Separate School Board)",
+     "value": 42,
+     "unit": "schools",
+     "source_text": "and 42 operated by the Hamilton-Wentworth Roman Catholic Separate School Board",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "composite secondary schools (Hamilton board)",
+     "value": 14,
+     "unit": "schools",
+     "source_text": "In addition, the Hamilton board operates 14 composite secondary schools",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "vocational schools (Hamilton board)",
+     "value": 7,
+     "unit": "schools",
+     "source_text": "...and seven vocational schools,",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "schools for the trainable retarded (Hamilton board)",
+     "value": 4,
+     "unit": "schools",
+     "source_text": "...and four schools for the trainable retarded.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "secondary schools (separate school board)",
+     "value": 7,
+     "unit": "",
+     "source_text": "The separate school board, which functions throughout the entire region, has seven sec-ondary schools in the city.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "pupils with exceptional needs",
+     "value": "4000",
+     "unit": "pupils",
+     "source_text": "About 4,000 pupils with excep-tional needs are in special schools or Classes",
+     "passed": true
+    }
+   ]
+  },
+  {
+   "identifier": "owensoundwaterpo24477",
+   "page": 9,
+   "seconds": 53.9,
+   "raw_chars": 787,
+   "records": [
+    {
+     "kind": "design",
+     "parameter": "design flow",
+     "value": 3,
+     "unit": "mgd",
+     "source_text": "DESIGN FLOW\n3.0 mgd",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "design population",
+     "value": 25000,
+     "unit": "",
+     "source_text": "DESIGN POPULATION\n25,000",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "BOD - Raw Sewage - Removal",
+     "value": 180,
+     "unit": "mg/L",
+     "source_text": "- Removal\n180 mg/1",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "% BOD - Raw Sewage - Removal",
+     "value": 40,
+     "unit": "%",
+     "source_text": "- Removal\n180 mg/1\n40%",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "% SS - Raw Sewage - Removal",
+     "value": 65,
+     "unit": "%",
+     "source_text": "- Removal\n200 mg/1\n65%",
+     "passed": true
+    },
+    {
+     "kind": "design",
+     "parameter": "% SS - Raw Sewage - Removal",
+     "value": 200,
+     "unit": "",
+     "source_text": "- Removal\n200 mg/1",
+     "passed": true
+    }
+   ]
+  },
+  {
+   "identifier": "owensoundwaterpo24477",
+   "page": 10,
+   "seconds": 116.5,
+   "raw_chars": 2727,
+   "records": [
+    {
+     "kind": "design",
+     "parameter": "pump capacity",
+     "value": 3800,
+     "unit": "gallons per minute",
+     "source_text": "During 1969, modifications to the West Side pumping station included an additional pump with a capacity of more than 3800 gallons per minute",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "percentage of time above design capacity",
+     "value": 80,
+     "unit": "%",
+     "source_text": "From the graphs, it can be seen that 80% of the time the plant is most likely operating above the design capacity.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "total operating cost",
+     "value": 53549.66,
+     "unit": "$",
+     "source_text": "The total operating cost for treating 1475 million gallons of sewage in 1969 was $53, 549. 66.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "unit cost per million gallons treated",
+     "value": 36.3,
+     "unit": "$ per million gallons treated",
+     "source_text": "Unit costs were $36. 30 per million gallons treated",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "cost per pound of BOD removed",
+     "value": 0.05,
+     "unit": "$ per pound of BOD removed",
+     "source_text": "...and five cents per pound of BOD removed.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "total flow for the year",
+     "value": 1475.2,
+     "unit": "million gallons",
+     "source_text": "...The total flow for the year was 1475.2 million gallons...",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "maximum and minimum daily flows",
+     "value": "8.8",
+     "unit": "million gallons",
+     "source_text": "The maximum and minimum daily flows were 8.8 million gallons in November and 2.1 million gallons in July.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "maximum and minimum daily flows",
+     "value": "2.1",
+     "unit": "million gallons",
+     "source_text": "The maximum and minimum daily flows were 8.8 million gallons in November and 2.1 million gallons in July.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "chlorine used per month",
+     "value": "2696",
+     "unit": "pounds",
+     "source_text": "An average of 2696 pounds of chlorine was used per month.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "chlorine used per million gallons of flow",
+     "value": "21.9",
+     "unit": "pounds per million gallons of flow",
+     "source_text": "The operation used 21.9 pounds of chlorine per million gallons of flow at an average dosage of 2.2 mg/1.",
+     "passed": false
+    },
+    {
+     "kind": "observation",
+     "parameter": "chlorine dosage in final effluent residual",
+     "value": "0.5",
+     "unit": "mg/L",
+     "source_text": "This maintained an average residual of 0.5 mg/1 in the final effluent.",
+     "passed": true
+    }
+   ]
+  },
+  {
+   "identifier": "owensoundwaterpo24477",
+   "page": 11,
+   "seconds": 116.7,
+   "raw_chars": 2509,
+   "records": [
+    {
+     "kind": "observation",
+     "parameter": "influent BOD",
+     "value": 104,
+     "unit": "mg/L",
+     "source_text": "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "influent suspended solids",
+     "value": 224,
+     "unit": "mg/L",
+     "source_text": "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively.",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "effluent BOD",
+     "value": 37,
+     "unit": "mg/L",
+     "source_text": "The average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively,",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "effluent suspended solids",
+     "value": 36,
+     "unit": "mg/L",
+     "source_text": "The average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively,",
+     "passed": true
+    },
+    {
+     "kind": "observation",
+     "parameter": "% removal of BOD",
+     "value": 64,
+     "unit": "%",
+     "source_text": "...giving an average removal of 64% BOD and 84% suspended solids.",
+     "passed": false
+    }
+   ]
+  }
+ ],
+ "note": "Raw output of the in-browser reader over the four hand-read gold pages, kept so the score can be recomputed without re-running a model. Produced by scripts/bench_browser_reader.py; scored by scripts/score_browser_bench.py."
+}

@@ -34,10 +34,15 @@ quoted sentence against the archive before publishing anything.
 Nothing to install. No account. No API key. No server of ours runs a model for you.
 
 Ingersoll was read this way — sixteen pages of prose, twenty-three records
-published, refusals shown on screen as they happened. The browser reader is an
-honest partial reader: models that fit in a browser tab find roughly half of what a
-page states and invent nothing that survives verification. For the rest of a town's
-record there is the installed reader below, which uses a larger model.
+published, refusals shown on screen as they happened.
+
+The browser reader is deliberately partial, and now measured: against the four
+pages a person read by hand it finds **23.5%** of the values they found, and
+**88.9%** of what it publishes matches one of them. It invented nothing on any
+of the four — both records that missed the answer key were real values whose
+unit it left blank. For the rest of a town's record there is the installed
+reader below, which uses a larger model and scores 96.8% precision on the same
+pages. Method and full report: [`data/results/browser_gold_report.json`](data/results/browser_gold_report.json).
 
 ## Why this is possible at all
 
