@@ -50,9 +50,10 @@ from concordance.extract import USER_TEMPLATE               # noqa: E402
 #: its accuracy against the gold pages is the next measurement, and the page
 #: says so. The full prompt stays the production standard.
 #: Third version of these instructions, and the first with a measured
-#: score. Against the four hand-read gold pages it reads 23.5% recall at
-#: 88.9% precision, where the previous version read 17.6% at 80.0%, and
-#: the whole gain is the counted-noun rule below. The
+#: score. Against the four hand-read gold pages the reader now reads 32.4%
+#: recall at 84.6% precision, where it began at 17.6% at 80.0%. Two changes
+#: got it there: the counted-noun rule below, and a repair to the evidence
+#: checks, which were refusing records the server's own verifier accepts. The
 #: magazine page -- the one page in the gold set that is NOT a water report --
 #: went from 0% recall to 36% at 100% precision. A prompt that silently
 #: abandons every document outside its home subject is worse than a partial
@@ -140,8 +141,26 @@ function parseRecords(raw) {
    server's verification against archive.org is the authority, and its
    verdict is shown when records are sent. */
 const norm = s => String(s || "").toLowerCase().replace(/[^a-z0-9.]+/g, " ").trim();
+/* A period survives normalisation because decimals need it, which means a
+   quote the model marks with an ellipsis ("...the total flow was 1475.2
+   million...") cannot match the page. Drop dots that are not between two
+   digits: the ellipsis goes, 1475.2 stays whole, and 1475.2 still cannot
+   match 14752. The server's verifier tokenises and is tolerant of exactly
+   this -- a pre-filter must never be stricter than the check it fronts for. */
+const joinSplitNumbers = s => String(s || "")
+  .replace(/(\\d),\\s+(?=\\d)/g, "$1,")
+  .replace(/(\\d)\\.\\s+(?=\\d)/g, "$1.");
+/* Scanning splits numbers -- a page can read "8. 8 million gallons" where the
+   model sensibly writes 8.8 -- so the join has to happen on BOTH sides before
+   the quote is looked for. A period also survives normalisation because
+   decimals need it, which would otherwise let an ellipsis the model used to
+   mark a join stop the sentence matching. Drop dots that are not between two
+   digits, after joining. The server's verifier tokenises and tolerates all of
+   this; a pre-filter must never be stricter than the check it fronts for. */
+const forMatch = s => norm(joinSplitNumbers(s)).replace(/(?<!\\d)\\.(?!\\d)/g, " ")
+                             .replace(/\\s+/g, " ").trim();
 function quoteOnPage(quote, pageText) {
-  const q = norm(quote), p = norm(pageText);
+  const q = forMatch(quote), p = forMatch(pageText);
   return q.length > 8 && p.includes(q.slice(0, 160));
 }
 function valueInQuote(value, quote) {
@@ -162,6 +181,25 @@ function valueInQuote(value, quote) {
   if (isFinite(n)) {
     const tokens = direct.match(/(?<![\\d.+-])(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?![\\d.])/g) || [];
     if (tokens.some(t => Number(t) === n)) return true;
+    /* 1960s scanning splits a figure with spaces: "$53, 549. 66" is one
+       number and "36. 30" is 36.3. The server joins those before judging
+       (contribute._NUMBER_TEXT allows the spaces), so this must too. */
+    const joined = String(quote || "")
+      .replace(/(\\d),\\s+(?=\\d)/g, "$1,")
+      .replace(/(\\d)\\.\\s+(?=\\d)/g, "$1.")
+      .replace(/(?<=\\d),(?=\\d{3}(?!\\d))/g, "");
+    const joinedTokens = joined.match(/(?<![\\d.+-])(?:\\d+(?:\\.\\d+)?|\\.\\d+)(?![\\d.])/g) || [];
+    if (joinedTokens.some(t => Number(t) === n)) return true;
+    /* And a page may spell the number out -- "seven vocational schools". The
+       server reads those through numerals.states_value; this covers the small
+       integers that actually occur in these documents. */
+    const WORDS = { zero:0, one:1, two:2, three:3, four:4, five:5, six:6,
+                    seven:7, eight:8, nine:9, ten:10, eleven:11, twelve:12,
+                    thirteen:13, fourteen:14, fifteen:15, sixteen:16,
+                    seventeen:17, eighteen:18, nineteen:19, twenty:20,
+                    thirty:30, forty:40, fifty:50, sixty:60, seventy:70,
+                    eighty:80, ninety:90, hundred:100, thousand:1000 };
+    if (norm(quote).split(" ").some(w => WORDS[w] === n)) return true;
   }
   return false;
 }
@@ -294,10 +332,10 @@ anything is published. Nothing is installed; no server does any reading.</p>
 <p class="note" id="honesty">Honest scope. The model this page runs
 (Qwen3.5-4B from the official WebLLM catalogue) is a <b>partial</b> reader:
 measured against the four pages a person read by hand, it finds
-<b>23.5%</b> of the values they found, and <b>88.9%</b> of what it publishes
-matches one of them. It invented nothing on any of the four pages: both
-records that missed the answer key were real values whose unit it left
-blank. That figure replaces an earlier estimate of &ldquo;roughly half&rdquo;,
+<b>32.4%</b> of the values they found, and <b>84.6%</b> of what it publishes
+matches one of them. It invented nothing on any of the four pages: every
+record that missed the answer key was a real value whose unit it left blank
+or worded differently. That figure replaces an earlier estimate of &ldquo;roughly half&rdquo;,
 which was never measured for this combination and was two and a half times
 too generous. What your browser sends is only what passed both checks here,
 and this site then re-verifies every sentence and number against the scanned

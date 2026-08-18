@@ -4,12 +4,12 @@
   "note": "The in-browser reader measured against the same hand-read gold pages as the installed reader, scored by the same scorer. 'as_published' is what a browser sends after its own evidence checks; 'model_output' is everything the model produced. The compact browser instructions do not ask for stream, so stream accuracy is not attempted.",
   "stream_attempted": false,
   "as_published": {
-    "precision": 0.8889,
-    "recall": 0.2353,
-    "kind_accuracy": 0.9375,
-    "matched": 16,
-    "missed": 52,
-    "spurious": 2
+    "precision": 0.8462,
+    "recall": 0.3235,
+    "kind_accuracy": 0.9545,
+    "matched": 22,
+    "missed": 46,
+    "spurious": 4
   },
   "model_output": {
     "precision": 0.7931,
@@ -24,15 +24,15 @@
       "page": 20,
       "gold_values": 11,
       "produced": 7,
-      "published": 4,
+      "published": 6,
       "seconds": 25.8,
       "as_published": {
-        "precision": 1.0,
-        "recall": 0.36363636363636365,
+        "precision": 0.8333333333333334,
+        "recall": 0.45454545454545453,
         "kind_accuracy": 1.0,
-        "matched": 4,
-        "missed": 7,
-        "spurious": 0
+        "matched": 5,
+        "missed": 6,
+        "spurious": 1
       },
       "model_output": {
         "precision": 0.8571428571428571,
@@ -68,15 +68,15 @@
       "page": 10,
       "gold_values": 14,
       "produced": 11,
-      "published": 4,
+      "published": 9,
       "seconds": 116.5,
       "as_published": {
-        "precision": 1.0,
-        "recall": 0.2857142857142857,
-        "kind_accuracy": 0.75,
-        "matched": 4,
-        "missed": 10,
-        "spurious": 0
+        "precision": 0.8888888888888888,
+        "recall": 0.5714285714285714,
+        "kind_accuracy": 0.875,
+        "matched": 8,
+        "missed": 6,
+        "spurious": 1
       },
       "model_output": {
         "precision": 0.7272727272727273,
@@ -90,14 +90,14 @@
       "page": 11,
       "gold_values": 17,
       "produced": 5,
-      "published": 4,
+      "published": 5,
       "seconds": 116.7,
       "as_published": {
         "precision": 1.0,
-        "recall": 0.23529411764705882,
+        "recall": 0.29411764705882354,
         "kind_accuracy": 1.0,
-        "matched": 4,
-        "missed": 13,
+        "matched": 5,
+        "missed": 12,
         "spurious": 0
       },
       "model_output": {

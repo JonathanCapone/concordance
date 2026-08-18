@@ -788,6 +788,48 @@ The figure is tuned-on and says so: chosen against four pages, to be
 re-measured on the frozen 200-page benchmark. Raw output and report are in
 data/results/, re-runnable with scripts/bench_browser_reader.py.
 
+**Same day, the larger half: the filter was throwing away good records.**
+Jonathan asked to keep going rather than write up 23.5%, so instead of another
+prompt I asked a duller question -- for every record the page refused, WOULD
+THE SERVER HAVE REFUSED IT? That check needs no model, only the recorded run
+and contribute.py. Seven of the eleven refusals were the browser being
+stricter than the referee it fronts for. Three causes, all in the page's own
+two checks:
+
+* Numbers the scan split. A page prints "$53, 549. 66" and the model writes
+  53549.66; the server joins those before judging and the browser did not.
+  Worse, the page can print "8. 8 million gallons" where the model sensibly
+  writes 8.8 -- so the join has to happen on BOTH sides before the sentence is
+  even looked for.
+* A trailing sentence period hiding the number in front of it. "53549.66."
+  failed a token test that refused any following dot, where the server refuses
+  one only when it begins another decimal.
+* Numbers written as words. The server reads "seven vocational schools"
+  through numerals.states_value; the browser looked for the digit 7.
+
+Fixing the filter, with the model output untouched, took the same recorded run
+from 17.6% to **32.4% recall at 84.6% precision**. Nearly all of the gain is
+records that were always correct and always would have been accepted -- the
+page was discarding them before the archive ever saw them. Every record that
+still misses the answer key is a real value whose unit is blank or worded
+differently. Nothing was invented on any of the four pages.
+
+Two things follow. The towns already read in a browser -- Ear Falls, Ingersoll
+-- were read through the broken filter, so their published records are a
+subset of what those sessions actually found; re-reading recovers the rest.
+And the lesson generalises past this bug: a pre-filter in front of a stricter
+authority is a place where data dies silently, because nothing downstream can
+tell the difference between a record that was never proposed and one that was
+thrown away on the way. The check that found it -- replay the refusals against
+the real referee -- is now scripts/diagnose_browser_bench.py and costs nothing
+to run.
+
+One more entry in the family this log keeps: writing the repair through a
+shell heredoc turned a regex backreference into a literal 0x01 byte, silently,
+in a file that read correctly in every editor. That is the same trap as the
+``-became-backspace incident above, four months on, in the same repository
+that added a control-byte test because of it.
+
 
 **2026-08-17, night. The demo became the tool, and walking it found three
 bugs.** The /browser page now reads whole towns, not one hardcoded page.

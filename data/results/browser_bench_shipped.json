@@ -47,7 +47,7 @@
      "value": 4,
      "unit": "schools",
      "source_text": "...and four schools for the trainable retarded.",
-     "passed": false
+     "passed": true
     },
     {
      "kind": "observation",
@@ -55,7 +55,7 @@
      "value": 7,
      "unit": "",
      "source_text": "The separate school board, which functions throughout the entire region, has seven sec-ondary schools in the city.",
-     "passed": false
+     "passed": true
     },
     {
      "kind": "observation",
@@ -151,7 +151,7 @@
      "value": 53549.66,
      "unit": "$",
      "source_text": "The total operating cost for treating 1475 million gallons of sewage in 1969 was $53, 549. 66.",
-     "passed": false
+     "passed": true
     },
     {
      "kind": "observation",
@@ -159,7 +159,7 @@
      "value": 36.3,
      "unit": "$ per million gallons treated",
      "source_text": "Unit costs were $36. 30 per million gallons treated",
-     "passed": false
+     "passed": true
     },
     {
      "kind": "observation",
@@ -175,7 +175,7 @@
      "value": 1475.2,
      "unit": "million gallons",
      "source_text": "...The total flow for the year was 1475.2 million gallons...",
-     "passed": false
+     "passed": true
     },
     {
      "kind": "observation",
@@ -183,7 +183,7 @@
      "value": "8.8",
      "unit": "million gallons",
      "source_text": "The maximum and minimum daily flows were 8.8 million gallons in November and 2.1 million gallons in July.",
-     "passed": false
+     "passed": true
     },
     {
      "kind": "observation",
@@ -191,7 +191,7 @@
      "value": "2.1",
      "unit": "million gallons",
      "source_text": "The maximum and minimum daily flows were 8.8 million gallons in November and 2.1 million gallons in July.",
-     "passed": false
+     "passed": true
     },
     {
      "kind": "observation",
@@ -263,10 +263,10 @@
      "value": 64,
      "unit": "%",
      "source_text": "...giving an average removal of 64% BOD and 84% suspended solids.",
-     "passed": false
+     "passed": true
     }
    ]
   }
  ],
- "note": "Raw output of the in-browser reader over the four hand-read gold pages, kept so the score can be recomputed without re-running a model. Produced by scripts/bench_browser_reader.py; scored by scripts/score_browser_bench.py."
+ "note": "Model output unchanged; the `passed` flags are recomputed with the browser filter after it was aligned with the server's verifier (OCR-split numbers joined on both sides, ellipsis quotes tolerated, numbers written as words, a trailing sentence period no longer hiding the number before it)."
 }
