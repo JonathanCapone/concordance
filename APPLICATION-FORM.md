@@ -20,7 +20,7 @@ Concordance is a free, open-source website that turns reports like that into a s
 
 This is not a chatbot over an archive. A model running locally proposes structured readings; the evidence determines what can be published. The collection contains roughly 22 million pages, but I found no national, machine-readable database that brings these municipal measurements together with page-level provenance.
 
-The live site holds 6,554 records across 24 towns; the repository reproduces that corpus and its benchmark. A visitor picks an unread town and their own browser reads it, with no install, account, API key, or project-operated inference server. The site re-verifies every quoted sentence against the archive before publishing anything. A volunteer took Ear Falls through the loop before I submitted; Ingersoll was read entirely in a browser tab.
+The live site holds 6,554 records across 24 towns, all downloadable; the repository carries the pipeline, the benchmark, and the 6,510 committed extraction records. A visitor picks an unread town and their own browser reads it, with no install, account, API key, or project-operated inference server. The site re-verifies every quoted sentence against the archive before publishing anything. A volunteer took Ear Falls through the loop before I submitted; Ingersoll was read entirely in a browser tab.
 
 Six fellowship weeks would turn a working prototype into a defensible public tool: replace the four-page smoke test with a frozen benchmark across eras and document types, develop the existing British Columbia read into a community-tested pilot, and make both contribution paths work for a first-time user. Reading damaged tables is a bounded experiment, not a dependency.
 
@@ -121,7 +121,7 @@ Pass if every place published at submission remains searchable and the existing 
 
 ## Relevant experience — *What prepares you to do this work* (2000)
 
-The live site holds 6,554 records across 24 towns; the repository reproduces that corpus and its benchmark. The hardest half of Concordance is already built and can be checked rather than taken on trust. Every push runs the test suite on fresh Ubuntu and Windows machines. The accuracy score must reproduce exactly or the build fails. The fellowship would begin with a working system, not a blank repository.
+The live site holds 6,554 records across 24 towns, all downloadable; the repository carries the pipeline, the benchmark, and the 6,510 committed extraction records. The hardest half of Concordance is already built and can be checked rather than taken on trust. Every push runs the test suite on fresh Ubuntu and Windows machines. The accuracy score must reproduce exactly or the build fails. The fellowship would begin with a working system, not a blank repository.
 
 My strongest qualification is a habit: I treat my own numbers as suspects, because in this kind of project the dangerous errors do not crash; they look like findings.
 
