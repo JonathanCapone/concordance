@@ -136,7 +136,7 @@ Current run — `gemma4:12b`, local, no API key. Reproduce with
 
 Four pages, two documents, 68 hand-read values. That is a smoke test, not a
 defensible accuracy claim, and it is quoted that way everywhere. The second document
-is deliberately not a water report: a harness measured only on the documents a
+is deliberately not a water report: a benchmark measured only on the documents a
 method was designed for measures nothing.
 
 **Page 11 is the honest headline** — 94/94, annotated blind before any extraction
@@ -238,7 +238,7 @@ concordance/
   server.py      a running instance you can click, standard library only
 scripts/
   build_browser_reader.py  the in-browser reader page
-  run_gold.py / rescore.py the accuracy harness
+  run_gold.py / rescore.py score against hand-read ground truth
   share.py                 read a town, export, import, push, pull
 data/
   gold/     hand-checked ground truth
