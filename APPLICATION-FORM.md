@@ -77,7 +77,7 @@ Public access to a scan is not a blanket licence for every use. The code will re
 
 ## Work plan — *phases, and where you expect to learn or change course* (2000)
 
-Concordance enters the fellowship as a working prototype with a reproducible corpus and benchmark. The six-week plan is designed to turn that prototype into a measured public release.
+Concordance enters the fellowship as a working prototype with a reproducible dataset and benchmark. The six-week plan is designed to turn that prototype into a measured public release.
 
 Week 1: Freeze the test. Finalize an approximately 200-page benchmark, answer key, consumer-hardware baseline, and the 95% class-level precision rule before tuning. Select the British Columbia pilot community and document reuse conditions, building from the existing Lower Mainland read.
 
@@ -109,7 +109,7 @@ Fourth, a documented, reusable pipeline. The code will show how to classify page
 
 A separate partner contribution will offer Internet Archive Canada 13,429 proposed catalogue corrections: 11,151 language-code normalizations and 2,278 publication-year proposals, with evidence for review.
 
-The whole 22-million-page collection will not be read. The finished artifact will be a defensible seed corpus, a public method, and a contribution system that can expand without a project-operated inference server.
+The whole 22-million-page collection will not be read. The finished artifact will be a defensible seed dataset, a public method, and a contribution system that can expand without a project-operated inference server.
 
 ---
 
