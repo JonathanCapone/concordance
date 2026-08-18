@@ -20,9 +20,9 @@ Concordance is a free, open-source website that turns reports like that into a s
 
 This is not a chatbot over an archive. A model running locally proposes structured readings; the evidence determines what can be published. The collection contains roughly 22 million pages, but I found no national, machine-readable database that brings these municipal measurements together with page-level provenance.
 
-The live site holds 6,554 records across 24 towns, all downloadable; the repository carries the pipeline, the benchmark, and the 6,510 committed extraction records. A visitor picks an unread town and their own browser reads it, with no install, account, API key, or project-operated inference server. The site re-verifies every quoted sentence against the archive before publishing anything. A volunteer took Ear Falls through the loop before I submitted; Ingersoll was read entirely in a browser tab.
+The live site holds 6,554 records across 24 towns, all downloadable; the repository carries the pipeline, the benchmark, and the 6,510 committed extraction records. A visitor picks an unread town and their own browser reads it, with nothing to install, no account, no API key, and no server of ours running a model. The site re-verifies every quoted sentence against the archive before publishing anything. A volunteer took Ear Falls through the loop before I submitted; Ingersoll was read entirely in a browser tab.
 
-Six fellowship weeks would turn a working prototype into a defensible public tool: replace the four-page smoke test with a frozen benchmark across eras and document types, develop the existing British Columbia read into a community-tested pilot, and make both contribution paths work for a first-time user. Reading damaged tables is a bounded experiment, not a dependency.
+Six fellowship weeks would turn a working prototype into a defensible public tool: replace the four-page smoke test with a frozen benchmark across eras and document types, turn the British Columbia documents already read into a community-tested pilot, and make both contribution paths work for a first-time user. Reading damaged tables is a bounded experiment, not a dependency.
 
 Live: concordance.jonathancapone.com
 Code: github.com/JonathanCapone/concordance
@@ -37,7 +37,7 @@ Journalists and local historians can use the gaps as leads rather than conclusio
 
 Researchers gain machine-readable historical series with a source page for every value and no silent joining of incompatible measurements. Design capacities, legal limits, observed measurements, and authors' conclusions remain distinct. Contextual records such as population served or sewer connections may be included, but are clearly labelled and never substituted for environmental observations.
 
-A first British Columbia read already exists: 366 verified records from seven Lower Mainland documents. The fellowship pilot is therefore about community testing and reuse conditions, not about whether the method travels across provinces. The pilot community will be selected for a useful multi-year record, documented reuse conditions, and access to at least one local person who can test whether the result is understandable and relevant.
+Seven Lower Mainland documents have already been read, producing 366 verified records. The fellowship pilot is therefore about community testing and reuse conditions, not about whether the method travels across provinces. The pilot community will be selected for a useful multi-year record, documented reuse conditions, and access to at least one local person who can test whether the result is understandable and relevant.
 
 Anyone can challenge a reading. A challenge must cite evidence to alter the record; unsupported objections may remain visible but do not replace the original. The linked scan lets the public inspect both the extraction and the source.
 
@@ -79,7 +79,7 @@ Public access to a scan is not a blanket licence for every use. The code will re
 
 Concordance enters the fellowship as a working prototype with a reproducible dataset and benchmark. The six-week plan is designed to turn that prototype into a measured public release.
 
-Week 1: Freeze the test. Finalize an approximately 200-page benchmark, answer key, consumer-hardware baseline, and the 95% class-level precision rule before tuning. Select the British Columbia pilot community and document reuse conditions, building from the existing Lower Mainland read.
+Week 1: Freeze the test. Finalize an approximately 200-page benchmark, answer key, consumer-hardware baseline, and the 95% class-level precision rule before tuning. Select the British Columbia pilot community and document reuse conditions, building on the seven Lower Mainland documents already read.
 
 Week 2: Read the pilot and keep unlike things unlike. Process and review the BC documents, then extend the rules separating observed measurements, specifications, legal limits, conclusions, units, methods, and contextual civic records.
 
@@ -115,7 +115,7 @@ The whole 22-million-page collection will not be read. The finished artifact wil
 
 ## Success metric (600)
 
-Pass if every place published at submission remains searchable and the existing Lower Mainland read becomes a community-tested British Columbia pilot with documented reuse conditions. Every published record must carry supporting text and a page link; the frozen benchmark must report precision and recall by era and measurement class; and classes below the stated precision threshold must remain finding aids, not data. One BC tester must verify a local reading without help, and one new contributor must complete the full contribution path.
+Pass if every place published at submission remains searchable and the Lower Mainland documents already read become a community-tested British Columbia pilot with documented reuse conditions. Every published record must carry supporting text and a page link; the frozen benchmark must report precision and recall by era and measurement class; and classes below the stated precision threshold must remain finding aids, not data. One BC tester must verify a local reading without help, and one new contributor must complete the full contribution path.
 
 ---
 

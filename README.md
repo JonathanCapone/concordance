@@ -31,7 +31,7 @@ browser tab, reads that town's scanned reports page by page on your own graphics
 card, and sends what survives its checks back to the site, which re-verifies every
 quoted sentence against the archive before publishing anything.
 
-No install. No account. No API key. No server of ours runs a model for you.
+Nothing to install. No account. No API key. No server of ours runs a model for you.
 
 Ingersoll was read this way — sixteen pages of prose, twenty-three records
 published, refusals shown on screen as they happened. The browser reader is an
@@ -118,7 +118,7 @@ with both crops, and a reader decides.
 ## Accuracy
 
 Ground truth is hand-read from the scans by a person; nothing in it was copied from
-a model. The harness reports value precision and recall **and, separately, kind and
+a model. The scoring script reports value precision and recall **and, separately, kind and
 stream accuracy** — because a perfectly-read number filed as the wrong kind, or an
 effluent value recorded as influent, is not a small error. The second turns a
 working treatment plant into a polluting one.
