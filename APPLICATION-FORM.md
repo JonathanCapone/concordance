@@ -8,279 +8,127 @@ are checked by `scripts/check_form.py`; the limits are the form's own.
 
 ## Project title
 
-Concordance
+Concordance: Canada's Municipal Water Record, Page by Page
 
 ---
 
 ## Project summary — *What do you want to build or create?* (2000)
 
-Concordance turns a century and a half of scanned public records into a free
-neighbourhood instrument panel: ask what was measured where you live — sewage
-in the river, what was in the drinking water, what came out of the smelter —
-then challenge any published number on the exact government page it came from.
+In 1969, the sewage plant in Owen Sound, Ontario measured what it discharged into the river, wrote it down, and filed the report with the government. The report was scanned decades later. Almost nobody has ever read it.
 
-Open Owen Sound, 1969. The town's water pollution control plant reported that
-the treated sewage it released averaged 37 mg/L BOD. That number asks for no
-trust: it links to the scanned page in this collection and quotes the sentence
-it was read from — "The average effluent BOD and suspended solids were 37 mg/1
-and 36 mg/1 respectively" — with, where the image service permits, a cropped
-photograph of that sentence. It is one of 5,147 source-linked records across
-14 Ontario municipalities at frozen checkpoint `763d4c0`.
+Concordance is a free, open-source website that turns reports like that into a searchable public memory. Type in a town and see what officials measured there: effluent, drinking water, flows, and related municipal conditions across decades. Every value carries the sentence it came from and a link to the scanned page. Measurements made in incompatible ways remain separate instead of becoming a clean but fictional trend.
 
-I found no usable national database of these numbers. My August 11 catalogue
-snapshot holds 104,241 scanned government publications and 22.1 million pages;
-the project scopes 1841 to 2013. To learn what your town's plant discharged in
-1969, you would have to know the report exists, find it, read it. The
-fellowship brief puts the collection at roughly 48 TB; the reader works from
-the OCR text layer and fetches page images only as needed.
+This is not a chatbot over an archive. A model running locally proposes structured readings; the evidence determines what can be published. The collection contains roughly 22 million pages, but I found no national, machine-readable database that brings these municipal measurements together with page-level provenance.
 
-The loop is live. Ask the site for an unread town and it hands you one
-command; your computer reads the town and publishes it back, re-checked
-sentence by sentence before anything appears — no account, no API key, no
-central compute bill. Ear Falls travelled that whole path the day before
-submission: asked for, read by a volunteer's machine, re-verified, published.
-The fellowship makes that loop survive strangers — first-time-user testing is
-the success metric — plus the accuracy and tables work below, and an open
-seed dataset built to grow beyond the pilot communities.
+The live site holds 6,554 records across 24 towns; the repository reproduces that corpus and its benchmark. A visitor picks an unread town and their own browser reads it, with no install, account, API key, or project-operated inference server. The site re-verifies every quoted sentence against the archive before publishing anything. A volunteer took Ear Falls through the loop before I submitted; Ingersoll was read entirely in a browser tab.
 
-Live: concordance.jonathancapone.com · Code: github.com/JonathanCapone/concordance
+Six fellowship weeks would turn a working prototype into a defensible public tool: replace the four-page smoke test with a frozen benchmark across eras and document types, develop the existing British Columbia read into a community-tested pilot, and make both contribution paths work for a first-time user. Reading damaged tables is a bounded experiment, not a dependency.
+
+Live: concordance.jonathancapone.com
+Code: github.com/JonathanCapone/concordance
 
 ---
 
 ## Public benefit — *Who could use, question, or learn from this work?* (2000)
 
-**Residents**, first. Somebody who grew up beside a river and wants to know what
-the plant upstream was putting in it. That person cannot use an archive; they
-can use a search box and a chart, and this is aimed at them.
+Concordance is designed first for a resident who wants to know what was measured in the water where they live. The archive is public but not practically searchable at the level of a local measurement. A resident can use a search box, chart, and source link.
 
-**Journalists and local historians.** Every one of 107 title-derived Ontario
-municipal report series ends by 1974 — 72 of them in that exact year. That is
-an archival gap to investigate, not proof that measurement itself stopped —
-and exactly the kind of finding this dataset exists to surface.
+Journalists and local historians can use the gaps as leads rather than conclusions. A title survey identifies 107 recurring municipal report series, and 72 end in 1974. That disappearance may reflect a policy change, a renamed series, missing records, administrative reorganization, or incomplete catalogue coverage. Concordance makes the pattern visible while refusing to claim which explanation is correct.
 
-**Scientists**, who get a machine-readable series with the source page attached
-to every value — and explicit refusals where two numbers are not comparable,
-rather than a tidy line that hides a change of method.
+Researchers gain machine-readable historical series with a source page for every value and no silent joining of incompatible measurements. Design capacities, legal limits, observed measurements, and authors' conclusions remain distinct. Contextual records such as population served or sewer connections may be included, but are clearly labelled and never substituted for environmental observations.
 
-**A British Columbia pilot community**, chosen before tuning — and the
-transfer test has begun: overnight before submission, this reader published
-366 quote-verified readings from eight Lower Mainland documents —
-budgets, population, dwellings on sewers, by municipality — and met, on BC
-paper, the table-column limit Week 4 measures. The collection's 582 BC items
-run from the 1915 Hydrometric Survey to a 27-community First Nations
-water-rights series.
+A first British Columbia read already exists: 366 verified records from seven Lower Mainland documents. The fellowship pilot is therefore about community testing and reuse conditions, not about whether the method travels across provinces. The pilot community will be selected for a useful multi-year record, documented reuse conditions, and access to at least one local person who can test whether the result is understandable and relevant.
 
-**And anyone who wants to question it** — which is the part I care most about.
-Every prose number carries its source sentence; a table number carries its cell
-locator. Both carry the exact page. Prose claims from my reader and a stranger
-face the same sentence-and-number check. Table claims currently abstain unless
-the value can be localized to the cited cell. An objection without evidence is
-counted and displayed but changes nothing; supported disagreements remain visible.
+Anyone can challenge a reading. A challenge must cite evidence to alter the record; unsupported objections may remain visible but do not replace the original. The linked scan lets the public inspect both the extraction and the source.
 
-When two readings both survive, neither wins. Both link to the exact archive
-page and, when its image service permits, show a cropped photograph of the
-cited sentence; the reader decides from the evidence.
-
-A measurement pulled by a model out of a sixty-year-old scan has no authority on
-its own. It earns authority by being trivially easy to disprove.
+A measurement pulled by a model from a sixty-year-old scan has no authority on its own. Concordance is useful because it makes that measurement easy to inspect, question, and correct.
 
 ---
 
 ## Proposed approach — *core method, tools, and a scope you can finish* (2000)
 
-**The finding: OCR often preserves prose while damaging table layout.** One
-summary table becomes `9 /zLA' y 1? in" y 1'\ Vnlump 41 Q sailor`, yet narrative
-measurements remain legible: "The average influent BOD and suspended solids were
-104 mg/1 and 224 mg/1 respectively... giving an average removal of 64% BOD."
+OCR often destroys historical table structure while preserving the prose around it. In these reports, prose sentences frequently contain complete readings: quantity, unit, place, date, and context. A four-page smoke test yields 96.8% precision, which is promising but not yet a defensible accuracy claim.
 
-So the tractable first problem is **reading prose**, where my four-page benchmark
-measures 96.8% precision. Degraded tables remain the harder, unproven path.
+The pipeline first uses a low-cost local filter to classify pages as prose, table, figure, or skip. A language model running on the contributor's computer reads selected prose pages into structured records. It must label each statement as an observed measurement, design specification, legal limit, or author's conclusion. That distinction prevents a plant's rated capacity from being misread as what actually flowed through it.
 
-**Method.** A cheap local filter routes each page — prose, table, figure, map,
-or skip — so the expensive path only touches pages that earn it. A language
-model reads the prose pages into typed records: an observation, a design
-specification, a regulatory limit, or a conclusion. Keeping those apart is
-load-bearing: one report states BOD 180 mg/L as a design figure and 104 mg/L as
-a measurement, and conflating them produces a clean, plausible, entirely
-fictional trend.
+Every proposed record must include supporting text. The verifier checks that the quotation and number occur in the page's OCR text layer; the public link lets a person compare that evidence with the scanned page image. This blocks a large class of fabrications, while the benchmark measures what still gets through. In current tests, the browser reader finds roughly half of what a page states and invents nothing that survives the checks.
 
-**Every prose record must quote its source sentence; that sentence and its
-complete numeric token are checked on the cited page.** A model that invents a
-number often invents the sentence too, so these local checks catch fabrication
-without another model call. Table trials carry page, row and column locators,
-but public verification abstains until the value is localized to that exact cell.
+The fellowship work will freeze an approximately 200-page, hand-labelled benchmark before tuning, stratified across eras, agencies, document types, and measurement classes. I will report precision and recall by category. Only classes reaching 95% precision will enter the dataset; the rest will remain clearly labelled finding aids.
 
-**Tools.** The core is standard-library Python with zero package dependencies,
-so someone with Python can clone it and check a stored measurement without an
-API key. New extraction additionally needs Ollama and a local model. Accuracy is
-measured against pages a human read by hand, and the harness re-scores without
-re-running the model.
-
-**Scope I can finish:** widen the accuracy benchmark far beyond its current four
-pages, settle whether tables can be read on ordinary hardware, and publish the
-dataset with its methodology and its failures. Not: reading the whole archive.
+The core verification path is plain Python with no package dependencies. Contributors do not need an API key or local copies of the collection's scans. A bounded table-reading experiment will test newer small vision models on a stated consumer-hardware baseline. Success would expand coverage; failure will produce a measured limit without blocking the public release.
 
 ---
 
 ## Dataset interest — *Why does this idea need the Canadian civics and open-government collection?* (2000)
 
-I did not find these local historical readings in a usable national series, and
-municipal holdings have not been surveyed here. The evidence survives in
-scattered annual reports deposited with government and scanned by Internet
-Archive Canada. Concordance can make it searchable together for the first time.
+Concordance needs the Canadian civics and open-government collection because the measurements appear to survive nowhere else in usable national form. They were published in annual reports, deposited with government, and eventually scanned by Internet Archive Canada. I found no machine-readable national database that brings the values together with links to the pages where they were reported.
 
-The collection is also uniquely suited to the method, in three specific ways.
+The collection is valuable because it repeats. A title search finds more than five hundred dated reports resolving into 107 recurring municipal series. The same places filed related reports year after year, making it possible to build historical series rather than isolated anecdotes.
 
-**It repeats.** A title search found 546 dated matching reports, 1961–1996; 524
-resolve to 107 title-derived place/site reporting series. One schema can turn
-those readings into comparable series after duplicate facilities and names are
-resolved.
+It is also deep enough to reveal gaps. Seventy-two of the identified series end in 1974. That is not proof that reporting stopped. It may reflect policy, cataloguing, administrative change, missing records, or incomplete collection coverage. Concordance can make the disappearance visible and direct a journalist, historian, or resident to the right question without pretending the archive already contains the answer.
 
-**It is deep enough to show absence.** Silence is the most interesting signal
-here — a town that vanishes from the record because a plant closed, a programme
-was defunded, or records were lost. You can only detect that against a long
-continuous baseline. Broader ministry publishing continued — 1,449 indexed items
-before 1975 and 3,800 afterward — so this is not a collection-wide scanning
-cutoff. It does not, by itself, explain the gap for any individual place.
+The collection is civic as well as scientific. Alongside technical reports are council minutes, agendas, hearings, budgets, and planning documents: the record of who debated and decided the systems being measured. Concordance will not claim causal links it has not demonstrated, but the collection makes future connections between measurements and public decisions possible.
 
-**It is civics, not just science.** Roughly 13,600 titles match minutes, agendas
-or hearings. They preserve motions and votes
-beside the environmental reports, creating the possibility of linking what was
-measured to the public decisions around it. That civic parser is promising but
-not yet part of the validated measurement benchmark.
+Finally, this archive supports page-level accountability. Each published value can point back to the public record rather than becoming an unattributed entry in a new database.
 
-Public access to a scan is not a blanket licence for its contents. I will publish
-code under MIT and release only derived data I can license, documenting the terms
-while preserving each source item's rights.
+Public access to a scan is not a blanket licence for every use. The code will remain MIT-licensed, while derived data will be published only where reuse is supportable, with source rights documented and preserved.
 
 ---
 
 ## Work plan — *phases, and where you expect to learn or change course* (2000)
 
-**Week 1 — Freeze the test.** Design and hand-label a benchmark spanning eras,
-agencies and document types; choose a British Columbia pilot before tuning.
+Concordance enters the fellowship as a working prototype with a reproducible corpus and benchmark. The six-week plan is designed to turn that prototype into a measured public release.
 
-**Week 2 — Keep unlike records unlike.** Apply the 697-term source-attested
-vocabulary already built; test units, methods and reporting changes; publish
-the refusal rules for indefensible comparisons.
+Week 1: Freeze the test. Finalize an approximately 200-page benchmark, answer key, consumer-hardware baseline, and the 95% class-level precision rule before tuning. Select the British Columbia pilot community and document reuse conditions, building from the existing Lower Mainland read.
 
-**Week 3 — Measure prose.** Run the benchmark, inspect failures, and publish
-precision and recall by era and parameter, not one flattering average.
+Week 2: Read the pilot and keep unlike things unlike. Process and review the BC documents, then extend the rules separating observed measurements, specifications, legal limits, conclusions, units, methods, and contextual civic records.
 
-**Week 4 — Test small models.** Compare smaller vision and prose models on
-ordinary hardware against hand-read pages. This gates the endgame: models this
-size now run inside a browser, so if accuracy holds, "read this town" becomes
-a button, nothing installed. *Ends with:* a path, or a limit.
+Week 3: Measure. Run the frozen benchmark and publish precision and recall by era, document type, and measurement class. Classes below 95% precision remain finding aids rather than entering the public dataset.
 
-**Week 5 — Make the loop survive strangers.** The handoff exists and has
-carried one town end to end (Ear Falls, pre-application); this week tests it
-with first-time users and fixes what they break. If the one-command path
-fails them, the test runs on the share-by-file fallback and the gap is
-published as a measured limit.
+Week 4: Build the public experience. Complete the BC search, charts, page links, uncertainty labels, and "not comparable" states. Once the prose path works, run a bounded experiment on damaged tables using the stated hardware baseline.
 
-**Week 6 — Publish.** Release the seed dataset, accuracy report, methodology
-and failures; offer the metadata proposals for review; write up; prepare for
-the conditional showcase if ready.
+Week 5: Make the contribution loop survive strangers. Test both contribution paths with first-time users: the in-browser reader, which requires one click and no installation, and the installed reader for larger machines. Require at least one person to finish without live help; preserve a share-by-file fallback and document every failure.
 
-**Where I expect to change course:**
+Week 6: Publish. Release the website, seed dataset, reusable pipeline, benchmark, accuracy report, known limitations, and methods. Offer the catalogue corrections to Internet Archive Canada for review.
 
-1. **The tables may not distribute.** A smaller vision model may or may not
-   be good enough for a contributor's laptop; unmeasured. If not, the answer
-   is a plain statement of what fraction of this archive needs hardware most
-   people do not own — itself worth publishing.
-2. **The wider benchmark may come in lower.** Nearly all my evidence is
-   Ontario water reports. If accuracy drops on other agencies and eras, I
-   publish that and narrow the scope rather than ship an unchecked dataset.
-3. **Comparability may bite harder than expected.** If methods changes are
-   pervasive, more of this becomes a finding aid and less a dataset — a real
-   outcome, not a failure.
+The project will narrow rather than bluff: weak extraction classes become finding aids, incompatible methods remain separate, and unsuccessful table reading is published as a measured limit.
 
 ---
 
 ## Expected deliverable — *What working artifact will exist at the end?* (2000)
 
-Four public things: MIT-licensed code, plus open data and methods with source
-document rights preserved.
+At the end of six weeks, Concordance will produce four public deliverables.
 
-**1. A live website.** For a pilot town, see selected series and source records.
-Every value links to its archive page and, when the
-image service permits, a focused crop. The plain-language layer uses a documented
-contemporary standard when one exists and otherwise gives no verdict. The frozen
-seed covers 14 municipalities; the fellowship makes it worth visiting.
+First, a website anyone can use. A visitor can look up every place already published on the live site, 24 at time of writing, plus a community-tested British Columbia pilot. They can see what was measured, understand when values are unknown or not comparable, and open every published value's scanned source page.
 
-**2. The dataset, published open.** Every accepted pilot record carries place,
-time, parameter and unit where applicable, plus an exact archive-page link. The
-seed is not national coverage; I found no usable national machine-readable series
-of historical municipal discharges.
+Second, a downloadable seed dataset. Each record will include place, time, quantity, unit, record class, supporting text, source document, and page link. Observed measurements will remain distinct from specifications, limits, conclusions, and contextual civic records. Only measurement classes reaching 95% precision on the frozen benchmark will enter the dataset. It will not claim national completeness; it will be built to grow one requested place at a time.
 
-**3. An accuracy report, including the failures.** Precision and recall per era
-and per parameter, measured against pages a human read by hand, published with
-the methodology and a script anyone can re-run to re-score my own output against
-my own answer key. If the number is bad in places, those places are named.
+Third, a frozen benchmark and accuracy report. The public report will include the approximately 200-page answer key, scoring code, precision and recall by era and measurement class, failed examples, and the classes withheld from the dataset. Anyone will be able to rerun the evaluation.
 
-**4. A metadata diff offered back to Internet Archive Canada** — 13,429
-catalogue-field proposals so far, language-code normalizations and year
-proposals, offered for the Archive's review rather than applied. The
-validation evidence, including its limits, is in the repository.
+Fourth, a documented, reusable pipeline. The code will show how to classify pages, extract prose readings locally, verify evidence, review results, and prepare a contribution for publication. Code will be MIT-licensed; derived data will be released only where source rights support reuse.
 
-Plus the pipeline itself, documented so it can be pointed at any other scanned
-archive. The document-reading method is reusable; place resolution and validation
-currently remain Ontario-specific.
+A separate partner contribution will offer Internet Archive Canada 13,429 proposed catalogue corrections: 11,151 language-code normalizations and 2,278 publication-year proposals, with evidence for review.
 
-**What will not exist:** the whole 22.1-million-page archive read. A full
-rented-GPU pass is outside this fellowship, and the current cost model is not
-reliable enough to quote. What will exist is the machinery, a seed corpus, an
-honest accuracy figure, and a system where the rest can fill in on demand —
-without a permanent central inference bill.
+The whole 22-million-page collection will not be read. The finished artifact will be a defensible seed corpus, a public method, and a contribution system that can expand without a project-operated inference server.
 
 ---
 
 ## Success metric (600)
 
-A resident in each published pilot community — the frozen 14 plus at least one
-British Columbia pilot — can look up a measurement, see "unknown" when no verdict
-is justified, and open every published record's source page.
-
-Pass/fail: code, data and a benchmark anyone can re-score are public; precision
-and recall are reported by era and parameter; and one person outside the project
-completes request → local extraction → preview → source-check → share without
-assistance. Each published archival gap states what evidence rules out and what
-remains unknown. National coverage is a stretch goal.
+Pass if every place published at submission remains searchable and the existing Lower Mainland read becomes a community-tested British Columbia pilot with documented reuse conditions. Every published record must carry supporting text and a page link; the frozen benchmark must report precision and recall by era and measurement class; and classes below the stated precision threshold must remain finding aids, not data. One BC tester must verify a local reading without help, and one new contributor must complete the full contribution path.
 
 ---
 
 ## Relevant experience — *What prepares you to do this work* (2000)
 
-**I have built the hard half already, and you can check it rather than take my
-word.** At checkpoint `763d4c0`: 5,147 source-linked records across 14
-municipalities and 96.8% precision on four hand-read pages. The full test suite
-passes; no core package dependencies are required.
+The live site holds 6,554 records across 24 towns; the repository reproduces that corpus and its benchmark. The hardest half of Concordance is already built and can be checked rather than taken on trust. Every push runs the test suite on fresh Ubuntu and Windows machines. The accuracy score must reproduce exactly or the build fails. The fellowship would begin with a working system, not a blank repository.
 
-And it is not a prototype on my desk: the website is live, the volunteer loop
-has carried a real town end to end, and every push runs the full test suite on
-fresh Ubuntu and Windows machines — including re-scoring the accuracy
-benchmark, which must reproduce byte-for-byte or the build fails. Six weeks
-here starts from a working system, not from zero.
+My strongest qualification is a habit: I treat my own numbers as suspects, because in this kind of project the dangerous errors do not crash; they look like findings.
 
-**What I think actually qualifies me is how I handle being wrong**, because that
-is the whole risk in this kind of project. Three examples are documented in the
-project evidence prepared for publication:
+The first accuracy figure Concordance produced was 49% precision. The extraction was not the problem; the scorer failed to recognize that "3.0 million gallons" and "3000000 gallons" represent the same quantity. Correcting the ruler moved the result to 88.7%, and later extraction work produced the current 96.8% four-page smoke test. That experience is why the fellowship plan freezes a broader benchmark before tuning.
 
-The first accuracy figure I produced was 49% precision — and it was wrong. My
-scorer could not tell that "3.0 million gallons" and "3000000 gallons" are the
-same number. Fixing the *measurement*, with no change to the extraction, moved
-it to 88.7%; improving the extraction prompt then took it to the published
-96.8%. Publishing the first number would have narrowed the project for no
-reason.
+A human tester then found that the page router was discarding narrow-column prose because I had required eight words per line. A typographic shortcut was silently deciding which parts of the public record existed. The rule was corrected and covered by regression tests.
 
-My page router was silently discarding narrow-column prose because it required
-eight words on a line — a fact about typography, not content. I did not find
-that. Somebody looked at a document and said *that doesn't sound right*.
+Days before submitting, I ran an adversarial audit of the repository. It found nine defects, six serious, including a verifier that accepted a number when only its first digit was present. Every fix now has a regression test.
 
-And days before writing this I ran an adversarial audit over the repository. It
-found nine defects, six rated serious, including a check that accepted a number
-against a sentence containing only its first digit. The fixes have targeted
-regressions, and the full test suite passes.
-
-A project whose entire claim is *check my work* should say what happened when
-somebody did.
+My work as an artist and educator matters here too. Concordance must make provenance, uncertainty, incompatible methods, and technical failure understandable to people who are not data specialists. The project's claim is "check my work"; my experience has taught me to build the check, invite the challenge, and explain what happened when the system was wrong.
