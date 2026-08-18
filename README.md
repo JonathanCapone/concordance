@@ -1,229 +1,130 @@
 # Concordance
 
-**Reading Canada's public record as a hundred-year instrument.**
+**Canada's municipal water record, page by page.**
 
-An August 11 catalogue snapshot holds 104,241 scanned Canadian government publications —
-about 22.1 million page images with a separate OCR text layer. This project scopes the
-historical run from 1841 to 2013. Inside are
-measurements of the physical condition of Canada: the air, the water, the soil, town by town,
-decade by decade.
+In 1969, the sewage plant in Owen Sound, Ontario measured what it discharged into
+the river, wrote it down, and filed the report with the government. The report was
+scanned decades later. Almost nobody has ever read it.
 
-The median document in that collection has been downloaded **90 times**.
+Concordance is a free, open-source website that turns reports like that into a
+searchable public memory. Type in a town and see what officials measured there —
+effluent, drinking water, flows, and related municipal conditions — across decades.
+Every value carries the sentence it came from and a link to the scanned page.
+Measurements made in incompatible ways stay separate instead of becoming a clean
+but fictional trend.
 
-Historical measurements across these publications can be treated as nodes in a long-running
-distributed record. I have not found evidence that this collection has been analyzed as one
-connected historical monitoring network.
+**Live: [concordance.jonathancapone.com](https://concordance.jonathancapone.com)** —
+6,554 records across 24 towns, each one linked to the page it was read from.
 
-This project reads it back out.
-
-> Explore the source collection at
-> [archive.org/details/governmentpublications](https://archive.org/details/governmentpublications).
+The source collection holds 104,241 scanned Canadian government publications, about
+22.1 million page images. The median document in it has been downloaded 90 times.
+There appears to be no national, machine-readable database that brings these
+municipal measurements together with page-level provenance.
 
 ---
 
-## The finding this rests on
+## Read a town in your browser
 
-OCR often preserves narrative prose while damaging table layout; values may survive even when
-row and column structure is lost.
+The shortest way to understand the project is to use it. On the live site, pick a
+town nobody has read and press one button: a language model downloads into your
+browser tab, reads that town's scanned reports page by page on your own graphics
+card, and sends what survives its checks back to the site, which re-verifies every
+quoted sentence against the archive before publishing anything.
 
-A province-wide summary table comes back from the scanner like this:
+No install. No account. No API key. No server of ours runs a model for you.
+
+Ingersoll was read this way — sixteen pages of prose, twenty-three records
+published, refusals shown on screen as they happened. The browser reader is an
+honest partial reader: models that fit in a browser tab find roughly half of what a
+page states and invent nothing that survives verification. For the rest of a town's
+record there is the installed reader below, which uses a larger model.
+
+## Why this is possible at all
+
+OCR from 2013 often destroyed the tables in these documents while leaving the prose
+readable. A province-wide summary table comes back from the scanner like this:
 
 ```
 9 /zLA' y 1? in" y 1'\ Vnlump 41 Q sailor
 ```
 
-But much of the narrative remains legible — and in these reports, **the measurements are in the narrative**.
-Owen Sound water pollution control plant, annual report, 1969:
+There is nothing in there. But the narrative on the same page survived — and in
+these reports, **the measurements are in the narrative**. Owen Sound, 1969:
 
-> "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1 respectively. The
-> average effluent BOD and suspended solids were 37 mg/1 and 36 mg/1 respectively, giving an
-> average removal of 64% BOD and 84% suspended solids."
+> "The average influent BOD and suspended solids were 104 mg/1 and 224 mg/1
+> respectively. The average effluent BOD and suspended solids were 37 mg/1 and
+> 36 mg/1 respectively, giving an average removal of 64% BOD and 84% suspended
+> solids."
 
-Station, parameters, values, units — a complete observation set, in readable English.
+Station, parameter, value, unit — a complete set of measurements, in a sentence a
+model can read without effort. That is why this is a reading problem rather than a
+table-recognition problem, and why it runs on ordinary hardware.
 
-So prose extraction is a **reading** task; the current four-page benchmark measures 96.8%
-precision. Table recognition on degraded scans remains the harder, less certain path.
+## How the record grows
 
-## Three properties that make it an instrument
+Nobody pre-processes the archive. Somebody asks for a place, the machine in front
+of them reads it, and the answer is there for everyone afterwards. The cost falls on
+whoever cares first, which is also the person most willing to wait, and the archive
+gets read in the order people actually want to know things.
 
-1. **Reading is the sensing act.** The "sensor" is a model reading a sentence.
-2. **The error is linguistic, not electronic.** A sensor's accuracy comes from a spec sheet. A model
-   reading a smudged scan is sometimes confident and sometimes guessing. That uncertainty has to
-   propagate into every trend line, or a guess gets presented as a fact.
-3. **Silence is the signal.** In a live sensor network a quiet station is a fault to fix. In an
-   archive, a town vanishing from the record is *history* — a plant closed, a programme was
-   defunded, records were lost. **The negative record is the finding.**
+Two ways to be that machine:
 
-## What the corpus actually looks like
+- **In your browser**, from the site — one press, nothing installed, partial but honest.
+- **The installed reader**, for a whole town with the full model:
+  `python scripts/share.py read --place "Fergus" --to https://concordance.jonathancapone.com`
 
-Measured over all 104,241 items, not assumed:
+Either way the site re-checks every cited sentence on arrival before publishing.
+Verification is what makes this safe to accept from strangers: the check asks the
+archive, not the person, so a contribution about a subject nobody here understands
+can still be accepted or refused on evidence.
 
-| | |
-|---|---|
-| Items with **no subject tag** | 59,819 (**57%**) |
-| Items with **no year** | 33,844 (32%) |
-| Language field spellings for two languages | 8 (`eng`/`English`/`Eng`/`ENG`/`fre`/`fra`/`French`/`FRA`) |
-
-Province totals are not quoted here: catalogue geography is inconsistent, and
-simple keyword counts undercount British Columbia material.
-
-Because most documents mix narrative and tables in one file, routing happens per **page**. A
-document-level classifier would send a 1969 annual report down one path and discard whichever half
-didn't match.
-
-## How much of it is worth reading
-
-Measured over a random sample of 120 items and 23,729 pages:
-
-| | |
-|---|---|
-| Items with at least one prose/table candidate | **90.8%** (95% CI 84.3–94.8%) |
-| Pages flagged for some reading path | **53.1%** (95% CI 52.5–53.8%) |
-| Extrapolated under that frozen router | **11.6–11.9 million pages** |
-
-These are classifier outputs, not proof that a document contains measurements. A later
-8,372-page convenience sample produced 69.5% after a routing fix; it was not random and cannot
-replace this census. The router has changed again. Coverage, the prose/table split and the cost
-model must therefore be re-measured together before any corpus-wide budget or yield is quoted.
-
-That uncertainty changes the plan rather than decorating it. A corpus bought in one batch is
-finished the day the money runs out; it never extends, and the next person who wants an unread
-document has no way to get one. So the loop is the design, and it works end to end: ask a shared
-site for an unread town and it hands you the one command for that town
-(`python scripts/share.py read --place "..." --to https://...`); your machine reads it, the site
-re-checks every cited sentence on arrival, and the town appears for everyone after you. The site
-itself never starts a model job from a web request — the reading always happens on a volunteer's
-own machine, which is why there is no central compute bill. Asks are counted and shown, so
-volunteers can read the towns people are waiting for.
-
-**The honest hole in that** is the vision path. Its corpus-wide share is not currently measured
-reliably, and trial pages take about eight minutes each on an RTX 2080 because only 18% of a 29.6 GB
-model fits in 8 GB of VRAM. Prose distributes; tables mostly do not, yet. Whether a smaller model
-closes that gap is a measurable question and it has not been measured.
-
-## Four kinds of record
-
-Keeping these apart is load-bearing:
+## Four kinds of record, kept apart
 
 | Kind | Meaning |
 |---|---|
 | `observation` | What was actually measured, here, then |
 | `standard` | The regulatory limit **of that era** |
-| `design` | What the equipment was **built** to handle — a specification |
+| `design` | What the equipment was **built** to handle |
 | `conclusion` | The author's judgement |
 
-`design` exists because of a real trap. The Owen Sound report states **BOD 180 mg/L** on its design
-data sheet and **BOD 104 mg/L** in its review. Same parameter, same unit, same plant, same document.
-One is engineered capacity; the other is what actually flowed through. Conflating them yields a
-clean, plausible, entirely fictional trend.
-
-And `standard` exists because you cannot answer *"was 104 mg/L bad?"* without knowing the limit
-**in 1969**.
+This distinction is load-bearing. The Owen Sound report states **BOD 180 mg/L** on
+its design sheet and **BOD 104 mg/L** in its review — same parameter, same unit,
+same plant, same document. One is engineered capacity, the other is what actually
+flowed through. Conflating them produces a clean, plausible, entirely fictional
+trend. And `standard` exists because you cannot answer *"was 104 mg/L bad?"*
+without knowing the limit in 1969.
 
 ## Trust
 
-No number in this system is unfalsifiable.
+No number here is unfalsifiable.
 
-- Every prose record carries its **verbatim source sentence**; table records carry row/column
-  locators. The sentence and complete numeric token are checked on the cited page before a prose
-  record is accepted.
-- Every record deep-links to **the scanned page**. When word boxes and the image service permit,
-  prose gets a focused crop; otherwise the page link remains with an unavailable state.
-- Reading confidence is the model's own certainty **multiplied by how legible the scan was**.
+- Every prose record carries its **verbatim source sentence**. Before a record is
+  accepted, that sentence and the complete numeric token are checked against the
+  OCR of the page it cites.
+- Every record deep-links to **the scanned page**, with a focused crop of the
+  sentence where the image service allows one.
+- Reading confidence is the model's own certainty multiplied by how legible the
+  scan was.
+- Anyone can challenge a reading. A challenge must cite a page and quote a
+  sentence to change the record; an objection with no evidence is counted and
+  shown but changes nothing, because the moment it could outrank a sentence on a
+  page, somebody would have to judge the objection.
 
-## Install and run
-
-Requires Python 3.11+. No API key is required for the core local workflow;
-new extraction also requires Ollama and a downloaded model.
-
-```bash
-git clone <this repo> && cd concordance
-pip install -e .
-```
-
-Extraction runs on a local model by default via [Ollama](https://ollama.com):
-
-```bash
-ollama pull gemma4:12b
-```
-
-Run it:
-
-```bash
-python -m concordance.server
-```
-
-Opens a map of municipalities represented in the loaded result set. Orange dots
-have records; click one for selected series, archive page links and, when
-available, focused citation crops.
-
-Optional external clients may use a user-supplied key. The portal is not fully
-offline: the serving layer pulls MapLibre and its basemap tiles from
-public CDNs, and the citation crops come from archive.org's IIIF endpoint. All
-of those are keyless and free, and none of them are in the core — the extraction
-and verification path has no network dependency beyond the archive itself, so a
-stranger can check a measurement without standing up a web stack.
-
-Once fetched, OCR text, page structures and word boxes are cached locally.
-Scan images and citation crops still come from Archive.org unless separately
-cached. A fresh clone has no cache, so its first archive operation needs the
-network; many later evidence views can answer from disk.
-
-Share what you have read, and take what somebody else read:
-
-```bash
-python scripts/share.py export --place Fergus --out fergus.bundle.json
-python scripts/share.py import fergus.bundle.json --verified-only
-```
-
-A bundle is a file. It can travel by email, USB stick or a link in a forum post,
-none of which need a server anybody has to run, pay for, or be trusted to keep
-honest. **Trust does not travel with it** — an imported bundle's cited OCR
-sentence and complete numeric token are rechecked on the importing machine,
-record by record. Locator-only table claims currently abstain: headings anywhere
-on a page do not prove which number occupies their intersection. This verifies
-prose evidence presence, not semantic interpretation.
-
-Or send it to a running instance, and take everything one holds:
-
-```bash
-python scripts/share.py push fergus.bundle.json --to https://example.org
-python scripts/share.py pull --frm https://example.org --out theirs.bundle.json
-```
-
-An instance evaluates each submitted record's cited page evidence and reports
-what it accepted or refused; locator-only table claims currently abstain. It is a convenience, not an
-authority: `GET /api/library.json` returns the whole dataset as a bundle, `pull`
-saves it without believing any of it, and `import --verified-only` is what
-decides — on your machine, against cited page evidence. Anyone who mistrusts an instance
-can take everything it has and run their own.
-
-> A note on identity, since it is the kind of bug this project exists to catch.
-> Deduplication compares a reading's identity, and that identity is a hash of the
-> reading's own content — recomputed on both sides of every comparison, never
-> read from the `key` field stored in a results file. Those stored keys are
-> snapshots taken before later normalisation and no longer match their own
-> records. Trusting them made an instance merge 19 of 20 of its *own* readings
-> back in as new, which would have doubled the dataset on every round trip.
-
-Run the accuracy harness against hand-checked ground truth:
-
-```bash
-python scripts/run_gold.py --model gemma4:12b
-```
-
-The extraction clients can optionally use an Anthropic key, but Jay itself uses
-the configured local Ollama endpoint only.
+**What verification cannot do:** it catches fabrication, not misreading. "104 mg/1"
+really being on the page says nothing about whether it is influent or effluent.
+When two source-backed readings disagree, nobody adjudicates — both stay visible
+with both crops, and a reader decides.
 
 ## Accuracy
 
-The gold set is hand-read from the scans by a human; nothing in it was copied from a model. The
-harness reports value precision/recall **and, separately, kind accuracy and stream accuracy** —
-because a perfectly-read number filed as the wrong kind, or an effluent value recorded as influent,
-is not a small error. The second turns a working treatment plant into a polluting one.
+Ground truth is hand-read from the scans by a person; nothing in it was copied from
+a model. The harness reports value precision and recall **and, separately, kind and
+stream accuracy** — because a perfectly-read number filed as the wrong kind, or an
+effluent value recorded as influent, is not a small error. The second turns a
+working treatment plant into a polluting one.
 
-Current run — `gemma4:12b`, run locally, no API key. Reproduce with
-`python scripts/rescore.py`, which re-scores the published records without calling a model:
+Current run — `gemma4:12b`, local, no API key. Reproduce with
+`python scripts/rescore.py`, which re-scores published records without calling a model:
 
 | Page | Precision | Recall | Kind | Stream | Blind? |
 |---|---|---|---|---|---|
@@ -233,177 +134,164 @@ Current run — `gemma4:12b`, run locally, no API key. Reproduce with
 | Hamilton 20 — a magazine, not a data report | 100% | 64% | 100% | 100% | yes |
 | overall | 96.8% | 88.2% | 98.3% | 88.9% | — |
 
-Four pages across two documents, 68 hand-read values. The second document is deliberately not a
-water report: *Hamilton: An Adventure in Good Living* is a promotional magazine, included because a
-harness measured only on the documents a method was designed for measures nothing.
+Four pages, two documents, 68 hand-read values. That is a smoke test, not a
+defensible accuracy claim, and it is quoted that way everywhere. The second document
+is deliberately not a water report: a harness measured only on the documents a
+method was designed for measures nothing.
 
-**Page 11 is the honest headline**: 94/94, annotated blind before any extraction run, on the clean
-narrative prose that the core finding is about.
+**Page 11 is the honest headline** — 94/94, annotated blind before any extraction
+run, on exactly the clean narrative prose the project rests on. **Page 9 is not
+blind**: its answer key was expanded after an audit found it covered 6 of the page's
+~26 design values, by which time the annotator had seen model output. Its figures
+are optimistically biased, reported anyway, labelled.
 
-**Page 9 is not blind.** Its gold set was expanded after an audit showed the original annotation
-covered 6 of the page's ~26 design values, and by then the annotator had seen model output. Its
-figures are optimistically biased and are reported anyway, labelled, rather than quietly dropped.
-
-Three weaknesses that are real rather than measurement artefacts. **Kind accuracy is 98.3%, not
-100%** — one conclusion was filed as an observation, which is the error class this README calls the
-dangerous one, so it is named here rather than rounded away. **Stream accuracy is 67% on the design
-sheet**, where raw vs influent vs effluent is genuinely ambiguous. And **8 gold entries are still
-missed entirely**, six of them on the magazine page.
-
-> These numbers were wrong in this file until an audit checked them against the artifact. The table
-> published 88.7%/82.5%/100%/86.7% — figures from a run that predated the prompt widening, left in
-> place while `data/results/gold_report.json` said something else. The real numbers were *better* on
-> every axis except the one this README had rounded up to 100%. A stale accuracy claim is not a
-> harmless one even when it understates: it means nobody was re-reading the ruler.
+Three real weaknesses rather than measurement artefacts: kind accuracy is 98.3% and
+not 100% (one conclusion filed as an observation — the dangerous error class, so it
+is named rather than rounded away); stream accuracy is 67% on the design sheet,
+where raw vs influent vs effluent is genuinely ambiguous; and 8 values are missed
+entirely, six of them on the magazine page.
 
 ### The first number was wrong, and it was the ruler
 
-The first scored run reported **49% precision**. Auditing the records it called spurious showed
-nearly all of them were correct — the harness lacked unit-scale conversion (`3.0 million gallons`
-scored as a miss against `3000000 gallons`), lacked rate reconciliation, and was checking against an
-incomplete gold set. Fixing the *measurement*, with no change at all to the extractor, moved
-precision from 49.1% to 88.7%.
+The first scored run reported **49% precision**. Auditing the records it called
+wrong showed nearly all of them were right: the scorer could not tell that "3.0
+million gallons" and "3000000 gallons" are the same measurement, and the answer key
+was incomplete. Fixing the *measurement*, with no change at all to the extractor,
+moved precision from 49.1% to 88.7%.
 
-Publishing 49% would have caused the scope to be narrowed for no reason. This is why runs are
-published in `data/results/` including the failures: an archive that has been misread at scale is
-worse than one that was never read, because the errors look like findings.
+Publishing 49% would have narrowed this project for no reason — and every step of
+that would have felt like rigour. It is why runs are published in `data/results/`
+including their failures, and why the plan freezes a wider benchmark before tuning.
 
-## Credentials
+## What has been found
 
-Keyless by default; the planned public instance will use only keyless sources.
+- **All 107 parsed municipal report series end by 1974; 72 end in that exact year.**
+  Broader Ministry publishing continues — 1,449 indexed items before 1975 and 3,800
+  after — which argues against a collection-wide scanning stop. It does not explain
+  any individual gap, and the site says so.
+- **Owen Sound**: 120 source-linked records from 10 scanned reports; the sewage
+  series runs 1963–1972 and the drinking-water reports 1990–1992, kept apart
+  because they measure opposite things.
+- **13,429 catalogue corrections** offered to Internet Archive Canada for review —
+  11,151 language-code normalizations and 2,278 publication-year proposals.
+- **The first trend the project produced was a refusal.** Owen Sound's daily flow
+  rises 175,000 gal/day per year — and the same line reports p=0.71, a 90% interval
+  spanning zero, only 62% of bootstrap replicates agreeing on direction once reading
+  confidence is carried through, and two of six points flagged as probable scan
+  damage. A naive pipeline publishes the slope. That refusal is the product.
 
-| Tier | Auth | Rule |
-|---|---|---|
-| 0 | none | Everything core runs on these alone |
-| 1 | free, user-supplied | Optional enrichment, never required |
-| 2 | paid, user-supplied | Never required, ever |
+## Run it yourself
 
-No key is committed to this repo or required by the planned public instance.
+Python 3.11+. The core has no required package dependencies; new extraction also
+needs [Ollama](https://ollama.com) and a local model.
+
+```bash
+git clone https://github.com/JonathanCapone/concordance.git && cd concordance
+pip install -e .
+ollama pull gemma4:12b
+python -m concordance.server
+```
+
+That serves the whole site locally — map, town records, findings, and the reader —
+at `http://localhost:8765`. On your own machine the reading buttons work; a shared
+instance politely refuses to spend its processor on visitors and hands them the
+command instead.
+
+Read one town, score the benchmark, or move readings between machines:
+
+```bash
+python scripts/share.py read --place "Fergus"      # read it here
+python scripts/run_gold.py --model gemma4:12b      # score against ground truth
+python scripts/share.py export --place Fergus --out fergus.bundle.json
+python scripts/share.py import fergus.bundle.json --verified-only
+```
+
+A bundle is a file. It travels by email, USB stick, or a link in a forum post —
+none of which need a server anybody has to run, pay for, or be trusted to keep
+honest. **Trust does not travel with it**: an imported bundle is rechecked against
+the cited pages on the importing machine, record by record. `GET /api/library.json`
+returns the whole dataset, so anyone who mistrusts an instance can take everything
+it has and run their own.
 
 ## Layout
 
 ```
 concordance/
   models.py      record types, provenance, page text with word boxes
-  archive.py     Internet Archive adapter: index, OCR, real page boundaries, page images
+  archive.py     Internet Archive adapter: index, OCR, page boundaries, images
   router.py      per-page classification into extraction paths
   extract.py     path A — reading measurements out of prose
   vision.py      path B — reading the tables OCR destroyed, off the scan
   parameters.py  what was measured, resolved to a canonical quantity
-  places.py      where it was measured, resolved across 150 years of renaming
-  units.py       the methods-drift layer: convert what is comparable, refuse the rest
+  places.py      where it was measured, across 150 years of renaming
+  units.py       convert what is comparable, refuse the rest
   science.py     trend with reading-uncertainty, changepoint, silence
   watershed.py   who was downstream of whom
-  providers.py   external data, keyless first, tiers enforced by tests
   decisions.py   who moved what, who seconded, and how each person voted
-  dating.py      publication year from the text, and whether a value's year is safe
   citations.py   page links plus focused scan crops when available
   contribute.py  verifying a bundle of readings against the pages they cite
   disputes.py    open contribution and correction, with nobody adjudicating
   library.py     ask for a place; if nobody has read it, your machine does
   frontier.py    what reading a document would unlock, and for whom
-  vocab_builder.py  proposals a person accepts or rejects; never automatic
-  vocab_sample.py   deciding when enough of the vocabulary has been seen
-  tools.py       the archive-native tool layer an agent needs to be useful here
-  jay.py        the agent itself, over that toolset
-  repair.py      Tier 0 — proposed metadata corrections for the whole collection
-  score.py       the accuracy harness
+  chrome.py      one masthead and menu, shared by every page
   portal.py      the map portal, forked from OMEGA-wave
   server.py      a running instance you can click, standard library only
-data/
-  gold/          hand-checked ground truth
-  results/       published runs: accuracy, metadata proposals, silence report
 scripts/
-  run_gold.py         extract the gold pages and score them
-  rescore.py          re-score a saved run without calling a model
-  extract_place.py    read every surviving report for one town
-  analyze_place.py    turn those records into trends and findings
-  silence_report.py   map title-derived catalogue gaps, with a collection control
-  propose_metadata.py generate the catalogue repair diff
-  build_portal.py     render the reporting cliff as a self-contained page
-  build_town_page.py  render one town's record, every number linked to its scan
-portal/
-  silence.html   the 1975 cliff
+  build_browser_reader.py  the in-browser reader page
+  run_gold.py / rescore.py the accuracy harness
+  share.py                 read a town, export, import, push, pull
+data/
+  gold/     hand-checked ground truth
+  results/  published runs: accuracy, metadata proposals, silence report
 ```
 
-Two layers exist because the corpus forced them, not because they were planned.
-`units.py` was written after finding the same specification recorded as
-"180 PPM" in 1963 and "180 mg/1" in 1969. `parameters.py` was written after
-discovering that matching parameter names by substring had been plotting
-*removal percentages* on a chart labelled as effluent *concentrations* — both
-small numbers that fall when a plant improves, so it looked entirely reasonable.
+Two modules exist because the corpus forced them. `units.py` was written after
+finding the same specification recorded as "180 PPM" in 1963 and "180 mg/1" in
+1969. `parameters.py` was written after discovering that matching parameter names
+by substring had been plotting *removal percentages* on a chart labelled effluent
+*concentrations* — both small numbers that fall when a plant improves, so it looked
+entirely reasonable.
 
-## Status
+## Known limitations
 
-**A note on numbers.** The fellowship application cites the frozen checkpoint `763d4c0` —
-5,147 records across 14 municipalities — because an application should cite figures that can be
-checked out and recomputed. The repository has kept growing since, so counts at HEAD are higher;
-where this README states a number, it states which corpus it comes from.
+Stated here rather than discovered later:
 
-Early, but measured. The repository contains reading, routing, prose and table extraction,
-accuracy scoring, unit and parameter resolution, place resolution, science, watershed, provider,
-decision, citation, dispute and assistant components. They run on real documents and the full test
-suite passes; only the four-page prose benchmark currently has a hand-read accuracy score. The core
-has zero required package dependencies.
-
-**What has actually been found, each with its own control attached:**
-
-- **All 107 parsed municipal report series end by 1974; 72 end in that exact year.** Broader Ministry
-  publishing continues — 1,449 indexed items before 1975 and 3,800 afterward — arguing against a
-  collection-wide scanning stop. The artifact does not explain any individual series gap.
-- A live ECCC query suggested that about **48%** of returned Ontario gauge records were marked
-  discontinued. Its exact response was not preserved, so it is not a frozen benchmark.
-- **Owen Sound**: 120 source-linked records from 10 scanned reports, including 69 observations —
-  the sewage series runs 1963–1972 and the drinking-water reports 1990–1992, kept apart because
-  they measure opposite things; the extracted BOD-removal series rises from 46.4% to 64%.
-- **13,429 language/year metadata proposals** across all 104,241 items, offered for review.
-
-**The first trend the project produced was a refusal, and that is the point.** Owen Sound's daily
-flow rises 175,000 gal/day per year — and the same line reports p=0.71, a 90% interval spanning
-zero, only 62% of bootstrap replicates agreeing on direction once reading confidence is carried
-through, and two of six points flagged as probable scan damage. A naive pipeline publishes the
-slope.
-
-**Tables may be recoverable, and that changed the plan.** llava invented table structure and was
-worse than useless, because a fabricated table is indistinguishable from a recovered one. On the
-Brantford 1962 flow page, a newer local model returned 27 records and recovered 10 of 12 values
-identified in the OCR beforehand.
-
-Across **24 table pages from 11 collections**, 1879 to 2003, the trial returned **535 records**.
-The stored trial checked 461 of those records for a matching digit sequence in page OCR and found
-411 (89%). That is a permissive consistency check, not an accuracy score: short numbers match by
-chance, 50 did not match, and the artifact does not preserve why 74 records were excluded. Their
-status is unknown; all 24 pages had OCR text. Trial throughput was about eight minutes a page on an
-RTX 2080, where only 18% of the model fit in VRAM.
-
-**Not built:** figure extraction — reading a plotted line back into numbers — and corpus-scale
-extraction, which is what the whole cost model is about.
-
-**Known limitations, stated rather than discovered later:** the Pettitt changepoint test is far
-too conservative at the sample sizes annual reports give, so a null result from it means nothing;
-the watershed network is name-matching and drainage area, not routed hydrology, and should be
-checked against the National Hydro Network before any claim about a specific community's water;
-verification catches some fabrication but not misreading, so a value filed as influent when the
-page meant effluent can pass — which is why contested readings remain side by side. Each keeps a
-page link; prose uses sentence evidence, while table records retain row/column locators but are not
-accepted as verified without localized cell proof. Crops can also be unavailable.
+- **Coverage is a classifier estimate, not a promise.** A 120-item, 23,729-page
+  random sample put pages worth reading at 53.1% (95% CI 52.5–53.8%), extrapolating
+  to roughly 11.6–11.9 million pages. A later routing fix raised that on a
+  non-random sample; the router has changed again. Coverage, the prose/table split
+  and the cost model must be re-measured together before any corpus-wide budget is
+  quoted.
+- **Tables are the honest hole.** Prose distributes to volunteers; tables mostly do
+  not, yet. A newer local model recovered 10 of 12 known values on a 1962 flow page,
+  but trial throughput was about eight minutes a page on an RTX 2080 where only 18%
+  of the model fits in VRAM.
+- **The Pettitt changepoint test** is far too conservative at the sample sizes
+  annual reports give, so a null result from it means nothing.
+- **The watershed network** is name-matching and drainage area, not routed
+  hydrology, and should be checked against the National Hydro Network before any
+  claim about a specific community's water.
+- **Verification catches fabrication, not misreading** — see Trust, above.
+- **Not built:** figure extraction (reading a plotted line back into numbers) and
+  corpus-scale extraction, which is what the cost model is about.
 
 ## The work log
 
-[WORKLOG.md](WORKLOG.md) records what was built, what was measured, and mostly
-what turned out to be wrong. Every serious mistake in this project has been
-plausible-wrong rather than crash-wrong -- a 49% accuracy figure that was really a
-broken ruler, a chart quietly plotting removal percentages as concentrations, two
-unconnected rivers linked by a guessed threshold -- and none of them would have
-thrown an error. That pattern is the most useful thing here.
+[WORKLOG.md](WORKLOG.md) records what was built, what was measured, and mostly what
+turned out to be wrong. Every serious mistake here has been plausible-wrong rather
+than crash-wrong — a 49% accuracy figure that was really a broken ruler, a chart
+quietly plotting removal percentages as concentrations, two unconnected rivers
+linked by a guessed threshold — and none of them would have thrown an error. That
+pattern is the most useful thing in this repository.
 
 ## Licence
 
-MIT — see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE). Code is MIT; derived data is published only where the
+source rights support reuse.
 
 ## Acknowledgements
 
 Built on the [Internet Archive Canada](https://archive.org/details/governmentpublications)
-government publications collection, and on Internet Archive's decision to keep the OCR, the page
-coordinates and the scans all openly available. This project is only possible because that
-infrastructure exists and is free.
+government publications collection, and on Internet Archive's decision to keep the
+OCR, the page coordinates and the scans openly available. This project is only
+possible because that infrastructure exists and is free.
